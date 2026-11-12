@@ -3,6 +3,8 @@ import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 import {rewriteBookingLinks} from './booking-destinations.mjs';
+import {preserveHeadingCss,reviseSemanticHeadings} from './semantic-headings.mjs';
+import {rewriteCanonicalLinks} from './canonical-links.mjs';
 
 // Build a local, code-owned snapshot from the read-only production capture.
 const require = createRequire(import.meta.url);
@@ -163,11 +165,14 @@ try {
   });
   await page.setContent(data.html);
   data.bookingRevisions=await rewriteBookingLinks(page);
+  data.bookingRevisions.push(...await rewriteCanonicalLinks(page));
+  data.headingRevisions=await page.evaluate(reviseSemanticHeadings,{key:'homepage',kind:'homepage',title:data.title,route:'/',externalPrimary:true});
   data.html=await page.evaluate(()=>document.body.innerHTML);
   data.links=await page.evaluate(()=>[...document.querySelectorAll('a[href],[data-parity-href]')].flatMap(e=>['href','data-parity-href'].filter(attribute=>e.hasAttribute(attribute)).map(attribute=>({attribute,url:e.getAttribute(attribute)}))));
 } finally { await browser.close(); }
 
 const replacements = new Map();
+css=preserveHeadingCss(css);
 for (const image of data.images) {
   if (image.src && !image.src.startsWith('data:')) replacements.set(image.src, await localize(image.src));
   if (image.srcset) {

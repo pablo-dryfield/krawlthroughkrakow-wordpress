@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-11-12",
+  "redirects": [
+    {
+      "from": "/student-trips-and-parties/",
+      "target": "/student-trips-poland/",
+      "sourceStatus": 404,
+      "status": 301,
+      "reason": "Retired student-trips URL to the existing dedicated student-trips page; same audience and service intent."
+    },
+    {
+      "from": "/2019/09/05/2681/",
+      "target": "/all-you-need-to-know-about-visiting-auschwitz/",
+      "sourceStatus": 404,
+      "status": 301,
+      "reason": "Dated WordPress numeric URL identifies post 2681, the current Auschwitz visitor article."
+    }
+  ],
+  "holds": [],
+  "approvedStagingLegacyRedirect": {
+      "from": "/store/Bottomless-Brunch-p661114244",
+      "target": "/store2/bottomless-brunch-29/",
+      "fragment": "book",
+      "status": 301,
+      "approvedOn": "2026-11-12",
+      "reason": "Owner explicitly approved only this exact staging legacy URL; no other Ecwid route or production change."
+  }
+}

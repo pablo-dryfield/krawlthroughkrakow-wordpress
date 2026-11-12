@@ -18,7 +18,7 @@ class RoadmapTests(unittest.TestCase):
         result=module.render(self.data,self.plan)
         self.assertIn('| Total | 40 |',result)
         self.assertIn('not a time-based percentage',result)
-        self.assertIn('**New SEO production releases:** 0',result)
+        self.assertIn('**Website SEO production releases:** 0',result)
         self.assertIn('D08',result)
 
     def test_missing_unknown_ticket_or_status_fails(self):

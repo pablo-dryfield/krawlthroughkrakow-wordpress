@@ -83,6 +83,9 @@ def probe_helper(token, manifest=None):
         ids = sorted({int(row['postId']) for row in manifest['routes'] if row.get('postId') and row['kind'] in ('page', 'blog post')} | {278})
         routes = [row['route'] for row in manifest['routes']]
         routes.extend(row['route'] for row in manifest['aliases'] if row['status'] != 'existing-homepage-canonical-alias')
+        routes.extend(registry_data().get('redirects', {}))
+        routes.append('/store/Bottomless-Brunch-p661114244')
+        routes = sorted(set(routes))
         data = json.dumps({'ids': ids, 'routes': routes}, separators=(',', ':'))
         return f'''<?php
 if (!defined('ABSPATH')) {{ exit; }}

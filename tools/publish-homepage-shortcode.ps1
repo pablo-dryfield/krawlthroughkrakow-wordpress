@@ -5,15 +5,16 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'invoke-ktk-native.ps1')
 
-& node (Join-Path $PSScriptRoot 'build-homepage-font-resilience.mjs')
-if ($LASTEXITCODE -ne 0) {
-    exit $LASTEXITCODE
+Invoke-KtkNativeCommand -Command 'node' -Arguments @((Join-Path $PSScriptRoot 'build-homepage-font-resilience.mjs'))
+if ($KtkNativeExitCode -ne 0) {
+    exit $KtkNativeExitCode
 }
 
 if ($PublisherArguments -contains '--build-only' -or ($PublisherArguments -contains '--local-source' -and $PublisherArguments -contains '--dry-run')) {
-    & python (Join-Path $PSScriptRoot 'publish-homepage-shortcode.py') @PublisherArguments
-    exit $LASTEXITCODE
+    Invoke-KtkNativeCommand -Command 'python' -Arguments (@((Join-Path $PSScriptRoot 'publish-homepage-shortcode.py')) + $PublisherArguments)
+    exit $KtkNativeExitCode
 }
 
 $credentialPath = Join-Path $env:USERPROFILE '.ktk\storefront-ftps-password.xml'
@@ -26,8 +27,8 @@ $passwordPointer = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure
 
 try {
     $env:KTK_FTP_PASSWORD = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($passwordPointer)
-    & python (Join-Path $PSScriptRoot 'publish-homepage-shortcode.py') @PublisherArguments
-    exit $LASTEXITCODE
+    Invoke-KtkNativeCommand -Command 'python' -Arguments (@((Join-Path $PSScriptRoot 'publish-homepage-shortcode.py')) + $PublisherArguments)
+    exit $KtkNativeExitCode
 }
 finally {
     Remove-Item Env:KTK_FTP_PASSWORD -ErrorAction SilentlyContinue

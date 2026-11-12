@@ -1,11 +1,14 @@
 import {createRequire} from 'node:module';
-import {writeFile} from 'node:fs/promises';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import path from 'node:path';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const production=process.argv.includes('--production');
 const prefix=production?'':'/staging';
 const base='https://krawlthroughkrakow.com'+prefix;
+const output=process.argv.includes('--output')?process.argv[process.argv.indexOf('--output')+1]:production?'docs/code-pages/production-release/attribution-tests.json':'docs/code-pages/production-readiness/staging-attribution-tests.json';
+try{await readFile(output);throw new Error('Preserve earlier evidence; provide --output');}catch(error){if(error.code!=='ENOENT')throw error;}
+await mkdir(path.dirname(output),{recursive:true});
 const cases=[
  {path:'/',selector:'a[href*="store2/bottomless-brunch-29/"]',destination:'/staging/store2/bottomless-brunch-29/'},
  {path:'/new-years-eve/',selector:'#main-content .et_pb_button_0',destination:'/staging/store2/nye-pub-crawl-32/',product:32},
@@ -44,6 +47,6 @@ try{
  }
 }finally{await browser.close();}
 const report={checkedAt:new Date().toISOString(),passed:checks.filter(c=>c.pass).length,total:checks.length,blockedWrites,isolatedBrowserStorage:true,noNavigationOrOrders:true,checks};
-await writeFile(production?'docs/code-pages/production-release/attribution-tests.json':'docs/code-pages/production-readiness/staging-attribution-tests.json',JSON.stringify(report,null,2));
+await writeFile(output,JSON.stringify(report,null,2));
 console.log(JSON.stringify({passed:report.passed,total:report.total,failed:checks.filter(c=>!c.pass)},null,2));
 if(report.passed!==report.total)process.exitCode=1;

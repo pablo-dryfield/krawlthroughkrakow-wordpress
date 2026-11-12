@@ -256,7 +256,7 @@ html#ecwid_html body#ecwid_body .ecwid.ecwid-SingleProduct-v2.ecwid-random-produ
 #dynamic-ec-store-container, #static-ec-store-container { margin-top: 0px !important; }
 
 /* Production stylesheet 4: divi-style-inline-inline-css */
-a, abbr, acronym, address, applet, b, big, blockquote, body, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, tt, u, ul, var { margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 100%; text-size-adjust: 100%; vertical-align: baseline; background: transparent; }
+a, abbr, acronym, address, applet, b, big, blockquote, body, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])), html, i, iframe, img, ins, kbd, label, legend, li, object, ol, :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])), pre, q, s, samp, small, span, strike, strong, sub, sup, tt, u, ul, var { margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 100%; text-size-adjust: 100%; vertical-align: baseline; background: transparent; }
 body { line-height: 1; }
 ol, ul { list-style: none; }
 blockquote, q { quotes: none; }
@@ -273,9 +273,9 @@ body.page-template-page-template-blank-php #page-container { padding-top: 0px !i
 body.et_cover_background { background-attachment: fixed; background-size: cover !important; background-position: center top !important; background-repeat: no-repeat !important; }
 a { color: rgb(46, 163, 242); }
 a, a:hover { text-decoration: none; }
-p { padding-bottom: 1em; }
-p:not(.has-background):last-of-type { padding-bottom: 0px; }
-p.et_normal_padding { padding-bottom: 1em; }
+:is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])) { padding-bottom: 1em; }
+:is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])):not(.has-background):last-of-type { padding-bottom: 0px; }
+:is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])).et_normal_padding { padding-bottom: 1em; }
 strong { font-weight: 700; }
 cite, em, i { font-style: italic; }
 code, pre { font-family: "Courier New", monospace; margin-bottom: 10px; }
@@ -286,16 +286,16 @@ sub { top: 0.3em; }
 dl { margin: 0px 0px 1.5em; }
 dl dt { font-weight: 700; }
 dd { margin-left: 1.5em; }
-blockquote p { padding-bottom: 0px; }
+blockquote :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])) { padding-bottom: 0px; }
 embed, iframe, object, video { max-width: 100%; }
-h1, h2, h3, h4, h5, h6 { color: rgb(51, 51, 51); padding-bottom: 10px; line-height: 1em; font-weight: 500; }
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { color: inherit; }
-h1 { font-size: 30px; }
-h2 { font-size: 26px; }
-h3 { font-size: 22px; }
-h4 { font-size: 18px; }
-h5 { font-size: 16px; }
-h6 { font-size: 14px; }
+:is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) { color: rgb(51, 51, 51); padding-bottom: 10px; line-height: 1em; font-weight: 500; }
+:is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])) a, :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])) a, :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])) a, :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])) a, :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])) a, :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) a { color: inherit; }
+:is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])) { font-size: 30px; }
+:is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])) { font-size: 26px; }
+:is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])) { font-size: 22px; }
+:is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])) { font-size: 18px; }
+:is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])) { font-size: 16px; }
+:is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) { font-size: 14px; }
 input { appearance: none; }
 input[type="checkbox"] { appearance: checkbox; }
 input[type="radio"] { appearance: radio; }
@@ -348,24 +348,24 @@ body.single .et_audio_content { margin-bottom: -6px; }
 .nav-single a { text-decoration: none; color: rgb(46, 163, 242); font-size: 14px; font-weight: 400; }
 .nav-previous { float: left; }
 .nav-next { float: right; }
-.et_password_protected_form p input { background-color: rgb(238, 238, 238); font-size: 14px; box-sizing: border-box; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; border-image: none !important; width: 100% !important; border-radius: 0px !important; color: rgb(153, 153, 153) !important; padding: 16px !important; }
+.et_password_protected_form :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])) input { background-color: rgb(238, 238, 238); font-size: 14px; box-sizing: border-box; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; border-image: none !important; width: 100% !important; border-radius: 0px !important; color: rgb(153, 153, 153) !important; padding: 16px !important; }
 .et_password_protected_form label { display: none; }
 .et_password_protected_form .et_submit_button { font-family: inherit; display: block; float: right; margin: 8px auto 0px; cursor: pointer; }
-.post-password-required p.nocomments.container { max-width: 100%; }
-.post-password-required p.nocomments.container::before { display: none; }
+.post-password-required :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])).nocomments.container { max-width: 100%; }
+.post-password-required :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])).nocomments.container::before { display: none; }
 .aligncenter, div.post .new-post .aligncenter { display: block; margin-left: auto; margin-right: auto; }
 .wp-caption { border: 1px solid rgb(221, 221, 221); text-align: center; background-color: rgb(243, 243, 243); margin-bottom: 10px; max-width: 96%; padding: 8px; }
 .wp-caption.alignleft { margin: 0px 30px 20px 0px; }
 .wp-caption.alignright { margin: 0px 0px 20px 30px; }
 .wp-caption img { margin: 0px; padding: 0px; border: 0px; }
-.wp-caption p.wp-caption-text { font-size: 12px; padding: 0px 4px 5px; margin: 0px; }
+.wp-caption :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])).wp-caption-text { font-size: 12px; padding: 0px 4px 5px; margin: 0px; }
 .alignright { float: right; }
 .alignleft { float: left; }
 img.alignleft { display: inline; float: left; margin-right: 15px; }
 img.alignright { display: inline; float: right; margin-left: 15px; }
 .page.et_pb_pagebuilder_layout #main-content { background-color: transparent; }
-body #main-content .et_builder_inner_content > h1, body #main-content .et_builder_inner_content > h2, body #main-content .et_builder_inner_content > h3, body #main-content .et_builder_inner_content > h4, body #main-content .et_builder_inner_content > h5, body #main-content .et_builder_inner_content > h6 { line-height: 1.4em; }
-body #main-content .et_builder_inner_content > p { line-height: 1.7em; }
+body #main-content .et_builder_inner_content > :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), body #main-content .et_builder_inner_content > :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), body #main-content .et_builder_inner_content > :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), body #main-content .et_builder_inner_content > :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), body #main-content .et_builder_inner_content > :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), body #main-content .et_builder_inner_content > :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) { line-height: 1.4em; }
+body #main-content .et_builder_inner_content > :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])) { line-height: 1.7em; }
 .wp-block-pullquote { margin: 20px 0px 30px; }
 .wp-block-pullquote.has-background blockquote { border-left-width: medium; border-left-style: none; border-left-color: currentcolor; }
 .wp-block-group.has-background { padding: 1.5em 1.5em 0.5em; }
@@ -416,13 +416,13 @@ body #main-content .et_builder_inner_content > p { line-height: 1.7em; }
 .et_pb_button.et_hover_enabled:hover::after, .et_pb_button.et_pb_hovered:hover::after { transition: none !important; }
 .et_pb_button::before { display: none; }
 .et_pb_button:hover::after { opacity: 1; margin-left: 0px; }
-.et_pb_column_1_3 h1, .et_pb_column_1_4 h1, .et_pb_column_1_5 h1, .et_pb_column_1_6 h1, .et_pb_column_2_5 h1 { font-size: 26px; }
-.et_pb_column_1_3 h2, .et_pb_column_1_4 h2, .et_pb_column_1_5 h2, .et_pb_column_1_6 h2, .et_pb_column_2_5 h2 { font-size: 23px; }
-.et_pb_column_1_3 h3, .et_pb_column_1_4 h3, .et_pb_column_1_5 h3, .et_pb_column_1_6 h3, .et_pb_column_2_5 h3 { font-size: 20px; }
-.et_pb_column_1_3 h4, .et_pb_column_1_4 h4, .et_pb_column_1_5 h4, .et_pb_column_1_6 h4, .et_pb_column_2_5 h4 { font-size: 18px; }
-.et_pb_column_1_3 h5, .et_pb_column_1_4 h5, .et_pb_column_1_5 h5, .et_pb_column_1_6 h5, .et_pb_column_2_5 h5 { font-size: 16px; }
-.et_pb_column_1_3 h6, .et_pb_column_1_4 h6, .et_pb_column_1_5 h6, .et_pb_column_1_6 h6, .et_pb_column_2_5 h6 { font-size: 15px; }
-.et_pb_bg_layout_dark, .et_pb_bg_layout_dark h1, .et_pb_bg_layout_dark h2, .et_pb_bg_layout_dark h3, .et_pb_bg_layout_dark h4, .et_pb_bg_layout_dark h5, .et_pb_bg_layout_dark h6 { color: rgb(255, 255, 255) !important; }
+.et_pb_column_1_3 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_column_1_4 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_column_1_5 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_column_1_6 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_column_2_5 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])) { font-size: 26px; }
+.et_pb_column_1_3 :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_column_1_4 :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_column_1_5 :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_column_1_6 :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_column_2_5 :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])) { font-size: 23px; }
+.et_pb_column_1_3 :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), .et_pb_column_1_4 :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), .et_pb_column_1_5 :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), .et_pb_column_1_6 :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), .et_pb_column_2_5 :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])) { font-size: 20px; }
+.et_pb_column_1_3 :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), .et_pb_column_1_4 :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), .et_pb_column_1_5 :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), .et_pb_column_1_6 :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), .et_pb_column_2_5 :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])) { font-size: 18px; }
+.et_pb_column_1_3 :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), .et_pb_column_1_4 :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), .et_pb_column_1_5 :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), .et_pb_column_1_6 :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), .et_pb_column_2_5 :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])) { font-size: 16px; }
+.et_pb_column_1_3 :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])), .et_pb_column_1_4 :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])), .et_pb_column_1_5 :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])), .et_pb_column_1_6 :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])), .et_pb_column_2_5 :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) { font-size: 15px; }
+.et_pb_bg_layout_dark, .et_pb_bg_layout_dark :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_bg_layout_dark :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_bg_layout_dark :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), .et_pb_bg_layout_dark :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), .et_pb_bg_layout_dark :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), .et_pb_bg_layout_dark :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) { color: rgb(255, 255, 255) !important; }
 .et_pb_module.et_pb_text_align_left { text-align: left; }
 .et_pb_module.et_pb_text_align_center { text-align: center; }
 .et_pb_module.et_pb_text_align_right { text-align: right; }
@@ -443,7 +443,7 @@ header .et_builder_inner_content { z-index: 2; }
 .et_pb_with_border { position: relative; border: 0px solid rgb(51, 51, 51); }
 .post-password-required .et_pb_row { padding: 0px; width: 100%; }
 .post-password-required .et_password_protected_form { min-height: 0px; }
-body.et_pb_pagebuilder_layout.et_pb_show_title .post-password-required .et_password_protected_form h1, body:not(.et_pb_pagebuilder_layout) .post-password-required .et_password_protected_form h1 { display: none; }
+body.et_pb_pagebuilder_layout.et_pb_show_title .post-password-required .et_password_protected_form :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), body:not(.et_pb_pagebuilder_layout) .post-password-required .et_password_protected_form :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])) { display: none; }
 .et_pb_no_bg { padding: 0px !important; }
 .et_overlay.et_pb_inline_icon::before, .et_pb_inline_icon::before { content: attr(data-icon); }
 .et_pb_more_button { color: inherit; text-shadow: none; text-decoration: none; display: inline-block; margin-top: 20px; }
@@ -540,10 +540,10 @@ header.et-l.et-l--header::after { clear: both; display: block; content: ""; }
   .et_pb_more_button { display: inline-block !important; }
   .et_pb_bg_layout_light_tablet.et_pb_button, .et_pb_bg_layout_light_tablet.et_pb_module.et_pb_button, .et_pb_bg_layout_light_tablet .et_pb_more_button { color: rgb(46, 163, 242); }
   .et_pb_bg_layout_light_tablet .et_pb_forgot_password a { color: rgb(102, 102, 102); }
-  .et_pb_bg_layout_light_tablet h1, .et_pb_bg_layout_light_tablet h2, .et_pb_bg_layout_light_tablet h3, .et_pb_bg_layout_light_tablet h4, .et_pb_bg_layout_light_tablet h5, .et_pb_bg_layout_light_tablet h6 { color: rgb(51, 51, 51) !important; }
+  .et_pb_bg_layout_light_tablet :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_bg_layout_light_tablet :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_bg_layout_light_tablet :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), .et_pb_bg_layout_light_tablet :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), .et_pb_bg_layout_light_tablet :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), .et_pb_bg_layout_light_tablet :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) { color: rgb(51, 51, 51) !important; }
   .et_pb_module .et_pb_bg_layout_light_tablet.et_pb_button { color: rgb(46, 163, 242) !important; }
   .et_pb_bg_layout_light_tablet { color: rgb(102, 102, 102) !important; }
-  .et_pb_bg_layout_dark_tablet, .et_pb_bg_layout_dark_tablet h1, .et_pb_bg_layout_dark_tablet h2, .et_pb_bg_layout_dark_tablet h3, .et_pb_bg_layout_dark_tablet h4, .et_pb_bg_layout_dark_tablet h5, .et_pb_bg_layout_dark_tablet h6 { color: rgb(255, 255, 255) !important; }
+  .et_pb_bg_layout_dark_tablet, .et_pb_bg_layout_dark_tablet :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_bg_layout_dark_tablet :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_bg_layout_dark_tablet :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), .et_pb_bg_layout_dark_tablet :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), .et_pb_bg_layout_dark_tablet :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), .et_pb_bg_layout_dark_tablet :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) { color: rgb(255, 255, 255) !important; }
   .et_pb_bg_layout_dark_tablet.et_pb_button, .et_pb_bg_layout_dark_tablet.et_pb_module.et_pb_button, .et_pb_bg_layout_dark_tablet .et_pb_more_button { color: inherit; }
   .et_pb_bg_layout_dark_tablet .et_pb_forgot_password a { color: rgb(255, 255, 255); }
   .et_pb_module.et_pb_text_align_left-tablet { text-align: left; }
@@ -559,10 +559,10 @@ header.et-l.et-l--header::after { clear: both; display: block; content: ""; }
   .et-hide-mobile { display: none !important; }
   .et_pb_bg_layout_light_phone.et_pb_button, .et_pb_bg_layout_light_phone.et_pb_module.et_pb_button, .et_pb_bg_layout_light_phone .et_pb_more_button { color: rgb(46, 163, 242); }
   .et_pb_bg_layout_light_phone .et_pb_forgot_password a { color: rgb(102, 102, 102); }
-  .et_pb_bg_layout_light_phone h1, .et_pb_bg_layout_light_phone h2, .et_pb_bg_layout_light_phone h3, .et_pb_bg_layout_light_phone h4, .et_pb_bg_layout_light_phone h5, .et_pb_bg_layout_light_phone h6 { color: rgb(51, 51, 51) !important; }
+  .et_pb_bg_layout_light_phone :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_bg_layout_light_phone :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_bg_layout_light_phone :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), .et_pb_bg_layout_light_phone :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), .et_pb_bg_layout_light_phone :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), .et_pb_bg_layout_light_phone :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) { color: rgb(51, 51, 51) !important; }
   .et_pb_module .et_pb_bg_layout_light_phone.et_pb_button { color: rgb(46, 163, 242) !important; }
   .et_pb_bg_layout_light_phone { color: rgb(102, 102, 102) !important; }
-  .et_pb_bg_layout_dark_phone, .et_pb_bg_layout_dark_phone h1, .et_pb_bg_layout_dark_phone h2, .et_pb_bg_layout_dark_phone h3, .et_pb_bg_layout_dark_phone h4, .et_pb_bg_layout_dark_phone h5, .et_pb_bg_layout_dark_phone h6 { color: rgb(255, 255, 255) !important; }
+  .et_pb_bg_layout_dark_phone, .et_pb_bg_layout_dark_phone :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_bg_layout_dark_phone :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_bg_layout_dark_phone :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), .et_pb_bg_layout_dark_phone :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), .et_pb_bg_layout_dark_phone :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), .et_pb_bg_layout_dark_phone :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) { color: rgb(255, 255, 255) !important; }
   .et_pb_bg_layout_dark_phone.et_pb_button, .et_pb_bg_layout_dark_phone.et_pb_module.et_pb_button, .et_pb_bg_layout_dark_phone .et_pb_more_button { color: inherit; }
   .et_pb_module .et_pb_bg_layout_dark_phone.et_pb_button { color: rgb(255, 255, 255) !important; }
   .et_pb_bg_layout_dark_phone .et_pb_forgot_password a { color: rgb(255, 255, 255); }
@@ -753,7 +753,7 @@ body .et-script-temporary-measurement { opacity: 0; }
   .et_pb_gutters1 .et_pb_column_1_3 .et_pb_grid_item.on_last_row, .et_pb_gutters1 .et_pb_column_1_4 .et_pb_grid_item.on_last_row, .et_pb_gutters1 .et_pb_column_1_5 .et_pb_grid_item.on_last_row, .et_pb_gutters1 .et_pb_column_1_6 .et_pb_grid_item.on_last_row, .et_pb_gutters1 .et_pb_column_3_5 .et_pb_grid_item.on_last_row, .et_pb_gutters1.et_pb_row .et_pb_column_1_3 .et_pb_grid_item.on_last_row, .et_pb_gutters1.et_pb_row .et_pb_column_1_4 .et_pb_grid_item.on_last_row, .et_pb_gutters1.et_pb_row .et_pb_column_1_5 .et_pb_grid_item.on_last_row, .et_pb_gutters1.et_pb_row .et_pb_column_1_6 .et_pb_grid_item.on_last_row, .et_pb_gutters1.et_pb_row .et_pb_column_3_5 .et_pb_grid_item.on_last_row { margin-bottom: 0px; }
   .et_pb_gutters1 .et_pb_column_1_2 .et_pb_blog_grid .column.size-1of2:nth-child(2n), .et_pb_gutters1 .et_pb_column_1_2 .et_pb_blog_grid .column.size-1of3:nth-child(3n), .et_pb_gutters1 .et_pb_column_1_2 .et_pb_grid_item.last_in_row, .et_pb_gutters1 .et_pb_column_2_3 .et_pb_blog_grid .column.size-1of2:nth-child(2n), .et_pb_gutters1 .et_pb_column_2_3 .et_pb_blog_grid .column.size-1of3:nth-child(3n), .et_pb_gutters1 .et_pb_column_2_3 .et_pb_grid_item.last_in_row, .et_pb_gutters1 .et_pb_column_3_4 .et_pb_blog_grid .column.size-1of2:nth-child(2n), .et_pb_gutters1 .et_pb_column_3_4 .et_pb_blog_grid .column.size-1of3:nth-child(3n), .et_pb_gutters1 .et_pb_column_3_4 .et_pb_grid_item.last_in_row, .et_pb_gutters1.et_pb_row .et_pb_column_1_2 .et_pb_blog_grid .column.size-1of2:nth-child(2n), .et_pb_gutters1.et_pb_row .et_pb_column_1_2 .et_pb_blog_grid .column.size-1of3:nth-child(3n), .et_pb_gutters1.et_pb_row .et_pb_column_1_2 .et_pb_grid_item.last_in_row, .et_pb_gutters1.et_pb_row .et_pb_column_2_3 .et_pb_blog_grid .column.size-1of2:nth-child(2n), .et_pb_gutters1.et_pb_row .et_pb_column_2_3 .et_pb_blog_grid .column.size-1of3:nth-child(3n), .et_pb_gutters1.et_pb_row .et_pb_column_2_3 .et_pb_grid_item.last_in_row, .et_pb_gutters1.et_pb_row .et_pb_column_3_4 .et_pb_blog_grid .column.size-1of2:nth-child(2n), .et_pb_gutters1.et_pb_row .et_pb_column_3_4 .et_pb_blog_grid .column.size-1of3:nth-child(3n), .et_pb_gutters1.et_pb_row .et_pb_column_3_4 .et_pb_grid_item.last_in_row { margin-right: 0px; }
   .et_pb_gutters1 .et_pb_column_1_2 .et_pb_grid_item.on_last_row, .et_pb_gutters1 .et_pb_column_2_3 .et_pb_grid_item.on_last_row, .et_pb_gutters1 .et_pb_column_3_4 .et_pb_grid_item.on_last_row, .et_pb_gutters1.et_pb_row .et_pb_column_1_2 .et_pb_grid_item.on_last_row, .et_pb_gutters1.et_pb_row .et_pb_column_2_3 .et_pb_grid_item.on_last_row, .et_pb_gutters1.et_pb_row .et_pb_column_3_4 .et_pb_grid_item.on_last_row { margin-bottom: 0px; }
-  .et_pb_gutters1 .et_pb_portfolio_grid .et_pb_grid_item .et_pb_module_header:last-child, .et_pb_gutters1 .et_pb_portfolio_grid .et_pb_grid_item h2:last-child { line-height: normal; }
+  .et_pb_gutters1 .et_pb_portfolio_grid .et_pb_grid_item .et_pb_module_header:last-child, .et_pb_gutters1 .et_pb_portfolio_grid .et_pb_grid_item :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])):last-child { line-height: normal; }
 }
 @media (max-width: 980px) {
   .et_pb_gutters1 .et_pb_column .et_pb_grid_item, .et_pb_gutters1 .et_pb_column .et_pb_shop_grid .woocommerce ul.products li.product, .et_pb_gutters1.et_pb_row .et_pb_column .et_pb_grid_item, .et_pb_gutters1.et_pb_row .et_pb_column .et_pb_shop_grid .woocommerce ul.products li.product { margin: 0px; width: 33.333%; }
@@ -1353,8 +1353,8 @@ body.safari .section_has_divider, body.uiwebview .section_has_divider { perspect
 .et_pb_blurb.et_pb_text_align_right .et_pb_blurb_content .et_pb_blurb_container { text-align: right; }
 .et_pb_blurb.et_pb_text_align_justified .et_pb_blurb_content .et_pb_blurb_container { text-align: justify; }
 .et_pb_blurb.et_pb_text_align_center .et_pb_blurb_content .et_pb_blurb_container { text-align: center; }
-.et_pb_blurb_content p:last-of-type { padding-bottom: 0px; }
-.et_pb_blurb .et_pb_module_header a, .et_pb_blurb h4 a { text-decoration: none; }
+.et_pb_blurb_content :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])):last-of-type { padding-bottom: 0px; }
+.et_pb_blurb .et_pb_module_header a, .et_pb_blurb :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])) a { text-decoration: none; }
 .et_pb_blurb .et_pb_image_wrap { display: block; margin: auto; }
 .et_pb_main_blurb_image img { border-radius: inherit; }
 .et_pb_main_blurb_image img[src*=".svg"] { width: auto; }
@@ -1441,11 +1441,11 @@ body.safari .section_has_divider, body.uiwebview .section_has_divider { perspect
 .et_pb_bg_layout_light .et_pb_promo_button { color: rgb(46, 163, 242); }
 .et-promo { background-color: rgb(31, 101, 129); padding: 40px 0px 25px; }
 .et-promo-description { float: left; padding: 0px 60px; overflow-wrap: break-word; width: 754px; }
-.et-promo-description p { color: rgb(255, 255, 255); }
+.et-promo-description :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])) { color: rgb(255, 255, 255); }
 .et-promo-button { display: inline-block; font-weight: 500; font-size: 20px; color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0.35); border-radius: 5px; padding: 14px 20px; margin-top: 20px; float: left; }
 .et_pb_promo { padding: 40px 60px; text-align: center; }
 .et_pb_promo_description { padding-bottom: 20px; position: relative; }
-.et_pb_promo_description p:last-of-type { padding-bottom: 0px; }
+.et_pb_promo_description :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])):last-of-type { padding-bottom: 0px; }
 .et_pb_promo_button { display: inline-block; color: inherit; }
 .et_pb_promo_button:hover { text-decoration: none; }
 .et_pb_promo_button:hover::after { opacity: 1; margin-left: 0px; }
@@ -1471,9 +1471,9 @@ body.safari .section_has_divider, body.uiwebview .section_has_divider { perspect
 }
 .et_pb_gallery_item { overflow-wrap: break-word; }
 .et_pb_gallery .et_pb_gallery_pagination ul li a.active { color: rgb(46, 163, 242); }
-p.et_pb_gallery_caption { line-height: 1.7; }
+:is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])).et_pb_gallery_caption { line-height: 1.7; }
 .et_pb_with_border .et_pb_gallery_image, .et_pb_with_border .et_pb_gallery_item { border: 0px solid rgb(51, 51, 51); }
-.et_pb_gallery_grid .et_pb_gallery_item .et_pb_gallery_title, .et_pb_gallery_grid .et_pb_gallery_item h3 { margin-top: 10px; }
+.et_pb_gallery_grid .et_pb_gallery_item .et_pb_gallery_title, .et_pb_gallery_grid .et_pb_gallery_item :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])) { margin-top: 10px; }
 .et_pb_gallery_image:hover .et_overlay::before { top: 50%; }
 .et_pb_gallery_image:hover .et_overlay { z-index: 3; opacity: 1; }
 .et_pb_slider.et_pb_gallery_fullwidth span.et_overlay { display: none; }
@@ -1502,8 +1502,8 @@ p.et_pb_gallery_caption { line-height: 1.7; }
 .et_pb_slider.gallery-not-found .et_pb_slide, .et_pb_slider.gallery-not-found .et_pb_slide .et_pb_container { min-height: 0px !important; }
 @media (min-width: 981px) {
   .et_pb_gallery_grid .et_pb_gallery_item img { width: 100%; }
-  .et_pb_gallery_grid .et_pb_gallery_item .et_pb_gallery_title, .et_pb_gallery_grid .et_pb_gallery_item h3 { overflow-wrap: break-word; margin: 10px 0px 0px; padding-bottom: 0px; }
-  .et_pb_gallery_grid .et_pb_gallery_item h3 { font-size: 18px; }
+  .et_pb_gallery_grid .et_pb_gallery_item .et_pb_gallery_title, .et_pb_gallery_grid .et_pb_gallery_item :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])) { overflow-wrap: break-word; margin: 10px 0px 0px; padding-bottom: 0px; }
+  .et_pb_gallery_grid .et_pb_gallery_item :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])) { font-size: 18px; }
   .et_pb_gallery_item .et_pb_gallery_caption { font-size: 14px; margin: 0.4em 0px 0px; }
   .et_pb_row [class*="et_pb_gutters"] .et_pb_gallery .et_pb_gallery_items .et_pb_gallery_item.et_pb_grid_item.last_in_row { margin-right: 0px; }
 }
@@ -1719,7 +1719,7 @@ img.mfp-img { width: auto; max-width: 100%; height: auto; display: block; box-si
 body .et-script-temporary-measurement { opacity: 0; }
 
 /* Production stylesheet 8: divi-dynamic-css */
-.footer-widget h4, #main-footer .widget_block h1, #main-footer .widget_block h2, #main-footer .widget_block h3, #main-footer .widget_block h4, #main-footer .widget_block h5, #main-footer .widget_block h6 { color: rgb(46, 163, 242); }
+.footer-widget :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), #main-footer .widget_block :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), #main-footer .widget_block :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), #main-footer .widget_block :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), #main-footer .widget_block :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), #main-footer .widget_block :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), #main-footer .widget_block :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) { color: rgb(46, 163, 242); }
 .footer-widget li::before { border-color: rgb(46, 163, 242); }
 .bottom-nav li.current-menu-item > a { color: rgb(46, 163, 242); }
 #main-footer { background-color: rgb(34, 34, 34); }
@@ -1953,14 +1953,14 @@ ul.et_pb_social_media_follow { margin: 0px 0px 22px; padding: 0px; list-style-ty
 body.custom-background { background-color: rgb(0, 0, 0); }
 
 /* Production stylesheet 10: et-divi-customizer-global-cached-inline-styles */
-body, .et_pb_column_1_2 .et_quote_content blockquote cite, .et_pb_column_1_2 .et_link_content a.et_link_main_url, .et_pb_column_1_3 .et_quote_content blockquote cite, .et_pb_column_3_8 .et_quote_content blockquote cite, .et_pb_column_1_4 .et_quote_content blockquote cite, .et_pb_blog_grid .et_quote_content blockquote cite, .et_pb_column_1_3 .et_link_content a.et_link_main_url, .et_pb_column_3_8 .et_link_content a.et_link_main_url, .et_pb_column_1_4 .et_link_content a.et_link_main_url, .et_pb_blog_grid .et_link_content a.et_link_main_url, body .et_pb_bg_layout_light .et_pb_post p, body .et_pb_bg_layout_dark .et_pb_post p { font-size: 16px; }
+body, .et_pb_column_1_2 .et_quote_content blockquote cite, .et_pb_column_1_2 .et_link_content a.et_link_main_url, .et_pb_column_1_3 .et_quote_content blockquote cite, .et_pb_column_3_8 .et_quote_content blockquote cite, .et_pb_column_1_4 .et_quote_content blockquote cite, .et_pb_blog_grid .et_quote_content blockquote cite, .et_pb_column_1_3 .et_link_content a.et_link_main_url, .et_pb_column_3_8 .et_link_content a.et_link_main_url, .et_pb_column_1_4 .et_link_content a.et_link_main_url, .et_pb_blog_grid .et_link_content a.et_link_main_url, body .et_pb_bg_layout_light .et_pb_post :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])), body .et_pb_bg_layout_dark .et_pb_post :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])) { font-size: 16px; }
 .et_pb_slide_content, .et_pb_best_value { font-size: 18px; }
 body { color: rgb(56, 56, 56); }
-#et_search_icon:hover, .mobile_menu_bar::before, .mobile_menu_bar::after, .et_toggle_slide_menu::after, .et-social-icon a:hover, .et_pb_sum, .et_pb_pricing li a, .et_pb_pricing_table_button, .et_overlay::before, .entry-summary p.price ins, .et_pb_member_social_links a:hover, .et_pb_widget li a:hover, .et_pb_filterable_portfolio .et_pb_portfolio_filters li a.active, .et_pb_filterable_portfolio .et_pb_portofolio_pagination ul li a.active, .et_pb_gallery .et_pb_gallery_pagination ul li a.active, .wp-pagenavi span.current, .wp-pagenavi a:hover, .nav-single a, .tagged_as a, .posted_in a { color: rgb(253, 0, 138); }
-.et_pb_contact_submit, .et_password_protected_form .et_submit_button, .et_pb_bg_layout_light .et_pb_newsletter_button, .comment-reply-link, .form-submit .et_pb_button, .et_pb_bg_layout_light .et_pb_promo_button, .et_pb_bg_layout_light .et_pb_more_button, .et_pb_contact p input[type="checkbox"]:checked + label i::before, .et_pb_bg_layout_light.et_pb_module.et_pb_button { color: rgb(253, 0, 138); }
-.footer-widget h4 { color: rgb(253, 0, 138); }
+#et_search_icon:hover, .mobile_menu_bar::before, .mobile_menu_bar::after, .et_toggle_slide_menu::after, .et-social-icon a:hover, .et_pb_sum, .et_pb_pricing li a, .et_pb_pricing_table_button, .et_overlay::before, .entry-summary :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])).price ins, .et_pb_member_social_links a:hover, .et_pb_widget li a:hover, .et_pb_filterable_portfolio .et_pb_portfolio_filters li a.active, .et_pb_filterable_portfolio .et_pb_portofolio_pagination ul li a.active, .et_pb_gallery .et_pb_gallery_pagination ul li a.active, .wp-pagenavi span.current, .wp-pagenavi a:hover, .nav-single a, .tagged_as a, .posted_in a { color: rgb(253, 0, 138); }
+.et_pb_contact_submit, .et_password_protected_form .et_submit_button, .et_pb_bg_layout_light .et_pb_newsletter_button, .comment-reply-link, .form-submit .et_pb_button, .et_pb_bg_layout_light .et_pb_promo_button, .et_pb_bg_layout_light .et_pb_more_button, .et_pb_contact :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])) input[type="checkbox"]:checked + label i::before, .et_pb_bg_layout_light.et_pb_module.et_pb_button { color: rgb(253, 0, 138); }
+.footer-widget :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])) { color: rgb(253, 0, 138); }
 .et-search-form, .nav li ul, .et_mobile_menu, .footer-widget li::before, .et_pb_pricing li::before, blockquote { border-color: rgb(253, 0, 138); }
-.et_pb_counter_amount, .et_pb_featured_table .et_pb_pricing_heading, .et_quote_content, .et_link_content, .et_audio_content, .et_pb_post_slider.et_pb_bg_layout_dark, .et_slide_in_menu_container, .et_pb_contact p input[type="radio"]:checked + label i::before { background-color: rgb(253, 0, 138); }
+.et_pb_counter_amount, .et_pb_featured_table .et_pb_pricing_heading, .et_quote_content, .et_link_content, .et_audio_content, .et_pb_post_slider.et_pb_bg_layout_dark, .et_slide_in_menu_container, .et_pb_contact :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])) input[type="radio"]:checked + label i::before { background-color: rgb(253, 0, 138); }
 .container, .et_pb_row, .et_pb_slider .et_pb_container, .et_pb_fullwidth_section .et_pb_title_container, .et_pb_fullwidth_section .et_pb_title_featured_container, .et_pb_fullwidth_header:not(.et_pb_fullscreen) .et_pb_fullwidth_header_container { max-width: 1920px; }
 .et_boxed_layout #page-container, .et_boxed_layout.et_non_fixed_nav.et_transparent_nav #page-container #top-header, .et_boxed_layout.et_non_fixed_nav.et_transparent_nav #page-container #main-header, .et_fixed_nav.et_boxed_layout #page-container #top-header, .et_fixed_nav.et_boxed_layout #page-container #main-header, .et_boxed_layout #page-container .container, .et_boxed_layout #page-container .et_pb_row { max-width: 2080px; }
 a { color: rgb(253, 0, 138); }
@@ -1973,10 +1973,10 @@ a { color: rgb(253, 0, 138); }
 body.et_vertical_nav .container.et_search_form_container .et-search-form input { font-size: 18px !important; }
 #top-menu li.current-menu-ancestor > a, #top-menu li.current-menu-item > a, #top-menu li.current_page_item > a { color: rgb(253, 0, 138); }
 #main-footer { background-color: rgb(0, 0, 0); }
-#main-footer .footer-widget h4, #main-footer .widget_block h1, #main-footer .widget_block h2, #main-footer .widget_block h3, #main-footer .widget_block h4, #main-footer .widget_block h5, #main-footer .widget_block h6 { color: rgb(255, 255, 255); }
+#main-footer .footer-widget :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), #main-footer .widget_block :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), #main-footer .widget_block :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), #main-footer .widget_block :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), #main-footer .widget_block :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), #main-footer .widget_block :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), #main-footer .widget_block :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) { color: rgb(255, 255, 255); }
 .footer-widget li::before { border-color: rgb(253, 0, 138); }
 .footer-widget, .footer-widget li, .footer-widget li a, #footer-info { font-size: 13px; }
-#main-footer .footer-widget h4, #main-footer .widget_block h1, #main-footer .widget_block h2, #main-footer .widget_block h3, #main-footer .widget_block h4, #main-footer .widget_block h5, #main-footer .widget_block h6 { font-weight: bold; font-style: normal; text-transform: none; text-decoration: none; }
+#main-footer .footer-widget :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), #main-footer .widget_block :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), #main-footer .widget_block :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), #main-footer .widget_block :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), #main-footer .widget_block :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), #main-footer .widget_block :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), #main-footer .widget_block :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) { font-weight: bold; font-style: normal; text-transform: none; text-decoration: none; }
 .footer-widget .et_pb_widget div, .footer-widget .et_pb_widget ul, .footer-widget .et_pb_widget ol, .footer-widget .et_pb_widget label { line-height: 0.8em; }
 #footer-widgets .footer-widget li::before { top: 2.2px; }
 .bottom-nav, .bottom-nav a { font-size: 15px; }
@@ -1990,7 +1990,7 @@ body .et_pb_button { border-width: 4px !important; }
 body.et_pb_button_helper_class .et_pb_button, body.et_pb_button_helper_class .et_pb_module.et_pb_button { }
 body .et_pb_bg_layout_light.et_pb_button:hover, body .et_pb_bg_layout_light .et_pb_button:hover, body .et_pb_button:hover { color: rgb(255, 255, 255) !important; background-color: rgb(253, 0, 138); }
 @media only screen and (min-width: 981px) {
-  #main-footer .footer-widget h4, #main-footer .widget_block h1, #main-footer .widget_block h2, #main-footer .widget_block h3, #main-footer .widget_block h4, #main-footer .widget_block h5, #main-footer .widget_block h6 { font-size: 39px; }
+  #main-footer .footer-widget :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), #main-footer .widget_block :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), #main-footer .widget_block :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), #main-footer .widget_block :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), #main-footer .widget_block :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), #main-footer .widget_block :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), #main-footer .widget_block :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) { font-size: 39px; }
   #logo { max-height: 45%; }
   .et_pb_svg_logo #logo { height: 45%; }
   .et_header_style_centered.et_hide_primary_logo #main-header:not(.et-fixed-header) .logo_container, .et_header_style_centered.et_hide_fixed_logo #main-header.et-fixed-header .logo_container { height: 11.88px; }
@@ -2018,14 +2018,14 @@ body .et_pb_bg_layout_light.et_pb_button:hover, body .et_pb_bg_layout_light .et_
 @media only screen and (max-width: 980px) {
   body, .et_pb_column_1_2 .et_quote_content blockquote cite, .et_pb_column_1_2 .et_link_content a.et_link_main_url, .et_pb_column_1_3 .et_quote_content blockquote cite, .et_pb_column_3_8 .et_quote_content blockquote cite, .et_pb_column_1_4 .et_quote_content blockquote cite, .et_pb_blog_grid .et_quote_content blockquote cite, .et_pb_column_1_3 .et_link_content a.et_link_main_url, .et_pb_column_3_8 .et_link_content a.et_link_main_url, .et_pb_column_1_4 .et_link_content a.et_link_main_url, .et_pb_blog_grid .et_link_content a.et_link_main_url { font-size: 13px; }
   .et_pb_slider.et_pb_module .et_pb_slides .et_pb_slide_content, .et_pb_best_value { font-size: 14px; }
-  h1 { font-size: 33px; }
-  h2, .product .related h2, .et_pb_column_1_2 .et_quote_content blockquote p { font-size: 28px; }
-  h3 { font-size: 24px; }
-  h4, .et_pb_circle_counter h3, .et_pb_number_counter h3, .et_pb_column_1_3 .et_pb_post h2, .et_pb_column_1_4 .et_pb_post h2, .et_pb_blog_grid h2, .et_pb_column_1_3 .et_quote_content blockquote p, .et_pb_column_3_8 .et_quote_content blockquote p, .et_pb_column_1_4 .et_quote_content blockquote p, .et_pb_blog_grid .et_quote_content blockquote p, .et_pb_column_1_3 .et_link_content h2, .et_pb_column_3_8 .et_link_content h2, .et_pb_column_1_4 .et_link_content h2, .et_pb_blog_grid .et_link_content h2, .et_pb_column_1_3 .et_audio_content h2, .et_pb_column_3_8 .et_audio_content h2, .et_pb_column_1_4 .et_audio_content h2, .et_pb_blog_grid .et_audio_content h2, .et_pb_column_3_8 .et_pb_audio_module_content h2, .et_pb_column_1_3 .et_pb_audio_module_content h2, .et_pb_gallery_grid .et_pb_gallery_item h3, .et_pb_portfolio_grid .et_pb_portfolio_item h2, .et_pb_filterable_portfolio_grid .et_pb_portfolio_item h2 { font-size: 19px; }
+  :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])) { font-size: 33px; }
+  :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .product .related :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_column_1_2 .et_quote_content blockquote :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])) { font-size: 28px; }
+  :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])) { font-size: 24px; }
+  :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), .et_pb_circle_counter :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), .et_pb_number_counter :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), .et_pb_column_1_3 .et_pb_post :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_column_1_4 .et_pb_post :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_blog_grid :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_column_1_3 .et_quote_content blockquote :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])), .et_pb_column_3_8 .et_quote_content blockquote :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])), .et_pb_column_1_4 .et_quote_content blockquote :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])), .et_pb_blog_grid .et_quote_content blockquote :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])), .et_pb_column_1_3 .et_link_content :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_column_3_8 .et_link_content :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_column_1_4 .et_link_content :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_blog_grid .et_link_content :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_column_1_3 .et_audio_content :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_column_3_8 .et_audio_content :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_column_1_4 .et_audio_content :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_blog_grid .et_audio_content :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_column_3_8 .et_pb_audio_module_content :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_column_1_3 .et_pb_audio_module_content :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_gallery_grid .et_pb_gallery_item :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), .et_pb_portfolio_grid .et_pb_portfolio_item :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_filterable_portfolio_grid .et_pb_portfolio_item :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])) { font-size: 19px; }
   .et_pb_slider.et_pb_module .et_pb_slides .et_pb_slide_description .et_pb_slide_title { font-size: 50px; }
-  .et_pb_gallery_grid .et_pb_gallery_item h3, .et_pb_portfolio_grid .et_pb_portfolio_item h2, .et_pb_filterable_portfolio_grid .et_pb_portfolio_item h2, .et_pb_column_1_4 .et_pb_audio_module_content h2 { font-size: 17px; }
-  h5 { font-size: 17px; }
-  h6 { font-size: 15px; }
+  .et_pb_gallery_grid .et_pb_gallery_item :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), .et_pb_portfolio_grid .et_pb_portfolio_item :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_filterable_portfolio_grid .et_pb_portfolio_item :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_column_1_4 .et_pb_audio_module_content :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])) { font-size: 17px; }
+  :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])) { font-size: 17px; }
+  :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) { font-size: 15px; }
   .et_pb_section { padding: 0px; }
   .et_pb_section.et_pb_fullwidth_section { padding: 0px; }
   .et_pb_row, .et_pb_column .et_pb_row_inner { padding: 18px 0px; }
@@ -2033,7 +2033,7 @@ body .et_pb_bg_layout_light.et_pb_button:hover, body .et_pb_bg_layout_light .et_
 @media only screen and (max-width: 767px) {
   .et_pb_row, .et_pb_column .et_pb_row_inner { padding: 6px 0px; }
 }
-h1, h2, h3, h4, h5, h6 { font-family: "Passion One", display; }
+:is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) { font-family: "Passion One", display; }
 body, input, textarea, select { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; }
 .et_pb_button { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; }
 #main-header, #et-top-navigation { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; }
@@ -2161,7 +2161,7 @@ img.TA_image { vertical-align: middle; border: 0.2em double; }
 div.TA_text { vertical-align: top; font-size: 100%; display: inline-block; white-space: nowrap; }
 .TA_text { line-height: 1.1em; margin: 0.1em; padding: 0.1em; float: right; }
 .TA_H { margin-top: 0.6em; margin-bottom: 0px; font-size: 1.5em; font-weight: bold; letter-spacing: -0.1rem; line-height: 0.5em; }
-p.TA_text { font-family: Arial; font-size: 1.1em; width: 15em; letter-spacing: -0.05rem; }
+:is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])).TA_text { font-family: Arial; font-size: 1.1em; width: 15em; letter-spacing: -0.05rem; }
 .dot { height: 0.7em; width: 0.7em; background-color: rgb(50, 180, 167); border-color: rgb(50, 180, 167); border-radius: 100%; margin: 0.08em; display: inline-block; white-space: nowrap; padding: 0.15em; background-clip: content-box; outline: rgb(50, 180, 167) solid 0.2em; vertical-align: middle; }
 .div_dot { margin-top: 2em; margin-bottom: 0.4em; padding-top: 0px; scale: 1.25; }
 .rev { display: inline-block; font-size: 1.1em; margin-left: 0.8em; font-weight: lighter; }
@@ -2194,11 +2194,11 @@ p.TA_text { font-family: Arial; font-size: 1.1em; width: 15em; letter-spacing: -
 .et_pb_button_0, .et_pb_button_0::after, .et_pb_button_1, .et_pb_button_1::after, .et_pb_button_3, .et_pb_button_3::after, .et_pb_button_4, .et_pb_button_4::after, .et_pb_button_5, .et_pb_button_5::after, .et_pb_button_6, .et_pb_button_6::after { transition: 300ms; }
 .et_pb_section_1.et_pb_section { padding-top: 72px; padding-bottom: 66px; margin-top: 0px; background-color: rgb(255, 255, 255) !important; }
 .et_pb_row_2.et_pb_row { padding-top: 0px !important; padding-bottom: 0px !important; margin-top: 0px !important; }
-.et_pb_heading_0 .et_pb_heading_container h1, .et_pb_heading_0 .et_pb_heading_container h2, .et_pb_heading_0 .et_pb_heading_container h3, .et_pb_heading_0 .et_pb_heading_container h4, .et_pb_heading_0 .et_pb_heading_container h5, .et_pb_heading_0 .et_pb_heading_container h6 { font-family: "Passion One", display; font-size: 35px; letter-spacing: 2px; text-align: center; color: rgb(253, 0, 138) !important; }
+.et_pb_heading_0 .et_pb_heading_container :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_heading_0 .et_pb_heading_container :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_heading_0 .et_pb_heading_container :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), .et_pb_heading_0 .et_pb_heading_container :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), .et_pb_heading_0 .et_pb_heading_container :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), .et_pb_heading_0 .et_pb_heading_container :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) { font-family: "Passion One", display; font-size: 35px; letter-spacing: 2px; text-align: center; color: rgb(253, 0, 138) !important; }
 .et_pb_heading_0 { margin-bottom: 0px !important; }
 .et_pb_text_0.et_pb_text, .et_pb_text_2.et_pb_text, .et_pb_text_7.et_pb_text, .et_pb_text_9.et_pb_text, .et_pb_text_11.et_pb_text, .et_pb_text_14.et_pb_text { color: rgb(219, 50, 216) !important; }
 .et_pb_text_0 { font-size: 35px; padding-top: 0px !important; margin-bottom: 20px !important; }
-.et_pb_text_0 h1, .et_pb_text_2 h1, .et_pb_text_7 h1, .et_pb_text_9 h1, .et_pb_text_11 h1, .et_pb_text_14 h1 { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-weight: 900; font-size: 25px; color: rgb(253, 0, 138) !important; }
+.et_pb_text_0 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_text_2 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_text_7 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_text_9 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_text_11 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_text_14 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])) { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-weight: 900; font-size: 25px; color: rgb(253, 0, 138) !important; }
 .et_pb_button_1_wrapper .et_pb_button_1, .et_pb_button_1_wrapper .et_pb_button_1:hover, .et_pb_button_3_wrapper .et_pb_button_3, .et_pb_button_3_wrapper .et_pb_button_3:hover, .et_pb_button_5_wrapper .et_pb_button_5, .et_pb_button_5_wrapper .et_pb_button_5:hover, .et_pb_button_6_wrapper .et_pb_button_6, .et_pb_button_6_wrapper .et_pb_button_6:hover { padding-top: 12px !important; padding-bottom: 12px !important; }
 body #page-container .et_pb_section .et_pb_button_1 { background-color: rgba(255, 255, 255, 0); color: rgb(253, 0, 138) !important; font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif !important; font-weight: 700 !important; }
 body #page-container .et_pb_section .et_pb_button_1:hover::after, body #page-container .et_pb_section .et_pb_cta_0.et_pb_promo .et_pb_promo_button.et_pb_button:hover::after, body #page-container .et_pb_section .et_pb_button_3:hover::after, body #page-container .et_pb_section .et_pb_button_4:hover::after, body #page-container .et_pb_section .et_pb_button_5:hover::after, body #page-container .et_pb_section .et_pb_button_6:hover::after { left: auto; margin-left: 0.3em; opacity: 1; }
@@ -2213,10 +2213,10 @@ body #page-container .et_pb_section .et_pb_button_1::after, body #page-container
 .et_pb_blurb_0 .et_pb_blurb_content { max-width: 423px; }
 .et_pb_blurb_0 .et_pb_main_blurb_image .et_pb_only_image_mode_wrap, .et_pb_blurb_0 .et_pb_main_blurb_image .et-pb-icon { background-color: rgba(255, 255, 255, 0); }
 .et_pb_blurb_1.et_pb_blurb .et_pb_module_header, .et_pb_blurb_1.et_pb_blurb .et_pb_module_header a, .et_pb_blurb_2.et_pb_blurb .et_pb_module_header, .et_pb_blurb_2.et_pb_blurb .et_pb_module_header a, .et_pb_blurb_3.et_pb_blurb .et_pb_module_header, .et_pb_blurb_3.et_pb_blurb .et_pb_module_header a, .et_pb_blurb_4.et_pb_blurb .et_pb_module_header, .et_pb_blurb_4.et_pb_blurb .et_pb_module_header a, .et_pb_blurb_5.et_pb_blurb .et_pb_module_header, .et_pb_blurb_5.et_pb_blurb .et_pb_module_header a { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-weight: 700; text-transform: uppercase; font-size: 16px; }
-.et_pb_blurb_1.et_pb_blurb p, .et_pb_blurb_2.et_pb_blurb p, .et_pb_blurb_3.et_pb_blurb p, .et_pb_blurb_4.et_pb_blurb p, .et_pb_blurb_5.et_pb_blurb p { line-height: 1.2em; }
+.et_pb_blurb_1.et_pb_blurb :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])), .et_pb_blurb_2.et_pb_blurb :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])), .et_pb_blurb_3.et_pb_blurb :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])), .et_pb_blurb_4.et_pb_blurb :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])), .et_pb_blurb_5.et_pb_blurb :is(p:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="p"])) { line-height: 1.2em; }
 .et_pb_blurb_1.et_pb_blurb, .et_pb_blurb_2.et_pb_blurb, .et_pb_blurb_3.et_pb_blurb, .et_pb_blurb_4.et_pb_blurb, .et_pb_blurb_5.et_pb_blurb { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-weight: 300; font-size: 15px; line-height: 1.2em; }
 .et_pb_blurb_1 .et-pb-icon, .et_pb_blurb_2 .et-pb-icon, .et_pb_blurb_3 .et-pb-icon, .et_pb_blurb_4 .et-pb-icon, .et_pb_blurb_5 .et-pb-icon { color: rgb(253, 0, 138); font-family: ETmodules !important; font-weight: 400 !important; }
-.et_pb_cta_0.et_pb_promo h2, .et_pb_cta_0.et_pb_promo h1.et_pb_module_header, .et_pb_cta_0.et_pb_promo h3.et_pb_module_header, .et_pb_cta_0.et_pb_promo h4.et_pb_module_header, .et_pb_cta_0.et_pb_promo h5.et_pb_module_header, .et_pb_cta_0.et_pb_promo h6.et_pb_module_header { color: rgb(193, 46, 201) !important; }
+.et_pb_cta_0.et_pb_promo :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_cta_0.et_pb_promo :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])).et_pb_module_header, .et_pb_cta_0.et_pb_promo :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])).et_pb_module_header, .et_pb_cta_0.et_pb_promo :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])).et_pb_module_header, .et_pb_cta_0.et_pb_promo :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])).et_pb_module_header, .et_pb_cta_0.et_pb_promo :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])).et_pb_module_header { color: rgb(193, 46, 201) !important; }
 .et_pb_cta_0.et_pb_promo { padding-top: 0px !important; padding-bottom: 0px !important; margin-top: 33px !important; margin-bottom: 0px !important; }
 body #page-container .et_pb_section .et_pb_cta_0.et_pb_promo .et_pb_promo_button.et_pb_button::after { line-height: inherit; margin-left: -1em; left: auto; font-size: inherit !important; font-family: ETmodules !important; font-weight: 400 !important; }
 .et_pb_gallery_0.et_pb_gallery { margin-bottom: -1px !important; }
@@ -2227,17 +2227,17 @@ body #page-container .et_pb_section .et_pb_cta_0.et_pb_promo .et_pb_promo_button
 .et_pb_blurb_6 .et_pb_blurb_content, .et_pb_blurb_7 .et_pb_blurb_content { max-width: 330px; }
 .et_pb_row_5 { height: 1px; position: relative; z-index: 999 !important; }
 .et_pb_row_5, body #page-container .et-db #et-boc .et-l .et_pb_row_5.et_pb_row, body.et_pb_pagebuilder_layout.single #page-container #et-boc .et-l .et_pb_row_5.et_pb_row, body.et_pb_pagebuilder_layout.single.et_full_width_page #page-container #et-boc .et-l .et_pb_row_5.et_pb_row, .et_pb_row_16, body #page-container .et-db #et-boc .et-l .et_pb_row_16.et_pb_row, body.et_pb_pagebuilder_layout.single #page-container #et-boc .et-l .et_pb_row_16.et_pb_row, body.et_pb_pagebuilder_layout.single.et_full_width_page #page-container #et-boc .et-l .et_pb_row_16.et_pb_row { width: 100%; max-width: 2560px; }
-.et_pb_text_1.et_pb_text, .et_pb_text_19.et_pb_text, .et_pb_text_20.et_pb_text, .et_pb_text_22 h2, .et_pb_text_27.et_pb_text, .et_pb_text_36 h1, .et_pb_text_37.et_pb_text, .et_pb_text_38.et_pb_text, .et_pb_text_39.et_pb_text, .et_pb_text_40.et_pb_text, .et_pb_text_41.et_pb_text, .et_pb_text_42.et_pb_text { color: rgb(255, 255, 255) !important; }
+.et_pb_text_1.et_pb_text, .et_pb_text_19.et_pb_text, .et_pb_text_20.et_pb_text, .et_pb_text_22 :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_text_27.et_pb_text, .et_pb_text_36 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_text_37.et_pb_text, .et_pb_text_38.et_pb_text, .et_pb_text_39.et_pb_text, .et_pb_text_40.et_pb_text, .et_pb_text_41.et_pb_text, .et_pb_text_42.et_pb_text { color: rgb(255, 255, 255) !important; }
 .et_pb_text_1 { font-family: Arial, Helvetica, Arial, Lucida, sans-serif; background-color: rgb(238, 53, 123); overflow: hidden; min-height: 40px; width: 200px; max-width: 200px; z-index: 99; position: relative; border-radius: 5px; transform: rotate(90deg); margin: 0px 0px 0px -85px !important; padding: 8px 0px 0px !important; }
 .et_pb_sticky.et_pb_text_1 { z-index: 99 !important; }
 .et_pb_row_6.et_pb_row { padding-bottom: 25px !important; }
 .et_pb_text_2 { font-size: 35px; padding-top: 0px !important; margin-top: 0px !important; }
-.et_pb_text_3, .et_pb_text_4, .et_pb_text_8, .et_pb_text_10, .et_pb_text_15, .et_pb_text_16, .et_pb_text_21 h1, .et_pb_text_33, .et_pb_text_35 { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; }
+.et_pb_text_3, .et_pb_text_4, .et_pb_text_8, .et_pb_text_10, .et_pb_text_15, .et_pb_text_16, .et_pb_text_21 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_text_33, .et_pb_text_35 { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; }
 .et_pb_text_5 { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; padding-bottom: 0px !important; margin-bottom: 0px !important; }
 div.et_pb_section.et_pb_section_2 { background-image: var(--wpr-bg-e0d0f27c-9026-42b0-b8e1-0070036b6421) !important; }
 .et_pb_section_2 { min-height: 40vh; }
 .et_pb_section_2.et_pb_section { padding: 80px 0px 89px; }
-.et_pb_text_6 h1, .et_pb_text_31 h1 { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-weight: 900; text-shadow: rgba(0, 0, 0, 0.4) 0.08em 0.08em 0em; color: rgb(255, 255, 255) !important; }
+.et_pb_text_6 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_text_31 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])) { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-weight: 900; text-shadow: rgba(0, 0, 0, 0.4) 0.08em 0.08em 0em; color: rgb(255, 255, 255) !important; }
 .et_pb_text_6 { margin-top: 72px !important; }
 body #page-container .et_pb_section .et_pb_button_3, body #page-container .et_pb_section .et_pb_button_4, body #page-container .et_pb_section .et_pb_button_5, body #page-container .et_pb_section .et_pb_button_6 { background-color: rgb(253, 0, 138); color: rgb(255, 255, 255) !important; font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif !important; font-weight: 700 !important; }
 .et_pb_section_3.et_pb_section { padding: 45px 0px 54px; }
@@ -2257,13 +2257,13 @@ body.et_button_custom_icon #page-container .et_pb_cta_1.et_pb_promo .et_pb_promo
 .et_pb_row_12, body #page-container .et-db #et-boc .et-l .et_pb_row_12.et_pb_row, body.et_pb_pagebuilder_layout.single #page-container #et-boc .et-l .et_pb_row_12.et_pb_row, body.et_pb_pagebuilder_layout.single.et_full_width_page #page-container #et-boc .et-l .et_pb_row_12.et_pb_row, .et_pb_row_26, body #page-container .et-db #et-boc .et-l .et_pb_row_26.et_pb_row, body.et_pb_pagebuilder_layout.single #page-container #et-boc .et-l .et_pb_row_26.et_pb_row, body.et_pb_pagebuilder_layout.single.et_full_width_page #page-container #et-boc .et-l .et_pb_row_26.et_pb_row { width: 100%; max-width: 2048px; }
 .et_pb_row_12 { font-size: 1vw; }
 .et_pb_text_17 { font-size: 15px; width: 100%; min-width: 250px; padding: 0px 30px !important; margin-top: 0px !important; margin-bottom: 0px !important; }
-.et_pb_text_17 h1 { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-weight: 300; font-size: 4em; color: rgb(255, 255, 255) !important; }
-.et_pb_text_17 h2 { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-weight: 300; font-size: 1.35vw; }
+.et_pb_text_17 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])) { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-weight: 300; font-size: 4em; color: rgb(255, 255, 255) !important; }
+.et_pb_text_17 :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])) { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-weight: 300; font-size: 1.35vw; }
 .et_pb_text_18 { font-size: 14px; width: 100%; padding: 0px 30px !important; margin-top: 0px !important; margin-bottom: 0px !important; }
-.et_pb_text_18 h1 { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-weight: 300; font-size: 34px; text-align: center; color: rgb(255, 255, 255) !important; }
-.et_pb_text_18 h2 { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-weight: 300; font-size: 1.4vw; }
+.et_pb_text_18 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])) { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-weight: 300; font-size: 34px; text-align: center; color: rgb(255, 255, 255) !important; }
+.et_pb_text_18 :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])) { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-weight: 300; font-size: 1.4vw; }
 .et_pb_text_19 { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-size: 13px; }
-.et_pb_text_19 h1 { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-weight: 300; font-size: 34px; }
+.et_pb_text_19 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])) { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-weight: 300; font-size: 34px; }
 .et_pb_text_20 { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; font-size: 15px; }
 .et_pb_section_5 { min-height: 1172.7px; }
 .et_pb_section_5.et_pb_section { padding: 79px 0px 1px; margin-top: 0px; margin-bottom: 0px; background-color: rgb(255, 255, 255) !important; }
@@ -2280,18 +2280,18 @@ body.et_button_custom_icon #page-container .et_pb_cta_1.et_pb_promo .et_pb_promo
 .et_pb_section_6.et_pb_section { padding-top: 0px; padding-right: 0px; padding-bottom: 85px; }
 .et_pb_section_6.section_has_divider.et_pb_bottom_divider .et_pb_bottom_inside_divider { background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiNlZTM1N2IiPjxwYXRoIGQ9Ik02NDAgMTM5TDAgMHYxNDBoMTI4MFYwTDY0MCAxMzl6IiBmaWxsLW9wYWNpdHk9Ii41Ii8+PHBhdGggZD0iTTY0MCAxMzlMMCA0MnY5OGgxMjgwVjQybC02NDAgOTd6Ii8+PC9nPjwvc3ZnPg=="); background-size: 100% 45px; bottom: 0px; height: 45px; z-index: 1; transform: scale(1, 1); }
 .et_pb_row_16, .et_pb_row_18 { background-color: rgb(238, 53, 123); }
-.et_pb_text_22 h1, .et_pb_image_9, .et_pb_image_10, .et_pb_image_11, .et_pb_image_12 { text-align: center; }
+.et_pb_text_22 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_image_9, .et_pb_image_10, .et_pb_image_11, .et_pb_image_12 { text-align: center; }
 .et_pb_text_22 { width: 71.8%; max-width: 100%; padding-top: 15px !important; padding-left: 40px !important; }
 .et_pb_row_17.et_pb_row { padding-top: 50px !important; padding-bottom: 15px !important; }
 .et_pb_row_17, body #page-container .et-db #et-boc .et-l .et_pb_row_17.et_pb_row, body.et_pb_pagebuilder_layout.single #page-container #et-boc .et-l .et_pb_row_17.et_pb_row, body.et_pb_pagebuilder_layout.single.et_full_width_page #page-container #et-boc .et-l .et_pb_row_17.et_pb_row { max-width: 1048px; }
 .et_pb_text_23 { padding-top: 40px !important; width: 100%; }
 .et_pb_text_24, .et_pb_text_25 { font-family: Montserrat, Helvetica, Arial, Lucida, sans-serif; width: 100%; }
-.et_pb_text_24 h2, .et_pb_text_29 h1 { color: rgb(253, 0, 138) !important; }
-.et_pb_text_24 h3 { color: rgb(253, 0, 138) !important; line-height: 1.5em; }
+.et_pb_text_24 :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_text_29 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])) { color: rgb(253, 0, 138) !important; }
+.et_pb_text_24 :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])) { color: rgb(253, 0, 138) !important; line-height: 1.5em; }
 .et_pb_code_0 { margin-top: 4% !important; }
 .et_pb_section_7.et_pb_section { padding-top: 0px; padding-bottom: 0px; background-color: rgb(238, 53, 123) !important; }
 .et_pb_row_18.et_pb_row { margin-top: 0px !important; margin-bottom: 0px !important; margin-left: 0px !important; }
-.et_pb_text_26 h1 { font-size: 40px; line-height: 0.5em; color: rgb(255, 255, 255) !important; }
+.et_pb_text_26 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])) { font-size: 40px; line-height: 0.5em; color: rgb(255, 255, 255) !important; }
 .et_pb_text_26 { padding-top: 0px !important; padding-bottom: 0px !important; margin-top: 10px !important; margin-bottom: 0px !important; margin-left: 10% !important; }
 .et_pb_text_27 { font-size: 20px; padding-top: 0px !important; padding-bottom: 10px !important; margin-top: 0px !important; margin-bottom: 0px !important; margin-left: 10% !important; }
 .et_pb_section_8.et_pb_section { padding-top: 0px; padding-bottom: 56px; margin-top: 0px; margin-bottom: 0px; }
@@ -2309,7 +2309,7 @@ ul.et_pb_social_media_follow_0 { display: inline-block; white-space: nowrap; pad
 .et_pb_button_4_wrapper { margin-top: 0px !important; margin-bottom: 50px !important; }
 .et_pb_section_10.et_pb_section, .et_pb_section_11.et_pb_section { padding-top: 50px; padding-bottom: 80px; margin-bottom: 0px; }
 .et_pb_section_10.section_has_divider.et_pb_bottom_divider .et_pb_bottom_inside_divider, .et_pb_section_11.section_has_divider.et_pb_bottom_divider .et_pb_bottom_inside_divider { background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiMwMDAwMDAiPjxwYXRoIGQ9Ik0wIDBsNjQuOCAzMC45NSA5MS4yLTIuNTQgOTUuNDYgMjcuODcgMTIwLjA0LjJMNDQzIDgzLjE1bDkwLjA5LTMuMTJMNjQwIDExMC4xMmwxMDIuMzktMjkuNzMgODUuNTUgOC41MSA4OC4xMS01Ljc1TDk5MiA1Mi4yMmw3My4yMSA0LjI2TDExMzIgMzguNzlsNzctLjMzTDEyODAgMHYxNDBIMFYweiIgZmlsbC1vcGFjaXR5PSIuNSIvPjxwYXRoIGQ9Ik0wIDBsNjQuOCAzOC42OSA5MS4yLTMuMTggOTUuNDYgMzQuODQgMTIwLjA0LjI0IDcxLjUgMzMuMzUgOTAuMDktMy45MUw2NDAgMTM3LjY1bDEwMi4zOS0zNy4xNyA4NS41NSAxMC42NSA4OC4xMS03LjE5TDk5MiA2NS4yOGw3My4yMSA1LjMxIDY2Ljc5LTIyLjEgNzctLjQxTDEyODAgMHYxNDBIMFYweiIvPjwvZz48L3N2Zz4="); background-size: 100% 42px; bottom: 0px; height: 42px; z-index: 10; transform: scale(1, 1); }
-.et_pb_text_32.et_pb_text, .et_pb_text_32 h1, .et_pb_text_33 h1, .et_pb_text_34.et_pb_text, .et_pb_text_34 h1, .et_pb_text_35 h1, .et_pb_heading_1 .et_pb_heading_container h1, .et_pb_heading_1 .et_pb_heading_container h2, .et_pb_heading_1 .et_pb_heading_container h3, .et_pb_heading_1 .et_pb_heading_container h4, .et_pb_heading_1 .et_pb_heading_container h5, .et_pb_heading_1 .et_pb_heading_container h6 { color: rgb(238, 53, 123) !important; }
+.et_pb_text_32.et_pb_text, .et_pb_text_32 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_text_33 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_text_34.et_pb_text, .et_pb_text_34 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_text_35 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_heading_1 .et_pb_heading_container :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_heading_1 .et_pb_heading_container :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_heading_1 .et_pb_heading_container :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), .et_pb_heading_1 .et_pb_heading_container :is(h4:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h4"])), .et_pb_heading_1 .et_pb_heading_container :is(h5:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h5"])), .et_pb_heading_1 .et_pb_heading_container :is(h6:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h6"])) { color: rgb(238, 53, 123) !important; }
 .et_pb_text_32, .et_pb_text_34 { margin-top: 21px !important; }
 .et_pb_text_33.et_pb_text, .et_pb_text_35.et_pb_text { color: rgb(0, 0, 0) !important; }
 .et_pb_section_11.section_has_divider.et_pb_top_divider .et_pb_top_inside_divider { background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDBweCIgdmlld0JveD0iMCAwIDEyODAgMTQwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGZpbGw9IiMwMDAwMDAiPjxwYXRoIGQ9Ik0xNTYgMzUuNDFsOTUuNDYgMzQuNzMgMTIwLjA0LjI1IDcxLjUgMzMuMjQgOTAuMDktMy44OUw2NDAgMTM3LjI1bDEwMi4zOS0zNy4wNiA4NS41NSAxMC42MSA4OC4xMS03LjE3TDk5MiA2NS4wOGw3My4yMSA1LjMxTDExMzIgNDguMzVsNzctLjQyTDEyODAgMEgwbDY0LjggMzguNTcgOTEuMi0zLjE2eiIgZmlsbC1vcGFjaXR5PSIuNSIvPjxwYXRoIGQ9Ik0xNTYgMjguMzJsOTUuNDYgMjcuNzkgMTIwLjA0LjJMNDQzIDgyLjlsOTAuMDktMy4xMUw2NDAgMTA5LjhsMTAyLjM5LTI5LjY1IDg1LjU1IDguNDkgODguMTEtNS43NEw5OTIgNTIuMDdsNzMuMjEgNC4yNEwxMTMyIDM4LjY4bDc3LS4zNEwxMjgwIDBIMGw2NC44IDMwLjg2IDkxLjItMi41NHoiLz48L2c+PC9zdmc+"); background-size: 100% 42px; top: 0px; height: 42px; z-index: 1; transform: scale(1, 1); }
@@ -2372,8 +2372,8 @@ ul.et_pb_social_media_follow_1 { padding-top: 15px !important; margin-bottom: 15
   .et_pb_row_1 { background-repeat: repeat; min-height: 60vh; }
   .et_pb_button_0_wrapper { margin-bottom: 25px !important; }
   .et_pb_section_1.et_pb_section { padding: 30px 0px 1px; }
-  .et_pb_text_0 h1, .et_pb_text_2 h1, .et_pb_text_7 h1 { font-size: 17px; }
-  .et_pb_text_0 h2, .et_pb_text_2 h2, .et_pb_text_7 h2 { font-size: 23px; }
+  .et_pb_text_0 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_text_2 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])), .et_pb_text_7 :is(h1:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h1"])) { font-size: 17px; }
+  .et_pb_text_0 :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_text_2 :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])), .et_pb_text_7 :is(h2:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h2"])) { font-size: 23px; }
   body #page-container .et_pb_section .et_pb_button_1 { font-size: 10px !important; }
   body #page-container .et_pb_section .et_pb_button_1::after, body #page-container .et_pb_section .et_pb_cta_0.et_pb_promo .et_pb_promo_button.et_pb_button::after, body #page-container .et_pb_section .et_pb_button_3::after, body #page-container .et_pb_section .et_pb_button_4::after, body #page-container .et_pb_section .et_pb_button_5::after, body #page-container .et_pb_section .et_pb_button_6::after { line-height: inherit; margin-left: -1em; left: auto; display: inline-block; opacity: 0; content: attr(data-icon); font-size: inherit !important; font-family: ETmodules !important; font-weight: 400 !important; }
   body #page-container .et_pb_section .et_pb_button_1::before, body #page-container .et_pb_section .et_pb_cta_0.et_pb_promo .et_pb_promo_button.et_pb_button::before, body #page-container .et_pb_section .et_pb_button_3::before, body #page-container .et_pb_section .et_pb_button_4::before, body #page-container .et_pb_section .et_pb_button_5::before, body #page-container .et_pb_section .et_pb_button_6::before { display: none; }
@@ -2385,7 +2385,7 @@ ul.et_pb_social_media_follow_1 { padding-top: 15px !important; margin-bottom: 15
   .et_pb_blurb_0 .et-pb-icon { font-size: 45px; }
   body #page-container .et_pb_section .et_pb_cta_0.et_pb_promo .et_pb_promo_button.et_pb_button { font-size: 15px !important; }
   .et_pb_section_3.et_pb_section { padding: 37px 0px 50px; }
-  .et_pb_text_9 h3, .et_pb_text_11 h3, .et_pb_text_14 h3 { font-size: 19px; }
+  .et_pb_text_9 :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), .et_pb_text_11 :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])), .et_pb_text_14 :is(h3:where(:not([data-ktk-heading-origin])),:where([data-ktk-heading-origin="h3"])) { font-size: 19px; }
   .et_pb_text_9, .et_pb_text_14 { margin-top: 30px !important; margin-bottom: 7px !important; }
   .et_pb_image_0 .et_pb_image_wrap img, .et_pb_image_1 .et_pb_image_wrap img, .et_pb_image_2 .et_pb_image_wrap img, .et_pb_image_3 .et_pb_image_wrap img, .et_pb_image_4 .et_pb_image_wrap img, .et_pb_image_5 .et_pb_image_wrap img, .et_pb_image_6 .et_pb_image_wrap img, .et_pb_image_7 .et_pb_image_wrap img, .et_pb_image_8 .et_pb_image_wrap img, .et_pb_image_9 .et_pb_image_wrap img, .et_pb_image_10 .et_pb_image_wrap img, .et_pb_image_11 .et_pb_image_wrap img, .et_pb_image_12 .et_pb_image_wrap img, .et_pb_image_13 .et_pb_image_wrap img { width: auto; }
   .et_pb_text_11 { margin-top: 6px !important; margin-bottom: 23px !important; }

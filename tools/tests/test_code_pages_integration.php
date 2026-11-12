@@ -5,6 +5,7 @@ $is_page = true;
 $is_feed = false;
 $is_embed = false;
 function home_url($path) { global $home; return $home . $path; }
+function site_url($path) { return ($GLOBALS['site'] ?? $GLOBALS['home']) . $path; }
 function content_url($path) { global $home; return $home . '/wp-content' . $path; }
 function is_page($slug) { global $is_page; return $is_page && $slug === 'how-to-join'; }
 function is_feed() { global $is_feed; return $is_feed; }
@@ -38,6 +39,25 @@ check(!ktk_pages_shortcode_is_replica_page(), 'Feed isolated');
 $is_feed = false; $is_embed = true;
 check(!ktk_pages_shortcode_is_replica_page(), 'Embed isolated');
 $is_embed = false;
+$_SERVER['HTTP_HOST'] = 'krawlthroughkrakow.com';
+$legacy_brunch = '/staging/store/Bottomless-Brunch-p661114244';
+check(ktk_pages_staging_brunch_alias($legacy_brunch) === home_url('/store2/bottomless-brunch-29/#book'), 'Approved exact staging brunch alias');
+check(ktk_pages_staging_brunch_alias($legacy_brunch . '?utm_source=partner&gclid=example') === home_url('/store2/bottomless-brunch-29/?utm_source=partner&gclid=example#book'), 'Legacy attribution preserved, never invented');
+foreach (array('/store/Bottomless-Brunch-p661114244', '/staging/store/', '/staging/store/cart/', '/staging/store/Bottomless-Brunch-p661114244/', '/staging/store/Other-p123', '/staging/store2/cart/', $legacy_brunch . "?x=\r\n") as $path) {
+    check(null === ktk_pages_staging_brunch_alias($path), 'Other legacy/private/unsafe route is untouched');
+}
+$_SERVER['REQUEST_METHOD'] = 'POST';
+check(null === ktk_pages_staging_brunch_alias($legacy_brunch), 'No commerce POST redirection');
+$_SERVER['REQUEST_METHOD'] = 'HEAD';
+check(null !== ktk_pages_staging_brunch_alias($legacy_brunch), 'HEAD shares safe GET redirect');
+$_SERVER['REQUEST_METHOD'] = 'GET';
+$home = 'https://krawlthroughkrakow.com';
+check(null === ktk_pages_staging_brunch_alias($legacy_brunch), 'No production alias activation');
+$home = 'https://krawlthroughkrakow.com/staging'; $GLOBALS['site'] = 'https://other.example/staging';
+check(null === ktk_pages_staging_brunch_alias($legacy_brunch), 'Site identity required');
+unset($GLOBALS['site']); $_SERVER['HTTP_HOST'] = 'other.example';
+check(null === ktk_pages_staging_brunch_alias($legacy_brunch), 'Foreign host is excluded');
+$_SERVER['HTTP_HOST'] = 'krawlthroughkrakow.com';
 check(count(ktk_pages_registry()['routes']) === 116, 'Complete explicit registry');
 foreach (ktk_pages_registry()['routes'] as $route => $entry) {
     $_SERVER['REQUEST_URI'] = '/staging' . $route;
