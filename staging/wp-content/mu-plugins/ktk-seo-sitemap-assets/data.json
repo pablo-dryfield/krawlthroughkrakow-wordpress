@@ -1,0 +1,495 @@
+{
+  "schemaVersion": 1,
+  "targetOrigin": "https://krawlthroughkrakow.com",
+  "content": [
+    {
+      "loc": "https://krawlthroughkrakow.com/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/2020-krakow-nightlife-guide/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/about-us/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/about-us/how-to-join/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/all-you-need-to-know-about-visiting-auschwitz/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/author/dpbowman/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/author/dpbowman/page/2/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/author/dpbowman/page/3/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/author/dpbowman/page/4/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/author/dpbowman/page/5/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/author/dpbowman/page/6/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/author/dpbowman/page/7/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/author/dpbowman/page/8/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/author/dpbowman/page/9/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/author/jessie/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/author/pubthroughkrakow/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/author/pubthroughkrakow/page/2/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/author/thirsty/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/bachelor-party-organisers-krakow/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/best-drinking-games/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/best-hotels-in-krakow-2019-2020/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/best-places-to-eat/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/best-pub-crawls-in-europe/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/blog/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/budapest-or-krakow-nightlife/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/category/drinking-games/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/category/hen-do/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/category/krakow-guides/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/category/krakow-guides/page/2/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/category/krakow-guides/page/3/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/category/krakow-nightlife/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/category/krakow-nightlife/page/2/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/category/party-tips/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/category/party-tips/page/2/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/category/stag-do/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/category/uncategorized/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/category/uncategorized/page/2/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/category/uncategorized/page/3/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/category/uncategorized/page/4/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/category/uncategorized/page/5/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/contact/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/escape-rooms-for-a-stag-do-in-krakow/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/faqs/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/gallery/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/go-karting-krakow/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/hen-do-ideas-abroad/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/hostel-etiquette-tips/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/hostel-hangover-cure/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/irish-bars-krakow/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/is-krakow-safe-for-stag/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/jazz-bars-in-krakow/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/karaoke-bars-in-krakow/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-bars-jewish-quarter/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-budget-activities/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-food-truck-parks/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-free-activities-2/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-go-karting/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-hen-do/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-hen-party-reviews/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-live-music/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-milkbars/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-money-saving-tips/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-new-years-eve/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-nightclubs/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-nightlife/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-safety-guide/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-shooting-range/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-shot-bar/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-stag-activities/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-stag-do/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-techno-clubs-2/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-techno-clubs/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-weather-guide/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-wine-bars/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krakow-winter-activities/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/krawl-through-krakow-winter-newsletter/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/life-professional-drunk/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/meeting-point/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/new-years-eve-in-krakow/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/new-years-eve/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/other-tours/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/otherbarcrawls/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/party-krakow/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/privacy-policy/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/pub-crawl-drinking-games/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/pub-crawl-jobs/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/six-reasons-you-need-to-party-with-the-krawl-through-krakow/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/spa-hotels-krakow/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/spooktacular-krakow-unveil-the-mysteries-of-halloween/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/sports-bar-krakow/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/stag-do-costume/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/stag-pranks/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/stages-of-drunkenness/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/stagshens/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/student-trips-poland/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/survive-pub-crawl/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/tag/drinking-games/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/tag/krakow-food/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/tag/krakow-nightlife/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/tag/krakow-party/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/tag/krakow/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/tag/krawl-through-krakow/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/tag/party-ideas/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/tag/pub-crawl/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/tag/tips/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/tag/to-do-list/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/tag/why-choose-us/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/terms-and-conditions/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/testimonials/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/the-ultimate-guide-to-dating-in-nightlife-krakow/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/tour-service-disclaimer/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/travel-krakow-your-comprehensive-city-guide/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/weekend-in-krakow/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/welcome-to-alcohol/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/wheres-the-cheap-places-to-drink-in-krakow/"
+    }
+  ],
+  "storefront": [
+    {
+      "loc": "https://krawlthroughkrakow.com/store2/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/store2/nye-pub-crawl-32/"
+    },
+    {
+      "loc": "https://krawlthroughkrakow.com/store2/pub-crawl-28/"
+    }
+  ],
+  "robotsPreview": "User-agent: * \nCrawl-Delay: 20\nSitemap: https://krawlthroughkrakow.com/wp-sitemap.xml\nSitemap: https://krawlthroughkrakow.com/sitemap-ktk.xml\n",
+  "sourceHashes": {
+    "ktk-code-pages-assets/registry.php": "5f3c01ce0d8418a7f793c7a0891dbae70c72af4e6cff766cbee90da4bb7dac3f",
+    "ktk-code-pages-assets/pages/post-2020-krakow-nightlife-guide.php": "ba4398f3a5924f64cb82559d7060c1bb7651ce0b0255d29e6633c3f6495ac663",
+    "ktk-code-pages-assets/pages/post-all-you-need-to-know-about-visiting-auschwitz.php": "8736ecd9729aed464be76862930d4c7e4ba93b142f610472a0a736e768e14686",
+    "ktk-code-pages-assets/pages/post-bachelor-party-organisers-krakow.php": "995faf09d77bb751dcad959d7b27e2dd217c163903aaee0e87421b1e106c0f95",
+    "ktk-code-pages-assets/pages/post-best-drinking-games.php": "32a8653d64a5469c2070ed3deca58e89e15fc34c0c89223d27b82fdf0883b036",
+    "ktk-code-pages-assets/pages/post-best-hotels-in-krakow-2019-2020.php": "48efe92f61a8d25bc5f9b4364e4a37dc547f8e212105506025aecd9aa37ba378",
+    "ktk-code-pages-assets/pages/post-best-places-to-eat.php": "5d10f97c18983f22592e5d1e26ede014a8bc3d31add6702f3eae733ff9e1bde5",
+    "ktk-code-pages-assets/pages/post-best-pub-crawls-in-europe.php": "01b0f705b952de7be2533f41a75ecf02a358ab0064a6d0ef5188ec5289451b3f",
+    "ktk-code-pages-assets/pages/post-budapest-or-krakow-nightlife.php": "0d0b5c536b002a81da6e2c904932ec371a704d3e17a8a85de8c86a2c712092a0",
+    "ktk-code-pages-assets/pages/post-escape-rooms-for-a-stag-do-in-krakow.php": "69576de4c2c9b440265b844b91e5e701a1d178f5722a4162fb98c00b07035430",
+    "ktk-code-pages-assets/pages/post-go-karting-krakow.php": "9217ab1aa0bb5878eac339867ad2018d6c8322d9e96690fb8e6743e5d95f6d90",
+    "ktk-code-pages-assets/pages/post-hen-do-ideas-abroad.php": "bf1c15233b41fdd4d8e851b09e260108a81e965ba380ad1d5978eb34605e3531",
+    "ktk-code-pages-assets/pages/post-hostel-etiquette-tips.php": "a420653075328a16e84c571b88da146c18721344d961051a83826a5abc8979fb",
+    "ktk-code-pages-assets/pages/post-hostel-hangover-cure.php": "c4a26d130cf954929726e09b359bf544227a33da886d1b6a20a81dd3eca4a10b",
+    "ktk-code-pages-assets/pages/post-irish-bars-krakow.php": "4c3f72c7393c046a3bcce95e4eddb97027262b5b82f5f6feb6c38615fed91029",
+    "ktk-code-pages-assets/pages/post-is-krakow-safe-for-stag.php": "03958e3bba9226d6334a67628d3264da86f828d600ba1e20ca3f9c2b02b5097e",
+    "ktk-code-pages-assets/pages/post-jazz-bars-in-krakow.php": "eb069dcf3459b37b855859664b930097f1158980adf1eb07e68fcf1819622a40",
+    "ktk-code-pages-assets/pages/post-karaoke-bars-in-krakow.php": "707cd400dd39eedd1c13c969f0c200757ef771b4d7fc0f757e8fe3be6de30a36",
+    "ktk-code-pages-assets/pages/post-krakow-bars-jewish-quarter.php": "1350f68bf6999a1537e5f6cc1a1217c3e704e5af35b157bfcdfdcce0b6270267",
+    "ktk-code-pages-assets/pages/post-krakow-budget-activities.php": "e17cac5009528f2511ed7ff3323013508a0e5f11e60db92a4c93f16df5d9847a",
+    "ktk-code-pages-assets/pages/post-krakow-food-truck-parks.php": "a1709ea8f10c988d64bae9bc3b633c2efd1e735ced56563906714493af1c82d8",
+    "ktk-code-pages-assets/pages/post-krakow-free-activities-2.php": "935f2053dade63e772935f05b147befba0c2f33cedd0fa9fddfac4573d83dc34",
+    "ktk-code-pages-assets/pages/post-krakow-go-karting.php": "5ce51dd831defcd55f4431baf22ca7b0f84259ee64202c6824ac4d735d9b9b0c",
+    "ktk-code-pages-assets/pages/post-krakow-hen-party-reviews.php": "5fe3d72b8d2ce687d1b63394804f5f030c47cfafe7c1a9e4a357b85104d5ab34",
+    "ktk-code-pages-assets/pages/post-krakow-live-music.php": "2a4c7b4108fbb0e8411d248ea3f17e966c05abaf707e6f375300596ed5476ede",
+    "ktk-code-pages-assets/pages/post-krakow-milkbars.php": "fffb517e79ade5e27ef84dd4e2db3037ce7b4b8b199a4ca7c2e3c7ee95902296",
+    "ktk-code-pages-assets/pages/post-krakow-money-saving-tips.php": "dde38501144f0eaef9ff92886531ef4eaad896d1cb853b2f1a4faa616f372a16",
+    "ktk-code-pages-assets/pages/post-krakow-new-years-eve.php": "6feb829d50275d34a1b4e02c1d289e6b96d14d79f29379ab3db7af5970463ec5",
+    "ktk-code-pages-assets/pages/post-krakow-nightclubs.php": "f08542e09c5bb6254cfb0358e731aecfc6756490108275ae67aef597ef4280e3",
+    "ktk-code-pages-assets/pages/post-krakow-safety-guide.php": "c54fe26ee2c505bd87ba46b171156276807bf31f372463a71693880230ef89d7",
+    "ktk-code-pages-assets/pages/post-krakow-shooting-range.php": "bebd859d958d6f5272c3a9a20d463f6d672b064aab418ed5ddbc7208b77e832d",
+    "ktk-code-pages-assets/pages/post-krakow-shot-bar.php": "82b030650ba4461aeaad80f8d62fd3e4b9c74998f050e4adf7a20edb50ef56a5",
+    "ktk-code-pages-assets/pages/post-krakow-stag-activities.php": "a198327f904b737c08367fb2585bbe7fac2d989b4e3e8c774c4114fc89b855e1",
+    "ktk-code-pages-assets/pages/post-krakow-team-building-activities.php": "06cbd5649e1e540baaa5f7818a4984c2dcc46b3faf39d4ccf5c2b11aa5cef402",
+    "ktk-code-pages-assets/pages/post-krakow-techno-clubs-2.php": "feaad64e64fc128fc202a0afdb5c2b570e10bcf85fcfaadb57f93b79c0094cad",
+    "ktk-code-pages-assets/pages/post-krakow-techno-clubs.php": "7176c82f4e1b9db91709b829b1f4b837211baf8090af81aaf9c7750a942c5f60",
+    "ktk-code-pages-assets/pages/post-krakow-weather-guide.php": "01cecdf3be1e390cd1670316cfb5a26f186c549d116d65cae12892b15d0e6792",
+    "ktk-code-pages-assets/pages/post-krakow-wine-bars.php": "194f46f402ce020cf496d3abd25d32cc0881e0904a2aba439771a1f6e2625c60",
+    "ktk-code-pages-assets/pages/post-krakow-winter-activities.php": "2b2109dc35f3ec716be407f8ae933aad082a9ae503f88dfbbeb4faefd97acd83",
+    "ktk-code-pages-assets/pages/post-krawl-through-krakow-winter-newsletter.php": "6e0946f730c72a3292f66dc8f9c3bbbc27acc50cba9004e0852e704d49c24999",
+    "ktk-code-pages-assets/pages/post-life-professional-drunk.php": "ac361e157ca2712b8926ea39aae5466d279eba9385e72ff3dd65d35405591631",
+    "ktk-code-pages-assets/pages/post-new-years-eve-in-krakow.php": "9335173f431bff86d3d92458181de45c03145299d1696758476907d38b441eca",
+    "ktk-code-pages-assets/pages/post-party-krakow.php": "2f2748efc0260a774c3357fad1abaf07ffc810fdf01c51f5aec8db2b3376de13",
+    "ktk-code-pages-assets/pages/post-six-reasons-you-need-to-party-with-the-krawl-through-krakow.php": "c305a4df66be9e9dcaca0c052d4951f373c1d64d352e8486e58c0a5fd0dc19f0",
+    "ktk-code-pages-assets/pages/post-spa-hotels-krakow.php": "18633ab0059d04b288d60785e6d32d26e491e712c086c48a92184f8b7917794e",
+    "ktk-code-pages-assets/pages/post-spooktacular-krakow-unveil-the-mysteries-of-halloween.php": "81b9784f21ce842ff2309b87a5c9f8d7f544865eb0dd0e99e45eadc3f5f722d5",
+    "ktk-code-pages-assets/pages/post-sports-bar-krakow.php": "d16370f866b3c6bbfd047759e98ab3a673ebed9b98bdf4a3e11f5dfc4d102cb0",
+    "ktk-code-pages-assets/pages/post-stag-do-costume.php": "08f42fe0cf3c5302e5b912e9ec695e31ce77f39c1a9ed12e662aa64e7bb91267",
+    "ktk-code-pages-assets/pages/post-stag-pranks.php": "358fac47f53ad8223c6f1e1bd0d1f3466f82163cb5e9cd19c7537db402f23e57",
+    "ktk-code-pages-assets/pages/post-stages-of-drunkenness.php": "5f5fc7ea465fde390a4442614e86dda88ef434e422fd0cb4641793ce829d50fd",
+    "ktk-code-pages-assets/pages/post-survive-pub-crawl.php": "e4e53a6821cc7b7db644dd53edd862556235d880773e9ebf2991fa033200132d",
+    "ktk-code-pages-assets/pages/post-the-ultimate-guide-to-dating-in-nightlife-krakow.php": "64536acf021fe075f2a0e3d9516dd4cebb078f69b8c3fc8cd04390a2a8404045",
+    "ktk-code-pages-assets/pages/post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow.php": "246144e36f003d43d03f4646a219bde25bcef5a96eebecf0d78b366ba8ada0f7",
+    "ktk-code-pages-assets/pages/post-travel-krakow-your-comprehensive-city-guide.php": "7abb69ae88fd8b559ccfd56221431ace8f44b5ebf3a6612b5a825946ac15df1a",
+    "ktk-code-pages-assets/pages/post-weekend-in-krakow.php": "720d8682af45d8ed74d4baeb22fc5615440ebb1b6afa2d33915dbc29f7054284",
+    "ktk-code-pages-assets/pages/post-welcome-to-alcohol.php": "1fafcdfbb57edd005dfdb5f3c3d2f3b09c0ccf4eed09cb6f881765211f4c2668",
+    "ktk-code-pages-assets/pages/post-wheres-the-cheap-places-to-drink-in-krakow.php": "9959802a97466862776b06f6c1e1db97a624312ca0e230c905cb12a991944d9b",
+    "ktk-code-pages-assets/pages/archive-category-drinking-games.php": "0c8855692ae2e79219f9691e068e8db7766e2a409baa02120b719829ffee6945",
+    "ktk-code-pages-assets/pages/archive-category-hen-do.php": "e987135c6beb3fe5129de7dca409a69574d71bff709f5b7a206bfeff30d08090",
+    "ktk-code-pages-assets/pages/archive-category-krakow-guides.php": "45881ca5bd421a804729473b551a73a31db164b4db428de194001a048c9fd738",
+    "ktk-code-pages-assets/pages/archive-category-krakow-nightlife.php": "6feb7596e0696fef859bf3d95f6249a38361f1ba029751aaaf789b6c11d793d4",
+    "ktk-code-pages-assets/pages/archive-category-party-tips.php": "2166a330503b629996441ea4cccabef63dc8ad015d27f7577da7968f4ef2b3bf",
+    "ktk-code-pages-assets/pages/archive-category-stag-do.php": "1a2a9b3b80c934c2288ec3c1c2ba140e6d3e7fb8a5f5d6b93d7cfe74993467d5",
+    "ktk-code-pages-assets/pages/archive-category-uncategorized.php": "891682a0600ad98cb9082d46bf10232e9ebe210c70f0826ceb5fc4ff59b72c27",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman.php": "4e08a113af8101b41d6e922c6580ecf78314004d7d86808c7903507db74484cd",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-2.php": "ead85e967aa6d3354a20b2a74e973e8a0b3cc697605065b8f4c84d15b47f3aa5",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-3.php": "a32ac87a0d41472fb1c5ec62e66011218dd8c4f47236eca3e988d2fd554c4628",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-4.php": "f774aff22ab0b6b082faffeafba607260efd352f0aa6e7b47906bde72a6cd216",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-5.php": "5dfd576ae01ed2607e7672a86ea09663bcf6dcbb587d622388e957c2b279040e",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-6.php": "c64110829001cb887f1465c81d858d84244bd2ad1d103ddd2ab906c40f4207a4",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-7.php": "8d43bac76e58f9b15928b8fb5524e0f3e9e852971ea05be89f19f39b3d370b90",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-8.php": "0a49e4e01b9331144cdfdb0db79eb25906eb51600a68b80ec789c2450c1e86af",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-9.php": "6793e3e209bc9af856d708ffe06d55a35baa0c0b9abe6a4353f8600ef807d4dc",
+    "ktk-code-pages-assets/pages/archive-author-jessie.php": "8f9c9cb938f68eccef15bcbf7f0c2be4c20601c489ca038f0a88f753ebb16fe0",
+    "ktk-code-pages-assets/pages/archive-author-pubthroughkrakow.php": "159b931e58cd459277e51ac50553c52a44bd36137032d9f0c61ef77dcd9e121a",
+    "ktk-code-pages-assets/pages/archive-author-pubthroughkrakow-page-2.php": "6649908d055897fc104677797ce5271ef1a083337e51d417103cda40bcc49107",
+    "ktk-code-pages-assets/pages/archive-author-thirsty.php": "41dce1c711b5a4064a1837e79505a1be671cf3b67711fcbe9eb127f95c368d9f",
+    "ktk-code-pages-assets/pages/archive-category-krakow-guides-page-2.php": "bbd650740f8473b938587e00d24c077a0d7c40a7c26d357ef9d2c4ced06384ac",
+    "ktk-code-pages-assets/pages/archive-category-krakow-guides-page-3.php": "2a0b0c8ac4bae534a932dd3883bf009b603d0f209b9a8c3419fa9ff873d4726c",
+    "ktk-code-pages-assets/pages/archive-category-krakow-nightlife-page-2.php": "321ca0997bde43cdc29494c48bf6f53519812cc29623664ff7cbe4443a4cd15d",
+    "ktk-code-pages-assets/pages/archive-category-party-tips-page-2.php": "aaac5dcad14b2a6ea2c3dd235b1e1bd509530359c0c6cef48d1170d6826f1d01",
+    "ktk-code-pages-assets/pages/archive-category-uncategorized-page-2.php": "7f8eb8a46652e90a995fbe5bd0bc38785b474dab17aa4318f384ce265bd025a0",
+    "ktk-code-pages-assets/pages/archive-category-uncategorized-page-3.php": "3c597878203a76166810ff94700d3fec6e81547106e93f937a58dd66d937596f",
+    "ktk-code-pages-assets/pages/archive-category-uncategorized-page-4.php": "376a363a59de461a0e1c28e497c3a29f714ae551778d53a40d705ea91fd6b191",
+    "ktk-code-pages-assets/pages/archive-category-uncategorized-page-5.php": "4a7613dfd478a352e62fa17c6821c1b4be6326648582cf27d2fae808bc849011",
+    "ktk-code-pages-assets/pages/about-us.php": "684895ed6ccda98fca804c39e8c89f6b995ec6ada70505af370745f9923479d9",
+    "ktk-code-pages-assets/pages/how-to-join.php": "b9a4143d6a5755fc5b3ea9cf85130e33fa8cbb1388a9409d2d9deeb61a404cdd",
+    "ktk-code-pages-assets/pages/blog.php": "c42a800f961228b07346d9576bb3cf5bb461084ba1c09a6bd1085799c36a0584",
+    "ktk-code-pages-assets/pages/contact.php": "2eb2ac4b7ebedcf0fb9afcae059baa2124fa38e8f25724936d6bd575201cde53",
+    "ktk-code-pages-assets/pages/faqs.php": "2c453705bd28f26024ac3a80affa0bddaa41c1ec7e29950f94c9763e507d1d67",
+    "ktk-code-pages-assets/pages/gallery.php": "f420a02e554300d115f0613fc54cbd68f95fe1341f08a1e56215ff02b2db3113",
+    "ktk-code-pages-assets/pages/krakow-hen-do.php": "ff9873f31e862f48fb02b97185ea5d9c7a0672cda7e74710730d833769b64957",
+    "ktk-code-pages-assets/pages/krakow-nightlife.php": "b4a603f47a71dad1d79917eaf07d5fd897d7d8355fc097b744c52e826795db3d",
+    "ktk-code-pages-assets/pages/krakow-stag-do.php": "db2dfc03afb2b03ff750548c545532ff9d5d624e5ecbb8b8e5845698a0c44da6",
+    "ktk-code-pages-assets/pages/meeting-point.php": "3ac430ef6ea3b0769200c9583405a341bc788c13db904293b2d0619a01c32d43",
+    "ktk-code-pages-assets/pages/new-years-eve.php": "eba68cea743abef00dcd35c838d045fab0604db4318af4a20fe6bb36652c0769",
+    "ktk-code-pages-assets/pages/other-tours.php": "dd075d4f484ee668faffeeb179599962ac1c1a52704d7464350694926b2cb419",
+    "ktk-code-pages-assets/pages/otherbarcrawls.php": "e71073ec46d45b1ef23130200cc79b93eca7fd886f941b8f3eb5042be2d5535b",
+    "ktk-code-pages-assets/pages/privacy-policy.php": "897ae4a9dcc01d2d2d9c4053dd8ac0c5f9b6b55aa2c36b67b4b4ce7fb8520a1a",
+    "ktk-code-pages-assets/pages/pub-crawl-drinking-games.php": "227cbd0dcfc7647fa343d12870a6ddae8b2422354a7b52eec07d2b53ea154ab1",
+    "ktk-code-pages-assets/pages/pub-crawl-jobs.php": "5c98a7523453ea6146aa8a923a68247d448a13a4ca33d12591fa47a066ed14fc",
+    "ktk-code-pages-assets/pages/stagshens.php": "0ce1f5327b66636d955c8bc765d6eaf13970022c2c18bbc1105cdd0c17b0564e",
+    "ktk-code-pages-assets/pages/student-trips-poland.php": "91d2de4de77ac2cf8a8a448c2b325a590433f6acb5e9f86772459fd62b543add",
+    "ktk-code-pages-assets/pages/terms-and-conditions.php": "9faa18b629267b91bc93c4b4d8eef7af1ed312156357afa676a2777734ec1916",
+    "ktk-code-pages-assets/pages/testimonials.php": "b49fa88118e4cf77efbcbaf9c148163d2c4a057fe1c02c28b19a98c77e4a251b",
+    "ktk-code-pages-assets/pages/tour-service-disclaimer.php": "95e55d335475043496e80db767dbc9b73010c28480507de6db7fe39d192a00e3",
+    "ktk-code-pages-assets/pages/archive-tag-drinking-games.php": "85a1cb5d1522f0c61b2c2f8ba9b0a70181c79a965d8a1c5b51cb0fdd75a8f9ff",
+    "ktk-code-pages-assets/pages/archive-tag-krakow-food.php": "c71ab2588f5dae17990629f39ac696cdc1547036fdff927678e34b681c40adbc",
+    "ktk-code-pages-assets/pages/archive-tag-krakow-nightlife.php": "255de038e468f0265671240103e318fff3983523634d45da90ef7f2f0b2e79bc",
+    "ktk-code-pages-assets/pages/archive-tag-krakow-party.php": "1712b5732e56b5cfdc904b3ff8b3560cca14d16959d2878089b049660682d58b",
+    "ktk-code-pages-assets/pages/archive-tag-krakow.php": "0d1ba0e8a50c0240e499c58966017c799c4b3188e23bf7326121c8e432fc2de6",
+    "ktk-code-pages-assets/pages/archive-tag-krawl-through-krakow.php": "08a4efc55991d1bd403c5b8e0555a26eab68629f016249ca71fd87771473cf1e",
+    "ktk-code-pages-assets/pages/archive-tag-party-ideas.php": "09b72b0978533827e595dc14d3deeee7ddbe093b66230a3e4b4959fe2b77abd1",
+    "ktk-code-pages-assets/pages/archive-tag-pub-crawl.php": "408253b2c0a51495c1f23b85599ecedfbf435630ded6912755e89c1645b020d2",
+    "ktk-code-pages-assets/pages/archive-tag-tips.php": "400ce7d78540c0fcf0cc8f88216c0bc3f5f7e6c47dd3137458300f22bf3d18a0",
+    "ktk-code-pages-assets/pages/archive-tag-to-do-list.php": "01d8ec7f2ef29b6a5d6d8f2be302f70b338580938df7a643e266702608b3a6f2",
+    "ktk-code-pages-assets/pages/archive-tag-why-choose-us.php": "7361eb35677601ee30f30b9717b0f446b6707357f6751c07a21fe5f7f3d50663"
+  },
+  "products": [
+    {
+      "id": 28,
+      "slug": "pub-crawl-28"
+    },
+    {
+      "id": 32,
+      "slug": "nye-pub-crawl-32"
+    }
+  ]
+}
