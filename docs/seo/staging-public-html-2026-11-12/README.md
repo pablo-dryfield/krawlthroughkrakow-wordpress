@@ -87,11 +87,23 @@ New payload-bound local browser evidence is `heading-followup.json` (811/811).
   errors/mutations and 16 inherited Facebook errors recorded separately. Its
   screenshots verify the corrected no-JS heading colour/font and real first
   photos. The initial pre-correction screenshot remains in the earlier report.
-- Final normal/cache-repeat verification awaits the staging-prefix purge.
-  The first final clean-URL attempt, `final-normal-urls.json`, passes only
+- After the owner confirmed the staging-prefix purge, normal URL and cached
+  repeat verification each pass **692/692** (`post-purge-clean.json` and
+  `post-purge-repeat.json`). All 75 catalog/product responses are HIT on the
+  repeat, covering desktop/Android/iPad with current renderer, real first photos,
+  owned stylesheet exclusion and exact current asset hashes. Production controls
+  remain unchanged. The first post-purge pass mixes fresh MISS and already-current
+  HIT responses because the browser/discovery checks also read selected routes.
+  The earlier failed clean-URL attempt, `final-normal-urls.json`, passes only
   311/692: all 75 responses are HIT, desktop still has the pre-release template,
   and Android/iPad mix previous revisions. This genuine failure is preserved;
   `.2` origin checks do not clear or validate Cloudflare's cached variants.
+- Post-purge normal-URL live browser verification also passes **240/240** across
+  32 JS/no-JS views at 320/390/768/1440. No application errors, inherited Facebook
+  errors or real mutations were observed in this run. This does not establish
+  that the historical third-party issue is permanently fixed. Real-photo and
+  corrected no-JS heading screenshots were inspected; no strict pixel-identity,
+  consent or field-performance claim is implied.
 - Full offline Python suite: 137/137; shared JS contracts 16/16; code-page PHP
   746/746, form contracts 31/31, Clarity policy 26/26, discovery 65/65 and shared
   integrations 69/69. These do not certify third-party tracking or field CWV.
@@ -100,7 +112,9 @@ Source control: [PR5](https://github.com/pablo-dryfield/krawlthroughkrakow-wordp
 The application/test checkpoint `cd2ff029f6a62ba0d898b49ff607a3dc2cac3926` passed
 both offline tests/build and secret scan in GitHub run43286488962. Gitleaks also
 passed locally with redacted output. Repository merging does not deploy anything
-or resolve the pending Cloudflare cache checks.
+or itself resolve Cloudflare cache checks. PR5 merged as
+`9b91bc3424308465c67c69a3a3895ffbfb7f2c0b`; main checks43286950543 passed. Its
+completed feature branch was removed locally/remotely after exact tree comparison.
 
 Preserved failures are important: `local.json` originally passed 775/811 due to
 an incomplete preview body class, transformed-text/font timing assumptions and
@@ -116,8 +130,9 @@ heading's inherited dark colour; that is the focused final CSS correction.
 
 ## Next Steps And Rollback
 
-Complete final source/browser/cache checks, owner review and separate production
-approval before any live promotion. Preserve original plugin backups. For this
+Source/browser/cache verification is complete for this staging batch. Owner
+review and separate production approval remain required before live promotion.
+Preserve original plugin backups. For this
 batch's rollback, restore the previous template/core before removing newly added
 dependency files, then restore the matching compiled assets and clear only the
 affected staging caches. No database restore is needed.

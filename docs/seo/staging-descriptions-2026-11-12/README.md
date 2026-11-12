@@ -30,9 +30,12 @@ page review is preserved separately as `source-review-remaining.json`.
   31/31 with mail stubbed. No messages/orders/payments were submitted.
 - Origin response verification: **2,208/2,208** across 76 routes and desktop,
   Android and iPad, plus unchanged production controls and four no-JS screenshots.
-- Normal Cloudflare cache verification remains pending the requested staging-only
-  prefix purge. Origin checks are not a substitute for that final step.
-  `final-normal-urls.json` preserves **1,944/2,216**: desktop/Android retain old
+- After the owner confirmed the staging-prefix purge, normal URLs and cached
+  repeat each pass **2,216/2,216**, including all eight health-hold controls and
+  unchanged production controls. All 228 reviewed page/device responses are MISS
+  on the first pass and HIT on the repeat (76 routes on desktop/Android/iPad).
+  Reports: `post-purge-clean.json` and `post-purge-repeat.json`.
+  The earlier `final-normal-urls.json` preserves **1,944/2,216**: desktop/Android retain old
   cached description/social metadata for all 68 new pages (272 failed checks).
   iPad receives the new descriptions; all eight explicit held-page controls pass,
   including production. No failed content/title/indexing assertion was hidden.
@@ -56,7 +59,13 @@ The data-only deployment completed at 18:52:43 UTC, changing only generated
 `e9031117028f6d0a1ab54c63eeaeb3203ea1ac1e3f3b5282ce7351e4df258b8e`.
 All three payload hashes match; 2,164 protected staging hashes, 2,158 production
 hashes and saved WordPress state are unchanged. No cache paths were purged.
-Origin discovery verification passes **243/243**.
+Origin discovery verification passes **243/243**. Post-purge normal and repeat
+verification each pass **216/216**, retaining all 123 canonical preview targets,
+noindex/no-store, original production discovery endpoints and unchanged legacy
+store policy. All 21 reviewed catalog/product device responses are HIT on the
+repeat. Evidence: `discovery-post-purge-clean.json` and
+`discovery-post-purge-repeat.json`. No new publishing or settings change was
+needed for these read-only cache checks.
 
 Checkpoint: `deploy-backups/seo-discovery-staging-20261112-185233-663088.zip`.
 SHA-256: `6c54b861a08b5174873b6310b7d8f5184f7541ceb2e356b3274d90d265860550`.
