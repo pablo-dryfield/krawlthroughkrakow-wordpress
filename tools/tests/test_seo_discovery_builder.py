@@ -1,6 +1,9 @@
 import copy
 import importlib.util
 import unittest
+import tempfile
+from unittest.mock import patch
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 SPEC = importlib.util.spec_from_file_location('discovery_builder', Path(__file__).resolve().parents[1] / 'build-seo-discovery.py')
@@ -8,6 +11,26 @@ module = importlib.util.module_from_spec(SPEC); SPEC.loader.exec_module(module)
 
 
 class BuilderTests(unittest.TestCase):
+    def test_build_refuses_to_overwrite_evidence_before_network_or_generation(self):
+        with tempfile.TemporaryDirectory() as directory:
+            report = Path(directory) / 'existing.json'
+            report.write_text('preserved')
+            with patch('sys.argv',['build-seo-discovery.py','--report',str(report)]), patch.object(module,'read_public') as read:
+                with self.assertRaises(RuntimeError): module.main()
+            read.assert_not_called()
+            self.assertEqual(report.read_text(),'preserved')
+
+    def test_expanded_review_is_complete_fresh_and_bound_to_catalog_and_selection(self):
+        catalog = {'products':[{'id':28,'slug':'pub-crawl-28'},{'id':32,'slug':'nye-pub-crawl-32'},{'id':41,'slug':'boat-party-41'}]}
+        policy = {'products':catalog['products'][:2]}
+        body = b'synthetic catalog'
+        good = {'checkedAt':datetime.now(timezone.utc).isoformat(),'catalogSha256':module.sha(body),'errors':[],
+                'products':[{**item,'selected':item['id'] in (28,32)} for item in catalog['products']]}
+        module.validate_catalog_review(good,catalog,policy,body)
+        for field,value in [('checkedAt',(datetime.now(timezone.utc)-timedelta(days=2)).isoformat()),('catalogSha256','changed'),('errors',[{'id':28,'error':'failed'}]),('products',good['products'][:-1]),('products',[{**item,'selected':False} for item in good['products']])]:
+            broken = copy.deepcopy(good); broken[field]=value
+            with self.subTest(field=field), self.assertRaises(RuntimeError): module.validate_catalog_review(broken,catalog,policy,body)
+
     def test_rejects_staging_private_query_and_foreign_urls(self):
         for url in ['http://krawlthroughkrakow.com/', module.ORIGIN+'/staging/', module.ORIGIN+'/store/', module.ORIGIN+'/store2/cart/', module.ORIGIN+'/store2/checkout/confirmation/', module.ORIGIN+'/?utm_source=test', module.ORIGIN+'/#book', 'https://other.com/']:
             with self.subTest(url=url), self.assertRaises(ValueError): module.canonical_url(url)

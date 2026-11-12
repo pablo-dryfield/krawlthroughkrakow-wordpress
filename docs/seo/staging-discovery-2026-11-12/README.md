@@ -1,5 +1,10 @@
 # Staging SEO Discovery And Indexing Guard
 
+Historical first checkpoint. The later [catalog review](../staging-catalog-review-2026-11-12/README.md)
+extends the current preview to 123 URLs and documents all 24 product decisions;
+the original 119-URL evidence below is retained unchanged. Use the later explicit
+build-report commands rather than overwriting this checkpoint's evidence.
+
 Date: November 12, 2026. This is a partial T03/T10/D07 delivery, authorized
 for staging only. Production, OmniLodge, the legacy Ecwid store, WordPress
 settings, orders, carts, consent and tracking are unchanged. No ranking or

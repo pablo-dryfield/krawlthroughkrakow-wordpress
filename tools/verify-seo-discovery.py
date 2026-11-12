@@ -5,6 +5,7 @@ import json
 import re
 import urllib.error
 import urllib.request
+from urllib.parse import urlsplit
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
@@ -16,7 +17,6 @@ OUT = ROOT / 'docs/seo/staging-discovery-2026-11-12'
 SPEC = importlib.util.spec_from_file_location('head_parser',ROOT / 'tools/verify-code-pages-full-release.py')
 parser_module = importlib.util.module_from_spec(SPEC); SPEC.loader.exec_module(parser_module)
 NS = {'s':'http://www.sitemaps.org/schemas/sitemap/0.9'}
-STOREFRONT = ['/store2/','/store2/pub-crawl-28/','/store2/nye-pub-crawl-32/','/store2/cart/','/store2/checkout/']
 
 
 def fetch(url, agent, method='GET'):
@@ -36,15 +36,17 @@ def main():
     parser.add_argument('--phase',choices=('before','after'),default='after')
     parser.add_argument('--cache-bust',action='store_true')
     parser.add_argument('--output',required=True)
+    parser.add_argument('--baseline',default=str((OUT/'before.json').relative_to(ROOT)))
     args = parser.parse_args()
     output = ROOT / args.output
     if output.exists(): raise RuntimeError('Keep earlier results; select a new output filename')
     data = json.loads((ROOT / 'staging/wp-content/mu-plugins/ktk-seo-sitemap-assets/data.json').read_text())
+    public_routes = [urlsplit(row['loc']).path for row in data['storefront']]
     checks = []; responses = []; controls = []
     def check(name,passed,detail=None): checks.append({'name':name,'passed':bool(passed),'detail':detail})
     query = '?ktk_discovery_check=' + datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S') if args.cache_bust else ''
     for device, agent in parser_module.DEVICES.items():
-        for route in STOREFRONT:
+        for route in public_routes + ['/store2/cart/','/store2/checkout/']:
             status,headers,body = fetch(ORIGIN+'/staging'+route+query,agent)
             head = parser_module.Head();head.feed(body.decode('utf-8'))
             robots = [meta.get('content','') for meta in head.meta if meta.get('name') == 'robots']
@@ -58,7 +60,7 @@ def main():
                 check(device+route+' one noindex/nofollow meta without index/follow',len(robots)==1 and {'noindex','nofollow'} <= directives and not {'index','follow'} & directives,robots)
                 check(device+route+' header never contradicts noindex',row['header'] is None or 'noindex' in row['header'])
                 if args.cache_bust: check(device+route+' fresh header denies indexing',row['header'] is not None and 'noindex' in row['header'])
-        for route in STOREFRONT[:3]:
+        for route in public_routes:
             status,headers,body = fetch(ORIGIN+route,agent)
             head = parser_module.Head();head.feed(body.decode('utf-8'))
             robots = [meta.get('content','') for meta in head.meta if meta.get('name')=='robots']
@@ -95,7 +97,7 @@ def main():
     head=parser_module.Head();head.feed(body.decode('utf-8'))
     legacy={'status':status,'robots':[m.get('content','') for m in head.meta if m.get('name')=='robots'],'canonical':[l.get('href') for l in head.links if l.get('rel')=='canonical']}
     if args.phase=='after':
-        before=json.loads((OUT/'before.json').read_text())
+        before=json.loads((ROOT/args.baseline).read_text())
         check('Production robots and sitemap index bytes unchanged',all(row==next(old for old in before['controls'] if old['route']==row['route']) for row in controls if row['route']!='/wp-sitemap-ecstore-1.xml'))
         check('Legacy Ecwid discovery URLs retained',controls[-1].get('locs')==before['controls'][-1].get('locs'))
         check('Legacy staging store SEO policy untouched',legacy==before['legacyStore'])

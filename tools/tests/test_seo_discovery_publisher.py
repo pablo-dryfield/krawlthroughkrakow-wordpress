@@ -9,7 +9,7 @@ import unittest
 import zipfile
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 SPEC = importlib.util.spec_from_file_location('seo_publisher',Path(__file__).resolve().parents[1] / 'publish-seo-discovery.py')
 module = importlib.util.module_from_spec(SPEC); SPEC.loader.exec_module(module)
@@ -23,15 +23,23 @@ class PublisherTests(unittest.TestCase):
 
     def evidence(self):
         data = json.loads((module.LOCAL / module.FILES[1]).read_text())
-        return {'checkedAt':datetime.now(timezone.utc).isoformat(),
+        evidence = {'checkedAt':datetime.now(timezone.utc).isoformat(),
                 'dataSha256':module.sha((module.LOCAL / module.FILES[1]).read_bytes()),
                 'policySha256':module.sha((module.ROOT / 'tools/seo-discovery-policy.json').read_bytes()),
                 'verified':[{'url':row['loc'],'canonical':row['loc'],'status':200} for group in ('content','storefront') for row in data[group]]}
+        return evidence
+
+    def write_evidence(self, directory):
+        report = self.evidence()
+        review_path = Path(directory) / 'review.json'
+        review_path.write_text('{}')
+        report['catalogReview'] = {'file':review_path.relative_to(module.ROOT).as_posix(),'sha256':module.sha(review_path.read_bytes())}
+        (Path(directory) / 'build.json').write_text(json.dumps(report))
+        return report
 
     def test_fresh_payload_evidence_required(self):
-        with tempfile.TemporaryDirectory() as directory, patch.object(module,'OUT',Path(directory)):
-            report = self.evidence()
-            (Path(directory) / 'build.json').write_text(json.dumps(report))
+        with tempfile.TemporaryDirectory(dir=module.ROOT / 'docs/seo') as directory, patch.object(module,'OUT',Path(directory)):
+            report = self.write_evidence(directory)
             self.assertEqual(set(module.local_payload()),set(module.FILES))
             for field in ['dataSha256','policySha256']:
                 broken = copy.deepcopy(report); broken[field] = 'invalid'
@@ -43,10 +51,18 @@ class PublisherTests(unittest.TestCase):
 
     def test_redirect_noindex_unknown_status_evidence_cannot_pass(self):
         for field,value in [('status',301),('status',404),('canonical','https://krawlthroughkrakow.com/other/')]:
-            with tempfile.TemporaryDirectory() as directory, patch.object(module,'OUT',Path(directory)):
-                report = self.evidence(); report['verified'][0][field] = value
+            with tempfile.TemporaryDirectory(dir=module.ROOT / 'docs/seo') as directory, patch.object(module,'OUT',Path(directory)):
+                report = self.write_evidence(directory); report['verified'][0][field] = value
                 (Path(directory) / 'build.json').write_text(json.dumps(report))
                 with self.assertRaises(RuntimeError): module.local_payload()
+
+    def test_expanded_review_evidence_missing_tampered_or_outside_seo_root_fails(self):
+        with tempfile.TemporaryDirectory(dir=module.ROOT / 'docs/seo') as directory, patch.object(module,'OUT',Path(directory)):
+            good = self.write_evidence(directory)
+            for review in [{}, {**good['catalogReview'],'sha256':'tampered'}, {**good['catalogReview'],'file':'AGENTS.md'}, {**good['catalogReview'],'file':'docs/seo/missing-review.json'}]:
+                report = copy.deepcopy(good); report['catalogReview'] = review
+                (Path(directory) / 'build.json').write_text(json.dumps(report))
+                with self.subTest(review=review), self.assertRaises(RuntimeError): module.local_payload()
 
     def test_probe_is_authenticated_staging_only_and_read_only(self):
         source = module.base.helper_source('staging','a'*64,owned_files=module.FILES,snapshot_extension=module.extension())
@@ -106,6 +122,34 @@ class PublisherTests(unittest.TestCase):
         transport=module.common.StagingFTP(factory=Connection)
         self.assertEqual(module.common.store2.clear_store2_cache(transport,staging=True),roots)
         self.assertEqual(events,[('delete',roots[0]+'/index.html'),('rmd',roots[0]),('delete',roots[1]+'/index.html'),('rmd',roots[1])])
+
+    def test_data_only_release_preserves_storefront_cache_but_entrypoint_update_clears_it(self):
+        files = {name:(module.LOCAL / name).read_bytes() for name in module.FILES}
+        data = json.loads(files[module.FILES[1]])
+        expected = {name:module.sha(value) for name,value in files.items()}
+        for changed_entrypoint in (False, True):
+            with self.subTest(changed_entrypoint=changed_entrypoint), tempfile.TemporaryDirectory() as directory:
+                root = Path(directory); checkpoint = root / 'backup.zip'; checkpoint.write_bytes(b'synthetic checkpoint')
+                previous = {**files,module.FILES[1]:b'previous data'}
+                if changed_entrypoint: previous[module.FILES[2]] += b'previous entrypoint'
+                before = {'owned':{name:module.sha(value) for name,value in previous.items()},'protected':data['sourceHashes'],
+                          'production_checksums':{'file':'same'},'wordpress_state_sha256':'same','blog_public':0}
+                after = {**before,'owned':expected,'seo_version':module.VERSION,'seo_staging_enabled':True}
+                ftp = Mock()
+                with (patch.object(module,'ROOT',root), patch.object(module,'local_payload',return_value=files),
+                      patch.object(module.common,'StagingFTP',return_value=ftp), patch.object(module,'snapshot',side_effect=[before,after]),
+                      patch.object(module,'public_product_routes',return_value={item['id']:item['slug'] for item in data['products']}),
+                      patch.object(module.common,'retrieve_file',side_effect=lambda _,path:previous[path.removeprefix(module.REMOTE+'/')]),
+                      patch.object(module,'backup',return_value=checkpoint), patch.object(module.base,'atomic_upload'),
+                      patch.object(module.common.store2,'ensure_dir'), patch.object(module.common.store2,'clear_store2_cache',return_value=['staging-only']) as clear,
+                      patch('sys.argv',['publish-seo-discovery.py','--publish','--report','release.json']), patch('builtins.print')):
+                    module.main()
+                report = json.loads((root / 'release.json').read_text())
+                self.assertEqual(report['phase'],'complete')
+                self.assertEqual(report['cachePathsCleared'],['staging-only'] if changed_entrypoint else [])
+                if changed_entrypoint: clear.assert_called_once_with(ftp,staging=True)
+                else: clear.assert_not_called()
+                ftp.close.assert_called_once()
 
 
 if __name__ == '__main__': unittest.main()
