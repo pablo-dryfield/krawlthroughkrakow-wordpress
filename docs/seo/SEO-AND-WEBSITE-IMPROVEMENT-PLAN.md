@@ -1,7 +1,8 @@
 # Krawl Through Krakow: SEO and Website Improvement Plan
 
 Created: 2026-11-07, Europe/Warsaw  
-Status: Implementation started with version-control preparation; no SEO changes deployed  
+Status: Implementation started; first eight-page metadata pilot deployed to staging only
+
 Goal: More qualified organic visitors, more completed direct bookings, and a clearer, faster, reliable website.
 
 ## 1. Decisions in Plain English
@@ -19,7 +20,7 @@ Start in this order:
 
 Code ownership makes these changes easier to test and maintain. It does not itself improve rankings, and no plan can guarantee position 1. WordPress still supplies parts of the serving/backend infrastructure; this is not a platform-removal project.
 
-**No SEO changes in this plan have been deployed.** On November 12 the owner authorized starting website improvements on staging only, then requested private GitHub version control first. Production remains unchanged. The original production database audit was read-only. No customer records, orders, payments, emails, credentials or commerce integrations are changed by this plan. OmniLodge development/deployment requires its own explicit approval. The legacy Ecwid store remains protected.
+**Production is unchanged.** On November 12 the owner authorized starting website improvements on staging only, then requested private GitHub version control first. The first eight-page description pilot is deployed to staging and documented below; the backlog is not complete. The original production database audit was read-only. No customer records, orders, payments, emails, credentials or commerce integrations are changed by this plan. OmniLodge development/deployment requires its own explicit approval. The legacy Ecwid store remains protected.
 
 ## 2. Evidence and Confidence
 
@@ -292,3 +293,4 @@ These references support the recommendations and limitations; local/site-specifi
 | --- | --- | --- |
 | 2026-11-07 | Ahrefs report, read-only production SEO database investigation, live GSC four-window review, URL inspections and 128-URL source audit | Planning/evidence completed. Implementation tickets remain unchecked. No deployment or production state changes. |
 | 2026-11-12 | Owner authorized staging-only implementation and requested private GitHub version control before SEO edits | Private source checkpoint uploaded; initial GitHub tests/build and secret scan passed. Source allowlist protects local secrets/backups and preserves exact bytes; no automatic deployment exists. A fresh read-only public baseline received all 128 responses without transport errors; the 77 description gaps and three legacy 404s remain. First website batch will cover URL roles and a small maintainable metadata pilot. M01/M02's full GSC export requirements remain outstanding; no production/OmniLodge changes or search-uplift claim. |
+| 2026-11-12 | T05/G01/T10, first staging-only metadata pilot | Eight reviewed descriptions and explicit URL roles now use a validated code-owned data source. All 1,915 staging hashes verified; only eight description fields changed. Local build checks 1,856/1,856 and pilot checks 196/196; live origin and normal MISS/HIT checks 236/236 each across desktop/Android/iPad, with unchanged production controls. Corrected full source/HTTP scan passed 5,848/5,848 across all 116 routes and 119 assets; original email/Clarity harness failures remain preserved. No cache purge needed. See [pilot evidence and remaining work](staging-metadata-pilot-2026-11-12/README.md). These tickets remain unchecked because their full scope is not finished; production still has the original metadata. |

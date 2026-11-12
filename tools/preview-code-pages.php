@@ -30,6 +30,7 @@ $css = $page['css'] ?? 'how-to-join.css';
 ?>
 <!doctype html><html lang="en-US"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title><?php echo esc_html($page['title']); ?></title><meta name="robots" content="noindex, nofollow">
+<?php if ('' !== $page['description']) { ?><meta name="description" content="<?php echo esc_attr($page['description']); ?>"><?php } ?>
 <link rel="canonical" href="<?php echo esc_url(home_url($route)); ?>">
 <link rel="stylesheet" href="/ktk-code-pages-assets/<?php echo esc_attr($css); ?>"><link rel="stylesheet" href="/ktk-code-pages-assets/font-resilience.css"><link rel="stylesheet" href="/ktk-code-pages-assets/runtime.css">
 </head><body class="<?php echo esc_attr($page['body_class']); ?> ktk-code-page" data-ktk-page="<?php echo esc_attr($page['key'] ?? 'how-to-join'); ?>" data-ktk-form-token-url="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">

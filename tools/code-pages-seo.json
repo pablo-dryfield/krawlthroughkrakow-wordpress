@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-11-12",
+  "pages": {
+    "/about-us/": {
+      "role": "Operator identity and experience",
+      "description": "Meet Krawl Through Krakow, organising Krakow pub crawls since 2008. Learn about our local team, nightly crawl and guest reviews."
+    },
+    "/about-us/how-to-join/": {
+      "role": "Practical joining and booking instructions",
+      "description": "Join Krawl Through Krakow's pub crawl at 9 PM every night. Book your ticket online and meet the guides at Adam Statue in Krakow's main market square."
+    },
+    "/meeting-point/": {
+      "role": "Regular crawl meeting instructions, not NYE",
+      "description": "Find Krawl Through Krakow at Adam Statue in the main market square at 9 PM. Look for the guides with the big pink Pub Krawl sign."
+    },
+    "/new-years-eve/": {
+      "role": "Current NYE pub crawl sales page; product 32 handles booking",
+      "description": "Celebrate New Year's Eve in Krakow with our pub crawl on 31 December 2026. Choose the 5 PM or 7:30 PM group; meeting points are to be confirmed."
+    },
+    "/krakow-nightlife/": {
+      "role": "Nightlife advice hub, not a duplicate booking page",
+      "description": "Explore Krakow nightlife with Krawl Through Krakow: bars and clubs, getting around, paying for drinks and practical advice for your night out."
+    },
+    "/wheres-the-cheap-places-to-drink-in-krakow/": {
+      "role": "Existing budget-drinks guide; venue and price refresh still pending",
+      "description": "Looking for cheap places to drink in Krakow? Explore our guide to budget-friendly bars, pubs and drinking spots in the Old Town and Jewish Quarter."
+    },
+    "/krakow-stag-do/": {
+      "role": "Stag group planning and enquiry",
+      "description": "Plan a Krakow stag do with Krawl Through Krakow. Explore group activities and nightlife options, then enquire about a trip tailored to your group."
+    },
+    "/krakow-hen-do/": {
+      "role": "Hen group planning and enquiry",
+      "description": "Plan your Krakow hen do with Krawl Through Krakow. Explore hen party activities and nightlife ideas, and enquire about a celebration for your group."
+    }
+  }
+}
