@@ -70,7 +70,7 @@ data, payment/order records or an unrelated deployment archive to undo metadata.
 - Full local build: 116 routes, no missing sources or build errors.
 - Build/content/metadata verification: 1,856/1,856 checks.
 - PHP routing/indexing integration: 746/746; forms: 31/31, mail stubbed.
-- Isolated publisher unit tests: 93/93; metadata-specific tests: 6/6;
+- Isolated publisher/verifier unit tests: 97/97; metadata-specific tests: 6/6;
   booking destination contracts: 8/8.
 - Local no-JavaScript public-source checks: 196/196, including four screenshots
   at 390px/1440px with no horizontal overflow.
@@ -78,7 +78,9 @@ data, payment/order records or an unrelated deployment archive to undo metadata.
 - Normal staging URLs: 236/236, all 24 route/device responses MISS.
 - Repeated normal staging URLs: 236/236, all 24 responses HIT.
 - No additional Cloudflare purge was needed or requested.
-- Full 116-route, three-device regression scan: pending final result.
+- First full scan: 5,152/5,500 passed. All 348 failures were the old
+  `one ktk-clarity-loader` assertion, not metadata/content/asset failures.
+  Corrected 116-route, three-device policy scan: pending final result.
 
 Raw reports/screenshots stay in this directory locally, excluded from Git under
 the repository evidence policy. They include `origin.json`, `clean-urls.json`,
@@ -92,6 +94,17 @@ The checker now decodes only `data-cfemail` values and compares the complete
 remaining text, including the actual contact address. No footer/section is
 masked or removed, no application bytes were changed to resolve this harness
 issue, and a wrong decoded email still fails the comparison.
+
+The full scanner predated the November 6 Clarity ownership/environment switch.
+It incorrectly required a recording loader on staging and still counted the
+previous owner's project on production. The original failed report remains at
+`docs/code-pages/full-migration/seo-pilot-20261112-origin.json`. The verifier
+now requires no Clarity SDK/loader of any project on staging **and** exactly one
+consent bridge; production defaults to the current company project. Eight unit
+tests include old/current project identity, duplicate loaders/bridges, missing
+bridges and unexpected staging recording. Only the test harness changed; no
+tracking, CMP or application file was edited for this correction. The fresh
+full result uses a distinct `seo-pilot-20261112-policy-current.json` report.
 
 ## Remaining Work
 

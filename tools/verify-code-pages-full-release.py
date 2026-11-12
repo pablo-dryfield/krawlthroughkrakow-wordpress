@@ -60,15 +60,23 @@ class Head(HTMLParser):
         if self.current_script is not None: self.current_script['text'] += value
 
 
-def integration_bootstraps(parsed):
+def integration_bootstraps(parsed, clarity_project='z9d5iuilvn'):
     counts={'GTM':0,'Google Ads':0,'Clarity':0}
     for block in parsed.script_blocks:
         source=block['attrs'].get('src','')
         text=block['text']
         if ('googletagmanager.com/gtm.js' in text and 'GTM-PHXGRZ' in text) or ('googletagmanager.com/gtm.js' in source and urllib.parse.parse_qs(urllib.parse.urlparse(source).query).get('id') == ['GTM-PHXGRZ']): counts['GTM']+=1
         if 'googletagmanager.com/gtag/js' in source and urllib.parse.parse_qs(urllib.parse.urlparse(source).query).get('id') == ['AW-956184209']: counts['Google Ads']+=1
-        if ('clarity.ms/tag/' in text and 'ufswk29c79' in text) or 'clarity.ms/tag/ufswk29c79' in source: counts['Clarity']+=1
+        if ('clarity.ms/tag/' in text and clarity_project in text) or ('clarity.ms/tag/' + clarity_project) in source: counts['Clarity']+=1
     return counts
+
+
+def staging_clarity_policy(parsed):
+    library = [block for block in parsed.script_blocks if 'clarity.ms/tag/' in block['attrs'].get('src','') or 'clarity.ms/tag/' in block['text']]
+    return {
+        'Clarity recording loader disabled on staging': not library and not any(s.get('id') == 'ktk-clarity-loader' for s in parsed.scripts),
+        'one Clarity consent bridge retained': sum(s.get('id') == 'ktk-clarity-consent-bridge' for s in parsed.scripts) == 1,
+    }
 
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -146,8 +154,10 @@ def main():
                     for key,count in integration_bootstraps(parsed).items():
                         check(route['route'],device,'one logical '+key+' bootstrap',count == 1,count)
                 else:
-                    for key in ['ktk-gtm-loader', 'ktk-google-ads-loader', 'ktk-clarity-loader']:
+                    for key in ['ktk-gtm-loader', 'ktk-google-ads-loader']:
                         check(route['route'], device, 'one ' + key, sum(s.get('id') == key for s in parsed.scripts) == 1)
+                    for name, passed in staging_clarity_policy(parsed).items():
+                        check(route['route'], device, name, passed)
                 check(route['route'], device, 'one existing-or-owned Iubenda bootstrap', sum(s.get('src','').split('?')[0] == 'https://embeds.iubenda.com/widgets/92c90d2a-9d50-4f09-9c21-bcb72ccc2897.js' for s in parsed.scripts) == 1)
                 for link in parsed.links:
                     if link.get('rel') == 'stylesheet' and '/ktk-code-pages-assets/' in link.get('href', ''): assets.add(link['href'])
