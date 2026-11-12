@@ -47,9 +47,14 @@ The discovery data-only follow-up also completed, preserving production and all
 protected files/settings. Backup `seo-discovery-staging-20261112-223505-313579.zip`,
 SHA256 `9e561459a6bdf603947ad50a3719fc1006394fe7b3119b9cc3cba5a2b9fdb0af`;
 data SHA256 `2e8962a6befbe3b401ba6aa080f8ae77cbf3acacee1cadf83e4a7a0a22f41ebf`.
-Origin/schema/heading/discovery and final cache checks are running/pending. Do not
-call this production-delivered or Google Rich Results Test-certified. Staging
-remains noindex; owner review and separate production promotion remain.
+Actual origin JSON-LD checks pass3221/3221 and discovery243/243. The broader first
+heading regression returns4264/4320 because eight responses on three routes were
+502 gateway pages; retain `headings-origin.json`. The complete sequential rerun is
+in progress, without weakening assertions. Final normal-cache checks await the
+requested staging purge. Do not call this production-delivered or Google Rich
+Results Test-certified. Staging remains noindex; owner review and separate
+production promotion remain. Source PR8's initial CI43321783040 passes tests/build
+and secret scanning; further evidence updates must pass their own current CI too.
 
 Original Ahrefs CSV reports three schema.org notices and zero Google-rich-results
 errors, but does not contain their affected URLs or field details. A fresh detailed

@@ -10,8 +10,8 @@ Updated: 2026-11-12 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 | Full-Plan Status | Workstreams |
 | --- | --- |
-| In progress / partial staging | 17 |
-| Not started | 22 |
+| In progress / partial staging | 18 |
+| Not started | 21 |
 | Deferred | 1 |
 | Total | 40 |
 
@@ -47,7 +47,7 @@ Acceptance criteria and research: [full improvement plan](SEO-AND-WEBSITE-IMPROV
 | ID | Priority / Effort | Work | Status | Progress / Next Step |
 | --- | --- | --- | --- | --- |
 | M01 | P0 / M | Fix OmniLodge Search Console reporting: independent whole-property/date totals; paginated detailed rows with explicit coverage; exact-query vs substring groups; metrics aligned to the displayed page; separate query/page aggregation; filters by country/device/search type; no-data vs truncated flags. Label heuristic recommendations. | In progress / partial staging | Implementation/deployment complete: PR252, Release43315813139 and actual deploy43317776455 succeeded. Exact public backend/UI/bundle3/3 and real-provider totals/pagination1000->2000/exact-query/page-filter checks pass. Native GSC UI agreement still needs Google login; no booking/payment changes. |
-| M02 | P0 / S | Establish dated SEO baseline and annotate homepage/content releases separately. Export complete available 28/90/180/365-day data and comparable prior-year periods; split brand/nonbrand, UK/Poland/other markets, mobile/desktop, commercial/editorial/PDF/legacy pages. | Not started | Read-only baseline exists; complete comparable native GSC exports remain. |
+| M02 | P0 / S | Establish dated SEO baseline and annotate homepage/content releases separately. Export complete available 28/90/180/365-day data and comparable prior-year periods; split brand/nonbrand, UK/Poland/other markets, mobile/desktop, commercial/editorial/PDF/legacy pages. | In progress / partial staging | Corrected Google-backed28/90/180/365 summaries and all returned page rows retained privately; dated baseline records coverage and exact canonical metrics. Long previous365 exceeds retention and is not a valid comparison. Native verification, full queries/cohorts and comparable prior-year exports remain. |
 | M03 | P1 / M | Verify the full measurement funnel: landing -> named booking CTA -> product -> booking start -> payment completion -> revenue. Keep journey history and UTM handoff; distinguish direct/organic/paid/Google booking integrations. Avoid counting button clicks or failed payments as purchases. | Not started | Full funnel reconciliation and consent-aware measurement review remain. |
 | M04 | P1 / S | Check native GSC Page Indexing, Crawl Stats, submitted sitemaps, Manual Actions and Security Issues; inspect representative page types after Google's next crawl. Configure meaningful failure alerts/weekly review, not a noisy total-keyword scoreboard. | In progress / partial staging | Native Google Search Console tab opened but signed out; owner asked to sign in for indexing, Crawl Stats, Manual Actions and Security Issues. No account changes or clean-status claims. |
 | T01 | P0 / M | Write an intent-to-URL map: homepage = brand/main Krakow pub crawl; store2 product = details/booking; nightlife hub = advice; NYE sales page = current event; guides = informational. Review real overlaps before consolidation. Preserve clean canonicals for attribution/query variants and normal www/HTTPS redirects. | In progress / partial staging | Core URL roles and catalog decisions recorded; overlap investigation remains. |

@@ -15,7 +15,7 @@
   ],
   "tickets": {
     "M01":{"status":"in_progress","note":"Implementation/deployment complete: PR252, Release43315813139 and actual deploy43317776455 succeeded. Exact public backend/UI/bundle3/3 and real-provider totals/pagination1000->2000/exact-query/page-filter checks pass. Native GSC UI agreement still needs Google login; no booking/payment changes."},
-    "M02":{"status":"not_started","note":"Read-only baseline exists; complete comparable native GSC exports remain."},
+    "M02":{"status":"in_progress","note":"Corrected Google-backed28/90/180/365 summaries and all returned page rows retained privately; dated baseline records coverage and exact canonical metrics. Long previous365 exceeds retention and is not a valid comparison. Native verification, full queries/cohorts and comparable prior-year exports remain."},
     "M03":{"status":"not_started","note":"Full funnel reconciliation and consent-aware measurement review remain."},
     "M04":{"status":"in_progress","note":"Native Google Search Console tab opened but signed out; owner asked to sign in for indexing, Crawl Stats, Manual Actions and Security Issues. No account changes or clean-status claims."},
     "T01":{"status":"in_progress","note":"Core URL roles and catalog decisions recorded; overlap investigation remains."},
