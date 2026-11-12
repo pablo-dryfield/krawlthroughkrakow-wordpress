@@ -9,6 +9,7 @@ import {reviseCodePageContent} from './code-pages-content-revisions.mjs';
 import {codePageDescription, seoMetadata, validateSeoRoutes} from './code-pages-seo.mjs';
 import {preserveHeadingCss,reviseSemanticHeadings} from './semantic-headings.mjs';
 import {canonicalLinkPolicy,rewriteCanonicalLinks} from './canonical-links.mjs';
+import {buildCodePageSchema,codePageSchemaFacts} from './code-pages-schema.mjs';
 const require = createRequire(import.meta.url);
 const { chromium } = require(path.join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const root = path.resolve('.');
@@ -199,6 +200,9 @@ try {
       const bookingRevisions=await rewriteBookingLinks(page);
       bookingRevisions.push(...await rewriteCanonicalLinks(page));
       if(contentRevisions.length||bookingRevisions.length)report.revisions[route.key]={content:contentRevisions,bookings:bookingRevisions};
+      const schema=buildCodePageSchema({route:route.route,kind:route.kind,
+        description:codePageDescription(route.route,capture.metadata.description),facts:await page.evaluate(codePageSchemaFacts),
+        routes:manifest.routes,inherited:capture.metadata.schema});
       const portable=await page.evaluate(()=>document.body.innerHTML);
       const [shell, main] = portable.split('\n__KTK_SPLIT_MAIN__\n');
       if (!main || !shell.includes('__KTK_PAGE_MAIN_CONTENT__')) throw new Error('Template split failed');
@@ -207,7 +211,7 @@ try {
       const cssFile = `styles/${digest(css).slice(0,20)}.css`;
       await writeFile(path.join(assets, shellFile), shell); await writeFile(path.join(assets, mainFile), main); await writeFile(path.join(assets, cssFile), css);
       const definition = { key: route.key, route: route.route, kind: route.kind, post_id: route.postId, title: capture.title,
-        description: codePageDescription(route.route, capture.metadata.description), metadata: capture.metadata.extra, schema: capture.metadata.schema,
+        description: codePageDescription(route.route, capture.metadata.description), metadata: capture.metadata.extra, schema,
         body_class: data.bodyClass, shell_file: shellFile, main_file: mainFile, css: cssFile, forms: data.forms, ecwid: data.ecwid,
         source_sha256: digest(source), expected_sections: route.expectedSections };
       const seo=productionSeo.get(route.key);

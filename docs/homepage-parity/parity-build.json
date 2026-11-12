@@ -1,10 +1,10 @@
 {
   "capturedSource": "production-source-rendered-1920.html",
-  "builtAt": "2026-11-12T21:04:49.087Z",
+  "builtAt": "2026-11-12T22:09:08.122Z",
   "bodyClass": "home wp-singular page-template-default page page-id-278 custom-background wp-theme-Divi et_pb_button_helper_class et_fullwidth_nav et_fullwidth_secondary_nav et_non_fixed_nav et_show_nav et_primary_nav_dropdown_animation_slide et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_footer_columns1 et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db",
   "title": "Krawl Through Krakow | Best Pub Crawl in Krakow",
   "description": "",
-  "htmlBytes": 81013,
+  "htmlBytes": 81367,
   "cssBytes": 352718,
   "files": {
     "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/900/italic.woff2": {
@@ -926,6 +926,158 @@
     {
       "from": "https://krawlthroughkrakow.com/terms-and-conditions",
       "to": "__KTK_HOME_URL__terms-and-conditions/"
+    }
+  ],
+  "mediaRevisions": [
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/hayrc73kcachi3b8n7t8_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": "high",
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/bcxwqcxvnrhqca0kxevy_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/idzt6dif3hxiknmr28ln_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ohycfobknaj9fezv604t_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ssxdp1wpbgakhopwbgk7_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/toym4uwmfwtlpyqi1b5v_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/wm8nfsgxpmi3ryk0hbfg_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/yqs8tys9cemdoke8jfy5_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ynqh1jc9wxqiihva2pd5_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/uqieylqxitgbmnasc2ht_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/perimbpnfuutdrdhv7ho_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/gylkrbla4ywgm9nbynfv_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/i6agsskidpgwcluwywc6_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/jgqte2id3waqv2vs8edd_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ciaiu30657qcru0sdnnb_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ppygtlcm5nb6j4lsr251_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ccz58hmwdrzaaktxvokp_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ygkzrcl8zu8ybudwpmys_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2023/09/instagram4.jpg",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2024/01/rev_google.jpg",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/qjfkytgsbnnjmkmkcfrc_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/zpw5fk7iqtdgmiaw7dgz_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/yc8ustcnde5yv2eusy3f_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/xzchknqpkekxh5rbedmd_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/khiybjyfrsplomnthxoe_compressed_compressed.webp",
+      "previousLoading": null,
+      "previousPriority": null,
+      "loading": "lazy"
     }
   ]
 }

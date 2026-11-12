@@ -317,6 +317,15 @@
       const controllers = gallery.querySelector('.et-pb-controllers') || create('div', 'et-pb-controllers', gallery);
       const dots = slides.map((slide, index) => controllers.children[index] || create('a', '', controllers));
       const pause = automatic ? create('button', 'ktk-parity-gallery-pause', gallery) : null;
+      function warmAdjacentPhotos() {
+        for (const index of [selected, (selected + 1) % slides.length, (selected + slides.length - 1) % slides.length]) {
+          const image = slides[index].querySelector('img');
+          if (!image) continue;
+          hydrateImage(image);
+          image.loading = 'eager';
+          image.fetchPriority = index === selected ? 'auto' : 'low';
+        }
+      }
       function refresh() {
         clearTimeout(timer);
         if (automatic && !userPaused && !motion.matches && inView && !hovering && !gallery.contains(document.activeElement) && !document.hidden && !lightboxOpen) {
@@ -339,6 +348,7 @@
           dots[position].setAttribute('aria-current', String(active));
           if (active) hydrateImage(slide.querySelector('img'));
         });
+        if (inView) warmAdjacentPhotos();
         refresh();
       }
       control(previous, 'Previous photo', () => show(selected - 1));
@@ -365,7 +375,7 @@
       document.addEventListener('visibilitychange', refresh);
       motion.addEventListener('change', refresh);
       if ('IntersectionObserver' in window) {
-        new IntersectionObserver(entries => { inView = entries[0].isIntersecting; refresh(); }).observe(gallery);
+        new IntersectionObserver(entries => { inView = entries[0].isIntersecting; if (inView) warmAdjacentPhotos(); refresh(); }).observe(gallery);
       }
       refreshAutoplay.push(refresh);
       show(0);
