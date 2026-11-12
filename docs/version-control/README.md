@@ -45,3 +45,23 @@ moved from the original workspace. Git does not replace offsite backups.
 The complete local historical scan reports remain outside Git in
 `deploy-backups/github-*-secret-scan.json`; sensitive matches are redacted.
 The presence of source in Git is not approval to publish it publicly.
+
+## Initial Checkpoint
+
+Commit `0cec9853877d06eb1ffee21bba296b76553828c2` uploaded the reviewed source.
+[GitHub checks 43258102004](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/43258102004)
+passed both jobs, including a fresh dependency installation, 50 frontend tests,
+93 isolated publisher tests, shared JS/PHP contracts, syntax and storefront build.
+The pre-upload Gitleaks scan of the exact staged checkout found no unreviewed
+secrets. GitHub's scan passed too. All 358 required build inputs are tracked.
+
+GitHub reports a private repository, default `main`, zero Actions secrets and
+zero webhooks. Application deployment tools and all application bytes are
+unchanged. Follow-up only updates official action pins and setup documentation.
+
+The owner asked whether SSH was available. The existing local `ktk-hosting`
+alias/key configuration was found, but a read-only key-authenticated probe
+returned `Permission denied (publickey,password)`. No password authentication,
+access-policy change or remote write was attempted. Continue using the existing
+manual FTPS publishers unless SSH access is subsequently verified and an
+equivalent guarded SSH publisher is deliberately implemented.

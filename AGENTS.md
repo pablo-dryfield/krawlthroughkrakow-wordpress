@@ -10,7 +10,7 @@
 
 ## Git Version Control And Current Work (2026-11-12)
 
-- The owner requested GitHub version control before starting the SEO improvement backlog. The maintained project is now being initialized on `main` for the private repository `pablo-dryfield/krawlthroughkrakow-wordpress`.
+- The owner requested GitHub version control before starting the SEO improvement backlog. The maintained project is initialized on `main` in the private repository `pablo-dryfield/krawlthroughkrakow-wordpress`. Initial checkpoint `0cec9853877d06eb1ffee21bba296b76553828c2`; GitHub checks `43258102004` passed both offline tests/build and secret scan. No website deployment occurred.
 - All SEO/website improvement work currently authorized by the owner is **staging only**. This supersedes the default production-promotion instruction below for that work. No production or OmniLodge deployment is authorized by the SEO kickoff or repository setup.
 - Root `.gitignore` uses an allowlist: KTK-owned code/assets, tools, maintained Markdown and selected immutable public build inputs. Credentials, `Keys`, `wp-config.php`, backups, private operational reports, screenshots, dependencies, third-party WordPress plugins/themes and unknown root directories remain local. Never force-add these exclusions.
 - `.gitattributes` disables automatic line-ending conversion to preserve the exact bytes used by existing release checksum guards. Do not bulk-normalize historical source or generated assets.
@@ -18,6 +18,7 @@
 - Use feature branches and pull requests for subsequent improvements. Keep tests, source generators, generated payload changes and the relevant plan updates together. Do not hand-edit captured/generated content.
 - `python tools/check-repository.py` checks tracked-file policy and all 358 required build inputs. Secret scanning uses checksum-pinned Gitleaks, with narrowly scoped exceptions only for public Iubenda JS setup, CSS selectors and `.htaccess` checksum entries in immutable public captures. No private-key exception exists.
 - One historical production-promotion unit test incorrectly required the expired November 5 release to remain currently promotable. It now uses isolated, fresh, payload-bound evidence and tests rejection of changed payloads, stale SEO, incomplete checks and stale/missing cache variants. Production publisher guards are unchanged; old live-release evidence is not fabricated or refreshed.
+- SSH clarification: the local `ktk-hosting` alias and encrypted key/passphrase setup exist, but a November 12 read-only key-only connection test returned `Permission denied (publickey,password)`. Working SSH access is not verified. No access settings were changed and password authentication was not attempted. Existing guarded KTK publishers still use FTPS; GitHub has no deployment secrets or webhooks.
 
 ## Commission And Stripe Fees (2026-11-11, Deployed With Accepted Exceptions)
 
