@@ -80,7 +80,10 @@ data, payment/order records or an unrelated deployment archive to undo metadata.
 - No additional Cloudflare purge was needed or requested.
 - First full scan: 5,152/5,500 passed. All 348 failures were the old
   `one ktk-clarity-loader` assertion, not metadata/content/asset failures.
-  Corrected 116-route, three-device policy scan: pending final result.
+  Corrected 116-route, three-device policy scan: **5,848/5,848 passed**, with
+  119 asset hashes/version tokens, aliases, protected routes and raw-template
+  access checks included. These are source/HTTP checks, not a new consent or
+  field-performance certification.
 
 Raw reports/screenshots stay in this directory locally, excluded from Git under
 the repository evidence policy. They include `origin.json`, `clean-urls.json`,
@@ -105,6 +108,9 @@ tests include old/current project identity, duplicate loaders/bridges, missing
 bridges and unexpected staging recording. Only the test harness changed; no
 tracking, CMP or application file was edited for this correction. The fresh
 full result uses a distinct `seo-pilot-20261112-policy-current.json` report.
+An independent structured comparison against the pre-SEO Git checkpoint also
+confirmed that exactly eight application files differ and `description` is the
+only changed page-data field; every other page-definition field is identical.
 
 ## Remaining Work
 
