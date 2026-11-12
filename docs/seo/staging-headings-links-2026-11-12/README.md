@@ -10,8 +10,13 @@ M01 reporting has separate implementation/deployment authorization and evidence.
 The content, homepage assets and sitemap source bindings are deployed and
 checksum-verified. Corrected origin verification passes4320/4320 across117 routes
 and three device agents, including exact CSS bytes, full text/heading/form
-contracts, redirects and production controls. Final cached/browser checks are in
-progress. Do not equate this with the whole40-workstream plan being finished.
+contracts, redirects and production controls. Following the owner's staging-prefix
+purge, normal/repeat each pass4320/4320, all351 HTML variants MISS then HIT.
+Responsive/keyboard/real-image checks849/849 (64 views), focused component checks
+292/292 (30 views) and isolated booking attribution24/24 pass. Metadata origin and
+normal URLs each pass2216/2216; discovery243/243 origin and216/216 normal. No real
+orders or emails were submitted. Do not equate this with the whole40-workstream
+plan being finished.
 
 ## Changes
 
@@ -86,7 +91,7 @@ remove their probes. Homepage publishing uses local-source/assets-only mode.
 Discovery preserves production and protected staging hashes, with no cache purge.
 Rollback restores only the relevant owned checkpoint; never restore the full DB.
 
-Next: finish source/live browser and clean/HIT cache checks after the requested
-staging-prefix purge, then source PR/CI/merge. Owner production approval is still
-required separately. SEO results require later real Search Console observation;
+Source PR7 passed both initial required gates43313499920; the final test-harness
+and verification documentation follow-up still needs its own current CI/merge.
+Owner production approval is still required separately. SEO results require later real Search Console observation;
 these checks do not promise ranking improvements.

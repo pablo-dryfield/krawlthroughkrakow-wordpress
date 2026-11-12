@@ -1,10 +1,13 @@
 import {createRequire} from 'node:module';
-import {readFile,writeFile} from 'node:fs/promises';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import path from 'node:path';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const base=process.argv.includes('--staging')?'https://krawlthroughkrakow.com/staging':'http://127.0.0.1:5185';
 const selected=process.argv.includes('--keys')?process.argv[process.argv.indexOf('--keys')+1].split(','):null;
+const output=process.argv.includes('--output')?process.argv[process.argv.indexOf('--output')+1]:'docs/code-pages/full-migration/components-report.json';
+try{await readFile(output);throw new Error('Preserve earlier evidence; provide --output');}catch(error){if(error.code!=='ENOENT')throw error;}
+await mkdir(path.dirname(output),{recursive:true});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 const checks=[];const check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});
 try{
@@ -21,7 +24,7 @@ try{
    if(!url.startsWith(base)&&!url.includes('/ktk-code-pages-assets/')&&!url.startsWith('data:'))return r.abort();
    return r.continue();
   });
-  await page.goto(base+route.route+(base.includes('/staging')?'?ktk_components=20261105':''),{waitUntil:'load'});await page.evaluate(()=>document.fonts.ready);
+  await page.goto(base+route.route+(base.includes('/staging')?'?ktk_components='+Date.now():''),{waitUntil:'load'});await page.evaluate(()=>document.fonts.ready);
   const label=`${key} ${width}`;
   check(label+' section contract',await page.locator('#main-content .et_pb_section').count()===route.expectedSections);
   check(label+' no Divi runtime',!(await page.locator('script[src]').evaluateAll(es=>es.some(e=>/themes\/Divi|et-cache|jquery/.test(e.src)))));
@@ -57,4 +60,4 @@ try{
  }
 }finally{await browser.close();}
 const report={checkedAt:new Date().toISOString(),base,passed:checks.filter(c=>c.pass).length,total:checks.length,checks};
-await writeFile('docs/code-pages/full-migration/components-report.json',JSON.stringify(report,null,2));console.log(JSON.stringify({passed:report.passed,total:report.total,failed:checks.filter(c=>!c.pass)},null,2));if(report.passed!==report.total)process.exitCode=1;
+await writeFile(output,JSON.stringify(report,null,2));console.log(JSON.stringify({passed:report.passed,total:report.total,failed:checks.filter(c=>!c.pass)},null,2));if(report.passed!==report.total)process.exitCode=1;

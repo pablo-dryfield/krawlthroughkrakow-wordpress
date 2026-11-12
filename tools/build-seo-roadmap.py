@@ -26,7 +26,7 @@ def render(data, plan):
              'Updated: '+data['updatedOn']+' (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; edit that source, not this page.','',
              '## Where We Are','',
              '**Current work:** '+data['current']+'.','',
-             f'**Verified foundation milestones:** {completed}. **New SEO production releases:** 0. The original website migration is a separate completed project, not counted as SEO implementation.','',
+             f'**Verified foundation milestones:** {completed}. **Website SEO production releases:** 0. The original website migration is a separate completed project, not counted as SEO implementation. Separately authorized OmniLodge reporting has its own release status.','',
              '| Full-Plan Status | Workstreams |','| --- | --- |']
     for status in LABELS:
         if counts[status]: lines.append(f'| {LABELS[status]} | {counts[status]} |')
@@ -35,15 +35,15 @@ def render(data, plan):
               '## Delivery Milestones','','| Milestone | Status |','| --- | --- |']
     for item in data['milestones']: lines.append(f"| {item['name']} | {LABELS[item['status']]} |")
     lines += ['', '## What Still Needs To Happen','',
-              '1. Continue technical staging work: heading hierarchy and broken-link review next, followed by contextual links, structured data, media, accessibility and performance. Public HTML and 76 descriptions have passed final clean/HIT cache checks. Preserve established URLs and commerce.','2. Confirm missing operational facts, refresh useful existing guides and secondary offers, and complete measurement/account investigations.','3. Obtain owner sign-off and separate production approval, use a guarded updater, verify device/cache variants, then inspect and submit approved discovery changes in Search Console.','4. Measure qualified visits and completed bookings over comparable periods; maintain seasonal content, reviews, security and monitoring.','',
-              '**Dependencies:** OmniLodge changes require separate approval; Google/Search Console/Business Profile work needs the correct account access; missing offer facts need confirmation; consent work stays deferred. No calendar finish date or ranking uplift is promised.','',
+              '1. Continue technical staging work: contextual links, structured data, media, accessibility and performance. Heading hierarchy, reviewed aliases, public HTML and76 descriptions have passed cached staging checks. Preserve established URLs and commerce.','2. Confirm missing operational facts, refresh useful existing guides and secondary offers, and complete measurement/account investigations.','3. Obtain owner sign-off and separate production approval, use a guarded updater, verify device/cache variants, then inspect and submit approved discovery changes in Search Console.','4. Measure qualified visits and completed bookings over comparable periods; maintain seasonal content, reviews, security and monitoring.','',
+              '**Dependencies:** OmniLodge M01 reporting implementation/deployment is approved; additional OmniLodge work requires separate approval. Google/Search Console/Business Profile work needs the correct account access; missing offer facts need confirmation; consent work stays deferred. No calendar finish date or ranking uplift is promised.','',
               '## Every Workstream','','Acceptance criteria and research: [full improvement plan](SEO-AND-WEBSITE-IMPROVEMENT-PLAN.md).','',
               '| ID | Priority / Effort | Work | Status | Progress / Next Step |','| --- | --- | --- | --- | --- |']
     for identity,item in data['tickets'].items():
         lines.append(f"| {identity} | {tickets[identity]['effort']} | {tickets[identity]['work']} | {LABELS[item['status']]} | {item['note']} |")
     lines += ['', '## Evidence','',
-              '- [Eight-page metadata pilot](staging-metadata-pilot-2026-11-12/README.md).','- [Expanded descriptions: 76 covered, one hold](staging-descriptions-2026-11-12/README.md).','- [Public storefront HTML and progressive handoff](staging-public-html-2026-11-12/README.md).','- [Discovery and staging indexing guard](staging-discovery-2026-11-12/README.md).','- [All 24 catalog decisions and preview expansion](staging-catalog-review-2026-11-12/README.md).','',
-              'Production is unchanged by this staging SEO program. GitHub stores reviewed source and runs checks; deployment remains manual.']
+              '- [Eight-page metadata pilot](staging-metadata-pilot-2026-11-12/README.md).','- [Expanded descriptions: 76 covered, one hold](staging-descriptions-2026-11-12/README.md).','- [Public storefront HTML and progressive handoff](staging-public-html-2026-11-12/README.md).','- [Discovery and staging indexing guard](staging-discovery-2026-11-12/README.md).','- [All 24 catalog decisions and preview expansion](staging-catalog-review-2026-11-12/README.md).','- [Heading hierarchy and reviewed links](staging-headings-links-2026-11-12/README.md).','',
+              'The production website is unchanged by this staging SEO program. GitHub stores reviewed source and runs checks; website deployment remains manual.']
     return '\n'.join(lines)+'\n'
 
 

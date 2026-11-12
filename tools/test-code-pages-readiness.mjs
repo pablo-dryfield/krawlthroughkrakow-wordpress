@@ -1,5 +1,5 @@
 import {createRequire} from 'node:module';
-import {readFile,writeFile} from 'node:fs/promises';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {execFileSync} from 'node:child_process';
 import path from 'node:path';
 import {composeCodePage} from './code-page-template.mjs';
@@ -8,7 +8,10 @@ const dependencies=path.join(process.env.USERPROFILE,'.cache/codex-runtimes/code
 const {chromium}=require(path.join(dependencies,'playwright'));
 const production=process.argv.includes('--production');
 const base=production?'https://krawlthroughkrakow.com':process.argv.includes('--staging')?'https://krawlthroughkrakow.com/staging':'http://127.0.0.1:5185';
-const output=production?'docs/code-pages/production-release':'docs/code-pages/production-readiness';
+const output=process.argv.includes('--output-directory')?process.argv[process.argv.indexOf('--output-directory')+1]:production?'docs/code-pages/production-release':'docs/code-pages/production-readiness';
+const reportFile=output+'/'+(production?'production':base.includes('/staging')?'staging':'local')+'-readiness-tests.json';
+try{await readFile(reportFile);throw new Error('Preserve earlier evidence; use --output-directory');}catch(error){if(error.code!=='ENOENT')throw error;}
+await mkdir(output,{recursive:true});
 const assets='staging/wp-content/mu-plugins/ktk-code-pages-assets/';
 const definitions=JSON.parse(execFileSync('php',['-r',"define('ABSPATH', __DIR__); $out=array(); foreach(glob($argv[1].'/pages/*.php') as $file){$page=require $file;$out[$page['key']]=$page;} echo json_encode($out);",assets],{maxBuffer:10*1024*1024}).toString());
 const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});
@@ -29,7 +32,7 @@ try{
   check(key+' readable module link labels',facts.badLabels===0);
   check(key+' no remaining Ecwid widget',facts.widgets===0&&definition.ecwid.length===0);
   if(key==='new-years-eve'){
-   const data=await parsed.evaluate(()=>({title:document.querySelector('.et_pb_countdown_timer .title').textContent,timestamp:document.querySelector('.et_pb_countdown_timer').dataset.endTimestamp,price:document.querySelector('.et_pb_heading_8 h1').textContent,groups:[...document.querySelectorAll('.et_pb_text_1 .et_pb_text_inner,.et_pb_text_2 .et_pb_text_inner')].map(e=>e.textContent),bookings:[...document.querySelectorAll('#main-content a[href*="store2/"]')].filter(e=>/book/i.test(e.textContent||e.getAttribute('aria-label')||'')).map(e=>e.getAttribute('href')),floating:document.querySelector('#ktk-cta').getAttribute('href')}));
+   const data=await parsed.evaluate(()=>({title:document.querySelector('.et_pb_countdown_timer .title').textContent,timestamp:document.querySelector('.et_pb_countdown_timer').dataset.endTimestamp,price:document.querySelector('.et_pb_heading_8 :is(h1,[data-ktk-heading-origin="h1"])').textContent,groups:[...document.querySelectorAll('.et_pb_text_1 .et_pb_text_inner,.et_pb_text_2 .et_pb_text_inner')].map(e=>e.textContent),bookings:[...document.querySelectorAll('#main-content a[href*="store2/"]')].filter(e=>/book/i.test(e.textContent||e.getAttribute('aria-label')||'')).map(e=>e.getAttribute('href')),floating:document.querySelector('#ktk-cta').getAttribute('href')}));
    check('NYE correct 2026/2027 title',data.title==='Krakow New Years Eve Party 2026 / 2027');
    check('NYE countdown reaches Warsaw New Year midnight',Number(data.timestamp)===1798758000);
    check('NYE only confirmed PLN price',data.price==='All for only 250 PLN');
@@ -47,8 +50,8 @@ try{
  const manifest=JSON.parse(await readFile('docs/code-pages/full-migration/manifest.json','utf8'));
  for(const key of ['post-krakow-wine-bars','how-to-join','new-years-eve','about-us'])for(const width of [320,375,390,600,601,768,980,981,1024,1280,1379,1380,1440,1499,1500,1920]){
   const route=manifest.routes.find(row=>row.key===key),page=await browser.newPage({viewport:{width,height:900}});
-  await page.route('**/*',r=>r.request().url().startsWith(base)||r.request().url().includes('/ktk-code-pages-assets/')?r.continue():r.abort());
-  await page.goto(base+route.route+(base.startsWith('https:')?'?ktk_readiness=20261105':''),{waitUntil:'load'});await page.evaluate(()=>document.fonts.ready);
+  await page.route('**/*',r=>['GET','HEAD'].includes(r.request().method())&&(r.request().url().startsWith(base)||r.request().url().includes('/ktk-code-pages-assets/'))?r.continue():r.abort());
+  await page.goto(base+route.route+(base.startsWith('https:')?'?ktk_readiness='+Date.now():''),{waitUntil:'load'});await page.evaluate(()=>document.fonts.ready);
   const label=key+' '+width,header=page.locator('#main-header'),toggle=page.locator('.mobile_menu_bar'),logo=await page.locator('#logo').boundingBox();
   check(label+' header height',Math.abs((await header.boundingBox()).height-(width<1380?80:140))<1);
   check(label+' no horizontal overflow',await page.evaluate(()=>document.documentElement.scrollWidth===innerWidth));
@@ -75,6 +78,6 @@ try{
  }
 }finally{await browser.close();}
 const report={checkedAt:new Date().toISOString(),base,passed:checks.filter(c=>c.pass).length,total:checks.length,checks};
-await writeFile(output+'/'+(production?'production':base.includes('/staging')?'staging':'local')+'-readiness-tests.json',JSON.stringify(report,null,2));
+await writeFile(reportFile,JSON.stringify(report,null,2));
 console.log(JSON.stringify({passed:report.passed,total:report.total,failed:checks.filter(c=>!c.pass)},null,2));
 if(report.passed!==report.total)process.exitCode=1;
