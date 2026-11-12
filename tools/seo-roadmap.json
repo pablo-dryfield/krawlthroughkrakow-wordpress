@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedOn": "2026-11-12",
+  "updatedOn": "2026-11-13",
   "current": "M01 reporting is deployed and independently live-verified, including real-account pagination/filter checks.115 page/breadcrumb graphs and55 article graphs are deployed to staging with original visible content unchanged. Homepage photo policy is deployed with exact local pixels/interactions66/66. Final normal-cache checks await the staging purge; native Google account review remains.",
   "milestones": [
     {"name":"Private GitHub source control and checks; manual deployments retained","status":"source_verified"},
@@ -14,7 +14,7 @@
     {"name":"Owner approval, guarded production promotion and Search Console follow-up","status":"not_started"}
   ],
   "tickets": {
-    "M01":{"status":"in_progress","note":"Implementation/deployment complete: PR252, Release43315813139 and actual deploy43317776455 succeeded. Exact public backend/UI/bundle3/3 and real-provider totals/pagination1000->2000/exact-query/page-filter checks pass. Native GSC UI agreement still needs Google login; no booking/payment changes."},
+    "M01":{"status":"in_progress","note":"First release deployed/verified: PR252, Release43315813139, actual deploy43317776455 and public3/3/real-account checks. Long-date retention follow-up PR254 passed all required CI and merged951ec322; Release43325692291 running, actual deployment still required. Native GSC UI agreement awaits login; no commerce changes."},
     "M02":{"status":"in_progress","note":"Corrected Google-backed28/90/180/365 summaries and all returned page rows retained privately; dated baseline records coverage and exact canonical metrics. Long previous365 exceeds retention and is not a valid comparison. Native verification, full queries/cohorts and comparable prior-year exports remain."},
     "M03":{"status":"not_started","note":"Full funnel reconciliation and consent-aware measurement review remain."},
     "M04":{"status":"in_progress","note":"Native Google Search Console tab opened but signed out; owner asked to sign in for indexing, Crawl Stats, Manual Actions and Security Issues. No account changes or clean-status claims."},
@@ -29,7 +29,7 @@
     "T09":{"status":"in_progress","note":"115 page/breadcrumb and55 BlogPosting graphs deployed to staging; health hold unchanged.45 real captured person bylines,48 original dates/featured images; missing/ambiguous facts omitted. Build2204/2204, local PHP/device3221/3221, all2031 deployed hashes verified. Origin/cache checks, applicable validation and storefront accuracy review remain."},
     "T10":{"status":"in_progress","note":"Metadata/discovery/indexing/source guards exist; broader regression coverage remains."},
     "C01":{"status":"not_started","note":"Main-offer editorial improvements beyond technical rendering remain."},
-    "C02":{"status":"not_started","note":"Full NYE sales/guide consistency and campaign lifecycle audit remain."},
+    "C02":{"status":"in_progress","note":"Sales page already has confirmed2026/2027,250 PLN,5PM/7:30PM and TBA. Read-only guide review found eight Google Docs TOC targets, a typo-domain booking link and unsupported city-stage/fireworks/old ski-price promises. Guarded staging revisions, shared facts and campaign-expiry tests remain; URLs/intents preserved."},
     "C03":{"status":"not_started","note":"Nightlife hub needs current locally verified facts."},
     "C04":{"status":"not_started","note":"Budget-drinks guide needs verified current venues and prices."},
     "C05":{"status":"not_started","note":"Music and venue guides need source verification and duplicate review."},

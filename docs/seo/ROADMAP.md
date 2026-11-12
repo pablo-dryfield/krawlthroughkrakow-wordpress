@@ -1,6 +1,6 @@
 # SEO Roadmap And Progress
 
-Updated: 2026-11-12 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; edit that source, not this page.
+Updated: 2026-11-13 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; edit that source, not this page.
 
 ## Where We Are
 
@@ -10,8 +10,8 @@ Updated: 2026-11-12 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 | Full-Plan Status | Workstreams |
 | --- | --- |
-| In progress / partial staging | 18 |
-| Not started | 21 |
+| In progress / partial staging | 19 |
+| Not started | 20 |
 | Deferred | 1 |
 | Total | 40 |
 
@@ -46,7 +46,7 @@ Acceptance criteria and research: [full improvement plan](SEO-AND-WEBSITE-IMPROV
 
 | ID | Priority / Effort | Work | Status | Progress / Next Step |
 | --- | --- | --- | --- | --- |
-| M01 | P0 / M | Fix OmniLodge Search Console reporting: independent whole-property/date totals; paginated detailed rows with explicit coverage; exact-query vs substring groups; metrics aligned to the displayed page; separate query/page aggregation; filters by country/device/search type; no-data vs truncated flags. Label heuristic recommendations. | In progress / partial staging | Implementation/deployment complete: PR252, Release43315813139 and actual deploy43317776455 succeeded. Exact public backend/UI/bundle3/3 and real-provider totals/pagination1000->2000/exact-query/page-filter checks pass. Native GSC UI agreement still needs Google login; no booking/payment changes. |
+| M01 | P0 / M | Fix OmniLodge Search Console reporting: independent whole-property/date totals; paginated detailed rows with explicit coverage; exact-query vs substring groups; metrics aligned to the displayed page; separate query/page aggregation; filters by country/device/search type; no-data vs truncated flags. Label heuristic recommendations. | In progress / partial staging | First release deployed/verified: PR252, Release43315813139, actual deploy43317776455 and public3/3/real-account checks. Long-date retention follow-up PR254 passed all required CI and merged951ec322; Release43325692291 running, actual deployment still required. Native GSC UI agreement awaits login; no commerce changes. |
 | M02 | P0 / S | Establish dated SEO baseline and annotate homepage/content releases separately. Export complete available 28/90/180/365-day data and comparable prior-year periods; split brand/nonbrand, UK/Poland/other markets, mobile/desktop, commercial/editorial/PDF/legacy pages. | In progress / partial staging | Corrected Google-backed28/90/180/365 summaries and all returned page rows retained privately; dated baseline records coverage and exact canonical metrics. Long previous365 exceeds retention and is not a valid comparison. Native verification, full queries/cohorts and comparable prior-year exports remain. |
 | M03 | P1 / M | Verify the full measurement funnel: landing -> named booking CTA -> product -> booking start -> payment completion -> revenue. Keep journey history and UTM handoff; distinguish direct/organic/paid/Google booking integrations. Avoid counting button clicks or failed payments as purchases. | Not started | Full funnel reconciliation and consent-aware measurement review remain. |
 | M04 | P1 / S | Check native GSC Page Indexing, Crawl Stats, submitted sitemaps, Manual Actions and Security Issues; inspect representative page types after Google's next crawl. Configure meaningful failure alerts/weekly review, not a noisy total-keyword scoreboard. | In progress / partial staging | Native Google Search Console tab opened but signed out; owner asked to sign in for indexing, Crawl Stats, Manual Actions and Security Issues. No account changes or clean-status claims. |
@@ -61,7 +61,7 @@ Acceptance criteria and research: [full improvement plan](SEO-AND-WEBSITE-IMPROV
 | T09 | P1 / M | Validate structured data: consistent Organization/WebSite identity, Article/BlogPosting + author/date/image for articles, BreadcrumbList, and accurate applicable offer/event data. Recheck the three old schema validation warnings. | In progress / partial staging | 115 page/breadcrumb and55 BlogPosting graphs deployed to staging; health hold unchanged.45 real captured person bylines,48 original dates/featured images; missing/ambiguous facts omitted. Build2204/2204, local PHP/device3221/3221, all2031 deployed hashes verified. Origin/cache checks, applicable validation and storefront accuracy review remain. |
 | T10 | P1 / M | Add SEO regression checks for HTTP status, canonical, robots, initial content, metadata, schema, internal destinations, sitemap and desktop/mobile cache variants. Include meaningful 404s and guarded routing. | In progress / partial staging | Metadata/discovery/indexing/source guards exist; broader regression coverage remains. |
 | C01 | P1 / M | Strengthen homepage and main product for pub/bar crawl in Krakow using natural language, actual inclusions, meeting details, guide credentials, original photos, FAQs and clearly placed booking controls. Keep brand visible and preserve the owner's no-price-in-hero instruction; show accurate prices where customers compare/book. | Not started | Main-offer editorial improvements beyond technical rendering remain. |
-| C02 | P1 / M | Prioritize NYE now: align `/new-years-eve/`, NYE guide articles and product 32. Confirm December 31, 2026 / welcome 2027, 5:00 PM and 7:30 PM, 250 PLN, meeting points TBA. Distinguish old-event gallery labels from confirmed venues. Test countdown/expiry/next-campaign behavior. | Not started | Full NYE sales/guide consistency and campaign lifecycle audit remain. |
+| C02 | P1 / M | Prioritize NYE now: align `/new-years-eve/`, NYE guide articles and product 32. Confirm December 31, 2026 / welcome 2027, 5:00 PM and 7:30 PM, 250 PLN, meeting points TBA. Distinguish old-event gallery labels from confirmed venues. Test countdown/expiry/next-campaign behavior. | In progress / partial staging | Sales page already has confirmed2026/2027,250 PLN,5PM/7:30PM and TBA. Read-only guide review found eight Google Docs TOC targets, a typo-domain booking link and unsupported city-stage/fireworks/old ski-price promises. Guarded staging revisions, shared facts and campaign-expiry tests remain; URLs/intents preserved. |
 | C03 | P1 / M-L | Refresh the existing `/krakow-nightlife/` hub with a useful, locally verified overview: districts, types of venues, costs with checked dates, opening patterns, practical transport/safety and choices for different visitors. Review existing 2020 guide, `/party-krakow/`, clubs and dating/singles articles before creating anything new. | Not started | Nightlife hub needs current locally verified facts. |
 | C04 | P1 / M | Refresh `/wheres-the-cheap-places-to-drink-in-krakow/`, a repeated near-top opportunity: verified venues, current sample PLN prices, districts, happy-hour conditions and dates, original photos and context. | Not started | Budget-drinks guide needs verified current venues and prices. |
 | C05 | P1 / M-L | Update techno, jazz, Irish bars, live music, nightclubs, Kazimierz and shot-bar guides. Verify venues still operate and match claimed music/hours/admission; add concise comparison tables/maps and original local recommendations. Review duplicate techno articles first. | Not started | Music and venue guides need source verification and duplicate review. |

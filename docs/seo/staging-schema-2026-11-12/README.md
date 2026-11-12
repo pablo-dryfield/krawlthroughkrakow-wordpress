@@ -47,14 +47,32 @@ The discovery data-only follow-up also completed, preserving production and all
 protected files/settings. Backup `seo-discovery-staging-20261112-223505-313579.zip`,
 SHA256 `9e561459a6bdf603947ad50a3719fc1006394fe7b3119b9cc3cba5a2b9fdb0af`;
 data SHA256 `2e8962a6befbe3b401ba6aa080f8ae77cbf3acacee1cadf83e4a7a0a22f41ebf`.
-Actual origin JSON-LD checks pass3221/3221 and discovery243/243. The broader first
-heading regression returns4264/4320 because eight responses on three routes were
-502 gateway pages; retain `headings-origin.json`. The complete sequential rerun is
-in progress, without weakening assertions. Final normal-cache checks await the
-requested staging purge. Do not call this production-delivered or Google Rich
-Results Test-certified. Staging remains noindex; owner review and separate
-production promotion remain. Source PR8's initial CI43321783040 passes tests/build
-and secret scanning; further evidence updates must pass their own current CI too.
+Actual origin JSON-LD checks pass3221/3221 and discovery243/243. Broader regression
+history is preserved below; there is not yet a complete passing final broad run.
+
+| Report | Outcome |
+| --- | --- |
+|`headings-origin.json`|4264/4320, eight502 gateway responses on three routes|
+|`headings-origin-sequential-repeat.json`|1616 checks passed before a response-body connection reset; incomplete|
+|`headings-origin-buffered-repeat.json`|4292 checks/all348 content variants passed; remaining checks stopped because the agent closed its local homepage reference too early; incomplete|
+|`headings-origin-final-reference.json`|3861/4320;76 responses were503 scheduled-maintenance pages, not code-page content|
+
+The read-only transport now reads bodies inside its bounded retry boundary and
+records transport retries; it deliberately never retries HTTP502 into success.
+Its3/3 tests cover this distinction. No application assertions were weakened.
+Broad origin scans are paused after the maintenance response. A bounded6-request
+recovery sample at23:06UTC is healthy, including one staging origin response and
+production page/storefront controls. This is recovery evidence, NOT a passing
+all-route regression or attribution of who initiated maintenance. No host/plugin/
+maintenance settings were changed.
+
+Final normal-cache checks await the requested staging purge. Do not call this
+production-delivered or Google Rich Results Test-certified. Staging remains noindex;
+owner review and separate production promotion remain. PR8's current sourcee5e42af
+passes CI43323883038 tests/build and secret scanning; further evidence updates must
+pass their own current CI too. Preserve the a9cf168 comparator worktree. PHP previews
+5185/5186 and the original5184 are stopped; a new5184 reference was started for the
+last run and can now be closed. No tests/publishers depend on those old sessions.
 
 Original Ahrefs CSV reports three schema.org notices and zero Google-rich-results
 errors, but does not contain their affected URLs or field details. A fresh detailed
