@@ -81,6 +81,10 @@ New payload-bound local browser evidence is `heading-followup.json` (811/811).
 - Live browser checks cover catalog, regular crawl, NYE and Bubble Football with
   and without JS at 320/390/768/1440. They block all mutations and external
   tracking; this is not an end-to-end payment, consent or field-CWV certification.
+  Final heading-follow-up origin run passes **240/240**, with zero application
+  errors/mutations and 16 inherited Facebook errors recorded separately. Its
+  screenshots verify the corrected no-JS heading colour/font and real first
+  photos. The initial pre-correction screenshot remains in the earlier report.
 - Final normal/cache-repeat verification awaits the staging-prefix purge.
   The first final clean-URL attempt, `final-normal-urls.json`, passes only
   311/692: all 75 responses are HIT, desktop still has the pre-release template,

@@ -32,6 +32,10 @@ page review is preserved separately as `source-review-remaining.json`.
   Android and iPad, plus unchanged production controls and four no-JS screenshots.
 - Normal Cloudflare cache verification remains pending the requested staging-only
   prefix purge. Origin checks are not a substitute for that final step.
+  `final-normal-urls.json` preserves **1,944/2,216**: desktop/Android retain old
+  cached description/social metadata for all 68 new pages (272 failed checks).
+  iPad receives the new descriptions; all eight explicit held-page controls pass,
+  including production. No failed content/title/indexing assertion was hidden.
 
 `staging-publish.json` completed at 18:49:43 UTC on November 12. All 1,915 owned
 file hashes match. Saved WordPress state, protected homepage/storefront and legacy
