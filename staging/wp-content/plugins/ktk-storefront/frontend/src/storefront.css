@@ -1405,7 +1405,8 @@ body.ktk-storefront-page #main-content.ktk-storefront-main {
   gap: 12px;
 }
 
-.ktk-hero__actions button {
+.ktk-hero__actions button,
+.ktk-hero__actions a {
   min-height: 56px;
   border: 1px solid transparent;
   display: inline-flex;
@@ -1419,7 +1420,8 @@ body.ktk-storefront-page #main-content.ktk-storefront-main {
   transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
 }
 
-.ktk-hero__actions button:hover {
+.ktk-hero__actions button:hover,
+.ktk-hero__actions a:hover {
   transform: translateY(-3px);
 }
 
@@ -1916,7 +1918,8 @@ body.ktk-storefront-page #main-content.ktk-storefront-main {
   font-size: 13px;
 }
 
-.ktk-product-card__footer button {
+.ktk-product-card__footer button,
+.ktk-product-card__footer a {
   padding: 0;
   border: 0;
   background: transparent;
@@ -1925,9 +1928,66 @@ body.ktk-storefront-page #main-content.ktk-storefront-main {
   cursor: pointer;
 }
 
-.ktk-product-card__footer button span {
+.ktk-product-card__footer button span,
+.ktk-product-card__footer a span {
   color: var(--ktk-pink);
   font-size: 20px;
+}
+
+.ktk-product-card h3 a,
+.ktk-product-card__footer a,
+a.ktk-back,
+a.ktk-hero__secondary,
+a.ktk-hero-ticket {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ktk-product-card a:focus-visible,
+a.ktk-back:focus-visible,
+a.ktk-hero__secondary:focus-visible,
+a.ktk-hero-ticket:focus-visible {
+  outline: 2px solid var(--ktk-pink);
+  outline-offset: 5px;
+}
+
+#ktk-storefront-root[hidden] { display: none; }
+
+.ktk-public-catalog__heading {
+  max-width: 800px;
+  margin-bottom: 48px;
+}
+
+.ktk-public-catalog__heading h1 {
+  margin: 0 0 20px;
+  font-family: "Oswald", sans-serif;
+  font-size: 56px;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+
+.ktk-public-catalog .ktk-product-card h2 {
+  margin: 0;
+  font-family: "Oswald", sans-serif;
+  font-size: 31px;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.ktk-public-catalog a { color: inherit; text-decoration: none; }
+.ktk-public-catalog .ktk-product-card__media { display: block; }
+.ktk-public-booking { padding: 24px; border: 1px solid var(--ktk-line); }
+.ktk-public-booking h2 {
+  margin-top: 0;
+  color: var(--ktk-cream);
+  font-family: "Oswald", sans-serif;
+  font-size: 24px;
+  line-height: 1.2;
+}
+#ktk-storefront-public-content .ktk-practical-info__section--important h2 { font-family: inherit; }
+
+@media (max-width: 600px) {
+  .ktk-public-catalog__heading h1 { font-size: 40px; }
 }
 
 .ktk-detail {
@@ -2312,7 +2372,8 @@ body.ktk-storefront-page #main-content.ktk-storefront-main {
     flex-direction: column;
   }
 
-  .ktk-hero__actions button {
+  .ktk-hero__actions button,
+  .ktk-hero__actions a {
     width: 100%;
   }
 
@@ -2532,6 +2593,7 @@ body.ktk-storefront-page #main-content.ktk-storefront-main {
   line-height: 0.82;
   text-transform: uppercase;
   text-wrap: balance;
+  overflow-wrap: anywhere;
 }
 
 .ktk-detail__intro > p:last-child {

@@ -11,6 +11,8 @@ const base = option('--base', 'https://krawlthroughkrakow.com/staging');
 if (base !== 'https://krawlthroughkrakow.com/staging' && !/^http:\/\/127\.0\.0\.1:\d+$/.test(base)) throw new Error('Staging or loopback only');
 const local = base.startsWith('http://127.0.0.1:');
 const output = option('--output', 'docs/seo/staging-metadata-pilot-2026-11-12/origin.json');
+try {await readFile(output); throw new Error('Preserve previous verification; choose a new output filename');}
+catch (error) {if (error.code !== 'ENOENT') throw error;}
 const bust = process.argv.includes('--cache-bust') ? '?ktk_seo_check=' + Date.now() : '';
 const manifest = JSON.parse(await readFile('docs/code-pages/full-migration/manifest.json', 'utf8'));
 const rows = new Map(manifest.routes.map(row => [row.route, row]));
@@ -84,6 +86,23 @@ try {
       const actual = await facts(await response.text());
       check(route + ' production description untouched', response.status === 200 && actual.descriptions.length === 0, actual.descriptions);
       check(route + ' production title/indexing untouched', actual.titles.length === 1 && actual.titles[0] === source.title && !actual.robots.some(v => /noindex/.test(v)));
+    }
+  }
+  for (const route of Object.keys(seoMetadata.holds || {})) {
+    const row = rows.get(route);
+    const source = JSON.parse(await readFile(row.source + '/production-1920.json', 'utf8'));
+    const descriptions = source.metadata.description ? [source.metadata.description] : [];
+    for (const [device, agent] of Object.entries(agents)) {
+      const response = await fetch(base + route + bust, {headers:{'User-Agent':agent}, signal:AbortSignal.timeout(60000)});
+      const actual = await facts(await response.text());
+      check(route + ' ' + device + ' held description unchanged', response.status === 200 && JSON.stringify(actual.descriptions) === JSON.stringify(descriptions));
+      check(route + ' ' + device + ' held title/index policy unchanged', actual.titles[0] === source.title && actual.robots.length === 1 && /noindex/.test(actual.robots[0]) && actual.canonical[0] === 'https://krawlthroughkrakow.com/staging' + route);
+    }
+    if (!local) {
+      const response = await fetch('https://krawlthroughkrakow.com' + route, {signal:AbortSignal.timeout(60000)});
+      const actual = await facts(await response.text());
+      check(route + ' production held description unchanged', response.status === 200 && JSON.stringify(actual.descriptions) === JSON.stringify(descriptions));
+      check(route + ' production held title/index policy unchanged', actual.titles[0] === source.title && !actual.robots.some(value => /noindex/.test(value)));
     }
   }
   const visualContext = await browser.newContext({javaScriptEnabled:false});

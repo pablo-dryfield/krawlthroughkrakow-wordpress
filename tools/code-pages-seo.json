@@ -33,6 +33,281 @@
     "/krakow-hen-do/": {
       "role": "Hen group planning and enquiry",
       "description": "Plan your Krakow hen do with Krawl Through Krakow. Explore hen party activities and nightlife ideas, and enquire about a celebration for your group."
+    },
+    "/2020-krakow-nightlife-guide/": {
+      "role": "Archived 2020 nightlife guide; not the current nightlife hub",
+      "description": "Read Krawl Through Krakow's 2020 nightlife guide, an archived introduction to the city's bars, clubs and nights out."
+    },
+    "/all-you-need-to-know-about-visiting-auschwitz/": {
+      "role": "Archived Auschwitz visit-planning guide; transport and entry facts need refresh",
+      "description": "Our archived guide to visiting Auschwitz from Krakow covers transport and visit planning. Confirm current entry arrangements with the museum."
+    },
+    "/bachelor-party-organisers-krakow/": {
+      "role": "Existing bachelor-party planning article; supports the main stag page",
+      "description": "Explore our guide to bachelor party planning in Krakow, with group activity ideas, nightlife options and considerations for organising a stag weekend."
+    },
+    "/best-drinking-games/": {
+      "role": "Existing games collection; distinguish from pub-crawl games and preserve PDF",
+      "description": "Browse Krawl Through Krakow's drinking-games collection, with instructions and group-game ideas from our party-travel archive."
+    },
+    "/best-hotels-in-krakow-2019-2020/": {
+      "role": "Archived 2019 hotel guide; no claim of current rankings or availability",
+      "description": "Explore our 2019 Krakow hotel guide, featuring the locations and accommodation ideas we highlighted at the time."
+    },
+    "/best-places-to-eat/": {
+      "role": "Existing 2024 dining guide; venue details remain unverified for current visits",
+      "description": "Read our 2024 Krakow food guide, with dining ideas and an introduction to Polish dishes. Check current venue details before visiting."
+    },
+    "/best-pub-crawls-in-europe/": {
+      "role": "Existing European pub-crawl roundup; external operator review remains",
+      "description": "Explore our European pub-crawl roundup, with nightlife destinations and tour operators collected for travellers planning their next city break."
+    },
+    "/budapest-or-krakow-nightlife/": {
+      "role": "Existing city-comparison article, not a new offer page",
+      "description": "Compare Budapest and Krakow nightlife in our city-break guide, with a look at party atmosphere, bars and ideas for planning a night out."
+    },
+    "/escape-rooms-for-a-stag-do-in-krakow/": {
+      "role": "Existing escape-room stag activity guide; venue facts need review",
+      "description": "Read our guide to escape rooms for a Krakow stag do, covering group challenges, activity planning and ideas for adding puzzles to a stag weekend."
+    },
+    "/go-karting-krakow/": {
+      "role": "Existing go-karting guide; overlap with second karting article remains for review",
+      "description": "Explore our Krakow go-karting guide covering racing experiences, track choices and planning a group visit before you book."
+    },
+    "/hen-do-ideas-abroad/": {
+      "role": "Existing hen-trip ideas article; supports Krakow hen planning page",
+      "description": "Explore hen do ideas abroad with a focus on Krakow, from group activities and nightlife to planning a celebration with friends."
+    },
+    "/hostel-etiquette-tips/": {
+      "role": "Existing hostel etiquette article; practical shared-accommodation topic",
+      "description": "Read our hostel etiquette tips for shared rooms, common spaces and considerate travel, written for visitors planning a stay in Krakow."
+    },
+    "/irish-bars-krakow/": {
+      "role": "Existing Irish-pub guide; operating details not newly verified",
+      "description": "Explore our guide to Irish bars in Krakow, with pub atmosphere, drinks and nightlife ideas for visitors to the city."
+    },
+    "/is-krakow-safe-for-stag/": {
+      "role": "Existing stag safety article; no blanket safety guarantee or current incident claim",
+      "description": "Read our article on planning a Krakow stag trip, covering nightlife, common visitor concerns and practical considerations for a group night out."
+    },
+    "/jazz-bars-in-krakow/": {
+      "role": "Existing jazz-venue guide; current listings and schedules need verification",
+      "description": "Explore Krakow's jazz scene through our guide to jazz bars, live music settings and ideas for an evening in the city."
+    },
+    "/karaoke-bars-in-krakow/": {
+      "role": "Existing karaoke guide; no current venue or opening-time claim",
+      "description": "Read our guide to karaoke bars in Krakow, with singalong nights, group outing ideas and a look at the city's karaoke scene."
+    },
+    "/krakow-bars-jewish-quarter/": {
+      "role": "Existing Kazimierz bars article; supports nightlife hub",
+      "description": "Explore our guide to bars in Krakow's Jewish Quarter, with a look at Kazimierz nightlife, neighbourhood atmosphere and places discussed in the article."
+    },
+    "/krakow-budget-activities/": {
+      "role": "Existing budget-activity guide; no newly verified price promises",
+      "description": "Read our Krakow budget-activities guide for ideas on exploring the city, local culture and things to consider when planning a lower-cost visit."
+    },
+    "/krakow-food-truck-parks/": {
+      "role": "Existing food-truck guide; current locations and operators need verification",
+      "description": "Explore our guide to Krakow food-truck parks, with street-food ideas, outdoor eating spots and an introduction to the local food-truck scene."
+    },
+    "/krakow-free-activities-2/": {
+      "role": "Existing free-activity article; admission and availability require later verification",
+      "description": "Explore our Krakow free-activities guide, with ideas for walking, sightseeing and discovering the city's culture while planning your budget."
+    },
+    "/krakow-go-karting/": {
+      "role": "Second existing karting article; do not consolidate without intent review",
+      "description": "Read our guide to go-karting in Krakow, with group outing ideas, track information and what to consider before arranging a racing experience."
+    },
+    "/krakow-hen-party-reviews/": {
+      "role": "Existing hen-party editorial guide, not live verified review aggregates",
+      "description": "Read our Krakow hen-party guide for a look at nightlife, group activities and planning ideas discussed in the article."
+    },
+    "/krakow-live-music/": {
+      "role": "Existing live-music overview; schedules and venues require a later refresh",
+      "description": "Explore our introduction to Krakow live music, from jazz settings to other performance venues and ideas for an evening of music."
+    },
+    "/krakow-milkbars/": {
+      "role": "Existing Polish milk-bar explainer and dining article",
+      "description": "Read about Krakow milk bars, their place in Polish food culture and the traditional dining experience explored in our guide."
+    },
+    "/krakow-money-saving-tips/": {
+      "role": "Existing travel-budget article; no current price or exchange-rate claims",
+      "description": "Explore our Krakow money-saving guide, covering travel-budget ideas, getting around and ways to plan a visit around your priorities."
+    },
+    "/krakow-new-years-eve/": {
+      "role": "Archived NYE editorial inspiration, separate from current event sales and checkout",
+      "description": "Read our archived article on New Year's Eve in Krakow, with seasonal atmosphere and celebration ideas. Current event details are on our NYE booking page."
+    },
+    "/krakow-nightclubs/": {
+      "role": "Existing nightclub guide; operating facts and admission policies need review",
+      "description": "Explore our Krakow nightclub guide, with a look at club atmosphere, music and ideas for planning a night out in the city."
+    },
+    "/krakow-safety-guide/": {
+      "role": "Existing visitor-safety article; no guarantee or new legal/medical guidance",
+      "description": "Read our Krakow safety guide covering common visitor concerns, nights out and getting around the city while planning your trip."
+    },
+    "/krakow-shooting-range/": {
+      "role": "Existing shooting-range activity overview; requirements not newly verified",
+      "description": "An introduction to Krakow shooting-range experiences and group-outing planning. Confirm current venue requirements and booking details before visiting."
+    },
+    "/krakow-shot-bar/": {
+      "role": "Existing shot-bar guide; current venues and prices remain for verification",
+      "description": "Explore our Krakow shot-bar guide, with a look at local nightlife, bar atmosphere and the drinking spots discussed in the article."
+    },
+    "/krakow-stag-activities/": {
+      "role": "Existing stag-activity editorial roundup supporting the main stag page",
+      "description": "Read our guide to Krakow stag activities, with group-outing ideas, nightlife options and considerations for planning a weekend together."
+    },
+    "/krakow-team-building-activities/": {
+      "role": "Existing team-building ideas article; production canonical remains separately held",
+      "description": "Explore team-building ideas in Krakow, from group challenges to shared activities, in our guide to planning time together outside the office."
+    },
+    "/krakow-techno-clubs-2/": {
+      "role": "Second existing techno guide; overlap review remains before consolidation",
+      "description": "Read this Krakow techno-club guide for an introduction to electronic-music nights, club atmosphere and the venues discussed in the article."
+    },
+    "/krakow-techno-clubs/": {
+      "role": "Existing techno nightlife article; venue facts and duplicate intent need review",
+      "description": "Explore our guide to Krakow techno clubs, with electronic-music settings and ideas for visitors interested in the city's club scene."
+    },
+    "/krakow-weather-guide/": {
+      "role": "Existing seasonal weather overview, not a current forecast",
+      "description": "Read our Krakow weather guide for a seasonal overview and trip-planning context. Check a current forecast for the dates of your visit."
+    },
+    "/krakow-wine-bars/": {
+      "role": "Existing wine-bar guide; no newly checked opening or availability claims",
+      "description": "Explore our guide to Krakow wine bars, with wine-focused evenings, bar atmosphere and ideas for discovering another side of the city's nightlife."
+    },
+    "/krakow-winter-activities/": {
+      "role": "Existing winter-trip ideas article; no current event or weather promises",
+      "description": "Read our Krakow winter-activities guide, with sightseeing, food and nightlife ideas for planning a cold-season city break."
+    },
+    "/krawl-through-krakow-winter-newsletter/": {
+      "role": "Historical newsletter; seasonal promotions are not presented as current",
+      "description": "From the archive: a winter update from Krawl Through Krakow, with past seasonal party news and stories from Krakow's nightlife scene."
+    },
+    "/life-professional-drunk/": {
+      "role": "Archived image-led nightlife story; readable-body/accessibility refresh remains",
+      "description": "From the Krawl Through Krakow archive: 'Life As A Professional Drunk', an image-led article from our nightlife and pub-crawl blog."
+    },
+    "/new-years-eve-in-krakow/": {
+      "role": "Archived Christmas/NYE editorial guide, not the current event offer",
+      "description": "Explore our archived guide to Christmas and New Year's Eve in Krakow, with seasonal atmosphere, nightlife ideas and past celebrations."
+    },
+    "/party-krakow/": {
+      "role": "Existing archived party guide; distinct from current nightlife hub and booking page",
+      "description": "Read our archived guide to partying in Krakow, with an introduction to the city's nightlife atmosphere and planning a night out with friends."
+    },
+    "/six-reasons-you-need-to-party-with-the-krawl-through-krakow/": {
+      "role": "Existing brand story; historical numbers and superlatives are not repeated",
+      "description": "Read six reasons from our archive for joining Krawl Through Krakow, with a look at the social side of the pub crawl and nights out with fellow travellers."
+    },
+    "/spa-hotels-krakow/": {
+      "role": "Existing spa-hotel overview; facilities and availability need later verification",
+      "description": "Explore our introduction to spa hotels in Krakow, with accommodation ideas and the relaxation-focused stays discussed in the article."
+    },
+    "/spooktacular-krakow-unveil-the-mysteries-of-halloween/": {
+      "role": "Archived Halloween editorial article; no active dates or promotions promised",
+      "description": "An archived look at Halloween in Krakow, featuring spooky-season atmosphere and autumn nightlife rather than a current event schedule."
+    },
+    "/sports-bar-krakow/": {
+      "role": "Existing sports-bar overview; live fixtures and venue details remain unverified",
+      "description": "Explore our Krakow sports-bar guide, with pub atmosphere and ideas for visitors interested in watching sport as part of a night out."
+    },
+    "/stag-do-costume/": {
+      "role": "Existing stag costume-ideas article; no venue admission guarantees",
+      "description": "Read our stag do costume guide for group outfit ideas, themes and things to consider when planning a Krakow stag celebration."
+    },
+    "/stag-pranks/": {
+      "role": "Existing prank-themed article; suitability and safety content require later review",
+      "description": "Explore the stag-pranks section of our Krakow party-planning archive, with group ideas and stories around planning a stag weekend."
+    },
+    "/stages-of-drunkenness/": {
+      "role": "Archived image-led entertainment, not medical or safe-consumption guidance",
+      "description": "An illustrated article from the Krawl Through Krakow archive exploring its 'Eleven Stages of Drunkenness' theme."
+    },
+    "/survive-pub-crawl/": {
+      "role": "Archived image-led pub-crawl article; accessible-text review remains",
+      "description": "Read 'How to Survive a Pub Crawl', an image-led article from the Krawl Through Krakow nightlife and party-travel archive."
+    },
+    "/the-ultimate-guide-to-dating-in-nightlife-krakow/": {
+      "role": "Existing social-nightlife article; no guaranteed outcomes or safety claims",
+      "description": "Read our article on dating and nightlife in Krakow, with a look at meeting people, social settings and planning an evening in the city."
+    },
+    "/the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow/": {
+      "role": "Archived 2019 venue guide; not presented as newly verified recommendations",
+      "description": "Explore our archived 2019 Krakow bars and clubs guide, with a snapshot of the Old Town and Kazimierz nightlife scene."
+    },
+    "/travel-krakow-your-comprehensive-city-guide/": {
+      "role": "Archived city guide; transport prices and other dated claims require refresh",
+      "description": "Read our archived Krakow city guide, covering arrival, getting around and exploring the city. Confirm current transport details before travelling."
+    },
+    "/weekend-in-krakow/": {
+      "role": "Existing weekend itinerary ideas; not a newly verified attraction listing",
+      "description": "Explore our weekend-in-Krakow guide for sightseeing, activity and nightlife ideas to consider when planning a city break."
+    },
+    "/welcome-to-alcohol/": {
+      "role": "Historical competition announcement; no active prize or entry invitation",
+      "description": "From the archive: Krawl Through Krakow's night-out story competition and the party tales it invited guests to share."
+    },
+    "/blog/": {
+      "role": "Editorial discovery page for existing articles, not a booking landing page",
+      "description": "Browse the Krawl Through Krakow blog for Krakow guides, nightlife articles, group-trip ideas and stories from our pub-crawl archive."
+    },
+    "/contact/": {
+      "role": "Operator contact and enquiry details",
+      "description": "Contact Krawl Through Krakow with questions about the pub crawl, group plans or your visit. Find our contact details and ways to reach the team."
+    },
+    "/faqs/": {
+      "role": "Published answers to common crawl and booking questions",
+      "description": "Find answers to common questions about joining Krawl Through Krakow, booking a ticket, meeting the guides and planning your night out."
+    },
+    "/gallery/": {
+      "role": "Published pub-crawl and guest photography gallery",
+      "description": "Browse photos from Krawl Through Krakow pub crawls and group nights, with memories from our guests, guides and Krakow nightlife."
+    },
+    "/other-tours/": {
+      "role": "Existing secondary tour and activity discovery page; availability remains authoritative in booking",
+      "description": "Explore our other-tours page for Krakow activity ideas alongside the pub crawl, with enquiry and booking links for further details."
+    },
+    "/otherbarcrawls/": {
+      "role": "Existing external operator roundup; link and operating-status review remains",
+      "description": "Browse pub crawls and tour operators around the world, collected by the Krawl Through Krakow team for travellers planning another stop."
+    },
+    "/privacy-policy/": {
+      "role": "Existing privacy document; no legal-policy text changed",
+      "description": "Read Krawl Through Krakow's privacy policy, including how the site describes personal data, contact information and the use of its services."
+    },
+    "/pub-crawl-drinking-games/": {
+      "role": "Existing crawl-specific games page; preserve PDF and review overlap with broader games article",
+      "description": "Explore our pub-crawl games page, including Jenga-inspired group activities and ideas from Krawl Through Krakow's nights out."
+    },
+    "/pub-crawl-jobs/": {
+      "role": "Guide-work information and application path, not a guarantee of current vacancies",
+      "description": "Learn about working with Krawl Through Krakow: guiding nights out, daytime promotions, the guide experience and how to submit an application."
+    },
+    "/stagshens/": {
+      "role": "Existing combined stag/hen group overview; separate detailed group pages remain",
+      "description": "Explore Krawl Through Krakow's stag and hen group page, with an introduction to celebrating together and planning a group visit to Krakow."
+    },
+    "/student-trips-poland/": {
+      "role": "Existing student-group planning and enquiry page",
+      "description": "Plan a student trip to Krakow with Krawl Through Krakow. Read about group visits for societies, classes and sports teams, and enquire with the local team."
+    },
+    "/terms-and-conditions/": {
+      "role": "Existing website/service terms; no substantive legal change",
+      "description": "Read the terms and conditions governing Krawl Through Krakow's website and services, including customer responsibilities and use of the site."
+    },
+    "/testimonials/": {
+      "role": "Existing guest testimonials, not live platform rating totals",
+      "description": "Read guest testimonials about Krawl Through Krakow, including experiences of the pub crawl, local guides and nights out in Krakow."
+    },
+    "/tour-service-disclaimer/": {
+      "role": "Existing participation disclaimer; no substantive rule or legal change",
+      "description": "Read the Krawl Through Krakow tour service disclaimer, covering participation requirements, guest conduct and responsibilities for taking part."
     }
+  },
+  "holds": {
+    "/hostel-hangover-cure/": "Medical-kit, painkiller and supplement claims require a separately sourced health-content review before adding promotional metadata. Original description remains unchanged; do not imply a proven hangover cure."
   }
 }
