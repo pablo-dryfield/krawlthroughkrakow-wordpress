@@ -3,6 +3,7 @@ import {execFileSync} from 'node:child_process';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
+import {fetchCompleteResponse} from './read-only-http.mjs';
 
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
@@ -15,7 +16,7 @@ const assets='staging/wp-content/mu-plugins/ktk-code-pages-assets/';
 const baseline=option('--baseline','deploy-backups/seo-schema-media-baseline/').replace(/\/?$/,'/');
 const definitions=root=>JSON.parse(execFileSync('php',['-r',"define('ABSPATH',__DIR__);$a=$argv[1];$r=require $a.'registry.php';$o=array();foreach($r['routes'] as $route=>$entry){$o[$route]=require $a.$entry['file'];}echo json_encode($o);",root+assets],{encoding:'utf8',maxBuffer:12e6}));
 const before=definitions(baseline),after=definitions('');
-const report={checkedAt:new Date().toISOString(),base,cacheBusted:process.argv.includes('--cache-bust'),checks:[],responses:[],errors:[],mutations:0,counts:{pages:0,articles:0,authors:0,dates:0,featuredImages:0,holds:0}};
+const report={checkedAt:new Date().toISOString(),base,cacheBusted:process.argv.includes('--cache-bust'),checks:[],responses:[],errors:[],transportRetries:[],mutations:0,counts:{pages:0,articles:0,authors:0,dates:0,featuredImages:0,holds:0}};
 const check=(name,pass,detail)=>report.checks.push({name,pass:!!pass,detail});
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const stage='https://krawlthroughkrakow.com/staging';
@@ -34,7 +35,7 @@ try{
   if(article){report.counts.articles++;if(article.author)report.counts.authors++;if(article.datePublished)report.counts.dates++;if(article.image)report.counts.featuredImages++;}
   for(const [device,userAgent] of Object.entries(agents)){
    const url=base+route+(report.cacheBusted?'?ktk_schema_check='+Date.now():'');
-   const response=await fetch(url,{headers:{'User-Agent':userAgent},signal:AbortSignal.timeout(60000)}),html=await response.text();
+   const response=await fetchCompleteResponse(url,{headers:{'User-Agent':userAgent}}, {onRetry:row=>report.transportRetries.push(row)}),html=await response.text();
    const facts=await page.evaluate(markup=>{
     const doc=new DOMParser().parseFromString(markup,'text/html');
     const clean=value=>String(value??'').replace(/\s+/g,' ').trim();
@@ -60,6 +61,6 @@ try{
 }catch(error){report.errors.push(error.stack);}finally{
  await browser.close();report.passed=report.checks.filter(row=>row.pass).length;report.total=report.checks.length;
  await mkdir(path.dirname(output),{recursive:true});await writeFile(output,JSON.stringify(report,null,2)+'\n');
- console.log(JSON.stringify({passed:report.passed,total:report.total,counts:report.counts,errors:report.errors,failed:report.checks.filter(row=>!row.pass)},null,2));
+ console.log(JSON.stringify({passed:report.passed,total:report.total,counts:report.counts,errors:report.errors,transportRetries:report.transportRetries,failed:report.checks.filter(row=>!row.pass)},null,2));
  if(report.errors.length||report.passed!==report.total)process.exitCode=1;
 }

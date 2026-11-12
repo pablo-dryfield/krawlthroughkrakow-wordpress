@@ -14,7 +14,7 @@ const noop=()=>{};export const useSearchConsoleSites=()=>({data:[{siteUrl:'https
 export const useSeoActionLogs=()=>({data:[],refetch:noop}); export const useInspectSearchConsoleUrl=()=>({});export const useAnalyzeGoogleSerp=()=>({});export const useCreateSeoActionLog=()=>({});
 export function useSearchConsolePerformance(params){const [count,setCount]=useState(1);const key=JSON.stringify(params);useEffect(()=>setCount(1),[key]);window.__requests=(window.__requests||[]);window.__requests.push(params);
  const empty=location.search.includes('empty'); const rows=empty?[]:Array.from({length:count},(_,i)=>({keys:params.dimensions[0]==='page'?['https://krawlthroughkrakow.com/store2/pub-crawl-28/']:params.dimensions.length>1?['krakow pub crawl','https://krawlthroughkrakow.com/store2/pub-crawl-28/']:['krakow pub crawl'],clicks:2,impressions:50,ctr:.04,position:7}));
- return{isSuccess:true,isLoading:false,refetch:noop,hasNextPage:!empty&&count<2,isFetchingNextPage:false,fetchNextPage:()=>setCount(c=>c+1),data:{rows,dimensions:params.dimensions,summary:empty?null:{clicks:9000,impressions:90000,ctr:.1,position:5},summaryAggregation:'byProperty',detailAggregation:params.dimensions.includes('page')?'byPage':'byProperty'}};}`;
+ return{isSuccess:true,isLoading:false,refetch:noop,hasNextPage:!empty&&count<2,isFetchingNextPage:false,fetchNextPage:()=>setCount(c=>c+1),data:{rows,dimensions:params.dimensions,dateCoverage:{historyBoundaryDate:'2025-07-12',startsBeforeHistoryBoundary:location.search.includes('history'),endsInFuture:false},summary:empty?null:{clicks:9000,impressions:90000,ctr:.1,position:5},summaryAggregation:'byProperty',detailAggregation:params.dimensions.includes('page')?'byPage':'byProperty'}};}`;
 const bundle=await build({absWorkingDir:ui,bundle:true,write:false,outfile:'fixture.js',jsx:'automatic',define:{'process.env.NODE_ENV':'"production"'},plugins:[{
  name:'isolated-report-fixture',setup(builder){
   builder.onResolve({filter:/api\/searchConsole$/},()=>({path:'api',namespace:'fixture'}));
@@ -46,6 +46,12 @@ try{
   await page.goto('http://127.0.0.1:'+server.address().port+'/?empty');
   await page.getByText('No summary data returned for these filters and dates.').waitFor();
   check(width+' empty data is not a fake zero or create-page recommendation',await page.getByText('9,000',{exact:true}).count()===0&&await page.getByText(/Investigate query coverage/).count()===0);
+  await page.goto('http://127.0.0.1:'+server.address().port+'/?history');
+  await page.getByText('Date range may be incomplete',{exact:true}).first().waitFor();
+  check(width+' explicit date coverage warning',await page.getByText(/approximate 16-month history boundary/).count()>0);
+  check(width+' incomplete comparison never displays a delta',await page.getByText('No comparison',{exact:true}).count()===4&&await page.getByText('+0.00',{exact:true}).count()===0);
+  check(width+' history notices fit without page overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1&&[...document.querySelectorAll('[role="alert"]')].every(node=>node.getBoundingClientRect().width<=innerWidth)));
+  if(width===390){await page.getByText('Date range may be incomplete',{exact:true}).first().scrollIntoViewIfNeeded();await page.screenshot({path:path.join(output,'history-'+width+'.png')});}
   await context.close();
  }
  check('no browser errors',report.errors.length===0,report.errors);
