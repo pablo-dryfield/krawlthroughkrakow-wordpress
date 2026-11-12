@@ -78,6 +78,8 @@ New payload-bound local browser evidence is `heading-followup.json` (811/811).
 - `.2` origin source contracts: **692/692** across catalog plus all 24 products on
   desktop/Android/iPad, including current renderer, owned CSS exclusion and real
   non-lazy first images. Production renderer/assets remain original.
+  The full post-heading-release repeat, `final-origin.json`, also passes 692/692
+  against the final CSS checksum, not the previous stylesheet.
 - Live browser checks cover catalog, regular crawl, NYE and Bubble Football with
   and without JS at 320/390/768/1440. They block all mutations and external
   tracking; this is not an end-to-end payment, consent or field-CWV certification.
@@ -93,6 +95,12 @@ New payload-bound local browser evidence is `heading-followup.json` (811/811).
 - Full offline Python suite: 137/137; shared JS contracts 16/16; code-page PHP
   746/746, form contracts 31/31, Clarity policy 26/26, discovery 65/65 and shared
   integrations 69/69. These do not certify third-party tracking or field CWV.
+
+Source control: [PR5](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/pull/5).
+The application/test checkpoint `cd2ff029f6a62ba0d898b49ff607a3dc2cac3926` passed
+both offline tests/build and secret scan in GitHub run43286488962. Gitleaks also
+passed locally with redacted output. Repository merging does not deploy anything
+or resolve the pending Cloudflare cache checks.
 
 Preserved failures are important: `local.json` originally passed 775/811 due to
 an incomplete preview body class, transformed-text/font timing assumptions and
