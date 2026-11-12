@@ -31,6 +31,8 @@ CACHE_TARGETS = (
 REQUIRED_FILES = {
     "ktk-storefront.php",
     "includes/class-ktk-storefront.php",
+    "includes/class-ktk-storefront-public-content.php",
+    "includes/product-content-fallbacks.json",
     "templates/storefront.php",
     "assets/storefront.js",
     "assets/storefront.css",
@@ -39,6 +41,8 @@ DEPLOY_FILES = {
     "ktk-storefront.php",
     "README.md",
     "includes/class-ktk-storefront.php",
+    "includes/class-ktk-storefront-public-content.php",
+    "includes/product-content-fallbacks.json",
     "templates/storefront.php",
     "assets/storefront.js",
     "assets/storefront.css",

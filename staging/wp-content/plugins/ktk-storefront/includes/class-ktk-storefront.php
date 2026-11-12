@@ -4,6 +4,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+require_once __DIR__ . '/class-ktk-storefront-public-content.php';
+
 final class KTK_Storefront {
 	const QUERY_FLAG = 'ktk_storefront';
 	const QUERY_PATH = 'ktk_storefront_path';
@@ -26,6 +28,7 @@ final class KTK_Storefront {
 		add_filter( 'wp_robots', array( __CLASS__, 'filter_robots' ), 99 );
 		add_filter( 'body_class', array( __CLASS__, 'filter_body_class' ) );
 		add_filter( 'rocket_exclude_css', array( __CLASS__, 'exclude_rocket_css' ) );
+		add_filter( 'style_loader_tag', array( __CLASS__, 'public_style_tag' ), 10, 2 );
 		add_filter( 'rocket_exclude_js', array( __CLASS__, 'exclude_rocket_js' ) );
 		add_filter( 'rocket_exclude_defer_js', array( __CLASS__, 'exclude_rocket_js' ) );
 		add_filter( 'rocket_delay_js_exclusions', array( __CLASS__, 'exclude_rocket_js' ) );
@@ -102,6 +105,44 @@ final class KTK_Storefront {
 
 		status_header( 200 );
 		return KTK_STOREFRONT_DIR . 'templates/storefront.php';
+	}
+
+	public static function public_html_enabled() {
+		return self::is_storefront_request() && home_url( '/' ) === 'https://krawlthroughkrakow.com/staging/'
+			&& site_url( '/' ) === 'https://krawlthroughkrakow.com/staging/';
+	}
+
+	public static function public_style_tag( $html, $handle ) {
+		if ( 'ktk-storefront' !== $handle || ! self::public_html_enabled() || ! class_exists( 'WP_HTML_Tag_Processor' ) ) { return $html; }
+		$tag = new WP_HTML_Tag_Processor( $html );
+		if ( $tag->next_tag( 'LINK' ) ) { $tag->set_attribute( 'data-no-minify', '1' ); }
+		return $tag->get_updated_html();
+	}
+
+	public static function public_html_data() {
+		if ( ! self::public_html_enabled() ) { return null; }
+		$path = self::storefront_path();
+		if ( '' === $path ) {
+			$payload = get_transient( 'ktk_sf_' . md5( 'catalog' ) );
+			if ( ! is_array( $payload ) || ! isset( $payload['products'] ) || ! is_array( $payload['products'] ) ) {
+				$response = wp_remote_get( untrailingslashit( self::storefront_api_base() ) . '/products', array( 'timeout' => 8, 'headers' => array( 'Accept' => 'application/json' ) ) );
+				if ( is_wp_error( $response ) || 200 !== (int) wp_remote_retrieve_response_code( $response ) ) { return null; }
+				$payload = json_decode( wp_remote_retrieve_body( $response ), true );
+				if ( ! is_array( $payload['products'] ?? null ) || empty( $payload['products'] ) ) { return null; }
+				set_transient( 'ktk_sf_' . md5( 'catalog' ), $payload, self::CACHE_TTL );
+			}
+			$products = array_filter( $payload['products'], function ( $product ) {
+				return is_array( $product ) && ! empty( $product['name'] ) && preg_match( '/^[a-z0-9]+(?:-[a-z0-9]+)*$/D', $product['slug'] ?? '' );
+			} );
+			return $products ? array( 'kind' => 'catalog', 'products' => array_values( $products ) ) : null;
+		}
+		$slug = self::product_slug();
+		if ( '' === $slug ) { return null; }
+		$product = self::product_payload( $slug );
+		if ( empty( $product['name'] ) || ( $product['slug'] ?? '' ) !== $slug ) { return null; }
+		$payload = get_transient( 'ktk_sf_' . md5( 'product_' . $slug ) );
+		return array( 'kind' => 'product', 'product' => $product,
+			'cancellationPolicy' => is_array( $payload['storefrontConfig']['cancellationPolicy'] ?? null ) ? $payload['storefrontConfig']['cancellationPolicy'] : null );
 	}
 
 	public static function enqueue_assets() {
@@ -422,6 +463,7 @@ final class KTK_Storefront {
 		$content = isset( $product['config']['content'] ) && is_array( $product['config']['content'] )
 			? $product['config']['content']
 			: array();
+		if ( self::public_html_enabled() ) { $content = KTK_Storefront_Public_Content::resolve( $product ); }
 		$parts = array();
 
 		foreach ( array( 'description', 'summary' ) as $field ) {
@@ -460,6 +502,11 @@ final class KTK_Storefront {
 		if ( isset( $product['images'] ) && is_array( $product['images'] ) ) {
 			foreach ( $product['images'] as $image ) {
 				$images[] = is_array( $image ) ? $image : array( 'url' => $image );
+			}
+		}
+		if ( self::public_html_enabled() ) {
+			foreach ( KTK_Storefront_Public_Content::resolve( $product )['gallery'] as $url ) {
+				$images[] = array( 'url' => $url );
 			}
 		}
 

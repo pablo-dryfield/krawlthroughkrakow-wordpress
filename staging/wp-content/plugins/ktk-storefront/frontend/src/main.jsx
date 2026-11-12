@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client';
 import { getCountries, getCountryCallingCode } from 'libphonenumber-js/min';
 import { getProductContent } from './product-content';
+import { completePublicContentHandoff, followPublicLink, publicStorefrontHref } from './public-content';
 import ProductConfigurator, {
   CustomSelect,
   resolveAddonMaxQuantity,
@@ -751,9 +752,17 @@ function ProductCardMedia({ product, index }) {
   );
 }
 
+function StorefrontLink({ path = '', navigate, children, ...props }) {
+  return <a {...props} href={publicStorefrontHref(config.baseUrl, path)} onClick={(event) => followPublicLink(event, navigate, path)}>{children}</a>;
+}
+
 function Catalog({ navigate }) {
   const [state, setState] = useState({ loading: true, products: [], error: '' });
   const [attempt, setAttempt] = useState(0);
+
+  useEffect(() => {
+    if (!state.loading) completePublicContentHandoff(document);
+  }, [state.loading]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -939,14 +948,14 @@ function Catalog({ navigate }) {
                 <span aria-hidden="true">{'\u2193'}</span>
               </button>
               {firstExperience && (
-                <button
+                <StorefrontLink
                   className="ktk-hero__secondary"
-                  type="button"
-                  onClick={() => navigate(firstExperience.slug)}
+                  path={firstExperience.slug}
+                  navigate={navigate}
                 >
                   Start with a classic
                   <span aria-hidden="true">{'\u2197'}</span>
-                </button>
+                </StorefrontLink>
               )}
             </div>
             <ul className="ktk-hero__signals" aria-label="Store benefits">
@@ -963,11 +972,11 @@ function Catalog({ navigate }) {
             </div>
             <div className="ktk-hero__tickets">
               {featuredProducts.map((product, index) => (
-                <button
+                <StorefrontLink
                   className={`ktk-hero-ticket ktk-hero-ticket--${index + 1}`}
-                  type="button"
                   key={product.id}
-                  onClick={() => navigate(product.slug)}
+                  path={product.slug}
+                  navigate={navigate}
                 >
                   <span className="ktk-hero-ticket__index">0{index + 1}</span>
                   <span className="ktk-hero-ticket__main">
@@ -981,7 +990,7 @@ function Catalog({ navigate }) {
                     </strong>
                   </span>
                   <span className="ktk-hero-ticket__arrow" aria-hidden="true">{'\u2197'}</span>
-                </button>
+                </StorefrontLink>
               ))}
             </div>
             <div className="ktk-hero__deck-footer" aria-hidden="true">
@@ -1007,12 +1016,12 @@ function Catalog({ navigate }) {
               <ProductCardMedia product={product} index={index} />
               <div className="ktk-product-card__body">
                 <p>{product.productType?.name || 'Experience'}</p>
-                <h3>{product.name}</h3>
+                <h3><StorefrontLink path={product.slug} navigate={navigate}>{product.name}</StorefrontLink></h3>
                 <div className="ktk-product-card__footer">
                   <strong>From {money.format(product.price.amount)}</strong>
-                  <button type="button" onClick={() => navigate(product.slug)} aria-label={`View ${product.name}`}>
+                  <StorefrontLink path={product.slug} navigate={navigate} aria-label={`View ${product.name}`}>
                     View <span>{'\u2197'}</span>
-                  </button>
+                  </StorefrontLink>
                 </div>
               </div>
             </article>
@@ -1033,6 +1042,10 @@ function ProductDetail({ slug, navigate, addToCart, cart, contact, setContact })
   const [attempt, setAttempt] = useState(0);
   const [activeImage, setActiveImage] = useState(0);
   const [contactAttempted, setContactAttempted] = useState(false);
+
+  useEffect(() => {
+    if (!state.loading) completePublicContentHandoff(document);
+  }, [state.loading]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -1142,9 +1155,9 @@ function ProductDetail({ slug, navigate, addToCart, cart, contact, setContact })
   return (
     <article className="ktk-detail">
       <nav className="ktk-detail__nav" aria-label="Product navigation">
-        <button className="ktk-back" type="button" onClick={() => navigate('')}>
+        <StorefrontLink className="ktk-back" navigate={navigate}>
           <span aria-hidden="true">{'\u2190'}</span> All experiences
-        </button>
+        </StorefrontLink>
         <span>Local crew. Secure booking.</span>
       </nav>
 
