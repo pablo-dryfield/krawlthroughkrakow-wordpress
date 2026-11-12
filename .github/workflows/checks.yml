@@ -49,6 +49,7 @@ jobs:
           php tools/tests/test_code_pages_integration.php
           php tools/tests/test_code_pages_forms.php
           php tools/tests/test_clarity_policy.php
+          php tools/tests/test_seo_discovery.php
       - name: Build storefront (never uploads or deploys)
         run: npm run build --prefix staging/wp-content/plugins/ktk-storefront/frontend
 

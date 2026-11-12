@@ -98,6 +98,9 @@ class StagingFTP:
     def mkd(self, directory):
         return self.run(lambda connection: connection.mkd(directory))
 
+    def rmd(self, directory):
+        return self.run(lambda connection: connection.rmd(directory))
+
     def delete(self, remote):
         return self.run(lambda connection: connection.delete(remote))
 
