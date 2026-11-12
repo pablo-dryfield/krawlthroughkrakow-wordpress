@@ -1,0 +1,2 @@
+# Publishers and stored manifests compare exact bytes. Do not normalize EOLs.
+* -text

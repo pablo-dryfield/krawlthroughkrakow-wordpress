@@ -1,0 +1,104 @@
+.ktk-local-preview {
+  min-width: 320px;
+}
+
+.ktk-dev-header {
+  position: relative;
+  z-index: 10;
+  min-height: 124px;
+  padding: 24px clamp(24px, 4vw, 72px);
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  align-items: center;
+  gap: 32px;
+  background: #090909;
+  color: #f3eee4;
+  font-family: "Montserrat", sans-serif;
+}
+
+.ktk-dev-logo {
+  width: 82px;
+  display: grid;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: -0.08em;
+  line-height: 0.76;
+  text-decoration: none;
+  transform: rotate(-7deg);
+}
+
+.ktk-dev-logo small {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.ktk-dev-logo strong,
+.ktk-dev-logo span {
+  color: #ff168f;
+}
+
+.ktk-dev-logo span {
+  color: #fff;
+}
+
+.ktk-dev-header nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(18px, 2.2vw, 38px);
+}
+
+.ktk-dev-header nav a,
+.ktk-dev-book {
+  color: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ktk-dev-header nav .is-active {
+  color: #ff168f;
+}
+
+.ktk-dev-book {
+  padding: 14px 20px;
+  border: 3px solid #fff;
+  font-size: 19px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.ktk-dev-menu {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  background: transparent;
+}
+
+.ktk-dev-menu span {
+  width: 25px;
+  height: 3px;
+  margin: 4px auto;
+  display: block;
+  background: #ff168f;
+}
+
+@media (max-width: 1120px) {
+  .ktk-dev-header nav,
+  .ktk-dev-book {
+    display: none;
+  }
+
+  .ktk-dev-header {
+    min-height: 104px;
+    grid-template-columns: 1fr auto;
+  }
+
+  .ktk-dev-menu {
+    display: block;
+  }
+}

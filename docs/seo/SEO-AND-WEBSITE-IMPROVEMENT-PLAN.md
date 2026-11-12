@@ -1,0 +1,294 @@
+# Krawl Through Krakow: SEO and Website Improvement Plan
+
+Created: 2026-11-07, Europe/Warsaw  
+Status: Implementation started with version-control preparation; no SEO changes deployed  
+Goal: More qualified organic visitors, more completed direct bookings, and a clearer, faster, reliable website.
+
+## 1. Decisions in Plain English
+
+The largest opportunity is not publishing dozens of new articles or changing URLs. It is improving the pages already connected to our business: the main pub crawl, NYE, nightlife, bars/clubs and group trips, supported by reliable reporting and a better booking journey.
+
+Start in this order:
+
+1. Correct the Search Console reporting limitations so we can measure improvement honestly.
+2. Fix discovery and page fundamentals: sitemap, server-delivered booking-page content, metadata and relevant internal links.
+3. Improve the main pub-crawl and NYE experiences without discarding existing ranking URLs.
+4. Refresh the nightlife hub and the strongest existing local guides with firsthand information.
+5. Measure and improve mobile performance, accessibility and booking friction.
+6. Strengthen Google Business Profile, authentic reviews and relevant local partnerships.
+
+Code ownership makes these changes easier to test and maintain. It does not itself improve rankings, and no plan can guarantee position 1. WordPress still supplies parts of the serving/backend infrastructure; this is not a platform-removal project.
+
+**No SEO changes in this plan have been deployed.** On November 12 the owner authorized starting website improvements on staging only, then requested private GitHub version control first. Production remains unchanged. The original production database audit was read-only. No customer records, orders, payments, emails, credentials or commerce integrations are changed by this plan. OmniLodge development/deployment requires its own explicit approval. The legacy Ecwid store remains protected.
+
+## 2. Evidence and Confidence
+
+### Sources Reviewed
+
+- Ahrefs HTML report, evidence JSON and six CSV exports in `C:\Users\pjcam\Documents\Reports\KTK-Ahrefs-2026-11-04`.
+- OmniLodge production database: read-only connector health, SEO action-log schema and bounded action-log read. There are **zero saved SEO actions**. Recommendations are calculated in the browser from Google's live data, not stored as database rows.
+- Authenticated OmniLodge Search Console page: all displayed recommendations/opportunities for **28, 90, 180 and 365 days**, ending November 5, plus keyword/landing-page tables and four URL inspections.
+- Fresh production HTTP/HTML audit: **128 URLs, 128 responses, zero transport errors**, including all 116 migrated content routes, homepage, selected storefront URLs, aliases and known broken destinations. Six WordPress child sitemaps and robots.txt were also read.
+- Existing migration/release documentation and current generators/renderers. Original migration preserved deficiencies deliberately; the current audit does not attribute every old issue to the migration.
+- Current primary Google guidance, linked in section 11. No fresh Ahrefs crawl, full backlink investigation, live competitor SERP study, field-speed audit or conversion experiment was performed in this research task.
+
+Supporting evidence:
+
+- [Search Console periods, database method, 57 deduplicated findings and indexing observations](audit-2026-11-07/SEARCH-CONSOLE-AND-DATABASE-EVIDENCE.md).
+- [Current production URL/metadata/link/sitemap observations](audit-2026-11-07/production-baseline.json).
+- Repeat the bounded public audit from the repository root: `node tools/audit-seo-baseline.mjs docs/seo/audit-YYYY-MM-DD/production-baseline.json`. It uses an isolated DOM parser and GET requests; it does not execute website scripts or submit anything.
+
+### What We Can Say Now
+
+| Observation | Evidence / confidence | Meaning |
+| --- | --- | --- |
+| Core booking demand already exists | Live GSC exact query rows; high confidence | Protect current pub-crawl visibility before experimenting. |
+| Nightlife/local-guide opportunity repeats over time | GSC four-window review plus Ahrefs competitor gap; high confidence in opportunity, not forecast uplift | Improve existing local content rather than unrelated traffic topics. |
+| Search Console dashboard understates/limits its own coverage | Source inspection: every request asks for 100 rows; UI sums those rows; confirmed | Its cards are not dependable sitewide totals. Fix before declaring growth, decline or missing demand. |
+| Content pages need descriptions | All 56 article and 21 standalone migrated-page responses omit meta descriptions; confirmed | 77 inherited content-page metadata gaps, not 77 indexing failures. Prioritize commercial/high-impression pages. |
+| Heading structure needs cleanup | Homepage has 13 H1 elements including lower/footer headings; all 39 archives and one article lack H1 in source; confirmed | Improve semantics/accessibility while preserving visual appearance. Multiple H1s are not an automatic penalty. |
+| Storefront content depends on rendering | Selected store2 raw responses have metadata/Product markup but no main text or H1; confirmed in source only | Add resilient server-delivered public content. This does not prove Google cannot render/index the current product. |
+| Storefront discovery is incomplete in the current sitemap | `/wp-sitemap.xml` works, but its six children contain no store2 URLs; confirmed | Add intended indexable storefront destinations, not cart/session URLs. |
+| Old sitemap inconsistencies remain | Activities and Life Drawing redirects and homepage-canonical `/krakow-pub-crawl/` remain listed; confirmed | List final preferred URLs, preserving existing correct redirects. |
+| Three old destinations still return 404 | Old brunch product, old student-trip URL and old dated article URL; confirmed | Map only genuine replacements; do not redirect every 404 to the homepage. |
+| Some commercial pages have weak internal discovery | No incoming anchor from the sampled successful pages to stag/hen pages; sample-bounded | Verify full rendered link graph, then add relevant navigation/contextual links. Not a proven whole-web orphan count. |
+| Current clean product canonical is already correct | Pub-crawl UTM variant canonicalizes to clean store2 URL; confirmed | Do not remove legitimate attribution parameters to solve an already-correct canonical. |
+| Important migration safeguards remain | All 116 content routes returned 200; no production noindex or staging anchors in audited successful nonredirect responses | Positive technical sample, not proof all URLs are indexed or rankings unchanged. |
+| Some indexed content has been recrawled after cutover | How to Join inspection: indexed, matching Google canonical, crawl November 6 | Positive one-page evidence, not whole-site migration-impact proof. |
+
+The raw audit's 122 successful nonredirect HTML responses include a query variant and the existing homepage alias. They are not 122 independent preferred pages. Missing H1 counts also include JavaScript storefront shells. The 117 Open Graph gaps are social-sharing opportunities, not 117 ranking emergencies.
+
+### Measurement Windows
+
+Use these windows as different lenses, not additive totals:
+
+| Window | Reviewed dates | Use |
+| --- | --- | --- |
+| 28 days | 2026-10-09 to 2026-11-05 | Current intent, snippets and immediate seasonal opportunities. |
+| 90 days | 2026-08-08 to 2026-11-05 | Primary prioritization window; less sensitive to a few days. |
+| 180 days | 2026-05-10 to 2026-11-05 | Check recurring topics and business seasonality. |
+| 365 days | 2025-11-06 to 2026-11-05 | Long-run discovery, legacy assets and seasonal demand. |
+
+All overview totals are currently top-100 partial sums. Do not compare their annual previous-period card as a complete prior year: available historical coverage has not been established. Retrieve comparable same-date prior-year slices where available, with country/device/brand/page-cluster segmentation, before making conclusions.
+
+The full content cutover was November 5, 2026; the homepage was already code-managed earlier. A report ending on November 5 cannot establish full-cutover ranking impact. Establish post-cutover 7/28/90-day cohorts once those days are available; distinguish a technical incident from expected seasonal change. Google's stored homepage/product/NYE inspections predate the full content cutover, whereas the How to Join sample postdates it.
+
+## 3. Prioritized Backlog
+
+Priority: P0 = prerequisite or high-risk correctness; P1 = first growth/experience work; P2 = supporting improvement; P3 = conditional expansion. Effort S/M/L is relative engineering/editorial size, not a delivery estimate. Every unchecked item remains proposed. Acceptance criteria are completion gates, not ranking guarantees.
+
+### Measurement and Migration Protection
+
+| ID / status | Priority / effort | Work | Done when |
+| --- | --- | --- | --- |
+| M01 [ ] | P0 / M | Fix OmniLodge Search Console reporting: independent whole-property/date totals; paginated detailed rows with explicit coverage; exact-query vs substring groups; metrics aligned to the displayed page; separate query/page aggregation; filters by country/device/search type; no-data vs truncated flags. Label heuristic recommendations. | Native GSC and OmniLodge agree within documented aggregation/coverage differences. Missing rows never automatically become Create page instructions. Requires separate OmniLodge implementation approval. |
+| M02 [ ] | P0 / S | Establish dated SEO baseline and annotate homepage/content releases separately. Export complete available 28/90/180/365-day data and comparable prior-year periods; split brand/nonbrand, UK/Poland/other markets, mobile/desktop, commercial/editorial/PDF/legacy pages. | Comparable exports and assumptions are retained; indexed/canonical/traffic changes can be investigated without guessing. |
+| M03 [ ] | P1 / M | Verify the full measurement funnel: landing -> named booking CTA -> product -> booking start -> payment completion -> revenue. Keep journey history and UTM handoff; distinguish direct/organic/paid/Google booking integrations. Avoid counting button clicks or failed payments as purchases. | Events are documented, consent-aware, deduplicated using transaction identity, and reconciled against aggregated paid bookings without exposing personal data. No live test purchases without approval. |
+| M04 [ ] | P1 / S | Check native GSC Page Indexing, Crawl Stats, submitted sitemaps, Manual Actions and Security Issues; inspect representative page types after Google's next crawl. Configure meaningful failure alerts/weekly review, not a noisy total-keyword scoreboard. | Coverage is recorded by page type; actual exclusions and availability problems have owners. Manual actions/security status is verified, not assumed clean. |
+
+### Technical SEO and Discovery
+
+| ID / status | Priority / effort | Work | Done when |
+| --- | --- | --- | --- |
+| T01 [ ] | P0 / M | Write an intent-to-URL map: homepage = brand/main Krakow pub crawl; store2 product = details/booking; nightlife hub = advice; NYE sales page = current event; guides = informational. Review real overlaps before consolidation. Preserve clean canonicals for attribution/query variants and normal www/HTTPS redirects. | Each intent has an explicit primary landing page and supporting pages. Distinct useful pages are not canonicalized to each other merely for sharing keywords. Legacy fallback store remains working. |
+| T02 [ ] | P1 / L | Deliver useful storefront title, H1, description, inclusions, images and indexable product links in initial HTML, using the same public product source as hydration/metadata/schema. Start with pub crawl and NYE, then the active catalog. No crawler-only content. | No-JS/public source contains meaningful product information; rendering does not duplicate content; prices/availability stay accurate; Google live inspection can see the same offer users see. Existing indexed product remains accessible. |
+| T03 [ ] | P0 / M | Make a code-owned sitemap layer consistent with the explicit content registry and intended catalog: final HTTPS canonical 200 URLs only, accurate change dates, no UTM/cart/staging/aliases. Remove redirect/noncanonical entries from owned feeds. Add sitemap discovery in robots.txt. | Correct content and store2 destinations are discoverable and submitted in GSC. Do not delete the legacy Ecwid sitemap or index policy without an approved equivalence plan. `/sitemap_index.xml` being 404 is not itself a fault: the current valid endpoint is `/wp-sitemap.xml`. |
+| T04 [ ] | P1 / M | Normalize heading hierarchy without redesign: one clear primary page heading as a project convention; lower/footer headings become appropriate H2/H3 or nonheading text; give archives useful descriptive H1s and fix the newsletter article. | All intended indexable templates have a meaningful hierarchy; screenshots, TOC anchors, keyboard reading and mobile layout regressions pass. No invisible keyword headings. |
+| T05 [ ] | P1 / M | Add reviewed per-page SEO overrides: distinct descriptive titles, missing descriptions, canonical/robots policy, Open Graph/social cards and images. Start with core/NYE/local guides, then remaining content. Preview real snippets, not fixed character-count targets. | 77 content description gaps are resolved or explicitly justified; important pages match their actual offer; no duplicated metadata/contradictory canonical; visual/commerce behavior unchanged. Google may still rewrite title/snippet. |
+| T06 [ ] | P2 / M | Decide archive indexing case by case. Enrich useful categories; review thin tag/author/Uncategorized pages; differentiate paginated titles and retain crawlable pagination. Review the missing canonical on `/krakow-team-building-activities/`. | Every archive group has keep/improve/noindex/merge rationale based on traffic, value and links. No blanket archive deletion or canonicalizing all pagination to page 1. |
+| T07 [ ] | P1 / S-M | Recover genuine broken destinations; remove avoidable redirect chains and stale image/external URLs. Check `/student-trips-and-parties/` -> `/student-trips-poland/`, `/2019/09/05/2681/` -> current Auschwitz article, and old brunch URL -> current brunch offer for equivalence. | Approved equivalent routes return one-hop permanent redirects; retired non-equivalents retain honest 404/410; links point straight to final URLs. Specific legacy-store-route work needs approval, not a blanket `/store/` rewrite. |
+| T08 [ ] | P1 / M | Improve meaningful internal links and navigation for stag, hen, student, nightlife guides and related products. Use clear anchors, breadcrumbs and relevant related articles. Validate the apparent isolated Terms page as part of trust/checkout links. | Commercial pages can be reached naturally from relevant hubs and content without JS-only navigation; complete rendered crawl confirms no unintended commercial orphans. Avoid repeated keyword-heavy footer links. |
+| T09 [ ] | P1 / M | Validate structured data: consistent Organization/WebSite identity, Article/BlogPosting + author/date/image for articles, BreadcrumbList, and accurate applicable offer/event data. Recheck the three old schema validation warnings. | Markup represents visible verified facts, passes applicable validation and is generated from shared data. No copied platform review totals injected as self-serving rich-review markup. Product/Event eligibility reviewed rather than assumed. |
+| T10 [ ] | P1 / M | Add SEO regression checks for HTTP status, canonical, robots, initial content, metadata, schema, internal destinations, sitemap and desktop/mobile cache variants. Include meaningful 404s and guarded routing. | Changes fail CI/release checks when they leak staging, lose content, misindex private/cart pages or break URLs. Existing publisher safeguards remain intact. |
+
+### Content and Commercial Intent
+
+| ID / status | Priority / effort | Work | Done when |
+| --- | --- | --- | --- |
+| C01 [ ] | P1 / M | Strengthen homepage and main product for pub/bar crawl in Krakow using natural language, actual inclusions, meeting details, guide credentials, original photos, FAQs and clearly placed booking controls. Keep brand visible and preserve the owner's no-price-in-hero instruction; show accurate prices where customers compare/book. | Search promise, landing content and checkout agree. Core queries retain their established destinations; a small metadata/copy pilot is measured before sitewide rewrites. |
+| C02 [ ] | P1 / M | Prioritize NYE now: align `/new-years-eve/`, NYE guide articles and product 32. Confirm December 31, 2026 / welcome 2027, 5:00 PM and 7:30 PM, 250 PLN, meeting points TBA. Distinguish old-event gallery labels from confirmed venues. Test countdown/expiry/next-campaign behavior. | No contradictory year/offer/venue promise; current CTA reaches NYE checkout; TBA is clear and updateable; guide supports rather than duplicates sales intent. Year is not rolled automatically without owner confirmation. |
+| C03 [ ] | P1 / M-L | Refresh the existing `/krakow-nightlife/` hub with a useful, locally verified overview: districts, types of venues, costs with checked dates, opening patterns, practical transport/safety and choices for different visitors. Review existing 2020 guide, `/party-krakow/`, clubs and dating/singles articles before creating anything new. | One strong current hub answers nightlife/night activities/party intent and links to distinct useful guides and the crawl. Sources, original experience and update ownership are recorded. |
+| C04 [ ] | P1 / M | Refresh `/wheres-the-cheap-places-to-drink-in-krakow/`, a repeated near-top opportunity: verified venues, current sample PLN prices, districts, happy-hour conditions and dates, original photos and context. | Cheap bars/drinks/cocktails variants are served by one useful guide, not many thin exact-match pages. No unsupported cheapest/best claims or stale price promises. |
+| C05 [ ] | P1 / M-L | Update techno, jazz, Irish bars, live music, nightclubs, Kazimierz and shot-bar guides. Verify venues still operate and match claimed music/hours/admission; add concise comparison tables/maps and original local recommendations. Review duplicate techno articles first. | Existing successful URLs improve materially; customers can choose a real venue; links to relevant booking options feel appropriate. No copied competitor lists. |
+| C06 [ ] | P1 / M | Improve stag/hen/student-trip pages around actual group questions: group size, private vs public, lead times, confirmed inclusions, coordination, terms and enquiry path. Connect existing stag-prank/costume/safety articles. | Main group pages are reachable and useful, enquiry/booking destination is clear, and facts are consistent with operational offers. Review tone and inclusion for the intended audience. |
+| C07 [ ] | P2 / M-L | Build/refresh crawlable offer information for vodka tasting, boat party, brunch, shooting range, food/brewery tours and other genuinely available products; connect related articles to current store2 destinations. Rank by business margin, availability and evidenced demand. | Current pages address the query and actual booking offer. Inactive/unconfirmed experiences are not advertised as available. Legacy store remains a tested fallback, not silently disabled. |
+| C08 [ ] | P2 / M | Audit all 56 articles: keep, refresh, differentiate, consolidate or retire with a recorded reason. First compare duplicate games, NYE, techno and dated 2019/2020 topics. Verify medical/safety-like claims and remove dangerous or misleading advice. | Each article has owner, intent, evidence, last substantive review and next action. Preserve URLs/backlinks where possible; no mass deletion/noindex based only on low traffic or word count. |
+| C09 [ ] | P2 / M | Preserve `/wp-content/uploads/2020/04/Jenga.pdf` and its useful backlinks. Evaluate a complementary accessible HTML games guide, PDF attribution and relevant internal CTA. Differentiate `/best-drinking-games/` and `/pub-crawl-drinking-games/` only where their intents justify it. | Existing PDF remains reachable; new content adds real value; informational reach and booking contribution are measured separately. Do not apply HTML title/meta advice mechanically to a PDF or redirect it without evidence. |
+| C10 [ ] | P1 / S-M | Strengthen trust: clear operator identity, team expertise, since-2008 history, real photos, contact and meeting-point information, accurate terms/cancellation policies, visible platform-linked reviews. | All claims/review snapshots are supportable; updates have dates internally; price/inclusions/terms match the source of truth. Do not call owner-approved rounded review counts live verified totals. |
+
+### Experience, Performance and Reliability
+
+| ID / status | Priority / effort | Work | Done when |
+| --- | --- | --- | --- |
+| D01 [ ] | P1 / M | Measure images actually downloaded on mobile/desktop; generate appropriately sized WebP/AVIF where useful, correct srcset/sizes, dimensions and meaningful alt text. Keep above-fold content eager and below-fold media lazy. Include CSS backgrounds and large statue SVG complexity in profiling. | Important pages use proportionate transfers without degrading artwork/detail or lazy-loading the LCP asset. Large originals in Ahrefs are not assumed to be every browser's selected download. |
+| D02 [ ] | P1 / M-L | Profile current homepage/product/NYE/article templates with isolated Lighthouse/DevTools and real CWV where available. Reduce unused captured CSS, duplicate font work, long tasks and unnecessary third-party execution carefully. Evaluate cache/API response reliability separately. | Baselines and changes are comparable. Aim for field p75 LCP <=2.5s, INP <=200ms and CLS <=0.1 where enough data exists; no fabricated field claims from a lab score. No consent/tracking breakage to improve a score. |
+| D03 [ ] | P1 / M | Run keyboard, screen-reader and mobile/zoom audits: headings, focus, menu/FAQ/gallery semantics, labels, form errors, touch targets and contrast. Review the 212 missing-alt image occurrences in article source; keep intentionally decorative alt empty. | WCAG-oriented checks and human keyboard/zoom tasks pass on key templates; no content clipping or overlays block controls. Do not fill all alt text with keywords. |
+| D04 [ ] | P1 / M | Inspect real booking friction: date/slot selection, guest counts, add-ons, discount replacement, total transparency, cart editing/Undo and payment errors. Use existing journey data/consented Clarity, plus isolated test fixtures. | Clear path on phone/laptop; no surprise charges; no duplicate discounts/carts/conversion events; recovery and paid-order protections still pass. Payment work requires separate scope and explicit release approval. |
+| D05 [ ] | P1 / S-M | Make meeting/how-to-join information easy to act on: exact regular meeting instructions, current time, accessible directions and fallback textual address when embeds are blocked. Keep NYE TBA distinct. Check floating CTA visibility and overlap on key scroll/zoom states. | Visitors can find the group without enabling optional embeds; no CTA covers schedule/text/buttons; all booking links preserve real incoming UTM tags without adding QA tags. |
+| D06 [ ] | P2 / M | Audit lead/contact paths and response expectations for group enquiries/jobs/contact. Keep existing form backends for now, test validation/feedback without sending real messages, and assess spam/accessibility needs. | Enquiries have clear next steps and ownership; no silent failure or inaccessible feedback. Backend replacement is not required for this plan. |
+| D07 [ ] | P1 / M | Monitor availability and access: bot protection on pages/fonts/APIs, API fallback, broken assets, useful errors, security updates, backups and tested rollback. Retain WordPress/plugin maintenance while those components remain. | Real customers and verified crawlers can access intended content; no blanket WAF disable/allowlist; outages alert an owner; Ecwid fallback and private order/confirmation data stay protected. |
+| D08 [ ] | Deferred / M | Record consent and tracking readiness as a separate dependency, not an SEO growth shortcut. Existing saved-rejection cookie timing issue is documented in shared-integrations evidence. Keep functional Accept/Reject and existing bridge; owner previously declined GTM work. | Reopen only with owner direction and an actually ready replacement/fix; no fake Reject, forced consent or claim of verified cookieless behavior. No consent/container changes authorized by this planning request. |
+
+### Local Visibility, Authority and Maintenance
+
+| ID / status | Priority / effort | Work | Done when |
+| --- | --- | --- | --- |
+| L01 [ ] | P1 / S-M | Audit owner-controlled Google Business Profile: category/identity, service/contact details, hours, booking URL, photos and consistency with website. Identify where the Google/Booking/Search UTM product URL in GSC originates; preserve legitimate attribution. | Accurate profile and a working current booking destination; no keyword-stuffed business name or fake address. Local ranking also depends on distance and prominence, not website work alone. |
+| L02 [ ] | P1 / S | Use a consistent authentic post-experience review process across Google/Tripadvisor/GetYourGuide; respond usefully and refresh website snapshots through one source. | Neutral review requests, no purchased/incentivized positives or selective review gating; counts and links stay accurate. |
+| L03 [ ] | P2 / M | Pursue useful hostel/hotel/university/travel/venue partnerships and original local resources worth citing. Audit existing useful wikiHow/Culture Trip/KrakowBuzz/Stoke Travel/Seeker destinations for preservation. | Relevant referrals/editorial mentions and referral bookings grow; outreach is owner-approved. No bulk link buying or DR targets as the success metric. |
+| L04 [ ] | P2 / M | Review suspicious historical backlinks and source context; check native GSC Manual Actions before considering disavow. Recover the two specific broken-linked destinations where equivalent. | Documented evidence and appropriate action; no accusation about who placed links and no automatic disavow based on TLD, DR or tool labels. |
+| G01 [ ] | P1 / M | Create a reviewed code-owned SEO/content data layer for overrides and shared facts: offer identity, times, meeting points, canonical/robots, descriptions, review snapshots and editorial review dates. Do not hand-edit generated capture output. | One authoritative maintained value feeds relevant visible text/metadata/schema/sitemap. Source changes survive rebuilds. Later visual editing can be added deliberately without restoring Divi rendering. |
+| G02 [ ] | P1 / M | Establish a safe live-update release procedure: pre-edit backup, small scoped source change, local QA, staging, owner sign-off, reviewed production updater and device-aware cache verification. | Rollback is proven and original WP data retained. Do not blindly rerun the initial production-cutover publisher or weaken its activation guards. |
+| G03 [ ] | P3 / L | Evaluate translations only after real country/language/booking evidence. Use genuinely translated useful pages, supported customer operations and correct hreflang if approved. | A measurable market/business case exists; no mass machine-translated doorway pages. Search country is not nationality. |
+| G04 [ ] | P2 / S recurring | Assign content/campaign owners and a monthly review cadence; verify seasonal facts before launch, after expiry and before rollover. Maintain a small measured query set in Ahrefs Rank Tracker if desired; it was empty on November 4. | No forgotten years/prices/closed venues; editorial/change log retained; recurring reports focus on qualified visibility and completed bookings. This plan does not create an automation or change Ahrefs settings. |
+
+## 4. First Delivery Batches
+
+These are sequencing suggestions, not a request to deploy everything at once.
+
+### Batch A: Reliable Baseline and Low-Risk Foundations
+
+- M01/M02: repair reporting first, or obtain equivalent native GSC exports while OmniLodge work awaits approval.
+- T01: agree URL roles before changing canonical/redirect/index policy.
+- T03: add intended code-page/storefront discovery and remove known noncanonical sitemap entries within an approved boundary.
+- T05/G01: introduce the maintainable metadata override source, then pilot descriptions on homepage-adjacent commercial pages, NYE and the two strongest local guides.
+- T07/T08: review three broken mappings and add useful links to stag/hen/student routes.
+- M04/T10: monitor technical safeguards, not just ranks.
+
+### Batch B: Main Booking Journey and NYE
+
+- T02: server-delivered public content for pub crawl/NYE.
+- C01/C02/D05: consistent offer, meeting information, event dates and booking path.
+- D01/D02/D03: measure then fix the largest mobile/template bottlenecks.
+- M03/D04: verify meaningful events and booking usability without production test payments.
+
+### Batch C: Local Content and Authority
+
+- C03/C04/C05: nightlife hub, cheap bars, techno, jazz and Irish-bar refreshes.
+- C06/C07: commercially relevant group and secondary-product improvements.
+- C08/C09: deliberate duplicate-topic/PDF strategy, not mass pruning.
+- L01/L02/L03: profile/reviews/partnerships, with separate owner access/approvals where needed.
+
+### Batch D: Ongoing Improvement
+
+- Use corrected 28/90-day cohorts and available year-on-year comparisons to reprioritize.
+- Expand only into topics/products where KTK has expertise, genuine customer demand and an available service.
+- Consider G03 localization only after the baseline and main experience work.
+
+## 5. Suggested Page-to-Intent Map
+
+Proposed, requiring review against complete query/page data before canonical or consolidation changes.
+
+| Intent | Existing primary candidate | Supporting roles |
+| --- | --- | --- |
+| Brand / Krakow pub crawl / bar crawl | `/` | `/store2/pub-crawl-28/` for detailed booking; How to Join/meeting point/FAQ for practical questions. |
+| NYE pub crawl / current NYE party | `/new-years-eve/` | Product 32 booking; `/krakow-new-years-eve/` as useful city/event guide if differentiated; review `/new-years-eve-in-krakow/` overlap. |
+| Krakow nightlife / things to do at night | `/krakow-nightlife/` | Specific venue/music/district guides, dating/singles page and current pub-crawl offer. |
+| Cheap bars/drinks/cocktails | `/wheres-the-cheap-places-to-drink-in-krakow/` | Neighborhood or music guides only when genuinely distinct. |
+| Techno clubs | `/krakow-techno-clubs/` | Review `/krakow-techno-clubs-2/` and old club guides before merging. |
+| Jazz / Irish bars / live music | Existing separate relevant guide per intent | Interlink through nightlife hub, with confirmed facts. |
+| Stag / hen / student groups | `/krakow-stag-do/`, `/krakow-hen-do/`, `/student-trips-poland/` | Related group advice and current private-tour/product destinations. |
+| Drinking games / printable Jenga | Existing PDF plus selected games HTML guide | Clarify games-page overlap without sacrificing the PDF's links or traffic. |
+| Secondary tour/product | Matching current store2 product | Helpful existing article -> relevant available offer; preserve legacy fallback. |
+
+No new page is proposed solely to target a spelling variant such as `krawlthroughkrakow`. Do not copy the same page for every word-order variation.
+
+## 6. Ahrefs Findings Reconciled With Today
+
+The November 4 crawl had health score 92 across 754 resources/URLs, including 63 with errors, and 48 nonzero issue definitions. Those are Ahrefs classifications, not Google's quality score or 63 broken sales pages. Current production samples have a different scope, so old/new totals are not a valid before/after comparison.
+
+| Original warning group | Current disposition |
+| --- | --- |
+| Old NYE year / old booking links | Main NYE page now says 2026/2027, TBA and confirmed groups. Migrated content has no old FareHarbor/Ecwid booking anchors in this raw-source sample. Recheck old guide copy and keep C02; do not repeat the completed migration fixes. |
+| 81 indexable missing descriptions, long/short descriptions and long titles | 77 migrated content responses still have no description. T05 addresses priority/uniqueness; exact warning thresholds are not Google ranking rules. |
+| Missing/multiple H1, low word count | T04/C08; footer/template semantics matter. Do not pad articles to hit an arbitrary length. |
+| 20 oversized images, 212 image redirects, 35 slow URLs, 5 oversized CSS files | D01/D02. Current localized large-original image references remain; browser-selected sizes and real CWV still need measurement. A 1,875ms crawler response is not an LCP result. |
+| Missing alt / image pages | D03/D01. Fresh source confirms many missing attributes, but empty decorative alt is not automatically an error. |
+| 8 orphans, single-inbound/no-outgoing pages | T08/T06. Focus commercially useful pages, not linking every thin archive merely to satisfy the crawler. |
+| 3 404 findings / 30 broken-link source pages | T07. Much of the count concerns `/cdn-cgi/l/email-protection`: 31 such anchors still appear in this sample. Verify actual email behavior before treating Cloudflare obfuscation artifacts as broken customer contact. Three separate historical destination 404s are real. |
+| HTTP links, redirects, chains, redirected images, external 3XX/4XX | T07/D01. No internal HTTP anchors in current audited successful pages, so that old observation is not a fresh confirmed defect. Normal HTTPS redirects are intentional. Review failed external links with browser/provider context. |
+| Sitemap redirects/noncanonicals and missing indexable pages | T03; confirmed remaining aliases and missing store2 coverage. |
+| Article/ItemList/FAQ schema, 3 validation notices | T09. Article markup is useful; ItemList is semantic hygiene where suitable. FAQ rich results have been retired by Google in 2026: do not prioritize FAQPage just to clear Ahrefs' AI-discoverability notice. Useful visible FAQs still matter to users. |
+| Noindex warnings | Review intended policy, do not strip noindex indiscriminately. Production successful HTML sample has none; staging/private/cart/utility policies need deliberate protection. |
+| SERP title differs from page title | Often Google's normal rewriting; investigate mismatches, not force exact identity. T05. |
+| Open Graph / social-card gaps | T05, helpful for shared-link presentation and conversion, not a direct ranking emergency. |
+| Suspicious backlinks / broken backlinks / low DR | L03/L04. Preserve relevant links and repair genuine destinations. DR is not a Google score; no automatic disavow. |
+| Ahrefs GSC import empty / Web Analytics zero | OmniLodge does have live GSC access. The separate Ahrefs import/analytics setup remains unverified; zero recorded data is not zero visitors. M01/M02/M03 before buying more analytics tooling. |
+| Competitor content gap | C03/C05 are supported priorities: Ahrefs estimated UK nightlife volume 800 and Irish-bar volume 250. Those are modeled searches, not available bookings. Avoid copying unrelated markets/thermal-baths topics simply because a competitor ranks. |
+
+## 7. Success Measures
+
+Primary business measures, once measurement is verified:
+
+- Completed paid direct bookings and net revenue attributable to organic landing cohorts, with refunds/cancellations treated consistently.
+- Product/booking starts per relevant organic landing visit and checkout completion rate by device.
+- Qualified nonbrand clicks for actual available tours and relevant local guides, with brand/informational PDF traffic reported separately.
+- Index/canonical health of intended primary pages, and no regression in existing useful ranking pages.
+
+Supporting measures:
+
+- CTR by exact query, rank band, country, device and landing page, not one universal 2% target.
+- Field CWV where there is enough data, plus repeatable lab measurements and mobile task completion.
+- Broken important links, incorrect prices/dates, inaccessible controls, API failures and customer-contact dead ends.
+- Authentic reviews, relevant referring traffic/links and assisted bookings, not raw backlink/word/page counts.
+
+Set numeric uplift targets only after M01/M02. Review technical outcomes immediately; assess search outcomes over several weeks and longer seasonal windows. Do not claim causation from an aggregate ranking/traffic movement alone.
+
+## 8. Release and Verification Checklist
+
+For each implementation batch:
+
+1. Choose ticket IDs and exact ownership boundaries. Read root `AGENTS.md` and current release docs; obtain separate approval for OmniLodge, external account changes or protected legacy-store work.
+2. Back up relevant source and owned remote files; record source/metadata baseline, expected differences and rollback. Preserve original WP data and historical reports.
+3. Edit source generators/data/templates, not generated captures/output. Add focused tests for new behavior and existing integration/attribution contracts.
+4. Verify locally and on staging: public content with/without JS, HTTP/canonical/robots/schema, sitemap, responsive screenshots, keyboard/zoom, live links, forms without messages, consent/UTM behavior without real orders.
+5. Obtain content/visual sign-off for visible changes and approval for production promotion. Use a reviewed current live-update publisher, not the initial-cutover script blindly.
+6. Verify exact deployed hashes and desktop/Android/iPad clean/HIT cache variants after the appropriately scoped purge. Do not relax failing tests or hide content to meet a visual score.
+7. Log the actual change and date in the plan and OmniLodge action log once separately authorized. Record baseline and follow-up cohorts. A logged action is not proof of ranking uplift.
+
+## 9. Decisions Needed Before Related Tickets
+
+| Decision | Tickets | Recommendation |
+| --- | --- | --- |
+| May the Search Console reporting fixes be implemented/deployed in OmniLodge? | M01/M03 | Separate explicit approval; no OmniLodge release is authorized by this audit. |
+| Which services and venues are actually available now? | C02/C05/C07 | Owner/operations confirms facts; keep NYE meeting points TBA until confirmed. |
+| Can exact dead legacy URLs be redirected, while leaving functioning Ecwid fallback alone? | T07 | Review a small URL-to-equivalent mapping; no store-wide migration. |
+| Which archives have editorial/business value? | T06 | Decide using complete traffic/link evidence, not a blanket index/noindex switch. |
+| Who maintains dates, venues, prices, reviews and editorial updates? | C08/C10/G01/G04 | Named operational/editorial owner and a shared source of truth. |
+| Is the owner reopening consent-provider/GTM work? | D08 | Currently deferred; preserve functional controls and documented limitations. |
+| Which new markets/languages are supportable? | G03 | Decide only after reliable country/language and booking evidence. |
+
+## 10. Explicit Non-Goals and Cautions
+
+- No guarantee of rankings, traffic or conversion uplift; no assertion the migration had zero SEO effect.
+- No mass URL renaming, automatic article deletion, blanket redirects or blanket archive noindex.
+- No deletion of the successful Jenga PDF, removal of functional Ecwid fallback or changes to payment/order data.
+- No stuffing keywords, generating thin location/keyword variants, bulk AI articles, paid link schemes or review manipulation.
+- No unverified self-serving AggregateRating based on copied Google/Tripadvisor/GetYourGuide business totals. Visible platform-linked social proof and Google review-rich-result eligibility are different things.
+- No promises that FAQ schema, llms.txt, IndexNow, an SEO plugin, a new framework or a perfect Lighthouse score automatically improves Google rank. Current Google guidance says no special AI-only markup/file is needed for its AI features.
+- No unmeasured speed claims. Earlier Lighthouse reports are historical and are not a current field benchmark.
+- No secret consent bypass. GSC access and UTM handoff are not permission to ignore privacy choices. The previously declined GTM task is not reopened by this document.
+
+## 11. Primary Guidance Checked for This Plan
+
+These references support the recommendations and limitations; local/site-specific counts come from the evidence files, not these documents. Guidance was checked on November 7, 2026.
+
+- [Google SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide): discovery, useful content, no ranking guarantees and time to assess changes.
+- [Google Search Analytics API](https://developers.google.com/webmaster-tools/v1/searchanalytics/query): grouping, row limits, top-row limitations and pagination.
+- [Google Search Console Performance report](https://support.google.com/webmasters/answer/7576553?hl=en): metric/grouping interpretation.
+- [Google canonical guidance](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls): consistent preferred URLs and signals.
+- [Google JavaScript SEO](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics): crawling/rendering/indexable content.
+- [Google title links](https://developers.google.com/search/docs/appearance/title-link) and [snippets/descriptions](https://developers.google.com/search/docs/appearance/snippet): clear metadata, not exact SERP-output guarantees.
+- [Google Article structured data](https://developers.google.com/search/docs/appearance/structured-data/article) and [review-snippet rules](https://developers.google.com/search/docs/appearance/structured-data/review-snippet): accurate eligible markup, no self-serving review shortcut.
+- [Google Search data anomalies](https://support.google.com/webmasters/answer/6211453): FAQ rich results stopped appearing May 7, 2026; [documentation changelog](https://developers.google.com/search/updates) records removal of that feature's documentation.
+- [Google Core Web Vitals](https://developers.google.com/search/docs/appearance/core-web-vitals): real-user loading, responsiveness and visual stability.
+- [Google Business Profile local ranking](https://support.google.com/business/answer/7091/?hl=en): relevance, distance and prominence; accurate profile details.
+- [Google link-disavow guidance](https://support.google.com/webmasters/answer/2648487): not a routine response to suspicious-link tool labels.
+- [Google spam policies](https://developers.google.com/search/docs/essentials/spam-policies) and [AI features guidance](https://developers.google.com/search/docs/appearance/ai-features): useful content, no manipulative scaling or special AI-ranking shortcut.
+
+## 12. Progress Log
+
+| Date | Work | Result |
+| --- | --- | --- |
+| 2026-11-07 | Ahrefs report, read-only production SEO database investigation, live GSC four-window review, URL inspections and 128-URL source audit | Planning/evidence completed. Implementation tickets remain unchecked. No deployment or production state changes. |
+| 2026-11-12 | Owner authorized staging-only implementation and requested private GitHub version control before SEO edits | Repository preparation started: source allowlist, protected local secrets/backups, exact-byte preservation and non-deploying automated checks. First website batch will cover a dated technical baseline, URL roles and a small maintainable metadata pilot. M01 remains separately approval-dependent; no production/OmniLodge changes or search-uplift claim. |

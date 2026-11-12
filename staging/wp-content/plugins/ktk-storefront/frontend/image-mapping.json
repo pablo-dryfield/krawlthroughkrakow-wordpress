@@ -1,0 +1,747 @@
+{
+  "generatedAt": "2026-07-30T18:18:23.356Z",
+  "bucket": "ktk-product-media",
+  "mediaOrigin": "https://media.krawlthroughkrakow.com",
+  "products": [
+    {
+      "productId": 42,
+      "slug": "airport-transfer-42",
+      "name": "Airport Transfer",
+      "imageUrl": null,
+      "images": [],
+      "sourceMatch": {
+        "slug": "airport-transfer-normal",
+        "score": 1,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 45,
+      "slug": "beauty-the-beast-stag-45",
+      "name": "Beauty & the Beast Stag",
+      "imageUrl": null,
+      "images": [],
+      "sourceMatch": {
+        "slug": "kidnapping-stag-prank",
+        "score": 0.333,
+        "originallyMatched": false,
+        "manuallyApproved": true
+      }
+    },
+    {
+      "productId": 41,
+      "slug": "boat-party-41",
+      "name": "Boat Party",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/41/01-2f90a23d6717.webp",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/41/01-2f90a23d6717.webp",
+          "alt": "Boat Party experience in Krakow",
+          "objectKey": "products/41/01-2f90a23d6717.webp",
+          "sourceFile": "products/boat-party-private-boat/01--4181432173.webp",
+          "mime": "image/webp",
+          "sha256": "2f90a23d67173d3d5ba879fad40f33974327997b5c539bad702a6ffdfd3c4c63"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "boat-party-private-boat",
+        "score": 0.8,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 29,
+      "slug": "bottomless-brunch-29",
+      "name": "Bottomless Brunch",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/29/01-521c9f7a1ae6.jpg",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/29/01-521c9f7a1ae6.jpg",
+          "alt": "Bottomless Brunch experience in Krakow",
+          "objectKey": "products/29/01-521c9f7a1ae6.jpg",
+          "sourceFile": "products/2-hour-bottomless-brunch-with-3-course-meal-and-drinks/01--5517301677.jpg",
+          "mime": "image/jpeg",
+          "sha256": "521c9f7a1ae68ee34922c39bb623769cbe4174970a45e23284e6481dfe37ac70"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "2-hour-bottomless-brunch-with-3-course-meal-and-drinks",
+        "score": 0.4,
+        "originallyMatched": false,
+        "manuallyApproved": true
+      }
+    },
+    {
+      "productId": 40,
+      "slug": "brewery-tour-40",
+      "name": "Brewery Tour",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/40/01-90cc8bfed7ab.jpg",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/40/01-90cc8bfed7ab.jpg",
+          "alt": "Brewery Tour experience in Krakow",
+          "objectKey": "products/40/01-90cc8bfed7ab.jpg",
+          "sourceFile": "products/brewery-tour/01--4181383806.jpg",
+          "mime": "image/jpeg",
+          "sha256": "90cc8bfed7ab0c419b8d5a0fa129a8cf39cdfe48b0bdbd6a4f832c91fbe2679d"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "brewery-tour",
+        "score": 1,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 43,
+      "slug": "bubble-football-43",
+      "name": "Bubble Football",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/43/01-a376f58a6e7f.jpg",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/43/01-a376f58a6e7f.jpg",
+          "alt": "Bubble Football experience in Krakow",
+          "objectKey": "products/43/01-a376f58a6e7f.jpg",
+          "sourceFile": "products/bubble-football/01--4185643684.jpg",
+          "mime": "image/jpeg",
+          "sha256": "a376f58a6e7f3aa5c46020bd31dc896dfa858c01c60e49d4bc03996c29ebba7c"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "bubble-football",
+        "score": 1,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 50,
+      "slug": "cycle-tour-50",
+      "name": "Cycle Tour",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/50/01-8cab26d70bf1.jpg",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/50/01-8cab26d70bf1.jpg",
+          "alt": "Cycle Tour experience in Krakow",
+          "objectKey": "products/50/01-8cab26d70bf1.jpg",
+          "sourceFile": "products/cycle-tour/01--5945683705.jpg",
+          "mime": "image/jpeg",
+          "sha256": "8cab26d70bf1f5087f479c3eb3864850278cc1a9567102f5df0cd238dac608dd"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "cycle-tour",
+        "score": 1,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 38,
+      "slug": "dwarf-arrest-38",
+      "name": "Dwarf Arrest",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/38/01-e34c4e4ec826.jpg",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/38/01-e34c4e4ec826.jpg",
+          "alt": "Dwarf Arrest experience in Krakow",
+          "objectKey": "products/38/01-e34c4e4ec826.jpg",
+          "sourceFile": "products/dwarf-arrest/01--5517408162.jpg",
+          "mime": "image/jpeg",
+          "sha256": "e34c4e4ec826777df19e7791533f1bb3b1c1665a19723b29848e4e4b8bd73aa7"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "dwarf-arrest",
+        "score": 1,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 48,
+      "slug": "food-tour-krakow-48",
+      "name": "Food Tour Krakow",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/48/01-d07f18716d11.jpg",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/48/01-d07f18716d11.jpg",
+          "alt": "Food Tour Krakow experience in Krakow",
+          "objectKey": "products/48/01-d07f18716d11.jpg",
+          "sourceFile": "products/krakow-food-tour/01--4181403693.jpg",
+          "mime": "image/jpeg",
+          "sha256": "d07f18716d114a37564a57467b6658ce6c2c0e401f78d32e1ccc9772777402d1"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "krakow-food-tour",
+        "score": 1,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 30,
+      "slug": "go-karting-30",
+      "name": "Go-Karting",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/30/01-72df69b2db92.jpg",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/30/01-72df69b2db92.jpg",
+          "alt": "Go-Karting experience in Krakow",
+          "objectKey": "products/30/01-72df69b2db92.jpg",
+          "sourceFile": "products/krakow-go-karting/01--4185637273.jpg",
+          "mime": "image/jpeg",
+          "sha256": "72df69b2db92050a34072fd7d1a4d59cbe5cabd0b02ed09b9563d059ef2ac450"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "krakow-go-karting",
+        "score": 1,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 33,
+      "slug": "kazimierz-pub-crawl-33",
+      "name": "Kazimierz Pub Crawl",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/33/01-e2e9c1ac57e0.jpg",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/33/01-e2e9c1ac57e0.jpg",
+          "alt": "Kazimierz Pub Crawl experience in Krakow",
+          "objectKey": "products/33/01-e2e9c1ac57e0.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/01--5046886494.jpg",
+          "mime": "image/jpeg",
+          "sha256": "e2e9c1ac57e03f99f999295119b329e7a8afdf2096fb3fb5b24bc951f39730e5"
+        },
+        {
+          "order": 2,
+          "url": "https://media.krawlthroughkrakow.com/products/33/02-bfca29e0a910.jpg",
+          "alt": "Kazimierz Pub Crawl experience in Krakow",
+          "objectKey": "products/33/02-bfca29e0a910.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/09--5436815338.jpg",
+          "mime": "image/jpeg",
+          "sha256": "bfca29e0a910384b0861d9fc1425d02c40eb1d6c2db6dd82453a3830dc53f71b"
+        },
+        {
+          "order": 3,
+          "url": "https://media.krawlthroughkrakow.com/products/33/03-a29f6fa70f31.jpg",
+          "alt": "Kazimierz Pub Crawl experience in Krakow",
+          "objectKey": "products/33/03-a29f6fa70f31.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/03--5436815344.jpg",
+          "mime": "image/jpeg",
+          "sha256": "a29f6fa70f31b0934079f2a95866d0aa1e884649617d7031d84300a74bdaead8"
+        },
+        {
+          "order": 4,
+          "url": "https://media.krawlthroughkrakow.com/products/33/04-6464975d9c00.jpg",
+          "alt": "Kazimierz Pub Crawl experience in Krakow",
+          "objectKey": "products/33/04-6464975d9c00.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/07--5436826008.jpg",
+          "mime": "image/jpeg",
+          "sha256": "6464975d9c0008505884c74c4d60abfabf472c55f073b67af08cb88abb9e3f1a"
+        },
+        {
+          "order": 5,
+          "url": "https://media.krawlthroughkrakow.com/products/33/05-412d9fc0a63e.jpg",
+          "alt": "Kazimierz Pub Crawl experience in Krakow",
+          "objectKey": "products/33/05-412d9fc0a63e.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/05--5436826014.jpg",
+          "mime": "image/jpeg",
+          "sha256": "412d9fc0a63ec0f632f7c8ddcf42ac3b2692b64b3243485de10542197bcaba4b"
+        },
+        {
+          "order": 6,
+          "url": "https://media.krawlthroughkrakow.com/products/33/06-2c184d74ee0f.jpg",
+          "alt": "Kazimierz Pub Crawl experience in Krakow",
+          "objectKey": "products/33/06-2c184d74ee0f.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/11--5436826020.jpg",
+          "mime": "image/jpeg",
+          "sha256": "2c184d74ee0f07bf5b9ba3ecfd7e740d42bf2763ec980b393edfad9964944ce7"
+        },
+        {
+          "order": 7,
+          "url": "https://media.krawlthroughkrakow.com/products/33/07-97eb1d9cb507.jpg",
+          "alt": "Kazimierz Pub Crawl experience in Krakow",
+          "objectKey": "products/33/07-97eb1d9cb507.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/13--5436826038.jpg",
+          "mime": "image/jpeg",
+          "sha256": "97eb1d9cb507391c356a66390b971ffd14797e567b8befaebef5ed35ef885eea"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "private-pub-crawl",
+        "score": 0.667,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 39,
+      "slug": "kidnapping-stag-prank-39",
+      "name": "Kidnapping Stag Prank",
+      "imageUrl": null,
+      "images": [],
+      "sourceMatch": {
+        "slug": "kidnapping-stag-prank",
+        "score": 1,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 49,
+      "slug": "krakow-late-night-bites-polish-street-food-and-drinks-tour-49",
+      "name": "Krakow: Late Night Bites Polish Street Food and Drinks Tour",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/49/01-d07f18716d11.jpg",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/49/01-d07f18716d11.jpg",
+          "alt": "Krakow: Late Night Bites Polish Street Food and Drinks Tour experience in Krakow",
+          "objectKey": "products/49/01-d07f18716d11.jpg",
+          "sourceFile": "products/krakow-food-tour/01--4181403693.jpg",
+          "mime": "image/jpeg",
+          "sha256": "d07f18716d114a37564a57467b6658ce6c2c0e401f78d32e1ccc9772777402d1"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "krakow-food-tour",
+        "score": 0.25,
+        "originallyMatched": false,
+        "manuallyApproved": true
+      }
+    },
+    {
+      "productId": 37,
+      "slug": "life-drawing-session-37",
+      "name": "Life Drawing Session",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/37/01-7d785ef685a7.jpg",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/37/01-7d785ef685a7.jpg",
+          "alt": "Life Drawing Session experience in Krakow",
+          "objectKey": "products/37/01-7d785ef685a7.jpg",
+          "sourceFile": "products/life-drawing-session/01--4181445270.jpg",
+          "mime": "image/jpeg",
+          "sha256": "7d785ef685a7f1c3443f89388f7aaf1a27ff5d12c20f3eae3988460cb1e3c5bb"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "life-drawing-session",
+        "score": 1,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 47,
+      "slug": "morning-wake-up-47",
+      "name": "Morning Wake Up",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/47/01-34fb81fb7f55.jpg",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/47/01-34fb81fb7f55.jpg",
+          "alt": "Morning Wake Up experience in Krakow",
+          "objectKey": "products/47/01-34fb81fb7f55.jpg",
+          "sourceFile": "products/morning-wake-up/01--5767122105.jpg",
+          "mime": "image/jpeg",
+          "sha256": "34fb81fb7f55fedcbd4db384af937ec480350f27fe1b4a5107e5af725cffa8c8"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "morning-wake-up",
+        "score": 1,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 32,
+      "slug": "nye-pub-crawl-32",
+      "name": "NYE Pub Crawl",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/32/01-e2e9c1ac57e0.jpg",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/32/01-e2e9c1ac57e0.jpg",
+          "alt": "NYE Pub Crawl experience in Krakow",
+          "objectKey": "products/32/01-e2e9c1ac57e0.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/01--5046886494.jpg",
+          "mime": "image/jpeg",
+          "sha256": "e2e9c1ac57e03f99f999295119b329e7a8afdf2096fb3fb5b24bc951f39730e5"
+        },
+        {
+          "order": 2,
+          "url": "https://media.krawlthroughkrakow.com/products/32/02-bfca29e0a910.jpg",
+          "alt": "NYE Pub Crawl experience in Krakow",
+          "objectKey": "products/32/02-bfca29e0a910.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/09--5436815338.jpg",
+          "mime": "image/jpeg",
+          "sha256": "bfca29e0a910384b0861d9fc1425d02c40eb1d6c2db6dd82453a3830dc53f71b"
+        },
+        {
+          "order": 3,
+          "url": "https://media.krawlthroughkrakow.com/products/32/03-a29f6fa70f31.jpg",
+          "alt": "NYE Pub Crawl experience in Krakow",
+          "objectKey": "products/32/03-a29f6fa70f31.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/03--5436815344.jpg",
+          "mime": "image/jpeg",
+          "sha256": "a29f6fa70f31b0934079f2a95866d0aa1e884649617d7031d84300a74bdaead8"
+        },
+        {
+          "order": 4,
+          "url": "https://media.krawlthroughkrakow.com/products/32/04-6464975d9c00.jpg",
+          "alt": "NYE Pub Crawl experience in Krakow",
+          "objectKey": "products/32/04-6464975d9c00.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/07--5436826008.jpg",
+          "mime": "image/jpeg",
+          "sha256": "6464975d9c0008505884c74c4d60abfabf472c55f073b67af08cb88abb9e3f1a"
+        },
+        {
+          "order": 5,
+          "url": "https://media.krawlthroughkrakow.com/products/32/05-412d9fc0a63e.jpg",
+          "alt": "NYE Pub Crawl experience in Krakow",
+          "objectKey": "products/32/05-412d9fc0a63e.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/05--5436826014.jpg",
+          "mime": "image/jpeg",
+          "sha256": "412d9fc0a63ec0f632f7c8ddcf42ac3b2692b64b3243485de10542197bcaba4b"
+        },
+        {
+          "order": 6,
+          "url": "https://media.krawlthroughkrakow.com/products/32/06-2c184d74ee0f.jpg",
+          "alt": "NYE Pub Crawl experience in Krakow",
+          "objectKey": "products/32/06-2c184d74ee0f.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/11--5436826020.jpg",
+          "mime": "image/jpeg",
+          "sha256": "2c184d74ee0f07bf5b9ba3ecfd7e740d42bf2763ec980b393edfad9964944ce7"
+        },
+        {
+          "order": 7,
+          "url": "https://media.krawlthroughkrakow.com/products/32/07-97eb1d9cb507.jpg",
+          "alt": "NYE Pub Crawl experience in Krakow",
+          "objectKey": "products/32/07-97eb1d9cb507.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/13--5436826038.jpg",
+          "mime": "image/jpeg",
+          "sha256": "97eb1d9cb507391c356a66390b971ffd14797e567b8befaebef5ed35ef885eea"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "private-pub-crawl",
+        "score": 0.667,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 35,
+      "slug": "paintball-35",
+      "name": "Paintball",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/35/01-c97c3be090e2.webp",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/35/01-c97c3be090e2.webp",
+          "alt": "Paintball experience in Krakow",
+          "objectKey": "products/35/01-c97c3be090e2.webp",
+          "sourceFile": "products/krakow-paintball/01--4181441340.webp",
+          "mime": "image/webp",
+          "sha256": "c97c3be090e294132f603a7d78686dfee32dec06474a51238551aace2630b10c"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "krakow-paintball",
+        "score": 1,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 46,
+      "slug": "party-bus-46",
+      "name": "Party Bus",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/46/01-08f0c0358df4.jpg",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/46/01-08f0c0358df4.jpg",
+          "alt": "Party Bus experience in Krakow",
+          "objectKey": "products/46/01-08f0c0358df4.jpg",
+          "sourceFile": "products/party-bus/03--5635653611.jpg",
+          "mime": "image/jpeg",
+          "sha256": "08f0c0358df4a8248a8a9e91b786522eb85102edc7cb4ac2a6ab39988ce99ff8"
+        },
+        {
+          "order": 2,
+          "url": "https://media.krawlthroughkrakow.com/products/46/02-86a9f87fab8d.jpg",
+          "alt": "Party Bus experience in Krakow",
+          "objectKey": "products/46/02-86a9f87fab8d.jpg",
+          "sourceFile": "products/party-bus/01--5635658257.jpg",
+          "mime": "image/jpeg",
+          "sha256": "86a9f87fab8d5a867e1369426686f1f4d16aa1051b2da4a0831829d0bad45cfd"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "party-bus",
+        "score": 1,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 44,
+      "slug": "polish-vodka-tasting-44",
+      "name": "Polish Vodka Tasting",
+      "imageUrl": null,
+      "images": [],
+      "sourceMatch": {
+        "slug": "polish-vodka-tasting",
+        "score": 1,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 31,
+      "slug": "private-pub-crawl-31",
+      "name": "Private Pub Crawl",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/31/01-e2e9c1ac57e0.jpg",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/31/01-e2e9c1ac57e0.jpg",
+          "alt": "Private Pub Crawl experience in Krakow",
+          "objectKey": "products/31/01-e2e9c1ac57e0.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/01--5046886494.jpg",
+          "mime": "image/jpeg",
+          "sha256": "e2e9c1ac57e03f99f999295119b329e7a8afdf2096fb3fb5b24bc951f39730e5"
+        },
+        {
+          "order": 2,
+          "url": "https://media.krawlthroughkrakow.com/products/31/02-bfca29e0a910.jpg",
+          "alt": "Private Pub Crawl experience in Krakow",
+          "objectKey": "products/31/02-bfca29e0a910.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/09--5436815338.jpg",
+          "mime": "image/jpeg",
+          "sha256": "bfca29e0a910384b0861d9fc1425d02c40eb1d6c2db6dd82453a3830dc53f71b"
+        },
+        {
+          "order": 3,
+          "url": "https://media.krawlthroughkrakow.com/products/31/03-a29f6fa70f31.jpg",
+          "alt": "Private Pub Crawl experience in Krakow",
+          "objectKey": "products/31/03-a29f6fa70f31.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/03--5436815344.jpg",
+          "mime": "image/jpeg",
+          "sha256": "a29f6fa70f31b0934079f2a95866d0aa1e884649617d7031d84300a74bdaead8"
+        },
+        {
+          "order": 4,
+          "url": "https://media.krawlthroughkrakow.com/products/31/04-6464975d9c00.jpg",
+          "alt": "Private Pub Crawl experience in Krakow",
+          "objectKey": "products/31/04-6464975d9c00.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/07--5436826008.jpg",
+          "mime": "image/jpeg",
+          "sha256": "6464975d9c0008505884c74c4d60abfabf472c55f073b67af08cb88abb9e3f1a"
+        },
+        {
+          "order": 5,
+          "url": "https://media.krawlthroughkrakow.com/products/31/05-412d9fc0a63e.jpg",
+          "alt": "Private Pub Crawl experience in Krakow",
+          "objectKey": "products/31/05-412d9fc0a63e.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/05--5436826014.jpg",
+          "mime": "image/jpeg",
+          "sha256": "412d9fc0a63ec0f632f7c8ddcf42ac3b2692b64b3243485de10542197bcaba4b"
+        },
+        {
+          "order": 6,
+          "url": "https://media.krawlthroughkrakow.com/products/31/06-2c184d74ee0f.jpg",
+          "alt": "Private Pub Crawl experience in Krakow",
+          "objectKey": "products/31/06-2c184d74ee0f.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/11--5436826020.jpg",
+          "mime": "image/jpeg",
+          "sha256": "2c184d74ee0f07bf5b9ba3ecfd7e740d42bf2763ec980b393edfad9964944ce7"
+        },
+        {
+          "order": 7,
+          "url": "https://media.krawlthroughkrakow.com/products/31/07-97eb1d9cb507.jpg",
+          "alt": "Private Pub Crawl experience in Krakow",
+          "objectKey": "products/31/07-97eb1d9cb507.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/13--5436826038.jpg",
+          "mime": "image/jpeg",
+          "sha256": "97eb1d9cb507391c356a66390b971ffd14797e567b8befaebef5ed35ef885eea"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "private-pub-crawl",
+        "score": 1,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 28,
+      "slug": "pub-crawl-28",
+      "name": "Pub Crawl",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/28/01-e2e9c1ac57e0.jpg",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/28/01-e2e9c1ac57e0.jpg",
+          "alt": "Pub Crawl experience in Krakow",
+          "objectKey": "products/28/01-e2e9c1ac57e0.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/01--5046886494.jpg",
+          "mime": "image/jpeg",
+          "sha256": "e2e9c1ac57e03f99f999295119b329e7a8afdf2096fb3fb5b24bc951f39730e5"
+        },
+        {
+          "order": 2,
+          "url": "https://media.krawlthroughkrakow.com/products/28/02-bfca29e0a910.jpg",
+          "alt": "Pub Crawl experience in Krakow",
+          "objectKey": "products/28/02-bfca29e0a910.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/09--5436815338.jpg",
+          "mime": "image/jpeg",
+          "sha256": "bfca29e0a910384b0861d9fc1425d02c40eb1d6c2db6dd82453a3830dc53f71b"
+        },
+        {
+          "order": 3,
+          "url": "https://media.krawlthroughkrakow.com/products/28/03-a29f6fa70f31.jpg",
+          "alt": "Pub Crawl experience in Krakow",
+          "objectKey": "products/28/03-a29f6fa70f31.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/03--5436815344.jpg",
+          "mime": "image/jpeg",
+          "sha256": "a29f6fa70f31b0934079f2a95866d0aa1e884649617d7031d84300a74bdaead8"
+        },
+        {
+          "order": 4,
+          "url": "https://media.krawlthroughkrakow.com/products/28/04-6464975d9c00.jpg",
+          "alt": "Pub Crawl experience in Krakow",
+          "objectKey": "products/28/04-6464975d9c00.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/07--5436826008.jpg",
+          "mime": "image/jpeg",
+          "sha256": "6464975d9c0008505884c74c4d60abfabf472c55f073b67af08cb88abb9e3f1a"
+        },
+        {
+          "order": 5,
+          "url": "https://media.krawlthroughkrakow.com/products/28/05-412d9fc0a63e.jpg",
+          "alt": "Pub Crawl experience in Krakow",
+          "objectKey": "products/28/05-412d9fc0a63e.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/05--5436826014.jpg",
+          "mime": "image/jpeg",
+          "sha256": "412d9fc0a63ec0f632f7c8ddcf42ac3b2692b64b3243485de10542197bcaba4b"
+        },
+        {
+          "order": 6,
+          "url": "https://media.krawlthroughkrakow.com/products/28/06-2c184d74ee0f.jpg",
+          "alt": "Pub Crawl experience in Krakow",
+          "objectKey": "products/28/06-2c184d74ee0f.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/11--5436826020.jpg",
+          "mime": "image/jpeg",
+          "sha256": "2c184d74ee0f07bf5b9ba3ecfd7e740d42bf2763ec980b393edfad9964944ce7"
+        },
+        {
+          "order": 7,
+          "url": "https://media.krawlthroughkrakow.com/products/28/07-97eb1d9cb507.jpg",
+          "alt": "Pub Crawl experience in Krakow",
+          "objectKey": "products/28/07-97eb1d9cb507.jpg",
+          "sourceFile": "products/krakow-pub-crawl-with-krawl-through-krakow/13--5436826038.jpg",
+          "mime": "image/jpeg",
+          "sha256": "97eb1d9cb507391c356a66390b971ffd14797e567b8befaebef5ed35ef885eea"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "private-pub-crawl",
+        "score": 0.8,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 34,
+      "slug": "shooting-range-34",
+      "name": "Shooting Range",
+      "imageUrl": "https://media.krawlthroughkrakow.com/products/34/01-d2d39980d009.jpg",
+      "images": [
+        {
+          "order": 1,
+          "url": "https://media.krawlthroughkrakow.com/products/34/01-d2d39980d009.jpg",
+          "alt": "Shooting Range experience in Krakow",
+          "objectKey": "products/34/01-d2d39980d009.jpg",
+          "sourceFile": "products/krakow-shooting-range-package/01--4181413774.jpg",
+          "mime": "image/jpeg",
+          "sha256": "d2d39980d009570a2e30aec2d60e5bf6315f4b31d49b628e045cc4ab5b1f8211"
+        },
+        {
+          "order": 2,
+          "url": "https://media.krawlthroughkrakow.com/products/34/02-b8e6ebd35909.jpg",
+          "alt": "Shooting Range experience in Krakow",
+          "objectKey": "products/34/02-b8e6ebd35909.jpg",
+          "sourceFile": "products/krakow-shooting-range-package/03--5535869136.jpg",
+          "mime": "image/jpeg",
+          "sha256": "b8e6ebd359098eccbbcd429a6be89991e98be3295716c48c501b2af4488e5668"
+        }
+      ],
+      "sourceMatch": {
+        "slug": "krakow-shooting-range-package",
+        "score": 1,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    },
+    {
+      "productId": 36,
+      "slug": "strip-club-36",
+      "name": "Strip Club",
+      "imageUrl": null,
+      "images": [],
+      "sourceMatch": {
+        "slug": "strip-club",
+        "score": 1,
+        "originallyMatched": true,
+        "manuallyApproved": false
+      }
+    }
+  ],
+  "productsWithoutImages": [
+    {
+      "productId": 42,
+      "slug": "airport-transfer-42",
+      "name": "Airport Transfer"
+    },
+    {
+      "productId": 45,
+      "slug": "beauty-the-beast-stag-45",
+      "name": "Beauty & the Beast Stag"
+    },
+    {
+      "productId": 39,
+      "slug": "kidnapping-stag-prank-39",
+      "name": "Kidnapping Stag Prank"
+    },
+    {
+      "productId": 44,
+      "slug": "polish-vodka-tasting-44",
+      "name": "Polish Vodka Tasting"
+    },
+    {
+      "productId": 36,
+      "slug": "strip-club-36",
+      "name": "Strip Club"
+    }
+  ]
+}

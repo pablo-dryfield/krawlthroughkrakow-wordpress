@@ -1,0 +1,28 @@
+# Visual Verification And Exceptions
+
+## Readiness Follow-up
+
+The owner subsequently approved correcting the mid-width header, NYE offer copy/booking links, broken media, review totals and incoming Ecwid/FareHarbor links on staging. Current evidence is in [the readiness review](../production-readiness/README.md). The header defect described below is fixed: small laptops use the existing hamburger menu; the compact desktop row fits without wrapping; wide-desktop header PNGs match the checkpoint exactly. The original styles/media/fonts (1,633 files) are unchanged, and the homepage differs only in approved booking-destination attributes. Those changes are not a claim that the historical strict matrix below now passes unchanged; original captures/failures are deliberately preserved.
+
+An additional 320px About Us check found review-widget overflow outside the historical four-width matrix. The scoped runtime fix removes inherited scale/nowrap below 601px; both original review photos and text now fit their modules without hiding content or shrinking fonts. Local and live readiness suites each pass 849/849 across four pages and 16 widths. The initial 756/757 failure and post-fix screenshots remain in the readiness directory.
+
+## Recorded Result
+
+`local-final-comparison.json` covers all 116 content routes at 1920, 1440, 768 and 390 CSS pixels: 464 comparisons, zero semantic-content differences, zero computed-typography differences, zero capture/overflow errors, 286 pixel-threshold passes, and 9,535 recorded geometry differences. The strict visual suite does not pass in full. Its one-pixel geometry and 0.5% changed-pixel limits were not relaxed. Original source/candidate screenshots, measurements and failed diffs are preserved.
+
+No page region, heading or photograph was hidden to improve scores. Only truly external frame pixels and floating consent controls are masked; their geometry is still measured. The local final captures predate the small CF7 feedback and HTTP/www navigation follow-up; those changes affect feedback states/link destinations, not default article styling.
+
+## Reviewed Causes
+
+- The owner approved displaying actual photos instead of production's broken lazy placeholders. A common source placeholder is 300 pixels high; its actual image has a different intrinsic aspect ratio. This changes its containing paragraph/section and the vertical positions of later text/footer. It explains many full-page pixel failures even when the wording, fonts and column widths are unchanged. The NYE mobile gallery and long illustrated articles are prominent examples.
+- Some production captures declare the intended font but paint a fallback. The category Krakow Guides 768px title crop `production-painted-archive-heading.png` visibly uses a serif fallback; `local-final-archive-heading.png` paints the declared Passion One font. Computed CSS family names alone cannot prove identical rendered glyphs. A small number of archive heading wraps differ accordingly. No deliberate new typeface was introduced. Production captures were not overwritten to erase this evidence.
+- The Wine Bars 1440px capture separately records a 47px header-height discrepancy. The saved `production-painted-wine-header.png` shows the source's first navigation item overlapping its logo before Divi has applied its logo clearance. The code uses stable logo clearance and wraps the booking control at this width (`local-final-wine-header.png`). This narrow-width source/candidate header state is a visual review item, not a claimed pixel pass. Other widths preserve their measured header heights.
+- Production's mobile NYE YouTube frame is still a 608px-high lazy placeholder with `about:blank`; the generated desktop FitVids wrapper scales to the intended responsive video ratio on mobile. The Welcome to Alcohol tablet frame has the corresponding lazy-placeholder versus responsive-frame difference. The embed URL/content is retained and purpose-3 consent is required; a nonfunctional fixed-height placeholder is not reproduced.
+- The 2020 Nightlife Guide contains seven Instagram frames with an original 326px minimum width inside a 312px phone column. The scoped clamp keeps them inside the column; measured frame widths differ by 14px. Original phone frame heights are preserved. External provider content remains variable.
+- The source Other Tours slider can be captured mid-fade. Focused `final-widget-fit-comparison.json` verifies matching geometry and typography for Other Tours/Testimonials at desktop/phone; three of four pixel comparisons pass, with the remaining photo opacity state retained as a real difference. No photo masking was added.
+- The Halloween article's JavaScript-dependent MediaElement wrapper is replaced with native HTML video controls. The video source and surrounding copy are retained; control pixels differ.
+- Shapo uses the original provider's iframe-resizer after consent rather than freezing a captured height after live content changes. Geometry can vary with provider responses. Native form validation/feedback and keyboard focus are functional replacements, not inert captured states.
+
+## Release Meaning
+
+All audited routes are code-rendered on staging, with source text and declared typography preserved except for the explicit owner-approved readiness corrections above. Functional, metadata, route-isolation and file-integrity checks are separate from strict screenshot parity. The recorded visual exceptions remain visible for owner review before any production promotion. Do not infer ranking improvement or authorize production from a successful staging test.

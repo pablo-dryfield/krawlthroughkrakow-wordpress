@@ -1,0 +1,4379 @@
+{
+  "version": 1,
+  "createdAt": "2026-11-05T12:38:22.269Z",
+  "environment": "staging-only",
+  "scope": "All audited non-Ecwid legacy content, archives and aliases. Production, Ecwid, storefront and OmniLodge deployment are excluded.",
+  "routes": [
+    {
+      "key": "post-2020-krakow-nightlife-guide",
+      "route": "/2020-krakow-nightlife-guide/",
+      "sourceUrl": "https://krawlthroughkrakow.com/2020-krakow-nightlife-guide/",
+      "title": "Ultimate 2020 Krakow Nightlife Guide",
+      "kind": "blog post",
+      "postId": 2968,
+      "expectedSections": 1,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-2020-krakow-nightlife-guide",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 3,
+          "comparisons": 4,
+          "geometryDifferences": 7,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-all-you-need-to-know-about-visiting-auschwitz",
+      "route": "/all-you-need-to-know-about-visiting-auschwitz/",
+      "sourceUrl": "https://krawlthroughkrakow.com/all-you-need-to-know-about-visiting-auschwitz/",
+      "title": "Everything you need to know about visiting Auschwitz",
+      "kind": "blog post",
+      "postId": 2681,
+      "expectedSections": 1,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-all-you-need-to-know-about-visiting-auschwitz",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-bachelor-party-organisers-krakow",
+      "route": "/bachelor-party-organisers-krakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/bachelor-party-organisers-krakow/",
+      "title": "Bachelor Party Organisers Krakow: Unforgettable Adventures",
+      "kind": "blog post",
+      "postId": 6265,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-bachelor-party-organisers-krakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 330,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-best-drinking-games",
+      "route": "/best-drinking-games/",
+      "sourceUrl": "https://krawlthroughkrakow.com/best-drinking-games/",
+      "title": "The Best Drinking Games Selection From The Experts",
+      "kind": "blog post",
+      "postId": 3033,
+      "expectedSections": 1,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-best-drinking-games",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 3,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-best-hotels-in-krakow-2019-2020",
+      "route": "/best-hotels-in-krakow-2019-2020/",
+      "sourceUrl": "https://krawlthroughkrakow.com/best-hotels-in-krakow-2019-2020/",
+      "title": "Best Hotels in Krakow in 2019",
+      "kind": "blog post",
+      "postId": 2707,
+      "expectedSections": 1,
+      "features": [
+        "gallery"
+      ],
+      "source": "docs/code-pages/full-migration/captures/post-best-hotels-in-krakow-2019-2020",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-best-places-to-eat",
+      "route": "/best-places-to-eat/",
+      "sourceUrl": "https://krawlthroughkrakow.com/best-places-to-eat/",
+      "title": "The Best 2024 Places To Eat In Krakow",
+      "kind": "blog post",
+      "postId": 3097,
+      "expectedSections": 1,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-best-places-to-eat",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 3,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-best-pub-crawls-in-europe",
+      "route": "/best-pub-crawls-in-europe/",
+      "sourceUrl": "https://krawlthroughkrakow.com/best-pub-crawls-in-europe/",
+      "title": "Best Pub Crawls in Europe",
+      "kind": "blog post",
+      "postId": 2529,
+      "expectedSections": 2,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-best-pub-crawls-in-europe",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-budapest-or-krakow-nightlife",
+      "route": "/budapest-or-krakow-nightlife/",
+      "sourceUrl": "https://krawlthroughkrakow.com/budapest-or-krakow-nightlife/",
+      "title": "Budapest or Krakow Nightlife: A Tourist’s Ultimate Guide",
+      "kind": "blog post",
+      "postId": 6599,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-budapest-or-krakow-nightlife",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 372,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-escape-rooms-for-a-stag-do-in-krakow",
+      "route": "/escape-rooms-for-a-stag-do-in-krakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/escape-rooms-for-a-stag-do-in-krakow/",
+      "title": "Escape Rooms for a Stag Do in Krakow: Discover The Ultimate Guide",
+      "kind": "blog post",
+      "postId": 6132,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-escape-rooms-for-a-stag-do-in-krakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 200,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-go-karting-krakow",
+      "route": "/go-karting-krakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/go-karting-krakow/",
+      "title": "Unleash Your Inner Racer with Go Karting Krakow!",
+      "kind": "blog post",
+      "postId": 6678,
+      "expectedSections": 1,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-go-karting-krakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 260,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-hen-do-ideas-abroad",
+      "route": "/hen-do-ideas-abroad/",
+      "sourceUrl": "https://krawlthroughkrakow.com/hen-do-ideas-abroad/",
+      "title": "Krakow: Ultimate Hen Do Ideas Abroad for a Party",
+      "kind": "blog post",
+      "postId": 6392,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-hen-do-ideas-abroad",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 195,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-hostel-etiquette-tips",
+      "route": "/hostel-etiquette-tips/",
+      "sourceUrl": "https://krawlthroughkrakow.com/hostel-etiquette-tips/",
+      "title": "7 Essential Hostel Etiquette Tips for a Memorable Stay",
+      "kind": "blog post",
+      "postId": 6186,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-hostel-etiquette-tips",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 260,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-hostel-hangover-cure",
+      "route": "/hostel-hangover-cure/",
+      "sourceUrl": "https://krawlthroughkrakow.com/hostel-hangover-cure/",
+      "title": "Hostel Hangover Cure: Surviving the Morning After in Krakow",
+      "kind": "blog post",
+      "postId": 6607,
+      "expectedSections": 1,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-hostel-hangover-cure",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 170,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-irish-bars-krakow",
+      "route": "/irish-bars-krakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/irish-bars-krakow/",
+      "title": "Irish Bars Krakow: Krawl Through Krakow’s Exciting Nightlife",
+      "kind": "blog post",
+      "postId": 6181,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-irish-bars-krakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 207,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-is-krakow-safe-for-stag",
+      "route": "/is-krakow-safe-for-stag/",
+      "sourceUrl": "https://krawlthroughkrakow.com/is-krakow-safe-for-stag/",
+      "title": "Is Krakow Safe for Stag? Nightlife, Safety Tips & More",
+      "kind": "blog post",
+      "postId": 6198,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-is-krakow-safe-for-stag",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 266,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-jazz-bars-in-krakow",
+      "route": "/jazz-bars-in-krakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/jazz-bars-in-krakow/",
+      "title": "Jazz Bars in Krakow: Experience Vibrant Nightlife & Charm",
+      "kind": "blog post",
+      "postId": 6169,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-jazz-bars-in-krakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 161,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-karaoke-bars-in-krakow",
+      "route": "/karaoke-bars-in-krakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/karaoke-bars-in-krakow/",
+      "title": "Discover the Best Karaoke Bars in Krakow for a Fun Night Out",
+      "kind": "blog post",
+      "postId": 6159,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-karaoke-bars-in-krakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 145,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-bars-jewish-quarter",
+      "route": "/krakow-bars-jewish-quarter/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-bars-jewish-quarter/",
+      "title": "Discover Krakow Bars: Jewish Quarter Nightlife and Culture",
+      "kind": "blog post",
+      "postId": 6394,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-bars-jewish-quarter",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 330,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-budget-activities",
+      "route": "/krakow-budget-activities/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-budget-activities/",
+      "title": "Krakow Budget Activities: Fun and Affordable Explorations",
+      "kind": "blog post",
+      "postId": 6333,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-budget-activities",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 320,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-food-truck-parks",
+      "route": "/krakow-food-truck-parks/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-food-truck-parks/",
+      "title": "Discover Krakow Food Truck Parks for a Tasty Adventure",
+      "kind": "blog post",
+      "postId": 6192,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-food-truck-parks",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 276,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-free-activities-2",
+      "route": "/krakow-free-activities-2/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-free-activities-2/",
+      "title": "Krakow Free Activities: Budget-Friendly Exploration and Fun",
+      "kind": "blog post",
+      "postId": 6120,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-free-activities-2",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 270,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-go-karting",
+      "route": "/krakow-go-karting/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-go-karting/",
+      "title": "Krakow Go Karting: Ultimate Guide for a Thrilling Night",
+      "kind": "blog post",
+      "postId": 6152,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-go-karting",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 169,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-hen-party-reviews",
+      "route": "/krakow-hen-party-reviews/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-hen-party-reviews/",
+      "title": "Krakow Hen Party Reviews: Ultimate Nightlife and Activities",
+      "kind": "blog post",
+      "postId": 6262,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-hen-party-reviews",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 262,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-live-music",
+      "route": "/krakow-live-music/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-live-music/",
+      "title": "Krakow Live Music: Explore Top Venues & Unforgettable Nights",
+      "kind": "blog post",
+      "postId": 6196,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-live-music",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 209,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-milkbars",
+      "route": "/krakow-milkbars/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-milkbars/",
+      "title": "Discover Krakow Milkbars: A Revival of Authentic Polish Cuisine",
+      "kind": "blog post",
+      "postId": 6172,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-milkbars",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 180,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-money-saving-tips",
+      "route": "/krakow-money-saving-tips/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-money-saving-tips/",
+      "title": "Krakow Money Saving Tips: Affordable Travel Guide",
+      "kind": "blog post",
+      "postId": 6155,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-money-saving-tips",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 294,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-new-years-eve",
+      "route": "/krakow-new-years-eve/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-new-years-eve/",
+      "title": "Why Kraków is awesome for New Years Eve",
+      "kind": "blog post",
+      "postId": 1788,
+      "expectedSections": 2,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-new-years-eve",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-nightclubs",
+      "route": "/krakow-nightclubs/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-nightclubs/",
+      "title": "Discover Krakow Nightclubs: Ultimate Guide for Party-Goers",
+      "kind": "blog post",
+      "postId": 6126,
+      "expectedSections": 1,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-nightclubs",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 222,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-safety-guide",
+      "route": "/krakow-safety-guide/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-safety-guide/",
+      "title": "Kraków Safety Guide: Tips for a Fun and Secure Experience",
+      "kind": "blog post",
+      "postId": 6178,
+      "expectedSections": 1,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-safety-guide",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 208,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-shooting-range",
+      "route": "/krakow-shooting-range/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-shooting-range/",
+      "title": "Krakow Shooting Range: Ultimate Tourist Guide",
+      "kind": "blog post",
+      "postId": 6163,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-shooting-range",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 156,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-shot-bar",
+      "route": "/krakow-shot-bar/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-shot-bar/",
+      "title": "Discover Krakow Shot Bar Gems: Ultimate Nightlife Guide",
+      "kind": "blog post",
+      "postId": 6166,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-shot-bar",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 202,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-stag-activities",
+      "route": "/krakow-stag-activities/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-stag-activities/",
+      "title": "Ultimate Guide to Krakow Stag Activities: Nightlife and More",
+      "kind": "blog post",
+      "postId": 6259,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-stag-activities",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 242,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-team-building-activities",
+      "route": "/krakow-team-building-activities/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-team-building-activities/",
+      "title": "8 Exciting Krakow Team Building Activities for Tourists",
+      "kind": "blog post",
+      "postId": 6396,
+      "expectedSections": 1,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-team-building-activities",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 228,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-techno-clubs-2",
+      "route": "/krakow-techno-clubs-2/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-techno-clubs-2/",
+      "title": "Experience Krakow Techno Clubs: A Partygoer’s Guide",
+      "kind": "blog post",
+      "postId": 6253,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-techno-clubs-2",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 270,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-techno-clubs",
+      "route": "/krakow-techno-clubs/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-techno-clubs/",
+      "title": "Experience Krakow Techno Clubs: Ultimate Party Guide",
+      "kind": "blog post",
+      "postId": 6123,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-techno-clubs",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 206,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-weather-guide",
+      "route": "/krakow-weather-guide/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-weather-guide/",
+      "title": "The Ultimate Krakow Weather Guide!",
+      "kind": "blog post",
+      "postId": 2587,
+      "expectedSections": 5,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-weather-guide",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 121,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-wine-bars",
+      "route": "/krakow-wine-bars/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-wine-bars/",
+      "title": "Discover the Best Krakow Wine Bars for a Memorable Night Out",
+      "kind": "blog post",
+      "postId": 6110,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-wine-bars",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 2,
+          "comparisons": 4,
+          "geometryDifferences": 57,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krakow-winter-activities",
+      "route": "/krakow-winter-activities/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-winter-activities/",
+      "title": "Discover Krakow Winter Activities: Nightlife, Food & Fun",
+      "kind": "blog post",
+      "postId": 6200,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-krakow-winter-activities",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 454,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-krawl-through-krakow-winter-newsletter",
+      "route": "/krawl-through-krakow-winter-newsletter/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krawl-through-krakow-winter-newsletter/",
+      "title": "Krawl Through Kraków Winter Newsletter",
+      "kind": "blog post",
+      "postId": 1515,
+      "expectedSections": 2,
+      "features": [
+        "gallery",
+        "slider"
+      ],
+      "source": "docs/code-pages/full-migration/captures/post-krawl-through-krakow-winter-newsletter",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-life-professional-drunk",
+      "route": "/life-professional-drunk/",
+      "sourceUrl": "https://krawlthroughkrakow.com/life-professional-drunk/",
+      "title": "Life As A Professional Drunk",
+      "kind": "blog post",
+      "postId": 1305,
+      "expectedSections": 2,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-life-professional-drunk",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-new-years-eve-in-krakow",
+      "route": "/new-years-eve-in-krakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/new-years-eve-in-krakow/",
+      "title": "Celebrate the Magic: Krakow’s Unforgettable Christmas, New Year’s Eve, and Vibrant Nightlife",
+      "kind": "blog post",
+      "postId": 7506,
+      "expectedSections": 0,
+      "features": [
+        "embedded video",
+        "gallery"
+      ],
+      "source": "docs/code-pages/full-migration/captures/post-new-years-eve-in-krakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-party-krakow",
+      "route": "/party-krakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/party-krakow/",
+      "title": "How to party in Krakow",
+      "kind": "blog post",
+      "postId": 2979,
+      "expectedSections": 1,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-party-krakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
+      "route": "/six-reasons-you-need-to-party-with-the-krawl-through-krakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/six-reasons-you-need-to-party-with-the-krawl-through-krakow/",
+      "title": "Six reasons you need to party with the Krawl Through Krakow!",
+      "kind": "blog post",
+      "postId": 1941,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 2,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-spa-hotels-krakow",
+      "route": "/spa-hotels-krakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/spa-hotels-krakow/",
+      "title": "Unwind in Style: A Tour of Spa Hotels Krakow",
+      "kind": "blog post",
+      "postId": 6534,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-spa-hotels-krakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 185,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-spooktacular-krakow-unveil-the-mysteries-of-halloween",
+      "route": "/spooktacular-krakow-unveil-the-mysteries-of-halloween/",
+      "sourceUrl": "https://krawlthroughkrakow.com/spooktacular-krakow-unveil-the-mysteries-of-halloween/",
+      "title": "Spooktacular Krakow: Unveil the Mysteries of Halloween",
+      "kind": "blog post",
+      "postId": 7472,
+      "expectedSections": 1,
+      "features": [
+        "video"
+      ],
+      "source": "docs/code-pages/full-migration/captures/post-spooktacular-krakow-unveil-the-mysteries-of-halloween",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 1,
+          "comparisons": 4,
+          "geometryDifferences": 322,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-sports-bar-krakow",
+      "route": "/sports-bar-krakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/sports-bar-krakow/",
+      "title": "Exploring the Best Sports Bar Krakow: A Guide for Tourists",
+      "kind": "blog post",
+      "postId": 6331,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-sports-bar-krakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 294,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-stag-do-costume",
+      "route": "/stag-do-costume/",
+      "sourceUrl": "https://krawlthroughkrakow.com/stag-do-costume/",
+      "title": "Krakow Stag Do: Unleashing Fun with Creative Stag Do Costume Ideas",
+      "kind": "blog post",
+      "postId": 6376,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-stag-do-costume",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 360,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-stag-pranks",
+      "route": "/stag-pranks/",
+      "sourceUrl": "https://krawlthroughkrakow.com/stag-pranks/",
+      "title": "Epic Stag Pranks: Unforgettable Night in Krakow",
+      "kind": "blog post",
+      "postId": 6387,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-stag-pranks",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 316,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-stages-of-drunkenness",
+      "route": "/stages-of-drunkenness/",
+      "sourceUrl": "https://krawlthroughkrakow.com/stages-of-drunkenness/",
+      "title": "Eleven Stages of Drunkenness",
+      "kind": "blog post",
+      "postId": 1276,
+      "expectedSections": 2,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-stages-of-drunkenness",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 3,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-survive-pub-crawl",
+      "route": "/survive-pub-crawl/",
+      "sourceUrl": "https://krawlthroughkrakow.com/survive-pub-crawl/",
+      "title": "How to Survive a Pub Crawl",
+      "kind": "blog post",
+      "postId": 1115,
+      "expectedSections": 2,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-survive-pub-crawl",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+      "route": "/the-ultimate-guide-to-dating-in-nightlife-krakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/the-ultimate-guide-to-dating-in-nightlife-krakow/",
+      "title": "The Ultimate Guide to Dating in nightlife & krakow ",
+      "kind": "blog post",
+      "postId": 7492,
+      "expectedSections": 1,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 2,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow",
+      "route": "/the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow/",
+      "title": "The Ultimate Guide to the Best Bars and Clubs in Krakow in 2019",
+      "kind": "blog post",
+      "postId": 2095,
+      "expectedSections": 2,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-travel-krakow-your-comprehensive-city-guide",
+      "route": "/travel-krakow-your-comprehensive-city-guide/",
+      "sourceUrl": "https://krawlthroughkrakow.com/travel-krakow-your-comprehensive-city-guide/",
+      "title": "Travel Krakow – your comprehensive city guide!",
+      "kind": "blog post",
+      "postId": 2642,
+      "expectedSections": 1,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-travel-krakow-your-comprehensive-city-guide",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 2,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-weekend-in-krakow",
+      "route": "/weekend-in-krakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/weekend-in-krakow/",
+      "title": "Weekend In Krakow: Partying And Other 15 Top Things To Do",
+      "kind": "blog post",
+      "postId": 3122,
+      "expectedSections": 1,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-weekend-in-krakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 3,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-welcome-to-alcohol",
+      "route": "/welcome-to-alcohol/",
+      "sourceUrl": "https://krawlthroughkrakow.com/welcome-to-alcohol/",
+      "title": "The Big Prize Competition",
+      "kind": "blog post",
+      "postId": 1271,
+      "expectedSections": 3,
+      "features": [
+        "Contact Form 7",
+        "accordion/toggle",
+        "embedded video",
+        "form"
+      ],
+      "source": "docs/code-pages/full-migration/captures/post-welcome-to-alcohol",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 3,
+          "comparisons": 4,
+          "geometryDifferences": 5,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "post-wheres-the-cheap-places-to-drink-in-krakow",
+      "route": "/wheres-the-cheap-places-to-drink-in-krakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/wheres-the-cheap-places-to-drink-in-krakow/",
+      "title": "Where’s the Cheap Places to Drink in Krakow: Insider Tips",
+      "kind": "blog post",
+      "postId": 6189,
+      "expectedSections": 1,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/post-wheres-the-cheap-places-to-drink-in-krakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 0,
+          "comparisons": 4,
+          "geometryDifferences": 308,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-category-drinking-games",
+      "route": "/category/drinking-games/",
+      "sourceUrl": "https://krawlthroughkrakow.com/category/drinking-games/",
+      "title": "Drinking Games | Krawl Through Krakow",
+      "kind": "category archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-category-drinking-games",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 52
+    },
+    {
+      "key": "archive-category-hen-do",
+      "route": "/category/hen-do/",
+      "sourceUrl": "https://krawlthroughkrakow.com/category/hen-do/",
+      "title": "Hen do | Krawl Through Krakow",
+      "kind": "category archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-category-hen-do",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 54
+    },
+    {
+      "key": "archive-category-krakow-guides",
+      "route": "/category/krakow-guides/",
+      "sourceUrl": "https://krawlthroughkrakow.com/category/krakow-guides/",
+      "title": "Krakow Guides | Krawl Through Krakow",
+      "kind": "category archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-category-krakow-guides",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 2,
+          "comparisons": 4,
+          "geometryDifferences": 39,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 51
+    },
+    {
+      "key": "archive-category-krakow-nightlife",
+      "route": "/category/krakow-nightlife/",
+      "sourceUrl": "https://krawlthroughkrakow.com/category/krakow-nightlife/",
+      "title": "Kraków Nightlife | Krawl Through Krakow",
+      "kind": "category archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-category-krakow-nightlife",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 3,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 29
+    },
+    {
+      "key": "archive-category-party-tips",
+      "route": "/category/party-tips/",
+      "sourceUrl": "https://krawlthroughkrakow.com/category/party-tips/",
+      "title": "Party Tips | Krawl Through Krakow",
+      "kind": "category archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-category-party-tips",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 32
+    },
+    {
+      "key": "archive-category-stag-do",
+      "route": "/category/stag-do/",
+      "sourceUrl": "https://krawlthroughkrakow.com/category/stag-do/",
+      "title": "Stag do | Krawl Through Krakow",
+      "kind": "category archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-category-stag-do",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 53
+    },
+    {
+      "key": "archive-category-uncategorized",
+      "route": "/category/uncategorized/",
+      "sourceUrl": "https://krawlthroughkrakow.com/category/uncategorized/",
+      "title": "Uncategorized | Krawl Through Krakow",
+      "kind": "category archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-category-uncategorized",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 1
+    },
+    {
+      "key": "archive-author-dpbowman",
+      "route": "/author/dpbowman/",
+      "sourceUrl": "https://krawlthroughkrakow.com/author/dpbowman/",
+      "title": "DPBowman | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-author-dpbowman",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 2,
+          "comparisons": 4,
+          "geometryDifferences": 28,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-author-dpbowman-page-2",
+      "route": "/author/dpbowman/page/2/",
+      "sourceUrl": "https://krawlthroughkrakow.com/author/dpbowman/page/2/",
+      "title": "DPBowman | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-author-dpbowman-page-2",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-author-dpbowman-page-3",
+      "route": "/author/dpbowman/page/3/",
+      "sourceUrl": "https://krawlthroughkrakow.com/author/dpbowman/page/3/",
+      "title": "DPBowman | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-author-dpbowman-page-3",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-author-dpbowman-page-4",
+      "route": "/author/dpbowman/page/4/",
+      "sourceUrl": "https://krawlthroughkrakow.com/author/dpbowman/page/4/",
+      "title": "DPBowman | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-author-dpbowman-page-4",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-author-dpbowman-page-5",
+      "route": "/author/dpbowman/page/5/",
+      "sourceUrl": "https://krawlthroughkrakow.com/author/dpbowman/page/5/",
+      "title": "DPBowman | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-author-dpbowman-page-5",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-author-dpbowman-page-6",
+      "route": "/author/dpbowman/page/6/",
+      "sourceUrl": "https://krawlthroughkrakow.com/author/dpbowman/page/6/",
+      "title": "DPBowman | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-author-dpbowman-page-6",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-author-dpbowman-page-7",
+      "route": "/author/dpbowman/page/7/",
+      "sourceUrl": "https://krawlthroughkrakow.com/author/dpbowman/page/7/",
+      "title": "DPBowman | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-author-dpbowman-page-7",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-author-dpbowman-page-8",
+      "route": "/author/dpbowman/page/8/",
+      "sourceUrl": "https://krawlthroughkrakow.com/author/dpbowman/page/8/",
+      "title": "DPBowman | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-author-dpbowman-page-8",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-author-dpbowman-page-9",
+      "route": "/author/dpbowman/page/9/",
+      "sourceUrl": "https://krawlthroughkrakow.com/author/dpbowman/page/9/",
+      "title": "DPBowman | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-author-dpbowman-page-9",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-author-jessie",
+      "route": "/author/jessie/",
+      "sourceUrl": "https://krawlthroughkrakow.com/author/jessie/",
+      "title": "Jess Campbell | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-author-jessie",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-author-pubthroughkrakow",
+      "route": "/author/pubthroughkrakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/author/pubthroughkrakow/",
+      "title": "pubthroughkrakow | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-author-pubthroughkrakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-author-pubthroughkrakow-page-2",
+      "route": "/author/pubthroughkrakow/page/2/",
+      "sourceUrl": "https://krawlthroughkrakow.com/author/pubthroughkrakow/page/2/",
+      "title": "pubthroughkrakow | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-author-pubthroughkrakow-page-2",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-author-thirsty",
+      "route": "/author/thirsty/",
+      "sourceUrl": "https://krawlthroughkrakow.com/author/thirsty/",
+      "title": "Krusty | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-author-thirsty",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-category-krakow-guides-page-2",
+      "route": "/category/krakow-guides/page/2/",
+      "sourceUrl": "https://krawlthroughkrakow.com/category/krakow-guides/page/2/",
+      "title": "Krakow Guides | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-category-krakow-guides-page-2",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-category-krakow-guides-page-3",
+      "route": "/category/krakow-guides/page/3/",
+      "sourceUrl": "https://krawlthroughkrakow.com/category/krakow-guides/page/3/",
+      "title": "Krakow Guides | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-category-krakow-guides-page-3",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-category-krakow-nightlife-page-2",
+      "route": "/category/krakow-nightlife/page/2/",
+      "sourceUrl": "https://krawlthroughkrakow.com/category/krakow-nightlife/page/2/",
+      "title": "Kraków Nightlife | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-category-krakow-nightlife-page-2",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-category-party-tips-page-2",
+      "route": "/category/party-tips/page/2/",
+      "sourceUrl": "https://krawlthroughkrakow.com/category/party-tips/page/2/",
+      "title": "Party Tips | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-category-party-tips-page-2",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-category-uncategorized-page-2",
+      "route": "/category/uncategorized/page/2/",
+      "sourceUrl": "https://krawlthroughkrakow.com/category/uncategorized/page/2/",
+      "title": "Uncategorized | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-category-uncategorized-page-2",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-category-uncategorized-page-3",
+      "route": "/category/uncategorized/page/3/",
+      "sourceUrl": "https://krawlthroughkrakow.com/category/uncategorized/page/3/",
+      "title": "Uncategorized | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-category-uncategorized-page-3",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-category-uncategorized-page-4",
+      "route": "/category/uncategorized/page/4/",
+      "sourceUrl": "https://krawlthroughkrakow.com/category/uncategorized/page/4/",
+      "title": "Uncategorized | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-category-uncategorized-page-4",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-category-uncategorized-page-5",
+      "route": "/category/uncategorized/page/5/",
+      "sourceUrl": "https://krawlthroughkrakow.com/category/uncategorized/page/5/",
+      "title": "Uncategorized | Krawl Through Krakow",
+      "kind": "linked URL outside sitemap/API",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-category-uncategorized-page-5",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "about-us",
+      "route": "/about-us/",
+      "sourceUrl": "https://krawlthroughkrakow.com/about-us/",
+      "title": "About Us",
+      "kind": "page",
+      "postId": 6107,
+      "expectedSections": 7,
+      "features": [
+        "embedded video"
+      ],
+      "source": "docs/code-pages/full-migration/captures/about-us",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 3,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "how-to-join",
+      "route": "/about-us/how-to-join/",
+      "sourceUrl": "https://krawlthroughkrakow.com/about-us/how-to-join/",
+      "title": "How to Join!",
+      "kind": "page",
+      "postId": 231,
+      "expectedSections": 4,
+      "features": [
+        "Google Maps"
+      ],
+      "source": "docs/code-pages/full-migration/captures/how-to-join",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "blog",
+      "route": "/blog/",
+      "sourceUrl": "https://krawlthroughkrakow.com/blog/",
+      "title": "The Pub Crawl Blog",
+      "kind": "page",
+      "postId": 1318,
+      "expectedSections": 4,
+      "features": [
+        "slider"
+      ],
+      "source": "docs/code-pages/full-migration/captures/blog",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 2,
+          "comparisons": 4,
+          "geometryDifferences": 128,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "contact",
+      "route": "/contact/",
+      "sourceUrl": "https://krawlthroughkrakow.com/contact/",
+      "title": "Contact",
+      "kind": "page",
+      "postId": 195,
+      "expectedSections": 4,
+      "features": [
+        "Google Maps",
+        "form"
+      ],
+      "source": "docs/code-pages/full-migration/captures/contact",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "faqs",
+      "route": "/faqs/",
+      "sourceUrl": "https://krawlthroughkrakow.com/faqs/",
+      "title": "FAQ’s",
+      "kind": "page",
+      "postId": 516,
+      "expectedSections": 4,
+      "features": [
+        "Google Maps",
+        "accordion/toggle"
+      ],
+      "source": "docs/code-pages/full-migration/captures/faqs",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "gallery",
+      "route": "/gallery/",
+      "sourceUrl": "https://krawlthroughkrakow.com/gallery/",
+      "title": "Gallery",
+      "kind": "page",
+      "postId": 7852,
+      "expectedSections": 2,
+      "features": [
+        "gallery"
+      ],
+      "source": "docs/code-pages/full-migration/captures/gallery",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "krakow-hen-do",
+      "route": "/krakow-hen-do/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-hen-do/",
+      "title": "Krakow Hen do",
+      "kind": "page",
+      "postId": 7891,
+      "expectedSections": 2,
+      "features": [
+        "form",
+        "gallery",
+        "slider"
+      ],
+      "source": "docs/code-pages/full-migration/captures/krakow-hen-do",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "krakow-nightlife",
+      "route": "/krakow-nightlife/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-nightlife/",
+      "title": "Krakow Nightlife",
+      "kind": "page",
+      "postId": 1659,
+      "expectedSections": 3,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/krakow-nightlife",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 3,
+          "comparisons": 4,
+          "geometryDifferences": 59,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "krakow-stag-do",
+      "route": "/krakow-stag-do/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-stag-do/",
+      "title": "Krakow Stag do",
+      "kind": "page",
+      "postId": 7889,
+      "expectedSections": 2,
+      "features": [
+        "embedded video",
+        "form",
+        "gallery",
+        "slider"
+      ],
+      "source": "docs/code-pages/full-migration/captures/krakow-stag-do",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 1,
+          "comparisons": 4,
+          "geometryDifferences": 108,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "meeting-point",
+      "route": "/meeting-point/",
+      "sourceUrl": "https://krawlthroughkrakow.com/meeting-point/",
+      "title": "Meeting Point",
+      "kind": "page",
+      "postId": 947,
+      "expectedSections": 2,
+      "features": [
+        "Google Maps"
+      ],
+      "source": "docs/code-pages/full-migration/captures/meeting-point",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "new-years-eve",
+      "route": "/new-years-eve/",
+      "sourceUrl": "https://krawlthroughkrakow.com/new-years-eve/",
+      "title": "New Years Eve",
+      "kind": "page",
+      "postId": 1428,
+      "expectedSections": 9,
+      "features": [
+        "countdown",
+        "embedded video"
+      ],
+      "source": "docs/code-pages/full-migration/captures/new-years-eve",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 2,
+          "comparisons": 4,
+          "geometryDifferences": 133,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "other-tours",
+      "route": "/other-tours/",
+      "sourceUrl": "https://krawlthroughkrakow.com/other-tours/",
+      "title": "Other Tours",
+      "kind": "page",
+      "postId": 8032,
+      "expectedSections": 2,
+      "features": [
+        "slider"
+      ],
+      "source": "docs/code-pages/full-migration/captures/other-tours",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 2,
+          "comparisons": 4,
+          "geometryDifferences": 1,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "otherbarcrawls",
+      "route": "/otherbarcrawls/",
+      "sourceUrl": "https://krawlthroughkrakow.com/otherbarcrawls/",
+      "title": "Bar Crawls Around the World",
+      "kind": "page",
+      "postId": 611,
+      "expectedSections": 3,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/otherbarcrawls",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "privacy-policy",
+      "route": "/privacy-policy/",
+      "sourceUrl": "https://krawlthroughkrakow.com/privacy-policy/",
+      "title": "Privacy Policy",
+      "kind": "page",
+      "postId": 7857,
+      "expectedSections": 3,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/privacy-policy",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "pub-crawl-drinking-games",
+      "route": "/pub-crawl-drinking-games/",
+      "sourceUrl": "https://krawlthroughkrakow.com/pub-crawl-drinking-games/",
+      "title": "Pub Crawl Drinking Games",
+      "kind": "page",
+      "postId": 7887,
+      "expectedSections": 2,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/pub-crawl-drinking-games",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 3,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": false
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "pub-crawl-jobs",
+      "route": "/pub-crawl-jobs/",
+      "sourceUrl": "https://krawlthroughkrakow.com/pub-crawl-jobs/",
+      "title": "Pub Crawl Jobs",
+      "kind": "page",
+      "postId": 1281,
+      "expectedSections": 8,
+      "features": [
+        "form",
+        "gallery",
+        "slider"
+      ],
+      "source": "docs/code-pages/full-migration/captures/pub-crawl-jobs",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "stagshens",
+      "route": "/stagshens/",
+      "sourceUrl": "https://krawlthroughkrakow.com/stagshens/",
+      "title": "Stags & Hens",
+      "kind": "page",
+      "postId": 276,
+      "expectedSections": 4,
+      "features": [
+        "Contact Form 7",
+        "form",
+        "slider"
+      ],
+      "source": "docs/code-pages/full-migration/captures/stagshens",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "student-trips-poland",
+      "route": "/student-trips-poland/",
+      "sourceUrl": "https://krawlthroughkrakow.com/student-trips-poland/",
+      "title": "Student Trips Poland",
+      "kind": "page",
+      "postId": 2043,
+      "expectedSections": 3,
+      "features": [
+        "form"
+      ],
+      "source": "docs/code-pages/full-migration/captures/student-trips-poland",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "terms-and-conditions",
+      "route": "/terms-and-conditions/",
+      "sourceUrl": "https://krawlthroughkrakow.com/terms-and-conditions/",
+      "title": "Terms and Conditions",
+      "kind": "page",
+      "postId": 7885,
+      "expectedSections": 3,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/terms-and-conditions",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "testimonials",
+      "route": "/testimonials/",
+      "sourceUrl": "https://krawlthroughkrakow.com/testimonials/",
+      "title": "Testimonials",
+      "kind": "page",
+      "postId": 7903,
+      "expectedSections": 2,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/testimonials",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "tour-service-disclaimer",
+      "route": "/tour-service-disclaimer/",
+      "sourceUrl": "https://krawlthroughkrakow.com/tour-service-disclaimer/",
+      "title": "Tour Service Disclaimer",
+      "kind": "page",
+      "postId": 2354,
+      "expectedSections": 4,
+      "features": [
+        "Google Maps"
+      ],
+      "source": "docs/code-pages/full-migration/captures/tour-service-disclaimer",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      }
+    },
+    {
+      "key": "archive-tag-drinking-games",
+      "route": "/tag/drinking-games/",
+      "sourceUrl": "https://krawlthroughkrakow.com/tag/drinking-games/",
+      "title": "Drinking Games | Krawl Through Krakow",
+      "kind": "tag archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-tag-drinking-games",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 33
+    },
+    {
+      "key": "archive-tag-krakow-food",
+      "route": "/tag/krakow-food/",
+      "sourceUrl": "https://krawlthroughkrakow.com/tag/krakow-food/",
+      "title": "Krakow Food | Krawl Through Krakow",
+      "kind": "tag archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-tag-krakow-food",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 40
+    },
+    {
+      "key": "archive-tag-krakow-nightlife",
+      "route": "/tag/krakow-nightlife/",
+      "sourceUrl": "https://krawlthroughkrakow.com/tag/krakow-nightlife/",
+      "title": "Krakow Nightlife | Krawl Through Krakow",
+      "kind": "tag archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-tag-krakow-nightlife",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 38
+    },
+    {
+      "key": "archive-tag-krakow-party",
+      "route": "/tag/krakow-party/",
+      "sourceUrl": "https://krawlthroughkrakow.com/tag/krakow-party/",
+      "title": "Krakow Party | Krawl Through Krakow",
+      "kind": "tag archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-tag-krakow-party",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 34
+    },
+    {
+      "key": "archive-tag-krakow",
+      "route": "/tag/krakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/tag/krakow/",
+      "title": "Krakow | Krawl Through Krakow",
+      "kind": "tag archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-tag-krakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 30
+    },
+    {
+      "key": "archive-tag-krawl-through-krakow",
+      "route": "/tag/krawl-through-krakow/",
+      "sourceUrl": "https://krawlthroughkrakow.com/tag/krawl-through-krakow/",
+      "title": "Krawl Through Krakow | Krawl Through Krakow",
+      "kind": "tag archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-tag-krawl-through-krakow",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 36
+    },
+    {
+      "key": "archive-tag-party-ideas",
+      "route": "/tag/party-ideas/",
+      "sourceUrl": "https://krawlthroughkrakow.com/tag/party-ideas/",
+      "title": "party ideas | Krawl Through Krakow",
+      "kind": "tag archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-tag-party-ideas",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 37
+    },
+    {
+      "key": "archive-tag-pub-crawl",
+      "route": "/tag/pub-crawl/",
+      "sourceUrl": "https://krawlthroughkrakow.com/tag/pub-crawl/",
+      "title": "Pub Crawl | Krawl Through Krakow",
+      "kind": "tag archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-tag-pub-crawl",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 39
+    },
+    {
+      "key": "archive-tag-tips",
+      "route": "/tag/tips/",
+      "sourceUrl": "https://krawlthroughkrakow.com/tag/tips/",
+      "title": "tips | Krawl Through Krakow",
+      "kind": "tag archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-tag-tips",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 35
+    },
+    {
+      "key": "archive-tag-to-do-list",
+      "route": "/tag/to-do-list/",
+      "sourceUrl": "https://krawlthroughkrakow.com/tag/to-do-list/",
+      "title": "to do list | Krawl Through Krakow",
+      "kind": "tag archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-tag-to-do-list",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 41
+    },
+    {
+      "key": "archive-tag-why-choose-us",
+      "route": "/tag/why-choose-us/",
+      "sourceUrl": "https://krawlthroughkrakow.com/tag/why-choose-us/",
+      "title": "Why Choose Us | Krawl Through Krakow",
+      "kind": "tag archive",
+      "postId": null,
+      "expectedSections": 0,
+      "features": [],
+      "source": "docs/code-pages/full-migration/captures/archive-tag-why-choose-us",
+      "status": "staging-verified-visual-exceptions-documented",
+      "evidence": {
+        "capture": true,
+        "build": true,
+        "deployed": true,
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "releaseReport": "readiness-staging-release.json",
+        "visual": {
+          "report": "local-final-comparison.json",
+          "baselineRevision": "pre-readiness-fixes",
+          "currentReview": "../production-readiness/README.md",
+          "pixelPasses": 4,
+          "comparisons": 4,
+          "geometryDifferences": 0,
+          "strictSuitePassed": true
+        },
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true,
+          "currentLocalMatchesProduction": true
+        }
+      },
+      "termId": 31
+    }
+  ],
+  "aliases": [
+    {
+      "route": "/krakow-pub-crawl/",
+      "target": "/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-pub-crawl/",
+      "kind": "blog post",
+      "status": "existing-homepage-canonical-alias",
+      "evidence": {
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true
+        }
+      }
+    },
+    {
+      "route": "/2017/12/13/the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow/",
+      "target": "/krakow-nightclubs/",
+      "sourceUrl": "https://krawlthroughkrakow.com/2017/12/13/the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow/",
+      "kind": "linked URL outside sitemap/API",
+      "status": "planned-redirect",
+      "evidence": {
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true
+        }
+      }
+    },
+    {
+      "route": "/2019/08/07/ultimate-seasonal-guide-to-the-best-activities-in-krakow/",
+      "target": "/krakow-free-activities-2/",
+      "sourceUrl": "https://krawlthroughkrakow.com/2019/08/07/ultimate-seasonal-guide-to-the-best-activities-in-krakow/",
+      "kind": "linked URL outside sitemap/API",
+      "status": "planned-redirect",
+      "evidence": {
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true
+        }
+      }
+    },
+    {
+      "route": "/how-to-join/",
+      "target": "/about-us/how-to-join/",
+      "sourceUrl": "https://krawlthroughkrakow.com/how-to-join/",
+      "kind": "linked URL outside sitemap/API",
+      "status": "planned-redirect",
+      "evidence": {
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true
+        }
+      }
+    },
+    {
+      "route": "/krakow-activities",
+      "target": "/other-tours/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-activities",
+      "kind": "linked URL outside sitemap/API",
+      "status": "planned-redirect",
+      "evidence": {
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true
+        }
+      }
+    },
+    {
+      "route": "/project/vodka-tasting-tour/",
+      "target": "/other-tours/",
+      "sourceUrl": "https://krawlthroughkrakow.com/project/vodka-tasting-tour/",
+      "kind": "linked URL outside sitemap/API",
+      "status": "planned-redirect",
+      "evidence": {
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true
+        }
+      }
+    },
+    {
+      "route": "/terms-and-conditions",
+      "target": "/terms-and-conditions/",
+      "sourceUrl": "https://krawlthroughkrakow.com/terms-and-conditions",
+      "kind": "linked URL outside sitemap/API",
+      "status": "planned-redirect",
+      "evidence": {
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true
+        }
+      }
+    },
+    {
+      "route": "/ultimate-seasonal-guide-to-the-best-activities-in-krakow/",
+      "target": "/krakow-weather-guide/",
+      "sourceUrl": "https://krawlthroughkrakow.com/ultimate-seasonal-guide-to-the-best-activities-in-krakow/",
+      "kind": "linked URL outside sitemap/API",
+      "status": "planned-redirect",
+      "evidence": {
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true
+        }
+      }
+    },
+    {
+      "route": "/krakow-activities/",
+      "target": "/other-tours/",
+      "sourceUrl": "https://krawlthroughkrakow.com/krakow-activities/",
+      "kind": "page",
+      "status": "planned-redirect",
+      "evidence": {
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true
+        }
+      }
+    },
+    {
+      "route": "/project/life-drawing-session/",
+      "target": "/krakow-hen-do/",
+      "sourceUrl": "https://krawlthroughkrakow.com/project/life-drawing-session/",
+      "kind": "project",
+      "status": "planned-redirect",
+      "evidence": {
+        "liveVerified": true,
+        "cleanCacheVerified": true,
+        "production": {
+          "deployed": true,
+          "liveVerified": true,
+          "cleanCacheVerified": true
+        }
+      }
+    }
+  ],
+  "protectedFamilies": [
+    "/",
+    "/store/",
+    "/store2/"
+  ],
+  "issues": [
+    {
+      "id": "legacy-brunch-link",
+      "route": "/",
+      "status": "fixed-staging-incoming-link",
+      "note": "Owner-approved homepage incoming link now targets storefront product 29. The old Ecwid endpoint and emergency availability fallback are untouched. See production-readiness/homepage-booking-revision-tests.json and staging-attribution-tests.json."
+    },
+    {
+      "id": "nye-legacy-year",
+      "route": "/new-years-eve/",
+      "status": "fixed-staging-owner-confirmed",
+      "note": "Owner confirmed 2026-12-31, 17:00/19:30, 250 PLN and meeting point TBA. Year/countdown/copy corrected; unconfirmed itinerary is TBA and venue photos labelled historical. All NYE content/floating booking controls reach product 32. No policy/legal copy changed."
+    },
+    {
+      "id": "laptop-header-wrap",
+      "status": "fixed-staging-owner-approved",
+      "note": "Hamburger below 1380px; single compact row at 1380-1499px; original desktop >=1500px. Bounds/keyboard checks pass and sampled wide header PNGs match the checkpoint exactly."
+    },
+    {
+      "id": "broken-article-contents-links",
+      "status": "fixed-staging",
+      "note": "One contents anchor repaired and seven entries for nonexistent sections removed. Existing article body text retained; no new sections invented."
+    },
+    {
+      "id": "about-us-media-and-review-counts",
+      "route": "/about-us/",
+      "status": "fixed-staging-owner-approved",
+      "note": "Empty non-working video removed. Review totals now use the existing owner-approved homepage snapshots (Google 2,400+, Tripadvisor 3,000+), not claimed live counts. Accessible review link labels no longer contain captured CSS. Scoped <=600px review wrapping removes the inherited 1.25 scale and fixes 320px overflow without hiding text or shrinking fonts; both review photos and text fit their modules in local/live tests."
+    },
+    {
+      "id": "legacy-booking-destinations",
+      "status": "fixed-staging-owner-approved",
+      "note": "Normal KTK FareHarbor and Ecwid website links now use our storefront, preserving known product identity and genuine attribution. Existing Brewery CTA selects product 40 and the Ecwid widget/SDK is removed from this content page only. Legacy store/fallback, storefront and OmniLodge unchanged."
+    },
+    {
+      "id": "source-missing-team-building-canonical",
+      "route": "/krakow-team-building-activities/",
+      "status": "preserve-source-for-cutover",
+      "note": "Fresh production SEO baseline omits a canonical on this one article. Prepared production policy preserves that absence; any intentional canonical improvement is a separate SEO change. Staging retains its staging canonical and noindex."
+    },
+    {
+      "id": "blog-homepage-collision",
+      "route": "/krakow-pub-crawl/",
+      "status": "preserve-existing-homepage-canonical-alias",
+      "note": "Not one of the 56 independently rendered articles. Keep current homepage behavior rather than invent another article URL or changing production SEO semantics."
+    }
+  ],
+  "checkpoints": {
+    "preEditBackup": "deploy-backups/before-full-page-migration-20261105-133409.zip",
+    "preEditBackupSha256": "0E6EFE81F285678FA76F5561AE6824DD13EB333B13881E8A5043C9DAC21296A6"
+  },
+  "updatedAt": "2026-11-05T19:21:19.770Z",
+  "release": {
+    "publish": "../production-readiness/staging-pages-publish.json",
+    "live": "readiness-staging-release.json",
+    "clean": "readiness-staging-clean-cache.json",
+    "cacheHit": "readiness-staging-cache-hit.json",
+    "strictVisualSuitePassed": false,
+    "visualExceptions": "VISUAL-REVIEW.md",
+    "productionDeployed": true
+  },
+  "productionRelease": {
+    "publish": "../production-release/publish.json",
+    "live": "../production-release/production-clean-cache.json",
+    "clean": "../production-release/production-clean-cache.json",
+    "cacheHit": "../production-release/production-cache-hit.json",
+    "currentLocalMatchesProduction": true,
+    "phase": "production-verified"
+  }
+}

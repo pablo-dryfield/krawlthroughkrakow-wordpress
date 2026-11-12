@@ -1,0 +1,56 @@
+<script>
+(function () {
+  const KEYS = ['utm_source','utm_medium','utm_campaign','utm_id','utm_term','utm_content','gclid','gbraid','wbraid'];
+
+  function getStored() {
+    const o = {};
+    KEYS.forEach(k => {
+      try {
+        const v = localStorage.getItem('trk_' + k);
+        if (v) o[k] = v;
+      } catch(e) {}
+    });
+    return o;
+  }
+
+  function saveFromUrl() {
+    const q = new URLSearchParams(location.search);
+    KEYS.forEach(k => {
+      const v = q.get(k);
+      if (v) {
+        try { localStorage.setItem('trk_' + k, v); } catch(e) {}
+      }
+    });
+  }
+
+  function addParams(href) {
+    const stored = getStored();
+    if (!Object.keys(stored).length) return href;
+
+    const url = new URL(href, location.origin);
+    if (!url.pathname.startsWith('/store')) return href;
+
+    Object.entries(stored).forEach(([k, v]) => {
+      if (!url.searchParams.has(k)) url.searchParams.set(k, v);
+    });
+
+    return url.toString();
+  }
+
+  // Capture once on landing page
+  saveFromUrl();
+
+  // Modify any click to /store links (BOOK NOW buttons included)
+  document.addEventListener('click', function (e) {
+    const a = e.target.closest('a');
+    if (!a || !a.href) return;
+
+    let url;
+    try { url = new URL(a.href, location.origin); } catch { return; }
+    if (url.origin !== location.origin) return;
+    if (!url.pathname.startsWith('/store')) return;
+
+    a.href = addParams(a.href);
+  }, true);
+})();
+</script>

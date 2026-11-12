@@ -1,0 +1,2409 @@
+{
+  "startedAt": "2026-11-05T16:28:37.331996+00:00",
+  "readOnly": true,
+  "routes": [
+    {
+      "key": "post-2020-krakow-nightlife-guide",
+      "url": "https://krawlthroughkrakow.com/2020-krakow-nightlife-guide/",
+      "finalUrl": "https://krawlthroughkrakow.com/2020-krakow-nightlife-guide/",
+      "status": 200,
+      "title": "Ultimate 2020 Krakow Nightlife Guide | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/2020-krakow-nightlife-guide/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-all-you-need-to-know-about-visiting-auschwitz",
+      "url": "https://krawlthroughkrakow.com/all-you-need-to-know-about-visiting-auschwitz/",
+      "finalUrl": "https://krawlthroughkrakow.com/all-you-need-to-know-about-visiting-auschwitz/",
+      "status": 200,
+      "title": "Everything you need to know about visiting Auschwitz | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/all-you-need-to-know-about-visiting-auschwitz/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-bachelor-party-organisers-krakow",
+      "url": "https://krawlthroughkrakow.com/bachelor-party-organisers-krakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/bachelor-party-organisers-krakow/",
+      "status": 200,
+      "title": "Bachelor Party Organisers Krakow: Unforgettable Adventures | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/bachelor-party-organisers-krakow/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-best-drinking-games",
+      "url": "https://krawlthroughkrakow.com/best-drinking-games/",
+      "finalUrl": "https://krawlthroughkrakow.com/best-drinking-games/",
+      "status": 200,
+      "title": "The Best Drinking Games Selection From The Experts | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/best-drinking-games/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-best-hotels-in-krakow-2019-2020",
+      "url": "https://krawlthroughkrakow.com/best-hotels-in-krakow-2019-2020/",
+      "finalUrl": "https://krawlthroughkrakow.com/best-hotels-in-krakow-2019-2020/",
+      "status": 200,
+      "title": "Best Hotels in Krakow in 2019 | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/best-hotels-in-krakow-2019-2020/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-best-places-to-eat",
+      "url": "https://krawlthroughkrakow.com/best-places-to-eat/",
+      "finalUrl": "https://krawlthroughkrakow.com/best-places-to-eat/",
+      "status": 200,
+      "title": "The Best 2024 Places To Eat In Krakow | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/best-places-to-eat/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-best-pub-crawls-in-europe",
+      "url": "https://krawlthroughkrakow.com/best-pub-crawls-in-europe/",
+      "finalUrl": "https://krawlthroughkrakow.com/best-pub-crawls-in-europe/",
+      "status": 200,
+      "title": "Best Pub Crawls in Europe | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/best-pub-crawls-in-europe/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-budapest-or-krakow-nightlife",
+      "url": "https://krawlthroughkrakow.com/budapest-or-krakow-nightlife/",
+      "finalUrl": "https://krawlthroughkrakow.com/budapest-or-krakow-nightlife/",
+      "status": 200,
+      "title": "Budapest or Krakow Nightlife: A Tourist\u2019s Ultimate Guide | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/budapest-or-krakow-nightlife/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-escape-rooms-for-a-stag-do-in-krakow",
+      "url": "https://krawlthroughkrakow.com/escape-rooms-for-a-stag-do-in-krakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/escape-rooms-for-a-stag-do-in-krakow/",
+      "status": 200,
+      "title": "Escape Rooms for a Stag Do in Krakow: Discover The Ultimate Guide | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/escape-rooms-for-a-stag-do-in-krakow/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-go-karting-krakow",
+      "url": "https://krawlthroughkrakow.com/go-karting-krakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/go-karting-krakow/",
+      "status": 200,
+      "title": "Unleash Your Inner Racer with Go Karting Krakow! | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/go-karting-krakow/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-hen-do-ideas-abroad",
+      "url": "https://krawlthroughkrakow.com/hen-do-ideas-abroad/",
+      "finalUrl": "https://krawlthroughkrakow.com/hen-do-ideas-abroad/",
+      "status": 200,
+      "title": "Krakow: Ultimate Hen Do Ideas Abroad for a Party | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/hen-do-ideas-abroad/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-hostel-etiquette-tips",
+      "url": "https://krawlthroughkrakow.com/hostel-etiquette-tips/",
+      "finalUrl": "https://krawlthroughkrakow.com/hostel-etiquette-tips/",
+      "status": 200,
+      "title": "7 Essential Hostel Etiquette Tips for a Memorable Stay | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/hostel-etiquette-tips/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-hostel-hangover-cure",
+      "url": "https://krawlthroughkrakow.com/hostel-hangover-cure/",
+      "finalUrl": "https://krawlthroughkrakow.com/hostel-hangover-cure/",
+      "status": 200,
+      "title": "Hostel Hangover Cure: Surviving the Morning After in Krakow | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/hostel-hangover-cure/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-irish-bars-krakow",
+      "url": "https://krawlthroughkrakow.com/irish-bars-krakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/irish-bars-krakow/",
+      "status": 200,
+      "title": "Irish Bars Krakow: Krawl Through Krakow\u2019s Exciting Nightlife | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/irish-bars-krakow/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-is-krakow-safe-for-stag",
+      "url": "https://krawlthroughkrakow.com/is-krakow-safe-for-stag/",
+      "finalUrl": "https://krawlthroughkrakow.com/is-krakow-safe-for-stag/",
+      "status": 200,
+      "title": "Is Krakow Safe for Stag? Nightlife, Safety Tips & More | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/is-krakow-safe-for-stag/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-jazz-bars-in-krakow",
+      "url": "https://krawlthroughkrakow.com/jazz-bars-in-krakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/jazz-bars-in-krakow/",
+      "status": 200,
+      "title": "Jazz Bars in Krakow: Experience Vibrant Nightlife & Charm | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/jazz-bars-in-krakow/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-karaoke-bars-in-krakow",
+      "url": "https://krawlthroughkrakow.com/karaoke-bars-in-krakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/karaoke-bars-in-krakow/",
+      "status": 200,
+      "title": "Discover the Best Karaoke Bars in Krakow for a Fun Night Out | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/karaoke-bars-in-krakow/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-bars-jewish-quarter",
+      "url": "https://krawlthroughkrakow.com/krakow-bars-jewish-quarter/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-bars-jewish-quarter/",
+      "status": 200,
+      "title": "Discover Krakow Bars: Jewish Quarter Nightlife and Culture | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-bars-jewish-quarter/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-budget-activities",
+      "url": "https://krawlthroughkrakow.com/krakow-budget-activities/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-budget-activities/",
+      "status": 200,
+      "title": "Krakow Budget Activities: Fun and Affordable Explorations | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-budget-activities/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-food-truck-parks",
+      "url": "https://krawlthroughkrakow.com/krakow-food-truck-parks/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-food-truck-parks/",
+      "status": 200,
+      "title": "Discover Krakow Food Truck Parks for a Tasty Adventure | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-food-truck-parks/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-free-activities-2",
+      "url": "https://krawlthroughkrakow.com/krakow-free-activities-2/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-free-activities-2/",
+      "status": 200,
+      "title": "Krakow Free Activities: Budget-Friendly Exploration and Fun | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-free-activities-2/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-go-karting",
+      "url": "https://krawlthroughkrakow.com/krakow-go-karting/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-go-karting/",
+      "status": 200,
+      "title": "Krakow Go Karting: Ultimate Guide for a Thrilling Night | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-go-karting/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-hen-party-reviews",
+      "url": "https://krawlthroughkrakow.com/krakow-hen-party-reviews/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-hen-party-reviews/",
+      "status": 200,
+      "title": "Krakow Hen Party Reviews: Ultimate Nightlife and Activities | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-hen-party-reviews/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-live-music",
+      "url": "https://krawlthroughkrakow.com/krakow-live-music/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-live-music/",
+      "status": 200,
+      "title": "Krakow Live Music: Explore Top Venues & Unforgettable Nights | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-live-music/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-milkbars",
+      "url": "https://krawlthroughkrakow.com/krakow-milkbars/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-milkbars/",
+      "status": 200,
+      "title": "Discover Krakow Milkbars: A Revival of Authentic Polish Cuisine | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-milkbars/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-money-saving-tips",
+      "url": "https://krawlthroughkrakow.com/krakow-money-saving-tips/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-money-saving-tips/",
+      "status": 200,
+      "title": "Krakow Money Saving Tips: Affordable Travel Guide | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-money-saving-tips/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-new-years-eve",
+      "url": "https://krawlthroughkrakow.com/krakow-new-years-eve/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-new-years-eve/",
+      "status": 200,
+      "title": "Why Krak\u00f3w is awesome for New Years Eve | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-new-years-eve/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-nightclubs",
+      "url": "https://krawlthroughkrakow.com/krakow-nightclubs/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-nightclubs/",
+      "status": 200,
+      "title": "Discover Krakow Nightclubs: Ultimate Guide for Party-Goers | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-nightclubs/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-safety-guide",
+      "url": "https://krawlthroughkrakow.com/krakow-safety-guide/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-safety-guide/",
+      "status": 200,
+      "title": "Krak\u00f3w Safety Guide: Tips for a Fun and Secure Experience | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-safety-guide/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-shooting-range",
+      "url": "https://krawlthroughkrakow.com/krakow-shooting-range/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-shooting-range/",
+      "status": 200,
+      "title": "Krakow Shooting Range: Ultimate Tourist Guide | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-shooting-range/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-shot-bar",
+      "url": "https://krawlthroughkrakow.com/krakow-shot-bar/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-shot-bar/",
+      "status": 200,
+      "title": "Discover Krakow Shot Bar Gems: Ultimate Nightlife Guide | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-shot-bar/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-stag-activities",
+      "url": "https://krawlthroughkrakow.com/krakow-stag-activities/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-stag-activities/",
+      "status": 200,
+      "title": "Ultimate Guide to Krakow Stag Activities: Nightlife and More | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-stag-activities/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-team-building-activities",
+      "url": "https://krawlthroughkrakow.com/krakow-team-building-activities/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-team-building-activities/",
+      "status": 200,
+      "title": "8 Exciting Krakow Team Building Activities for Tourists | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-techno-clubs-2",
+      "url": "https://krawlthroughkrakow.com/krakow-techno-clubs-2/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-techno-clubs-2/",
+      "status": 200,
+      "title": "Experience Krakow Techno Clubs: A Partygoer\u2019s Guide | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-techno-clubs-2/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-techno-clubs",
+      "url": "https://krawlthroughkrakow.com/krakow-techno-clubs/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-techno-clubs/",
+      "status": 200,
+      "title": "Experience Krakow Techno Clubs: Ultimate Party Guide | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-techno-clubs/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-weather-guide",
+      "url": "https://krawlthroughkrakow.com/krakow-weather-guide/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-weather-guide/",
+      "status": 200,
+      "title": "The Ultimate Krakow Weather Guide! | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-weather-guide/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-wine-bars",
+      "url": "https://krawlthroughkrakow.com/krakow-wine-bars/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-wine-bars/",
+      "status": 200,
+      "title": "Discover the Best Krakow Wine Bars for a Memorable Night Out | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-wine-bars/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krakow-winter-activities",
+      "url": "https://krawlthroughkrakow.com/krakow-winter-activities/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-winter-activities/",
+      "status": 200,
+      "title": "Discover Krakow Winter Activities: Nightlife, Food & Fun | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-winter-activities/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-krawl-through-krakow-winter-newsletter",
+      "url": "https://krawlthroughkrakow.com/krawl-through-krakow-winter-newsletter/",
+      "finalUrl": "https://krawlthroughkrakow.com/krawl-through-krakow-winter-newsletter/",
+      "status": 200,
+      "title": "Krawl Through Krak\u00f3w Winter Newsletter | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krawl-through-krakow-winter-newsletter/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-life-professional-drunk",
+      "url": "https://krawlthroughkrakow.com/life-professional-drunk/",
+      "finalUrl": "https://krawlthroughkrakow.com/life-professional-drunk/",
+      "status": 200,
+      "title": "Life As A Professional Drunk | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/life-professional-drunk/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-new-years-eve-in-krakow",
+      "url": "https://krawlthroughkrakow.com/new-years-eve-in-krakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/new-years-eve-in-krakow/",
+      "status": 200,
+      "title": "Celebrate the Magic: Krakow\u2019s Unforgettable Christmas, New Year\u2019s Eve, and Vibrant Nightlife | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/new-years-eve-in-krakow/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-party-krakow",
+      "url": "https://krawlthroughkrakow.com/party-krakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/party-krakow/",
+      "status": 200,
+      "title": "How to party in Krakow | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/party-krakow/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
+      "url": "https://krawlthroughkrakow.com/six-reasons-you-need-to-party-with-the-krawl-through-krakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/six-reasons-you-need-to-party-with-the-krawl-through-krakow/",
+      "status": 200,
+      "title": "Six reasons you need to party with the Krawl Through Krakow! | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/six-reasons-you-need-to-party-with-the-krawl-through-krakow/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-spa-hotels-krakow",
+      "url": "https://krawlthroughkrakow.com/spa-hotels-krakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/spa-hotels-krakow/",
+      "status": 200,
+      "title": "Unwind in Style: A Tour of Spa Hotels Krakow | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/spa-hotels-krakow/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-spooktacular-krakow-unveil-the-mysteries-of-halloween",
+      "url": "https://krawlthroughkrakow.com/spooktacular-krakow-unveil-the-mysteries-of-halloween/",
+      "finalUrl": "https://krawlthroughkrakow.com/spooktacular-krakow-unveil-the-mysteries-of-halloween/",
+      "status": 200,
+      "title": "Spooktacular Krakow: Unveil the Mysteries of Halloween | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/spooktacular-krakow-unveil-the-mysteries-of-halloween/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-sports-bar-krakow",
+      "url": "https://krawlthroughkrakow.com/sports-bar-krakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/sports-bar-krakow/",
+      "status": 200,
+      "title": "Exploring the Best Sports Bar Krakow: A Guide for Tourists | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/sports-bar-krakow/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-stag-do-costume",
+      "url": "https://krawlthroughkrakow.com/stag-do-costume/",
+      "finalUrl": "https://krawlthroughkrakow.com/stag-do-costume/",
+      "status": 200,
+      "title": "Krakow Stag Do: Unleashing Fun with Creative Stag Do Costume Ideas | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/stag-do-costume/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-stag-pranks",
+      "url": "https://krawlthroughkrakow.com/stag-pranks/",
+      "finalUrl": "https://krawlthroughkrakow.com/stag-pranks/",
+      "status": 200,
+      "title": "Epic Stag Pranks: Unforgettable Night in Krakow | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/stag-pranks/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-stages-of-drunkenness",
+      "url": "https://krawlthroughkrakow.com/stages-of-drunkenness/",
+      "finalUrl": "https://krawlthroughkrakow.com/stages-of-drunkenness/",
+      "status": 200,
+      "title": "Eleven Stages of Drunkenness | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/stages-of-drunkenness/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-survive-pub-crawl",
+      "url": "https://krawlthroughkrakow.com/survive-pub-crawl/",
+      "finalUrl": "https://krawlthroughkrakow.com/survive-pub-crawl/",
+      "status": 200,
+      "title": "How to Survive a Pub Crawl | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/survive-pub-crawl/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+      "url": "https://krawlthroughkrakow.com/the-ultimate-guide-to-dating-in-nightlife-krakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/the-ultimate-guide-to-dating-in-nightlife-krakow/",
+      "status": 200,
+      "title": "The Ultimate Guide to Dating in nightlife & krakow\u00a0 | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/the-ultimate-guide-to-dating-in-nightlife-krakow/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow",
+      "url": "https://krawlthroughkrakow.com/the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow/",
+      "status": 200,
+      "title": "The Ultimate Guide to the Best Bars and Clubs in Krakow in 2019 | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-travel-krakow-your-comprehensive-city-guide",
+      "url": "https://krawlthroughkrakow.com/travel-krakow-your-comprehensive-city-guide/",
+      "finalUrl": "https://krawlthroughkrakow.com/travel-krakow-your-comprehensive-city-guide/",
+      "status": 200,
+      "title": "Travel Krakow \u2013 your comprehensive city guide! | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/travel-krakow-your-comprehensive-city-guide/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-weekend-in-krakow",
+      "url": "https://krawlthroughkrakow.com/weekend-in-krakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/weekend-in-krakow/",
+      "status": 200,
+      "title": "Weekend In Krakow: Partying And Other 15 Top Things To Do | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/weekend-in-krakow/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-welcome-to-alcohol",
+      "url": "https://krawlthroughkrakow.com/welcome-to-alcohol/",
+      "finalUrl": "https://krawlthroughkrakow.com/welcome-to-alcohol/",
+      "status": 200,
+      "title": "The Big Prize Competition | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/welcome-to-alcohol/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "post-wheres-the-cheap-places-to-drink-in-krakow",
+      "url": "https://krawlthroughkrakow.com/wheres-the-cheap-places-to-drink-in-krakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/wheres-the-cheap-places-to-drink-in-krakow/",
+      "status": 200,
+      "title": "Where\u2019s the Cheap Places to Drink in Krakow: Insider Tips | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/wheres-the-cheap-places-to-drink-in-krakow/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-category-drinking-games",
+      "url": "https://krawlthroughkrakow.com/category/drinking-games/",
+      "finalUrl": "https://krawlthroughkrakow.com/category/drinking-games/",
+      "status": 200,
+      "title": "Drinking Games | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/category/drinking-games/"
+      ],
+      "description": [
+        "Category: <span>Drinking Games</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-category-hen-do",
+      "url": "https://krawlthroughkrakow.com/category/hen-do/",
+      "finalUrl": "https://krawlthroughkrakow.com/category/hen-do/",
+      "status": 200,
+      "title": "Hen do | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/category/hen-do/"
+      ],
+      "description": [
+        "Category: <span>Hen do</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-category-krakow-guides",
+      "url": "https://krawlthroughkrakow.com/category/krakow-guides/",
+      "finalUrl": "https://krawlthroughkrakow.com/category/krakow-guides/",
+      "status": 200,
+      "title": "Krakow Guides | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/category/krakow-guides/"
+      ],
+      "description": [
+        "Category: <span>Krakow Guides</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-category-krakow-nightlife",
+      "url": "https://krawlthroughkrakow.com/category/krakow-nightlife/",
+      "finalUrl": "https://krawlthroughkrakow.com/category/krakow-nightlife/",
+      "status": 200,
+      "title": "Krak\u00f3w Nightlife | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/category/krakow-nightlife/"
+      ],
+      "description": [
+        "Category: <span>Krak\u00f3w Nightlife</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-category-party-tips",
+      "url": "https://krawlthroughkrakow.com/category/party-tips/",
+      "finalUrl": "https://krawlthroughkrakow.com/category/party-tips/",
+      "status": 200,
+      "title": "Party Tips | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/category/party-tips/"
+      ],
+      "description": [
+        "Category: <span>Party Tips</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-category-stag-do",
+      "url": "https://krawlthroughkrakow.com/category/stag-do/",
+      "finalUrl": "https://krawlthroughkrakow.com/category/stag-do/",
+      "status": 200,
+      "title": "Stag do | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/category/stag-do/"
+      ],
+      "description": [
+        "Category: <span>Stag do</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-category-uncategorized",
+      "url": "https://krawlthroughkrakow.com/category/uncategorized/",
+      "finalUrl": "https://krawlthroughkrakow.com/category/uncategorized/",
+      "status": 200,
+      "title": "Uncategorized | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/category/uncategorized/"
+      ],
+      "description": [
+        "Category: <span>Uncategorized</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-author-dpbowman",
+      "url": "https://krawlthroughkrakow.com/author/dpbowman/",
+      "finalUrl": "https://krawlthroughkrakow.com/author/dpbowman/",
+      "status": 200,
+      "title": "DPBowman | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/author/dpbowman/"
+      ],
+      "description": [
+        "Author: <span>DPBowman</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-author-dpbowman-page-2",
+      "url": "https://krawlthroughkrakow.com/author/dpbowman/page/2/",
+      "finalUrl": "https://krawlthroughkrakow.com/author/dpbowman/page/2/",
+      "status": 200,
+      "title": "DPBowman | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/author/dpbowman/page/2/"
+      ],
+      "description": [
+        "Author: <span>DPBowman</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-author-dpbowman-page-3",
+      "url": "https://krawlthroughkrakow.com/author/dpbowman/page/3/",
+      "finalUrl": "https://krawlthroughkrakow.com/author/dpbowman/page/3/",
+      "status": 200,
+      "title": "DPBowman | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/author/dpbowman/page/3/"
+      ],
+      "description": [
+        "Author: <span>DPBowman</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-author-dpbowman-page-4",
+      "url": "https://krawlthroughkrakow.com/author/dpbowman/page/4/",
+      "finalUrl": "https://krawlthroughkrakow.com/author/dpbowman/page/4/",
+      "status": 200,
+      "title": "DPBowman | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/author/dpbowman/page/4/"
+      ],
+      "description": [
+        "Author: <span>DPBowman</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-author-dpbowman-page-5",
+      "url": "https://krawlthroughkrakow.com/author/dpbowman/page/5/",
+      "finalUrl": "https://krawlthroughkrakow.com/author/dpbowman/page/5/",
+      "status": 200,
+      "title": "DPBowman | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/author/dpbowman/page/5/"
+      ],
+      "description": [
+        "Author: <span>DPBowman</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-author-dpbowman-page-6",
+      "url": "https://krawlthroughkrakow.com/author/dpbowman/page/6/",
+      "finalUrl": "https://krawlthroughkrakow.com/author/dpbowman/page/6/",
+      "status": 200,
+      "title": "DPBowman | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/author/dpbowman/page/6/"
+      ],
+      "description": [
+        "Author: <span>DPBowman</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-author-dpbowman-page-7",
+      "url": "https://krawlthroughkrakow.com/author/dpbowman/page/7/",
+      "finalUrl": "https://krawlthroughkrakow.com/author/dpbowman/page/7/",
+      "status": 200,
+      "title": "DPBowman | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/author/dpbowman/page/7/"
+      ],
+      "description": [
+        "Author: <span>DPBowman</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-author-dpbowman-page-8",
+      "url": "https://krawlthroughkrakow.com/author/dpbowman/page/8/",
+      "finalUrl": "https://krawlthroughkrakow.com/author/dpbowman/page/8/",
+      "status": 200,
+      "title": "DPBowman | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/author/dpbowman/page/8/"
+      ],
+      "description": [
+        "Author: <span>DPBowman</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-author-dpbowman-page-9",
+      "url": "https://krawlthroughkrakow.com/author/dpbowman/page/9/",
+      "finalUrl": "https://krawlthroughkrakow.com/author/dpbowman/page/9/",
+      "status": 200,
+      "title": "DPBowman | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/author/dpbowman/page/9/"
+      ],
+      "description": [
+        "Author: <span>DPBowman</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-author-jessie",
+      "url": "https://krawlthroughkrakow.com/author/jessie/",
+      "finalUrl": "https://krawlthroughkrakow.com/author/jessie/",
+      "status": 200,
+      "title": "Jess Campbell | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/author/jessie/"
+      ],
+      "description": [
+        "Author: <span>Jess Campbell</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-author-pubthroughkrakow",
+      "url": "https://krawlthroughkrakow.com/author/pubthroughkrakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/author/pubthroughkrakow/",
+      "status": 200,
+      "title": "pubthroughkrakow | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/author/pubthroughkrakow/"
+      ],
+      "description": [
+        "Author: <span>pubthroughkrakow</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-author-pubthroughkrakow-page-2",
+      "url": "https://krawlthroughkrakow.com/author/pubthroughkrakow/page/2/",
+      "finalUrl": "https://krawlthroughkrakow.com/author/pubthroughkrakow/page/2/",
+      "status": 200,
+      "title": "pubthroughkrakow | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/author/pubthroughkrakow/page/2/"
+      ],
+      "description": [
+        "Author: <span>pubthroughkrakow</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-author-thirsty",
+      "url": "https://krawlthroughkrakow.com/author/thirsty/",
+      "finalUrl": "https://krawlthroughkrakow.com/author/thirsty/",
+      "status": 200,
+      "title": "Krusty | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/author/thirsty/"
+      ],
+      "description": [
+        "Author: <span>Krusty</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-category-krakow-guides-page-2",
+      "url": "https://krawlthroughkrakow.com/category/krakow-guides/page/2/",
+      "finalUrl": "https://krawlthroughkrakow.com/category/krakow-guides/page/2/",
+      "status": 200,
+      "title": "Krakow Guides | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/category/krakow-guides/page/2/"
+      ],
+      "description": [
+        "Category: <span>Krakow Guides</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-category-krakow-guides-page-3",
+      "url": "https://krawlthroughkrakow.com/category/krakow-guides/page/3/",
+      "finalUrl": "https://krawlthroughkrakow.com/category/krakow-guides/page/3/",
+      "status": 200,
+      "title": "Krakow Guides | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/category/krakow-guides/page/3/"
+      ],
+      "description": [
+        "Category: <span>Krakow Guides</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-category-krakow-nightlife-page-2",
+      "url": "https://krawlthroughkrakow.com/category/krakow-nightlife/page/2/",
+      "finalUrl": "https://krawlthroughkrakow.com/category/krakow-nightlife/page/2/",
+      "status": 200,
+      "title": "Krak\u00f3w Nightlife | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/category/krakow-nightlife/page/2/"
+      ],
+      "description": [
+        "Category: <span>Krak\u00f3w Nightlife</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-category-party-tips-page-2",
+      "url": "https://krawlthroughkrakow.com/category/party-tips/page/2/",
+      "finalUrl": "https://krawlthroughkrakow.com/category/party-tips/page/2/",
+      "status": 200,
+      "title": "Party Tips | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/category/party-tips/page/2/"
+      ],
+      "description": [
+        "Category: <span>Party Tips</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-category-uncategorized-page-2",
+      "url": "https://krawlthroughkrakow.com/category/uncategorized/page/2/",
+      "finalUrl": "https://krawlthroughkrakow.com/category/uncategorized/page/2/",
+      "status": 200,
+      "title": "Uncategorized | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/category/uncategorized/page/2/"
+      ],
+      "description": [
+        "Category: <span>Uncategorized</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-category-uncategorized-page-3",
+      "url": "https://krawlthroughkrakow.com/category/uncategorized/page/3/",
+      "finalUrl": "https://krawlthroughkrakow.com/category/uncategorized/page/3/",
+      "status": 200,
+      "title": "Uncategorized | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/category/uncategorized/page/3/"
+      ],
+      "description": [
+        "Category: <span>Uncategorized</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-category-uncategorized-page-4",
+      "url": "https://krawlthroughkrakow.com/category/uncategorized/page/4/",
+      "finalUrl": "https://krawlthroughkrakow.com/category/uncategorized/page/4/",
+      "status": 200,
+      "title": "Uncategorized | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/category/uncategorized/page/4/"
+      ],
+      "description": [
+        "Category: <span>Uncategorized</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-category-uncategorized-page-5",
+      "url": "https://krawlthroughkrakow.com/category/uncategorized/page/5/",
+      "finalUrl": "https://krawlthroughkrakow.com/category/uncategorized/page/5/",
+      "status": 200,
+      "title": "Uncategorized | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/category/uncategorized/page/5/"
+      ],
+      "description": [
+        "Category: <span>Uncategorized</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "about-us",
+      "url": "https://krawlthroughkrakow.com/about-us/",
+      "finalUrl": "https://krawlthroughkrakow.com/about-us/",
+      "status": 200,
+      "title": "About Us | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/about-us/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "how-to-join",
+      "url": "https://krawlthroughkrakow.com/about-us/how-to-join/",
+      "finalUrl": "https://krawlthroughkrakow.com/about-us/how-to-join/",
+      "status": 200,
+      "title": "How to Join! | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/about-us/how-to-join/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "blog",
+      "url": "https://krawlthroughkrakow.com/blog/",
+      "finalUrl": "https://krawlthroughkrakow.com/blog/",
+      "status": 200,
+      "title": "The Pub Crawl Blog | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/blog/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "contact",
+      "url": "https://krawlthroughkrakow.com/contact/",
+      "finalUrl": "https://krawlthroughkrakow.com/contact/",
+      "status": 200,
+      "title": "Contact | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/contact/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "faqs",
+      "url": "https://krawlthroughkrakow.com/faqs/",
+      "finalUrl": "https://krawlthroughkrakow.com/faqs/",
+      "status": 200,
+      "title": "FAQ\u2019s | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/faqs/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "gallery",
+      "url": "https://krawlthroughkrakow.com/gallery/",
+      "finalUrl": "https://krawlthroughkrakow.com/gallery/",
+      "status": 200,
+      "title": "Gallery | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/gallery/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "krakow-hen-do",
+      "url": "https://krawlthroughkrakow.com/krakow-hen-do/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-hen-do/",
+      "status": 200,
+      "title": "Krakow Hen do | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-hen-do/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "krakow-nightlife",
+      "url": "https://krawlthroughkrakow.com/krakow-nightlife/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-nightlife/",
+      "status": 200,
+      "title": "Krakow Nightlife | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-nightlife/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "krakow-stag-do",
+      "url": "https://krawlthroughkrakow.com/krakow-stag-do/",
+      "finalUrl": "https://krawlthroughkrakow.com/krakow-stag-do/",
+      "status": 200,
+      "title": "Krakow Stag do | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/krakow-stag-do/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "meeting-point",
+      "url": "https://krawlthroughkrakow.com/meeting-point/",
+      "finalUrl": "https://krawlthroughkrakow.com/meeting-point/",
+      "status": 200,
+      "title": "Meeting Point | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/meeting-point/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "new-years-eve",
+      "url": "https://krawlthroughkrakow.com/new-years-eve/",
+      "finalUrl": "https://krawlthroughkrakow.com/new-years-eve/",
+      "status": 200,
+      "title": "New Years Eve | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/new-years-eve/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "other-tours",
+      "url": "https://krawlthroughkrakow.com/other-tours/",
+      "finalUrl": "https://krawlthroughkrakow.com/other-tours/",
+      "status": 200,
+      "title": "Other Tours | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/other-tours/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "otherbarcrawls",
+      "url": "https://krawlthroughkrakow.com/otherbarcrawls/",
+      "finalUrl": "https://krawlthroughkrakow.com/otherbarcrawls/",
+      "status": 200,
+      "title": "Bar Crawls Around the World | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/otherbarcrawls/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "privacy-policy",
+      "url": "https://krawlthroughkrakow.com/privacy-policy/",
+      "finalUrl": "https://krawlthroughkrakow.com/privacy-policy/",
+      "status": 200,
+      "title": "Privacy Policy | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/privacy-policy/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "pub-crawl-drinking-games",
+      "url": "https://krawlthroughkrakow.com/pub-crawl-drinking-games/",
+      "finalUrl": "https://krawlthroughkrakow.com/pub-crawl-drinking-games/",
+      "status": 200,
+      "title": "Pub Crawl Drinking Games | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/pub-crawl-drinking-games/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "pub-crawl-jobs",
+      "url": "https://krawlthroughkrakow.com/pub-crawl-jobs/",
+      "finalUrl": "https://krawlthroughkrakow.com/pub-crawl-jobs/",
+      "status": 200,
+      "title": "Pub Crawl Jobs | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/pub-crawl-jobs/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "stagshens",
+      "url": "https://krawlthroughkrakow.com/stagshens/",
+      "finalUrl": "https://krawlthroughkrakow.com/stagshens/",
+      "status": 200,
+      "title": "Stags & Hens | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/stagshens/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "student-trips-poland",
+      "url": "https://krawlthroughkrakow.com/student-trips-poland/",
+      "finalUrl": "https://krawlthroughkrakow.com/student-trips-poland/",
+      "status": 200,
+      "title": "Student Trips Poland | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/student-trips-poland/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "terms-and-conditions",
+      "url": "https://krawlthroughkrakow.com/terms-and-conditions/",
+      "finalUrl": "https://krawlthroughkrakow.com/terms-and-conditions/",
+      "status": 200,
+      "title": "Terms and Conditions | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/terms-and-conditions/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "testimonials",
+      "url": "https://krawlthroughkrakow.com/testimonials/",
+      "finalUrl": "https://krawlthroughkrakow.com/testimonials/",
+      "status": 200,
+      "title": "Testimonials | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/testimonials/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "tour-service-disclaimer",
+      "url": "https://krawlthroughkrakow.com/tour-service-disclaimer/",
+      "finalUrl": "https://krawlthroughkrakow.com/tour-service-disclaimer/",
+      "status": 200,
+      "title": "Tour Service Disclaimer | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/tour-service-disclaimer/"
+      ],
+      "description": [],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-tag-drinking-games",
+      "url": "https://krawlthroughkrakow.com/tag/drinking-games/",
+      "finalUrl": "https://krawlthroughkrakow.com/tag/drinking-games/",
+      "status": 200,
+      "title": "Drinking Games | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/tag/drinking-games/"
+      ],
+      "description": [
+        "Tag: <span>Drinking Games</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-tag-krakow-food",
+      "url": "https://krawlthroughkrakow.com/tag/krakow-food/",
+      "finalUrl": "https://krawlthroughkrakow.com/tag/krakow-food/",
+      "status": 200,
+      "title": "Krakow Food | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/tag/krakow-food/"
+      ],
+      "description": [
+        "Tag: <span>Krakow Food</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-tag-krakow-nightlife",
+      "url": "https://krawlthroughkrakow.com/tag/krakow-nightlife/",
+      "finalUrl": "https://krawlthroughkrakow.com/tag/krakow-nightlife/",
+      "status": 200,
+      "title": "Krakow Nightlife | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/tag/krakow-nightlife/"
+      ],
+      "description": [
+        "Tag: <span>Krakow Nightlife</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-tag-krakow-party",
+      "url": "https://krawlthroughkrakow.com/tag/krakow-party/",
+      "finalUrl": "https://krawlthroughkrakow.com/tag/krakow-party/",
+      "status": 200,
+      "title": "Krakow Party | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/tag/krakow-party/"
+      ],
+      "description": [
+        "Tag: <span>Krakow Party</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-tag-krakow",
+      "url": "https://krawlthroughkrakow.com/tag/krakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/tag/krakow/",
+      "status": 200,
+      "title": "Krakow | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/tag/krakow/"
+      ],
+      "description": [
+        "Tag: <span>Krakow</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-tag-krawl-through-krakow",
+      "url": "https://krawlthroughkrakow.com/tag/krawl-through-krakow/",
+      "finalUrl": "https://krawlthroughkrakow.com/tag/krawl-through-krakow/",
+      "status": 200,
+      "title": "Krawl Through Krakow | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/tag/krawl-through-krakow/"
+      ],
+      "description": [
+        "Tag: <span>Krawl Through Krakow</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-tag-party-ideas",
+      "url": "https://krawlthroughkrakow.com/tag/party-ideas/",
+      "finalUrl": "https://krawlthroughkrakow.com/tag/party-ideas/",
+      "status": 200,
+      "title": "party ideas | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/tag/party-ideas/"
+      ],
+      "description": [
+        "Tag: <span>party ideas</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-tag-pub-crawl",
+      "url": "https://krawlthroughkrakow.com/tag/pub-crawl/",
+      "finalUrl": "https://krawlthroughkrakow.com/tag/pub-crawl/",
+      "status": 200,
+      "title": "Pub Crawl | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/tag/pub-crawl/"
+      ],
+      "description": [
+        "Tag: <span>Pub Crawl</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-tag-tips",
+      "url": "https://krawlthroughkrakow.com/tag/tips/",
+      "finalUrl": "https://krawlthroughkrakow.com/tag/tips/",
+      "status": 200,
+      "title": "tips | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/tag/tips/"
+      ],
+      "description": [
+        "Tag: <span>tips</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-tag-to-do-list",
+      "url": "https://krawlthroughkrakow.com/tag/to-do-list/",
+      "finalUrl": "https://krawlthroughkrakow.com/tag/to-do-list/",
+      "status": 200,
+      "title": "to do list | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/tag/to-do-list/"
+      ],
+      "description": [
+        "Tag: <span>to do list</span>"
+      ],
+      "social": [],
+      "pagination": []
+    },
+    {
+      "key": "archive-tag-why-choose-us",
+      "url": "https://krawlthroughkrakow.com/tag/why-choose-us/",
+      "finalUrl": "https://krawlthroughkrakow.com/tag/why-choose-us/",
+      "status": 200,
+      "title": "Why Choose Us | Krawl Through Krakow",
+      "robots": [
+        {
+          "name": "robots",
+          "content": "max-image-preview:large"
+        }
+      ],
+      "xRobotsTag": null,
+      "canonical": [
+        "https://krawlthroughkrakow.com/tag/why-choose-us/"
+      ],
+      "description": [
+        "Tag: <span>Why Choose Us</span>"
+      ],
+      "social": [],
+      "pagination": []
+    }
+  ],
+  "errors": [],
+  "checkedAt": "2026-11-05T16:29:11.699862+00:00",
+  "summary": {
+    "routes": 116,
+    "errors": 0,
+    "sourceNoindexRoutes": []
+  }
+}

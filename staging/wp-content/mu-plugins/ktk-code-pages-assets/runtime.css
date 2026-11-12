@@ -1,0 +1,85 @@
+/* Native interaction states, layered over the captured page cascade. */
+/* Divi's measured logo/menu fit, expressed without its JavaScript runtime. */
+@media (min-width: 1356px) {
+  #et-top-navigation { padding-left: 110px; }
+}
+@media (min-width: 981px) and (max-width: 1355px) {
+  #et-top-navigation { padding-left: 137px; }
+  #top-menu > .nav-store > .sub-menu { left: auto; right: 0; }
+}
+@media (max-width: 980px) {
+  #et-top-navigation { padding-left: 85px; }
+}
+/* Keep the full menu on one line; use the existing compact menu when it cannot fit. */
+@media (min-width: 1380px) and (max-width: 1499px) {
+  #et-top-navigation { padding-left: 137px; }
+  #top-menu { display: flex; align-items: baseline; gap: 12px; }
+  #top-menu > li { flex: 0 0 auto; padding-right: 0; }
+}
+@media (min-width: 981px) and (max-width: 1379px) {
+  .ktk-code-page #main-header .container { width: 80%; max-width: 1080px; height: 80px; margin: 0 auto; padding: 0; }
+  .ktk-code-page #main-header .logo_container { position: absolute; width: 100%; height: 80px; }
+  .ktk-code-page #logo { max-width: 50%; max-height: 54%; }
+  .ktk-code-page #et-top-navigation { padding: 24px 0 0 85px; }
+  #top-menu-nav { display: none; }
+  #et_mobile_nav_menu { display: block; }
+  .mobile_menu_bar { display: block; padding-bottom: 24px; }
+}
+@media (max-width: 1379px) {
+  #mobile_menu { max-height: calc(100vh - 80px); max-height: calc(100dvh - 80px); overflow-y: auto; }
+}
+.ktk-parity-skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+.ktk-parity-skip-link:focus {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  width: auto;
+  height: auto;
+  padding: 12px 18px;
+  margin: 0;
+  clip: auto;
+  z-index: 1000002;
+  background: #000;
+  color: #fff;
+}
+.mobile_menu_bar:focus-visible,
+#top-menu a:focus-visible,
+.ktk-parity-module-link:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .et-waypoint { animation: none !important; opacity: 1 !important; }
+}
+.et_pb_toggle_title[role="button"]:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.ktk-parity-gallery-pause { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.ktk-parity-gallery-pause:focus { width: auto; height: auto; margin: 0; clip: auto; padding: 8px 12px; left: 12px; top: 12px; z-index: 101; background: #000; color: #fff; font: inherit; outline: 2px solid #fff; }
+html.ktk-parity-lightbox-open { overflow: hidden; }
+dialog.ktk-parity-lightbox { max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: transparent; color: #fff; }
+dialog.ktk-parity-lightbox:not([open]) { display: none; }
+dialog.ktk-parity-lightbox::backdrop { background: rgb(11 11 11 / 80%); }
+dialog.ktk-parity-lightbox .mfp-img { max-height: 100vh; max-height: 100dvh; }
+dialog.ktk-parity-lightbox .mfp-arrow[hidden] { display: none; }
+.ktk-contact-honeypot { position: absolute !important; width: 1px !important; height: 1px !important; left: -10000px !important; overflow: hidden; }
+.ktk-code-page form[data-ktk-form="cf7"] input:not([type="checkbox"]):not([type="radio"]),
+.ktk-code-page form[data-ktk-form="cf7"] textarea,
+.ktk-code-page form[data-ktk-form="cf7"] select { max-width: 100%; box-sizing: border-box; }
+@media (max-width: 980px) {
+  iframe.ktk-shapo-widget:not(.ktk-embed-ready) { height: 330px !important; }
+}
+@media (max-width: 600px) {
+  .ktk-code-page[data-ktk-page="about-us"] .cont_TA { max-width: 100%; }
+  .ktk-code-page[data-ktk-page="about-us"] .cont_TA .TA_text { max-width: 100%; float: none; white-space: normal; }
+  .ktk-code-page[data-ktk-page="about-us"] .cont_TA .TA_H { line-height: 1.2; }
+  .ktk-code-page[data-ktk-page="about-us"] .cont_TA .div_dot { scale: 1; }
+  .ktk-code-page[data-ktk-page="about-us"] .cont_TA .rev { white-space: nowrap; }
+}

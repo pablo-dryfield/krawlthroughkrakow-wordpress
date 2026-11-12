@@ -1,0 +1,14 @@
+import {readFile,writeFile} from 'node:fs/promises';
+const folder='docs/code-pages/full-migration/';
+const manifest=JSON.parse(await readFile(folder+'manifest.json','utf8'));
+const root='krawlthroughkrakow.com/staging';
+const paths=[...manifest.routes.map(r=>r.route),...manifest.aliases.filter(a=>a.status!=='existing-homepage-canonical-alias').map(a=>a.route),'/wp-content/mu-plugins/ktk-code-pages-assets/'];
+const candidates=[...new Set(paths.map(p=>root+(/^(\/category|\/tag|\/author)\//.test(p)?'/'+p.split('/')[1]:p.replace(/\/$/,''))))].sort((a,b)=>a.length-b.length||a.localeCompare(b));
+const prefixes=[];
+for(const prefix of candidates)if(!prefixes.some(parent=>prefix===parent||prefix.startsWith(parent+'/')))prefixes.push(prefix);
+const protectedUrls=[root+'/',root+'/store/',root+'/store2/'];
+if(prefixes.length>100||prefixes.some(prefix=>protectedUrls.some(url=>url.startsWith(prefix))))throw new Error('Unsafe or oversized purge scope');
+prefixes.sort();
+await writeFile(folder+'cache-purge-prefixes.txt',prefixes.join('\n')+'\n');
+await writeFile(folder+'cache-purge-scope.json',JSON.stringify({preparedAt:new Date().toISOString(),count:prefixes.length,prefixes,excludes:protectedUrls,syntax:'Cloudflare Custom Purge -> Prefix; one per line; no scheme/query/fragment. Do not purge until the final staging release is verified.'},null,2));
+console.log(`${prefixes.length} staging content/owned-asset prefixes; homepage and both stores excluded.`);

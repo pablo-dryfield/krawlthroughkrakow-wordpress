@@ -1,0 +1,24 @@
+#ktk-cta[data-ktk-site-cta] {
+  position: fixed;
+  right: 0;
+  top: 25%;
+  writing-mode: vertical-rl;
+  transform: translateY(-50%) rotate(180deg);
+  transform-origin: center;
+  z-index: 100000;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  padding: 16px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1;
+  white-space: nowrap;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
+}
+#ktk-cta[data-ktk-site-cta]:hover { opacity: .9; }
+#ktk-cta[data-ktk-site-cta]:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+#ktk-cta[data-ktk-site-cta][hidden] { display: none !important; }

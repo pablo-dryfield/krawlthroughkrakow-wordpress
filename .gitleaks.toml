@@ -1,0 +1,28 @@
+title = "KTK source scan: default rules plus reviewed public-capture false positives"
+
+[extend]
+useDefault = true
+
+# This browser-delivered Consent Database key is intentionally public, not the
+# HTTP private API key. Only its exact legacy setup-line shape is exempted.
+# https://www.iubenda.com/en/help/6473-consent-solution-js-documentation/
+[[allowlists]]
+description = "Public Iubenda JS setup in immutable rendered source captures"
+condition = "AND"
+paths = ['''docs/(?:code-pages/(?:full-migration/captures/[^/]+/production-1920|how-to-join/production-rendered-1920)|homepage-parity/production-source-rendered-1920)\.html$''']
+regexTarget = "line"
+regexes = ['''^var iubConsParams = \{"api_key":"[a-f0-9-]+","log_level":"error","logger":"console","send_from_local_storage_at_load":"true"\};\r?$''']
+
+[[allowlists]]
+description = "SHA-256 entries for .htaccess, not passwords or keys"
+condition = "AND"
+paths = ['''docs/code-pages/full-migration/build-verification\.json$''']
+regexTarget = "match"
+regexes = ['''^\.htaccess": "[a-f0-9]{64}"$''']
+
+[[allowlists]]
+description = "Ecwid password-field CSS selectors, not password values"
+condition = "AND"
+paths = ['''docs/code-pages/full-migration/captures/[^/]+/production-(?:1920|390)\.json$''']
+regexTarget = "match"
+regexes = ['''^(?:input\.gwt-PasswordTextBox|div\.ecwid-Checkout-PasswordBlock div\.ecwid-form|div\.ecwid-ProductBrowser-auth-anonim), [a-z]+\.[A-Za-z0-9_.-]+ $''']

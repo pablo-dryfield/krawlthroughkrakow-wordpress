@@ -1,0 +1,919 @@
+{
+  "capturedSource": "production-source-rendered-1920.html",
+  "builtAt": "2026-11-05T16:25:02.775Z",
+  "bodyClass": "home wp-singular page-template-default page page-id-278 custom-background wp-theme-Divi et_pb_button_helper_class et_fullwidth_nav et_fullwidth_secondary_nav et_non_fixed_nav et_show_nav et_primary_nav_dropdown_animation_slide et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_footer_columns1 et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db",
+  "title": "Krawl Through Krakow | Best Pub Crawl in Krakow",
+  "description": "",
+  "htmlBytes": 80255,
+  "cssBytes": 332579,
+  "files": {
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/900/italic.woff2": {
+      "file": "parity/e1f430cc9e5e-italic.woff2",
+      "bytes": 8128,
+      "sha256": "3591961db9f3f5dea334daa25dc6937945155f6301fb82c5d542d4f79ac96264"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/900/italic.woff2": {
+      "file": "parity/33551a70807a-italic.woff2",
+      "bytes": 18624,
+      "sha256": "7084156f0b371b854c9fd3a84bc1006315b153898e75c20b1dfd5aa80a62c769"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/900/italic.woff2": {
+      "file": "parity/f560e5a5399c-italic.woff2",
+      "bytes": 12036,
+      "sha256": "60a9a50cd1754ab10b80064ca72f418c484fa8d8a9732ca96860e76e0e696781"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/900/italic.woff2": {
+      "file": "parity/78cd64de70b3-italic.woff2",
+      "bytes": 33800,
+      "sha256": "e54e602a23aee69af20fba846e1257d309c70a6ecf5dbd4af449c319805f30f0"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/900/italic.woff2": {
+      "file": "parity/a30df0f4d612-italic.woff2",
+      "bytes": 11168,
+      "sha256": "60fc086745be8602051a2a19a1aa06f6ac9b4bf2519eeefbc8d49747c31ac49b"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/800/italic.woff2": {
+      "file": "parity/59746e758df5-italic.woff2",
+      "bytes": 11420,
+      "sha256": "66b2b89220e2333eb0780d05a43e6c4315ccb10973bc0ff0be8872ce4021877d"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/800/italic.woff2": {
+      "file": "parity/ee6b70b938dd-italic.woff2",
+      "bytes": 8176,
+      "sha256": "b8d311e0d5f990770a54f816c799117201e47a1090d88af6d5456a54e2b3c45a"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/800/italic.woff2": {
+      "file": "parity/d1cbf7ba4bde-italic.woff2",
+      "bytes": 35180,
+      "sha256": "064e5a8ee36d07c36fdfc42a8360a3b84f1341b50ab18d15816f207936930dc2"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/800/italic.woff2": {
+      "file": "parity/8e517bc07aa7-italic.woff2",
+      "bytes": 19720,
+      "sha256": "f1326c2303ab11892c0042fcd23cd6de526e99b1ee230181b43cca82960e808f"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/800/italic.woff2": {
+      "file": "parity/c562db6ad317-italic.woff2",
+      "bytes": 12424,
+      "sha256": "770ef606fab1a020f291654c815d85af7aed8ed6f364b67f479f57bbaea21bd6"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/700/italic.woff2": {
+      "file": "parity/fc636509af3d-italic.woff2",
+      "bytes": 12444,
+      "sha256": "d3c5bc2d021550c484066347f1674afca7d8c2e7f6e583737499df2151042737"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/700/italic.woff2": {
+      "file": "parity/1861e98721ee-italic.woff2",
+      "bytes": 8200,
+      "sha256": "62ba9a083528f7b11b66f6e4df160772572d87054c1d5db448617b0eb9ff3ed2"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/700/italic.woff2": {
+      "file": "parity/cd27e8355491-italic.woff2",
+      "bytes": 19560,
+      "sha256": "795939fc9193d54e7ee22be5105fff1f422df4081bcfec808eab6ea9b1c16acc"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/700/italic.woff2": {
+      "file": "parity/a6562e2c4df8-italic.woff2",
+      "bytes": 34980,
+      "sha256": "ac4c4736de696b439bb4e18e75af08be7bace1f3bb74efa15f0ed1a46b5874d1"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/700/italic.woff2": {
+      "file": "parity/dfdf089557b7-italic.woff2",
+      "bytes": 11292,
+      "sha256": "e6885b7e3e5b377ea7b8e781540bc035c3d6b98e1941ed1a81e07fe9a1aac4ca"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/600/italic.woff2": {
+      "file": "parity/e905bd26839a-italic.woff2",
+      "bytes": 8132,
+      "sha256": "25abf49f7cc72cdf99b99cffe0c57ead9912fe2483a28fce7d03eda4ad165266"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/600/italic.woff2": {
+      "file": "parity/2a1b78261faa-italic.woff2",
+      "bytes": 34584,
+      "sha256": "d6785235a68792e34c84e72f413cb916b00e31548ad4ea0bc212e2779c154015"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/600/italic.woff2": {
+      "file": "parity/df422296f67f-italic.woff2",
+      "bytes": 19432,
+      "sha256": "049b057033b291da03d64026f964c1700efdb845d08deb0eef5e227b469ef201"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/600/italic.woff2": {
+      "file": "parity/199914cf5c7a-italic.woff2",
+      "bytes": 12408,
+      "sha256": "114b8b5abad37251b59dde86b78fad3275c07a4ef7f22b6ac13b715b07d657bd"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/600/italic.woff2": {
+      "file": "parity/81a5b12baba3-italic.woff2",
+      "bytes": 11336,
+      "sha256": "c9d875ab243fd46261a70d0c0f48beae6353f9fd184523a74193120319231479"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/500/italic.woff2": {
+      "file": "parity/dbb7d3565412-italic.woff2",
+      "bytes": 33892,
+      "sha256": "3d0d8ee644cbe5476b6a044b76c3ba7dd15072a8001cb6cd2d4c351f72d53d5f"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/500/italic.woff2": {
+      "file": "parity/e8a0675c2d0d-italic.woff2",
+      "bytes": 19316,
+      "sha256": "c61f4442447c203e0562cc8023a3765fcb322a693498b1ea2f643385b60571b9"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/500/italic.woff2": {
+      "file": "parity/6162900fe72a-italic.woff2",
+      "bytes": 12260,
+      "sha256": "dac1ecc302037a35efbaad1cace07e73e5a1ad249e7c153a64dd3cb18639fb53"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/500/italic.woff2": {
+      "file": "parity/94ec744a74de-italic.woff2",
+      "bytes": 11384,
+      "sha256": "38fa8f0edb9bf90a6edee57a28adc2adfd41053530218875155b8e2ccb21f3a9"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/500/italic.woff2": {
+      "file": "parity/4dd1fb74ad63-italic.woff2",
+      "bytes": 8076,
+      "sha256": "74a2d36a1822ef397167ab7966c120bebccb3dd0bc1e6166f0cac7678fa1d554"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/400/italic.woff2": {
+      "file": "parity/95ca9c634a53-italic.woff2",
+      "bytes": 12192,
+      "sha256": "99dd26a939737964a2e23fe3551ff1964dc3b3f5efe4588f86c8d6241de4d2c8"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/400/italic.woff2": {
+      "file": "parity/0503b627244d-italic.woff2",
+      "bytes": 19260,
+      "sha256": "a18fca2f8a465eaa5cb0a7431cbcb5ecdc7eb06ac751684eba790ab84d21aadc"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/400/italic.woff2": {
+      "file": "parity/982efc75ca0b-italic.woff2",
+      "bytes": 8012,
+      "sha256": "010f75b7dd4f1d7b2a113c55340e212d1662abe2f4dc3ca7b4d3746aa1337b4b"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/400/italic.woff2": {
+      "file": "parity/95be2e6dcfe5-italic.woff2",
+      "bytes": 11324,
+      "sha256": "adb1d136e9f1c610ea83458d45d052dcc1377f29bf71e846e2d6b61a82a68570"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/400/italic.woff2": {
+      "file": "parity/7f966f540e0a-italic.woff2",
+      "bytes": 33704,
+      "sha256": "b7eb494f38e5949295c56b5012bd5edcc7535a0502201fc626a17281084e2bf7"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/300/italic.woff2": {
+      "file": "parity/80e4c2db060e-italic.woff2",
+      "bytes": 33500,
+      "sha256": "2a2c38fb24c8cc50a7c48a362560df7afcad8f3829abd78de78287e5930c339b"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/300/italic.woff2": {
+      "file": "parity/daf31400bd89-italic.woff2",
+      "bytes": 8048,
+      "sha256": "a12a68d04d31f7bc7156dcab0460e898ae15e9e22530413c889841d9d5e07d9a"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/300/italic.woff2": {
+      "file": "parity/73c92cc40ea0-italic.woff2",
+      "bytes": 19140,
+      "sha256": "bdceea45ca1d524c0a11dacda3f297b4483c476961081845bbc7c83161998b9c"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/300/italic.woff2": {
+      "file": "parity/123edd06b590-italic.woff2",
+      "bytes": 12152,
+      "sha256": "fb22cd8f4b9d0714d8b11f266e10945c6fe1e1aa7113c123fee67c4930d33b0f"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/300/italic.woff2": {
+      "file": "parity/7f68053c93f5-italic.woff2",
+      "bytes": 11308,
+      "sha256": "2453d055b773468ec731e949e719efb0c6f8617b58c407177624f0f078c5092d"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/200/italic.woff2": {
+      "file": "parity/63b36bd0ca2c-italic.woff2",
+      "bytes": 19000,
+      "sha256": "d8903fdfb5d4fdb29bad9182319bd1c4c2443c2f79b58e0fdbd7c800fcae465e"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/200/italic.woff2": {
+      "file": "parity/2e0532615a96-italic.woff2",
+      "bytes": 12076,
+      "sha256": "9f3b283aef5c9706c666bb7ea7305b07b2bd781c91395752625c1b1d40ce06b4"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/200/italic.woff2": {
+      "file": "parity/513bdf9ef72a-italic.woff2",
+      "bytes": 8000,
+      "sha256": "d5887372e5960b2481059653388d07ff3001207129bc998351d1a81410f41ab5"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/200/italic.woff2": {
+      "file": "parity/ba8f9c32d43e-italic.woff2",
+      "bytes": 11236,
+      "sha256": "246e41f9e6d81d56500141e100a23cb4bd13b8b6ee769bee1f13d852520b6a39"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/200/italic.woff2": {
+      "file": "parity/5d12c62c437b-italic.woff2",
+      "bytes": 33416,
+      "sha256": "225a362853ababd82224787d8e3cb1eb9a328b1c5b600592a6480eb97fbba478"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/100/italic.woff2": {
+      "file": "parity/77b535455496-italic.woff2",
+      "bytes": 10904,
+      "sha256": "9eb6807c3f5821a94c7b1ebd6a38c3e7d29861ecded8ec875f3c84acc3fa1658"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/100/italic.woff2": {
+      "file": "parity/f295a9a77ac7-italic.woff2",
+      "bytes": 17952,
+      "sha256": "a65e9fbd3e3a7b7d8a60b27eebc28674dbf9e6242df37123f6f06175aa06c514"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/100/italic.woff2": {
+      "file": "parity/acda5e156314-italic.woff2",
+      "bytes": 11584,
+      "sha256": "73183e9506e31232bd7a1c6d656cbbb0cfdd39b77c551a229638062db52c55ff"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/100/italic.woff2": {
+      "file": "parity/bbecbe0392fd-italic.woff2",
+      "bytes": 31876,
+      "sha256": "54cbd8d7e378e2db859b0b51da6079c0970af2ab9bfecb9119c46dc6fa606050"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/100/italic.woff2": {
+      "file": "parity/00866b15967c-italic.woff2",
+      "bytes": 7900,
+      "sha256": "9e9761aec15d4fbf67aaa1eb021c41f513314fbb75435fd3a7558cbfe1740f4a"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/900/normal.woff2": {
+      "file": "parity/fda94c13722b-normal.woff2",
+      "bytes": 32420,
+      "sha256": "f4fcedc59ae41e24d67bcbd406c7a5f0b6e21ab57d2f4c198e1b1486f3832330"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/900/normal.woff2": {
+      "file": "parity/571f7a265f14-normal.woff2",
+      "bytes": 7832,
+      "sha256": "ed5d0076eab375fb05ab8aed3aefecb6ae43c560f93fbeedb9931fbf2d2e2ac6"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/900/normal.woff2": {
+      "file": "parity/5ff350f34f97-normal.woff2",
+      "bytes": 18020,
+      "sha256": "5b6958520638bb8609f9eacb17c4d189563efeae96d5da49f7c2043988697205"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/900/normal.woff2": {
+      "file": "parity/9a0d2aa82574-normal.woff2",
+      "bytes": 10908,
+      "sha256": "d7197257ad3cbc21bf3527e867355206b2399d74652a88372a523e19df630edf"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/900/normal.woff2": {
+      "file": "parity/1c0e98e2bc46-normal.woff2",
+      "bytes": 11572,
+      "sha256": "522cebe603650541da7c59fa833d4a5b110dee8fbc977c688ccb3b33ae2ac7f1"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/800/normal.woff2": {
+      "file": "parity/4072e6719808-normal.woff2",
+      "bytes": 33624,
+      "sha256": "59f6ebeb71a14c64edc538eba78a010c1c9ef680a66a559ec3cf4b0d12db1a8b"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/800/normal.woff2": {
+      "file": "parity/46c346e507ad-normal.woff2",
+      "bytes": 12144,
+      "sha256": "f61413d2fbb61e639bdb53e4e47b7b6f275953b408b18eeb0b200fb66d55c4cf"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/800/normal.woff2": {
+      "file": "parity/24b8bb134fe7-normal.woff2",
+      "bytes": 11180,
+      "sha256": "e9796e8de1954ee72e8d5de23d26bb8f577d4b903abae1fe11db8904279516ef"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/800/normal.woff2": {
+      "file": "parity/58aa1cae5746-normal.woff2",
+      "bytes": 7900,
+      "sha256": "24f149c36fd7d848a1f7beb294f829a8764927181d3002f7b02021295e75f8fd"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/800/normal.woff2": {
+      "file": "parity/d06ea8d9c83f-normal.woff2",
+      "bytes": 19012,
+      "sha256": "ba826fb84c2e961578adf3a08b5778b87905d4443445d1d56d84f9f157d5ea4b"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/700/normal.woff2": {
+      "file": "parity/12f984f2f1ea-normal.woff2",
+      "bytes": 18824,
+      "sha256": "f9d9e65b15372cebcafc3acd1e664a564c5c4b23278de4d5760de9a13c530371"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/700/normal.woff2": {
+      "file": "parity/309e76c16d5c-normal.woff2",
+      "bytes": 33532,
+      "sha256": "a59fcc944a712e213a2f3bd994367129217c75f24a9155a5a3c1a0f5fd2cc9a7"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/700/normal.woff2": {
+      "file": "parity/4a45f585916d-normal.woff2",
+      "bytes": 12060,
+      "sha256": "b930b83240c1c3e2aa3c81e24b828c8e68bba79f7d23483f6346cdb5fce5173f"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/700/normal.woff2": {
+      "file": "parity/93bfb74ab31c-normal.woff2",
+      "bytes": 11160,
+      "sha256": "c6880741986ff5648d6b6c08ebbacfe7ba77861a002bff2643b8af4221f40d34"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/700/normal.woff2": {
+      "file": "parity/6c2940c0663a-normal.woff2",
+      "bytes": 7904,
+      "sha256": "da6ed50e8a351c07e86d912207c8dd7a336c644ff6dbf2a40555a08f2406519e"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/600/normal.woff2": {
+      "file": "parity/c39e7eec8773-normal.woff2",
+      "bytes": 11120,
+      "sha256": "12fe2b174f70b732553c46dae097be6a70b3f4a3d3cf305dbbbf236ac3b182b7"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/600/normal.woff2": {
+      "file": "parity/158a69e90573-normal.woff2",
+      "bytes": 12060,
+      "sha256": "5cdc3c54c076ef8ce55a8e21e306c9a57720c48b5f77853e28a6abd62aa23c15"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/600/normal.woff2": {
+      "file": "parity/385995f71a22-normal.woff2",
+      "bytes": 33192,
+      "sha256": "1d8a4af6a50cc4f7561e8484d5bff39acda90016b8e8cbb5cee69c253bb02750"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/600/normal.woff2": {
+      "file": "parity/59bb58baab5c-normal.woff2",
+      "bytes": 18688,
+      "sha256": "d857325c360f7128b347ca924c1974967aaa886ba47dad22e4042d6c38b26a83"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/600/normal.woff2": {
+      "file": "parity/2cac73d43b7d-normal.woff2",
+      "bytes": 7904,
+      "sha256": "c4875c3754e594f283a2dbec1086da519d784f559cb7062b6d4d9721b667acd8"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/500/normal.woff2": {
+      "file": "parity/a2849fb24070-normal.woff2",
+      "bytes": 11128,
+      "sha256": "7d2f0315ec3282dd809e7d3cefccaf501113a2076a18fa0293cf70b931a463ad"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/500/normal.woff2": {
+      "file": "parity/8c665507eb3f-normal.woff2",
+      "bytes": 32292,
+      "sha256": "e28f60d292d6574d2cb5c0b63fd3e893ae6d9a17d698afc9d037643dcfde4228"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/500/normal.woff2": {
+      "file": "parity/a912427de8e9-normal.woff2",
+      "bytes": 11956,
+      "sha256": "630211df38da5158405937d8f947e8f22b4c676185a673631667da59115c4692"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/500/normal.woff2": {
+      "file": "parity/2572f2f33cd7-normal.woff2",
+      "bytes": 18748,
+      "sha256": "2b53300fb9471520df2f4905847fb7a209879b2029ae893c05c6ee346b1320cd"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/500/normal.woff2": {
+      "file": "parity/5003d470ddfb-normal.woff2",
+      "bytes": 7872,
+      "sha256": "47a7333ad07599329dabfdfe109196e3b3ccd778fb223ec7b9e9facff4855da7"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/400/normal.woff2": {
+      "file": "parity/44b98a6c776c-normal.woff2",
+      "bytes": 11940,
+      "sha256": "d2b0f62ec1a296267618c01aae126ee87540b548f647776cd12dd9ef2a533265"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/400/normal.woff2": {
+      "file": "parity/0e52317e5f65-normal.woff2",
+      "bytes": 10980,
+      "sha256": "b2e276e2401a1539faea5639b69df0bfed888c2b26178d990c7af37a420a678b"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/400/normal.woff2": {
+      "file": "parity/c9d4bb6857b7-normal.woff2",
+      "bytes": 32272,
+      "sha256": "30f166cea0894715f7b1342798306dd4206bc1d0331440d543f6e7f7fff04539"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/400/normal.woff2": {
+      "file": "parity/d55d685602eb-normal.woff2",
+      "bytes": 18780,
+      "sha256": "e66bcd2761ab6924b25ce70dafe10e57a39193c4fea1516730bd9cb5240af6c8"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/400/normal.woff2": {
+      "file": "parity/3725f9c50376-normal.woff2",
+      "bytes": 7896,
+      "sha256": "575aa330708efd0385558f2649d4deedcfdab42059eeffbd5e53dcacddf614b0"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/300/normal.woff2": {
+      "file": "parity/55d8e1802b44-normal.woff2",
+      "bytes": 18708,
+      "sha256": "a04fdaaec9f3cd46b0cb3adc3d3e35a15264664330d22c7ba688ef6ea7d02010"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/300/normal.woff2": {
+      "file": "parity/1e19a7d035dc-normal.woff2",
+      "bytes": 11020,
+      "sha256": "40aab8ec6732416aaa7c4d7797d5bf49355530b6423a6e420505c743697be89d"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/300/normal.woff2": {
+      "file": "parity/1b802bda13e6-normal.woff2",
+      "bytes": 7800,
+      "sha256": "503367079264dafdda88f8bd93631965a5b1b6a3a2628db5e595280181a9b3ae"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/300/normal.woff2": {
+      "file": "parity/b3a481c96371-normal.woff2",
+      "bytes": 31912,
+      "sha256": "6fe66d1e115c07fdde1b5169c9ef2fd93653bddbf30ace6cd489c1af654b92bd"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/300/normal.woff2": {
+      "file": "parity/5e246ed940e3-normal.woff2",
+      "bytes": 11840,
+      "sha256": "9e360bb4ddffe1290bcbe2544467e11e8def35a6dfced5a9bda79c4631f066f3"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/200/normal.woff2": {
+      "file": "parity/c0206460de79-normal.woff2",
+      "bytes": 7748,
+      "sha256": "69fb7bd9d79e1191140554febb132107ccb99bb8e60a7b6400a1091c5f57cd5c"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/200/normal.woff2": {
+      "file": "parity/57a6dc961870-normal.woff2",
+      "bytes": 31804,
+      "sha256": "9dea5aa65f9b0aa7612a2e667bab698ae25757f393c33d02d83e1c3d0bbd6cf3"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/200/normal.woff2": {
+      "file": "parity/f90dc7f9617e-normal.woff2",
+      "bytes": 11040,
+      "sha256": "77b662f586b614c7ada6eebe6458b5573d296154bf9e4e413b9a62f66ad2f88d"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/200/normal.woff2": {
+      "file": "parity/4b54c681a8f6-normal.woff2",
+      "bytes": 18508,
+      "sha256": "060ea7df97c16408f4470a14da10ef7115b89ededc7748c00b400cd5f400042b"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/200/normal.woff2": {
+      "file": "parity/487ca9da67bb-normal.woff2",
+      "bytes": 11768,
+      "sha256": "b94eef75ae21485a717484caf5556762fc1c75cd8b8ac81f8efab0a58d953614"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic-ext/100/normal.woff2": {
+      "file": "parity/be2828b8cd7b-normal.woff2",
+      "bytes": 11324,
+      "sha256": "f3fd6de26e459cde7439447d02999c8e406dfea0cf4f538f6d231159117d558f"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/100/normal.woff2": {
+      "file": "parity/e809f710b065-normal.woff2",
+      "bytes": 7584,
+      "sha256": "c3540554d15f1d242bb9afaefccf3cd51fc546a93dcde6ccad32233120cf1949"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin-ext/100/normal.woff2": {
+      "file": "parity/1a4e1f3d48bc-normal.woff2",
+      "bytes": 30480,
+      "sha256": "a220a6740e465416ce053a11de8ad8d1b8be3d02f87ca15ea45afeaf1358f0a7"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/cyrillic/100/normal.woff2": {
+      "file": "parity/a4f76fb0d618-normal.woff2",
+      "bytes": 10664,
+      "sha256": "055eb932b583cfd7fb7aed9ab4c1f587d5e8b870240a4142138d26019be769a4"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/latin/100/normal.woff2": {
+      "file": "parity/6833fa173429-normal.woff2",
+      "bytes": 17612,
+      "sha256": "8288b03e96f9529b8e6d40fd5b1f3ed0bbdec966c110093d8b65e384960678cb"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/passion-one/5.2.8/latin-ext/900/normal.woff2": {
+      "file": "parity/d9102ba86e67-normal.woff2",
+      "bytes": 1880,
+      "sha256": "db5c14d2585093728f8f6ecf6700f70467639b769396202cf85a8372a9c405c2"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/passion-one/5.2.8/latin/900/normal.woff2": {
+      "file": "parity/cc2d52198935-normal.woff2",
+      "bytes": 7164,
+      "sha256": "952f87c0d5cd309b81b34650cb955a8c70f0c6d004016f34bffb7471055c90ed"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/passion-one/5.2.8/latin/700/normal.woff2": {
+      "file": "parity/439b984dd637-normal.woff2",
+      "bytes": 7468,
+      "sha256": "8cdeeec8046cdeb8b91bffcb1c4d09984d125721d57406b34e0eac76cdaba025"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/passion-one/5.2.8/latin-ext/700/normal.woff2": {
+      "file": "parity/4a7c7715e061-normal.woff2",
+      "bytes": 1884,
+      "sha256": "3e948dffc0de428195a647c60e193678e7eddba3f1d3cce68d2c522106b426f9"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/passion-one/5.2.8/latin/400/normal.woff2": {
+      "file": "parity/9a85f9dd83f8-normal.woff2",
+      "bytes": 7540,
+      "sha256": "eb49ce211df074142d735927bb3e8b655ccf39a7cc444baf02e871bcd47986df"
+    },
+    "https://krawlthroughkrakow.com/cf-fonts/s/passion-one/5.2.8/latin-ext/400/normal.woff2": {
+      "file": "parity/5ce9de1245a2-normal.woff2",
+      "bytes": 1936,
+      "sha256": "6461918ac8577995815edbe636172e85863345e7407d541c3635a30158372d42"
+    },
+    "https://krawlthroughkrakow.com/wp-content/themes/Divi/core/admin/fonts/fontawesome/fa-brands-400.ttf": {
+      "file": "parity/1dfd61a9fa08-fa-brands-400.ttf",
+      "bytes": 136516,
+      "sha256": "404d6083193e569bc5c28c7b1bc0e13ece80c6e0f5a50ad8e9633f48f3c09155"
+    },
+    "https://krawlthroughkrakow.com/wp-content/themes/Divi/core/admin/fonts/fontawesome/fa-brands-400.woff": {
+      "file": "parity/27788db0be03-fa-brands-400.woff",
+      "bytes": 92136,
+      "sha256": "a0375c054a0041bd58e2a0bf7fa3df7c3904bfc4f790fd24e32ff3ee70fd0eef"
+    },
+    "https://krawlthroughkrakow.com/wp-content/themes/Divi/core/admin/fonts/fontawesome/fa-brands-400.woff2": {
+      "file": "parity/114236a5fb48-fa-brands-400.woff2",
+      "bytes": 78460,
+      "sha256": "71b3ce72680f4183d28db86b184542051fd533bb1146933233e4f6a20cf98cba"
+    },
+    "https://krawlthroughkrakow.com/wp-content/themes/Divi/core/admin/fonts/fontawesome/fa-solid-900.ttf": {
+      "file": "parity/974e0d74341f-fa-solid-900.ttf",
+      "bytes": 204528,
+      "sha256": "2caded242c04139761742fe0cda7f6592df1b6686857532c8a7c2e2536b976e4"
+    },
+    "https://krawlthroughkrakow.com/wp-content/themes/Divi/core/admin/fonts/fontawesome/fa-solid-900.woff": {
+      "file": "parity/bebbf0077c97-fa-solid-900.woff",
+      "bytes": 104280,
+      "sha256": "aab971ade1633ab836222074ceae0aad8a082d900908f27491b221d6e83998ca"
+    },
+    "https://krawlthroughkrakow.com/wp-content/themes/Divi/core/admin/fonts/fontawesome/fa-solid-900.woff2": {
+      "file": "parity/6d2e57f1d34b-fa-solid-900.woff2",
+      "bytes": 80300,
+      "sha256": "6b555920e358f8a25a422988b448615c33bcccb4f932e8331cebfc8e2a737fc7"
+    },
+    "https://krawlthroughkrakow.com/wp-content/themes/Divi/core/admin/fonts/fontawesome/fa-regular-400.ttf": {
+      "file": "parity/b766f25f7a06-fa-regular-400.ttf",
+      "bytes": 34052,
+      "sha256": "5e811f0b32d488b9a183b77cfc7ac1ef44b3ea7aaed014e83975dfe597d221f6"
+    },
+    "https://krawlthroughkrakow.com/wp-content/themes/Divi/core/admin/fonts/fontawesome/fa-regular-400.woff": {
+      "file": "parity/f46e8a2dd9c0-fa-regular-400.woff",
+      "bytes": 16772,
+      "sha256": "6799c999e422710f40f70a60a6138fc38106226c44d7bd1b1023f5bb65befef9"
+    },
+    "https://krawlthroughkrakow.com/wp-content/themes/Divi/core/admin/fonts/fontawesome/fa-regular-400.woff2": {
+      "file": "parity/63f4c39acd09-fa-regular-400.woff2",
+      "bytes": 13548,
+      "sha256": "ce20ed8a323117c8a718ff1ddc6dabb997373b575a8e896f2bf02b846c082c9d"
+    },
+    "https://krawlthroughkrakow.com/wp-content/themes/Divi/core/admin/fonts/modules/all/modules.ttf": {
+      "file": "parity/4ec95df48507-modules.ttf",
+      "bytes": 92008,
+      "sha256": "e157a805df2257515250ff4c91e5abde50f7e0d9634946878dbb132159e0e97e"
+    },
+    "https://krawlthroughkrakow.com/wp-content/themes/Divi/core/admin/fonts/modules/all/modules.woff": {
+      "file": "parity/e5109a227107-modules.woff",
+      "bytes": 92084,
+      "sha256": "fe67b77ac7e0ef4b482dafb86adfa403db1b89a2f337d2dc8bd1278cfe975196"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/trwei0bzmy0fsdtyhal9_compressed_compressed.webp": {
+      "file": "parity/c6089b7279d2-trwei0bzmy0fsdtyhal9_compressed_compressed.webp",
+      "bytes": 26198,
+      "sha256": "1a565901fcea91edfbf4d67370e279837817ee352e66b89e638984f10445cff9"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/KTK2.webp": {
+      "file": "parity/428297a7b1f2-KTK2.webp",
+      "bytes": 90882,
+      "sha256": "4f17fc58a6321aab99c9a7b4eb411ea73c6cbbbf3898c9369242eaf944bddb61"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/05/new_logo_solid.webp": {
+      "file": "parity/739e3c8e45bb-new_logo_solid.webp",
+      "bytes": 11344,
+      "sha256": "46b30e34a6b7e4520faed41c594184d8da3f0a83c95837a2e3e21c9539e3b360"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/hayrc73kcachi3b8n7t8_compressed_compressed.webp": {
+      "file": "parity/ec17c2a38924-hayrc73kcachi3b8n7t8_compressed_compressed.webp",
+      "bytes": 9016,
+      "sha256": "9518afa0b27e1f8857973eb4c0f00685ce37c0476f7d2f37715e84161d50803f"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/hayrc73kcachi3b8n7t8_compressed_compressed-300x200.webp": {
+      "file": "parity/ebf0bf97d079-hayrc73kcachi3b8n7t8_compressed_compressed-300x200.webp",
+      "bytes": 11882,
+      "sha256": "9b7b3adac9d01cab33603d9362ed34323c9350fe7ecaea20c09a3965e0bf6b73"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/bcxwqcxvnrhqca0kxevy_compressed_compressed.webp": {
+      "file": "parity/33a8cc2bc2ef-bcxwqcxvnrhqca0kxevy_compressed_compressed.webp",
+      "bytes": 35802,
+      "sha256": "92ed50108cb90756a233504548b5dac49396591a66d157ed906a911575aa5260"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/bcxwqcxvnrhqca0kxevy_compressed_compressed-480x320.webp": {
+      "file": "parity/a5d24e59ea0e-bcxwqcxvnrhqca0kxevy_compressed_compressed-480x320.webp",
+      "bytes": 32954,
+      "sha256": "b21ad29c7106f5b4a30e47441102da956e7225127f0acb16d0ad79c4db523a6e"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/idzt6dif3hxiknmr28ln_compressed_compressed.webp": {
+      "file": "parity/26d4359cfb7a-idzt6dif3hxiknmr28ln_compressed_compressed.webp",
+      "bytes": 12258,
+      "sha256": "ad15deb9ef346aca11c18e993c05ff3b5852b93e326a23b4f501f07f038c2899"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/idzt6dif3hxiknmr28ln_compressed_compressed-300x200.webp": {
+      "file": "parity/152146b9eedb-idzt6dif3hxiknmr28ln_compressed_compressed-300x200.webp",
+      "bytes": 14420,
+      "sha256": "cccf0b5348a3aea2ca8539dd461971f9e8794cc4132e7f89deabc14d9c221887"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ohycfobknaj9fezv604t_compressed_compressed.webp": {
+      "file": "parity/7827cf7e098c-ohycfobknaj9fezv604t_compressed_compressed.webp",
+      "bytes": 49164,
+      "sha256": "0869aae68800a2f54dff04277c7299295f57d9b4765719a5007b8e7d72fa2779"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ohycfobknaj9fezv604t_compressed_compressed-480x320.webp": {
+      "file": "parity/123ac8cce509-ohycfobknaj9fezv604t_compressed_compressed-480x320.webp",
+      "bytes": 38152,
+      "sha256": "f4301549712b123576383715e2577f6b39aa5350bfad3e0d763cd87ac43d960a"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ssxdp1wpbgakhopwbgk7_compressed_compressed.webp": {
+      "file": "parity/33323b64f1a6-ssxdp1wpbgakhopwbgk7_compressed_compressed.webp",
+      "bytes": 30834,
+      "sha256": "df4ed3e613a3b6a5fdd4823f70b5fed51904153f40343742d2fab590776f08f1"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ssxdp1wpbgakhopwbgk7_compressed_compressed-480x320.webp": {
+      "file": "parity/9063e0b2ae7c-ssxdp1wpbgakhopwbgk7_compressed_compressed-480x320.webp",
+      "bytes": 25810,
+      "sha256": "db32865474cdb0671333b273fdff50db00deca29a5b87ba53a559b0da129984e"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/toym4uwmfwtlpyqi1b5v_compressed_compressed.webp": {
+      "file": "parity/a04437629524-toym4uwmfwtlpyqi1b5v_compressed_compressed.webp",
+      "bytes": 42512,
+      "sha256": "418a531f76751ede806bf04f3a18f3b861d5b949c507f5a39431a8b219bf8dff"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/toym4uwmfwtlpyqi1b5v_compressed_compressed-480x320.webp": {
+      "file": "parity/e41e03145b5c-toym4uwmfwtlpyqi1b5v_compressed_compressed-480x320.webp",
+      "bytes": 33114,
+      "sha256": "1c804dda5fd141929c38644aca91ce8d65115907381ddf8187cc7d66a810f6a5"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/wm8nfsgxpmi3ryk0hbfg_compressed_compressed.webp": {
+      "file": "parity/9d4f2b36b113-wm8nfsgxpmi3ryk0hbfg_compressed_compressed.webp",
+      "bytes": 31506,
+      "sha256": "13c73ac9b14160381aedeb34ba79996aa5851d619997a0fe6f842641b1f1f04c"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/wm8nfsgxpmi3ryk0hbfg_compressed_compressed-480x320.webp": {
+      "file": "parity/458412d9f464-wm8nfsgxpmi3ryk0hbfg_compressed_compressed-480x320.webp",
+      "bytes": 26544,
+      "sha256": "bd406d510dc35a213c291b733f98be5e821eab6da0ffcbe9715014f2f971966b"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/yqs8tys9cemdoke8jfy5_compressed_compressed.webp": {
+      "file": "parity/c0526733eaa4-yqs8tys9cemdoke8jfy5_compressed_compressed.webp",
+      "bytes": 9634,
+      "sha256": "d66b7aee43b3d79bd1b66d7553ab8e85c14062e5ce9058672e80e9fa8ef9dd5d"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/yqs8tys9cemdoke8jfy5_compressed_compressed-300x200.webp": {
+      "file": "parity/8a37a9db6929-yqs8tys9cemdoke8jfy5_compressed_compressed-300x200.webp",
+      "bytes": 11712,
+      "sha256": "6511245820743dcee832dd3764ee72d7b88dd4f199c32396737a261582a20bfe"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ynqh1jc9wxqiihva2pd5_compressed_compressed.webp": {
+      "file": "parity/bfca90e7da7b-ynqh1jc9wxqiihva2pd5_compressed_compressed.webp",
+      "bytes": 33566,
+      "sha256": "b353a7aff1db9b5db748184f94657cfd5481ce89c72390d1de073ab3e437118d"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ynqh1jc9wxqiihva2pd5_compressed_compressed-480x320.webp": {
+      "file": "parity/16836b8ab070-ynqh1jc9wxqiihva2pd5_compressed_compressed-480x320.webp",
+      "bytes": 30356,
+      "sha256": "6ddecd68d4cee6f7ac34dd3783ef075195f8343e464a4839d663e0dd86e53ca8"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/uqieylqxitgbmnasc2ht_compressed_compressed.webp": {
+      "file": "parity/4775fbc0e7dd-uqieylqxitgbmnasc2ht_compressed_compressed.webp",
+      "bytes": 40452,
+      "sha256": "f5bca958adbc16fe66024a578b96336f09ed28961b107ab76a1028f4cff7cf1b"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/uqieylqxitgbmnasc2ht_compressed_compressed-480x320.webp": {
+      "file": "parity/72cbce6b211b-uqieylqxitgbmnasc2ht_compressed_compressed-480x320.webp",
+      "bytes": 37246,
+      "sha256": "df713a881e7160adf01c2067cd1a8c1d0fb58aa3a7803db4a846e7182149a739"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/perimbpnfuutdrdhv7ho_compressed_compressed.webp": {
+      "file": "parity/f976a324bf7a-perimbpnfuutdrdhv7ho_compressed_compressed.webp",
+      "bytes": 43540,
+      "sha256": "ae09be76148cc9eb9aee32672e45159c69185d083eeca2c3a001b9e7d97aa9e6"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/perimbpnfuutdrdhv7ho_compressed_compressed-480x320.webp": {
+      "file": "parity/b95f2cac94f6-perimbpnfuutdrdhv7ho_compressed_compressed-480x320.webp",
+      "bytes": 38700,
+      "sha256": "053e2d6d93bb8b0c7ea853b996e8994a9adef851abf8abaac727a10c8ad0b9ac"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/gylkrbla4ywgm9nbynfv_compressed_compressed.webp": {
+      "file": "parity/be16524e56b5-gylkrbla4ywgm9nbynfv_compressed_compressed.webp",
+      "bytes": 16074,
+      "sha256": "ec48e66fcd583f27cdb1cc1644f68991a8235729bbf877eb54e092aea4f573dd"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/gylkrbla4ywgm9nbynfv_compressed_compressed-480x720.webp": {
+      "file": "parity/0dd53e30c704-gylkrbla4ywgm9nbynfv_compressed_compressed-480x720.webp",
+      "bytes": 30544,
+      "sha256": "aa587f9ea795624526fa518736710ab47acb087a8050ef95beae90e1ade0c98d"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/i6agsskidpgwcluwywc6_compressed_compressed.webp": {
+      "file": "parity/eefb0cbe0e11-i6agsskidpgwcluwywc6_compressed_compressed.webp",
+      "bytes": 47666,
+      "sha256": "0eb76074f0ff9b46f48f8be07120505f549e69889a46d4b37c5dd2e9df0f7606"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/i6agsskidpgwcluwywc6_compressed_compressed-1280x1280.webp": {
+      "file": "parity/4937a4586216-i6agsskidpgwcluwywc6_compressed_compressed-1280x1280.webp",
+      "bytes": 68644,
+      "sha256": "24a151a2740c6b4a5fd9b038d45d36803f2998319841b61c8426537e91268717"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/i6agsskidpgwcluwywc6_compressed_compressed-980x980.webp": {
+      "file": "parity/fc36557c8c58-i6agsskidpgwcluwywc6_compressed_compressed-980x980.webp",
+      "bytes": 50326,
+      "sha256": "73b0714a4349c165e93d893a6bb23b8883364d70729864f6b3615f019dbb1fc1"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/i6agsskidpgwcluwywc6_compressed_compressed-480x480.webp": {
+      "file": "parity/2f05908d02e0-i6agsskidpgwcluwywc6_compressed_compressed-480x480.webp",
+      "bytes": 20596,
+      "sha256": "4bca311fe1be94b363ae10812e34d3d07b3b9ecd9fe149e395fe448bc0b9b55b"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/jgqte2id3waqv2vs8edd_compressed_compressed.webp": {
+      "file": "parity/72c3f1b41f53-jgqte2id3waqv2vs8edd_compressed_compressed.webp",
+      "bytes": 36868,
+      "sha256": "8866575e047b5909b714e80101abe254e13ca678a764f721c243dba864fb1d0d"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/jgqte2id3waqv2vs8edd_compressed_compressed-1280x1280.webp": {
+      "file": "parity/ca0c2ddf80e8-jgqte2id3waqv2vs8edd_compressed_compressed-1280x1280.webp",
+      "bytes": 46902,
+      "sha256": "3c2020c3bbc6413376725975f106b2924475c4ea78978213cc3f1242542b2282"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/jgqte2id3waqv2vs8edd_compressed_compressed-980x980.webp": {
+      "file": "parity/d48bd5111bdc-jgqte2id3waqv2vs8edd_compressed_compressed-980x980.webp",
+      "bytes": 34248,
+      "sha256": "bb6ef0e96bbcdf69da4eab923805af841f0ec112efda8462c30d59435f7ea77d"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/jgqte2id3waqv2vs8edd_compressed_compressed-480x480.webp": {
+      "file": "parity/cf508a974f4e-jgqte2id3waqv2vs8edd_compressed_compressed-480x480.webp",
+      "bytes": 14526,
+      "sha256": "4f356102ddc0e5d690eb5944020111f1c0f761b0c70b6e577f2154b487e81b85"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ciaiu30657qcru0sdnnb_compressed_compressed.webp": {
+      "file": "parity/a635f5479550-ciaiu30657qcru0sdnnb_compressed_compressed.webp",
+      "bytes": 31870,
+      "sha256": "7319132a2e8940f5388cb42e98abc1e9dcb854676b0f3a811cd7a630d980c246"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ciaiu30657qcru0sdnnb_compressed_compressed-1280x1280.webp": {
+      "file": "parity/181a83f7f764-ciaiu30657qcru0sdnnb_compressed_compressed-1280x1280.webp",
+      "bytes": 40156,
+      "sha256": "817a68459efd2b504b7c64c90bc2453de8395bd5229413b1fea744fb2127f285"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ciaiu30657qcru0sdnnb_compressed_compressed-980x980.webp": {
+      "file": "parity/f816a07c891b-ciaiu30657qcru0sdnnb_compressed_compressed-980x980.webp",
+      "bytes": 28918,
+      "sha256": "987894783143821d70fb9fb16cc4234f40ff7d9388546c97932c08b3c033d1bc"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ciaiu30657qcru0sdnnb_compressed_compressed-480x480.webp": {
+      "file": "parity/67ca1d21090d-ciaiu30657qcru0sdnnb_compressed_compressed-480x480.webp",
+      "bytes": 11572,
+      "sha256": "c1ab5c76d135889d00a8debc6b9dc812ae6120f0698ebe14e2ff3b866b9a1da2"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ppygtlcm5nb6j4lsr251_compressed_compressed.webp": {
+      "file": "parity/cc7184d5440c-ppygtlcm5nb6j4lsr251_compressed_compressed.webp",
+      "bytes": 36314,
+      "sha256": "0dd5e83bc29e3ffce15d73e090c92e6ad70c4ffde39cf1577c6e915f72e3a069"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ppygtlcm5nb6j4lsr251_compressed_compressed-1280x1280.webp": {
+      "file": "parity/6ca314ca6a98-ppygtlcm5nb6j4lsr251_compressed_compressed-1280x1280.webp",
+      "bytes": 49848,
+      "sha256": "6ba415cdd43ad5f7659d07d711acf343928978d563f53f77b4ef0a41aecc7d82"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ppygtlcm5nb6j4lsr251_compressed_compressed-980x980.webp": {
+      "file": "parity/4de1257237ae-ppygtlcm5nb6j4lsr251_compressed_compressed-980x980.webp",
+      "bytes": 37242,
+      "sha256": "d741d0dfc7bb3e71590da1e65d6434dee5d7dbf0d1d53ed9aeb1f3f8627eff10"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ppygtlcm5nb6j4lsr251_compressed_compressed-480x480.webp": {
+      "file": "parity/c9ae23e69e53-ppygtlcm5nb6j4lsr251_compressed_compressed-480x480.webp",
+      "bytes": 15360,
+      "sha256": "e51333e77d2ae0c1547151d1323831dffab5c3632db97fee55a4915f256495fa"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ccz58hmwdrzaaktxvokp_compressed_compressed.webp": {
+      "file": "parity/e9142a191f69-ccz58hmwdrzaaktxvokp_compressed_compressed.webp",
+      "bytes": 35202,
+      "sha256": "ba6a2153721fd419904b9993719a0febb3e5b0b9758941dffc64e3a5ed3cddcf"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ccz58hmwdrzaaktxvokp_compressed_compressed-1280x1280.webp": {
+      "file": "parity/019c1116f563-ccz58hmwdrzaaktxvokp_compressed_compressed-1280x1280.webp",
+      "bytes": 45418,
+      "sha256": "9b0382cf9afe85cd787da2fc58c0cfa6c640cc9c330cf315f1c6c33e6b7b34d8"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ccz58hmwdrzaaktxvokp_compressed_compressed-980x980.webp": {
+      "file": "parity/1e2b778a6bc6-ccz58hmwdrzaaktxvokp_compressed_compressed-980x980.webp",
+      "bytes": 33086,
+      "sha256": "eae9e9a745095f9f27cb4ff921b30015485535094caf77840db4763a9f662bc7"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ccz58hmwdrzaaktxvokp_compressed_compressed-480x480.webp": {
+      "file": "parity/63c3b5125f7b-ccz58hmwdrzaaktxvokp_compressed_compressed-480x480.webp",
+      "bytes": 13638,
+      "sha256": "42bb8e006ac843cec5247e8ad6cb858ab15bd808c04628ecb014988709ced79a"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ygkzrcl8zu8ybudwpmys_compressed_compressed.webp": {
+      "file": "parity/9221a945d764-ygkzrcl8zu8ybudwpmys_compressed_compressed.webp",
+      "bytes": 27356,
+      "sha256": "c46e3e895887f2a15f269ee6578d33a5b8afbcd07020ddeda2c45abbc8541d0e"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ygkzrcl8zu8ybudwpmys_compressed_compressed-1280x1280.webp": {
+      "file": "parity/d12589860ca2-ygkzrcl8zu8ybudwpmys_compressed_compressed-1280x1280.webp",
+      "bytes": 35954,
+      "sha256": "0546b208cc1f9e780096eed45c8be9a4042368991502fd2c36b23ecdfcdb2159"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ygkzrcl8zu8ybudwpmys_compressed_compressed-980x980.webp": {
+      "file": "parity/a40c7b787dff-ygkzrcl8zu8ybudwpmys_compressed_compressed-980x980.webp",
+      "bytes": 25968,
+      "sha256": "0ebc54276c3d840bc11666edb4574480af01579ce1c78b4167ad5ba83a0a2a37"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ygkzrcl8zu8ybudwpmys_compressed_compressed-480x480.webp": {
+      "file": "parity/561abcf67d01-ygkzrcl8zu8ybudwpmys_compressed_compressed-480x480.webp",
+      "bytes": 11374,
+      "sha256": "24b14631fe2763bc7bdce2065c90d41c25066047882422369b6055f76f0e810b"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2023/09/instagram4.jpg": {
+      "file": "parity/9ed41528feac-instagram4.jpg",
+      "bytes": 101857,
+      "sha256": "f166e7a30b87d92770988bbf971447013e9642c6547bb6e207a348c98c064b2c"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2024/01/rev_google.jpg": {
+      "file": "parity/34c4a15dc6e9-rev_google.jpg",
+      "bytes": 76429,
+      "sha256": "192633e42d1f6dfe2d622f5d85ae2a370ac7fb818bdb12391199d321701c5a80"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/qjfkytgsbnnjmkmkcfrc_compressed_compressed.webp": {
+      "file": "parity/fd24d5bd49fb-qjfkytgsbnnjmkmkcfrc_compressed_compressed.webp",
+      "bytes": 59240,
+      "sha256": "6db8210576c08ed917839df4b7cd043c2ce5690396e9c25ffcd32efd16b2380e"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/qjfkytgsbnnjmkmkcfrc_compressed_compressed-1280x853.webp": {
+      "file": "parity/f779559175aa-qjfkytgsbnnjmkmkcfrc_compressed_compressed-1280x853.webp",
+      "bytes": 111512,
+      "sha256": "e178abcdfc844e660686444169def94e92151b7bb80411100b19fd5b3db4ca1e"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/qjfkytgsbnnjmkmkcfrc_compressed_compressed-980x653.webp": {
+      "file": "parity/a57c7e404afd-qjfkytgsbnnjmkmkcfrc_compressed_compressed-980x653.webp",
+      "bytes": 77812,
+      "sha256": "f2e0f9da15a9e2202619044831ae406d69f429742601ee5bcd13d732862acd45"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/qjfkytgsbnnjmkmkcfrc_compressed_compressed-480x320.webp": {
+      "file": "parity/40385998b7e6-qjfkytgsbnnjmkmkcfrc_compressed_compressed-480x320.webp",
+      "bytes": 28432,
+      "sha256": "9986e4a30b68e443dc0672a795017d7a5a861a0565bddb787a580850dbb0f346"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/zpw5fk7iqtdgmiaw7dgz_compressed_compressed.webp": {
+      "file": "parity/8729ac67e483-zpw5fk7iqtdgmiaw7dgz_compressed_compressed.webp",
+      "bytes": 30012,
+      "sha256": "ac9b76fc5e061a7bc5494a639489c95541b765f48b7327358cac193a4b94c72f"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/zpw5fk7iqtdgmiaw7dgz_compressed_compressed-1280x853.webp": {
+      "file": "parity/24f425d21bda-zpw5fk7iqtdgmiaw7dgz_compressed_compressed-1280x853.webp",
+      "bytes": 63522,
+      "sha256": "af0ec5fc4985ffb9f4371aed7b03e0b332f314e000035863a1571ff799b600bb"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/zpw5fk7iqtdgmiaw7dgz_compressed_compressed-980x653.webp": {
+      "file": "parity/d7b8d4729eb7-zpw5fk7iqtdgmiaw7dgz_compressed_compressed-980x653.webp",
+      "bytes": 46758,
+      "sha256": "0dcdda7675a2d058ffeb0cda77f0cd74bcf030478f9fc122da3b9f45094f4a59"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/zpw5fk7iqtdgmiaw7dgz_compressed_compressed-480x320.webp": {
+      "file": "parity/a28902579e99-zpw5fk7iqtdgmiaw7dgz_compressed_compressed-480x320.webp",
+      "bytes": 20298,
+      "sha256": "e6d862d76266f5126e0adec3b4da4350ee175aed9e4fd969fe9b6aed73856b54"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/yc8ustcnde5yv2eusy3f_compressed_compressed.webp": {
+      "file": "parity/497076d54b5c-yc8ustcnde5yv2eusy3f_compressed_compressed.webp",
+      "bytes": 24518,
+      "sha256": "713429d9159f45e1f8709f666801beb7c71ea75464ecc93c5087bfd2e6ef6364"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/yc8ustcnde5yv2eusy3f_compressed_compressed-1280x853.webp": {
+      "file": "parity/2c998d89553d-yc8ustcnde5yv2eusy3f_compressed_compressed-1280x853.webp",
+      "bytes": 52650,
+      "sha256": "f9999abccad080e48123c9e5fca34f0557d6eb0f00f1ae0c19af462fd68876c5"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/yc8ustcnde5yv2eusy3f_compressed_compressed-980x653.webp": {
+      "file": "parity/6c0d18373196-yc8ustcnde5yv2eusy3f_compressed_compressed-980x653.webp",
+      "bytes": 37554,
+      "sha256": "48c0506f7413704ce3908daacaa8dadbab29d4f1093a0d6d5c5828d15cbccfbe"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/yc8ustcnde5yv2eusy3f_compressed_compressed-480x320.webp": {
+      "file": "parity/242de66a14c9-yc8ustcnde5yv2eusy3f_compressed_compressed-480x320.webp",
+      "bytes": 16482,
+      "sha256": "5e86eecef7650777c21844f077d4b683568cf4f56d0fe89da6be7c25a23a07da"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/xzchknqpkekxh5rbedmd_compressed_compressed.webp": {
+      "file": "parity/9be25dad3b69-xzchknqpkekxh5rbedmd_compressed_compressed.webp",
+      "bytes": 49708,
+      "sha256": "1486704854bb3e35dbb6dd17d6181f4df28b28c14785ff9418e345657b47a806"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/xzchknqpkekxh5rbedmd_compressed_compressed-1280x853.webp": {
+      "file": "parity/f7e095a2e534-xzchknqpkekxh5rbedmd_compressed_compressed-1280x853.webp",
+      "bytes": 99686,
+      "sha256": "3f9b480923f84b075c1c115a8b59400013dd638fcdf80016d16f8f105c8440e7"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/xzchknqpkekxh5rbedmd_compressed_compressed-980x653.webp": {
+      "file": "parity/71352efc945c-xzchknqpkekxh5rbedmd_compressed_compressed-980x653.webp",
+      "bytes": 75778,
+      "sha256": "2c575b6104f55ad66dd5d09f1355b26837ddb36c5623d1a10f5689704f5bafd0"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/xzchknqpkekxh5rbedmd_compressed_compressed-480x320.webp": {
+      "file": "parity/33242f47466c-xzchknqpkekxh5rbedmd_compressed_compressed-480x320.webp",
+      "bytes": 30106,
+      "sha256": "58d26eed8ee33cc1e9a29df4fa38956ec05ee7d22bd5bc54999374370d44c046"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/khiybjyfrsplomnthxoe_compressed_compressed.webp": {
+      "file": "parity/77580470338e-khiybjyfrsplomnthxoe_compressed_compressed.webp",
+      "bytes": 14130,
+      "sha256": "18315bb0351106b6cd68b7d3afc0c00067f56a3d36801da18c17ae621b414ab4"
+    },
+    "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/khiybjyfrsplomnthxoe_compressed_compressed-480x320.webp": {
+      "file": "parity/9b5952530d97-khiybjyfrsplomnthxoe_compressed_compressed-480x320.webp",
+      "bytes": 21616,
+      "sha256": "4b2f4a88a4583a794cc63799636864f6d61511bc785e998a2e55382f040cf0db"
+    }
+  },
+  "bookingRevisions": [
+    {
+      "from": "https://krawlthroughkrakow.com/store/",
+      "to": "__KTK_HOME_URL__store2/"
+    },
+    {
+      "from": "https://krawlthroughkrakow.com/store/Stag-Do-Activities-c165236286",
+      "to": "__KTK_HOME_URL__store2/"
+    },
+    {
+      "from": "https://krawlthroughkrakow.com/store/Hen-Do-Activities-c165232789",
+      "to": "__KTK_HOME_URL__store2/"
+    },
+    {
+      "from": "https://krawlthroughkrakow.com/store/Bottomless-Brunch-p661114244",
+      "to": "__KTK_HOME_URL__store2/bottomless-brunch-29/#book"
+    }
+  ]
+}

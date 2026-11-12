@@ -1,0 +1,102 @@
+/* Interaction and responsive fixes layered over the exported production styles. */
+.ktk-parity-skip-link {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+.ktk-parity-skip-link:focus {
+  position: fixed;
+  left: 12px;
+  top: 12px;
+  width: auto;
+  height: auto;
+  padding: 12px 18px;
+  margin: 0;
+  clip: auto;
+  z-index: 1000002;
+  background: #000;
+  color: #fff;
+  outline: 2px solid #fff;
+}
+.mobile_menu_bar[role="button"]:focus-visible,
+#top-menu a:focus-visible,
+.et_pb_gallery_fullwidth a:focus-visible,
+.ktk-parity-module-link:focus-visible,
+[data-parity-href]:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+.et_pb_gallery_fullwidth:focus-within .et-pb-arrow-prev { left: 22px; opacity: 1; }
+.et_pb_gallery_fullwidth:focus-within .et-pb-arrow-next { right: 22px; opacity: 1; }
+.ktk-parity-gallery-pause {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.ktk-parity-gallery-pause:focus {
+  width: auto;
+  height: auto;
+  margin: 0;
+  clip: auto;
+  padding: 8px 12px;
+  left: 12px;
+  top: 12px;
+  z-index: 101;
+  background: #000;
+  color: #fff;
+  font: inherit;
+  outline: 2px solid #fff;
+}
+html.ktk-parity-lightbox-open { overflow: hidden; }
+dialog.ktk-parity-lightbox {
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff;
+}
+dialog.ktk-parity-lightbox:not([open]) { display: none; }
+dialog.ktk-parity-lightbox::backdrop { background: rgb(11 11 11 / 80%); }
+dialog.ktk-parity-lightbox .mfp-img { max-height: 100vh; max-height: 100dvh; }
+dialog.ktk-parity-lightbox .mfp-arrow[hidden] { display: none; }
+dialog.ktk-parity-lightbox button:focus-visible { outline: 2px solid #fff !important; outline-offset: -4px; opacity: 1; }
+.et_pb_image_3, .et_pb_image_4, .et_pb_image_5, .et_pb_image_6, .et_pb_image_7, .et_pb_image_8 {
+  transition: transform 200ms linear, opacity 200ms linear;
+}
+.et_pb_column_27 { transition: opacity 200ms linear; }
+.et_pb_sticky_placeholder { pointer-events: none; }
+@media (min-width: 981px) and (max-width: 1099px) {
+  /* Keep the Store flyout inside the narrow desktop header viewport. */
+  #top-menu > .nav-store > .sub-menu { left: auto; right: 0; }
+}
+@media (max-width: 767px) {
+  /* Production's mobile HTML retains four inter-item spaces absent in its desktop export. */
+  .et_pb_social_media_follow_0 > li + li,
+  .et_pb_social_media_follow_1 > li + li { margin-left: 3.5px; }
+}
+@media (max-width: 600px) {
+  /* Prevent the legacy review widgets from widening the mobile document. */
+  .ktk-homepage-standalone .cont_TA { max-width: 100%; }
+  .ktk-homepage-standalone .cont_TA .TA_text { max-width: 100%; float: none; white-space: normal; }
+  .ktk-homepage-standalone .cont_TA .TA_H { line-height: 1.2; }
+  .ktk-homepage-standalone .cont_TA .div_dot { scale: 1; }
+  .ktk-homepage-standalone .cont_TA .rev { white-space: nowrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .et-waypoint { animation: none !important; opacity: 1 !important; }
+  .et_pb_gallery_fullwidth *, .ktk-parity-lightbox * { animation: none !important; transition: none !important; }
+  .et_pb_image_3, .et_pb_image_4, .et_pb_image_5, .et_pb_image_6, .et_pb_image_7, .et_pb_image_8, .et_pb_column_27 { transition: none !important; }
+}
