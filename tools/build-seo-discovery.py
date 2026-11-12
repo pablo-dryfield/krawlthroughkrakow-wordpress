@@ -1,4 +1,5 @@
 """Build a canonical-URL sitemap preview from owned page definitions and public data."""
+import argparse
 import hashlib
 import json
 import subprocess
@@ -105,7 +106,22 @@ def select_products(catalog, policy):
     return sorted(result)
 
 
+def validate_catalog_review(review_data, catalog, policy, catalog_bytes):
+    selected = sorted((item['id'],item['slug']) for item in review_data['products'] if item['selected'])
+    expected = sorted((item['id'],item['slug']) for item in policy['products'])
+    if (review_data['errors'] or review_data['catalogSha256'] != sha(catalog_bytes) or selected != expected
+            or sorted(item['id'] for item in review_data['products']) != sorted(item['id'] for item in catalog['products'])
+            or not 0 <= (datetime.now(timezone.utc)-datetime.fromisoformat(review_data['checkedAt'])).total_seconds() <= 86400):
+        raise RuntimeError('Catalog review is incomplete, stale or differs from reviewed public data')
+
+
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--report', default=str(REPORT.relative_to(ROOT)))
+    parser.add_argument('--catalog-review')
+    args = parser.parse_args()
+    report_path = ROOT / args.report
+    if report_path.exists(): raise RuntimeError('Preserve previous build evidence; choose a new --report path')
     policy = json.loads((ROOT / 'tools/seo-discovery-policy.json').read_text())
     if policy.get('schemaVersion') != 1 or policy.get('targetOrigin') != ORIGIN:
         raise ValueError('Reviewed target-origin policy required')
@@ -114,6 +130,15 @@ def main():
     catalog_bytes, _ = read_public(CATALOG_URL)
     catalog = json.loads(catalog_bytes)
     storefront = select_products(catalog, policy)
+    review = None
+    if len(policy['products']) > 2:
+        if not args.catalog_review: raise RuntimeError('Expanded catalog requires a fresh complete public review')
+        review_path = (ROOT / args.catalog_review).resolve()
+        if not review_path.is_relative_to(ROOT / 'docs/seo'): raise ValueError('Review must be local SEO evidence')
+        review_bytes = review_path.read_bytes()
+        review_data = json.loads(review_bytes)
+        validate_catalog_review(review_data, catalog, policy, catalog_bytes)
+        review = {'file':review_path.relative_to(ROOT).as_posix(),'sha256':sha(review_bytes)}
     verified = []
     for url in content + storefront:
         body, headers = read_public(url)
@@ -146,8 +171,9 @@ def main():
               'deferredProductIds': [p['id'] for p in catalog['products'] if p['id'] not in {p['id'] for p in policy['products']}],
               'catalogSha256': sha(catalog_bytes), 'robotsSha256': sha(robots_bytes), 'policySha256': sha((ROOT / 'tools/seo-discovery-policy.json').read_bytes()),
               'dataSha256': sha(OUTPUT.read_bytes())}
-    REPORT.parent.mkdir(parents=True, exist_ok=True)
-    REPORT.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+    if review: report['catalogReview'] = review
+    report_path.parent.mkdir(parents=True, exist_ok=True)
+    report_path.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({key: report[key] for key in ('contentCount', 'storefrontCount', 'excluded', 'dataSha256')}))
 
 

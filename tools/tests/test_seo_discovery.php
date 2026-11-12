@@ -20,7 +20,8 @@ class WP_Sitemaps_Renderer {
 }
 require ABSPATH . '/staging/wp-content/mu-plugins/ktk-seo-sitemap.php';
 $data = ktk_seo_discovery_data();
-check(count($data['content']) === 116 && count($data['storefront']) === 3, 'Reviewed preview counts');
+$policy = json_decode(file_get_contents(ABSPATH . '/tools/seo-discovery-policy.json'), true);
+check(count($data['content']) === 116 && count($data['storefront']) === count($policy['products']) + 1 && $data['products'] === $policy['products'], 'Exact reviewed preview scope');
 check(ktk_seo_discovery_is_staging(), 'Staging identity accepted');
 ktk_seo_discovery_register();
 check($filters['wp_robots']['ktk_seo_staging_storefront_robots'] === PHP_INT_MAX, 'Robots override follows storefront index filter');

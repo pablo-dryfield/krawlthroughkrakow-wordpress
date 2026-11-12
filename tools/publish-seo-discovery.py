@@ -31,19 +31,28 @@ def remote_path(name):
     return REMOTE + '/' + name
 
 
-def local_payload():
+def local_payload(build_report=None):
     files = {name: (LOCAL / name).read_bytes() for name in FILES}
     data = json.loads(files[FILES[1]])
     policy = json.loads((ROOT / 'tools/seo-discovery-policy.json').read_text())
-    if len(data['content']) != 116 or len(data['storefront']) != 3 or data['products'] != policy['products']:
-        raise RuntimeError('Reviewed first-batch discovery scope required')
-    report = json.loads((OUT / 'build.json').read_text())
+    reviewed = policy['products']
+    expected_storefront = sorted(['https://krawlthroughkrakow.com/store2/'] + ['https://krawlthroughkrakow.com/store2/'+item['slug']+'/' for item in reviewed])
+    if (len(data['content']) != 116 or data['products'] != reviewed
+            or len({item['id'] for item in reviewed}) != len(reviewed) or not {28,32} <= {item['id'] for item in reviewed}
+            or [item['loc'] for item in data['storefront']] != expected_storefront):
+        raise RuntimeError('Exact reviewed discovery scope required')
+    report = json.loads((build_report or (OUT / 'build.json')).read_text())
     if (report['dataSha256'] != sha(files[FILES[1]]) or report['policySha256'] != sha((ROOT / 'tools/seo-discovery-policy.json').read_bytes())
             or not 0 <= (datetime.now(timezone.utc) - datetime.fromisoformat(report['checkedAt'])).total_seconds() <= 86400):
         raise RuntimeError('Fresh verified sitemap build required')
     expected = [row['loc'] for key in ('content', 'storefront') for row in data[key]]
     if expected != [row['url'] for row in report['verified']] or any(row['status'] != 200 or row['canonical'] != row['url'] for row in report['verified']):
         raise RuntimeError('All discovery URLs require final canonical verification')
+    if len(reviewed) > 2:
+        review = report.get('catalogReview',{})
+        review_path = (ROOT / review.get('file','')).resolve()
+        if not review_path.is_relative_to(ROOT / 'docs/seo') or not review_path.is_file() or sha(review_path.read_bytes()) != review.get('sha256'):
+            raise RuntimeError('Expanded catalog requires bound public review evidence')
     if len(data['sourceHashes']) != 117 or any(not re.fullmatch(r'ktk-code-pages-assets/(?:registry\.php|pages/[a-z0-9-]+\.php)', name) for name in data['sourceHashes']):
         raise RuntimeError('Expected owned content source bindings')
     if any(sha((LOCAL / name).read_bytes()) != digest for name, digest in data['sourceHashes'].items()):
@@ -141,8 +150,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--publish', action='store_true')
     parser.add_argument('--report')
+    parser.add_argument('--build-report', help='Fresh verified build evidence; prior pilot evidence is never rewritten')
     args = parser.parse_args()
-    files = local_payload()
+    files = local_payload(ROOT / args.build_report if args.build_report else None)
     expected = {name:sha(value) for name,value in files.items()}
     if not args.publish:
         print(json.dumps({'phase':'local-dry-run','files':expected,'remoteRoot':REMOTE,'networkOrDeployment':False}))
@@ -176,7 +186,8 @@ def main():
             if after['owned'] != expected or not protected_unchanged(before,after) or after['seo_version'] != VERSION or not after['seo_staging_enabled']:
                 raise RuntimeError('Owned/protected files, saved state or runtime verification failed')
             report.update(protectedUnchanged=True,productionFilesUnchanged=True)
-            report['cachePathsCleared'] = common.store2.clear_store2_cache(ftp,staging=True)
+            # Preview data is no-store and does not affect storefront HTML.
+            report['cachePathsCleared'] = common.store2.clear_store2_cache(ftp,staging=True) if existing.get(FILES[2]) != files[FILES[2]] else []
             report.update(phase='complete',protectedUnchanged=True,productionFilesUnchanged=True,helpersRemoved=True)
         except Exception:
             restore_owned(ftp,existing)

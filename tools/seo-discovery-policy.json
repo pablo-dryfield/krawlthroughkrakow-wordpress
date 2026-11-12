@@ -3,7 +3,11 @@
   "targetOrigin": "https://krawlthroughkrakow.com",
   "products": [
     {"id": 28, "slug": "pub-crawl-28"},
-    {"id": 32, "slug": "nye-pub-crawl-32"}
+    {"id": 30, "slug": "go-karting-30"},
+    {"id": 31, "slug": "private-pub-crawl-31"},
+    {"id": 32, "slug": "nye-pub-crawl-32"},
+    {"id": 37, "slug": "life-drawing-session-37"},
+    {"id": 41, "slug": "boat-party-41"}
   ],
-  "note": "First discovery pilot: confirmed regular and NYE offers. Other catalog products remain unchanged and await individual review."
+  "note": "Staging discovery review: six existing public offers with configured product-specific text. The remaining 18 products are held for documented content/seasonal follow-up; their live URLs and indexing policy are unchanged. See docs/seo/staging-catalog-review-2026-11-12/README.md."
 }
