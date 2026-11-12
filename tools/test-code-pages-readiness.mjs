@@ -2,6 +2,7 @@ import {createRequire} from 'node:module';
 import {readFile,writeFile} from 'node:fs/promises';
 import {execFileSync} from 'node:child_process';
 import path from 'node:path';
+import {composeCodePage} from './code-page-template.mjs';
 const require=createRequire(import.meta.url);
 const dependencies=path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules');
 const {chromium}=require(path.join(dependencies,'playwright'));
@@ -15,7 +16,7 @@ const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
  const parsed=await browser.newPage({javaScriptEnabled:false});await parsed.route('**/*',r=>r.abort());
  for(const [key,definition] of Object.entries(definitions)){
-  const html=(await readFile(assets+definition.shell_file,'utf8')).replace('__KTK_PAGE_MAIN_CONTENT__',await readFile(assets+definition.main_file,'utf8'));
+  const html=composeCodePage(await readFile(assets+definition.shell_file,'utf8'),await readFile(assets+definition.main_file,'utf8'));
   await parsed.setContent(html);
   const facts=await parsed.evaluate(()=>({
    legacy:[...document.querySelectorAll('a[href],[data-parity-href]')].flatMap(e=>['href','data-parity-href'].map(name=>e.getAttribute(name)).filter(value=>value&&(/fareharbor\.com\/embeds\/book\/krawlthroughkrakow\//.test(value)||/^(?:__KTK_HOME_URL__|https?:\/\/(?:www\.)?krawlthroughkrakow\.com\/(?:staging\/)?)store(?:\/|$)/.test(value)))),

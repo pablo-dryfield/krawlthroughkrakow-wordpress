@@ -107,7 +107,7 @@ function ktk_homepage_static_body() {
 					</header> <!-- #main-header -->
 			<div id="et-main-area">
 	
-<div id="main-content">
+<div id="main-content" data-ktk-semantic-headings="1">
 
 
 			
@@ -135,13 +135,13 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_heading_container"><h1 class="et_pb_module_heading">KRAWL THROUGH KRAKOW PUB CRAWL</h1></div>
+				<div class="et_pb_heading_container"><h2 class="et_pb_module_heading" data-ktk-heading-origin="h1">KRAWL THROUGH KRAKOW PUB CRAWL</h2></div>
 			</div><div class="et_pb_module et_pb_text et_pb_text_0 pink et_pb_text_align_center et_pb_bg_layout_light">
 				
 				
 				
 				
-				<div class="et_pb_text_inner"><h2>Discover the best Bars &amp; Clubs in Krakow and experience the magic of&nbsp;<a href="__KTK_HOME_URL__2017/12/13/the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow/" target="_blank" rel="noopener noreferrer">Krakow Nightlife!</a></h2></div>
+				<div class="et_pb_text_inner"><h2>Discover the best Bars &amp; Clubs in Krakow and experience the magic of&nbsp;<a href="__KTK_HOME_URL__krakow-nightclubs/" target="_blank" rel="noopener noreferrer">Krakow Nightlife!</a></h2></div>
 			</div><div class="et_pb_button_module_wrapper et_pb_button_1_wrapper et_pb_button_alignment_center et_pb_module">
 				<a class="et_pb_button et_pb_button_1 et_pb_bg_layout_light" href="__KTK_HOME_URL__store2/pub-crawl-28/#book" data-icon="E">BOOK TICKET</a>
 			</div>
@@ -188,7 +188,7 @@ function ktk_homepage_static_body() {
 				<div class="et_pb_blurb_content">
 					<div class="et_pb_main_blurb_image"><span class="et_pb_image_wrap"><span class="et_pb_animation_top et_pb_animation_top_tablet et_pb_animation_top_phone et-pb-icon">N</span></span></div>
 					<div class="et_pb_blurb_container">
-						<h4 class="et_pb_module_header"><span>1 HR OPEN BAR EXPERIENCE</span></h4>
+						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>1 HR OPEN BAR EXPERIENCE</span></h3>
 						<div class="et_pb_blurb_description"><p style="text-align: left;">Enjoy an hour of unlimited drinks, including a variety of beverages and mixers!</p></div>
 					</div>
 				</div>
@@ -200,7 +200,7 @@ function ktk_homepage_static_body() {
 				<div class="et_pb_blurb_content">
 					<div class="et_pb_main_blurb_image"><span class="et_pb_image_wrap"><span class="et_pb_animation_top et_pb_animation_top_tablet et_pb_animation_top_phone et-pb-icon">N</span></span></div>
 					<div class="et_pb_blurb_container">
-						<h4 class="et_pb_module_header"><span>FREE WELCOME SHOTS</span></h4>
+						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>FREE WELCOME SHOTS</span></h3>
 						<div class="et_pb_blurb_description"><p style="text-align: left;">1 free shot at the entrance of every venue!</p></div>
 					</div>
 				</div>
@@ -212,7 +212,7 @@ function ktk_homepage_static_body() {
 				<div class="et_pb_blurb_content">
 					<div class="et_pb_main_blurb_image"><span class="et_pb_image_wrap"><span class="et_pb_animation_top et_pb_animation_top_tablet et_pb_animation_top_phone et-pb-icon">N</span></span></div>
 					<div class="et_pb_blurb_container">
-						<h4 class="et_pb_module_header"><span>PRICELESS NIGHT OUT: 4-5 VENUES</span></h4>
+						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>PRICELESS NIGHT OUT: 4-5 VENUES</span></h3>
 						<div class="et_pb_blurb_description"><p>Every night we go to different venues!</p></div>
 					</div>
 				</div>
@@ -224,7 +224,7 @@ function ktk_homepage_static_body() {
 				<div class="et_pb_blurb_content">
 					<div class="et_pb_main_blurb_image"><span class="et_pb_image_wrap"><span class="et_pb_animation_top et_pb_animation_top_tablet et_pb_animation_top_phone et-pb-icon">N</span></span></div>
 					<div class="et_pb_blurb_container">
-						<h4 class="et_pb_module_header"><span>professional guides and photographer</span></h4>
+						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>professional guides and photographer</span></h3>
 						<div class="et_pb_blurb_description"><p>We will bring you to the best&nbsp; parties in town!</p></div>
 					</div>
 				</div>
@@ -236,7 +236,7 @@ function ktk_homepage_static_body() {
 				<div class="et_pb_blurb_content">
 					<div class="et_pb_main_blurb_image"><span class="et_pb_image_wrap"><span class="et_pb_animation_top et_pb_animation_top_tablet et_pb_animation_top_phone et-pb-icon">N</span></span></div>
 					<div class="et_pb_blurb_container">
-						<h4 class="et_pb_module_header"><span>contests &amp; games</span></h4>
+						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>contests &amp; games</span></h3>
 						<div class="et_pb_blurb_description"><p style="text-align: left;">Win our pub krawl t-shirts and much more!</p></div>
 					</div>
 				</div>
@@ -319,7 +319,7 @@ function ktk_homepage_static_body() {
 				<div class="et_pb_blurb_content">
 					<div class="et_pb_main_blurb_image"><span class="et_pb_image_wrap"><span class="et_pb_animation_off et_pb_animation_off_tablet et_pb_animation_off_phone et-pb-icon"></span></span></div>
 					<div class="et_pb_blurb_container">
-						<h2 class="et_pb_module_header"><span>120 zl</span></h2>
+						<p class="et_pb_module_header" data-ktk-heading-origin="h2"><span>120 zl</span></p>
 						
 					</div>
 				</div>
@@ -358,7 +358,7 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><h1 style="color: magenta;">WE’RE THE #1 PUB CRAWL IN KRAKOW SINCE 2008</h1>
+				<div class="et_pb_text_inner"><h2 style="color: magenta;" data-ktk-heading-origin="h1">WE’RE THE #1 PUB CRAWL IN KRAKOW SINCE 2008</h2>
 <h2>Explore the magic of Krakow nightlife and meet people from all over the world!</h2></div>
 			</div><div class="et_pb_module et_pb_text et_pb_text_3 et_pb_text_align_center et_pb_bg_layout_light">
 				
@@ -372,7 +372,7 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><p>At Krawl Through Krakow Pub Crawl we have over 14 years of crazy experience and we throw the biggest and the best parties in Krakow. We’re the guys that everyone else sets out to imitate so don’t accept any knockoffs. Our Pub Crawl runs every single night of the year, starting at 9pm from the Adam’s Statue in the main market square. If you want to join the fun, <a href="__KTK_HOME_URL__how-to-join/">click here</a></p></div>
+				<div class="et_pb_text_inner"><p>At Krawl Through Krakow Pub Crawl we have over 14 years of crazy experience and we throw the biggest and the best parties in Krakow. We’re the guys that everyone else sets out to imitate so don’t accept any knockoffs. Our Pub Crawl runs every single night of the year, starting at 9pm from the Adam’s Statue in the main market square. If you want to join the fun, <a href="__KTK_HOME_URL__about-us/how-to-join/">click here</a></p></div>
 			</div><div class="et_pb_module et_pb_text et_pb_text_5 et_pb_text_align_center et_pb_bg_layout_light">
 				
 				
@@ -406,7 +406,7 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><h1 style="text-align: center;">ORGANISING A STUDENT TRIP TO KRAKOW?</h1></div>
+				<div class="et_pb_text_inner"><h2 style="text-align: center;" data-ktk-heading-origin="h1">ORGANISING A STUDENT TRIP TO KRAKOW?</h2></div>
 			</div><div class="et_pb_button_module_wrapper et_pb_button_3_wrapper et_pb_button_alignment_center et_pb_module">
 				<a class="et_pb_button et_pb_button_3 et_pb_bg_layout_light" href="__KTK_HOME_URL__student-trips-poland/" data-icon="E">GET A SPECIAL OFFER!</a>
 			</div>
@@ -436,14 +436,14 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><h1 style="color: magenta;"><g class="gr_ gr_20 gr-alert gr_spell gr_inline_cards gr_run_anim ContextualSpelling ins-del multiReplace" id="20" data-gr-id="20">KRAWL</g> THROUGH KRAKOW PUB CRAWL</h1>
+				<div class="et_pb_text_inner"><h2 style="color: magenta;" data-ktk-heading-origin="h1"><g class="gr_ gr_20 gr-alert gr_spell gr_inline_cards gr_run_anim ContextualSpelling ins-del multiReplace" id="20" data-gr-id="20">KRAWL</g> THROUGH KRAKOW PUB CRAWL</h2>
 <h2>The Original &amp; the best Pub Crawl in Krakow since 2008</h2></div>
 			</div><div class="et_pb_module et_pb_text et_pb_text_8 et_pb_text_align_justified et_pb_bg_layout_light">
 				
 				
 				
 				
-				<div class="et_pb_text_inner"><p>We, the Krawl Through Krakow have run for almost a decade. In that time we have concocted a recipe for the most outrageous night out you will ever live through. Scenes from the Hangover set in the backdrop of Medieval Europe are what you should picture. <a href="__KTK_HOME_URL__krakow-nightclubs/" target="_blank" rel="noopener noreferrer">Best underground bars and clubs</a>, toasting with local nutters and punishing your friends in drinking games. It’s any fun person’s wet dream of a night out! What are you waiting for? <a href="__KTK_HOME_URL__how-to-join/">Join us tonight</a> for the best Pub Crawl experience you’ll probably forget.</p></div>
+				<div class="et_pb_text_inner"><p>We, the Krawl Through Krakow have run for almost a decade. In that time we have concocted a recipe for the most outrageous night out you will ever live through. Scenes from the Hangover set in the backdrop of Medieval Europe are what you should picture. <a href="__KTK_HOME_URL__krakow-nightclubs/" target="_blank" rel="noopener noreferrer">Best underground bars and clubs</a>, toasting with local nutters and punishing your friends in drinking games. It’s any fun person’s wet dream of a night out! What are you waiting for? <a href="__KTK_HOME_URL__about-us/how-to-join/">Join us tonight</a> for the best Pub Crawl experience you’ll probably forget.</p></div>
 			</div>
 			</div>
 				
@@ -467,7 +467,7 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><p>It all begins with a seemingly innocent brightly coloured wristband. We kickstart our night with a truly unbeatable drinks deal: ‘THE KRAWL THROUGH KRAKOW’S POWER HOUR’. It’s an hour of Unlimited Drinks in one of the best bars in town (and we really really mean Unlimited!), and it’s Rocket Fuel for the fun and debauchery to come. During our Pub Crawl’s Power Hour take&nbsp; advantage of the open bar with unlimited drinks… As strong and plentiful as you like, as many as you can handle. Order a couple for yourself and save having to make the trip back to the bar, or get a tray for you and your friends. We’re not out to trick you like some lesser Pub Crawl in other cities. We’re going to have fun! Check out <a href="__KTK_HOME_URL__how-to-join/">how to join</a> the best Pub Crawl in Krakow.</p></div>
+				<div class="et_pb_text_inner"><p>It all begins with a seemingly innocent brightly coloured wristband. We kickstart our night with a truly unbeatable drinks deal: ‘THE KRAWL THROUGH KRAKOW’S POWER HOUR’. It’s an hour of Unlimited Drinks in one of the best bars in town (and we really really mean Unlimited!), and it’s Rocket Fuel for the fun and debauchery to come. During our Pub Crawl’s Power Hour take&nbsp; advantage of the open bar with unlimited drinks… As strong and plentiful as you like, as many as you can handle. Order a couple for yourself and save having to make the trip back to the bar, or get a tray for you and your friends. We’re not out to trick you like some lesser Pub Crawl in other cities. We’re going to have fun! Check out <a href="__KTK_HOME_URL__about-us/how-to-join/">how to join</a> the best Pub Crawl in Krakow.</p></div>
 			</div>
 			</div><div class="et_pb_column et_pb_column_1_2 et_pb_column_10 et_pb_css_mix_blend_mode_passthrough et-last-child">
 				
@@ -515,13 +515,13 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><p>Also featured during the Power Hour: drinking games (too many to list but some of our favourites are horse race, flip club, drinking Jenga). Our prize giveaways include our special Krawl Through Krakow pub crawl t-shirts for people who successfully pass challenges set by our Pub Crawl Guides. It’s the perfect way to break the ice at the start of the night and get the party going in Krakow! After all of this (and I know it sounds like a lot for the first hour), we hit up three more of Krakow’s top bars and clubs. The selection of bars and clubs varies from night to night. It is totally up to our skilled guides to sniff out where the best party will be. They can smell a good time like a hammerhead shark can find a bleeding diver. You will be treated to welcome shots upon entry to each bar and club and there’s no waiting in line as we skip the queue at each venue. We do NOT believe in pause buttons. We are the original and the best Pub Crawl in Krakow.<a href="__KTK_HOME_URL__how-to-join/"> Join us</a> tonight!</p></div>
+				<div class="et_pb_text_inner"><p>Also featured during the Power Hour: drinking games (too many to list but some of our favourites are horse race, flip club, drinking Jenga). Our prize giveaways include our special Krawl Through Krakow pub crawl t-shirts for people who successfully pass challenges set by our Pub Crawl Guides. It’s the perfect way to break the ice at the start of the night and get the party going in Krakow! After all of this (and I know it sounds like a lot for the first hour), we hit up three more of Krakow’s top bars and clubs. The selection of bars and clubs varies from night to night. It is totally up to our skilled guides to sniff out where the best party will be. They can smell a good time like a hammerhead shark can find a bleeding diver. You will be treated to welcome shots upon entry to each bar and club and there’s no waiting in line as we skip the queue at each venue. We do NOT believe in pause buttons. We are the original and the best Pub Crawl in Krakow.<a href="__KTK_HOME_URL__about-us/how-to-join/"> Join us</a> tonight!</p></div>
 			</div><div class="et_pb_module et_pb_text et_pb_text_13 et_pb_text_align_justified et_pb_bg_layout_light">
 				
 				
 				
 				
-				<div class="et_pb_text_inner"><p>Also featured during the Power Hour: drinking games (too many to list but some of our favourites are horse race, flip club, drinking Jenga). Our prize giveaways include our special Krawl Through Krakow pub crawl t-shirts for people who successfully pass challenges set by our Pub Crawl Guides. It’s the perfect way to break the ice at the start of the night and get the party going in Krakow! After all of this (and I know it sounds like a lot for the first hour), we hit up three more of Krakow’s top bars and clubs. The selection of bars and clubs varies from night to night. It is totally up to our skilled guides to sniff out where the best party will be. They can smell a good time like a hammerhead shark can find a bleeding diver. You will be treated to welcome shots upon entry to each bar and club and there’s no waiting in line as we skip the queue at each venue. We do NOT believe in pause buttons. We are the original and the best Pub Crawl in Krakow.<a href="__KTK_HOME_URL__how-to-join/"> Join us</a> tonight!</p></div>
+				<div class="et_pb_text_inner"><p>Also featured during the Power Hour: drinking games (too many to list but some of our favourites are horse race, flip club, drinking Jenga). Our prize giveaways include our special Krawl Through Krakow pub crawl t-shirts for people who successfully pass challenges set by our Pub Crawl Guides. It’s the perfect way to break the ice at the start of the night and get the party going in Krakow! After all of this (and I know it sounds like a lot for the first hour), we hit up three more of Krakow’s top bars and clubs. The selection of bars and clubs varies from night to night. It is totally up to our skilled guides to sniff out where the best party will be. They can smell a good time like a hammerhead shark can find a bleeding diver. You will be treated to welcome shots upon entry to each bar and club and there’s no waiting in line as we skip the queue at each venue. We do NOT believe in pause buttons. We are the original and the best Pub Crawl in Krakow.<a href="__KTK_HOME_URL__about-us/how-to-join/"> Join us</a> tonight!</p></div>
 			</div>
 			</div>
 				
@@ -629,7 +629,7 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><h2 style="text-align: center;"><a href="tel:+48 791847981" style="color: white;">+48 791847981</a></h2></div>
+				<div class="et_pb_text_inner"><p style="text-align: center;" data-ktk-heading-origin="h2"><a href="tel:+48 791847981" style="color: white;">+48 791847981</a></p></div>
 			</div>
 			</div>
 				
@@ -684,7 +684,7 @@ function ktk_homepage_static_body() {
 				<div class="et_pb_blurb_content">
 					
 					<div class="et_pb_blurb_container">
-						<h4 class="et_pb_module_header"><span>5 DIFFERENT VENUES</span></h4>
+						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>5 DIFFERENT VENUES</span></h3>
 						<div class="et_pb_blurb_description"><p>We will visit 4 to 5 different bars/clubs</p></div>
 					</div>
 				</div>
@@ -708,7 +708,7 @@ function ktk_homepage_static_body() {
 				<div class="et_pb_blurb_content">
 					
 					<div class="et_pb_blurb_container">
-						<h4 class="et_pb_module_header"><span>1 HR OPEN BAR EXPERIENCE</span></h4>
+						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>1 HR OPEN BAR EXPERIENCE</span></h3>
 						<div class="et_pb_blurb_description"><p>Enjoy an hour of unlimited drinks, including a variety of beverages and mixers!</p></div>
 					</div>
 				</div>
@@ -732,7 +732,7 @@ function ktk_homepage_static_body() {
 				<div class="et_pb_blurb_content">
 					
 					<div class="et_pb_blurb_container">
-						<h4 class="et_pb_module_header"><span>FREE WELCOME SHOTS</span></h4>
+						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>FREE WELCOME SHOTS</span></h3>
 						<div class="et_pb_blurb_description"><p>1 free shot at the entrance of every venue!</p></div>
 					</div>
 				</div>
@@ -762,7 +762,7 @@ function ktk_homepage_static_body() {
 				<div class="et_pb_blurb_content">
 					
 					<div class="et_pb_blurb_container">
-						<h4 class="et_pb_module_header"><span>PRICELESS NIGHT OUT</span></h4>
+						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>PRICELESS NIGHT OUT</span></h3>
 						<div class="et_pb_blurb_description"><p><span>Every night we go to different venues! Entrance fees included!</span></p></div>
 					</div>
 				</div>
@@ -786,7 +786,7 @@ function ktk_homepage_static_body() {
 				<div class="et_pb_blurb_content">
 					
 					<div class="et_pb_blurb_container">
-						<h4 class="et_pb_module_header"><span>CONTESTS &amp; GAMES</span></h4>
+						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>CONTESTS &amp; GAMES</span></h3>
 						<div class="et_pb_blurb_description"><p>Win our pub krawl t-shirts and much more!</p></div>
 					</div>
 				</div>
@@ -810,7 +810,7 @@ function ktk_homepage_static_body() {
 				<div class="et_pb_blurb_content">
 					
 					<div class="et_pb_blurb_container">
-						<h4 class="et_pb_module_header"><span>PROFESSIONAL DRUNK GUIDES</span></h4>
+						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>PROFESSIONAL DRUNK GUIDES</span></h3>
 						<div class="et_pb_blurb_description"><p>We will bring you to the best&nbsp; parties in town!</p></div>
 					</div>
 				</div>
@@ -866,7 +866,7 @@ function ktk_homepage_static_body() {
 				
 				
 				<div class="et_pb_text_inner"><p style="text-align: justify;"><span>We, the Krawl Through Krakow, have run for more than a decade. In that time we have concocted a recipe for the most outrageous balls-to-the-wall night out you will ever live through. </span></p>
-<p style="text-align: justify;"><span>Scenes from the Hangover set in the backdrop of Medieval Europe are what you should picture. The </span><a href="__KTK_HOME_URL__krakow-nightclubs/" target="_blank" rel="noopener noreferrer">best underground bars and clubs</a><span>, toasting with local nutters, and punishing your friends in drinking games. It’s any fun person’s wet dream of a night out! What are you waiting for? </span><a href="__KTK_HOME_URL__how-to-join/">Join Us tonight</a><span>&nbsp;for the best Pub Crawl experience you’ll probably forget.</span></p></div>
+<p style="text-align: justify;"><span>Scenes from the Hangover set in the backdrop of Medieval Europe are what you should picture. The </span><a href="__KTK_HOME_URL__krakow-nightclubs/" target="_blank" rel="noopener noreferrer">best underground bars and clubs</a><span>, toasting with local nutters, and punishing your friends in drinking games. It’s any fun person’s wet dream of a night out! What are you waiting for? </span><a href="__KTK_HOME_URL__about-us/how-to-join/">Join Us tonight</a><span>&nbsp;for the best Pub Crawl experience you’ll probably forget.</span></p></div>
 			</div><div class="et_pb_module et_pb_text et_pb_text_25 et_pb_text_align_left et_pb_bg_layout_light">
 				
 				
@@ -918,7 +918,7 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><h1>EXPERIENCE</h1></div>
+				<div class="et_pb_text_inner"><h2 data-ktk-heading-origin="h1">EXPERIENCE</h2></div>
 			</div><div class="et_pb_module et_pb_text et_pb_text_27 et_clickable et_pb_text_align_left et_pb_bg_layout_light">
 				
 				
@@ -952,7 +952,7 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><h1>Krawl with us!</h1></div>
+				<div class="et_pb_text_inner"><h2 data-ktk-heading-origin="h1">Krawl with us!</h2></div>
 			</div>
 			</div>
 				
@@ -1024,7 +1024,7 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><h1>CHECK OUT MORE:</h1></div>
+				<div class="et_pb_text_inner"><h2 data-ktk-heading-origin="h1">CHECK OUT MORE:</h2></div>
 			<a href="https://www.instagram.com/krawlthroughkrakow/" target="_self" class="ktk-parity-module-link" aria-label="CHECK OUT MORE:" style="position: absolute; inset: 0px; z-index: 1;"></a></div><ul class="et_pb_module et_pb_social_media_follow et_pb_social_media_follow_0 clearfix et_pb_text_align_left et_pb_bg_layout_dark">
 				
 				
@@ -1091,7 +1091,7 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><h1 style="text-align: center;">ORGANISING A STUDENT TRIP TO KRAKOW?</h1></div>
+				<div class="et_pb_text_inner"><h2 style="text-align: center;" data-ktk-heading-origin="h1">ORGANISING A STUDENT TRIP TO KRAKOW?</h2></div>
 			</div><div class="et_pb_button_module_wrapper et_pb_button_4_wrapper et_pb_button_alignment_center et_pb_module">
 				<a class="et_pb_button et_pb_button_4 et_pb_bg_layout_light" href="__KTK_HOME_URL__student-trips-poland/" data-icon="E">GET A SPECIAL OFFER!</a>
 			</div>
@@ -1133,7 +1133,7 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><h1>Ready to Party?</h1></div>
+				<div class="et_pb_text_inner"><h2 data-ktk-heading-origin="h1">Ready to Party?</h2></div>
 			</div><div class="et_pb_module et_pb_text et_pb_text_33 et_pb_text_align_left et_pb_bg_layout_light">
 				
 				
@@ -1183,7 +1183,7 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><h1>Hungry and Thirsty?</h1></div>
+				<div class="et_pb_text_inner"><h2 data-ktk-heading-origin="h1">Hungry and Thirsty?</h2></div>
 			</div><div class="et_pb_module et_pb_text et_pb_text_35 et_pb_text_align_left et_pb_bg_layout_light">
 				
 				
@@ -1225,7 +1225,7 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><h1 style="text-align: center;">Follow us!</h1></div>
+				<div class="et_pb_text_inner"><h2 style="text-align: center;" data-ktk-heading-origin="h1">Follow us!</h2></div>
 			</div>
 			</div><div class="et_pb_column et_pb_column_1_3 et_pb_column_43 et_pb_css_mix_blend_mode_passthrough">
 				
@@ -1237,7 +1237,7 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_heading_container"><h1 class="et_pb_module_heading">Contact us:</h1></div>
+				<div class="et_pb_heading_container"><h2 class="et_pb_module_heading" data-ktk-heading-origin="h1">Contact us:</h2></div>
 			</div><div class="et_pb_module et_pb_text et_pb_text_37 et_pb_text_align_left et_pb_bg_layout_light">
 				
 				
@@ -1257,7 +1257,7 @@ function ktk_homepage_static_body() {
 				
 				
 				<div class="et_pb_text_inner"><p>Terms and conditions</p></div>
-			<a href="__KTK_HOME_URL__terms-and-conditions" target="_self" class="ktk-parity-module-link" aria-label="Terms and conditions" style="position: absolute; inset: 0px; z-index: 1;"></a></div><div class="et_pb_module et_pb_text et_pb_text_39 et_clickable et_pb_text_align_left et_pb_bg_layout_light">
+			<a href="__KTK_HOME_URL__terms-and-conditions/" target="_self" class="ktk-parity-module-link" aria-label="Terms and conditions" style="position: absolute; inset: 0px; z-index: 1;"></a></div><div class="et_pb_module et_pb_text et_pb_text_39 et_clickable et_pb_text_align_left et_pb_bg_layout_light">
 				
 				
 				

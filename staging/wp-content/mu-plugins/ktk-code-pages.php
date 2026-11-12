@@ -81,7 +81,20 @@ function ktk_pages_static_body() {
 require_once __DIR__ . '/ktk-code-pages-assets/integrations.php';
 require_once __DIR__ . '/ktk-code-pages-assets/forms.php';
 
+function ktk_pages_staging_brunch_alias($request_uri) {
+    if ('https://krawlthroughkrakow.com/staging/' !== home_url('/')
+        || 'https://krawlthroughkrakow.com/staging/' !== site_url('/')
+        || (isset($_SERVER['HTTP_HOST']) && 'krawlthroughkrakow.com' !== strtolower($_SERVER['HTTP_HOST']))
+        || !in_array($_SERVER['REQUEST_METHOD'] ?? 'GET', array('GET','HEAD'), true)
+        || preg_match('/[\x00-\x20\x7f]/', $request_uri)
+        || '/staging/store/Bottomless-Brunch-p661114244' !== parse_url($request_uri, PHP_URL_PATH)) { return null; }
+    $query = (string) parse_url($request_uri, PHP_URL_QUERY);
+    return home_url('/store2/bottomless-brunch-29/') . ('' !== $query ? '?' . $query : '') . '#book';
+}
+
 add_action('template_redirect', function () {
+    $legacy_brunch = ktk_pages_staging_brunch_alias($_SERVER['REQUEST_URI'] ?? '');
+    if (null !== $legacy_brunch) { wp_safe_redirect($legacy_brunch, 301, 'KTK Approved Staging Alias'); exit; }
     if (ktk_pages_environment_enabled() && !is_feed() && !is_embed()) {
         $redirect = ktk_pages_registry()['redirects'][ktk_pages_request_route()] ?? null;
         if ($redirect) {

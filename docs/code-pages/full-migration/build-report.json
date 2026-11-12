@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-12T18:42:48.955Z",
+  "startedAt": "2026-11-12T21:04:37.033Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -122,7 +122,15 @@
   "missing": [],
   "revisions": {
     "post-2020-krakow-nightlife-guide": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -139,11 +147,31 @@
         {
           "from": "https://fareharbor.com/embeds/book/krawlthroughkrakow/items/216331/calendar/2020/03/?flow=no&full-items=yes",
           "to": "__KTK_HOME_URL__store2/pub-crawl-28/#book"
+        },
+        {
+          "from": "__KTK_HOME_URL__2019/08/07/ultimate-seasonal-guide-to-the-best-activities-in-krakow/",
+          "to": "__KTK_HOME_URL__krakow-free-activities-2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__project/vodka-tasting-tour/",
+          "to": "__KTK_HOME_URL__other-tours/"
+        },
+        {
+          "from": "__KTK_HOME_URL__krakow-activities/",
+          "to": "__KTK_HOME_URL__other-tours/"
         }
       ]
     },
     "post-all-you-need-to-know-about-visiting-auschwitz": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -168,6 +196,13 @@
         {
           "type": "remove-missing-contents-entry",
           "id": "differentgamemodesavailable"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
         }
       ],
       "bookings": [
@@ -186,7 +221,15 @@
       ]
     },
     "post-best-drinking-games": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -199,11 +242,44 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__how-to-join/",
+          "to": "__KTK_HOME_URL__about-us/how-to-join/"
         }
       ]
     },
     "post-best-hotels-in-krakow-2019-2020": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "From budget-friendly and mid-range hotels to 5 star luxury and business hotels – we’ve got something for everyone in this list of the best hotels in Krakow.",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h5",
+          "to": "h4",
+          "text": "Krowoderska 71, Stare Kleparz, 31-158 Kraków, Poland",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h2",
+          "to": "p",
+          "text": "",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -220,7 +296,57 @@
       ]
     },
     "post-best-places-to-eat": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Solid breakfasts to cure hangover",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Amazing lunches to recover energy",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "The best pre-night out dinner options",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Bars with great atmosphere",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Perfect night eats",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Amazing sweets to boost the mood",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -233,11 +359,38 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__how-to-join/",
+          "to": "__KTK_HOME_URL__about-us/how-to-join/"
+        },
+        {
+          "from": "__KTK_HOME_URL__ultimate-seasonal-guide-to-the-best-activities-in-krakow/",
+          "to": "__KTK_HOME_URL__krakow-weather-guide/"
+        },
+        {
+          "from": "__KTK_HOME_URL__project/vodka-tasting-tour/",
+          "to": "__KTK_HOME_URL__other-tours/"
         }
       ]
     },
     "post-best-pub-crawls-in-europe": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Best Pub Crawls in Europe",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -254,7 +407,15 @@
       ]
     },
     "post-budapest-or-krakow-nightlife": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -279,6 +440,13 @@
         {
           "type": "remove-missing-contents-entry",
           "id": "suggesteditinerariesforafunweekendaway"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
         }
       ],
       "bookings": [
@@ -293,6 +461,10 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__krakow-activities/",
+          "to": "__KTK_HOME_URL__other-tours/"
         }
       ]
     },
@@ -301,6 +473,13 @@
         {
           "type": "repair-contents-link",
           "id": "makingmemoriesatgokartingkrakow"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
         }
       ],
       "bookings": [
@@ -319,7 +498,22 @@
       ]
     },
     "post-hen-do-ideas-abroad": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "Cocktail Bars & Unique Shops Along The Way",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -336,7 +530,15 @@
       ]
     },
     "post-hostel-etiquette-tips": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -353,7 +555,15 @@
       ]
     },
     "post-hostel-hangover-cure": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -370,7 +580,15 @@
       ]
     },
     "post-irish-bars-krakow": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -391,6 +609,20 @@
         {
           "type": "remove-missing-contents-entry",
           "id": "whichpolishcityisbestforstagparties"
+        },
+        {
+          "type": "heading-level",
+          "from": "h2",
+          "to": "p",
+          "text": "",
+          "id": "shootingrangeexperienceinkrakow"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
         }
       ],
       "bookings": [
@@ -409,7 +641,15 @@
       ]
     },
     "post-jazz-bars-in-krakow": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -426,7 +666,22 @@
       ]
     },
     "post-karaoke-bars-in-krakow": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h2",
+          "to": "p",
+          "text": "",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -443,7 +698,22 @@
       ]
     },
     "post-krakow-bars-jewish-quarter": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "Kazimierz Street Art Scene: A Modern Twist on Heritage Walls",
+          "id": "kazimierzstreetartsceneamoderntwistonheritagewalls"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -460,7 +730,15 @@
       ]
     },
     "post-krakow-budget-activities": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -477,7 +755,15 @@
       ]
     },
     "post-krakow-food-truck-parks": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -494,7 +780,15 @@
       ]
     },
     "post-krakow-free-activities-2": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -515,6 +809,13 @@
         {
           "type": "remove-missing-contents-entry",
           "id": "conclusion"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
         }
       ],
       "bookings": [
@@ -533,7 +834,15 @@
       ]
     },
     "post-krakow-hen-party-reviews": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -546,11 +855,23 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__krakow-activities",
+          "to": "__KTK_HOME_URL__other-tours/"
         }
       ]
     },
     "post-krakow-live-music": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -567,7 +888,15 @@
       ]
     },
     "post-krakow-milkbars": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -584,7 +913,15 @@
       ]
     },
     "post-krakow-money-saving-tips": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -601,7 +938,15 @@
       ]
     },
     "post-krakow-new-years-eve": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Krakow New Year’s Eve",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -618,7 +963,15 @@
       ]
     },
     "post-krakow-nightclubs": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -635,7 +988,15 @@
       ]
     },
     "post-krakow-safety-guide": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -652,7 +1013,15 @@
       ]
     },
     "post-krakow-shooting-range": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -669,7 +1038,15 @@
       ]
     },
     "post-krakow-shot-bar": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -686,7 +1063,15 @@
       ]
     },
     "post-krakow-stag-activities": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -699,6 +1084,10 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__krakow-activities",
+          "to": "__KTK_HOME_URL__other-tours/"
         }
       ]
     },
@@ -707,6 +1096,13 @@
         {
           "type": "remove-missing-contents-entry",
           "id": "krakowteambuildingactivities"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
         }
       ],
       "bookings": [
@@ -725,7 +1121,15 @@
       ]
     },
     "post-krakow-techno-clubs-2": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -742,7 +1146,15 @@
       ]
     },
     "post-krakow-techno-clubs": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -759,7 +1171,15 @@
       ]
     },
     "post-krakow-weather-guide": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -776,7 +1196,22 @@
       ]
     },
     "post-krakow-wine-bars": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h2",
+          "to": "p",
+          "text": "",
+          "id": "barawinoaquiethavenwithover500winesavailablebythebottle"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -793,7 +1228,22 @@
       ]
     },
     "post-krakow-winter-activities": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "Bonus Tip: Krawl Through Krakow Pub Crawl Experience",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -810,7 +1260,15 @@
       ]
     },
     "post-krawl-through-krakow-winter-newsletter": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h2",
+          "to": "h1",
+          "text": "KTK Winter Newsletter",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -844,7 +1302,22 @@
       ]
     },
     "post-new-years-eve-in-krakow": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Embracing Krakow’s Holiday Magic: A Festive Getaway to Remember",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -861,7 +1334,50 @@
       ]
     },
     "post-party-krakow": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h5",
+          "to": "h2",
+          "text": "Krawl through Krakow Pub Crawl 2020",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "How to party in Krakow",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h5",
+          "to": "h4",
+          "text": "Bar staff, Mr Vavelsky",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h5",
+          "to": "h4",
+          "text": "Four Music Club",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h5",
+          "to": "h4",
+          "text": "Upside down shot, Krawl Through Krakow",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -874,11 +1390,23 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__how-to-join/",
+          "to": "__KTK_HOME_URL__about-us/how-to-join/"
         }
       ]
     },
     "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -891,11 +1419,23 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__how-to-join/",
+          "to": "__KTK_HOME_URL__about-us/how-to-join/"
         }
       ]
     },
     "post-spa-hotels-krakow": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -912,7 +1452,22 @@
       ]
     },
     "post-spooktacular-krakow-unveil-the-mysteries-of-halloween": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Spooktacular Krakow: Unveil the Mysteries of Halloween with Krawl Through Krakow Pub Crawl",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -929,7 +1484,22 @@
       ]
     },
     "post-sports-bar-krakow": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "p",
+          "text": "",
+          "id": "iskrakowgoodforclubbing"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -946,7 +1516,15 @@
       ]
     },
     "post-stag-do-costume": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -963,7 +1541,15 @@
       ]
     },
     "post-stag-pranks": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1014,7 +1600,15 @@
       ]
     },
     "post-the-ultimate-guide-to-dating-in-nightlife-krakow": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1031,7 +1625,22 @@
       ]
     },
     "post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Clubs",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Bars / Pubs",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1048,7 +1657,148 @@
       ]
     },
     "post-travel-krakow-your-comprehensive-city-guide": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "How do I get from Krakow Airport to City Centre?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "Train",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "Bus",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "Krakow Airport Taxi",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "Uber",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "Is English spoken in Krakow?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "Where is Krakow located?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "How do the Auschwitz – Birkenau Full Day Guided Tours work?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "What’s the best accommodation in Krakow?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "p",
+          "text": "",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "Hostel:",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "Aparthotel:",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "Hotel:",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "How cheap is Krakow?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "Is Krakow safe?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "What’s the weather in Krakow like?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "What’s the best Polish food to try?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "Where to eat in Krakow?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "Where to go out in Krakow?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1065,7 +1815,57 @@
       ]
     },
     "post-weekend-in-krakow": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "How to plan the perfect weekend in Krakow!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Sightseeing",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Eat and drink",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Tours",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Go shopping",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Krakow Nightlife",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1082,11 +1882,27 @@
         {
           "from": "__KTK_HOME_URL__store/Polish-Vodka-Tasting-p637205219",
           "to": "__KTK_HOME_URL__store2/polish-vodka-tasting-44/#book"
+        },
+        {
+          "from": "__KTK_HOME_URL__how-to-join/",
+          "to": "__KTK_HOME_URL__about-us/how-to-join/"
+        },
+        {
+          "from": "__KTK_HOME_URL__krakow-activities/",
+          "to": "__KTK_HOME_URL__other-tours/"
         }
       ]
     },
     "post-welcome-to-alcohol": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h5",
+          "to": "p",
+          "text": "",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1103,7 +1919,15 @@
       ]
     },
     "post-wheres-the-cheap-places-to-drink-in-krakow": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1120,7 +1944,19 @@
       ]
     },
     "archive-category-drinking-games": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Drinking Games"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1133,11 +1969,27 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__krakow-pub-crawl/",
+          "to": "__KTK_HOME_URL__"
         }
       ]
     },
     "archive-category-hen-do": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Hen do"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1154,7 +2006,19 @@
       ]
     },
     "archive-category-krakow-guides": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Krakow Guides"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1167,11 +2031,27 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__krakow-pub-crawl/",
+          "to": "__KTK_HOME_URL__"
         }
       ]
     },
     "archive-category-krakow-nightlife": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Kraków Nightlife"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1184,11 +2064,27 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__krakow-pub-crawl/",
+          "to": "__KTK_HOME_URL__"
         }
       ]
     },
     "archive-category-party-tips": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Party Tips"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1205,7 +2101,19 @@
       ]
     },
     "archive-category-stag-do": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Stag do"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1222,7 +2130,19 @@
       ]
     },
     "archive-category-uncategorized": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Uncategorized"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1239,7 +2159,19 @@
       ]
     },
     "archive-author-dpbowman": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Articles by DPBowman"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1252,11 +2184,27 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__krakow-pub-crawl/",
+          "to": "__KTK_HOME_URL__"
         }
       ]
     },
     "archive-author-dpbowman-page-2": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Articles by DPBowman - Page 2"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1273,7 +2221,19 @@
       ]
     },
     "archive-author-dpbowman-page-3": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Articles by DPBowman - Page 3"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1290,7 +2250,19 @@
       ]
     },
     "archive-author-dpbowman-page-4": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Articles by DPBowman - Page 4"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1307,7 +2279,19 @@
       ]
     },
     "archive-author-dpbowman-page-5": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Articles by DPBowman - Page 5"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1324,7 +2308,19 @@
       ]
     },
     "archive-author-dpbowman-page-6": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Articles by DPBowman - Page 6"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1341,7 +2337,19 @@
       ]
     },
     "archive-author-dpbowman-page-7": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Articles by DPBowman - Page 7"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1358,7 +2366,19 @@
       ]
     },
     "archive-author-dpbowman-page-8": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Articles by DPBowman - Page 8"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1375,7 +2395,19 @@
       ]
     },
     "archive-author-dpbowman-page-9": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Articles by DPBowman - Page 9"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1392,7 +2424,19 @@
       ]
     },
     "archive-author-jessie": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Articles by Jess Campbell"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1409,7 +2453,19 @@
       ]
     },
     "archive-author-pubthroughkrakow": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Articles by pubthroughkrakow"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1426,7 +2482,19 @@
       ]
     },
     "archive-author-pubthroughkrakow-page-2": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Articles by pubthroughkrakow - Page 2"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1443,7 +2511,19 @@
       ]
     },
     "archive-author-thirsty": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Articles by Krusty"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1460,7 +2540,19 @@
       ]
     },
     "archive-category-krakow-guides-page-2": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Krakow Guides - Page 2"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1477,7 +2569,19 @@
       ]
     },
     "archive-category-krakow-guides-page-3": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Krakow Guides - Page 3"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1494,7 +2598,19 @@
       ]
     },
     "archive-category-krakow-nightlife-page-2": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Kraków Nightlife - Page 2"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1511,7 +2627,19 @@
       ]
     },
     "archive-category-party-tips-page-2": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Party Tips - Page 2"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1528,7 +2656,19 @@
       ]
     },
     "archive-category-uncategorized-page-2": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Uncategorized - Page 2"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1545,7 +2685,19 @@
       ]
     },
     "archive-category-uncategorized-page-3": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Uncategorized - Page 3"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1562,7 +2714,19 @@
       ]
     },
     "archive-category-uncategorized-page-4": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Uncategorized - Page 4"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1579,7 +2743,19 @@
       ]
     },
     "archive-category-uncategorized-page-5": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Uncategorized - Page 5"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1612,6 +2788,55 @@
         {
           "type": "remove-empty-video",
           "sourceId": "ST01LDOOI-4"
+        },
+        {
+          "type": "heading-level",
+          "from": "h5",
+          "to": "h3",
+          "text": "The Highest Rated Reviews don’t lie",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h5",
+          "to": "h3",
+          "text": "Our mission is for you to have fun!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "EXPERIENCE",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Krawl with us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "CHECK OUT MORE:",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
         }
       ],
       "bookings": [
@@ -1626,11 +2851,41 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__how-to-join/",
+          "to": "__KTK_HOME_URL__about-us/how-to-join/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
     "how-to-join": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h2",
+          "to": "p",
+          "text": "120 zl",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1643,11 +2898,41 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__krakow-activities/",
+          "to": "__KTK_HOME_URL__other-tours/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
     "blog": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "ORGANISING A STUDENT TRIP TO KRAKOW?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1660,11 +2945,48 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__krakow-pub-crawl/",
+          "to": "__KTK_HOME_URL__"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
     "contact": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Ready to Party?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "ORGANISING A STUDENT TRIP TO KRAKOW?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1677,11 +2999,135 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
     "faqs": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h2",
+          "to": "h1",
+          "text": "Read our most Frequently Asked Questions",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "How much does the crawl cost?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "How can I join?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Do you guys run every night?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Where is your meeting point",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "What if I'm late?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "What bars/clubs are we going?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "How long is the Pub Crawl?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Do you stay close to the main square?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "What if I'm Alone?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Is there a Dress Code?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Where are your Photos?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Can I Read your Reviews?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "ORGANISING A STUDENT TRIP TO KRAKOW?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Ready to Party?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1698,11 +3144,34 @@
         {
           "from": "https://fareharbor.com/embeds/book/krawlthroughkrakow/items/calendar/?full-items=yes&flow=660691",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__how-to-join/",
+          "to": "__KTK_HOME_URL__about-us/how-to-join/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
     "gallery": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1715,53 +3184,77 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
     "krakow-hen-do": {
-      "content": [],
-      "bookings": [
-        {
-          "from": "__KTK_HOME_URL__store/",
-          "to": "__KTK_HOME_URL__store2/"
-        },
-        {
-          "from": "__KTK_HOME_URL__store/Stag-Do-Activities-c165236286",
-          "to": "__KTK_HOME_URL__store2/"
-        },
-        {
-          "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
-          "to": "__KTK_HOME_URL__store2/"
-        },
-        {
-          "from": "https://fareharbor.com/embeds/book/krawlthroughkrakow/items/calendar/?full-items=yes&flow=660691&u=3123d1e9-9ae6-4f2f-a45b-bfc5d36477e4&from-ssl=no&g4=yes&cp=no&csp=no&back=about:blank",
-          "to": "__KTK_HOME_URL__store2/"
-        }
-      ]
-    },
-    "krakow-nightlife": {
-      "content": [],
-      "bookings": [
-        {
-          "from": "__KTK_HOME_URL__store/",
-          "to": "__KTK_HOME_URL__store2/"
-        },
-        {
-          "from": "__KTK_HOME_URL__store/Stag-Do-Activities-c165236286",
-          "to": "__KTK_HOME_URL__store2/"
-        },
-        {
-          "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
-          "to": "__KTK_HOME_URL__store2/"
-        }
-      ]
-    },
-    "krakow-stag-do": {
       "content": [
         {
-          "type": "replace-ecwid-booking",
-          "legacyProduct": "637056338",
-          "product": 40
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Life Drawing Session",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Polish Vodka Tasting",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Stretch Hummer with Strippers and Champagne",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Cocktail Making Class",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Spa Day / Beauty Treatment",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Polish Food Tour",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Create a Custom Hen do in Krakow",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
         }
       ],
       "bookings": [
@@ -1780,11 +3273,65 @@
         {
           "from": "https://fareharbor.com/embeds/book/krawlthroughkrakow/items/calendar/?full-items=yes&flow=660691&u=3123d1e9-9ae6-4f2f-a45b-bfc5d36477e4&from-ssl=no&g4=yes&cp=no&csp=no&back=about:blank",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
-    "meeting-point": {
-      "content": [],
+    "krakow-nightlife": {
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Getting Around",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Cash or Card?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Ordering Drinks",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Stay Safe",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "ORGANISING A STUDENT TRIP TO KRAKOW?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1797,6 +3344,217 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
+        }
+      ]
+    },
+    "krakow-stag-do": {
+      "content": [
+        {
+          "type": "replace-ecwid-booking",
+          "legacyProduct": "637056338",
+          "product": 40
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Polish Vodka Tasting",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Bubble Football",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Stretch Hummer with Strippers and Champagne",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Krakow Beer Hall Feast",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Krakow AK47 Shooting Range Package",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Football Pitch Rental",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Krakow Pub Crawl with Krawl Through Krakow",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Brewery Tour",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Escape Room",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Beer Tasting Tour",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Axe Throwing",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Attending a Football Match",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Paintball",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Boat Party / Private Boat",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Strip Club",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Krakow Go-Karting",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Airsoft Combat",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Create a Custom Stag Trip in Krakow",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
+      "bookings": [
+        {
+          "from": "__KTK_HOME_URL__store/",
+          "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__store/Stag-Do-Activities-c165236286",
+          "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
+          "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "https://fareharbor.com/embeds/book/krawlthroughkrakow/items/calendar/?full-items=yes&flow=660691&u=3123d1e9-9ae6-4f2f-a45b-bfc5d36477e4&from-ssl=no&g4=yes&cp=no&csp=no&back=about:blank",
+          "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
+        }
+      ]
+    },
+    "meeting-point": {
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
+      "bookings": [
+        {
+          "from": "__KTK_HOME_URL__store/",
+          "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__store/Stag-Do-Activities-c165236286",
+          "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
+          "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
@@ -1865,6 +3623,125 @@
             "limited-place claim",
             "contact form below"
           ]
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "The Krakow New Years Eve Pub Crawl deal includes",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "2 Hours of unlimited drinks",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "Smorgasbord Buffet Dinner",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "Pro Pub Crawl Guides",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "VIP Entrance to 3 awesome venues",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "Professional photographer",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "Biggest night of the year",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Itineraries",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "5:00 PM Group",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "7:30 PM Group",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Photos from previous NYE events",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Choice Music Club",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Coco Music Club",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Bracka 4",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "p",
+          "text": "All for only 250 PLN",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
         }
       ],
       "bookings": [
@@ -1883,11 +3760,44 @@
         {
           "from": "__KTK_HOME_URL__store/New-Years-Eve-Krakow-Pub-Crawl-p800134329",
           "to": "__KTK_HOME_URL__store2/nye-pub-crawl-32/#book"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
     "other-tours": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Krakow Food Tour",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Price: 329zł per person",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1900,11 +3810,79 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
     "otherbarcrawls": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Pub Crawlerz Istanbul",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Ziggy Star Pub Crawl",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Madride Travel Pub Crawl",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Our Other Partners",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "Check out momondo’s Krakow Guide for travel inspiration.",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "Check out Free Walking Tours at Walkative and much more",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "Krakow's ultimate Craft Beer & Brewery experience.",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1921,11 +3899,170 @@
         {
           "from": "https://fareharbor.com/embeds/book/krawlthroughkrakow/items/calendar/?full-items=yes&flow=660691&u=3123d1e9-9ae6-4f2f-a45b-bfc5d36477e4&from-ssl=no&g4=yes&cp=no&csp=no&back=about:blank",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
     "privacy-policy": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "p",
+          "to": "h1",
+          "text": "PRIVACY POLICY",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "Conditions of the licence",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "0.1 Definitions",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "0.2 Information Collection and Use",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "0.3 Types of Data Collected",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "0.4 Use of Data",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "0.5 Retention of Data",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "0.6 Transfer of Data",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "0.7 Disclosure of Data",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "0.8 Security of Data",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "0.9 Service Providers",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "0.10 Analytics",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "0.11 CI/CD tools",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "0.12 Behavioural Re-marketing",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "0.13 Payments",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "0.14 Links to Other Sites",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "0.15 Children’s Privacy",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "0.16 Changes to This Privacy Policy",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "0.17 Contact Us",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "ORGANISING A STUDENT TRIP TO KRAKOW?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1942,11 +4079,65 @@
         {
           "from": "https://fareharbor.com/embeds/book/krawlthroughkrakow/items/calendar/?full-items=yes&flow=660691&u=3123d1e9-9ae6-4f2f-a45b-bfc5d36477e4&from-ssl=no&g4=yes&cp=no&csp=no&back=about:blank",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
     "pub-crawl-drinking-games": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Drunk Jenga",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Kings Cup",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Flip Cup",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Never have I ever",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "I’m going on a picnic",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1959,11 +4150,72 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
     "pub-crawl-jobs": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "You speak english fluently.",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "You're available for at least 1 month.",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "You're a responsible drinker & a party animal.",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "You have a great outgoing personality.",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "You are able do work also a couple of hours during the day doing street promotion",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Life As a Guide",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1976,11 +4228,37 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
     "stagshens": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Come join in on the craziness of the PubCrawl!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -1993,11 +4271,72 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
     "student-trips-poland": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "WHY US?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "24/7 UNBEATABLE SUPPORT.",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "CRAZY DICOUNTS & OFFERS!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "OUR EXPERIENCE.",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "WE'RE THE FUN.",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "MAKE IT UNFORGETTABLE.",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -2010,11 +4349,184 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
     "terms-and-conditions": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "p",
+          "to": "h1",
+          "text": "TERMS AND CONDITIONS",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h3",
+          "to": "h2",
+          "text": "Conditions of the licence",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "1. Communications",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "‍2. Contests, Sweepstakes and Promotions",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "‍3. Content",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "‍4. Prohibited Uses",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "‍5. Analytics",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "‍8. Accounts",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "‍9. Intellectual Property",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "‍10. Copyright Policy",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "‍11. DMCA Notice and Procedure for Copyright Infringement Claims",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "‍12. Error Reporting and Feedback",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "‍13. Links To Other Web Sites",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "‍14. Disclaimer Of Warranty",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "‍15. Limitation Of Liability",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "‍16. Termination",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "‍17. Governing Law",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "‍18. Changes To Service",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "‍19. Amendments To Terms",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "20. Waiver And Severability",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h3",
+          "text": "‍22. Contact Us",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "ORGANISING A STUDENT TRIP TO KRAKOW?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -2031,11 +4543,30 @@
         {
           "from": "https://fareharbor.com/embeds/book/krawlthroughkrakow/items/calendar/?full-items=yes&flow=660691&u=3123d1e9-9ae6-4f2f-a45b-bfc5d36477e4&from-ssl=no&g4=yes&cp=no&csp=no&back=about:blank",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
     "testimonials": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -2048,11 +4579,51 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
     "tour-service-disclaimer": {
-      "content": [],
+      "content": [
+        {
+          "type": "heading-level",
+          "from": "p",
+          "to": "h1",
+          "text": "KRAWL THROUGH KRAKOW TOURS SERVICE DISCLAIMER",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "ORGANISING A STUDENT TRIP TO KRAKOW?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Ready to Party?",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Follow us!",
+          "id": ""
+        },
+        {
+          "type": "heading-level",
+          "from": "h1",
+          "to": "h2",
+          "text": "Contact us:",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -2073,11 +4644,27 @@
         {
           "from": "https://fareharbor.com/embeds/book/krawlthroughkrakow/items/calendar/?full-items=yes&flow=660691&u=3123d1e9-9ae6-4f2f-a45b-bfc5d36477e4&from-ssl=no&g4=yes&cp=no&csp=no&back=about:blank",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__terms-and-conditions",
+          "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
       ]
     },
     "archive-tag-drinking-games": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Drinking Games Articles"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -2094,7 +4681,19 @@
       ]
     },
     "archive-tag-krakow-food": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Krakow Food Articles"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -2111,7 +4710,19 @@
       ]
     },
     "archive-tag-krakow-nightlife": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Krakow Nightlife Articles"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -2128,7 +4739,19 @@
       ]
     },
     "archive-tag-krakow-party": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Krakow Party Articles"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -2145,7 +4768,19 @@
       ]
     },
     "archive-tag-krakow": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Krakow Articles"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -2162,7 +4797,19 @@
       ]
     },
     "archive-tag-krawl-through-krakow": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Krawl Through Krakow Articles"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -2179,7 +4826,19 @@
       ]
     },
     "archive-tag-party-ideas": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "party ideas Articles"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -2196,7 +4855,19 @@
       ]
     },
     "archive-tag-pub-crawl": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Pub Crawl Articles"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -2213,7 +4884,19 @@
       ]
     },
     "archive-tag-tips": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "tips Articles"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -2230,7 +4913,19 @@
       ]
     },
     "archive-tag-to-do-list": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "to do list Articles"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -2247,7 +4942,19 @@
       ]
     },
     "archive-tag-why-choose-us": {
-      "content": [],
+      "content": [
+        {
+          "type": "archive-heading",
+          "text": "Why Choose Us Articles"
+        },
+        {
+          "type": "heading-level",
+          "from": "h4",
+          "to": "h2",
+          "text": "Legal",
+          "id": ""
+        }
+      ],
       "bookings": [
         {
           "from": "__KTK_HOME_URL__store/",
@@ -2346,5 +5053,19 @@
     ],
     "sourceSha256": "fb57ed6139d3d30fdbfd266781b97691f9b15a5510abddeb5bb54531823a3708"
   },
-  "finishedAt": "2026-11-12T18:43:39.004Z"
+  "reviewedRedirects": [
+    {
+      "from": "/student-trips-and-parties/",
+      "target": "/student-trips-poland/",
+      "sourceStatus": 404,
+      "targetStatus": 200
+    },
+    {
+      "from": "/2019/09/05/2681/",
+      "target": "/all-you-need-to-know-about-visiting-auschwitz/",
+      "sourceStatus": 404,
+      "targetStatus": 200
+    }
+  ],
+  "finishedAt": "2026-11-12T21:05:21.837Z"
 }

@@ -7,6 +7,8 @@ import {buildPageIntegrations} from './code-pages-integrations.mjs';
 import {rewriteBookingLinks} from './booking-destinations.mjs';
 import {reviseCodePageContent} from './code-pages-content-revisions.mjs';
 import {codePageDescription, seoMetadata, validateSeoRoutes} from './code-pages-seo.mjs';
+import {preserveHeadingCss,reviseSemanticHeadings} from './semantic-headings.mjs';
+import {canonicalLinkPolicy,rewriteCanonicalLinks} from './canonical-links.mjs';
 const require = createRequire(import.meta.url);
 const { chromium } = require(path.join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const root = path.resolve('.');
@@ -192,7 +194,10 @@ try {
         });
       });
       const contentRevisions=await page.evaluate(reviseCodePageContent,{key:route.key,reviewCounts});
+      contentRevisions.push(...await page.evaluate(reviseSemanticHeadings,{key:route.key,kind:route.kind,title:capture.title,route:route.route}));
+      css=preserveHeadingCss(css);
       const bookingRevisions=await rewriteBookingLinks(page);
+      bookingRevisions.push(...await rewriteCanonicalLinks(page));
       if(contentRevisions.length||bookingRevisions.length)report.revisions[route.key]={content:contentRevisions,bookings:bookingRevisions};
       const portable=await page.evaluate(()=>document.body.innerHTML);
       const [shell, main] = portable.split('\n__KTK_SPLIT_MAIN__\n');
@@ -224,6 +229,15 @@ try {
       const response = await fetch(alias.sourceUrl, { redirect: 'manual', signal: AbortSignal.timeout(30000) });
       if (![301,302,307,308].includes(response.status)) throw new Error(`Expected observed redirect for ${alias.route}: ${response.status}`);
       redirects[alias.route] = { status: response.status, target: alias.target };
+    }
+    report.reviewedRedirects=[];
+    for(const alias of canonicalLinkPolicy.redirects){
+      const response=await fetch('https://krawlthroughkrakow.com'+alias.from,{redirect:'manual',signal:AbortSignal.timeout(30000)});
+      if(response.status!==alias.sourceStatus)throw new Error('Review changed broken alias source: '+alias.from);
+      const target=await fetch('https://krawlthroughkrakow.com'+alias.target,{redirect:'manual',signal:AbortSignal.timeout(30000)});
+      if(target.status!==200)throw new Error('Reviewed alias target must be a current direct page: '+alias.target);
+      redirects[alias.from]={status:alias.status,target:alias.target};
+      report.reviewedRedirects.push({from:alias.from,target:alias.target,sourceStatus:response.status,targetStatus:target.status});
     }
     await writeFile(path.join(assets, 'registry.php'), `<?php\n/** Generated staging-only explicit route registry. */\nif (!defined('ABSPATH')) { exit; }\nreturn json_decode(${php(JSON.stringify({version:1, complete:report.built.length === manifest.routes.length, routes:entries, redirects}))}, true);\n`);
   }

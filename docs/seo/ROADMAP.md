@@ -4,14 +4,14 @@ Updated: 2026-11-12 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 ## Where We Are
 
-**Current work:** T02/T05/T08 staging batch verified, including cached desktop/mobile pages; next: heading hierarchy and broken-link review.
+**Current work:** T04/T07 heading and link corrections deployed to staging; cache/browser verification underway. M01 OmniLodge reporting implementation authorized and in progress..
 
 **Verified foundation milestones:** 4. **New SEO production releases:** 0. The original website migration is a separate completed project, not counted as SEO implementation.
 
 | Full-Plan Status | Workstreams |
 | --- | --- |
-| In progress / partial staging | 10 |
-| Not started | 29 |
+| In progress / partial staging | 13 |
+| Not started | 26 |
 | Deferred | 1 |
 | Total | 40 |
 
@@ -25,7 +25,7 @@ These are unequal-sized workstreams, not a time-based percentage. Partial work i
 | 76 reviewed page descriptions and maintainable metadata source; one health-content hold | Verified on staging |
 | Sitemap preview, staging indexing guard and complete catalog review | Verified on staging |
 | Public HTML for all 24 products and catalog; shared content and native links | Verified on staging |
-| Remaining metadata, semantic headings, internal links and broken destinations | Not started |
+| Remaining metadata, semantic headings, internal links and broken destinations | In progress / partial staging |
 | Verified content refreshes, performance, accessibility and measurement | Not started |
 | Owner approval, guarded production promotion and Search Console follow-up | Not started |
 
@@ -44,17 +44,17 @@ Acceptance criteria and research: [full improvement plan](SEO-AND-WEBSITE-IMPROV
 
 | ID | Priority / Effort | Work | Status | Progress / Next Step |
 | --- | --- | --- | --- | --- |
-| M01 | P0 / M | Fix OmniLodge Search Console reporting: independent whole-property/date totals; paginated detailed rows with explicit coverage; exact-query vs substring groups; metrics aligned to the displayed page; separate query/page aggregation; filters by country/device/search type; no-data vs truncated flags. Label heuristic recommendations. | Not started | Requires separately authorized OmniLodge reporting work. |
+| M01 | P0 / M | Fix OmniLodge Search Console reporting: independent whole-property/date totals; paginated detailed rows with explicit coverage; exact-query vs substring groups; metrics aligned to the displayed page; separate query/page aggregation; filters by country/device/search type; no-data vs truncated flags. Label heuristic recommendations. | In progress / partial staging | Owner explicitly authorized implementation and OmniLodge deployment. Independent totals, pagination, filters and honest coverage corrections underway; not deployed yet. |
 | M02 | P0 / S | Establish dated SEO baseline and annotate homepage/content releases separately. Export complete available 28/90/180/365-day data and comparable prior-year periods; split brand/nonbrand, UK/Poland/other markets, mobile/desktop, commercial/editorial/PDF/legacy pages. | Not started | Read-only baseline exists; complete comparable native GSC exports remain. |
 | M03 | P1 / M | Verify the full measurement funnel: landing -> named booking CTA -> product -> booking start -> payment completion -> revenue. Keep journey history and UTM handoff; distinguish direct/organic/paid/Google booking integrations. Avoid counting button clicks or failed payments as purchases. | Not started | Full funnel reconciliation and consent-aware measurement review remain. |
 | M04 | P1 / S | Check native GSC Page Indexing, Crawl Stats, submitted sitemaps, Manual Actions and Security Issues; inspect representative page types after Google's next crawl. Configure meaningful failure alerts/weekly review, not a noisy total-keyword scoreboard. | Not started | Native GSC coverage, actions and monitoring still need account review. |
 | T01 | P0 / M | Write an intent-to-URL map: homepage = brand/main Krakow pub crawl; store2 product = details/booking; nightlife hub = advice; NYE sales page = current event; guides = informational. Review real overlaps before consolidation. Preserve clean canonicals for attribution/query variants and normal www/HTTPS redirects. | In progress / partial staging | Core URL roles and catalog decisions recorded; overlap investigation remains. |
 | T02 | P1 / L | Deliver useful storefront title, H1, description, inclusions, images and indexable product links in initial HTML, using the same public product source as hydration/metadata/schema. Start with pub crawl and NYE, then the active catalog. No crawler-only content. | In progress / partial staging | All 24 products/catalog have verified initial HTML and cached browser handoff on staging. Owner review, production approval and Google live inspection remain. |
 | T03 | P0 / M | Make a code-owned sitemap layer consistent with the explicit content registry and intended catalog: final HTTPS canonical 200 URLs only, accurate change dates, no UTM/cart/staging/aliases. Remove redirect/noncanonical entries from owned feeds. Add sitemap discovery in robots.txt. | In progress / partial staging | 123-URL no-store staging preview; production/legacy-feed cutover and submission remain. |
-| T04 | P1 / M | Normalize heading hierarchy without redesign: one clear primary page heading as a project convention; lower/footer headings become appropriate H2/H3 or nonheading text; give archives useful descriptive H1s and fix the newsletter article. | Not started | Sitewide homepage/footer/archive heading cleanup remains. |
+| T04 | P1 / M | Normalize heading hierarchy without redesign: one clear primary page heading as a project convention; lower/footer headings become appropriate H2/H3 or nonheading text; give archives useful descriptive H1s and fix the newsletter article. | In progress / partial staging | 117 homepage/content routes corrected locally to one H1 and ordered levels; 1,516 original content/style/geometry checks pass. Staging deployment/cache verification underway. |
 | T05 | P1 / M | Add reviewed per-page SEO overrides: distinct descriptive titles, missing descriptions, canonical/robots policy, Open Graph/social cards and images. Start with core/NYE/local guides, then remaining content. Preview real snippets, not fixed character-count targets. | In progress / partial staging | 76 of 77 descriptions verified on staging, including clean/HIT caches; one health-claims article held. Broader title/social-card work and production remain. |
 | T06 | P2 / M | Decide archive indexing case by case. Enrich useful categories; review thin tag/author/Uncategorized pages; differentiate paginated titles and retain crawlable pagination. Review the missing canonical on `/krakow-team-building-activities/`. | In progress / partial staging | Missing-canonical article investigated; archive indexing decisions remain. |
-| T07 | P1 / S-M | Recover genuine broken destinations; remove avoidable redirect chains and stale image/external URLs. Check `/student-trips-and-parties/` -> `/student-trips-poland/`, `/2019/09/05/2681/` -> current Auschwitz article, and old brunch URL -> current brunch offer for equivalence. | Not started | Three historical destination mappings need equivalence review. |
+| T07 | P1 / S-M | Recover genuine broken destinations; remove avoidable redirect chains and stale image/external URLs. Check `/student-trips-and-parties/` -> `/student-trips-poland/`, `/2019/09/05/2681/` -> current Auschwitz article, and old brunch URL -> current brunch offer for equivalence. | In progress / partial staging | Reviewed aliases normalized; two confirmed non-store redirects and owner-approved exact staging brunch redirect deployed. Public cache and complete link-graph follow-up remain. |
 | T08 | P1 / M | Improve meaningful internal links and navigation for stag, hen, student, nightlife guides and related products. Use clear anchors, breadcrumbs and relevant related articles. Validate the apparent isolated Terms page as part of trust/checkout links. | In progress / partial staging | All 24 catalog products now have native links in initial/client HTML. Broader contextual links and the full rendered graph remain. |
 | T09 | P1 / M | Validate structured data: consistent Organization/WebSite identity, Article/BlogPosting + author/date/image for articles, BreadcrumbList, and accurate applicable offer/event data. Recheck the three old schema validation warnings. | Not started | Sitewide structured-data identity and accuracy audit remains. |
 | T10 | P1 / M | Add SEO regression checks for HTTP status, canonical, robots, initial content, metadata, schema, internal destinations, sitemap and desktop/mobile cache variants. Include meaningful 404s and guarded routing. | In progress / partial staging | Metadata/discovery/indexing/source guards exist; broader regression coverage remains. |

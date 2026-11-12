@@ -1,4 +1,8 @@
 /* Native interaction states, layered over the captured page cascade. */
+:where([data-ktk-heading-origin="p"]) { font-weight: inherit; }
+.ktk-archive-heading { margin: 0 0 32px; }
+.ktk-archive-heading h1 { margin: 0; padding: 0; color: #111; font-family: inherit; font-size: 28px; font-weight: 700; line-height: 1.25; overflow-wrap: anywhere; }
+@media (max-width: 600px) { .ktk-archive-heading h1 { font-size: 24px; } }
 /* Divi's measured logo/menu fit, expressed without its JavaScript runtime. */
 @media (min-width: 1356px) {
   #et-top-navigation { padding-left: 110px; }

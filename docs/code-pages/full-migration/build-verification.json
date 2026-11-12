@@ -1,126 +1,126 @@
 {
-  "checkedAt": "2026-11-12T18:45:02.555Z",
+  "checkedAt": "2026-11-12T21:21:39.004Z",
   "routes": 116,
-  "passed": 1856,
-  "total": 1856,
+  "passed": 2088,
+  "total": 2088,
   "payloadChecksums": {
     "ktk-code-pages-assets/content/.htaccess": "b839261c1ee52349560b726218f0bc9cb1afee95e07e9d50f95919d5e8e6cdf2",
-    "ktk-code-pages-assets/content/about-us.html": "069757d888574c024a1a319f3e81b1b053bba5d9434e74136e7188547d4e8e09",
-    "ktk-code-pages-assets/content/archive-author-dpbowman-page-2.html": "5cca368356527154d66b72253a6374bd7399339f6b9a6a8e36595ff7b200f1e4",
-    "ktk-code-pages-assets/content/archive-author-dpbowman-page-3.html": "7837f0fd5e414e42507778a855f2afe9bdbc0db2c6b0d6d7f10d810791f09472",
-    "ktk-code-pages-assets/content/archive-author-dpbowman-page-4.html": "922f6d65ea5eca946f961e3d854efd546a5f9130dd26da7465f16c91be2a7ea0",
-    "ktk-code-pages-assets/content/archive-author-dpbowman-page-5.html": "e37844f1956faf27c0942337c07d0cb25183961146ca18cc8324b74150b1ec77",
-    "ktk-code-pages-assets/content/archive-author-dpbowman-page-6.html": "c21e102bc0ed74226dbc72f79ff9bbd3dcd7a4ee1ae3aaee983fdaf6c76e47b0",
-    "ktk-code-pages-assets/content/archive-author-dpbowman-page-7.html": "f673bd569abeccf025eabf13790d6f4f821365d5fd58a617e1f33e47a8885a41",
-    "ktk-code-pages-assets/content/archive-author-dpbowman-page-8.html": "549a005ba1aeffce9638fa94c6d6edfebb9f4735ab145f59f6079f8cf9639080",
-    "ktk-code-pages-assets/content/archive-author-dpbowman-page-9.html": "db8443f1a7079941ef5deaba74026820c730060abacc03dc813fc7b21e6c6b6d",
-    "ktk-code-pages-assets/content/archive-author-dpbowman.html": "11f0d3394f720f99c9524f38982634213c97b98aa18e9fb648c8d4e1a1674f20",
-    "ktk-code-pages-assets/content/archive-author-jessie.html": "3842e0a0269985dabcaa6dc08da14e3fd4ddc59b66d4c4bbfe1a787ce14170ab",
-    "ktk-code-pages-assets/content/archive-author-pubthroughkrakow-page-2.html": "9135160330d895b48122bedbc2f89e5a99f0ad875701cfd1afc1d33e685f9f56",
-    "ktk-code-pages-assets/content/archive-author-pubthroughkrakow.html": "914c5c8bf189467a3b04617aa6d4d297493a7de829a8cbbe8e4bef6033aa7bfb",
-    "ktk-code-pages-assets/content/archive-author-thirsty.html": "3a591ce5e794d36c48c1ab06042b76751b98105978ff60e96ed44896886274c1",
-    "ktk-code-pages-assets/content/archive-category-drinking-games.html": "e24e15ff5fa330c44c939ca410c4b3f7daba0155ad99395863d382cdebd35ffd",
-    "ktk-code-pages-assets/content/archive-category-hen-do.html": "1dcc489bfaa020de765210948203ec80973242c6e021dcbb55ea460d7424ccef",
-    "ktk-code-pages-assets/content/archive-category-krakow-guides-page-2.html": "b670d3a031de9061ece8f6187ce8041e9c5d9f224f5ba7015e8eec4e873eea4d",
-    "ktk-code-pages-assets/content/archive-category-krakow-guides-page-3.html": "de449afa1196b930e2a129dd5c97107e959c69820ca3a70620887f9bd560f7af",
-    "ktk-code-pages-assets/content/archive-category-krakow-guides.html": "00395681af94df47eb0e4ce16555440f45ebde0678bf8dedb3d7f6c160e830a0",
-    "ktk-code-pages-assets/content/archive-category-krakow-nightlife-page-2.html": "c4777e8e05ba288de03904078e2370d7bf17fd362655821540dc029c292cdf68",
-    "ktk-code-pages-assets/content/archive-category-krakow-nightlife.html": "10e1766676528d73314f77e0433dac8b116400f8309b342024304fddc441e7ff",
-    "ktk-code-pages-assets/content/archive-category-party-tips-page-2.html": "c35b2c095d6abc28d2fb066fd2b3a4c6d51387b9ae090197f378db665ec8ccd4",
-    "ktk-code-pages-assets/content/archive-category-party-tips.html": "5b9fb48c212c0b5693a20059a06befb6574249a880851a0f7ee508719dd735d9",
-    "ktk-code-pages-assets/content/archive-category-stag-do.html": "a2b7b39ff6bb8085a18a0744c923e79ddb9cdd5254b2bb14dba30aa59319a253",
-    "ktk-code-pages-assets/content/archive-category-uncategorized-page-2.html": "5021416714521a3b8c9119e886450cdaa67be4d9f51999f2067fd43de149bb0a",
-    "ktk-code-pages-assets/content/archive-category-uncategorized-page-3.html": "ca18e940ecee5df8c4446eb75e018aa8c1f0cb46138527d557c637e8ec844db2",
-    "ktk-code-pages-assets/content/archive-category-uncategorized-page-4.html": "654ca577fe0c1b75ebf7f7701ab8c05f2a3971567e7889a4b20c56b0720c3db4",
-    "ktk-code-pages-assets/content/archive-category-uncategorized-page-5.html": "4f5da0332d5fb6216f062c43fa68a26acc25a749dd73c38e0e4b9f09c776f85a",
-    "ktk-code-pages-assets/content/archive-category-uncategorized.html": "4f686b4f997443378f3fc050ceffed11fc231a1e22e1dd334055e7eb04635c12",
-    "ktk-code-pages-assets/content/archive-tag-drinking-games.html": "e975d57a4eafc3d7771238ea86f1946a8d57be02ebaee8a69eae114b452c9589",
-    "ktk-code-pages-assets/content/archive-tag-krakow-food.html": "860b7ecd09ecafa68256da19c69ffefb3439bf7d34b543fc2fe270800c746d09",
-    "ktk-code-pages-assets/content/archive-tag-krakow-nightlife.html": "5d7880b71602080235bbce0d41446c558cca311a5161f8257ac861dfcd634e83",
-    "ktk-code-pages-assets/content/archive-tag-krakow-party.html": "b74ea9df63b122a01c9e0e479efcbf433c8fa29c9ef9c813ed0c2db6269edbd0",
-    "ktk-code-pages-assets/content/archive-tag-krakow.html": "df136269c9898a85329362544a0a41ab03fea09486850be38d98646e4816a0e9",
-    "ktk-code-pages-assets/content/archive-tag-krawl-through-krakow.html": "5b9c8027ec6e1650b025fd1674576ee213a2d7130e527bd602d80139b92c8a6b",
-    "ktk-code-pages-assets/content/archive-tag-party-ideas.html": "5b9c8027ec6e1650b025fd1674576ee213a2d7130e527bd602d80139b92c8a6b",
-    "ktk-code-pages-assets/content/archive-tag-pub-crawl.html": "5d7880b71602080235bbce0d41446c558cca311a5161f8257ac861dfcd634e83",
-    "ktk-code-pages-assets/content/archive-tag-tips.html": "d9e63d9e6611a09fc587b5405758e94918a8554b848ac27ed07109ce98d30f98",
-    "ktk-code-pages-assets/content/archive-tag-to-do-list.html": "a4a0cec52ee92146d196bdd8d16aae9336fd86e8a046804dba061ac6909f4a7d",
-    "ktk-code-pages-assets/content/archive-tag-why-choose-us.html": "44c88308653dab0efa06c23088df32b27b3d808598fe4ca94c827905800dfcbb",
-    "ktk-code-pages-assets/content/blog.html": "79d234ba929995628175a3f0fcff78b76823abaf312fd2b0af2e1ace7d9bd079",
-    "ktk-code-pages-assets/content/contact.html": "199a62cf83c0bb32a1186aa10e1bbae9d952ec85f82c102e9ea02400bb6f36df",
-    "ktk-code-pages-assets/content/faqs.html": "523ca9c8803cd7674b6ee59851b92a34d5e25ccfeaa28c9bc1d6510a74d0cdd8",
-    "ktk-code-pages-assets/content/gallery.html": "e54db07d54dc8d5290a8c4bf303f27b600979e2cf18ec99b74cdf44ccffa25ec",
-    "ktk-code-pages-assets/content/how-to-join.html": "f0a026cabfe7a1588b6bf32924ec95a8cb4d7b07c49b83db08a1fad81d99fbbe",
-    "ktk-code-pages-assets/content/krakow-hen-do.html": "54a8b3ac11a29aca5c200885f987307fba5e238407d6738506163b810b4d9edd",
-    "ktk-code-pages-assets/content/krakow-nightlife.html": "d69e0b5f8a32170d49f77a0ae163071bcd8e40ee03b8dbe0c725c82c155fd033",
-    "ktk-code-pages-assets/content/krakow-stag-do.html": "ac2fd2050293a6819bea313070b80911ba2180537027dc8fedf11ba0b8331b33",
-    "ktk-code-pages-assets/content/meeting-point.html": "a69debdc9fbeb361e0c562457e9b5b03cc606d08c8962dea9d62afbd4cd62ca3",
-    "ktk-code-pages-assets/content/new-years-eve.html": "01878af6ed41c4606666960c0f81a1e8ef7bd920b8290fc180b25758ff83bb7b",
-    "ktk-code-pages-assets/content/other-tours.html": "0135692d66af4b7879acf22e4a5a1f998c9e7ea6804e59497edb26fc2dc5d26d",
-    "ktk-code-pages-assets/content/otherbarcrawls.html": "f9e968161d50976569d6a0070b0f528efd9da8ed91ade1390bd7e9a55d2eaeff",
-    "ktk-code-pages-assets/content/post-2020-krakow-nightlife-guide.html": "71fa459a1e367b0edfe1ef274a3ed465a859686c6a115f9d01d2733fe5cdbd29",
-    "ktk-code-pages-assets/content/post-all-you-need-to-know-about-visiting-auschwitz.html": "64781fca90877b049e61993c3d3834cb1266f0997128702230c26473031bc92c",
-    "ktk-code-pages-assets/content/post-bachelor-party-organisers-krakow.html": "f5d975f77de4252dcb15d6c99212889387055fd4a07f5c1d6d5593fbc689b7dc",
-    "ktk-code-pages-assets/content/post-best-drinking-games.html": "64365844f4bacf36a24f0fe6457fbf0505eb751d65792fc1f49d5ef9d66dc1c0",
-    "ktk-code-pages-assets/content/post-best-hotels-in-krakow-2019-2020.html": "0e49dbc05e7e6773baedcdfc8dc06317a948aef9bbdedac444b97dba066b2d5e",
-    "ktk-code-pages-assets/content/post-best-places-to-eat.html": "5ba5b9a259b01b1f477d7fe4113860076872deeee488d07de3a4f06c5865442e",
-    "ktk-code-pages-assets/content/post-best-pub-crawls-in-europe.html": "c22f2aa8cdf22e60eddd56de5358ef36230c4bf787c6bd5a5094625eafe0d578",
-    "ktk-code-pages-assets/content/post-budapest-or-krakow-nightlife.html": "c51b5423433036306165b2ce07aa1c1efd9d031364beadf6e85e305b9fb3f5a9",
-    "ktk-code-pages-assets/content/post-escape-rooms-for-a-stag-do-in-krakow.html": "0274ab174abc0be2652d20545436a6379f4a653eb7dd017cc61f6f3dd3900f07",
-    "ktk-code-pages-assets/content/post-go-karting-krakow.html": "e903db31f7d04e347a472801d067c858b70b537aaf01d1242d3b46125b0ed5d7",
-    "ktk-code-pages-assets/content/post-hen-do-ideas-abroad.html": "e2bf277b9e6dc7c79df05de8cf5d3680697b8a22508de6c632cbf13a8467c1b2",
-    "ktk-code-pages-assets/content/post-hostel-etiquette-tips.html": "be61078b08ac2a8505cd21e56d994fb0be23eb0fa0b324f92166c8f5a2533403",
-    "ktk-code-pages-assets/content/post-hostel-hangover-cure.html": "b31acbbe852b6dbf119fb48e1ba9b3d7671b4898c776117d10ea6db7f7596ad5",
-    "ktk-code-pages-assets/content/post-irish-bars-krakow.html": "0790bb28d21a14535a86cdcfdabd06a3477f27b8eccc1b08239c4721824d5398",
-    "ktk-code-pages-assets/content/post-is-krakow-safe-for-stag.html": "131c32af537cb7042a50b2677d4f413ebbe5af2fff24829a603bfbc3393c7626",
-    "ktk-code-pages-assets/content/post-jazz-bars-in-krakow.html": "462bea7fb231437280fe88c25aa8db28788979fe6136e8339630d1cd9bdf83c0",
-    "ktk-code-pages-assets/content/post-karaoke-bars-in-krakow.html": "609a54111e533c9ea176ac1fcd0d6c6bb90f9361601f702b33e7270264d91259",
-    "ktk-code-pages-assets/content/post-krakow-bars-jewish-quarter.html": "69cd5e2271a4e2b9d2eb15302f1984adf2b6122da8308c97398054e9426e09fa",
-    "ktk-code-pages-assets/content/post-krakow-budget-activities.html": "1b2bcac57576ed84b8a760d7a46b9633f2d564de07cfca869ba499b0fbf22107",
-    "ktk-code-pages-assets/content/post-krakow-food-truck-parks.html": "cffad2b952dcc6872f1c1e1eb0dd1aced569755f200ac47c7dff2f08f68c863c",
-    "ktk-code-pages-assets/content/post-krakow-free-activities-2.html": "3608666c9ca0dd4890d42b80bf9850c9ac0022ef9c65bada35aa32dcba9a6727",
-    "ktk-code-pages-assets/content/post-krakow-go-karting.html": "5d905cae52bb226886c453810d8732c217515121130176b04e94d36760f01bdd",
-    "ktk-code-pages-assets/content/post-krakow-hen-party-reviews.html": "116c4a4c6cefc0c86534f1daab7d600108a00a6d1ec85c3548c92c6f017f72a2",
-    "ktk-code-pages-assets/content/post-krakow-live-music.html": "baab353d3d8962fc1b456629512fb8363de51aa4aae1f0f70bac8ec8499fc531",
-    "ktk-code-pages-assets/content/post-krakow-milkbars.html": "26fa54aa11ce372d6872ed50d6bc7d13ad69431bdc2b44432d497f74ae73fc02",
-    "ktk-code-pages-assets/content/post-krakow-money-saving-tips.html": "548b5d0f0eb85354e3ae7b1c7d32d8b66199941a0fea891ce937d9b603909843",
-    "ktk-code-pages-assets/content/post-krakow-new-years-eve.html": "3ba12f16cd26bf1efea182fe8f96fcd32dcfcc003713db038e26249db4249db2",
-    "ktk-code-pages-assets/content/post-krakow-nightclubs.html": "1065d910c2b3838f295d48a02347bf1d0d762911b01f042eb774448f39a2a585",
-    "ktk-code-pages-assets/content/post-krakow-safety-guide.html": "804110c6f401cb6495dbf94e5bf485c2cddcb1eded4b6544dcbd4a1b41f0b985",
-    "ktk-code-pages-assets/content/post-krakow-shooting-range.html": "a94dbaf0b627c7665aff6c132ae3b7b41a57946358d3d1e9d41300ee35e2a8ba",
-    "ktk-code-pages-assets/content/post-krakow-shot-bar.html": "b89cbf66008b90e0f1a08d7509c84fdf6c057ef1bb1e4a65dd296f53ee582a9a",
-    "ktk-code-pages-assets/content/post-krakow-stag-activities.html": "f729e6fd58655b4f31c4b05474bd95a4a4acc42cf8475bb0e3b373e58297017b",
-    "ktk-code-pages-assets/content/post-krakow-team-building-activities.html": "4839c61cc395012ddb47422bf39fd1ece34f64a4233844f6f85e15fa03ab4249",
-    "ktk-code-pages-assets/content/post-krakow-techno-clubs-2.html": "86aba7f3181b0dacf8224b872b6ac69c1a50751b0b7602833df8f3584bbbce1e",
-    "ktk-code-pages-assets/content/post-krakow-techno-clubs.html": "ff83ed6f122e933f07530077d2ab2a664b7f12b23cbf6c697390d2785238a679",
-    "ktk-code-pages-assets/content/post-krakow-weather-guide.html": "e780d353699db79e62c7e58a14939b7896bd6c93c90fb1ccad027caca8d0c300",
-    "ktk-code-pages-assets/content/post-krakow-wine-bars.html": "a1eef637475e9c27071c0c1a0dc3143afc1a891befca56be4b62510c6e0d18c7",
-    "ktk-code-pages-assets/content/post-krakow-winter-activities.html": "63010f41c04b6b5971709fda059e9c6d1b84df21ed81c16b6eaf497270206edd",
-    "ktk-code-pages-assets/content/post-krawl-through-krakow-winter-newsletter.html": "5e8ba368712080f4f279b52fef709f8325b2603327db27b761ce8806ccd8efe3",
-    "ktk-code-pages-assets/content/post-life-professional-drunk.html": "d5b8a5c9a4e55baed5fa22b0373a21cd5e9e1993c163e0cc0266c9bd694aebc7",
-    "ktk-code-pages-assets/content/post-new-years-eve-in-krakow.html": "dc842ef20da27de1674c788dd9ce9f0dc16f1ec2412a11610f8185b341e07378",
-    "ktk-code-pages-assets/content/post-party-krakow.html": "9e6d073b8d4ae8dbb6f4274fa40684c12bc2132a5c43420a8709b680adeb1821",
-    "ktk-code-pages-assets/content/post-six-reasons-you-need-to-party-with-the-krawl-through-krakow.html": "0db084979aa3e4767ba1edfb0814b49efb2d17a4c38f12bc622c7f78164ee9c1",
-    "ktk-code-pages-assets/content/post-spa-hotels-krakow.html": "fdeacbfac3cf875e661a212ccb5fcaf7c1a9dc2db7aba0411309355a4408a2bd",
-    "ktk-code-pages-assets/content/post-spooktacular-krakow-unveil-the-mysteries-of-halloween.html": "e516f5f8a652f752ce284777f174384c07a80fc5330968174c2bc2e049056c2b",
-    "ktk-code-pages-assets/content/post-sports-bar-krakow.html": "7a2fb11d6576a7211921742b26b5314399f42d2b99a16af8780666ec475be26f",
-    "ktk-code-pages-assets/content/post-stag-do-costume.html": "2804cef9a9e3b0c9f6b5b6cf4022a3426686d951a066d347ace03265952ca439",
-    "ktk-code-pages-assets/content/post-stag-pranks.html": "9fd8d1535940e09f11517718d1c7da24a30af03cc648fcb98a9471ed2cdf94ff",
-    "ktk-code-pages-assets/content/post-stages-of-drunkenness.html": "b860565b14c691d35064b2a72be6593d013f8a22eeae96fe99aa0810e95a5496",
-    "ktk-code-pages-assets/content/post-survive-pub-crawl.html": "30a01c7dd6c21cde6771771bfbd340f19f3d819b20a2cc5d4bd66b0048b987b0",
-    "ktk-code-pages-assets/content/post-the-ultimate-guide-to-dating-in-nightlife-krakow.html": "e7c38757e5497bdf5eec50a00ea799df2b40a42e19f5267f25c870c7f1d6f91b",
-    "ktk-code-pages-assets/content/post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow.html": "a642241e16754e07b06199429b93e5f1f8c97c28c92ba851721542aab4926ab3",
-    "ktk-code-pages-assets/content/post-travel-krakow-your-comprehensive-city-guide.html": "958a89d83f4fd2e1e28531db0b80bac982b1954cdb1411c4beb7a65b2fce62be",
-    "ktk-code-pages-assets/content/post-weekend-in-krakow.html": "fb716aabe76770948a6f880520afa9c6c76abced8d4ba918f68844ff51a91884",
-    "ktk-code-pages-assets/content/post-welcome-to-alcohol.html": "a73d22272b8d0f748f98a77bc0748dc4d888c194f082a16bf6cbae857a59669a",
-    "ktk-code-pages-assets/content/post-wheres-the-cheap-places-to-drink-in-krakow.html": "c0e55c0af6791b064d9402c29084e21229d9d56b7b49aa0a89e545e10064e4b0",
-    "ktk-code-pages-assets/content/privacy-policy.html": "6163385674fa007033e268f1b6ca30998ae2d507adebcf2afe59092374eff3e5",
-    "ktk-code-pages-assets/content/pub-crawl-drinking-games.html": "b04cb28f5a6c0534627ab0e578281a9152b218b11db42b6d3f3baaf957043bee",
-    "ktk-code-pages-assets/content/pub-crawl-jobs.html": "fa088bc5e00fa1dd8ed7155a11211b12ae8143a69ef37c7aa07069e337122cd3",
-    "ktk-code-pages-assets/content/stagshens.html": "9d8643c4e0787123d08d5f95abee4a940b6f6065dfe84f434ecc7af00a5c0ad6",
-    "ktk-code-pages-assets/content/student-trips-poland.html": "be42d32459ae5393f6df5d3538507a8ff5b9b97707b20cbdb64066f403c0895c",
-    "ktk-code-pages-assets/content/terms-and-conditions.html": "701c656cd2a1ac739972535f47899be496dbabb45cc32d6cb946e0c11ba4bdfc",
-    "ktk-code-pages-assets/content/testimonials.html": "1d6151d4fcd9246ab8a16e9eb38998d610b691ffa98098bce1c4119eb1c6dfee",
-    "ktk-code-pages-assets/content/tour-service-disclaimer.html": "1b415262fb1e8d92943a24897cf586e017bcbc3eeec5b2de4163a8088c5b6aae",
+    "ktk-code-pages-assets/content/about-us.html": "6247a59b42f3a8cbdf6ec26a33b625b688bc7eeb6e092eddd6616d856af5eb1d",
+    "ktk-code-pages-assets/content/archive-author-dpbowman-page-2.html": "e93b4d2f054675242f78d2643d212989b6bf224a8156d4b8e07be8764266ce4f",
+    "ktk-code-pages-assets/content/archive-author-dpbowman-page-3.html": "882e128801330ad1faa6c5944bb4728cfdc97ee1c18136f5d019b084c1101037",
+    "ktk-code-pages-assets/content/archive-author-dpbowman-page-4.html": "3165b1f351865f40c63d264808d6bb34b8996720306385ffbed62b43aadb185c",
+    "ktk-code-pages-assets/content/archive-author-dpbowman-page-5.html": "ec68171d8a58c385de1b0d14a6fd54181367b0aba7ebe9e30e625c333c6d93f1",
+    "ktk-code-pages-assets/content/archive-author-dpbowman-page-6.html": "fabc2a6e2c05b3c3af8eea0270d41e5d6a49e2a80bdac2999e4002a06716b68e",
+    "ktk-code-pages-assets/content/archive-author-dpbowman-page-7.html": "c35ca1ab883b3c4567c8151b8ed1b133974eecbece42e28bc50fcc24dac0fd11",
+    "ktk-code-pages-assets/content/archive-author-dpbowman-page-8.html": "6137877cb138668b55fab9aaeaaee5fcf6d8a0a7be21f31b2607d4e412f43ed3",
+    "ktk-code-pages-assets/content/archive-author-dpbowman-page-9.html": "0675be8ba09f524b562cc5b896431a01b0ecb75d675f45765d0614790b539016",
+    "ktk-code-pages-assets/content/archive-author-dpbowman.html": "72e1ad38208e29ff6363d5f8610ce3ca8cb9874f077589559a0eb5ef5038b679",
+    "ktk-code-pages-assets/content/archive-author-jessie.html": "a869f615276de9e69eea8ba7c31cbac5a8779b7c7e20c30a82790ab47771aa4e",
+    "ktk-code-pages-assets/content/archive-author-pubthroughkrakow-page-2.html": "2603cb08dda52e18685952cdb926c88303766fbe9bf3066af11b70193e50d244",
+    "ktk-code-pages-assets/content/archive-author-pubthroughkrakow.html": "7bef3a1701b66d6399896ffbecbf0c44418acef40a5c5e70ea4cace17e859826",
+    "ktk-code-pages-assets/content/archive-author-thirsty.html": "21ff08f4392aafe8ba48dcb4c8ea0a7d85156b7e16c08f01cc837860611826e9",
+    "ktk-code-pages-assets/content/archive-category-drinking-games.html": "ade037a6c6c162b7c5d2fdfa065dafd6620471699908a3f43ad29bd6a1146113",
+    "ktk-code-pages-assets/content/archive-category-hen-do.html": "ab43fde2811bb2db799d136ce5f1b2fc53375110ead67b4462df63da5aa1e158",
+    "ktk-code-pages-assets/content/archive-category-krakow-guides-page-2.html": "78412f95fae801ef22a0225a52a920505be1e3ad087b736fd490d35c3ef704dd",
+    "ktk-code-pages-assets/content/archive-category-krakow-guides-page-3.html": "d8872dd5e7c9868f4bfaaac394c643c3d8ffeaf4f3e0a327b9d7597b824758de",
+    "ktk-code-pages-assets/content/archive-category-krakow-guides.html": "55da5f3e56e571a2233e4b60470fca3a65ce43dcae6dedff7381a11c0159d4bf",
+    "ktk-code-pages-assets/content/archive-category-krakow-nightlife-page-2.html": "4485f293deece8666309e048b42d7587edb5cacf7abcef80f05bb62840d1a93b",
+    "ktk-code-pages-assets/content/archive-category-krakow-nightlife.html": "06d5683d6dadf8be632180fc18c04135e1edfca2c12ce7c6bea15b1e2f89d30c",
+    "ktk-code-pages-assets/content/archive-category-party-tips-page-2.html": "fef02621cfa5d4837cd515494c0d2e85a0703a662bed9345058e3c944bcf2ee6",
+    "ktk-code-pages-assets/content/archive-category-party-tips.html": "0486290d87c6d01a6761ea114cb72cdb8726ba07af44710ba979952e3c722fb0",
+    "ktk-code-pages-assets/content/archive-category-stag-do.html": "a5bf5ffc3b927e9d8cd987f61006e295912a200df18bbd47ac4574bbd979b580",
+    "ktk-code-pages-assets/content/archive-category-uncategorized-page-2.html": "68709ceee02101210a7c5fb8fda145b7dd4e75539be6669afbef8a5338d0f2cd",
+    "ktk-code-pages-assets/content/archive-category-uncategorized-page-3.html": "445c9d380064310034626f90abb050f1e7a30b60874f1d4237623adb39a64e77",
+    "ktk-code-pages-assets/content/archive-category-uncategorized-page-4.html": "d8ca9d7d42bf007a735dc5cf839c3dd2ad5c780fd5540fd123400690cb0ab38f",
+    "ktk-code-pages-assets/content/archive-category-uncategorized-page-5.html": "bf82a10a82fed77845dac5614cf2e9483f090050454bec4d0554a29f8bdcdecc",
+    "ktk-code-pages-assets/content/archive-category-uncategorized.html": "7e62853256c8255c7313fff2a1cecfd58f0974efdfcbec958fbccd605c878a8a",
+    "ktk-code-pages-assets/content/archive-tag-drinking-games.html": "6cc3053fd53f0c36f737adee1d08a11c2b3d4c5caf265f5f7cfb9594c9d8afbb",
+    "ktk-code-pages-assets/content/archive-tag-krakow-food.html": "4347a1e869b54c9b2ba1bb43152b40b47744aac96762458dbdbc1c73ebd6b928",
+    "ktk-code-pages-assets/content/archive-tag-krakow-nightlife.html": "283954701e2940e1c5ea45f090d3a886549530b6c2368aa27017e2f2fb088af6",
+    "ktk-code-pages-assets/content/archive-tag-krakow-party.html": "9c4df6e45e66c2cb6ecb0a38e835a5b9536ab3d6d4b72489b4ee0abd63ccf737",
+    "ktk-code-pages-assets/content/archive-tag-krakow.html": "34963966596784cf4580544abec7377e7f179c90cebb3bc563d32443ef440203",
+    "ktk-code-pages-assets/content/archive-tag-krawl-through-krakow.html": "2db6f4407b39ac18cd71d3f13b54b75ae9eb7b4f74183bc865229a43c865190f",
+    "ktk-code-pages-assets/content/archive-tag-party-ideas.html": "075387a7e710840f2f3ea0254d1fb5b12390c985ec8e86bdd1ce25f76796a735",
+    "ktk-code-pages-assets/content/archive-tag-pub-crawl.html": "dcc3f565c1e7939e5b6272b93a5e23395d08de1273278b3d2698c0371436f581",
+    "ktk-code-pages-assets/content/archive-tag-tips.html": "9edd19cf3092517c3e787e7664c409fd28d746f208c7ed4b15df819b0a3a4a3f",
+    "ktk-code-pages-assets/content/archive-tag-to-do-list.html": "b00edee5107b11e78b4726940683eb705faf1e34e399ca1f60ec73390721f198",
+    "ktk-code-pages-assets/content/archive-tag-why-choose-us.html": "8a26242134797117c9cd29706bdc64d571fc9ff3869c17fb6c5d26844e76dad3",
+    "ktk-code-pages-assets/content/blog.html": "dbadb4a1a8471c868dcde2d82dfa057367af230bc6ace8a769ff104e9a02672d",
+    "ktk-code-pages-assets/content/contact.html": "32738b26dbccc56f8aa17705aad909ebd9d55df3d5b53fa910ea1da3edddcb4e",
+    "ktk-code-pages-assets/content/faqs.html": "be1592bc040b43e2f3e625293f814df5b8aa3ce5add05942a800b59bc9e2b642",
+    "ktk-code-pages-assets/content/gallery.html": "780e7fa6b818c5c2a3291648a47235f5fc7809093682037241e5101f13a0c860",
+    "ktk-code-pages-assets/content/how-to-join.html": "21a3b794fc9c7c1c4430c8612e2708e0df07408e1ac1557a1cf6aa46483c469c",
+    "ktk-code-pages-assets/content/krakow-hen-do.html": "65f15262fb4db3c744b7c5a0d5bccbf9aed037727dfbc8d5b5f54b67b104944b",
+    "ktk-code-pages-assets/content/krakow-nightlife.html": "de273c8e0769ea18c9abfdca8134dc4115c503a16f32a63bbfff93e2d95353bb",
+    "ktk-code-pages-assets/content/krakow-stag-do.html": "c734ac395771e1fed3f629a318c78c65f021b8526cfe265d0945028618aa95ee",
+    "ktk-code-pages-assets/content/meeting-point.html": "f43e996d75961409fe57fe4ba7835cd686d6ae6c33195eebd673ee1cdc215483",
+    "ktk-code-pages-assets/content/new-years-eve.html": "df11b78c64daba628401c1b55559eac8ab0307e7f008f2fc5788a7ae0b1744d0",
+    "ktk-code-pages-assets/content/other-tours.html": "83192357a7d32149612d857690cba90a8b40ed302069a530c2f1e1066477003a",
+    "ktk-code-pages-assets/content/otherbarcrawls.html": "28c725ec19726dd04f3eea62caa81eb558e8885b7ce997861635256d932c7834",
+    "ktk-code-pages-assets/content/post-2020-krakow-nightlife-guide.html": "54fa85c32db55ecee4302f86d2195c4254858ec8b8e09ccd51f2ae28aa2c67a8",
+    "ktk-code-pages-assets/content/post-all-you-need-to-know-about-visiting-auschwitz.html": "9580b4eb41502368fe82823d95b596710371a88e92eca754f9ba37ba441b4563",
+    "ktk-code-pages-assets/content/post-bachelor-party-organisers-krakow.html": "645fe18e6d81c8dabb229a2b365b5fed5e8a088c1a67afdd03ed9ae3547cc7c7",
+    "ktk-code-pages-assets/content/post-best-drinking-games.html": "9d897ed08bb89d74a41ecc256db0159e73f6d06425d6686e231f13e63ed1a822",
+    "ktk-code-pages-assets/content/post-best-hotels-in-krakow-2019-2020.html": "0263cd2915913da5425faa8d493a343541ebe1e3b600840217937c9390e238f2",
+    "ktk-code-pages-assets/content/post-best-places-to-eat.html": "9cd872db921123b1e39766a753c6915e685f4b2782b901249e10f6666fd711ad",
+    "ktk-code-pages-assets/content/post-best-pub-crawls-in-europe.html": "10478dd661be569de2113b707c6722cf857f8e5b287b441b8ee4cf00d8d5d05e",
+    "ktk-code-pages-assets/content/post-budapest-or-krakow-nightlife.html": "623d69d84aab7e30c010f0ee2537f4b6146c74a9c57bea46843789ce32bc8496",
+    "ktk-code-pages-assets/content/post-escape-rooms-for-a-stag-do-in-krakow.html": "582a4c6119ec31be765d3e39819279f04816659653f84010296534dde18f8137",
+    "ktk-code-pages-assets/content/post-go-karting-krakow.html": "9388b0d54a0d580928071e469457ef942bd22cb16743c27b2fac8b945ff1bdc5",
+    "ktk-code-pages-assets/content/post-hen-do-ideas-abroad.html": "dbdaaaeee052df5055a44da266cb8181ff58c454445cd3a0a29136641c058f6d",
+    "ktk-code-pages-assets/content/post-hostel-etiquette-tips.html": "2228cca94c8c3067ad54f07cea0d67a35a75ae7ea00d28d603df71a5e5ae578c",
+    "ktk-code-pages-assets/content/post-hostel-hangover-cure.html": "2428871ba754ba4d352411d7a7f10184d2fb3e75d855f65cd1fce03c8c441c4f",
+    "ktk-code-pages-assets/content/post-irish-bars-krakow.html": "8f26b7fcf70df3ace32a0172cbf9c4ee6d3b67fa309df9877d870f55a9fa2401",
+    "ktk-code-pages-assets/content/post-is-krakow-safe-for-stag.html": "2beeb8555ee899d8c17fee9432ff201a2a53aaaeb67541dcbb26a82c1e6263d0",
+    "ktk-code-pages-assets/content/post-jazz-bars-in-krakow.html": "2539997db0312cbf67d4fa335233982b6611057416b52c5581e1e84892f291ae",
+    "ktk-code-pages-assets/content/post-karaoke-bars-in-krakow.html": "76a2956b859787f0e25364b984d83228e703acc4e39e290752bb85fd051a6204",
+    "ktk-code-pages-assets/content/post-krakow-bars-jewish-quarter.html": "6cfa4d29d52aab954491bb440621fdd6697d57dd915fc49e99f7ab93536a2048",
+    "ktk-code-pages-assets/content/post-krakow-budget-activities.html": "92f66caa6c191f7f3135e532b5b4585897ab7753f21bdc142e7caa64a5e758cb",
+    "ktk-code-pages-assets/content/post-krakow-food-truck-parks.html": "9c9852ffc1cf0fa6fc1e629d8b32d39d2e827dc8d29cf958ae831cf2c69549e3",
+    "ktk-code-pages-assets/content/post-krakow-free-activities-2.html": "40c858d5890b437934b192eead81f904c1eca09bf041b6438db1d51372450224",
+    "ktk-code-pages-assets/content/post-krakow-go-karting.html": "ec0e75e6e52d0b3f8fc6c62eeba66bdeb67a9cf32df333d5a0344280c7693071",
+    "ktk-code-pages-assets/content/post-krakow-hen-party-reviews.html": "359e74460b16818fbb90cffa3386976ec975c2989b58894fac7428aef79540df",
+    "ktk-code-pages-assets/content/post-krakow-live-music.html": "f28ca66f161818453ea2257e36587cb0c0bcebaaf07c1fc1054a71ab27100c71",
+    "ktk-code-pages-assets/content/post-krakow-milkbars.html": "b66c9b9e67447cee28b09cf31c6507fcf4ef92656351055ff1a48799d6bb741b",
+    "ktk-code-pages-assets/content/post-krakow-money-saving-tips.html": "123f46333d67a678f198ab40642d935532e4526b6607a64d41edd2522ef42832",
+    "ktk-code-pages-assets/content/post-krakow-new-years-eve.html": "95390618f2b010c6536670af21da46cf097832f4967993b8adf40deb8295868a",
+    "ktk-code-pages-assets/content/post-krakow-nightclubs.html": "3869a7b2f371a394a6543e92ee393fbfa577964ca1738968e3ef4fb90e6323c5",
+    "ktk-code-pages-assets/content/post-krakow-safety-guide.html": "830f6595c94f9302f9c0ed8c81c4e1b432e08c506f967d2fe84dda1f7b12d196",
+    "ktk-code-pages-assets/content/post-krakow-shooting-range.html": "1a877b30393f04140157d69e10672ca98e76373e27cc3f7c7a6a57b392ff66e1",
+    "ktk-code-pages-assets/content/post-krakow-shot-bar.html": "de0b8ea6c01348237226e77ebb9879a373a7b9fb647112617be2ea54d926eaa6",
+    "ktk-code-pages-assets/content/post-krakow-stag-activities.html": "61fac9a27fdc441b9378091372b0011c37e9f3e711aed150e71832a5bb5ba5b1",
+    "ktk-code-pages-assets/content/post-krakow-team-building-activities.html": "ce26670b0d8338dac80b28995b5b94ec141d426e7cee2a2aa43569731748eedc",
+    "ktk-code-pages-assets/content/post-krakow-techno-clubs-2.html": "13dff28d762b52d26868e65965e6a80288fda6d04e4c322e219803ceeaea8a1c",
+    "ktk-code-pages-assets/content/post-krakow-techno-clubs.html": "c2dc3ac590a41906f74411cac18a566a87351f73eb2cee5a51ec682ea7431387",
+    "ktk-code-pages-assets/content/post-krakow-weather-guide.html": "2b050c7750215773da8ad228f356abfd2c82ff27ce95e3461ff1287ed9cbc690",
+    "ktk-code-pages-assets/content/post-krakow-wine-bars.html": "0bd1934f01296decad5b4d992a9bee95b8ad2aa1747b66634c5757d837ab12b1",
+    "ktk-code-pages-assets/content/post-krakow-winter-activities.html": "6debfee4da924785b7d85bee10ca080ff6276f0e55068031bd95e7c578f4dda0",
+    "ktk-code-pages-assets/content/post-krawl-through-krakow-winter-newsletter.html": "fb8a0f8895f7f027a61f9f87dd0f9fac084b0a6e9ede94994ece6b073d1a4516",
+    "ktk-code-pages-assets/content/post-life-professional-drunk.html": "e29790a282a969b8810372920d09160af71068d2d2dbbb2424ebe275ef4762c4",
+    "ktk-code-pages-assets/content/post-new-years-eve-in-krakow.html": "f0721e1535ce11552eb4fa0c04b366866783e5b6b416d20dddfc1456e16fd300",
+    "ktk-code-pages-assets/content/post-party-krakow.html": "844595d30bea5220bcda7b29cecb306da2995f2d3c9343de6ebd87e224e15318",
+    "ktk-code-pages-assets/content/post-six-reasons-you-need-to-party-with-the-krawl-through-krakow.html": "c3637b27097067cecff696d579cacf7e5d31ed00dd4a77df3179b76fdb18d275",
+    "ktk-code-pages-assets/content/post-spa-hotels-krakow.html": "f9e2a43f4380e0e01d9fe0c7971eef8f21d5acb501f7915aeb6602373277a63e",
+    "ktk-code-pages-assets/content/post-spooktacular-krakow-unveil-the-mysteries-of-halloween.html": "b2e2e53696a9c3c65f06f5e8cc1f91fffdaf27ad8bd3181e72fb941f787f0170",
+    "ktk-code-pages-assets/content/post-sports-bar-krakow.html": "b016f564c5fb14671a0469d0b7ecf20f535641a4e4dd49fac9a87866ddc87e03",
+    "ktk-code-pages-assets/content/post-stag-do-costume.html": "28c14306025a8f44ca560b521fe999877334de0254f8079e12bb032bfd593b32",
+    "ktk-code-pages-assets/content/post-stag-pranks.html": "0f33bc06273579be91ea29ab9de7e160f046e4bac7fff07c6dc8ad114cc4f882",
+    "ktk-code-pages-assets/content/post-stages-of-drunkenness.html": "11e2e4c9de18ad61172add4dcedd220c5183924e4de133cf69abbc3e3f712628",
+    "ktk-code-pages-assets/content/post-survive-pub-crawl.html": "d95600ec364c5ede80e9f15ef7c3763bfc7eccefe13c2340af5e7765d0bfbd81",
+    "ktk-code-pages-assets/content/post-the-ultimate-guide-to-dating-in-nightlife-krakow.html": "49faa64eb1dcd78356319b30bd2f39851c599286b8843c5fc81e482f620b64cc",
+    "ktk-code-pages-assets/content/post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow.html": "3b120626733bdc7c6e274d43e37af836c2652fe4497512d04e535d4d8fe65f45",
+    "ktk-code-pages-assets/content/post-travel-krakow-your-comprehensive-city-guide.html": "e29e738b53a2ce1c4e10ec55de266431eb46ffcc368f7f0efdd27ed65c890dcd",
+    "ktk-code-pages-assets/content/post-weekend-in-krakow.html": "74343554c322b20022c31f1ed7e7ae6369ddb29b50d0cd19e427107283eae686",
+    "ktk-code-pages-assets/content/post-welcome-to-alcohol.html": "5c2d2931284b38b9b0544601d4cb0af75118043957878e83f2252a24c57a8804",
+    "ktk-code-pages-assets/content/post-wheres-the-cheap-places-to-drink-in-krakow.html": "70725516257d244e6ba01bde36bca9350aaaf3c71bd3895214125dad2bbf453e",
+    "ktk-code-pages-assets/content/privacy-policy.html": "1cb71aa26d474797f8b8abfafb709e199f7686807988d60c85245f0b6cd5d4ac",
+    "ktk-code-pages-assets/content/pub-crawl-drinking-games.html": "aa8204d1f3daa6362a5a5a3ce78f3984b9f57280a648f515e0594490091f610f",
+    "ktk-code-pages-assets/content/pub-crawl-jobs.html": "25377dd00a038afee6ef757f4c27e15d9d9cfa53216729548babc6e23a139717",
+    "ktk-code-pages-assets/content/stagshens.html": "6be6d9b128f077d50cfd86ec66f32d6117cb0dc7f6847968733c77d854163c98",
+    "ktk-code-pages-assets/content/student-trips-poland.html": "6af84bfdc1979e03e02dbb9e712ba52d36b360c7d5cffc645050e109001d2ca1",
+    "ktk-code-pages-assets/content/terms-and-conditions.html": "30dd0dab52e26baa13cf7620b06a62a68c18e3233f6ee7dc4a392a24cac2f13b",
+    "ktk-code-pages-assets/content/testimonials.html": "eb853c0292978395ed7dcef82a29cd0f37a1b351059fff9ebadce8596c71e383",
+    "ktk-code-pages-assets/content/tour-service-disclaimer.html": "7fac4549e3d3b7e94bcaff831fc45fcd05205b08a6e4cbc15f23cb0d6dda9ec4",
     "ktk-code-pages-assets/font-resilience.css": "f201564800c2ef0f7d1ef85ac353573e36a29f43971b76a84b4c5fcaa30af662",
     "ktk-code-pages-assets/forms.php": "ee77d0139b5d885a2ee5451d81b59f065679461ef20ffdf1d5b7c5d44903e8a2",
     "ktk-code-pages-assets/how-to-join.css": "8cc9edc272b7febb4f8af52aaf3368d917c23dfa73cc3af0a62be348f342c0f1",
@@ -1526,124 +1526,124 @@
     "ktk-code-pages-assets/media/ff7a942c9b8e-1683482470_1683482468289.png": "d2e1be41761f117ed343ae564d1fbf9885ab788cf14900d3fa218d7633dacbe2",
     "ktk-code-pages-assets/media/ff9960d82bef-slide5-480x475.jpg": "c6320ddab02b5d77c114cc5b85c3ccf81b4cab99bb34eedbb240a2c56a6c41d6",
     "ktk-code-pages-assets/pages/.htaccess": "b839261c1ee52349560b726218f0bc9cb1afee95e07e9d50f95919d5e8e6cdf2",
-    "ktk-code-pages-assets/pages/about-us.php": "684895ed6ccda98fca804c39e8c89f6b995ec6ada70505af370745f9923479d9",
-    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-2.php": "ead85e967aa6d3354a20b2a74e973e8a0b3cc697605065b8f4c84d15b47f3aa5",
-    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-3.php": "a32ac87a0d41472fb1c5ec62e66011218dd8c4f47236eca3e988d2fd554c4628",
-    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-4.php": "f774aff22ab0b6b082faffeafba607260efd352f0aa6e7b47906bde72a6cd216",
-    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-5.php": "5dfd576ae01ed2607e7672a86ea09663bcf6dcbb587d622388e957c2b279040e",
-    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-6.php": "c64110829001cb887f1465c81d858d84244bd2ad1d103ddd2ab906c40f4207a4",
-    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-7.php": "8d43bac76e58f9b15928b8fb5524e0f3e9e852971ea05be89f19f39b3d370b90",
-    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-8.php": "0a49e4e01b9331144cdfdb0db79eb25906eb51600a68b80ec789c2450c1e86af",
-    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-9.php": "6793e3e209bc9af856d708ffe06d55a35baa0c0b9abe6a4353f8600ef807d4dc",
-    "ktk-code-pages-assets/pages/archive-author-dpbowman.php": "4e08a113af8101b41d6e922c6580ecf78314004d7d86808c7903507db74484cd",
-    "ktk-code-pages-assets/pages/archive-author-jessie.php": "8f9c9cb938f68eccef15bcbf7f0c2be4c20601c489ca038f0a88f753ebb16fe0",
-    "ktk-code-pages-assets/pages/archive-author-pubthroughkrakow-page-2.php": "6649908d055897fc104677797ce5271ef1a083337e51d417103cda40bcc49107",
-    "ktk-code-pages-assets/pages/archive-author-pubthroughkrakow.php": "159b931e58cd459277e51ac50553c52a44bd36137032d9f0c61ef77dcd9e121a",
-    "ktk-code-pages-assets/pages/archive-author-thirsty.php": "41dce1c711b5a4064a1837e79505a1be671cf3b67711fcbe9eb127f95c368d9f",
-    "ktk-code-pages-assets/pages/archive-category-drinking-games.php": "0c8855692ae2e79219f9691e068e8db7766e2a409baa02120b719829ffee6945",
-    "ktk-code-pages-assets/pages/archive-category-hen-do.php": "e987135c6beb3fe5129de7dca409a69574d71bff709f5b7a206bfeff30d08090",
-    "ktk-code-pages-assets/pages/archive-category-krakow-guides-page-2.php": "bbd650740f8473b938587e00d24c077a0d7c40a7c26d357ef9d2c4ced06384ac",
-    "ktk-code-pages-assets/pages/archive-category-krakow-guides-page-3.php": "2a0b0c8ac4bae534a932dd3883bf009b603d0f209b9a8c3419fa9ff873d4726c",
-    "ktk-code-pages-assets/pages/archive-category-krakow-guides.php": "45881ca5bd421a804729473b551a73a31db164b4db428de194001a048c9fd738",
-    "ktk-code-pages-assets/pages/archive-category-krakow-nightlife-page-2.php": "321ca0997bde43cdc29494c48bf6f53519812cc29623664ff7cbe4443a4cd15d",
-    "ktk-code-pages-assets/pages/archive-category-krakow-nightlife.php": "6feb7596e0696fef859bf3d95f6249a38361f1ba029751aaaf789b6c11d793d4",
-    "ktk-code-pages-assets/pages/archive-category-party-tips-page-2.php": "aaac5dcad14b2a6ea2c3dd235b1e1bd509530359c0c6cef48d1170d6826f1d01",
-    "ktk-code-pages-assets/pages/archive-category-party-tips.php": "2166a330503b629996441ea4cccabef63dc8ad015d27f7577da7968f4ef2b3bf",
-    "ktk-code-pages-assets/pages/archive-category-stag-do.php": "1a2a9b3b80c934c2288ec3c1c2ba140e6d3e7fb8a5f5d6b93d7cfe74993467d5",
-    "ktk-code-pages-assets/pages/archive-category-uncategorized-page-2.php": "7f8eb8a46652e90a995fbe5bd0bc38785b474dab17aa4318f384ce265bd025a0",
-    "ktk-code-pages-assets/pages/archive-category-uncategorized-page-3.php": "3c597878203a76166810ff94700d3fec6e81547106e93f937a58dd66d937596f",
-    "ktk-code-pages-assets/pages/archive-category-uncategorized-page-4.php": "376a363a59de461a0e1c28e497c3a29f714ae551778d53a40d705ea91fd6b191",
-    "ktk-code-pages-assets/pages/archive-category-uncategorized-page-5.php": "4a7613dfd478a352e62fa17c6821c1b4be6326648582cf27d2fae808bc849011",
-    "ktk-code-pages-assets/pages/archive-category-uncategorized.php": "891682a0600ad98cb9082d46bf10232e9ebe210c70f0826ceb5fc4ff59b72c27",
-    "ktk-code-pages-assets/pages/archive-tag-drinking-games.php": "85a1cb5d1522f0c61b2c2f8ba9b0a70181c79a965d8a1c5b51cb0fdd75a8f9ff",
-    "ktk-code-pages-assets/pages/archive-tag-krakow-food.php": "c71ab2588f5dae17990629f39ac696cdc1547036fdff927678e34b681c40adbc",
-    "ktk-code-pages-assets/pages/archive-tag-krakow-nightlife.php": "255de038e468f0265671240103e318fff3983523634d45da90ef7f2f0b2e79bc",
-    "ktk-code-pages-assets/pages/archive-tag-krakow-party.php": "1712b5732e56b5cfdc904b3ff8b3560cca14d16959d2878089b049660682d58b",
-    "ktk-code-pages-assets/pages/archive-tag-krakow.php": "0d1ba0e8a50c0240e499c58966017c799c4b3188e23bf7326121c8e432fc2de6",
-    "ktk-code-pages-assets/pages/archive-tag-krawl-through-krakow.php": "08a4efc55991d1bd403c5b8e0555a26eab68629f016249ca71fd87771473cf1e",
-    "ktk-code-pages-assets/pages/archive-tag-party-ideas.php": "09b72b0978533827e595dc14d3deeee7ddbe093b66230a3e4b4959fe2b77abd1",
-    "ktk-code-pages-assets/pages/archive-tag-pub-crawl.php": "408253b2c0a51495c1f23b85599ecedfbf435630ded6912755e89c1645b020d2",
-    "ktk-code-pages-assets/pages/archive-tag-tips.php": "400ce7d78540c0fcf0cc8f88216c0bc3f5f7e6c47dd3137458300f22bf3d18a0",
-    "ktk-code-pages-assets/pages/archive-tag-to-do-list.php": "01d8ec7f2ef29b6a5d6d8f2be302f70b338580938df7a643e266702608b3a6f2",
-    "ktk-code-pages-assets/pages/archive-tag-why-choose-us.php": "7361eb35677601ee30f30b9717b0f446b6707357f6751c07a21fe5f7f3d50663",
-    "ktk-code-pages-assets/pages/blog.php": "ef853f294125e1011d0e70c0c2d98da1df37b7c78b39fd25632943b0a5372a23",
-    "ktk-code-pages-assets/pages/contact.php": "8e147cda7405fcb98f755f99966d991c343729dcc4fa2a1304d7360341f7155e",
-    "ktk-code-pages-assets/pages/faqs.php": "b6a3948f83c368fe76deea44a5cee905d748ada6e9e6ed5d79b6c7e023b957d6",
-    "ktk-code-pages-assets/pages/gallery.php": "c6e4476e73efeca4af6511d4e7d5c620d24335eabf155de4feabe073cb5041f1",
-    "ktk-code-pages-assets/pages/how-to-join.php": "b9a4143d6a5755fc5b3ea9cf85130e33fa8cbb1388a9409d2d9deeb61a404cdd",
-    "ktk-code-pages-assets/pages/krakow-hen-do.php": "ff9873f31e862f48fb02b97185ea5d9c7a0672cda7e74710730d833769b64957",
-    "ktk-code-pages-assets/pages/krakow-nightlife.php": "b4a603f47a71dad1d79917eaf07d5fd897d7d8355fc097b744c52e826795db3d",
-    "ktk-code-pages-assets/pages/krakow-stag-do.php": "db2dfc03afb2b03ff750548c545532ff9d5d624e5ecbb8b8e5845698a0c44da6",
-    "ktk-code-pages-assets/pages/meeting-point.php": "3ac430ef6ea3b0769200c9583405a341bc788c13db904293b2d0619a01c32d43",
-    "ktk-code-pages-assets/pages/new-years-eve.php": "eba68cea743abef00dcd35c838d045fab0604db4318af4a20fe6bb36652c0769",
-    "ktk-code-pages-assets/pages/other-tours.php": "e22175102543db2c47290b58e19e677611ef831209b4c999a7a2dff6334439cb",
-    "ktk-code-pages-assets/pages/otherbarcrawls.php": "400e50aaa53b842afa85118b42941bcda992f0c4af2d99f929beeaf1f6580751",
-    "ktk-code-pages-assets/pages/post-2020-krakow-nightlife-guide.php": "8c6131fc2e313b0fdad18e49efd8eea57d7a48b25c0ac7ecdc583a81a4a89e10",
-    "ktk-code-pages-assets/pages/post-all-you-need-to-know-about-visiting-auschwitz.php": "f9629e3f49f07cc96444f138c8cf02b57155ccdb8084f1e9dc58887e00790d08",
-    "ktk-code-pages-assets/pages/post-bachelor-party-organisers-krakow.php": "f36dda8051ceb37964e11bc7f58bf62cb278cb7a74944d008e2dc11e1c516e71",
-    "ktk-code-pages-assets/pages/post-best-drinking-games.php": "6e455af6750612e86e1c909370ba09671f4108b7022c592c7fc76a257e682651",
-    "ktk-code-pages-assets/pages/post-best-hotels-in-krakow-2019-2020.php": "aedd05b7efaa3c81c09c426fcfe42db6683d61ba7728873e2b3984c307fbc778",
-    "ktk-code-pages-assets/pages/post-best-places-to-eat.php": "823b75481c23f765f84e89038055ec39156ff88404342b2ff9834dfa69a2185b",
-    "ktk-code-pages-assets/pages/post-best-pub-crawls-in-europe.php": "1074155853285b49af78b5c8c2c89d19ea5baa15cb3336fd08fe7def816e8ad4",
-    "ktk-code-pages-assets/pages/post-budapest-or-krakow-nightlife.php": "d3f75b2b44f7ae32eb9f4b545fcac8f6d005589cd9b63afe9d42fa8414e1885c",
-    "ktk-code-pages-assets/pages/post-escape-rooms-for-a-stag-do-in-krakow.php": "49a0bc3afeeb34f969bbf50e5ad99d1d610c3b34da4b6a67d820c564c255077a",
-    "ktk-code-pages-assets/pages/post-go-karting-krakow.php": "2f2a04704fcd0e9d27998ade154a100ead18c7f56398b2dba348fd793dafeec6",
-    "ktk-code-pages-assets/pages/post-hen-do-ideas-abroad.php": "873fd796a21d0aa7ce824db282d3d23feff59cb08eaac9ad060f87c716826bfa",
-    "ktk-code-pages-assets/pages/post-hostel-etiquette-tips.php": "bdde0df2302b7ea61601d13761068845cae8d0c0b9ee2e4c8e1651ea853617cc",
-    "ktk-code-pages-assets/pages/post-hostel-hangover-cure.php": "c4a26d130cf954929726e09b359bf544227a33da886d1b6a20a81dd3eca4a10b",
-    "ktk-code-pages-assets/pages/post-irish-bars-krakow.php": "60ca8b1689fdfb8269ba0d18e31bc15f33b6f547f5caed2268a7d2d892013383",
-    "ktk-code-pages-assets/pages/post-is-krakow-safe-for-stag.php": "7c8b8e50aa6a587209edc2efe76277b2c8d3beb916d14842dfe84d70dc5d9443",
-    "ktk-code-pages-assets/pages/post-jazz-bars-in-krakow.php": "efb8a4e1396856068429f692a67306f40840a4655eb5ea0440a1447b85cdd4db",
-    "ktk-code-pages-assets/pages/post-karaoke-bars-in-krakow.php": "a3a4cc49fff0f88e7ed9c5ea9a3b5d3a7ed3926a75273848907f61d9e8e58a77",
-    "ktk-code-pages-assets/pages/post-krakow-bars-jewish-quarter.php": "eb3e172f77da50ea2480d0d19d84a76514a3ae15a006c407295e24fb6b3dffbb",
-    "ktk-code-pages-assets/pages/post-krakow-budget-activities.php": "75a5e114197afee870bbc52b4bf9ec4eb207d6f4ddb744a12109d1cd74b3dfb4",
-    "ktk-code-pages-assets/pages/post-krakow-food-truck-parks.php": "8e23fa3a04352e3b2b763966e6d57a8218e07d96b7e59cdf4caa6c78222dfc66",
-    "ktk-code-pages-assets/pages/post-krakow-free-activities-2.php": "3bbc4c8efe38f4c6e3f745e9c32f6a393c4c0435e9e6996511a87149b45c3395",
-    "ktk-code-pages-assets/pages/post-krakow-go-karting.php": "e12752a86c942abe0de7f6ff7bf9dd388bcbd72356555eed97e4b815391b4190",
-    "ktk-code-pages-assets/pages/post-krakow-hen-party-reviews.php": "4e4e4dffb7135473119377db55ded7eb011df60271b8feceb980e8b0e91e9f59",
-    "ktk-code-pages-assets/pages/post-krakow-live-music.php": "754004764cdd71d9bd8bcf21907dcdc856e77d87ce6c3434ac26c772d62cff7b",
-    "ktk-code-pages-assets/pages/post-krakow-milkbars.php": "ce606b09cd2ca38794246bc97a083e357ad1531612484e440dcb95508b27048b",
-    "ktk-code-pages-assets/pages/post-krakow-money-saving-tips.php": "5ecf809c97ac252be05a38e9191e280f5ac5ada2ee86da1bfb30b9e3e317b197",
-    "ktk-code-pages-assets/pages/post-krakow-new-years-eve.php": "f3aae3699277e816a4f7af018eff34dbabc0449e85dc8de2276220be01ba2227",
-    "ktk-code-pages-assets/pages/post-krakow-nightclubs.php": "1cfd1d240cc7c9f573f26cf7ada09d6e96ce5cd174b77fa74089a6ac229ebabc",
-    "ktk-code-pages-assets/pages/post-krakow-safety-guide.php": "35caacc3b5f5a001337169b958436500e0592ca9b4d0dc553428400680ddc9b3",
-    "ktk-code-pages-assets/pages/post-krakow-shooting-range.php": "f82bcb7486fcf50b2fa6a8e6cf6f6a8aec4fa92c2ffa4f2e58a19b49369bedf7",
-    "ktk-code-pages-assets/pages/post-krakow-shot-bar.php": "bf256946762240425a6829cd8414ce1b8a64b5abc8c56449a96265c7cfe378f1",
-    "ktk-code-pages-assets/pages/post-krakow-stag-activities.php": "99dfe9d4433282ab87f6e0d52fe09dd416ae6653907b17aa14ed64541d58c30e",
-    "ktk-code-pages-assets/pages/post-krakow-team-building-activities.php": "f16d9f1a35e527d004ac31fc53041ff5345c830e9976e6536db5947986e1892c",
-    "ktk-code-pages-assets/pages/post-krakow-techno-clubs-2.php": "0f44959fe7e3e5d73e183760cde825125f60cdc606912a25eb0412bbb747e947",
-    "ktk-code-pages-assets/pages/post-krakow-techno-clubs.php": "98fbb29f2a109392f79c3ed181fbf456d4f489df776f32069464a4874ecb0e2c",
-    "ktk-code-pages-assets/pages/post-krakow-weather-guide.php": "bf5a8b7dee654e3cfd25b45e8bbeae0c434073af14ca0602e63b75cfd523595b",
-    "ktk-code-pages-assets/pages/post-krakow-wine-bars.php": "c61a0a9018d25e1a2f919da79ff2facec3ab2106b60e077b1f6fc02d9636dd0d",
-    "ktk-code-pages-assets/pages/post-krakow-winter-activities.php": "7da2012006a5066ea5548163c1c4806d6ebf8bd12c16e05bfe36792bae7a174e",
-    "ktk-code-pages-assets/pages/post-krawl-through-krakow-winter-newsletter.php": "68f3a54f8b8f09ae3078e52e86aefa5ddbff096b2d2422ef6d128f2f5979f259",
-    "ktk-code-pages-assets/pages/post-life-professional-drunk.php": "0e1c3ade68d4269d91db163e77eaa3854215d47924ee81724cd5af219ee677ef",
-    "ktk-code-pages-assets/pages/post-new-years-eve-in-krakow.php": "551bcf6cb5d778b505bb24d2e442d54a60fc29553f6713231d991a6b3a27eede",
-    "ktk-code-pages-assets/pages/post-party-krakow.php": "da897cbea20b987914165d601fdef48604f6748e28059c27700ceec21f13a704",
-    "ktk-code-pages-assets/pages/post-six-reasons-you-need-to-party-with-the-krawl-through-krakow.php": "2a0120c597dc1123216f5c228cefeb01f57dca1ab386183ae1b6cd8cbcb05a4b",
-    "ktk-code-pages-assets/pages/post-spa-hotels-krakow.php": "06d37b0068e45cc5b18433ff90cffedf23bc557cfeb9f7a43a0eabaa4bf211b9",
-    "ktk-code-pages-assets/pages/post-spooktacular-krakow-unveil-the-mysteries-of-halloween.php": "5b0bf5de04e57b8fbec937644eda278f9df3c4ad53e63a098a961277c1921143",
-    "ktk-code-pages-assets/pages/post-sports-bar-krakow.php": "396dc24d5df234d2f213a0ffc8eb291c31d75f3665a1ddefbb5f3247ac6ee856",
-    "ktk-code-pages-assets/pages/post-stag-do-costume.php": "72b8b8e570693c778391d82671947e4c46851a4994f443abc114391b61cfee77",
-    "ktk-code-pages-assets/pages/post-stag-pranks.php": "81a3bb35a92e0b0537d5f4de4cb3678d7e0c7495ed15c35e795fb29a1c9c4e50",
-    "ktk-code-pages-assets/pages/post-stages-of-drunkenness.php": "0e3e7704f775aaaeeb23c57242a7220ebca8e53e9f38dde615eee2fc8c1ce3c2",
-    "ktk-code-pages-assets/pages/post-survive-pub-crawl.php": "1c9793110a833ecf9472032721053440ed1fcbc2f8177d479cade3bc55f72ad6",
-    "ktk-code-pages-assets/pages/post-the-ultimate-guide-to-dating-in-nightlife-krakow.php": "cbde22c0b15430dda539a155d09dbd3b5dc03af735dc3d13603af43f573332cc",
-    "ktk-code-pages-assets/pages/post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow.php": "98cc8f3ec0bbc0af508afd9532a762598b061423f5145652ba06e93c749cfa4b",
-    "ktk-code-pages-assets/pages/post-travel-krakow-your-comprehensive-city-guide.php": "507ceb12a4f9067cae0169bfb86be403e913eaab0f782650a6ebcec171e9e8b9",
-    "ktk-code-pages-assets/pages/post-weekend-in-krakow.php": "e0ace9c7b67da5f4ed752791f7500c99c8bef50c41e2d63fc55030fb1b3e6d29",
-    "ktk-code-pages-assets/pages/post-welcome-to-alcohol.php": "a17b623ac560a70f076854210042e927fbf4a5d26599e66ac0c2eaa0efbe7761",
-    "ktk-code-pages-assets/pages/post-wheres-the-cheap-places-to-drink-in-krakow.php": "9959802a97466862776b06f6c1e1db97a624312ca0e230c905cb12a991944d9b",
-    "ktk-code-pages-assets/pages/privacy-policy.php": "6b126c1fa6eb912795fa8212373caac0666ccf8034837d7c3423c884378489c5",
-    "ktk-code-pages-assets/pages/pub-crawl-drinking-games.php": "e40f266adf9b550a84d770d7ab877994ba793355d21438ce83dc3a89709df18d",
-    "ktk-code-pages-assets/pages/pub-crawl-jobs.php": "291fb7f821349c97d1406b9f9a2c91755eb458cda9439c08e3607f3fac87da7c",
-    "ktk-code-pages-assets/pages/stagshens.php": "3011a222be417857aef24b4b6fc739389b6d9990cb90b74c024916e480e7154d",
-    "ktk-code-pages-assets/pages/student-trips-poland.php": "da7067c880a5d59f8936c7a78fb07c98d6661a86c95d5f6b6df357ffea956989",
-    "ktk-code-pages-assets/pages/terms-and-conditions.php": "0a54a6a57f25e69e75f06421bbd4d503458686dadd71028315bda45f7086e391",
-    "ktk-code-pages-assets/pages/testimonials.php": "f738c3a2a4ea66956aee1c4c86d8424a1263d6dbdd2ec488388fce581cc3fbfc",
-    "ktk-code-pages-assets/pages/tour-service-disclaimer.php": "19186d9e566cf28f592377bae84f896b92292c3c4d5ddfa5287273d0b972522f",
-    "ktk-code-pages-assets/registry.php": "5f3c01ce0d8418a7f793c7a0891dbae70c72af4e6cff766cbee90da4bb7dac3f",
-    "ktk-code-pages-assets/runtime.css": "141db17f82dd3474eb85497f1fc2cc1522c7cf778f0b763494d350d3bd0f7604",
+    "ktk-code-pages-assets/pages/about-us.php": "7d2ea11e14390539fbbef0ff05b5351fdf9151eaef0ceb558c3f21afe3b4e6ae",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-2.php": "2f2b8b514d0bfe975274f5accc7f92f365220b2d9ea6bb45447c239632c1bcf8",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-3.php": "fe6415aac92a68807cab85092a96a800cd0b580a1fe0d93baff696e78a6906f8",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-4.php": "5846cea91c877ef03b5ec9db15f9e274c503f6dd7190530071d279866a6dcee2",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-5.php": "7fda80b2e6dbcfaa22a5f19136cc939d1a9d74061c3966692bd99779a752fcc9",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-6.php": "bdf4df7eb6407e050ebf9fe9628f36ff181b6eac1a0a2926cc666032be574c7b",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-7.php": "a45758db5da7e88aca17603083e011c513b3eb83af39e6ee09e81bb90b9d58be",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-8.php": "fd9222427e7a8fd07b4800a497957f6ee3066d2ad5e023855aa22f9990b9488a",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman-page-9.php": "00a549d3af87503c353f50dfca42aa2df01d76f6ec711e2c8ff7c3f38e41d479",
+    "ktk-code-pages-assets/pages/archive-author-dpbowman.php": "d391ffe6ae21480c4feea83286185859dc5083b46cd1951068d35e03538201ab",
+    "ktk-code-pages-assets/pages/archive-author-jessie.php": "40812f796ed9f4e8e0b1b9f6bc55d016bc78fc2b4941237728937627d6d32423",
+    "ktk-code-pages-assets/pages/archive-author-pubthroughkrakow-page-2.php": "1a74028e13f81d42ee329f6d66b6edeb1a54a54030e70641c71fa755dd164b2a",
+    "ktk-code-pages-assets/pages/archive-author-pubthroughkrakow.php": "9058e16f5b2d774b62db2cff1dc1981b5cc302a8e0ed19bc1e57412b6adaed6d",
+    "ktk-code-pages-assets/pages/archive-author-thirsty.php": "febd76e826e7f462800065d55fc3d4dc6b5c5b36e867bef53b2d85286f365db2",
+    "ktk-code-pages-assets/pages/archive-category-drinking-games.php": "346dc9273c85be480054add32e462f033fbe581bf657ee8d2312d338a649c19a",
+    "ktk-code-pages-assets/pages/archive-category-hen-do.php": "8a8735abefb47cdd95496933ebd7c5bb247557d6988c69a5feb2afee8951533a",
+    "ktk-code-pages-assets/pages/archive-category-krakow-guides-page-2.php": "e4934ac9cca322fc5aea0312c155c71f9fd477aa9dc4e2649c344e103fdb733c",
+    "ktk-code-pages-assets/pages/archive-category-krakow-guides-page-3.php": "faa9ff4585a74ffd2465c41516fd65c114e5b83b61fc494d44046f5d9c0fb1c1",
+    "ktk-code-pages-assets/pages/archive-category-krakow-guides.php": "1fd41ec7492580da38ead1c2704abc37fe34580ff7e17670e60dad9c309529f7",
+    "ktk-code-pages-assets/pages/archive-category-krakow-nightlife-page-2.php": "3eabd8e8949fd5117fe44ebe4f3225903ea636abe26baa9741a0b2ffd5b163f1",
+    "ktk-code-pages-assets/pages/archive-category-krakow-nightlife.php": "b05cacf655a0a1b74efb73b00c5a686f7afe3549c36fb28b472c43a1e9dba3f2",
+    "ktk-code-pages-assets/pages/archive-category-party-tips-page-2.php": "8a21ddd84f24ce331c941a1839c762b935c0a84cdbd2c59b7bae07510af3a52c",
+    "ktk-code-pages-assets/pages/archive-category-party-tips.php": "3743606def5e33a66abd2906037a3aeebceda022c0ff1803ca4d29a829bf5be1",
+    "ktk-code-pages-assets/pages/archive-category-stag-do.php": "356176a8a673376e7d68f678b2bebfc237c87c04ffaed3ffb479bd9f430d0d0b",
+    "ktk-code-pages-assets/pages/archive-category-uncategorized-page-2.php": "100b0d704a89290d715506c48549bb386c08eb1db6a33af9a4fa9b8bd83376d4",
+    "ktk-code-pages-assets/pages/archive-category-uncategorized-page-3.php": "1dc320416f7ec43d88b84b6ccba32c491c2613d8161ee570523395a589ef5e8d",
+    "ktk-code-pages-assets/pages/archive-category-uncategorized-page-4.php": "205d4799cae3eaaa2c906a1a26c2c2260dabd47a663c1599272b0e4460c81036",
+    "ktk-code-pages-assets/pages/archive-category-uncategorized-page-5.php": "c77297cb0f4087dbff690c1c4d3317beb34b3461466162ef1004160519e11f3e",
+    "ktk-code-pages-assets/pages/archive-category-uncategorized.php": "0e04c8e3efba4ef0e21b0c9d04d3064274c2e6ac4dcd78f2dea668ab90cd6506",
+    "ktk-code-pages-assets/pages/archive-tag-drinking-games.php": "8fc8db500408b900c9b9d866d03f7ac3e2174064dafab16311c12abd07759d6a",
+    "ktk-code-pages-assets/pages/archive-tag-krakow-food.php": "7ab006ca86910a9fc79e6d8c3543ae3de628252b28e06eaaef6fa64fb730f3a2",
+    "ktk-code-pages-assets/pages/archive-tag-krakow-nightlife.php": "38c22ac9bbfc89f528626df821187c4552a830c11ead7eaa1e9f036058677820",
+    "ktk-code-pages-assets/pages/archive-tag-krakow-party.php": "06c3d921f7fa4464d443b4d0473f70d9127744c6d8532db76a85ee5f320375d9",
+    "ktk-code-pages-assets/pages/archive-tag-krakow.php": "bbe24c70743119518d422adafa5e325393f10bb8cc520fb1908defb724693b41",
+    "ktk-code-pages-assets/pages/archive-tag-krawl-through-krakow.php": "487d62c20f9b5e77645d43813465fcb8a60d93135b1fd6447c34986b74bb9f23",
+    "ktk-code-pages-assets/pages/archive-tag-party-ideas.php": "18f98aa027198c539c164cbbc895d648bdb2a0f441b1af4ca4c0c1d0a3a592a3",
+    "ktk-code-pages-assets/pages/archive-tag-pub-crawl.php": "51d0d0ca052aa610bdffc041f7a3010628c082aff763107aee82f6ab47a3f627",
+    "ktk-code-pages-assets/pages/archive-tag-tips.php": "c598e04653722c62ad2b57b9e2a3d57a9892645115f344eebba0a36fca683f5b",
+    "ktk-code-pages-assets/pages/archive-tag-to-do-list.php": "231057daf0acf53c79fc67f55e4b404b5b5f2dcf4fb9e7c6b181d271d5fc3606",
+    "ktk-code-pages-assets/pages/archive-tag-why-choose-us.php": "6235c58bda9b2ec6444558ecafa307d3c7b6d07967d23b7eb433b505769355e3",
+    "ktk-code-pages-assets/pages/blog.php": "b217f06443c7a82c1b2cd7d3643c44da445ce84d37e48ddba0be639ced56aa24",
+    "ktk-code-pages-assets/pages/contact.php": "8041a0b917c5057a74b0c61e76899fee051cd74f6d19a78db7c8be038d3ca6a8",
+    "ktk-code-pages-assets/pages/faqs.php": "f82851de26f5aa0e4b36b648e71f4a04477df1aa46fdf80de17c55bb78781ade",
+    "ktk-code-pages-assets/pages/gallery.php": "9c89cc1479e72f5ffb6a4b972ca064f42a8b342bab40f36e3c162913f07e3732",
+    "ktk-code-pages-assets/pages/how-to-join.php": "22a99aa644ad80c18ad56ec52a915605071d4d5cac3426659c51c673a36834a1",
+    "ktk-code-pages-assets/pages/krakow-hen-do.php": "0ab8e6b893ca04904fd6f3b3f1c3dafde707000622f187518a25d79f74d68b26",
+    "ktk-code-pages-assets/pages/krakow-nightlife.php": "7b6299456d13fb8bde84561fa62c2d430ada09d57b70943bbeba33165ce8b3e7",
+    "ktk-code-pages-assets/pages/krakow-stag-do.php": "43a1d7264eb32171f73afed3cbce11fc2a85ff69a4b0c89467e029239f2f93a6",
+    "ktk-code-pages-assets/pages/meeting-point.php": "e81384f8957750a8bf6f2d6e06abf94425fca8e355e3de4b2c6133f7ef9d818e",
+    "ktk-code-pages-assets/pages/new-years-eve.php": "9c00b3d97f820d27f3439a89223bb865d194874b1940153523aa9116aefe5b63",
+    "ktk-code-pages-assets/pages/other-tours.php": "a1aa02ee45dfc2944c35c52a865be5630a16c557a17c4a6305aa9192b332086b",
+    "ktk-code-pages-assets/pages/otherbarcrawls.php": "73ae9af002f5d9bdd4fd5bd6e66d60519307ed0872b5d335af9bbcdf64f010d0",
+    "ktk-code-pages-assets/pages/post-2020-krakow-nightlife-guide.php": "7000502b65a69f09b039c13ffb5f5be2499fbb83331174cd7d184566a0106aa1",
+    "ktk-code-pages-assets/pages/post-all-you-need-to-know-about-visiting-auschwitz.php": "ed2e0826c258e233976a172cb714955bfba8504d1c31a54524863ebbc049e090",
+    "ktk-code-pages-assets/pages/post-bachelor-party-organisers-krakow.php": "554c80a876af0a8791915097d471c629bec8cbd69225ad78b941979b72ab3607",
+    "ktk-code-pages-assets/pages/post-best-drinking-games.php": "01428debd5323feba17cdd944720a5d80473c6e16dbba8252922ce64771a9f64",
+    "ktk-code-pages-assets/pages/post-best-hotels-in-krakow-2019-2020.php": "8c5e970f9b0ef5288089f7a863b9aa96ef5b13463d8786269f25700c53c1b53e",
+    "ktk-code-pages-assets/pages/post-best-places-to-eat.php": "b74421f6f039e6a395efccc5ed008f09fc71f91ea2c051ec9c69038d1c708b0c",
+    "ktk-code-pages-assets/pages/post-best-pub-crawls-in-europe.php": "0f96fe275f31f51a43658fa6baa36faaf8be553cf1da73da2a928be324e27eb4",
+    "ktk-code-pages-assets/pages/post-budapest-or-krakow-nightlife.php": "4921b5e0dc809abae7987eeeda43f46e9ed0c9f89cc08c58dc9f5a0f05a7a6d7",
+    "ktk-code-pages-assets/pages/post-escape-rooms-for-a-stag-do-in-krakow.php": "0b84d6a2dfc153c89f2bea6f3982a0fb519fc3092bc6a85b2c4548eb4deceb48",
+    "ktk-code-pages-assets/pages/post-go-karting-krakow.php": "d7d5467c67da544983a62f4794e165aa49f986fe18598c25032988e92cb49c9c",
+    "ktk-code-pages-assets/pages/post-hen-do-ideas-abroad.php": "b839ad798dac00f6352f91e8cab9c45d98689077a688e3181e986942091aeb9b",
+    "ktk-code-pages-assets/pages/post-hostel-etiquette-tips.php": "096fe41407806fd09ad39707408a95b4694e58850a66c8c3cd33080dae856be7",
+    "ktk-code-pages-assets/pages/post-hostel-hangover-cure.php": "92f46e3418ace8e8b57f1794b31002b5c934bfe6e2c99ed88c9b45aaab6b1a44",
+    "ktk-code-pages-assets/pages/post-irish-bars-krakow.php": "cba1b0529fe6f1870fad45fbd40952b9cb3b81c4a3b398e84863083ae9b926f0",
+    "ktk-code-pages-assets/pages/post-is-krakow-safe-for-stag.php": "48ef6b12651262b534614751752f0efdc8de404909de6715585bfbdbcb5d1508",
+    "ktk-code-pages-assets/pages/post-jazz-bars-in-krakow.php": "319aef9fc1714ee92e98b899c49d058cd8d048ce85c2e15ee0fc74978e4c5328",
+    "ktk-code-pages-assets/pages/post-karaoke-bars-in-krakow.php": "7c219da191a0dbb2d47360dfc0a69b77bfca38632b1f43b3223cdb9030d3402a",
+    "ktk-code-pages-assets/pages/post-krakow-bars-jewish-quarter.php": "ad2c6d7715bab43956b6b3f897b313fac1856d0e6a7bdfa1d286454303c28ec7",
+    "ktk-code-pages-assets/pages/post-krakow-budget-activities.php": "f7b5285ca2d1efc56480d38c1e282429ea61bbd5edf61147614663bc204d7e84",
+    "ktk-code-pages-assets/pages/post-krakow-food-truck-parks.php": "a2433d9df131545b798f4e109a70eee83d25c585fea9a4638a261531f36c00d2",
+    "ktk-code-pages-assets/pages/post-krakow-free-activities-2.php": "ce49ad4bfe9db7e1d64930ee92f06ebdcc49f26149ff40ecb763eb711bd5a71e",
+    "ktk-code-pages-assets/pages/post-krakow-go-karting.php": "9ada30dfd56e3a0c449ca335a4da73880a2110c5c9ad3b5211e9d2e93de00f7d",
+    "ktk-code-pages-assets/pages/post-krakow-hen-party-reviews.php": "3f8cce50dfc4cbfde3564b9654fd62162f96588e7486fda5553854d9d053b8c5",
+    "ktk-code-pages-assets/pages/post-krakow-live-music.php": "35db990ad92865524e3103edde898ec6864201f4f755194642baf74401fc9097",
+    "ktk-code-pages-assets/pages/post-krakow-milkbars.php": "ec5cb1cd991582690a41d5906dfe83fc58ada6729c8402193f4575440e6393ab",
+    "ktk-code-pages-assets/pages/post-krakow-money-saving-tips.php": "a347b8ee94ec25937e113a63632225113587a8e485b604e4f99c0c5c60857f1a",
+    "ktk-code-pages-assets/pages/post-krakow-new-years-eve.php": "8c58febcab36a30bdac386ec1c13d9ab5e15d4784c88105158331bf5464984be",
+    "ktk-code-pages-assets/pages/post-krakow-nightclubs.php": "1d4051e818b203a7aa6f5e2228d775f1420fab79dedd6a399fbb71bddfd4bb8d",
+    "ktk-code-pages-assets/pages/post-krakow-safety-guide.php": "3f6a7a3f93f1d0e6602ed4660666e198829938844dfce88251704382e2dbee2a",
+    "ktk-code-pages-assets/pages/post-krakow-shooting-range.php": "028121bced7faeca13abd712a345e55dff3d5e8c22b91613d52e262ddce6533b",
+    "ktk-code-pages-assets/pages/post-krakow-shot-bar.php": "f3f731f5e0a3a603657230468adced322fa39abb06d8952dd184d3d1a0d2831a",
+    "ktk-code-pages-assets/pages/post-krakow-stag-activities.php": "a91dfa576955146c0c482f6e9ecb67cdf37adb5727ce88e5e01043ce694fc4e4",
+    "ktk-code-pages-assets/pages/post-krakow-team-building-activities.php": "c8c75e0ab16e0dd4b69050e0f7a29094b1bc2e4eabc861d0d59762a6a70dca27",
+    "ktk-code-pages-assets/pages/post-krakow-techno-clubs-2.php": "3b4ca65655fb51b05c49819deff068ca129df83150b34866fc9c48ccd4abf7c7",
+    "ktk-code-pages-assets/pages/post-krakow-techno-clubs.php": "830d09b635d5ede3defe29d479ed8c43950e6dd47033e893da46cc5bf8cc51e1",
+    "ktk-code-pages-assets/pages/post-krakow-weather-guide.php": "1e5f6ce003f14a1939e0d14ffe2a1fe90809498a951b288ec343ea6f1da01e8e",
+    "ktk-code-pages-assets/pages/post-krakow-wine-bars.php": "edb7e9fa34daa8d0d217b3313addf7be9049a939e17853f303331ef51c72f159",
+    "ktk-code-pages-assets/pages/post-krakow-winter-activities.php": "463b7def5127acfa91f6c503c422549ef7a15cac10cc4508440306149fb8e35b",
+    "ktk-code-pages-assets/pages/post-krawl-through-krakow-winter-newsletter.php": "20dce5b9f903585480ad1cee215cad5cb4a16d113e6818f1d0c6c36cd92740b0",
+    "ktk-code-pages-assets/pages/post-life-professional-drunk.php": "125462031c088446f50298c06ee8a7a8a4525e764446c09079f9cf4381dbc314",
+    "ktk-code-pages-assets/pages/post-new-years-eve-in-krakow.php": "54ae14f94fe12e94152b02ff36b878d25f2ca42ea1fa467ed633c684d84c1cee",
+    "ktk-code-pages-assets/pages/post-party-krakow.php": "dc2c8819d476c31cd23dca4ded70d0e522c74fff69869a227b4f7cd00af3bd2d",
+    "ktk-code-pages-assets/pages/post-six-reasons-you-need-to-party-with-the-krawl-through-krakow.php": "c8826eba3bc8f34334834ae7f727c784fd033a68aab9be1f3a1cb34909db7a7f",
+    "ktk-code-pages-assets/pages/post-spa-hotels-krakow.php": "be9ae1ff5da1bb67555de1c317f45dc09e78808f2bad5e624331e1b3783646a0",
+    "ktk-code-pages-assets/pages/post-spooktacular-krakow-unveil-the-mysteries-of-halloween.php": "7072f999728995cde14853fca8e1d31fac5daf491e8ff6817e07aa4f2198db3b",
+    "ktk-code-pages-assets/pages/post-sports-bar-krakow.php": "e1386f3c7149b50e9b5af13cbc2a3c0cc8778da6662c938993cdbc3bd84716ca",
+    "ktk-code-pages-assets/pages/post-stag-do-costume.php": "fd175d4a2f8f45bc327128f0107287b2aa216e73b571e49977d460c867daf380",
+    "ktk-code-pages-assets/pages/post-stag-pranks.php": "1f0b425db3cc150a549bfde4bae5b428cc7fc23deafeefde78657f36b30cdb5f",
+    "ktk-code-pages-assets/pages/post-stages-of-drunkenness.php": "3ab1585da1197eeabbd4e836f65cd855f970437111ea6d9b759e1300982b3aa5",
+    "ktk-code-pages-assets/pages/post-survive-pub-crawl.php": "a4e56883b19e7ae42befd339b21e5cbd93eced1cbb45d33869706e65601733ac",
+    "ktk-code-pages-assets/pages/post-the-ultimate-guide-to-dating-in-nightlife-krakow.php": "5d72f2b94b51c484cc661be0b62c51ff463487b3f32b10a33ab9f636768cce55",
+    "ktk-code-pages-assets/pages/post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow.php": "160442697922073ee0bc11a1a6f5caadcbfa0402d739be14a240e581558bc73e",
+    "ktk-code-pages-assets/pages/post-travel-krakow-your-comprehensive-city-guide.php": "10181cc8eac5f59eef4f328d1b6bf222a44dc0a7b04333bd2bac45e636c8cbfa",
+    "ktk-code-pages-assets/pages/post-weekend-in-krakow.php": "b6fc7368b1286701b0cd57d3345d069722b333ccf53b21d0402dd1b5c0cb57f1",
+    "ktk-code-pages-assets/pages/post-welcome-to-alcohol.php": "1b6d30dda274cac2c7242c0745a3e58049d555f0d84384e71e9123277482a860",
+    "ktk-code-pages-assets/pages/post-wheres-the-cheap-places-to-drink-in-krakow.php": "248a0b9aad2a68bcfd638cdb45d7a7e2ff07e09318ece551f4203899891dd7b6",
+    "ktk-code-pages-assets/pages/privacy-policy.php": "a28310e60d0d0f8b05c3fa8066e7d74a2045348cd3128527e731f3aadd608dea",
+    "ktk-code-pages-assets/pages/pub-crawl-drinking-games.php": "79c1f239df9b799466ca5640dfec4206b51086d4ac58dd8faba83115483d936a",
+    "ktk-code-pages-assets/pages/pub-crawl-jobs.php": "01096a06f7c37fe8f2c509f026c2e72ad41829265edd7be93aa97ff6c975bcc6",
+    "ktk-code-pages-assets/pages/stagshens.php": "3c9b6868cf1511ecbe41bdc8261aede861ab5202af63ce47a4bd890e55eae36c",
+    "ktk-code-pages-assets/pages/student-trips-poland.php": "5e7aef13b1a977e0082e05e42171e1b895cf324c6d63e535fc0b1876a051fe26",
+    "ktk-code-pages-assets/pages/terms-and-conditions.php": "cb048f1cbfe5ee921510b9f221567fef1ab85b832c64da1b504f0bcb6cd4a2e0",
+    "ktk-code-pages-assets/pages/testimonials.php": "96249e56baef78b833e0266d0f9a88c36fc8acae44a7895e2486e8a3de635956",
+    "ktk-code-pages-assets/pages/tour-service-disclaimer.php": "ec21a36948fdd57079608e1345b443b391c79325a154b6b13a7722307ddc185a",
+    "ktk-code-pages-assets/registry.php": "42b68c69de286f834e7fe4473e0ebd5df02cd279d310eab6e689e59441c25c5d",
+    "ktk-code-pages-assets/runtime.css": "5ebddd93f557f872d5ebc773609234d1f464ed4ebc7eb8a4119a3ae39fe5c6e0",
     "ktk-code-pages-assets/runtime.js": "38cdaa565d7fabc7f58e05cd8697dd79996c9c755d0beca9fda9e2503b2fc9e3",
     "ktk-code-pages-assets/shells/.htaccess": "b839261c1ee52349560b726218f0bc9cb1afee95e07e9d50f95919d5e8e6cdf2",
     "ktk-code-pages-assets/shells/0c5706ee06ae7b293792.html": "0c5706ee06ae7b293792b330a2c7c20dc841fdd82ec8a6ed6f29d875147295d8",
@@ -1688,36 +1688,52 @@
     "ktk-code-pages-assets/shells/fea87e58c13bb11e28d1.html": "fea87e58c13bb11e28d12b073babc94c1ebb6fd85b8bb92df5e10b06b135e205",
     "ktk-code-pages-assets/styles/034557fb18b67ffa7a78.css": "034557fb18b67ffa7a7840d0013667ed73e5f344e3f129835daf2fb7ded2232a",
     "ktk-code-pages-assets/styles/03e34887c77bf5a30ae6.css": "03e34887c77bf5a30ae6d10f80f9c2f36dc9367d0d09689e63b729137ae1d5ac",
+    "ktk-code-pages-assets/styles/042f028b7f531891b55d.css": "042f028b7f531891b55d0cc9a43931d89944d761e49076039a4a83f2a8e0ce57",
     "ktk-code-pages-assets/styles/04ec230e0bfe50a00f5c.css": "04ec230e0bfe50a00f5cb7209c90392ffafaba77d2c5410580499f6bc1c74132",
+    "ktk-code-pages-assets/styles/082b4b54fc4b74e3ed11.css": "082b4b54fc4b74e3ed116c6b173e5db187b67c0497af2efb0ac34432d8f45d2d",
     "ktk-code-pages-assets/styles/08340222039308185c4c.css": "08340222039308185c4c1f0a7d9880c46ed34a33e0784433af1dde5711a72588",
     "ktk-code-pages-assets/styles/0841934294aa3b0c8545.css": "0841934294aa3b0c8545848622afe23fe8179a090cd8df49a7599785262bc1ef",
+    "ktk-code-pages-assets/styles/09525270f7b6a307fb74.css": "09525270f7b6a307fb749adc328dbdc28c4c219326e704a98524b24d8f167e59",
     "ktk-code-pages-assets/styles/09552f22033ce20bc848.css": "09552f22033ce20bc84863ff1595264e0f7e6fc56d238aa5ab70c64037ea6f31",
     "ktk-code-pages-assets/styles/0a0076b584113ec69017.css": "0a0076b584113ec690170ab7c059387f6f9b5d7c02e3e1bf5d5c1bee4bf7892b",
+    "ktk-code-pages-assets/styles/0a73b9d6be1bbefa3654.css": "0a73b9d6be1bbefa3654d1f5dad9231d871e57958dba03513d825ec3f8b75a5c",
     "ktk-code-pages-assets/styles/0ac28bc887232dabd244.css": "0ac28bc887232dabd244d2d335423443d116e9607b235d0228d250f11118f902",
+    "ktk-code-pages-assets/styles/0c95cb5bf46bda76f655.css": "0c95cb5bf46bda76f65523447fd817cfe55dd9bc5c613a1634af930d1dab33a0",
     "ktk-code-pages-assets/styles/0cf5ee017fc29eb35ee1.css": "0cf5ee017fc29eb35ee16ff6d8feed0d0272fb4f392d934acf722363ffda2b3d",
     "ktk-code-pages-assets/styles/0f3578f2ee07c6ce0d47.css": "0f3578f2ee07c6ce0d4799cb435c668fdcb805461a61e86faad3f2257b1ae66a",
     "ktk-code-pages-assets/styles/0f9ea88a437d9799012f.css": "0f9ea88a437d9799012f0b1e6b3c1eab607dc68bc6c0a4847695ae1275a0e270",
     "ktk-code-pages-assets/styles/10153a4f9ab7430a9136.css": "10153a4f9ab7430a913677669f054904a42f68f71a6b0a37bdf76fc29b1f53c8",
     "ktk-code-pages-assets/styles/1082335c9a6c6e234aaf.css": "1082335c9a6c6e234aafd2cbec0ffd78a51d490deb07d974bdf4b88cb53b1bbd",
+    "ktk-code-pages-assets/styles/10e240a94fdb736befe2.css": "10e240a94fdb736befe2c471a1d5bed21fa017be161db290cacbd1ef46f69ff5",
+    "ktk-code-pages-assets/styles/112df7b999db3821bb15.css": "112df7b999db3821bb1564f48157045dde588995978d60005c6e64a61b2fedb7",
     "ktk-code-pages-assets/styles/11b53c0b9ecf19bd1089.css": "11b53c0b9ecf19bd1089776195e243c64101ec0679ccb0cac0857afaba6709c4",
     "ktk-code-pages-assets/styles/1262fac2cd59f924630b.css": "1262fac2cd59f924630b9f52dff97306c0fcc655d8ff68bb67ef1a07cac388b5",
     "ktk-code-pages-assets/styles/12f47b2d503c145b4444.css": "12f47b2d503c145b444415db6755817114397515425909df430661279f9fddd9",
     "ktk-code-pages-assets/styles/131729ed35d3645779bf.css": "131729ed35d3645779bfb69605a4a9cb4dec30d02ebd9276dd43fd367e71f5b3",
+    "ktk-code-pages-assets/styles/14341cd8d50d50a938d3.css": "14341cd8d50d50a938d36b8dbbbabdd654ddddcbba761430c192989a4230e101",
     "ktk-code-pages-assets/styles/14592624ba35eae0f881.css": "14592624ba35eae0f88134d09ccc2ef6f06817b801a8254546094209a08e2b31",
+    "ktk-code-pages-assets/styles/156e945b2b8c72868ed2.css": "156e945b2b8c72868ed26463c4a806c198590b390702c8e6cac282b680036a35",
     "ktk-code-pages-assets/styles/157e328c5ac78465f404.css": "157e328c5ac78465f40492ba20a7bb1179bd560d660a99fe7be0a64ba5fd822d",
     "ktk-code-pages-assets/styles/15c0adf240ba9ca61572.css": "15c0adf240ba9ca615726e3229a86762b1eb2287f35a00174f6c491ac16c201a",
     "ktk-code-pages-assets/styles/163a891ab8d13acb1bbd.css": "163a891ab8d13acb1bbdf7ed4dfca12f2bc8b65f250d70c8f3fcfb03d2c246c3",
+    "ktk-code-pages-assets/styles/16a81c842f65af053dc0.css": "16a81c842f65af053dc0bd9fa2aadc269b87f3e2c6da18320027d3a0571ee29e",
+    "ktk-code-pages-assets/styles/176d9c9c91ee7f145478.css": "176d9c9c91ee7f14547852529c017d4e365afe6b6cce92055d7cb4df666d1978",
     "ktk-code-pages-assets/styles/17e0d0b9052f196c794f.css": "17e0d0b9052f196c794f67151a92cd2935e2ebdb01f7a62e402a01f1742face5",
     "ktk-code-pages-assets/styles/186a0dc3c4bb741cbb41.css": "186a0dc3c4bb741cbb4134aa7260eeaa7ddbe61f3de6b83212f7dd2bd1405031",
     "ktk-code-pages-assets/styles/18e5335dc831ba44d4ad.css": "18e5335dc831ba44d4adecb52f8f0885c2f0d825f37bd6b718079d66a8d6a8f0",
     "ktk-code-pages-assets/styles/19598e28b88fab534745.css": "19598e28b88fab534745b9efece61a4bad8cc167cf9bad411dbcb700bb8c7bd6",
+    "ktk-code-pages-assets/styles/198f5986549fad53559e.css": "198f5986549fad53559e0e02f3376fb53414d81bfadf99f1f4c6998429f9131c",
     "ktk-code-pages-assets/styles/19951346d3631999b964.css": "19951346d3631999b964d8f4dd7edb6c6096651f839fa28292d6fbb9ad391e54",
     "ktk-code-pages-assets/styles/19ae6bad3730fdf9d82a.css": "19ae6bad3730fdf9d82a5fa357d58e93930d693bdc80f3cb5c757f97d97da417",
+    "ktk-code-pages-assets/styles/1a2181e056e85bd4bf3d.css": "1a2181e056e85bd4bf3d613ab307e24000a8db4b2c251ba8d13b567b5f9b5e17",
     "ktk-code-pages-assets/styles/1b43a33e2ac30b4f5e16.css": "1b43a33e2ac30b4f5e16019d30573e41505e3dd565513f4f49295cf623839c8b",
+    "ktk-code-pages-assets/styles/1b821ffd03ccc99a5670.css": "1b821ffd03ccc99a5670275d1c0767ffbad858be26a3c672027425025ea0a1fc",
     "ktk-code-pages-assets/styles/1cbab287e44cfd37811d.css": "1cbab287e44cfd37811de529533d84937f86f59aad0c87303d26e61347c5931c",
     "ktk-code-pages-assets/styles/1df0cd29745e7f087551.css": "1df0cd29745e7f087551895755195a8d0eaf22c0a597af5a7d5f99aeee40ba77",
     "ktk-code-pages-assets/styles/20068a31df233e577090.css": "20068a31df233e577090cfac4674829d69a752b8e81bf0091849148ff6a303e4",
     "ktk-code-pages-assets/styles/220b931a1b0d98ab8d91.css": "220b931a1b0d98ab8d913c2c71dfdca2409eec55d0b8da8f61759907533547e1",
+    "ktk-code-pages-assets/styles/23405f3a2a2877ff6f8d.css": "23405f3a2a2877ff6f8d14f0587502d9394edb84db275f347334d6ae4221ff90",
+    "ktk-code-pages-assets/styles/23d9bd7e3241bd48c6e1.css": "23d9bd7e3241bd48c6e14ea81939d79b6250e82aa20861521988eafa139e6881",
     "ktk-code-pages-assets/styles/24539145bfdf7071d93b.css": "24539145bfdf7071d93b1c33f908360b9f6ef5507729a6b7ade2700a27ab6b2e",
     "ktk-code-pages-assets/styles/2487a9b8acbfa5aa270b.css": "2487a9b8acbfa5aa270b6ff53615347a8d931ba8fb1b0b0cb5d3434582aba44e",
     "ktk-code-pages-assets/styles/258504f36b90670086f4.css": "258504f36b90670086f43652216171da91fbff5a9c57ce854f02be9018a0a9e9",
@@ -1729,43 +1745,75 @@
     "ktk-code-pages-assets/styles/2be0471e9debe3b33b57.css": "2be0471e9debe3b33b57184e8fa470c3a1ac1d280dc1ec930e2113ef20c0448c",
     "ktk-code-pages-assets/styles/2c7d012d24c78023ee58.css": "2c7d012d24c78023ee58f81cdbaab87d90659a9a16808aaaf621a4b46161e573",
     "ktk-code-pages-assets/styles/2c97af6a13a46783bf4c.css": "2c97af6a13a46783bf4cf1ef99521f3f2413b55c7c272578b01500c80079669d",
+    "ktk-code-pages-assets/styles/2d417fce2c1b09ba970b.css": "2d417fce2c1b09ba970b992f3e722e0b2ab1f0a50ce1e76189348a6808e0c386",
+    "ktk-code-pages-assets/styles/2d7532fe68b25be5b455.css": "2d7532fe68b25be5b45542456deda615b35ffee5b09818a099cedf12575efaca",
     "ktk-code-pages-assets/styles/2ddcbdc41f112c53dd4a.css": "2ddcbdc41f112c53dd4a25f363a65f35a70e09f621ecaf9ef21e3a9be624265d",
+    "ktk-code-pages-assets/styles/2e2197ec286c4885d03d.css": "2e2197ec286c4885d03db4c67fbd93b834fc9a81cd62f5445bb0c3b2815d46e9",
     "ktk-code-pages-assets/styles/2ebc5e3b081bdc5e7acf.css": "2ebc5e3b081bdc5e7acf6b11c05cb1291d99e75c1ee23f9133db183027efd426",
     "ktk-code-pages-assets/styles/2f6631c91227160f91b6.css": "2f6631c91227160f91b6bdaef31507d7f46444f9d092ccecff0982384341c2dd",
     "ktk-code-pages-assets/styles/3087de746049dee6a6b5.css": "3087de746049dee6a6b5c18d4ff2db5a27a648d9d41f5f1109131d242de1f436",
+    "ktk-code-pages-assets/styles/30a322de892c7ce0afff.css": "30a322de892c7ce0afff52439e9507b9eb50b413e4af64a244948399f337c632",
+    "ktk-code-pages-assets/styles/30aa49552d14d949c063.css": "30aa49552d14d949c06384ba7559aa38de41fa28cec2b28fa024109ec9c900fb",
     "ktk-code-pages-assets/styles/3134b66eae5e9ee72c22.css": "3134b66eae5e9ee72c22bd38e5cf39d01f74bca98d12a0c5a500ad5fa4e19fbb",
+    "ktk-code-pages-assets/styles/322191f501a20ae76a0f.css": "322191f501a20ae76a0f9c013a0c7ec694dca3e2fadbc4f4c32f3d0c502a7581",
     "ktk-code-pages-assets/styles/33a4af3cb03685ade70d.css": "33a4af3cb03685ade70d2eb434c3ffb3742c657bd1b2b6a138b0a4d0fcc1987a",
+    "ktk-code-pages-assets/styles/33fbfaada3217b554476.css": "33fbfaada3217b554476ecdf5d7355390abeef5c24e354026dc1393864027f33",
+    "ktk-code-pages-assets/styles/3472728be90838d02773.css": "3472728be90838d027736e7981330e07e4ceef88d54726d4b92acc5540f95118",
     "ktk-code-pages-assets/styles/34d4c4d00135403630a8.css": "34d4c4d00135403630a89f27d26d9fa9420f5271ef6907d112a7601230d49b20",
     "ktk-code-pages-assets/styles/357b11f13a5b0e25b9b0.css": "357b11f13a5b0e25b9b03c496dbc12c9186509a16e92bf6213dff22648326f07",
+    "ktk-code-pages-assets/styles/35f1d10e3f82c2d557b1.css": "35f1d10e3f82c2d557b182e9402537104180fb4366e3505fdaf6d86282e47034",
+    "ktk-code-pages-assets/styles/36a7b69a8ff1255f6485.css": "36a7b69a8ff1255f6485676d4f38d946d8d8e808e03135fbf1b20e3b12572b45",
     "ktk-code-pages-assets/styles/37a5b39c98b5c6579506.css": "37a5b39c98b5c65795068fa75b47213d87a5ff98e911fe9bc12763fac31f1455",
+    "ktk-code-pages-assets/styles/38694e8d822ee34f6f45.css": "38694e8d822ee34f6f450988e6c1cec97b2f2d81b0b504f6e1ffcf96728d069b",
     "ktk-code-pages-assets/styles/38c182082ac105327d0b.css": "38c182082ac105327d0bbc601ded62f34fdf3448e415da9c5194f7f0293802c0",
     "ktk-code-pages-assets/styles/39633fc147a7f278eecc.css": "39633fc147a7f278eecc90f416c8c750d2bc336670495c2fae47c04888f8db1c",
+    "ktk-code-pages-assets/styles/3a1f3258bb4cf0dc827a.css": "3a1f3258bb4cf0dc827ac8539c4f395afb468ab9493662f91581e6cc4ae2c0f7",
     "ktk-code-pages-assets/styles/3a6660790eabb77be515.css": "3a6660790eabb77be515c4366ec46ded74c1969e91049d0523dcb9df766c16b7",
+    "ktk-code-pages-assets/styles/3ad34b9ac4de9d8e75a8.css": "3ad34b9ac4de9d8e75a8a9def67462560d837fdd478e94ba474bf4c67e1147ed",
     "ktk-code-pages-assets/styles/3b7bed57471e58890966.css": "3b7bed57471e58890966ed9792a45c086885a75f2113d5f89b3614d5a8b2ae2e",
+    "ktk-code-pages-assets/styles/3bde798c6f16f70902db.css": "3bde798c6f16f70902dbf45ffb50bf731de0408c1aeb8f5f7f3b7a0683762ebd",
     "ktk-code-pages-assets/styles/3d97b8ff5a4f47592da2.css": "3d97b8ff5a4f47592da214611e0fb4c3815c8d165ac2d5a782a5da74b909e626",
+    "ktk-code-pages-assets/styles/3ed1e78230a3a84cbb5a.css": "3ed1e78230a3a84cbb5acfdc9377e0272790f4799439f1cea65f60ed300e5ec5",
+    "ktk-code-pages-assets/styles/3f0758b40e7c21abd28b.css": "3f0758b40e7c21abd28bbd6b8d9160b024546d2f15eb8d5fefe6568b2079cce2",
     "ktk-code-pages-assets/styles/3f9a62f8fdfb11fc008c.css": "3f9a62f8fdfb11fc008c636d235703207b0fbb27e5e4b7422ef85dffbc2bb7a3",
     "ktk-code-pages-assets/styles/3ffb84bd8a9d22d0799f.css": "3ffb84bd8a9d22d0799f562cf1678724993c8d2cc3a8f7e291f6ff4744814b70",
+    "ktk-code-pages-assets/styles/412083f15873c412f5c6.css": "412083f15873c412f5c67468597efbda59ae32e8af9971cbc4c48551ad22dcfd",
+    "ktk-code-pages-assets/styles/41647c5e22ee3b6ff256.css": "41647c5e22ee3b6ff25647f8e527ac23df06326692e38f14feb5d798b4796e0e",
+    "ktk-code-pages-assets/styles/4195e9a56cddc8d5871e.css": "4195e9a56cddc8d5871e843c5186054ffbbfaa050d1e6b4db644ff565ae3e555",
     "ktk-code-pages-assets/styles/419f823e01db73e3fc67.css": "419f823e01db73e3fc6743bc79af288bf979d4a6edea863f1a5b64a8c282564e",
     "ktk-code-pages-assets/styles/43ed2be673a44aa3dc44.css": "43ed2be673a44aa3dc44b92cd2db679490d6ab0a4d644e36dacd2fbbd1bb23cd",
+    "ktk-code-pages-assets/styles/44afff87886986230808.css": "44afff87886986230808792467632dd01513b6c977d74ed917fff3834cefe42f",
     "ktk-code-pages-assets/styles/45fb84e046f37d783f83.css": "45fb84e046f37d783f8309d918e15adeecfa07ddf67bc4a08c49d0770d778c0b",
     "ktk-code-pages-assets/styles/467dee721e06d96f5eeb.css": "467dee721e06d96f5eeb8819273164c841c79008e2a3ba9f8b8cb45af645eaf8",
     "ktk-code-pages-assets/styles/4802adaac19d31d2823d.css": "4802adaac19d31d2823d6e372dcf2e72cd17bd7532db7e8bb94971fe7f64a795",
     "ktk-code-pages-assets/styles/4803278adf9a088d8a96.css": "4803278adf9a088d8a9676e017d7f380b92f5989df6a9fc3c6db1bd4316ceb77",
     "ktk-code-pages-assets/styles/4821494d4305d2782704.css": "4821494d4305d2782704b88d0e340745e48cd63172fe53216c95d0e27365cd01",
+    "ktk-code-pages-assets/styles/492ab41160414ed41589.css": "492ab41160414ed415899622a899857859f372751481121762a5bb40c8ec2ae3",
+    "ktk-code-pages-assets/styles/494bdc631bcc255c09b3.css": "494bdc631bcc255c09b3d5030afbcc05d6dc3849d11da55a007a05b2f9fdb5db",
+    "ktk-code-pages-assets/styles/495ce6e931e878ec493a.css": "495ce6e931e878ec493acc01d0cd9f8279b292812f16482edfb8ff4a66bcf72a",
     "ktk-code-pages-assets/styles/49ad53ff50cf94fea1ca.css": "49ad53ff50cf94fea1ca52f808813e88c8d75fb827bd4d2f8ad87eb567472c3f",
     "ktk-code-pages-assets/styles/4a10b50f2ffc404e5ac9.css": "4a10b50f2ffc404e5ac9e465d54cc36c69f7b9286888f93c9077fa7577bb73d5",
     "ktk-code-pages-assets/styles/4a3b471d605f2d37cf60.css": "4a3b471d605f2d37cf60f43a97dcf04264998a430a3a5693e9a90810ac2ac7f7",
     "ktk-code-pages-assets/styles/4a60de883ba472e8376b.css": "4a60de883ba472e8376b15d55efe4483980479d6b1aec9c9a4f35fe78b778d5b",
+    "ktk-code-pages-assets/styles/4adc702a81d171c0caef.css": "4adc702a81d171c0caef0d620539afec2762cb8478aa3def7d0a3c382b632ddd",
     "ktk-code-pages-assets/styles/4b80cc30bf0e59b454ed.css": "4b80cc30bf0e59b454eda5e931d0fff327a34d923a0fb98654a9652c4531e0c6",
     "ktk-code-pages-assets/styles/4bcdf19331d03aa5fff7.css": "4bcdf19331d03aa5fff7cf3770e9ee6ba102f9b364030fe58f114f68eb4eb50e",
+    "ktk-code-pages-assets/styles/4c67255d998d1ddab910.css": "4c67255d998d1ddab9109b27dc3b15f1fdda6c9b5f102e79ef672ba4107bc124",
+    "ktk-code-pages-assets/styles/4d093acd85856eb5b77b.css": "4d093acd85856eb5b77bc7d03193d9a91d65991fdb764b118f826d7220448008",
     "ktk-code-pages-assets/styles/4dc4dca0674b51cf9b8c.css": "4dc4dca0674b51cf9b8c5c492a27e8578977c989307230c82c074d06e60baba6",
     "ktk-code-pages-assets/styles/4e0d6f4d58ebdb1be39e.css": "4e0d6f4d58ebdb1be39e24a5b57676182a48ac3bdaed789c2f1cefc7dec54af9",
+    "ktk-code-pages-assets/styles/4e8be0789a740b60eff6.css": "4e8be0789a740b60eff6a5f40dd5b1e7a888c983e3eaca4607c2ad45be1b33c6",
     "ktk-code-pages-assets/styles/4edf63c35c49e4d20ec5.css": "4edf63c35c49e4d20ec53c67b57882c90f22c5796c3cd06a1631c17fd3d93151",
+    "ktk-code-pages-assets/styles/4f29697ae626206905e4.css": "4f29697ae626206905e4a6142eeb06d11554ce2d790f574980e700d9a7f1b5c4",
     "ktk-code-pages-assets/styles/522b7b1d9f68ba6acae6.css": "522b7b1d9f68ba6acae6ad1bcb4cdce3721ecb2035524a9e8394e1a2839778f0",
     "ktk-code-pages-assets/styles/52542a75ee21599028c2.css": "52542a75ee21599028c2110b5f77dee5c41a2192d632ac37ed2817d02367c41e",
+    "ktk-code-pages-assets/styles/52ac943601c4f1b84f34.css": "52ac943601c4f1b84f34a255fd743b93a83912a0672c8719980018f80463faf5",
     "ktk-code-pages-assets/styles/5384eae1b55ca79eb4c8.css": "5384eae1b55ca79eb4c8ccb1eb5fe41b6f8ed833583dec0a89c91e6aeeb6d0ef",
     "ktk-code-pages-assets/styles/53f90dbb8d7659531dfd.css": "53f90dbb8d7659531dfdec1f43417a44617899e5e490dc2a0fe05fb3ab3398f4",
+    "ktk-code-pages-assets/styles/541120744953e85fda08.css": "541120744953e85fda0826469c74e92388bb84ba123a9f81891680494ce67314",
+    "ktk-code-pages-assets/styles/541221ececdc61b8cb63.css": "541221ececdc61b8cb635d63c4c6ee17737a22e8c4ee56b5c5489fba35b52a88",
     "ktk-code-pages-assets/styles/548afa4087adc618b0f8.css": "548afa4087adc618b0f828e7ac71da0db6aa67098b9c6149aa03d07140cde487",
+    "ktk-code-pages-assets/styles/54acabc1f77b98b6e3ca.css": "54acabc1f77b98b6e3ca214cce641ade58ac4db22fc72591d850ba9f5e2b92bc",
     "ktk-code-pages-assets/styles/55aafa97042e3a8f004d.css": "55aafa97042e3a8f004d5d17d2fbaf3fcab739e825f5a6c9ce1665f1d05d7050",
     "ktk-code-pages-assets/styles/55b3eb92a3519aa84316.css": "55b3eb92a3519aa8431656715711d0af3bf0d4d93e660835ec348aea9096f931",
     "ktk-code-pages-assets/styles/56152f03b8e423743079.css": "56152f03b8e4237430793757daaa0d12f940218f1ce91adefbb8a957e10456d4",
@@ -1780,24 +1828,32 @@
     "ktk-code-pages-assets/styles/5dac7d4db07cdbf3590d.css": "5dac7d4db07cdbf3590d80944bb0d546fa7e701ed2d64278d8e5fb2af653e19e",
     "ktk-code-pages-assets/styles/603eeb28d4465b1dc66c.css": "603eeb28d4465b1dc66cb1f6b55f82eddcd3befedc5d8a8bfd935bc2a614caa2",
     "ktk-code-pages-assets/styles/61551c34ce666281072e.css": "61551c34ce666281072eb95236eca16fd64801b92ee0b704f3178736d4ddc1d0",
+    "ktk-code-pages-assets/styles/61fcf557ee7cc283a61d.css": "61fcf557ee7cc283a61dc84dda1703c3eaf945da568629ed493c82b7726fabe1",
     "ktk-code-pages-assets/styles/62021f1abfa0c2f01ccf.css": "62021f1abfa0c2f01ccf4693b2b8bcd2db875965e9e9486c05a689c804339a73",
     "ktk-code-pages-assets/styles/6226e1027ac34679953c.css": "6226e1027ac34679953c0fd302725932d410c649abb0bd28d4c26ed36fb14e40",
     "ktk-code-pages-assets/styles/634ae6dbaba11953c588.css": "634ae6dbaba11953c58829d4f641ea55861df1f2296dd060967e5010c0aec944",
     "ktk-code-pages-assets/styles/642b14b5984243a370b9.css": "642b14b5984243a370b91a7e3efc7fc7d09e55d2fb3d7161259fc3240195ce38",
     "ktk-code-pages-assets/styles/65424380b6d540a24185.css": "65424380b6d540a241857dab9c5a74d6971bc8e2bb1c4624b4d0ec16b27747bf",
     "ktk-code-pages-assets/styles/65a9ab44969b0095da71.css": "65a9ab44969b0095da71c3695b760a1654dd7bc7c200153c95efbf02dfc54514",
+    "ktk-code-pages-assets/styles/65c072bcf1f2b85f04e2.css": "65c072bcf1f2b85f04e2c8664910ec4c3a9a4a597796aa915c9ba94d2b10fed4",
+    "ktk-code-pages-assets/styles/65f58299698e12cd159a.css": "65f58299698e12cd159abf50bc65d0fdf82602ee5b62ead39a6553498b7e4bfe",
+    "ktk-code-pages-assets/styles/65fff303657a46623e7c.css": "65fff303657a46623e7c8e363d10ae2f9ecd4de7c4ecf5a268cf20700918ff85",
     "ktk-code-pages-assets/styles/6696110640e69693c329.css": "6696110640e69693c3297f4c5951ac2cd96238ba7e3f0278a8af500a8ab7f4e0",
     "ktk-code-pages-assets/styles/69235aa29514f9d3bf21.css": "69235aa29514f9d3bf21fa14034d4f93478193a837fa46f66c789dee120ed37c",
     "ktk-code-pages-assets/styles/692e58f167f1da1b40c6.css": "692e58f167f1da1b40c63217b2a55867e9aac9bfd8195fc0d0e9cee3985365b6",
+    "ktk-code-pages-assets/styles/697861746ed85378a991.css": "697861746ed85378a99177a3d74808cc159366ea2b1e09954a6e9224196082cc",
     "ktk-code-pages-assets/styles/69fa1a2d90be5ee1ffc8.css": "69fa1a2d90be5ee1ffc8e13f7490d5c4cc5fe23698e51854d3ace2da3ba74b84",
     "ktk-code-pages-assets/styles/6addd2e0242a5e2ec698.css": "6addd2e0242a5e2ec698bb5cab925ab8d77713b305ebfb06db436134ce3271ea",
+    "ktk-code-pages-assets/styles/6ae85135836ed53ed432.css": "6ae85135836ed53ed432bb3828479adedfa522641216c459c037c60ea7cb839a",
     "ktk-code-pages-assets/styles/6b31955bf2d3a0daa8e0.css": "6b31955bf2d3a0daa8e0e440c79f3b9a97d851fb7ce47e3c813045c4f83ad1c2",
     "ktk-code-pages-assets/styles/6b4d6fa78b8f397773e6.css": "6b4d6fa78b8f397773e62be4f649ba2dd91ce62b1ae1ac4690908f4368fc1029",
     "ktk-code-pages-assets/styles/6b57f5a6cf2efd93a4bf.css": "6b57f5a6cf2efd93a4bf00a15fd844db55ffa65ce1adc08e8c9557aecc43341a",
     "ktk-code-pages-assets/styles/6dd58d2eb27a57612a73.css": "6dd58d2eb27a57612a7385e6255b8b8af107e7575502bf538fcc74529810cfce",
     "ktk-code-pages-assets/styles/6fced18ca9faca2583eb.css": "6fced18ca9faca2583eb7720f6b74191a83f76aa13f3f6d8c2fa3be855d5a5cc",
+    "ktk-code-pages-assets/styles/7007d10aa91d5991a0ad.css": "7007d10aa91d5991a0adfdcf5b3cd649eea8a8744ade75a391cdfd602a53d58c",
     "ktk-code-pages-assets/styles/71087f21b6afb34a9002.css": "71087f21b6afb34a90021efa342a936cf57a0c3b8213a879a15a335ec39ab273",
     "ktk-code-pages-assets/styles/72f7f69fe979102b8f79.css": "72f7f69fe979102b8f7966dafbb2e4c6aa23a15212371a9d8c30a299de6b0aa5",
+    "ktk-code-pages-assets/styles/747f63096f1b252f3286.css": "747f63096f1b252f32868f71e5837b009c569c4aa8b8bdf3fb1c847395d27130",
     "ktk-code-pages-assets/styles/76af4e15356d4d945490.css": "76af4e15356d4d9454900d65eb3e482d7c7538e91411a6f1036e0834a158e65e",
     "ktk-code-pages-assets/styles/78791c6bfe0291c2a245.css": "78791c6bfe0291c2a2454873f7828f8dfe3ed4be200e9a0298198f4cf4af63e8",
     "ktk-code-pages-assets/styles/798b6442713c7b969c89.css": "798b6442713c7b969c8958551fd7273dbe434924a72e455f2a1e250d5349b150",
@@ -1805,29 +1861,44 @@
     "ktk-code-pages-assets/styles/79ca2b38d5bcda96b805.css": "79ca2b38d5bcda96b80500fd3217e622521151ab157b76cae0497e21ea8e3831",
     "ktk-code-pages-assets/styles/79d8b2c9ee592bea68c6.css": "79d8b2c9ee592bea68c605b30784da1e7fc173547fec2574b8d86ce542eadf71",
     "ktk-code-pages-assets/styles/7a1a6b0b7a7bfb5447b5.css": "7a1a6b0b7a7bfb5447b544b1338310c3d411c5066baed5a9bcd57a160ce44efa",
+    "ktk-code-pages-assets/styles/7a9005896413244f3841.css": "7a9005896413244f3841f64ba86d8d73bfa9ee13756721a7d5497f92dd28329d",
     "ktk-code-pages-assets/styles/7c1fe49ecf232f9434f4.css": "7c1fe49ecf232f9434f46b57bbd4380fe75a6d1f75da6c9a136ad76ed1051875",
+    "ktk-code-pages-assets/styles/7dba0e54efb245350980.css": "7dba0e54efb245350980155f276f470bd413ee74b364676c21f5e0c472f6743b",
+    "ktk-code-pages-assets/styles/7df6ebf05952433b5daa.css": "7df6ebf05952433b5daa4858b60a036578ebe1912116e026dcbc7a0a7a64fdfd",
     "ktk-code-pages-assets/styles/7e28e0d195dc3c744291.css": "7e28e0d195dc3c744291c87fea04221b4b533c49d109a91e8f18f4c80abbec45",
     "ktk-code-pages-assets/styles/7e51b1bc414138fececd.css": "7e51b1bc414138fececd1de52c69847a05e0096f2ae7d8a1a8b3186ea78918d1",
     "ktk-code-pages-assets/styles/7e52b40b1be6d40aafd3.css": "7e52b40b1be6d40aafd335e5788e967524a9d40695c0514b5ac57ab390212acb",
     "ktk-code-pages-assets/styles/7e5b71f19681f17b0559.css": "7e5b71f19681f17b055926bfc6c1efa4dab42455f46fb32d0c20168365245436",
     "ktk-code-pages-assets/styles/7f52086abfcb943dc28e.css": "7f52086abfcb943dc28e0816c3f7432c385805ea44ed76b39376c2a767a43db2",
+    "ktk-code-pages-assets/styles/8048160b7eea5e55f718.css": "8048160b7eea5e55f7181dbb13356374a4fdf31aa934204c6104612eee2ced08",
     "ktk-code-pages-assets/styles/80ccbdab9485e905238b.css": "80ccbdab9485e905238b7e9bc7e2a0fd1b95e5eaac2bbee135d99f8898e34960",
     "ktk-code-pages-assets/styles/81bd7b120e587cd22837.css": "81bd7b120e587cd228373ed62dd51e95ea3638ae70e36ec57b5d4127df0a2ccc",
+    "ktk-code-pages-assets/styles/83066f7a1687e5755fac.css": "83066f7a1687e5755facd8269de8d0f2db975d0a3021396943cb70b4ff5f8335",
+    "ktk-code-pages-assets/styles/833098abc362a2c0216e.css": "833098abc362a2c0216e50ae38ab9b53a11ceba5004b660edb66f51786bdf4eb",
+    "ktk-code-pages-assets/styles/8353b903bda32622cdfa.css": "8353b903bda32622cdfa2e69c34a2f9287fc30ecfeaf68145a7dff45ec22e9da",
+    "ktk-code-pages-assets/styles/84bd4687ff33b3320222.css": "84bd4687ff33b332022247b55fb3d3199c00013bb15ab78d74cd699b83bbd82a",
     "ktk-code-pages-assets/styles/84e8efd9462939ac1ed6.css": "84e8efd9462939ac1ed606ad722e50de0c2e4dbd6ab18df7743e1c67a3e58ccf",
+    "ktk-code-pages-assets/styles/870b09788fda04a442e8.css": "870b09788fda04a442e8ea3ac904c00808f11cbde442f8d7ac3a292c18bf2e6b",
+    "ktk-code-pages-assets/styles/87abcb32404012b98262.css": "87abcb32404012b9826295dedc931c972f30273dacf7688d70808e063261a464",
     "ktk-code-pages-assets/styles/880729f576b572224ffc.css": "880729f576b572224ffca421ecaea9a9ca7924485a43b67c09b89fd6303f4806",
     "ktk-code-pages-assets/styles/89e7d1904d3f44f288ef.css": "89e7d1904d3f44f288efd24a1008862b7b6fea7679a7af470ba6c92ad0b3ed28",
+    "ktk-code-pages-assets/styles/8a3c2f821cb8472159e2.css": "8a3c2f821cb8472159e2a629ea5ab25cdf4620b4e5ca5ba0ddf8511ea1bd7187",
     "ktk-code-pages-assets/styles/8ab19604e79375a2005f.css": "8ab19604e79375a2005f9b8cfdcf919c8e9da50745a78c07b54b4ed7de221352",
     "ktk-code-pages-assets/styles/8af331c094c81898aac9.css": "8af331c094c81898aac999036c0ab92c20c29528d2125267e998da8d98cc88a7",
+    "ktk-code-pages-assets/styles/8b4b8c31dbfa3489250d.css": "8b4b8c31dbfa3489250de984fe3c8e815dbe1b774e619e9318ebb7b211634faf",
     "ktk-code-pages-assets/styles/8d7afd9aef4c4d350310.css": "8d7afd9aef4c4d350310e5177d03c26a539e6fab832d356c052172b87319af5e",
     "ktk-code-pages-assets/styles/8da31ef42453ff06c731.css": "8da31ef42453ff06c73178ff158473e970abeb3001eef7ca3b88b17b6146d5d3",
+    "ktk-code-pages-assets/styles/8dca9d1dc88a39b1df53.css": "8dca9d1dc88a39b1df53e345c3f0e68df4c3acf868c06449d22918a4eee66b18",
     "ktk-code-pages-assets/styles/8ee3776105058bc8894e.css": "8ee3776105058bc8894e51a4f5f3b43afdd5d89e8da5fcb97a064b59d1868440",
     "ktk-code-pages-assets/styles/905aaab6f2bb8eda641e.css": "905aaab6f2bb8eda641eb0f6fb25afd734b08bf4499327336d24404cc36e24ea",
     "ktk-code-pages-assets/styles/91be8568e90e84198b4e.css": "91be8568e90e84198b4ed2d2a7450da0c2264c56ab93af46fa2f8628b93288a7",
     "ktk-code-pages-assets/styles/91edc87b1b1eff380cce.css": "91edc87b1b1eff380cce6d83cfae382d2cccf72f4d9dcea97ebcfda979347e87",
     "ktk-code-pages-assets/styles/9443a9f32efe8df5fba4.css": "9443a9f32efe8df5fba42e5840e6550dbfc453034473a915c44ff0a4bcafd5fe",
+    "ktk-code-pages-assets/styles/94758289340c5ed5d4dc.css": "94758289340c5ed5d4dc9b252ae0475867febb9942b6fdbf2442ea19dae0166c",
     "ktk-code-pages-assets/styles/95fbd47a2a2d040b0741.css": "95fbd47a2a2d040b0741aad2311ed82de336554d0985bba2f342e6c2698ee05b",
     "ktk-code-pages-assets/styles/96badb3d8d6b476a48a3.css": "96badb3d8d6b476a48a3467d71c4930dcfe7a7cc4230460b924e0e8aac2fe196",
     "ktk-code-pages-assets/styles/96cd42dc7cc4eb734fcd.css": "96cd42dc7cc4eb734fcdfe1658c874e1cfb58118366c46a4ff0406869b80707f",
+    "ktk-code-pages-assets/styles/976af98ebfdb23c12306.css": "976af98ebfdb23c12306cf788a29fb4fd32ae28641f3618df803b2a603fa1acd",
     "ktk-code-pages-assets/styles/97bd1fb1c46f9f816943.css": "97bd1fb1c46f9f8169430bd745b035cdac80f5365182f02be3135e03124828f0",
     "ktk-code-pages-assets/styles/97da594adbb283584f63.css": "97da594adbb283584f6361f31b306955f9f469274b6ee21ad797a4982bcdf77f",
     "ktk-code-pages-assets/styles/981c44132a6e371b02ac.css": "981c44132a6e371b02ac21ac4e0255dc75957d03b87e6b44370eda40ca090994",
@@ -1843,61 +1914,98 @@
     "ktk-code-pages-assets/styles/9fa2821334bccceb17a5.css": "9fa2821334bccceb17a524d9ff6a838c972a4a388dbd33e45f57196b60e6a117",
     "ktk-code-pages-assets/styles/9fa2ecefd7f197557f44.css": "9fa2ecefd7f197557f445c1c54c1576a8043836fedfddc48fbd43c93790ae02f",
     "ktk-code-pages-assets/styles/a02ae38d1a0bf53c6c27.css": "a02ae38d1a0bf53c6c27e9e35f8f156a9be13b10eea2689a9c1e3d48e1597426",
+    "ktk-code-pages-assets/styles/a1603bb83414e8f791db.css": "a1603bb83414e8f791dbee8bf54d144bd56e8683687ff0d2459da5656357c70d",
+    "ktk-code-pages-assets/styles/a176362769d983e663d9.css": "a176362769d983e663d96457982f10c0919751f1cc8ac6945f3c55adfecae96b",
+    "ktk-code-pages-assets/styles/a1e68a2b5334e801cbff.css": "a1e68a2b5334e801cbff5b6f4d654d9ea7b7240c99bff7ad22c5dda1de33ff9f",
+    "ktk-code-pages-assets/styles/a1f91030a0545db60816.css": "a1f91030a0545db60816394622a30f23ffe1f18381b24838a9de9661bc1b5380",
     "ktk-code-pages-assets/styles/a2459186f35c423c38cc.css": "a2459186f35c423c38ccebd84f8414ea61c372257c6c89309831bee98cb67a8f",
+    "ktk-code-pages-assets/styles/a250a40755a3e1f42179.css": "a250a40755a3e1f421790e323adbe17b1c994b5668288543805b6a05d829f7a1",
     "ktk-code-pages-assets/styles/a2564dfd11af12db2251.css": "a2564dfd11af12db2251fbdf6a4ccf0c49e73a867182e9ae06c6eede1eb92482",
+    "ktk-code-pages-assets/styles/a3d636004dd9c2047226.css": "a3d636004dd9c20472268b072712017efb741355d50d234d0d6423d4132446fc",
     "ktk-code-pages-assets/styles/a42012b9b8553d538f38.css": "a42012b9b8553d538f38576c15d8827e02cb3d3b332268c02a5147a365975825",
     "ktk-code-pages-assets/styles/a4bd12e4f11f2c712ede.css": "a4bd12e4f11f2c712ede7c41bf151d809a01c8a74d2dc3bb400a778c510726ad",
     "ktk-code-pages-assets/styles/a51e80b82a213ab1f168.css": "a51e80b82a213ab1f168fb53bae78e33cc55f7bc33422e1d1ff67a58784f9e3f",
     "ktk-code-pages-assets/styles/a5da08083d57d5faadc3.css": "a5da08083d57d5faadc36409e5bed438407587e685ffdcbdfd107c4317c3e4ac",
+    "ktk-code-pages-assets/styles/a600f4a705746216817e.css": "a600f4a705746216817ebbb88b8874bbe161c37496da263906c72cc89c55f099",
     "ktk-code-pages-assets/styles/a635e2824fcc503ba0c6.css": "a635e2824fcc503ba0c6603f094f2350ce313e57e5563b8e4a0a5b458922d83e",
     "ktk-code-pages-assets/styles/a685f0172b68440e754c.css": "a685f0172b68440e754cbe3ab661792b20375094eb827daea8234c914c4b669f",
     "ktk-code-pages-assets/styles/a80d475d1c292c365748.css": "a80d475d1c292c365748f3e3fc0b9330282c7559c53f0351ecb34c542b8648f9",
+    "ktk-code-pages-assets/styles/a8b1bce402b0c8c7fffb.css": "a8b1bce402b0c8c7fffbccbb3f3387ad0574ee099bdfeee3161851bb988cb7cb",
     "ktk-code-pages-assets/styles/a9d273316cd4098ca82b.css": "a9d273316cd4098ca82b9f5ccc432a331a9b561e536d0c81a2915ed6d8f21e68",
+    "ktk-code-pages-assets/styles/aa114346b410b4b907b2.css": "aa114346b410b4b907b20840f5686a00a493071c6141f9ef2dab811cfd2c01bf",
     "ktk-code-pages-assets/styles/aac40e36cb7d8b9a0fc1.css": "aac40e36cb7d8b9a0fc1667d862361e29b3a041af243fa517b3b73658e3cb346",
     "ktk-code-pages-assets/styles/acd9401a293f4fb96425.css": "acd9401a293f4fb9642531c1b131bd8ebf021f7a99f86d41821397aee5f309f1",
     "ktk-code-pages-assets/styles/ad38b12a2d78a4a4d262.css": "ad38b12a2d78a4a4d2628925023f95cc1620e118d2d10998d41b00471ae135ff",
     "ktk-code-pages-assets/styles/ad559920857cb9c34232.css": "ad559920857cb9c3423289f155cb3c20242efefbae8a5ef6facba56293b970aa",
+    "ktk-code-pages-assets/styles/ae0df4c785fca350bb71.css": "ae0df4c785fca350bb71be03b6574ec62d017e7df584c158c9aba755964803e1",
     "ktk-code-pages-assets/styles/aeee11b3a182a3ffe864.css": "aeee11b3a182a3ffe864b40cdca885ff1ccef06fd87f4081a6def637e2f8302c",
     "ktk-code-pages-assets/styles/af2932220cce1bbdb237.css": "af2932220cce1bbdb237282cf424f6bd5bcf5fed77d1223a309a542ce6214332",
+    "ktk-code-pages-assets/styles/af38bf6919dc7097172c.css": "af38bf6919dc7097172c4ba5e4e8966d6295ba319da1bb8d25051f4b0a21d2cb",
     "ktk-code-pages-assets/styles/af3a50f4ac4e0f72a45d.css": "af3a50f4ac4e0f72a45daead144832b2ab70a0eebac7e622592a756c2708e437",
+    "ktk-code-pages-assets/styles/af855cbdd8af944f1f0d.css": "af855cbdd8af944f1f0dd393c05ebbb4fc2207ffe38e57b519271b18fda7788c",
     "ktk-code-pages-assets/styles/af8cc4de1ecf8211bdc9.css": "af8cc4de1ecf8211bdc9d3e1a3709ea420fe60b32351512e0c906fb0757353bf",
     "ktk-code-pages-assets/styles/b15881f0dbca576af9e9.css": "b15881f0dbca576af9e961adddabaa3d01f32191e0da98a941e91229efeed6e7",
     "ktk-code-pages-assets/styles/b23a604bb04c72452463.css": "b23a604bb04c72452463cf3fc3efb8810797e43ed06e86076b3dd5c519cc55b3",
+    "ktk-code-pages-assets/styles/b31ef6d49a85c310304c.css": "b31ef6d49a85c310304cb2dd92458df0db48e7178edfbe1522beb86a145b4724",
+    "ktk-code-pages-assets/styles/b37496d5304dc7bdb5c4.css": "b37496d5304dc7bdb5c4025c2382ee6ff6f1b7251c25327cbc2ac48c16d11b11",
     "ktk-code-pages-assets/styles/b38129e4fe36e8344af6.css": "b38129e4fe36e8344af69f4223ea42f919af71aa51bc52c2cda83cb0581073ad",
     "ktk-code-pages-assets/styles/b4d5fa28f11d240ba2e3.css": "b4d5fa28f11d240ba2e31720a30656296534a101fb20fbfba27fbf9a3256b459",
+    "ktk-code-pages-assets/styles/b5b0e51c06cbcd9d1ac4.css": "b5b0e51c06cbcd9d1ac441fda01b43be8388789e5684843946649bc5714a5bc2",
     "ktk-code-pages-assets/styles/b607adaded8edb236499.css": "b607adaded8edb236499719877a3d4a9b374e177911401d84a6fee6dcb28c70a",
+    "ktk-code-pages-assets/styles/b64cf5e2fad6c8887452.css": "b64cf5e2fad6c8887452e2413a2c068b97e355e7dd365507fbff3842d14bccb8",
+    "ktk-code-pages-assets/styles/b6a3be00f731469c7a60.css": "b6a3be00f731469c7a60f9821253968d4e10147c69fb053ce4f5004f25219aa6",
     "ktk-code-pages-assets/styles/b6bd80635362ea53073a.css": "b6bd80635362ea53073a886868108ca9e57c76d09fa05a9f2ec20b950b0de4aa",
     "ktk-code-pages-assets/styles/b7988a2ee0057a8ce130.css": "b7988a2ee0057a8ce13032df36636b6b70f53306592543c38bf0fdfb7e2ff7b5",
     "ktk-code-pages-assets/styles/b814d4c83b2778f3d8ea.css": "b814d4c83b2778f3d8eabff93c5a34c06daac5368efed44d786dc1851d28cecf",
     "ktk-code-pages-assets/styles/bacdaa8677a17bed206f.css": "bacdaa8677a17bed206f0bfe4bfb7492867e6a3ebb3df6f88a64c6e114caaa43",
     "ktk-code-pages-assets/styles/badf440a2322aaa5c840.css": "badf440a2322aaa5c840397c20359260010a9acf9e2149a4618964de5e493e81",
     "ktk-code-pages-assets/styles/bbce6a38578c7adbb5f9.css": "bbce6a38578c7adbb5f94296ee3acfb0c2d5f339dc3c96ef356dffad167f1016",
+    "ktk-code-pages-assets/styles/bc1cebf012b1920cc19b.css": "bc1cebf012b1920cc19bfeb6dd9739b8b68932daf1d47915cebebc10f00f1c5d",
     "ktk-code-pages-assets/styles/bcb0b770f8a421fe08c3.css": "bcb0b770f8a421fe08c3a5144465914e51fd5436e0909dbe6c223b899a0190d2",
     "ktk-code-pages-assets/styles/bce93c9efd770487d3f4.css": "bce93c9efd770487d3f4ea81f220a7ca092b0b7347ccc7d394730153f950350d",
+    "ktk-code-pages-assets/styles/bf0a43da2bb524711ff7.css": "bf0a43da2bb524711ff7475cae3dabda4689d0b98c837896d3a8c5f90ac39959",
     "ktk-code-pages-assets/styles/bfb69578e9ad8271e8d5.css": "bfb69578e9ad8271e8d53abd8c8155fddad680c3e39f4236899245c74760d4e5",
     "ktk-code-pages-assets/styles/c0352dbd873ef4613b21.css": "c0352dbd873ef4613b211c1affdeb23c4777a6e17e85da491153a00580685dad",
     "ktk-code-pages-assets/styles/c14904e95ca0c3b4baa7.css": "c14904e95ca0c3b4baa7f7a110271373c78e6ef9503fc08ef23c1c0537b01ab6",
+    "ktk-code-pages-assets/styles/c1de3777016c92e02d07.css": "c1de3777016c92e02d0761701492ae0daa38bbcf7c5ec7452391a34ca619abfa",
     "ktk-code-pages-assets/styles/c1eedad11564b27bf73f.css": "c1eedad11564b27bf73f10427333d72bd1a451a9c5d48477dc0bd5baeb8c64a3",
     "ktk-code-pages-assets/styles/c26c57bda629e7e49b20.css": "c26c57bda629e7e49b20fa0f93cdb2e1f7b06d4577c40973c6499760b92ab922",
+    "ktk-code-pages-assets/styles/c36018b1644d54a47495.css": "c36018b1644d54a47495d6a42989d6122ade94f9778282e54578ea5622f24813",
+    "ktk-code-pages-assets/styles/c4830f03185bb559a3a7.css": "c4830f03185bb559a3a70fa7087defa01b7bf7bdfebd2f93120a082f3bd76937",
+    "ktk-code-pages-assets/styles/c57312c71b7c5d90bc29.css": "c57312c71b7c5d90bc2918edd8c5a9630a4bdf5c8e3c5f6f6fc358e60b61f623",
+    "ktk-code-pages-assets/styles/c5e661c194187c47bbae.css": "c5e661c194187c47bbae1010a1f06c8e5c52a04799a115195d6ea00cca6586f4",
     "ktk-code-pages-assets/styles/c724d59ddd2baaefd2cb.css": "c724d59ddd2baaefd2cb0d485bd63c68018116dacac6b68941dd4174999e6447",
+    "ktk-code-pages-assets/styles/c816ae02a2ff5b6ac5ab.css": "c816ae02a2ff5b6ac5abc4a174bad92fc3f30c8ebddf6cb3634962a4ce28819b",
     "ktk-code-pages-assets/styles/c8829e68d0ee39706a78.css": "c8829e68d0ee39706a788fbc3b50463aeb960383e5746fbcfda0fb9f187f51ed",
     "ktk-code-pages-assets/styles/c97f8af485d668701b07.css": "c97f8af485d668701b07423449f6ce9098b80e46717db554f027bb29b1dc4326",
+    "ktk-code-pages-assets/styles/c9a555b0baddd73a28e4.css": "c9a555b0baddd73a28e4f0912f68149deeae89d60076501da51f1c024961a3fd",
     "ktk-code-pages-assets/styles/c9aec701c4532f623017.css": "c9aec701c4532f62301747a173a8356541642188ba8fd5b09dd9164a9cdfd320",
+    "ktk-code-pages-assets/styles/ca025e2a84eaac4d3d70.css": "ca025e2a84eaac4d3d7051bb2cc02c9cab48c1619799a0b0564539d5ea75ea00",
+    "ktk-code-pages-assets/styles/ca23926fc7430beb320b.css": "ca23926fc7430beb320b500ea089f0ea5a402f6b11b868660b55280ed7ebcc5f",
+    "ktk-code-pages-assets/styles/cacad613b763d4e42438.css": "cacad613b763d4e4243804981d613b6d64cf883475245533f6f934d0c621d767",
+    "ktk-code-pages-assets/styles/cc2a39b97295e6cbaad8.css": "cc2a39b97295e6cbaad89219f3b66cd05aeb5532d75d45800f85df9489760d03",
     "ktk-code-pages-assets/styles/cc6704cbbed1b837c80a.css": "cc6704cbbed1b837c80a0e0433666a1af1ccfa221d02820a20e430806238c0dd",
     "ktk-code-pages-assets/styles/ccd5f447ce57c3da7e03.css": "ccd5f447ce57c3da7e0335a875a1f30014bd8745306d2bd2ebe8d3fc741d50a5",
     "ktk-code-pages-assets/styles/cd1acfd00c863595eed6.css": "cd1acfd00c863595eed6b7ee795efe1898279e2ea53dfdfc395dfb1e3d3d2b6a",
+    "ktk-code-pages-assets/styles/cf9b75b5f8a53338c9d2.css": "cf9b75b5f8a53338c9d29645130a3de5985f7d0a06949d92d5d2a5a28ee5e7b9",
     "ktk-code-pages-assets/styles/cfc4eb8c90bebeb40ac4.css": "cfc4eb8c90bebeb40ac45a7a8bf779dde59366ca4c54f1f5d87664540465d8af",
+    "ktk-code-pages-assets/styles/cff05e90558185935250.css": "cff05e9055818593525024948e8f782c594d06f210b16e5b26ac1519fb125795",
     "ktk-code-pages-assets/styles/d0a308248dcb8ce3ced0.css": "d0a308248dcb8ce3ced09c2cabd73f069313fe31aa636f196063912d8035846f",
+    "ktk-code-pages-assets/styles/d15b361ef6e46ebd484c.css": "d15b361ef6e46ebd484c2ab3c7189f853c4ae9fb7bf262db1357e079fcbb2744",
     "ktk-code-pages-assets/styles/d174e31b221da284c9ed.css": "d174e31b221da284c9edb9c7f1e30fd6baa5b8fba0c2f07e6c326fd671f6a971",
     "ktk-code-pages-assets/styles/d3900230a7cf91af6739.css": "d3900230a7cf91af6739fd0e2efc24225120dfafda7e6091a48335286ae1276d",
+    "ktk-code-pages-assets/styles/d698dc28ffa3efcbea82.css": "d698dc28ffa3efcbea82396021c3712ad4eb795824867e6c23997bbf9fcf825c",
     "ktk-code-pages-assets/styles/d6d5e0aaafc4f6f9e456.css": "d6d5e0aaafc4f6f9e45611aa5cd8b678b9c2205ae73aae8f488c838a77353b5c",
+    "ktk-code-pages-assets/styles/d7e05cb275dc0074bc6e.css": "d7e05cb275dc0074bc6e94a51461fda7f9d8f72f60e7ae259b9217dc0c71adba",
     "ktk-code-pages-assets/styles/d892ea698863a1b5f3e3.css": "d892ea698863a1b5f3e39d1e846a261f32069d2509d4b24a1c39188b4efeff97",
     "ktk-code-pages-assets/styles/d97f26f95b3974cfe58a.css": "d97f26f95b3974cfe58a440a70fdf57433b3d1c4ec804ea94e05d0df64a4ec3a",
     "ktk-code-pages-assets/styles/dba5d75dbae9c32471ee.css": "dba5d75dbae9c32471ee4f13cca1ebba6ef95fd14b02c74a231f3a4d65c10c0e",
+    "ktk-code-pages-assets/styles/dbe1c78306d49c0ecf08.css": "dbe1c78306d49c0ecf08fe28c0bfaec347e4198b10919888a2cbfdf2d6116b5e",
     "ktk-code-pages-assets/styles/dd3de9489271c64ca37f.css": "dd3de9489271c64ca37f9f07b37f5813832ffe15007e32ca6ab7ffc851d6aa2b",
     "ktk-code-pages-assets/styles/dee1e3ab02b3eaf03650.css": "dee1e3ab02b3eaf0365083ef207dd7edf1c0083248b1ddc32ebd3adf023d312f",
     "ktk-code-pages-assets/styles/dfc8df3b9d18e6cffe46.css": "dfc8df3b9d18e6cffe46cbc7e6164ee5e1b3d96d36d1946f8d97196383121a93",
     "ktk-code-pages-assets/styles/e08d9dc710e3934d5ebf.css": "e08d9dc710e3934d5ebf12b89e1cf3d158fddb44f33a590b922bbc180af97fa7",
+    "ktk-code-pages-assets/styles/e5df87affdd69693ef16.css": "e5df87affdd69693ef16a11c28817eecb3f1c6f100bf2aa5941262736b68410f",
     "ktk-code-pages-assets/styles/e717df808caf3af58015.css": "e717df808caf3af580154655f3e3d7428b7f179f5e5f3fafb41b2822c026b653",
     "ktk-code-pages-assets/styles/e74b344e0dac4eb622ad.css": "e74b344e0dac4eb622ad29617d6409f4ca5fe6d1d2f0e65f4892672bcb671f8f",
     "ktk-code-pages-assets/styles/e8d47d3c38f7a5a78eda.css": "e8d47d3c38f7a5a78edab53d55b1dca14527b7a0646eaea8fa5b1756601ad336",
@@ -1905,20 +2013,28 @@
     "ktk-code-pages-assets/styles/ea7c447a60a43d6d60f7.css": "ea7c447a60a43d6d60f765bee5ecdd311f45dc1cde022af1493515992d834aac",
     "ktk-code-pages-assets/styles/ea9db5bbdb313c5d3b9f.css": "ea9db5bbdb313c5d3b9f062fc4cbb5323e000f0986974b9136dc1a60bc81d334",
     "ktk-code-pages-assets/styles/eb063a9a60067a785a96.css": "eb063a9a60067a785a96d3a5db887b13677cc8b61522e69a486e441d3ee723ae",
+    "ktk-code-pages-assets/styles/ebc87ff105caa98ae5b2.css": "ebc87ff105caa98ae5b2fef71a8a143eda5bfb945c80e16a22b1712ddd0476f2",
     "ktk-code-pages-assets/styles/ee08b1cf3df002fbfc33.css": "ee08b1cf3df002fbfc330dd61d3bb8d4535ca0ea19a40eb23adaae2f31ff3013",
+    "ktk-code-pages-assets/styles/ee546281c742849d22f9.css": "ee546281c742849d22f902c01452f95723d550cfd2704dabd5548bfe4cd874f8",
     "ktk-code-pages-assets/styles/eecf4b40261cdecac4ad.css": "eecf4b40261cdecac4adbddc726b9305b5727da14c6928a627292ace7e697956",
     "ktk-code-pages-assets/styles/f0233417718fdc73c2de.css": "f0233417718fdc73c2de872ceae4c3fd95301cb918f9cec835ccdd7d4db9a123",
     "ktk-code-pages-assets/styles/f17758d677317add469f.css": "f17758d677317add469f1bf7b3afea95b3eb4e511f82451c4ccb094e8e59844a",
     "ktk-code-pages-assets/styles/f23fe3cf557ed3803273.css": "f23fe3cf557ed3803273923d8bf1eaf56eb374bd208a8ce389b00e6aa9a54898",
     "ktk-code-pages-assets/styles/f2da5be33a8e47c9b76a.css": "f2da5be33a8e47c9b76a79163041d3b65c901ce2f1abeab5d8c4de108084dea2",
     "ktk-code-pages-assets/styles/f392d0b7fdcb3789b0ac.css": "f392d0b7fdcb3789b0ac081ee41181696b9adbef05635382c7cb32fc3ad94f89",
+    "ktk-code-pages-assets/styles/f53f1f7a4b8df67acc3a.css": "f53f1f7a4b8df67acc3ac1655f4f61dc4482c985c2eee9751871f3b0388f6b67",
     "ktk-code-pages-assets/styles/f83daf0336af17655e64.css": "f83daf0336af17655e6407e5fe4ab338b50060478446e5c2bc5fcbc53765a14a",
+    "ktk-code-pages-assets/styles/f87a93a4ebc6bb77387d.css": "f87a93a4ebc6bb77387deaa72460f3beece913bc79f2af332e3fd0868e1a3266",
     "ktk-code-pages-assets/styles/f8d9d51985e316d683fc.css": "f8d9d51985e316d683fcb46defb94f67a6631262a9a1b29f17f3170a6f964223",
     "ktk-code-pages-assets/styles/f93c4a0f800168e41881.css": "f93c4a0f800168e41881845d911864123cd8830da77ccc471561f00b4c3f51a7",
+    "ktk-code-pages-assets/styles/f96848ee2d30c858dc17.css": "f96848ee2d30c858dc17162624ae933081974decf7172eb3389484698e9452df",
     "ktk-code-pages-assets/styles/f9ecc64293bcca58bb20.css": "f9ecc64293bcca58bb20950136218fc44f0f7f87a5c20978a7cee60d83694279",
     "ktk-code-pages-assets/styles/f9eed33630a8eca4b6a6.css": "f9eed33630a8eca4b6a62939b3875276f9723d06a54235d637dfa3e54b2c43a0",
+    "ktk-code-pages-assets/styles/fbc7265bcf50aa5b5ef9.css": "fbc7265bcf50aa5b5ef9c29c9e435c1abca558482b1f97ab4989f6154636de90",
+    "ktk-code-pages-assets/styles/fbcd91d5a9681c5662ef.css": "fbcd91d5a9681c5662ef0e13d24206e06dfc52c7260e6830aa63a319f8916665",
+    "ktk-code-pages-assets/styles/fe46668d0d0a835deeba.css": "fe46668d0d0a835deebada2dcd185c2c8923e85390aac55c40570b5072350d0b",
     "ktk-code-pages-assets/styles/fef95b1452e6c9552295.css": "fef95b1452e6c9552295dff729f0173940dee84afb2ecc1a65d03996905510d5",
-    "ktk-code-pages.php": "3306d596b1601d04182b7454d3f3849ed48d27d5247309370013109ae47ec1f9"
+    "ktk-code-pages.php": "b8dd6192ed5ae7cb85d7f7dc82a5648f2dcc791a9f2885cda9678cbadc6744dd"
   },
   "checks": [
     {
@@ -1933,7 +2049,17 @@
     },
     {
       "key": "post-2020-krakow-nightlife-guide",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-2020-krakow-nightlife-guide",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-2020-krakow-nightlife-guide",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -2016,7 +2142,17 @@
     },
     {
       "key": "post-all-you-need-to-know-about-visiting-auschwitz",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-all-you-need-to-know-about-visiting-auschwitz",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-all-you-need-to-know-about-visiting-auschwitz",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -2099,7 +2235,17 @@
     },
     {
       "key": "post-bachelor-party-organisers-krakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-bachelor-party-organisers-krakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-bachelor-party-organisers-krakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -2182,7 +2328,17 @@
     },
     {
       "key": "post-best-drinking-games",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-best-drinking-games",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-best-drinking-games",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -2265,7 +2421,17 @@
     },
     {
       "key": "post-best-hotels-in-krakow-2019-2020",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-best-hotels-in-krakow-2019-2020",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-best-hotels-in-krakow-2019-2020",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -2348,7 +2514,17 @@
     },
     {
       "key": "post-best-places-to-eat",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-best-places-to-eat",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-best-places-to-eat",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -2431,7 +2607,17 @@
     },
     {
       "key": "post-best-pub-crawls-in-europe",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-best-pub-crawls-in-europe",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-best-pub-crawls-in-europe",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -2514,7 +2700,17 @@
     },
     {
       "key": "post-budapest-or-krakow-nightlife",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-budapest-or-krakow-nightlife",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-budapest-or-krakow-nightlife",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -2597,7 +2793,17 @@
     },
     {
       "key": "post-escape-rooms-for-a-stag-do-in-krakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-escape-rooms-for-a-stag-do-in-krakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-escape-rooms-for-a-stag-do-in-krakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -2680,7 +2886,17 @@
     },
     {
       "key": "post-go-karting-krakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-go-karting-krakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-go-karting-krakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -2763,7 +2979,17 @@
     },
     {
       "key": "post-hen-do-ideas-abroad",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-hen-do-ideas-abroad",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-hen-do-ideas-abroad",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -2846,7 +3072,17 @@
     },
     {
       "key": "post-hostel-etiquette-tips",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-hostel-etiquette-tips",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-hostel-etiquette-tips",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -2929,7 +3165,17 @@
     },
     {
       "key": "post-hostel-hangover-cure",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-hostel-hangover-cure",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-hostel-hangover-cure",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -3012,7 +3258,17 @@
     },
     {
       "key": "post-irish-bars-krakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-irish-bars-krakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-irish-bars-krakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -3095,7 +3351,17 @@
     },
     {
       "key": "post-is-krakow-safe-for-stag",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-is-krakow-safe-for-stag",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-is-krakow-safe-for-stag",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -3178,7 +3444,17 @@
     },
     {
       "key": "post-jazz-bars-in-krakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-jazz-bars-in-krakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-jazz-bars-in-krakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -3261,7 +3537,17 @@
     },
     {
       "key": "post-karaoke-bars-in-krakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-karaoke-bars-in-krakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-karaoke-bars-in-krakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -3344,7 +3630,17 @@
     },
     {
       "key": "post-krakow-bars-jewish-quarter",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-bars-jewish-quarter",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-bars-jewish-quarter",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -3427,7 +3723,17 @@
     },
     {
       "key": "post-krakow-budget-activities",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-budget-activities",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-budget-activities",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -3510,7 +3816,17 @@
     },
     {
       "key": "post-krakow-food-truck-parks",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-food-truck-parks",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-food-truck-parks",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -3593,7 +3909,17 @@
     },
     {
       "key": "post-krakow-free-activities-2",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-free-activities-2",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-free-activities-2",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -3676,7 +4002,17 @@
     },
     {
       "key": "post-krakow-go-karting",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-go-karting",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-go-karting",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -3759,7 +4095,17 @@
     },
     {
       "key": "post-krakow-hen-party-reviews",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-hen-party-reviews",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-hen-party-reviews",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -3842,7 +4188,17 @@
     },
     {
       "key": "post-krakow-live-music",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-live-music",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-live-music",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -3925,7 +4281,17 @@
     },
     {
       "key": "post-krakow-milkbars",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-milkbars",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-milkbars",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -4008,7 +4374,17 @@
     },
     {
       "key": "post-krakow-money-saving-tips",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-money-saving-tips",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-money-saving-tips",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -4091,7 +4467,17 @@
     },
     {
       "key": "post-krakow-new-years-eve",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-new-years-eve",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-new-years-eve",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -4174,7 +4560,17 @@
     },
     {
       "key": "post-krakow-nightclubs",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-nightclubs",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-nightclubs",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -4257,7 +4653,17 @@
     },
     {
       "key": "post-krakow-safety-guide",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-safety-guide",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-safety-guide",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -4340,7 +4746,17 @@
     },
     {
       "key": "post-krakow-shooting-range",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-shooting-range",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-shooting-range",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -4423,7 +4839,17 @@
     },
     {
       "key": "post-krakow-shot-bar",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-shot-bar",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-shot-bar",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -4506,7 +4932,17 @@
     },
     {
       "key": "post-krakow-stag-activities",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-stag-activities",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-stag-activities",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -4589,7 +5025,17 @@
     },
     {
       "key": "post-krakow-team-building-activities",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-team-building-activities",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-team-building-activities",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -4672,7 +5118,17 @@
     },
     {
       "key": "post-krakow-techno-clubs-2",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-techno-clubs-2",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-techno-clubs-2",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -4755,7 +5211,17 @@
     },
     {
       "key": "post-krakow-techno-clubs",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-techno-clubs",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-techno-clubs",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -4838,7 +5304,17 @@
     },
     {
       "key": "post-krakow-weather-guide",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-weather-guide",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-weather-guide",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -4921,7 +5397,17 @@
     },
     {
       "key": "post-krakow-wine-bars",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-wine-bars",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-wine-bars",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -5004,7 +5490,17 @@
     },
     {
       "key": "post-krakow-winter-activities",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-winter-activities",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krakow-winter-activities",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -5087,7 +5583,17 @@
     },
     {
       "key": "post-krawl-through-krakow-winter-newsletter",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-krawl-through-krakow-winter-newsletter",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-krawl-through-krakow-winter-newsletter",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -5170,7 +5676,17 @@
     },
     {
       "key": "post-life-professional-drunk",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-life-professional-drunk",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-life-professional-drunk",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -5253,7 +5769,17 @@
     },
     {
       "key": "post-new-years-eve-in-krakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-new-years-eve-in-krakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-new-years-eve-in-krakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -5336,7 +5862,17 @@
     },
     {
       "key": "post-party-krakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-party-krakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-party-krakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -5419,7 +5955,17 @@
     },
     {
       "key": "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -5502,7 +6048,17 @@
     },
     {
       "key": "post-spa-hotels-krakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-spa-hotels-krakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-spa-hotels-krakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -5585,7 +6141,17 @@
     },
     {
       "key": "post-spooktacular-krakow-unveil-the-mysteries-of-halloween",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-spooktacular-krakow-unveil-the-mysteries-of-halloween",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-spooktacular-krakow-unveil-the-mysteries-of-halloween",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -5668,7 +6234,17 @@
     },
     {
       "key": "post-sports-bar-krakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-sports-bar-krakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-sports-bar-krakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -5751,7 +6327,17 @@
     },
     {
       "key": "post-stag-do-costume",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-stag-do-costume",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-stag-do-costume",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -5834,7 +6420,17 @@
     },
     {
       "key": "post-stag-pranks",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-stag-pranks",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-stag-pranks",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -5917,7 +6513,17 @@
     },
     {
       "key": "post-stages-of-drunkenness",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-stages-of-drunkenness",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-stages-of-drunkenness",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -6000,7 +6606,17 @@
     },
     {
       "key": "post-survive-pub-crawl",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-survive-pub-crawl",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-survive-pub-crawl",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -6083,7 +6699,17 @@
     },
     {
       "key": "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -6166,7 +6792,17 @@
     },
     {
       "key": "post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -6249,7 +6885,17 @@
     },
     {
       "key": "post-travel-krakow-your-comprehensive-city-guide",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-travel-krakow-your-comprehensive-city-guide",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-travel-krakow-your-comprehensive-city-guide",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -6332,7 +6978,17 @@
     },
     {
       "key": "post-weekend-in-krakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-weekend-in-krakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-weekend-in-krakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -6415,7 +7071,17 @@
     },
     {
       "key": "post-welcome-to-alcohol",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-welcome-to-alcohol",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-welcome-to-alcohol",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -6498,7 +7164,17 @@
     },
     {
       "key": "post-wheres-the-cheap-places-to-drink-in-krakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "post-wheres-the-cheap-places-to-drink-in-krakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "post-wheres-the-cheap-places-to-drink-in-krakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -6581,7 +7257,17 @@
     },
     {
       "key": "archive-category-drinking-games",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-category-drinking-games",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-category-drinking-games",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -6664,7 +7350,17 @@
     },
     {
       "key": "archive-category-hen-do",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-category-hen-do",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-category-hen-do",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -6747,7 +7443,17 @@
     },
     {
       "key": "archive-category-krakow-guides",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-category-krakow-guides",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-category-krakow-guides",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -6830,7 +7536,17 @@
     },
     {
       "key": "archive-category-krakow-nightlife",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-category-krakow-nightlife",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-category-krakow-nightlife",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -6913,7 +7629,17 @@
     },
     {
       "key": "archive-category-party-tips",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-category-party-tips",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-category-party-tips",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -6996,7 +7722,17 @@
     },
     {
       "key": "archive-category-stag-do",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-category-stag-do",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-category-stag-do",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -7079,7 +7815,17 @@
     },
     {
       "key": "archive-category-uncategorized",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-category-uncategorized",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-category-uncategorized",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -7162,7 +7908,17 @@
     },
     {
       "key": "archive-author-dpbowman",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -7245,7 +8001,17 @@
     },
     {
       "key": "archive-author-dpbowman-page-2",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman-page-2",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman-page-2",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -7328,7 +8094,17 @@
     },
     {
       "key": "archive-author-dpbowman-page-3",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman-page-3",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman-page-3",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -7411,7 +8187,17 @@
     },
     {
       "key": "archive-author-dpbowman-page-4",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman-page-4",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman-page-4",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -7494,7 +8280,17 @@
     },
     {
       "key": "archive-author-dpbowman-page-5",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman-page-5",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman-page-5",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -7577,7 +8373,17 @@
     },
     {
       "key": "archive-author-dpbowman-page-6",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman-page-6",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman-page-6",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -7660,7 +8466,17 @@
     },
     {
       "key": "archive-author-dpbowman-page-7",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman-page-7",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman-page-7",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -7743,7 +8559,17 @@
     },
     {
       "key": "archive-author-dpbowman-page-8",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman-page-8",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman-page-8",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -7826,7 +8652,17 @@
     },
     {
       "key": "archive-author-dpbowman-page-9",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman-page-9",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-author-dpbowman-page-9",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -7909,7 +8745,17 @@
     },
     {
       "key": "archive-author-jessie",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-author-jessie",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-author-jessie",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -7992,7 +8838,17 @@
     },
     {
       "key": "archive-author-pubthroughkrakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-author-pubthroughkrakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-author-pubthroughkrakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -8075,7 +8931,17 @@
     },
     {
       "key": "archive-author-pubthroughkrakow-page-2",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-author-pubthroughkrakow-page-2",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-author-pubthroughkrakow-page-2",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -8158,7 +9024,17 @@
     },
     {
       "key": "archive-author-thirsty",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-author-thirsty",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-author-thirsty",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -8241,7 +9117,17 @@
     },
     {
       "key": "archive-category-krakow-guides-page-2",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-category-krakow-guides-page-2",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-category-krakow-guides-page-2",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -8324,7 +9210,17 @@
     },
     {
       "key": "archive-category-krakow-guides-page-3",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-category-krakow-guides-page-3",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-category-krakow-guides-page-3",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -8407,7 +9303,17 @@
     },
     {
       "key": "archive-category-krakow-nightlife-page-2",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-category-krakow-nightlife-page-2",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-category-krakow-nightlife-page-2",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -8490,7 +9396,17 @@
     },
     {
       "key": "archive-category-party-tips-page-2",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-category-party-tips-page-2",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-category-party-tips-page-2",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -8573,7 +9489,17 @@
     },
     {
       "key": "archive-category-uncategorized-page-2",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-category-uncategorized-page-2",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-category-uncategorized-page-2",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -8656,7 +9582,17 @@
     },
     {
       "key": "archive-category-uncategorized-page-3",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-category-uncategorized-page-3",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-category-uncategorized-page-3",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -8739,7 +9675,17 @@
     },
     {
       "key": "archive-category-uncategorized-page-4",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-category-uncategorized-page-4",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-category-uncategorized-page-4",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -8822,7 +9768,17 @@
     },
     {
       "key": "archive-category-uncategorized-page-5",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-category-uncategorized-page-5",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-category-uncategorized-page-5",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -8905,7 +9861,17 @@
     },
     {
       "key": "about-us",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "about-us",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "about-us",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -8988,7 +9954,17 @@
     },
     {
       "key": "how-to-join",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "how-to-join",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "how-to-join",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -9071,7 +10047,17 @@
     },
     {
       "key": "blog",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "blog",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "blog",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -9154,7 +10140,17 @@
     },
     {
       "key": "contact",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "contact",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "contact",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -9237,7 +10233,17 @@
     },
     {
       "key": "faqs",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "faqs",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "faqs",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -9320,7 +10326,17 @@
     },
     {
       "key": "gallery",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "gallery",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "gallery",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -9403,7 +10419,17 @@
     },
     {
       "key": "krakow-hen-do",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "krakow-hen-do",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "krakow-hen-do",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -9486,7 +10512,17 @@
     },
     {
       "key": "krakow-nightlife",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "krakow-nightlife",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "krakow-nightlife",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -9569,7 +10605,17 @@
     },
     {
       "key": "krakow-stag-do",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "krakow-stag-do",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "krakow-stag-do",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -9652,7 +10698,17 @@
     },
     {
       "key": "meeting-point",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "meeting-point",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "meeting-point",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -9735,7 +10791,17 @@
     },
     {
       "key": "new-years-eve",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "new-years-eve",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "new-years-eve",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -9818,7 +10884,17 @@
     },
     {
       "key": "other-tours",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "other-tours",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "other-tours",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -9901,7 +10977,17 @@
     },
     {
       "key": "otherbarcrawls",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "otherbarcrawls",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "otherbarcrawls",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -9984,7 +11070,17 @@
     },
     {
       "key": "privacy-policy",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "privacy-policy",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "privacy-policy",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -10067,7 +11163,17 @@
     },
     {
       "key": "pub-crawl-drinking-games",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "pub-crawl-drinking-games",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "pub-crawl-drinking-games",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -10150,7 +11256,17 @@
     },
     {
       "key": "pub-crawl-jobs",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "pub-crawl-jobs",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "pub-crawl-jobs",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -10233,7 +11349,17 @@
     },
     {
       "key": "stagshens",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "stagshens",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "stagshens",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -10316,7 +11442,17 @@
     },
     {
       "key": "student-trips-poland",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "student-trips-poland",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "student-trips-poland",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -10399,7 +11535,17 @@
     },
     {
       "key": "terms-and-conditions",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "terms-and-conditions",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "terms-and-conditions",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -10482,7 +11628,17 @@
     },
     {
       "key": "testimonials",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "testimonials",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "testimonials",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -10565,7 +11721,17 @@
     },
     {
       "key": "tour-service-disclaimer",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "tour-service-disclaimer",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "tour-service-disclaimer",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -10648,7 +11814,17 @@
     },
     {
       "key": "archive-tag-drinking-games",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-drinking-games",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-drinking-games",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -10731,7 +11907,17 @@
     },
     {
       "key": "archive-tag-krakow-food",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-krakow-food",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-krakow-food",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -10814,7 +12000,17 @@
     },
     {
       "key": "archive-tag-krakow-nightlife",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-krakow-nightlife",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-krakow-nightlife",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -10897,7 +12093,17 @@
     },
     {
       "key": "archive-tag-krakow-party",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-krakow-party",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-krakow-party",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -10980,7 +12186,17 @@
     },
     {
       "key": "archive-tag-krakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-krakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-krakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -11063,7 +12279,17 @@
     },
     {
       "key": "archive-tag-krawl-through-krakow",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-krawl-through-krakow",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-krawl-through-krakow",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -11146,7 +12372,17 @@
     },
     {
       "key": "archive-tag-party-ideas",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-party-ideas",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-party-ideas",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -11229,7 +12465,17 @@
     },
     {
       "key": "archive-tag-pub-crawl",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-pub-crawl",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-pub-crawl",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -11312,7 +12558,17 @@
     },
     {
       "key": "archive-tag-tips",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-tips",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-tips",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -11395,7 +12651,17 @@
     },
     {
       "key": "archive-tag-to-do-list",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-to-do-list",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-to-do-list",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {
@@ -11478,7 +12744,17 @@
     },
     {
       "key": "archive-tag-why-choose-us",
-      "name": "headings preserved",
+      "name": "reviewed heading labels and levels",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-why-choose-us",
+      "name": "one nonempty primary heading",
+      "pass": true
+    },
+    {
+      "key": "archive-tag-why-choose-us",
+      "name": "no skipped heading levels",
       "pass": true
     },
     {

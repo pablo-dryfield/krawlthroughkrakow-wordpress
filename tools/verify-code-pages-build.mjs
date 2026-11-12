@@ -5,6 +5,7 @@ import {execFileSync} from 'node:child_process';
 import path from 'node:path';
 import {reviseCodePageContent} from './code-pages-content-revisions.mjs';
 import {codePageDescription, validateSeoRoutes} from './code-pages-seo.mjs';
+import {reviseSemanticHeadings} from './semantic-headings.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const base='staging/wp-content/mu-plugins/ktk-code-pages-assets/';
@@ -16,15 +17,17 @@ const definitions=JSON.parse(execFileSync('php',['-r',"define('ABSPATH', __DIR__
 const checks=[];const check=(key,name,pass,detail)=>checks.push({key,name,pass:!!pass,detail});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 const page=await browser.newPage({javaScriptEnabled:false});await page.route('**/*',r=>r.abort());
-async function facts(html,key){await page.setContent(html);if(key)await page.evaluate(reviseCodePageContent,{key,reviewCounts});return page.evaluate(()=>{const root=document.querySelector('#main-content');root.querySelectorAll('script,style,noscript,.mejs-controls,.mejs-layers,video a,[data-single-product-id],[data-ktk-booking-product]').forEach(e=>e.remove());return {text:root.textContent.replace(/\s+/g,' ').trim(),sections:root.querySelectorAll('.et_pb_section').length,headings:[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(e=>e.textContent.trim()),forms:root.querySelectorAll('form.et_pb_contact_form,form.wpcf7-form').length,scripts:root.querySelectorAll('script').length,handlers:[...root.querySelectorAll('*')].flatMap(e=>[...e.attributes].filter(a=>/^on/i.test(a.name)).map(a=>a.name))};});}
+async function facts(html,revision){await page.setContent(html);if(revision){await page.evaluate(reviseCodePageContent,{key:revision.key,reviewCounts});await page.evaluate(reviseSemanticHeadings,revision);}return page.evaluate(()=>{const root=document.querySelector('#main-content');root.querySelectorAll('script,style,noscript,.mejs-controls,.mejs-layers,video a,[data-single-product-id],[data-ktk-booking-product]').forEach(e=>e.remove());return {text:root.textContent.replace(/\s+/g,' ').trim(),sections:root.querySelectorAll('.et_pb_section').length,headings:[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(e=>({tag:e.tagName,text:e.textContent.trim()})),primary:root.querySelectorAll('h1').length,forms:root.querySelectorAll('form.et_pb_contact_form,form.wpcf7-form').length,scripts:root.querySelectorAll('script').length,handlers:[...root.querySelectorAll('*')].flatMap(e=>[...e.attributes].filter(a=>/^on/i.test(a.name)).map(a=>a.name))};});}
 try{
  for(const route of manifest.routes){
   const definition=definitions[route.key],capture=JSON.parse(await readFile(route.source+'/production-1920.json','utf8'));
   const html=await readFile(base+definition.main_file,'utf8'),source=await readFile(route.source+'/production-1920.html','utf8');
-  const a=await facts(source,route.key),b=await facts(html);
+  const a=await facts(source,{key:route.key,kind:route.kind,route:route.route,title:capture.title}),b=await facts(html);
   check(route.key,'complete visible content',a.text===b.text,a.text===b.text?undefined:{sourceLength:a.text.length,candidateLength:b.text.length});
   check(route.key,'all sections',b.sections===route.expectedSections);
-  check(route.key,'headings preserved',JSON.stringify(a.headings)===JSON.stringify(b.headings));
+  check(route.key,'reviewed heading labels and levels',JSON.stringify(a.headings)===JSON.stringify(b.headings));
+  check(route.key,'one nonempty primary heading',b.primary===1&&b.headings.filter(row=>row.tag==='H1').every(row=>row.text));
+  check(route.key,'no skipped heading levels',b.headings.every((row,index)=>Number(row.tag.slice(1))<=(index?Number(b.headings[index-1].tag.slice(1)):0)+1));
   check(route.key,'form contracts preserved',a.forms===b.forms);
   check(route.key,'title preserved',definition.title===capture.title);
   check(route.key,'description matches reviewed source or original capture',definition.description===codePageDescription(route.route,capture.metadata.description));
