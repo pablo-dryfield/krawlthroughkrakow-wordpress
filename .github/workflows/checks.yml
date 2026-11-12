@@ -39,7 +39,7 @@ jobs:
       - name: Guarded publisher unit tests (no deployment)
         run: python -m unittest discover -s tools/tests -p 'test_*.py'
       - name: Shared JavaScript contracts
-        run: node --test tools/tests/test_booking_destinations.mjs tools/tests/test_homepage_consent.mjs
+        run: node --test tools/tests/test_booking_destinations.mjs tools/tests/test_homepage_consent.mjs tools/tests/test_code_pages_seo.mjs
       - name: PHP syntax and isolated integration contracts
         run: |
           php --version

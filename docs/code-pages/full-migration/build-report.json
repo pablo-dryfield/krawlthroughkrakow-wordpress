@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-05T16:44:59.657Z",
+  "startedAt": "2026-11-12T16:29:00.643Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -2264,5 +2264,19 @@
       ]
     }
   },
-  "finishedAt": "2026-11-05T16:45:28.773Z"
+  "seoMetadata": {
+    "reviewedOn": "2026-11-12",
+    "routes": [
+      "/about-us/",
+      "/about-us/how-to-join/",
+      "/meeting-point/",
+      "/new-years-eve/",
+      "/krakow-nightlife/",
+      "/wheres-the-cheap-places-to-drink-in-krakow/",
+      "/krakow-stag-do/",
+      "/krakow-hen-do/"
+    ],
+    "sourceSha256": "885a36094439df5497d4c6b01562b2897d9b2b19f707ef50b9b6c5463ace252e"
+  },
+  "finishedAt": "2026-11-12T16:29:30.969Z"
 }

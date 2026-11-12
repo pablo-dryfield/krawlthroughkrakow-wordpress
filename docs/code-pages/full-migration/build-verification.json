@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-05T17:25:30.292Z",
+  "checkedAt": "2026-11-12T16:30:07.021Z",
   "routes": 116,
   "passed": 1856,
   "total": 1856,
@@ -125,7 +125,7 @@
     "ktk-code-pages-assets/forms.php": "ee77d0139b5d885a2ee5451d81b59f065679461ef20ffdf1d5b7c5d44903e8a2",
     "ktk-code-pages-assets/how-to-join.css": "8cc9edc272b7febb4f8af52aaf3368d917c23dfa73cc3af0a62be348f342c0f1",
     "ktk-code-pages-assets/how-to-join.php": "aa0846de32a9dea837c2e69b51cf73ebc14e9242dc18debe21d7c969edd3d37f",
-    "ktk-code-pages-assets/integrations.php": "cf556c20cbe6550cf0051e28adcddb1e269289ae1fc3b2f6e8596ae2da6a17aa",
+    "ktk-code-pages-assets/integrations.php": "e5855ef4e32f25076d58c3db66cea03b813be569cf0feb3906e3faa51db65a18",
     "ktk-code-pages-assets/media/002b4150d13e-P1057090-1280x853.jpg": "482b2c38e58bace26253d28048593915743afd1a83b6cac2439d4fd4f0a28a82",
     "ktk-code-pages-assets/media/00724f7715c0-IMG_9066-768x1152.jpg": "f1d28e2ea20fb2813bf54421cb28b95cea0be941a054b2e36c6a7d53a84bd060",
     "ktk-code-pages-assets/media/00866b15967c-italic.woff2": "9e9761aec15d4fbf67aaa1eb021c41f513314fbb75435fd3a7558cbfe1740f4a",
@@ -1526,7 +1526,7 @@
     "ktk-code-pages-assets/media/ff7a942c9b8e-1683482470_1683482468289.png": "d2e1be41761f117ed343ae564d1fbf9885ab788cf14900d3fa218d7633dacbe2",
     "ktk-code-pages-assets/media/ff9960d82bef-slide5-480x475.jpg": "c6320ddab02b5d77c114cc5b85c3ccf81b4cab99bb34eedbb240a2c56a6c41d6",
     "ktk-code-pages-assets/pages/.htaccess": "b839261c1ee52349560b726218f0bc9cb1afee95e07e9d50f95919d5e8e6cdf2",
-    "ktk-code-pages-assets/pages/about-us.php": "732159d24a64ef5d3a4dc0d4bbf817dd2472980c9d7ba6886141709ad785a532",
+    "ktk-code-pages-assets/pages/about-us.php": "684895ed6ccda98fca804c39e8c89f6b995ec6ada70505af370745f9923479d9",
     "ktk-code-pages-assets/pages/archive-author-dpbowman-page-2.php": "ead85e967aa6d3354a20b2a74e973e8a0b3cc697605065b8f4c84d15b47f3aa5",
     "ktk-code-pages-assets/pages/archive-author-dpbowman-page-3.php": "a32ac87a0d41472fb1c5ec62e66011218dd8c4f47236eca3e988d2fd554c4628",
     "ktk-code-pages-assets/pages/archive-author-dpbowman-page-4.php": "f774aff22ab0b6b082faffeafba607260efd352f0aa6e7b47906bde72a6cd216",
@@ -1570,12 +1570,12 @@
     "ktk-code-pages-assets/pages/contact.php": "2eb2ac4b7ebedcf0fb9afcae059baa2124fa38e8f25724936d6bd575201cde53",
     "ktk-code-pages-assets/pages/faqs.php": "2c453705bd28f26024ac3a80affa0bddaa41c1ec7e29950f94c9763e507d1d67",
     "ktk-code-pages-assets/pages/gallery.php": "f420a02e554300d115f0613fc54cbd68f95fe1341f08a1e56215ff02b2db3113",
-    "ktk-code-pages-assets/pages/how-to-join.php": "99b8cd2d848c83de940c5067cfb738113c2cb597ede2535ae115f29c6c33e959",
-    "ktk-code-pages-assets/pages/krakow-hen-do.php": "428b89cf8cb8bda71e43deefd48d3407c96718dcaf20337dae881560b742a915",
-    "ktk-code-pages-assets/pages/krakow-nightlife.php": "4c0e9f2505bd9fc522f1048f785332225704822d2f4f7c696c7de2ed40e5f3c6",
-    "ktk-code-pages-assets/pages/krakow-stag-do.php": "8798c9fb43ae4b27cc7010440c73c2ac179d4001b7b5dd6c859ad23335884431",
-    "ktk-code-pages-assets/pages/meeting-point.php": "75b0c9cbed3709cff47d10dbb4266006cf87c85fc93faa9fe4eeaa96b5ba0280",
-    "ktk-code-pages-assets/pages/new-years-eve.php": "82569c37e0054d3db4df9c7287348fdcc09e7139866229e52ab23721387b4324",
+    "ktk-code-pages-assets/pages/how-to-join.php": "b9a4143d6a5755fc5b3ea9cf85130e33fa8cbb1388a9409d2d9deeb61a404cdd",
+    "ktk-code-pages-assets/pages/krakow-hen-do.php": "ff9873f31e862f48fb02b97185ea5d9c7a0672cda7e74710730d833769b64957",
+    "ktk-code-pages-assets/pages/krakow-nightlife.php": "b4a603f47a71dad1d79917eaf07d5fd897d7d8355fc097b744c52e826795db3d",
+    "ktk-code-pages-assets/pages/krakow-stag-do.php": "db2dfc03afb2b03ff750548c545532ff9d5d624e5ecbb8b8e5845698a0c44da6",
+    "ktk-code-pages-assets/pages/meeting-point.php": "3ac430ef6ea3b0769200c9583405a341bc788c13db904293b2d0619a01c32d43",
+    "ktk-code-pages-assets/pages/new-years-eve.php": "eba68cea743abef00dcd35c838d045fab0604db4318af4a20fe6bb36652c0769",
     "ktk-code-pages-assets/pages/other-tours.php": "dd075d4f484ee668faffeeb179599962ac1c1a52704d7464350694926b2cb419",
     "ktk-code-pages-assets/pages/otherbarcrawls.php": "e71073ec46d45b1ef23130200cc79b93eca7fd886f941b8f3eb5042be2d5535b",
     "ktk-code-pages-assets/pages/post-2020-krakow-nightlife-guide.php": "ba4398f3a5924f64cb82559d7060c1bb7651ce0b0255d29e6633c3f6495ac663",
@@ -1633,7 +1633,7 @@
     "ktk-code-pages-assets/pages/post-travel-krakow-your-comprehensive-city-guide.php": "7abb69ae88fd8b559ccfd56221431ace8f44b5ebf3a6612b5a825946ac15df1a",
     "ktk-code-pages-assets/pages/post-weekend-in-krakow.php": "720d8682af45d8ed74d4baeb22fc5615440ebb1b6afa2d33915dbc29f7054284",
     "ktk-code-pages-assets/pages/post-welcome-to-alcohol.php": "1fafcdfbb57edd005dfdb5f3c3d2f3b09c0ccf4eed09cb6f881765211f4c2668",
-    "ktk-code-pages-assets/pages/post-wheres-the-cheap-places-to-drink-in-krakow.php": "df0143bf2ce0b2778748cca2ac4031163ad79f6e36f6323d46302891164ac0e4",
+    "ktk-code-pages-assets/pages/post-wheres-the-cheap-places-to-drink-in-krakow.php": "9959802a97466862776b06f6c1e1db97a624312ca0e230c905cb12a991944d9b",
     "ktk-code-pages-assets/pages/privacy-policy.php": "897ae4a9dcc01d2d2d9c4053dd8ac0c5f9b6b55aa2c36b67b4b4ce7fb8520a1a",
     "ktk-code-pages-assets/pages/pub-crawl-drinking-games.php": "227cbd0dcfc7647fa343d12870a6ddae8b2422354a7b52eec07d2b53ea154ab1",
     "ktk-code-pages-assets/pages/pub-crawl-jobs.php": "5c98a7523453ea6146aa8a923a68247d448a13a4ca33d12591fa47a066ed14fc",
@@ -1918,7 +1918,7 @@
     "ktk-code-pages-assets/styles/f9ecc64293bcca58bb20.css": "f9ecc64293bcca58bb20950136218fc44f0f7f87a5c20978a7cee60d83694279",
     "ktk-code-pages-assets/styles/f9eed33630a8eca4b6a6.css": "f9eed33630a8eca4b6a62939b3875276f9723d06a54235d637dfa3e54b2c43a0",
     "ktk-code-pages-assets/styles/fef95b1452e6c9552295.css": "fef95b1452e6c9552295dff729f0173940dee84afb2ecc1a65d03996905510d5",
-    "ktk-code-pages.php": "4543c87fd040797b95b8148b142d17b65e5ab738febeec610e8e018f65046f4c"
+    "ktk-code-pages.php": "3306d596b1601d04182b7454d3f3849ed48d27d5247309370013109ae47ec1f9"
   },
   "checks": [
     {
@@ -1948,7 +1948,7 @@
     },
     {
       "key": "post-2020-krakow-nightlife-guide",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -2031,7 +2031,7 @@
     },
     {
       "key": "post-all-you-need-to-know-about-visiting-auschwitz",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -2114,7 +2114,7 @@
     },
     {
       "key": "post-bachelor-party-organisers-krakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -2197,7 +2197,7 @@
     },
     {
       "key": "post-best-drinking-games",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -2280,7 +2280,7 @@
     },
     {
       "key": "post-best-hotels-in-krakow-2019-2020",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -2363,7 +2363,7 @@
     },
     {
       "key": "post-best-places-to-eat",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -2446,7 +2446,7 @@
     },
     {
       "key": "post-best-pub-crawls-in-europe",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -2529,7 +2529,7 @@
     },
     {
       "key": "post-budapest-or-krakow-nightlife",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -2612,7 +2612,7 @@
     },
     {
       "key": "post-escape-rooms-for-a-stag-do-in-krakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -2695,7 +2695,7 @@
     },
     {
       "key": "post-go-karting-krakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -2778,7 +2778,7 @@
     },
     {
       "key": "post-hen-do-ideas-abroad",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -2861,7 +2861,7 @@
     },
     {
       "key": "post-hostel-etiquette-tips",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -2944,7 +2944,7 @@
     },
     {
       "key": "post-hostel-hangover-cure",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -3027,7 +3027,7 @@
     },
     {
       "key": "post-irish-bars-krakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -3110,7 +3110,7 @@
     },
     {
       "key": "post-is-krakow-safe-for-stag",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -3193,7 +3193,7 @@
     },
     {
       "key": "post-jazz-bars-in-krakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -3276,7 +3276,7 @@
     },
     {
       "key": "post-karaoke-bars-in-krakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -3359,7 +3359,7 @@
     },
     {
       "key": "post-krakow-bars-jewish-quarter",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -3442,7 +3442,7 @@
     },
     {
       "key": "post-krakow-budget-activities",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -3525,7 +3525,7 @@
     },
     {
       "key": "post-krakow-food-truck-parks",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -3608,7 +3608,7 @@
     },
     {
       "key": "post-krakow-free-activities-2",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -3691,7 +3691,7 @@
     },
     {
       "key": "post-krakow-go-karting",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -3774,7 +3774,7 @@
     },
     {
       "key": "post-krakow-hen-party-reviews",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -3857,7 +3857,7 @@
     },
     {
       "key": "post-krakow-live-music",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -3940,7 +3940,7 @@
     },
     {
       "key": "post-krakow-milkbars",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -4023,7 +4023,7 @@
     },
     {
       "key": "post-krakow-money-saving-tips",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -4106,7 +4106,7 @@
     },
     {
       "key": "post-krakow-new-years-eve",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -4189,7 +4189,7 @@
     },
     {
       "key": "post-krakow-nightclubs",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -4272,7 +4272,7 @@
     },
     {
       "key": "post-krakow-safety-guide",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -4355,7 +4355,7 @@
     },
     {
       "key": "post-krakow-shooting-range",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -4438,7 +4438,7 @@
     },
     {
       "key": "post-krakow-shot-bar",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -4521,7 +4521,7 @@
     },
     {
       "key": "post-krakow-stag-activities",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -4604,7 +4604,7 @@
     },
     {
       "key": "post-krakow-team-building-activities",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -4687,7 +4687,7 @@
     },
     {
       "key": "post-krakow-techno-clubs-2",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -4770,7 +4770,7 @@
     },
     {
       "key": "post-krakow-techno-clubs",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -4853,7 +4853,7 @@
     },
     {
       "key": "post-krakow-weather-guide",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -4936,7 +4936,7 @@
     },
     {
       "key": "post-krakow-wine-bars",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -5019,7 +5019,7 @@
     },
     {
       "key": "post-krakow-winter-activities",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -5102,7 +5102,7 @@
     },
     {
       "key": "post-krawl-through-krakow-winter-newsletter",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -5185,7 +5185,7 @@
     },
     {
       "key": "post-life-professional-drunk",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -5268,7 +5268,7 @@
     },
     {
       "key": "post-new-years-eve-in-krakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -5351,7 +5351,7 @@
     },
     {
       "key": "post-party-krakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -5434,7 +5434,7 @@
     },
     {
       "key": "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -5517,7 +5517,7 @@
     },
     {
       "key": "post-spa-hotels-krakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -5600,7 +5600,7 @@
     },
     {
       "key": "post-spooktacular-krakow-unveil-the-mysteries-of-halloween",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -5683,7 +5683,7 @@
     },
     {
       "key": "post-sports-bar-krakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -5766,7 +5766,7 @@
     },
     {
       "key": "post-stag-do-costume",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -5849,7 +5849,7 @@
     },
     {
       "key": "post-stag-pranks",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -5932,7 +5932,7 @@
     },
     {
       "key": "post-stages-of-drunkenness",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -6015,7 +6015,7 @@
     },
     {
       "key": "post-survive-pub-crawl",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -6098,7 +6098,7 @@
     },
     {
       "key": "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -6181,7 +6181,7 @@
     },
     {
       "key": "post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -6264,7 +6264,7 @@
     },
     {
       "key": "post-travel-krakow-your-comprehensive-city-guide",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -6347,7 +6347,7 @@
     },
     {
       "key": "post-weekend-in-krakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -6430,7 +6430,7 @@
     },
     {
       "key": "post-welcome-to-alcohol",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -6513,7 +6513,7 @@
     },
     {
       "key": "post-wheres-the-cheap-places-to-drink-in-krakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -6596,7 +6596,7 @@
     },
     {
       "key": "archive-category-drinking-games",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -6679,7 +6679,7 @@
     },
     {
       "key": "archive-category-hen-do",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -6762,7 +6762,7 @@
     },
     {
       "key": "archive-category-krakow-guides",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -6845,7 +6845,7 @@
     },
     {
       "key": "archive-category-krakow-nightlife",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -6928,7 +6928,7 @@
     },
     {
       "key": "archive-category-party-tips",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -7011,7 +7011,7 @@
     },
     {
       "key": "archive-category-stag-do",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -7094,7 +7094,7 @@
     },
     {
       "key": "archive-category-uncategorized",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -7177,7 +7177,7 @@
     },
     {
       "key": "archive-author-dpbowman",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -7260,7 +7260,7 @@
     },
     {
       "key": "archive-author-dpbowman-page-2",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -7343,7 +7343,7 @@
     },
     {
       "key": "archive-author-dpbowman-page-3",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -7426,7 +7426,7 @@
     },
     {
       "key": "archive-author-dpbowman-page-4",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -7509,7 +7509,7 @@
     },
     {
       "key": "archive-author-dpbowman-page-5",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -7592,7 +7592,7 @@
     },
     {
       "key": "archive-author-dpbowman-page-6",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -7675,7 +7675,7 @@
     },
     {
       "key": "archive-author-dpbowman-page-7",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -7758,7 +7758,7 @@
     },
     {
       "key": "archive-author-dpbowman-page-8",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -7841,7 +7841,7 @@
     },
     {
       "key": "archive-author-dpbowman-page-9",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -7924,7 +7924,7 @@
     },
     {
       "key": "archive-author-jessie",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -8007,7 +8007,7 @@
     },
     {
       "key": "archive-author-pubthroughkrakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -8090,7 +8090,7 @@
     },
     {
       "key": "archive-author-pubthroughkrakow-page-2",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -8173,7 +8173,7 @@
     },
     {
       "key": "archive-author-thirsty",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -8256,7 +8256,7 @@
     },
     {
       "key": "archive-category-krakow-guides-page-2",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -8339,7 +8339,7 @@
     },
     {
       "key": "archive-category-krakow-guides-page-3",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -8422,7 +8422,7 @@
     },
     {
       "key": "archive-category-krakow-nightlife-page-2",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -8505,7 +8505,7 @@
     },
     {
       "key": "archive-category-party-tips-page-2",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -8588,7 +8588,7 @@
     },
     {
       "key": "archive-category-uncategorized-page-2",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -8671,7 +8671,7 @@
     },
     {
       "key": "archive-category-uncategorized-page-3",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -8754,7 +8754,7 @@
     },
     {
       "key": "archive-category-uncategorized-page-4",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -8837,7 +8837,7 @@
     },
     {
       "key": "archive-category-uncategorized-page-5",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -8920,7 +8920,7 @@
     },
     {
       "key": "about-us",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -9003,7 +9003,7 @@
     },
     {
       "key": "how-to-join",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -9086,7 +9086,7 @@
     },
     {
       "key": "blog",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -9169,7 +9169,7 @@
     },
     {
       "key": "contact",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -9252,7 +9252,7 @@
     },
     {
       "key": "faqs",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -9335,7 +9335,7 @@
     },
     {
       "key": "gallery",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -9418,7 +9418,7 @@
     },
     {
       "key": "krakow-hen-do",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -9501,7 +9501,7 @@
     },
     {
       "key": "krakow-nightlife",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -9584,7 +9584,7 @@
     },
     {
       "key": "krakow-stag-do",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -9667,7 +9667,7 @@
     },
     {
       "key": "meeting-point",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -9750,7 +9750,7 @@
     },
     {
       "key": "new-years-eve",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -9833,7 +9833,7 @@
     },
     {
       "key": "other-tours",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -9916,7 +9916,7 @@
     },
     {
       "key": "otherbarcrawls",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -9999,7 +9999,7 @@
     },
     {
       "key": "privacy-policy",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -10082,7 +10082,7 @@
     },
     {
       "key": "pub-crawl-drinking-games",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -10165,7 +10165,7 @@
     },
     {
       "key": "pub-crawl-jobs",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -10248,7 +10248,7 @@
     },
     {
       "key": "stagshens",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -10331,7 +10331,7 @@
     },
     {
       "key": "student-trips-poland",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -10414,7 +10414,7 @@
     },
     {
       "key": "terms-and-conditions",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -10497,7 +10497,7 @@
     },
     {
       "key": "testimonials",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -10580,7 +10580,7 @@
     },
     {
       "key": "tour-service-disclaimer",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -10663,7 +10663,7 @@
     },
     {
       "key": "archive-tag-drinking-games",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -10746,7 +10746,7 @@
     },
     {
       "key": "archive-tag-krakow-food",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -10829,7 +10829,7 @@
     },
     {
       "key": "archive-tag-krakow-nightlife",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -10912,7 +10912,7 @@
     },
     {
       "key": "archive-tag-krakow-party",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -10995,7 +10995,7 @@
     },
     {
       "key": "archive-tag-krakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -11078,7 +11078,7 @@
     },
     {
       "key": "archive-tag-krawl-through-krakow",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -11161,7 +11161,7 @@
     },
     {
       "key": "archive-tag-party-ideas",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -11244,7 +11244,7 @@
     },
     {
       "key": "archive-tag-pub-crawl",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -11327,7 +11327,7 @@
     },
     {
       "key": "archive-tag-tips",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -11410,7 +11410,7 @@
     },
     {
       "key": "archive-tag-to-do-list",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {
@@ -11493,7 +11493,7 @@
     },
     {
       "key": "archive-tag-why-choose-us",
-      "name": "description preserved",
+      "name": "description matches reviewed source or original capture",
       "pass": true
     },
     {

@@ -6,12 +6,14 @@ import path from 'node:path';
 import {buildPageIntegrations} from './code-pages-integrations.mjs';
 import {rewriteBookingLinks} from './booking-destinations.mjs';
 import {reviseCodePageContent} from './code-pages-content-revisions.mjs';
+import {codePageDescription, seoMetadata, validateSeoRoutes} from './code-pages-seo.mjs';
 const require = createRequire(import.meta.url);
 const { chromium } = require(path.join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const root = path.resolve('.');
 const assets = path.join(root, 'staging/wp-content/mu-plugins/ktk-code-pages-assets');
 const manifestPath = 'docs/code-pages/full-migration/manifest.json';
 const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
+validateSeoRoutes(manifest.routes.map(row => row.route));
 const reviewCounts=JSON.parse(execFileSync('php',['-r',"define('ABSPATH', __DIR__); require $argv[1]; echo json_encode(array_column(ktk_homepage_review_sources(), 'count', 'name'));",path.join(root,'staging/wp-content/mu-plugins/ktk-homepage-assets/reviews.php')],{encoding:'utf8'}));
 const seoBaseline=JSON.parse(await readFile('docs/code-pages/production-readiness/production-seo-baseline.json','utf8'));
 if(seoBaseline.errors.length||seoBaseline.routes.length!==manifest.routes.length)throw new Error('Complete read-only production SEO baseline required');
@@ -62,7 +64,9 @@ async function cssAssets(css, base, prefix = '') {
 }
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const page = await browser.newPage({ javaScriptEnabled: false }); await page.route('**/*', route => route.abort());
-const entries = {}, report = { startedAt: new Date().toISOString(), built: [], errors: [], missing: [],revisions:{} };
+const entries = {}, report = { startedAt: new Date().toISOString(), built: [], errors: [], missing: [],revisions:{},
+  seoMetadata: {reviewedOn:seoMetadata.reviewedOn, routes:Object.keys(seoMetadata.pages),
+    sourceSha256:digest(await readFile(new URL('./code-pages-seo.json', import.meta.url)))} };
 try {
   for (const route of manifest.routes) {
     let source, capture;
@@ -198,7 +202,7 @@ try {
       const cssFile = `styles/${digest(css).slice(0,20)}.css`;
       await writeFile(path.join(assets, shellFile), shell); await writeFile(path.join(assets, mainFile), main); await writeFile(path.join(assets, cssFile), css);
       const definition = { key: route.key, route: route.route, kind: route.kind, post_id: route.postId, title: capture.title,
-        description: capture.metadata.description, metadata: capture.metadata.extra, schema: capture.metadata.schema,
+        description: codePageDescription(route.route, capture.metadata.description), metadata: capture.metadata.extra, schema: capture.metadata.schema,
         body_class: data.bodyClass, shell_file: shellFile, main_file: mainFile, css: cssFile, forms: data.forms, ecwid: data.ecwid,
         source_sha256: digest(source), expected_sections: route.expectedSections };
       const seo=productionSeo.get(route.key);
