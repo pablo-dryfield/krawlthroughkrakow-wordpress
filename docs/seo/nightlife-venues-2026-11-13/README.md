@@ -32,8 +32,17 @@ its original article, media, byline and publication day remain exact.
   browser104/104 pass locally. Eight320/390/768/1440 automated views have0
   violations and12 incomplete groups; no full conformance claim. Screenshots
   inspected. Python177, shared JS69 and roadmap231 pass before release review.
-- [ ] Required CI, guarded staging deployment and actual origin/cache checks.
-- [ ] Final roadmap/delivery update, merge and own temporary reference cleanup.
+- [x] Final4f8264a required CI43437427575 both jobs pass. Guarded staging content
+  release2072 hashes and discovery3 hashes verified, saved state/home/store and
+  production protected, temporary helpers removed. Origin/normal focused browser
+ 104 each, attribution38 origin and public142-page graph6212/no unknown paths pass.
+- [x] Full origin/normal/warmed content5848 each; all348 content variants HIT
+  on repeat. Discovery243 origin/216 normal/repeat; homepage3 HIT/current10
+  active assets, browser104 origin/normal, attribution38 origin/normal and8-view
+  normal accessibility scan0 violations/12 incomplete groups pass. Live mobile
+  screenshots inspected.
+- [x] Both roadmaps updated from actual delivery evidence.
+- [ ] Final delivery-document CI/merge and own temporary reference cleanup.
 
 ## Maintainable Source
 
@@ -90,6 +99,36 @@ Initial source d721da5 passed required CI43436021739, both jobs. It precedes the
 archive notice/responsive follow-up; fresh required CI is needed for that final
 payload before deployment. No earlier green run is treated as approval of later
 uncommitted bytes.
+
+## Staging Checkpoints
+
+Final4f8264a passed required CI43437427575 before publishing. Content transaction
+completed13:54:14UTC; backup `ktk-code-pages-staging-20261113-135351.zip`, SHA256
+`76c934eef9cedf5581185e2ef5450e6c9d18ecf42f0c470de4750d32544c058a`.
+Discovery completed13:56:21UTC; backup
+`seo-discovery-staging-20261113-135540-992459.zip`, SHA256
+`19b952b440afd8645a1ee67b2e2a5b3dc130ebe1f159585424a368bc46ed238a`.
+Both independently verify their owned hashes/protected state and remove helpers.
+No second homepage/storefront payload was published.
+
+MCP staging-prefix purge accepted13:57:32.741UTC. Focused origin/normal native
+browser104 each and origin attribution38 pass. Normal initial-HTML graph covers
+142 pages/24 products/6212 edges with no unknown paths, the same6 held isolated
+tags and no private query values. Full origin/normal/warmed reports now pass5848
+each; normal143 HIT responses and final all348 HIT, exact119 public assets and
+current version tokens. Reports `nightlife-origin-20261113.json`,
+`nightlife-clean-20261113.json`, `nightlife-repeat-20261113.json` are under the
+full-migration evidence directory. Discovery243/216/216, homepage10 hashes/all3
+HIT, normal attribution38 and8-view accessibility0 violations/12 incomplete groups
+pass. This is staging delivery proof, not Google ranking or full conformance.
+All finite publisher/test sessions are closed; own reference PHP was stopped.
+Root previews5184/5185 remain in use for the next editorial batch.
+
+Future budget preparation is untracked in `tools/content/budget-drinks.html`,
+`tools/budget-editorial.mjs` and `../budget-drinks-2026-11-13/RESEARCH.md`; it is
+not wired into the builder or included in this release. Preserve it across branch
+cleanup. It deliberately proposes a separate reviewed media/content revision,
+not an unreported extension of this overview transaction.
 
 ## Prior Release
 
