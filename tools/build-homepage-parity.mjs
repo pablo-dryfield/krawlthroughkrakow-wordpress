@@ -10,6 +10,7 @@ import {rewriteCanonicalLinks} from './canonical-links.mjs';
 import {applyHomepageMediaPolicy,applyHomepageIconSizing} from './homepage-media-policy.mjs';
 import {reviseAccessibilitySemantics} from './accessibility-semantics.mjs';
 import {buildContentAccessibilityStyles} from './content-accessibility-styles.mjs';
+import {buildHomepageIconFontStyles} from './homepage-icon-font.mjs';
 import {loadHomepageOfferRevision,reviseHomepageOffer,buildHomepageOfferStyles} from './homepage-offer-editorial.mjs';
 
 // Build a local, code-owned snapshot from the read-only production capture.
@@ -23,6 +24,7 @@ const sourceDir = path.join(root, 'docs/homepage-parity');
 const assets = path.join(root, 'staging/wp-content/mu-plugins/ktk-homepage-assets');
 await buildHeroOfferFacts(path.join(assets,'hero.php'));
 await buildEventPromotionRuntime(path.join(assets,'parity.js'));
+await buildHomepageIconFontStyles(assets);
 await buildContentAccessibilityStyles(path.join(assets,'parity-runtime.css'));
 await buildHomepageOfferStyles(path.join(assets,'parity-runtime.css'));
 const origin = 'https://krawlthroughkrakow.com/';

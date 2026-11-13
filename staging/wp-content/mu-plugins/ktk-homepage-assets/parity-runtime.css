@@ -114,6 +114,18 @@ dialog.ktk-parity-lightbox button:focus-visible { outline: 2px solid #fff !impor
   .et_pb_image_3, .et_pb_image_4, .et_pb_image_5, .et_pb_image_6, .et_pb_image_7, .et_pb_image_8, .et_pb_column_27 { transition: none !important; }
 }
 
+/* BEGIN homepage full icon font delivery */
+@font-face {
+  font-family: "ETmodules";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("etmodules-full.woff2") format("woff2"),
+    url("parity/e5109a227107-modules.woff") format("woff"),
+    url("parity/4ec95df48507-modules.ttf") format("truetype");
+}
+/* END homepage full icon font delivery */
+
 /* BEGIN homepage offer clearance */
 /* Clearance for the existing left/right booking tabs; hero and wide layouts stay unchanged. */
 @media (max-width: 600px) {
