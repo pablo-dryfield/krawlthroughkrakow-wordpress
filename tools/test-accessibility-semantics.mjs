@@ -10,6 +10,7 @@ import {rewriteCanonicalLinks} from './canonical-links.mjs';
 import {loadNightlifeEditorial,reviseNightlifeEditorial} from './nightlife-editorial.mjs';
 import {loadBudgetEditorial,reviseBudgetEditorial} from './budget-editorial.mjs';
 import {loadJazzEditorial,reviseJazzEditorial} from './jazz-editorial.mjs';
+import {loadMusicEditorial,reviseMusicEditorial} from './music-editorial.mjs';
 import {codePageDescription} from './code-pages-seo.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
@@ -18,6 +19,7 @@ const contextual=process.argv.includes('--contextual');
 const nightlife=process.argv.includes('--nightlife');
 const budget=process.argv.includes('--budget');
 const jazz=process.argv.includes('--jazz');
+const music=process.argv.includes('--music');
 if(!baseline||!output)throw Error('Baseline worktree and fresh report required');
 try{await readFile(output);throw Error('Preserve earlier evidence');}catch(error){if(error.code!=='ENOENT')throw error;}
 const assets='staging/wp-content/mu-plugins/ktk-code-pages-assets/';
@@ -27,6 +29,7 @@ const imageDescriptions=await loadReviewedImageDescriptions();
 const nightlifeRevision=nightlife?await loadNightlifeEditorial():null;
 const budgetRevision=budget?await loadBudgetEditorial():null;
 const jazzRevision=jazz?await loadJazzEditorial():null;
+const musicRevisions=music?await loadMusicEditorial():[];
 const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
@@ -39,6 +42,7 @@ try{
   if(nightlife)await page.evaluate(reviseNightlifeEditorial,{key,revision:nightlifeRevision});
   if(budget)await page.evaluate(reviseBudgetEditorial,{key,revision:budgetRevision});
   if(jazz)await page.evaluate(reviseJazzEditorial,{key,revision:jazzRevision});
+  if(music)await page.evaluate(reviseMusicEditorial,{key,revision:musicRevisions.find(row=>row.key===key)});
   if(contextual){await page.evaluate(reviseContextualLinks,{key});await rewriteCanonicalLinks(page);}
   const expected=await page.evaluate(()=>document.body.innerHTML);
   await page.setContent(candidate);
@@ -231,6 +235,47 @@ try{
   await page.locator('h2').evaluate(h=>h.textContent='A different activity');
   rejected=false;try{await page.evaluate(reviseContextualLinks,{key:'krakow-stag-do'});}catch{rejected=true;}
   check('changed activity row rejects product substitution',rejected);
+ }
+ if(music)for(const revision of musicRevisions){
+  const key=revision.key,jazzGuide=key==='post-jazz-bars-in-krakow';
+  const original=await readFile(path.join(baseline,assets,before[key].main_file),'utf8');
+  await page.setContent(original);
+  const title=await page.locator('h1').evaluate(n=>n.outerHTML);
+  const publication=await page.locator('.post-meta').innerHTML();
+  const fragments=await page.locator('.entry-content [id]').evaluateAll(nodes=>[...new Set(nodes.map(n=>n.id).filter(id=>(id==='main-toc'||!id.endsWith('-toc'))&&!id.startsWith('64941e')))].sort());
+  const photo=await page.locator('.entry-content img').nth(jazzGuide?0:1).evaluate(n=>n.outerHTML);
+  const changes=await page.evaluate(reviseMusicEditorial,{key,revision});
+  check(key+' one reviewed body change with intended photo reduction',changes.length===1&&changes[0].removedBodyPhotos===(jazzGuide?5:6));
+  check(key+' title and publication stay exact',title===await page.locator('h1').evaluate(n=>n.outerHTML)&&publication===await page.locator('.post-meta').innerHTML());
+  check(key+' meaningful heading fragments retained exactly once',JSON.stringify(fragments)===JSON.stringify(await page.locator('.entry-content [id]').evaluateAll(nodes=>nodes.map(n=>n.id).sort())));
+  check(key+' only the exact original selected photo remains',await page.locator('.entry-content img').count()===1&&photo===await page.locator('.entry-content img').evaluate(n=>n.outerHTML));
+  check(key+' actual source-check date is separate from publication',await page.locator('.entry-content time').textContent()==='13 November 2026');
+  const once=await page.content();
+  check(key+' music revision is idempotent',(await page.evaluate(reviseMusicEditorial,{key,revision})).length===0&&once===await page.content());
+  for(const [name,markup] of [
+   ['script',revision.markup+'<script>alert(1)</script>'],
+   ['handler',revision.markup.replace('<p>','<p onclick="alert(1)">')],
+   ['foreign link',revision.markup.replace('https://harris.krakow.pl/o-nas/','https://example.invalid/')],
+   ['new image',revision.markup+'<img src="https://example.invalid/photo.jpg">'],
+   ['lost fragment',revision.markup.replace('id="conclusion"','id="other"')],
+   ['duplicate fragment',revision.markup+'<h2 id="conclusion">Duplicate</h2>'],
+   ['wrong photo slot',revision.markup.replace('data-ktk-original-photo="'+(jazzGuide?0:1)+'"','data-ktk-original-photo="5"')]
+  ]){
+   await page.setContent(original);const snapshot=await page.content();let rejected=false;
+   try{await page.evaluate(reviseMusicEditorial,{key,revision:{...revision,markup}});}catch{rejected=true;}
+   check(key+' '+name+' rejects atomically',rejected&&snapshot===await page.content());
+  }
+  for(const change of ['photo','title','publication','intro','duplicate-source-id']){
+   await page.setContent(original);
+   if(change==='photo')await page.locator('.entry-content img').nth(jazzGuide?0:1).evaluate(n=>{n.removeAttribute('data-lazy-src');n.src='https://example.invalid/wrong.jpg';});
+   if(change==='title')await page.locator('h1').evaluate(n=>n.textContent='Changed title');
+   if(change==='publication')await page.locator('.published').evaluate(n=>n.textContent='Jan 1, 2020');
+   if(change==='intro')await page.locator('.entry-content p').filter({hasText:jazzGuide?'When it comes to jazz bars in Krakow':'As a city steeped in rich cultural history'}).first().evaluate(n=>n.textContent='Changed introduction');
+   if(change==='duplicate-source-id')await page.locator('#conclusion').evaluate(n=>n.after(n.cloneNode(true)));
+   const snapshot=await page.content();let rejected=false;
+   try{await page.evaluate(reviseMusicEditorial,{key,revision});}catch{rejected=true;}
+   check(key+' changed '+change+' rejects atomically',rejected&&snapshot===await page.content());
+  }
  }
  if(jazz){
   const key=jazzRevision.key,markup=await readFile(path.join(baseline,assets,before[key].main_file),'utf8');

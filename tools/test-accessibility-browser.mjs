@@ -87,6 +87,38 @@ try{
      await page.screenshot({path:path.join(output,'budget-'+width+'-comparison.png')});
     }
    }
+   if(['/jazz-bars-in-krakow/','/krakow-live-music/'].includes(route)&&process.argv.includes('--capture-music')){
+    const jazz=route==='/jazz-bars-in-krakow/',kind=jazz?'jazz':'live-music';
+    const article=page.locator('.entry-content[data-ktk-music-review="2026-11-13.music-1"]');
+    check(name+' one reviewed music body rendered',await article.count()===1);
+    check(name+' original publication and separate review date retained',await page.locator('.published').textContent()===(jazz?'Jul 18, 2023':'Jul 13, 2023')&&await article.locator('time[datetime="2026-11-13"]').textContent()==='13 November 2026');
+    check(name+' meaningful section fragments remain unique',await article.locator('[id]').evaluateAll((nodes,count)=>nodes.length===count&&new Set(nodes.map(n=>n.id)).size===count,jazz?15:12));
+    check(name+' one identifiable original photograph retained',await article.locator('img').count()===1&&(await article.locator('img').getAttribute('src')).includes(jazz?'3ba6b2583586-':'f7a107de5f06-')&&!!await article.locator('img').getAttribute('alt'));
+    const copy=await article.textContent();
+    check(name+' unsupported venue promises removed',jazz?copy.includes('not confirmed a current jazz programme')&&!/birthplace of Polish jazz|since the 1950s|over 30 years/i.test(copy):copy.includes('not being presented here as a specialist jazz club')&&copy.includes('Some site material is historical')&&!/since 1991|twin bars|hidden gem tucked/i.test(copy));
+    const sources=jazz?['https://alchemia.com.pl/program/','https://www.thepianorouge.com.pl/en/home-page/']:['https://cafe.hardrock.com/krakow/event-calendar.aspx','https://piwnicapodbaranami.pl/nowo%C5%9Bci','https://fortykleparz.pl/music-club/'];
+    check(name+' reviewed primary programme links rendered',await article.locator('a[href]').evaluateAll((nodes,urls)=>urls.every(url=>nodes.some(a=>a.getAttribute('href')===url)),sources));
+    check(name+' native current booking destination retained',new URL(await article.getByRole('link',{name:'current Krakow pub-crawl inclusions',exact:true}).getAttribute('href'),url).pathname==='/staging/store2/pub-crawl-28/');
+    check(name+' native contents links resolve uniquely',await article.locator('a[href]').evaluateAll((nodes,count)=>{
+     const links=nodes.filter(a=>{const u=new URL(a.href,location.href);return u.origin===location.origin&&u.pathname===location.pathname&&u.search===location.search&&u.hash;});
+     return links.length===count&&links.every(a=>document.querySelectorAll('[id="'+new URL(a.href).hash.slice(1)+'"]').length===1);
+    },jazz?5:6));
+    const clearance=node=>{
+     const cta=document.getElementById('ktk-cta');if(!cta?.getClientRects().length)return {present:false,overlaps:[]};
+     const box=cta.getBoundingClientRect(),walker=document.createTreeWalker(node,NodeFilter.SHOW_TEXT),overlaps=[];let text;
+     while((text=walker.nextNode())){if(!text.textContent.trim())continue;const r=document.createRange();r.selectNodeContents(text);if([...r.getClientRects()].some(t=>t.width&&t.height&&t.right>box.left-2&&t.left<box.right+2&&t.bottom>box.top&&t.top<box.bottom))overlaps.push(text.textContent.trim().slice(0,80));}
+     return {present:true,overlaps};
+    };
+    await page.evaluate(()=>scrollTo({top:0,left:0,behavior:'instant'}));
+    const landing=await page.locator('#main-content').evaluate(clearance);check(name+' headline clears visible booking tab',landing.present&&!landing.overlaps.length,landing);
+    if([390,1440].includes(width))await page.screenshot({path:path.join(output,kind+'-'+width+'-landing.png')});
+    const id=jazz?'legendaryjazzbarsinkrakow':'hardrockcafeaglobalbrandwithanimpressivelineupoflivejazzperformances';
+    const contents=article.locator('a[href]').filter({hasText:jazz?'Harris':'Hard Rock'}).first();
+    await contents.focus();await page.keyboard.press('Enter');
+    check(name+' contents Enter retains native original fragment',await page.evaluate(id=>location.hash==='#'+id&&document.getElementById(id).getBoundingClientRect().top>=-2&&document.getElementById(id).getBoundingClientRect().top<innerHeight,id));
+    const body=await article.evaluate(clearance);check(name+' body clears visible booking tab',body.present&&!body.overlaps.length,body);
+    if([390,1440].includes(width))await page.screenshot({path:path.join(output,kind+'-'+width+'-choices.png')});
+   }
    if(route==='/jazz-bars-in-krakow/'&&process.argv.includes('--capture-jazz')){
     const article=page.locator('#post-6169>.entry-content'),notice=article.locator('[data-ktk-jazz-review="2026-11-13"]');
     check(name+' one scoped venue-check notice is visible',await notice.count()===1&&await notice.isVisible()&&(await notice.textContent()).includes('Harris, PIEC Art and U Muniaka'));

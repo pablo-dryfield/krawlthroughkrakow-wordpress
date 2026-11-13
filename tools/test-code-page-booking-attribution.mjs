@@ -19,6 +19,7 @@ const cases=[
 if(!production)cases.push({path:'/krakow-stag-do/',selector:'a[data-ktk-booking-product="30"]',destination:'/staging/store2/go-karting-30/',product:30});
 if(!production)cases.push({path:'/wheres-the-cheap-places-to-drink-in-krakow/',selector:'.et_pb_text_0 a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 if(!production)cases.push({path:'/jazz-bars-in-krakow/',selector:'.entry-content a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
+if(!production)cases.push({path:'/krakow-live-music/',selector:'.entry-content a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 if(production)for(const item of cases)item.destination=item.destination.replace(/^\/staging/,'');
 const params={utm_source:'readiness-validation',utm_medium:'controlled-browser',utm_campaign:production?'production-link-handoff':'staging-link-handoff',gclid:'isolated-validation-click'};
 const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});
