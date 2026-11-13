@@ -54,6 +54,7 @@ try{
     check(name+' native button inherits original heading typography',await button.evaluate(node=>['fontFamily','fontSize','fontWeight','lineHeight','color','textAlign'].every(key=>getComputedStyle(node)[key]===getComputedStyle(node.parentElement)[key])));
    }
    const planning=page.locator('[data-ktk-contextual-links]');
+   if(['/stagshens/','/bachelor-party-organisers-krakow/','/hen-do-ideas-abroad/','/krakow-hen-party-reviews/','/best-pub-crawls-in-europe/'].includes(route))check(name+' expected contextual block exists',await planning.count()===1);
    if(await planning.count()){
     check(name+' contextual links are visible native links within their paragraph',await planning.evaluate(p=>[...p.querySelectorAll('a[href]')].every(a=>{
      const r=a.getBoundingClientRect(),parent=p.getBoundingClientRect();return a.textContent.trim()&&r.width>0&&r.height>0&&r.left>=parent.left-1&&r.right<=parent.right+1;

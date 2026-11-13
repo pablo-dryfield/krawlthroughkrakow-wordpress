@@ -25,7 +25,12 @@ claim that every old article/venue/package has completed its separate fact check
   forms, page metadata/schema, captured CSS/media and medical body preserved except
   the explicitly added paragraphs/corrected button. Final keyboard/reflow/control
   browser checks284/284 pass, including the clean Go-Karting accessible name.
-- [ ] Required CI and guarded staging deployment.
+- [x] Initial02bc7d4 required CI43429979704 passed both jobs; guarded staging
+  content2072 and home232 assets-only hashes verified, saved state/storefront
+  protected and content helper removed. Initial origin/normal full content5848
+  each, focused native browser304 each,142-page graph and discovery216 pass.
+- [ ] Narrow product30 event-map follow-up: new4 bootstrap contracts pass,
+  refreshed build2320 and Python177 pass; fresh CI/redeployment/cache checks pending.
 - [ ] Origin, scoped cache purge, complete normal/repeat graph and release checks.
 
 ## Findings And Changes
@@ -90,6 +95,13 @@ are unchanged. Existing enquiry fields/actions/recipients/backends remain.
 - Two280/284 runs exposed the legacy pseudo-arrow's literal5 in the accessible
   name, not a wrong destination. The repaired control now gets an exact meaningful
   aria-label, preserving the visual arrow. Retain those failures and verify again.
+- Initial staging attribution37/38 correctly exposed the missing product30 entry
+  in the existing consent-gated event allowlist. UTM/destination/no-submission and
+  denied-consent assertions all passed. The narrow runtime follow-up adds only
+  that known route/ID; four bootstrap tests retain foreign/unknown rejection,
+  consent withholding, unavailable-storage behavior, existing IDs and one loader.
+  Before the follow-up, origin/normal content5848 each,304 browser,142-page graph
+  and discovery216 passed; preserve as earlier-payload evidence, not final proof.
 
 Previous medical, manual assistive-technology/provider and strict unchanged-logo
 raster limitations still apply. No conformance, pixel-identity, traffic or ranking
@@ -99,3 +111,13 @@ Previous image batch PR21 finaleb9ce7a passed CI43427701904, merged58b62f7 with 
 tree9d8f92fa38a258e9998fe77a08292d48b0e04f42. Its temporary baseline was stopped
 and removed before deleting its completed branches. This batch has its own58b62f7
 detached source reference; clean it after verified merge/release.
+
+## Initial Staging Checkpoint
+
+Content backup `ktk-code-pages-staging-20261113-130307.zip`, SHA256
+`79cae899adfd7f44de4ac22bc7c39c7e4d0096bb21c4d44f6b5c10c90763a8db`.
+Home backup `ktk-homepage-shortcode-staging-20261113-130619.zip`, SHA256
+`36f2dc6ecaee9580d2561700e238f7e05f5d0060782d4e2166c9cd9e86668811`.
+Staging-only MCP prefix purge accepted13:08:18.559UTC. This checkpoint precedes
+the event-map follow-up; preserve all original reports. No new homepage payload
+is required for that one-line content-runtime correction.
