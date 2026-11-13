@@ -29,9 +29,16 @@ claim that every old article/venue/package has completed its separate fact check
   content2072 and home232 assets-only hashes verified, saved state/storefront
   protected and content helper removed. Initial origin/normal full content5848
   each, focused native browser304 each,142-page graph and discovery216 pass.
-- [ ] Narrow product30 event-map follow-up: new4 bootstrap contracts pass,
-  refreshed build2320 and Python177 pass; fresh CI/redeployment/cache checks pending.
-- [ ] Origin, scoped cache purge, complete normal/repeat graph and release checks.
+- [x] Narrow product30 event-map follow-up602d058: CI43432108961 both jobs pass;
+  new4 bootstrap contracts, refreshed build2320, Python177/shared JS65 pass.
+  Guarded content-only deployment2072 hashes, unchanged saved state/home/store,
+  helper removed. No second homepage change.
+- [x] Final origin5848/5848, focused browser304/304 and attribution38/38 pass.
+  Final normal5848/5848, browser304/304, attribution38/38,142-page graph6206
+  edges/no unknowns/same6 held tags, discovery216 and current10 home assets pass.
+- [x] Final warmed content5848/5848, all348 page/device variants HIT; discovery216
+  and homepage3 HIT/current10 active hashes pass. Final source381 and JS65 pass.
+- [ ] Final delivery-document CI/merge and temporary reference cleanup.
 
 ## Findings And Changes
 
@@ -121,3 +128,21 @@ Home backup `ktk-homepage-shortcode-staging-20261113-130619.zip`, SHA256
 Staging-only MCP prefix purge accepted13:08:18.559UTC. This checkpoint precedes
 the event-map follow-up; preserve all original reports. No new homepage payload
 is required for that one-line content-runtime correction.
+
+## Runtime Follow-up Checkpoint
+
+Content-only backup `ktk-code-pages-staging-20261113-131939.zip`, SHA256
+`3e4c3dc4d5e336dbfba165e9ec2cba8419392ac419631d101235a6ae2f2083c3`.
+Publisher completed13:19:57UTC with all2072 hashes verified and saved WordPress
+state, homepage and storefront unchanged. Helper removed. Runtime change adds
+only the known Go-Karting route/ID to the existing allowlist; rejection still
+withholds that event and no other consent behavior changed.
+
+Second MCP staging-prefix purge accepted13:23:14.337UTC. Origin and clean full
+reports are `internal-links-origin-final-20261113.json` and
+`internal-links-clean-final-20261113.json` under the migration evidence directory;
+earlier-payload reports and the real37/38 failure are retained. Warmed repeat
+`internal-links-repeat-final-20261113.json` passes5848/5848 with all348 content
+variants HIT. Homepage all3 variants HIT with current10 assets; discovery normal
+and repeat216 each. Final source381 passes. All finite publisher/test sessions
+are closed; local previews remain in use for the following editorial work.
