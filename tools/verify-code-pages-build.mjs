@@ -18,7 +18,7 @@ const definitions=JSON.parse(execFileSync('php',['-r',"define('ABSPATH', __DIR__
 const checks=[];const check=(key,name,pass,detail)=>checks.push({key,name,pass:!!pass,detail});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 const page=await browser.newPage({javaScriptEnabled:false});await page.route('**/*',r=>r.abort());
-async function facts(html,revision){await page.setContent(html);if(revision){await page.evaluate(reviseCodePageContent,{key:revision.key,reviewCounts});await page.evaluate(reviseSemanticHeadings,revision);}return page.evaluate(()=>{const root=document.querySelector('#main-content');root.querySelectorAll('script,style,noscript,.mejs-controls,.mejs-layers,video a,[data-single-product-id],[data-ktk-booking-product]').forEach(e=>e.remove());return {text:root.textContent.replace(/\s+/g,' ').trim(),sections:root.querySelectorAll('.et_pb_section').length,headings:[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(e=>({tag:e.tagName,text:e.textContent.trim()})),primary:root.querySelectorAll('h1').length,forms:root.querySelectorAll('form.et_pb_contact_form,form.wpcf7-form').length,scripts:root.querySelectorAll('script').length,handlers:[...root.querySelectorAll('*')].flatMap(e=>[...e.attributes].filter(a=>/^on/i.test(a.name)).map(a=>a.name))};});}
+async function facts(html,revision){await page.setContent(html);if(revision){await page.evaluate(reviseCodePageContent,{key:revision.key,reviewCounts});await page.evaluate(reviseSemanticHeadings,revision);}return page.evaluate(()=>{const root=document.querySelector('#main-content');root.querySelectorAll('script,style,noscript,.mejs-controls,.mejs-layers,video a,[data-single-product-id],[data-ktk-booking-product]').forEach(e=>e.remove());return {text:root.textContent.replace(/\s+/g,' ').trim(),missingAlt:root.querySelectorAll('img:not([alt])').length,sections:root.querySelectorAll('.et_pb_section').length,headings:[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(e=>({tag:e.tagName,text:e.textContent.trim()})),primary:root.querySelectorAll('h1').length,forms:root.querySelectorAll('form.et_pb_contact_form,form.wpcf7-form').length,scripts:root.querySelectorAll('script').length,handlers:[...root.querySelectorAll('*')].flatMap(e=>[...e.attributes].filter(a=>/^on/i.test(a.name)).map(a=>a.name))};});}
 try{
  for(const route of manifest.routes){
   const definition=definitions[route.key],capture=JSON.parse(await readFile(route.source+'/production-1920.json','utf8'));
@@ -30,6 +30,7 @@ try{
   check(route.key,'one nonempty primary heading',b.primary===1&&b.headings.filter(row=>row.tag==='H1').every(row=>row.text));
   check(route.key,'no skipped heading levels',b.headings.every((row,index)=>Number(row.tag.slice(1))<=(index?Number(b.headings[index-1].tag.slice(1)):0)+1));
   check(route.key,'form contracts preserved',a.forms===b.forms);
+  check(route.key,'missing alt limited to unchanged explicit medical hold',b.missingAlt===(route.key==='post-hostel-hangover-cure'?a.missingAlt:0));
   check(route.key,'title preserved',definition.title===capture.title);
   check(route.key,'description matches reviewed source or original capture',definition.description===codePageDescription(route.route,capture.metadata.description));
   check(route.key,'social metadata preserved',definition.metadata===capture.metadata.extra);

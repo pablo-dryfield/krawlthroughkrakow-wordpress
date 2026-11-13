@@ -12,6 +12,7 @@ import {canonicalLinkPolicy,rewriteCanonicalLinks} from './canonical-links.mjs';
 import {buildCodePageSchema,codePageSchemaFacts} from './code-pages-schema.mjs';
 import {reviseAccessibilitySemantics} from './accessibility-semantics.mjs';
 import {buildContentAccessibilityStyles} from './content-accessibility-styles.mjs';
+import {loadReviewedImageDescriptions} from './content-image-descriptions.mjs';
 const require = createRequire(import.meta.url);
 const { chromium } = require(path.join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const root = path.resolve('.');
@@ -19,6 +20,7 @@ const assets = path.join(root, 'staging/wp-content/mu-plugins/ktk-code-pages-ass
 await buildContentAccessibilityStyles(path.join(assets,'runtime.css'));
 const manifestPath = 'docs/code-pages/full-migration/manifest.json';
 const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
+const imageDescriptions=await loadReviewedImageDescriptions();
 validateSeoRoutes(manifest.routes.map(row => row.route));
 const reviewCounts=JSON.parse(execFileSync('php',['-r',"define('ABSPATH', __DIR__); require $argv[1]; echo json_encode(array_column(ktk_homepage_review_sources(), 'count', 'name'));",path.join(root,'staging/wp-content/mu-plugins/ktk-homepage-assets/reviews.php')],{encoding:'utf8'}));
 const seoBaseline=JSON.parse(await readFile('docs/code-pages/production-readiness/production-seo-baseline.json','utf8'));
@@ -71,6 +73,7 @@ async function cssAssets(css, base, prefix = '') {
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const page = await browser.newPage({ javaScriptEnabled: false }); await page.route('**/*', route => route.abort());
 const entries = {}, report = { startedAt: new Date().toISOString(), built: [], errors: [], missing: [],revisions:{},
+  imageDescriptions:{reviewedOn:imageDescriptions.reviewedOn,sourceSha256:imageDescriptions.sourceSha256,assetManifestSha256:imageDescriptions.assetManifestSha256,counts:imageDescriptions.counts},
   seoMetadata: {reviewedOn:seoMetadata.reviewedOn, routes:Object.keys(seoMetadata.pages),
     sourceSha256:digest(await readFile(new URL('./code-pages-seo.json', import.meta.url)))} };
 try {
@@ -199,7 +202,7 @@ try {
       });
       const contentRevisions=await page.evaluate(reviseCodePageContent,{key:route.key,reviewCounts});
       contentRevisions.push(...await page.evaluate(reviseSemanticHeadings,{key:route.key,kind:route.kind,title:capture.title,route:route.route}));
-      contentRevisions.push(...await page.evaluate(reviseAccessibilitySemantics,{key:route.key}));
+      contentRevisions.push(...await page.evaluate(reviseAccessibilitySemantics,{key:route.key,imageDescriptions}));
       css=preserveHeadingCss(css);
       const bookingRevisions=await rewriteBookingLinks(page);
       bookingRevisions.push(...await rewriteCanonicalLinks(page));
