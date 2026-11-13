@@ -42,7 +42,23 @@ try{
    const verified=source.milestones.filter(row=>['source_verified','staging_verified','live_verified'].includes(row.status)).length;
    check(width+' accurate verified milestones',(await page.locator('#foundation-count').textContent())===verified+' / '+source.milestones.length);
    check(width+' website releases match maintained source',(await page.locator('#production-count').textContent())===String(source.websiteProductionReleases));
-   check(width+' no false full-plan percentage',(await page.locator('.method').textContent()).includes('not a time estimate or an overall completion percentage'));
+   check(width+' no false full-plan percentage',(await page.locator('.status-section .method').textContent()).includes('not a time estimate or an overall completion percentage'));
+   check(width+' source-bound delivery counts',Object.entries(model.deliveries.counts).every(([stage,count])=>source.deliveries.filter(row=>row.stage===stage).length===count));
+   check(width+' recent deliveries visible',await page.locator('[data-delivery]').count()===Math.min(4,source.deliveries.length));
+   check(width+' staging delivery does not complete whole workstream',model.tickets.find(row=>row.id==='C04').bucket==='in_progress'&&model.deliveries.items.find(row=>row.id==='budget-guide').stage==='staging_verified');
+   await page.locator('#delivery-expand').click();
+   check(width+' expand shows every delivery',await page.locator('[data-delivery]').count()===source.deliveries.length&&await page.locator('#delivery-expand').getAttribute('aria-expanded')==='true');
+   await geometry(page,width+' expanded deliveries');
+   await page.locator('[data-delivery-stage="staging_verified"]').click();
+   check(width+' staging delivery filter is independent',await page.locator('[data-delivery]').count()===model.deliveries.counts.staging_verified&&await page.locator('#overview').isVisible()&&await page.locator('#delivery-stage').inputValue()==='staging_verified');
+   check(width+' pressed delivery filter keeps keyboard focus',await page.locator('[data-delivery-stage="staging_verified"]').getAttribute('aria-pressed')==='true'&&await page.locator('[data-delivery-stage="staging_verified"]').evaluate(node=>node===document.activeElement));
+   await page.locator('#delivery-stage').selectOption('live_verified');
+   check(width+' live delivery filter keeps environment explicit',await page.locator('[data-delivery]').count()===model.deliveries.counts.live_verified&&(await page.locator('[data-delivery] .pill').allTextContents()).every(text=>text.includes('OmniLodge')));
+   await page.locator('#delivery-stage').selectOption('in_progress');
+   check(width+' unfinished delivery has no verification date',(await page.locator('[data-delivery] small').allTextContents()).every(text=>text.includes('Not yet verified')));
+   await page.locator('#delivery-stage').selectOption('all');
+   check(width+' reset delivery stage restores recent batches',await page.locator('[data-delivery]').count()===Math.min(4,source.deliveries.length)&&await page.locator('#delivery-expand').getAttribute('aria-expanded')==='false');
+   check(width+' budget evidence and next step retained',await page.locator('[data-delivery="budget-guide"] a').getAttribute('href')===source.deliveries.find(row=>row.id==='budget-guide').evidence&&(await page.locator('[data-delivery="budget-guide"]').textContent()).includes(source.deliveries.find(row=>row.id==='budget-guide').remaining));
    for(const status of ['complete','in_progress','not_started','deferred'])check(width+' correct '+status+' graphics',await page.locator('.work-cell.'+status).count()===model.counts[status]);
    await geometry(page,width+' overview');
    await page.screenshot({path:path.join(screenshots,'overview-'+width+'.png'),fullPage:true});
@@ -109,11 +125,14 @@ try{
   const context=await browser.newContext({javaScriptEnabled:false,viewport:{width,height:900}});
   const page=await context.newPage();await page.goto(url,{waitUntil:'load'});
   check(width+' full no-JavaScript fallback',await page.locator('.noscript tbody tr').count()===40);
+  check(width+' delivery progress survives without JavaScript',await page.locator('.delivery-fallback>li').count()===source.deliveries.length);
   check(width+' no-JavaScript page has no horizontal overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
   await context.close();
  }
  check('No script errors',report.errors.length===0,report.errors);
  check('Fully offline; no HTTP requests',report.network.length===0,report.network);
+}catch(error){
+ report.errors.push({message:error.message});check('Browser suite completed',false,error.message);
 }finally{
  await browser.close();report.summary={passed:report.checks.filter(row=>row.pass).length,total:report.checks.length};
  await writeFile(output,JSON.stringify(report,null,2)+'\n');

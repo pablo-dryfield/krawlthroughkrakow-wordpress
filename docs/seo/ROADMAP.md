@@ -10,6 +10,37 @@ Updated: 2026-11-13 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 **Verified foundation milestones:** 7. **Website SEO production releases:** 0. The original website migration is a separate completed project, not counted as SEO implementation. Separately authorized OmniLodge reporting has its own release status.
 
+## Delivery Progress
+
+These are scoped batches, not completed whole workstreams. A verified staging batch can still need owner review and production approval. OmniLodge live delivery is separate from website production.
+
+| Delivery Stage | Batches |
+| --- | ---: |
+| Verified on staging | 14 |
+| In progress | 1 |
+| Verified live | 1 |
+
+| Batch | Related Work | Stage | Verified | What Remains |
+| --- | --- | --- | --- | --- |
+| [Music and venue guides](music-guides-2026-11-13/REVIEW.md) | C05, C08 | In progress (website) | Not yet | Resolve venue facts and article intent, then revise and test on staging. |
+| [Budget-drinks guide refresh](budget-drinks-2026-11-13/README.md) | C04, D05 | Verified on staging (website) | 2026-11-13 | Owner review, menu maintenance and production approval. |
+| [Nightlife hub and historical-guide context](nightlife-venues-2026-11-13/README.md) | C03 | Verified on staging (website) | 2026-11-13 | Review other overlapping guides and approve production. |
+| [Group-planning links and booking handoff](internal-links-2026-11-13/README.md) | T08, C06 | Verified on staging (website) | 2026-11-13 | Archive and enhanced-client discovery review; production approval. |
+| [Reviewed image descriptions](reviewed-images-2026-11-13/README.md) | D03, T10 | Verified on staging (website) | 2026-11-13 | Remaining manual accessibility checks and production approval. |
+| [Confirmed Food Tour and past-Halloween content](confirmed-offers-2026-11-13/README.md) | C07 | Verified on staging (website) | 2026-11-13 | Resolve other product holds and approve production. |
+| [Storefront keyboard, contrast and short-window fixes](accessibility-2026-11-13/README.md) | D03, D04 | Verified on staging (website) | 2026-11-13 | Manual assistive-technology and provider checks; production approval. |
+| [Content-page accessibility batch](content-accessibility-2026-11-13/README.md) | D03 | Verified on staging (website) | 2026-11-13 | Manual checks, unresolved medical content and production approval. |
+| [NYE guide facts and booking links](nye-content-review-2026-11-13/README.md) | C02 | Verified on staging (website) | 2026-11-13 | Broader campaign consistency, expiry handling and production approval. |
+| [Article and breadcrumb structured data](staging-schema-2026-11-12/README.md) | T09 | Verified on staging (website) | 2026-11-13 | Applicable external validation, storefront review and production approval. |
+| [Homepage and content heading structure](staging-headings-links-2026-11-12/README.md) | T04, T07 | Verified on staging (website) | 2026-11-13 | Production approval and guarded promotion. |
+| [Search-readable storefront HTML](staging-public-html-2026-11-12/README.md) | T02 | Verified on staging (website) | 2026-11-13 | Owner review, production approval and Google inspection after release. |
+| [Reviewed descriptions for 76 content pages](staging-descriptions-2026-11-12/README.md) | T05 | Verified on staging (website) | 2026-11-13 | Title/social-preview review, health-content decision and production approval. |
+| [Sitemap preview and staging indexing guard](staging-discovery-2026-11-12/README.md) | T03 | Verified on staging (website) | 2026-11-13 | Production feed approval, guarded cutover and Search Console submission. |
+| [Homepage photo-loading improvements](staging-performance-2026-11-12/README.md) | D01, D02 | Verified on staging (website) | 2026-11-13 | Further responsive-image/mobile-performance work and production approval. |
+| [OmniLodge Search Console reporting](omnilodge-reporting-2026-11-12/README.md) | M01 | Verified live (omnilodge) | 2026-11-12 | Ongoing reporting checks; no website SEO production release implied. |
+
+## End-to-End Plan Status
+
 | Full-Plan Status | Workstreams |
 | --- | --- |
 | In progress / partial staging | 27 |

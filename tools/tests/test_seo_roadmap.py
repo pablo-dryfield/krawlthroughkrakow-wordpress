@@ -97,6 +97,7 @@ class RoadmapTests(unittest.TestCase):
         data=copy.deepcopy(self.data)
         attack='</script><script>alert(1)</script>'
         data['view']['tickets']['T02']['title']=attack
+        data['deliveries'][1]['summary']=attack
         result=module.render_html(data,self.plan)
         self.assertNotIn(attack,result)
         self.assertIn('\\u003c/script>',result)
@@ -104,6 +105,47 @@ class RoadmapTests(unittest.TestCase):
 
     def test_checked_in_visual_dashboard_matches_source(self):
         self.assertEqual((ROOT / 'docs/seo/ROADMAP.html').read_text(encoding='utf-8'),module.render_html(self.data,self.plan))
+
+    def test_deliveries_do_not_complete_or_double_count_workstreams(self):
+        model=module.build_model(self.data,self.plan)
+        self.assertEqual(len(model['deliveries']['items']),len(self.data['deliveries']))
+        self.assertEqual(sum(model['deliveries']['counts'].values()),len(self.data['deliveries']))
+        self.assertEqual(model['total'],40)
+        self.assertEqual(next(row for row in model['tickets'] if row['id']=='C04')['bucket'],'in_progress')
+        self.assertEqual(next(row for row in model['deliveries']['items'] if row['id']=='budget-guide')['stage'],'staging_verified')
+        self.assertIn('## Delivery Progress',module.render(self.data,self.plan))
+
+    def test_delivery_fields_and_evidence_fail_closed(self):
+        for change in ['missing','duplicate','id','stage','title','scope','duplicate_scope','path','missing_evidence','future','unfinished_date','environment','live_website','unknown_field']:
+            data=copy.deepcopy(self.data)
+            row=data['deliveries'][1]
+            if change=='missing': del data['deliveries']
+            elif change=='duplicate': data['deliveries'].append(copy.deepcopy(row))
+            elif change=='id': row['id']='../bad'
+            elif change=='stage': row['stage']='complete-ish'
+            elif change=='title': row['title']=' '
+            elif change=='scope': row['workstreams']=['T99']
+            elif change=='duplicate_scope': row['workstreams']=['C04','C04']
+            elif change=='path': row['evidence']='../../../../outside.md'
+            elif change=='missing_evidence': row['evidence']='not-found/README.md'
+            elif change=='future': row['verifiedOn']='2099-01-01'
+            elif change=='unfinished_date': row['stage']='in_progress'
+            elif change=='environment': row['environment']='omnilodge'
+            elif change=='live_website': row['stage']='live_verified'
+            else: row['complete']=True
+            with self.subTest(change=change),self.assertRaises(ValueError): module.build_model(data,self.plan)
+
+    def test_future_delivery_progress_uses_data_not_notes_or_frozen_counts(self):
+        data=copy.deepcopy(self.data)
+        before=module.delivery_model(data)['counts']
+        row=data['deliveries'][0]
+        row['stage']='staging_verified';row['verifiedOn']=data['updatedOn']
+        after=module.delivery_model(data)['counts']
+        self.assertEqual(after['staging_verified'],before['staging_verified']+1)
+        self.assertEqual(after['in_progress'],before['in_progress']-1)
+        data['tickets']['C05']['note']='Every task is done!'
+        self.assertEqual(module.delivery_model(data)['counts'],after)
+        self.assertEqual(data['tickets']['C05']['status'],'in_progress')
 
 
 if __name__=='__main__': unittest.main()
