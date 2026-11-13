@@ -137,6 +137,16 @@ Private UI query export SHA256:
 - 180-day `015e7bcd0c539f3dd6f7aff5469d84c95ac00cdbcbf0e43cdc4d1643fb0d26ca`.
 - 365-day `eeb72d458cf9085831012c35eb792eb61e518e0ec68cc4d09c960a5e4972dc0e`.
 
+## Page-Role Cohorts
+
+The four retained by-page exports now have a reproducible, tested
+[destination-role analysis](PAGE-COHORTS.md), covering commercial pages, booking
+guidance, editorial/PDF content, code products and protected legacy URLs.
+It preserves exact query/fragment variants and explicitly separates returned
+page-group sums from independent property totals. The tool emits no raw URL or
+token values. This completes that bounded baseline task, not query-level intent,
+full-precision exports, conversion measurement or a migration-impact assessment.
+
 ## Evidence Binding And Remaining Work
 
 Private raw report SHA256 values:
@@ -151,7 +161,7 @@ rounded45.2k impressions/2.1% CTR/9.4 position, with identical leading query row
 Native UI rounding does not expose the exact45,215 denominator without export.
 No traffic uplift is inferred from correcting the former top100-derived totals.
 
-M02 remains partial: full-precision API exports, wider reviewed intent/URL cohorts, supported prior-year matching
+M02 remains partial: full-precision API exports, query/page intent cohorts, supported prior-year matching
 windows and future retained-history policy remain. No BigQuery/account storage
 configuration was created. Browser Pacific-day presets are delivered and verified;
 the default unfiltered28-day view is restored after exports.

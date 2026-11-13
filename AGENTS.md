@@ -8,6 +8,11 @@
 - Compiled deployable assets are `assets/storefront.js`, `assets/storefront.css`, and the bundled font files.
 - OmniLodge is a separate application at `C:\Users\pjcam\Documents\Projects\omni-lodge`. Do not deploy OmniLodge unless the user explicitly requests it.
 
+## Page-Role Baseline Follow-up (2026-11-13)
+
+- Confirmed-offer PR12 finalf3f8d31 required CI43348648109 passed both gates; merged `7f68530f7542383a69ea5b06d95d37a64ed919c5`, exact trees verified, own feature branch removed; root worktree only. Staging offer origin692/144/general176/short104 pass; normal cache remains pending owner purge. No production or OmniLodge product change.
+- New branch `codex/seo-page-role-baseline` adds read-only offline M02 analysis only. Before edits6 tracked entries independently archived/verified in `seo-page-role-baseline-before-20261113.zip`, SHA256 `35eba2797aaf0663820ac4ef69ed120a4bc66d4f2d32800687043e25b56d3032`. `summarize-seo-page-cohorts.py` consumes retained manifest/public catalogue/byPage UI exports, preserves exact URL identity and prints no URL/token values. All1687 rows across four overlapping periods classified; source/role hashes bound. Six focused tests and Python158/158 pass. Page-row28-day958/51207 differs from property958/45215 by aggregation, not a new reporting defect; do not call page sums property traffic. Query/fragment rows are not extra unique published pages. Source/docs in `docs/seo/search-baseline-2026-11-12/PAGE-COHORTS.md`; no website/account/consent/backend deployment. M02 remains partial.
+
 ## Confirmed Offer Follow-up (2026-11-13, Staging Only)
 
 - Final short-window origin104/104 also passes; all offer live test/publisher sessions are CLOSED. Own preview servers5184/5185/5187/5188 remain for pending normal-cache reference checks and must be closed at handoff, not user browser windows. Python final152/152 still passes after source closeout.
