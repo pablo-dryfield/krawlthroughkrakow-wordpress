@@ -60,6 +60,14 @@ An initial Python run failed because sitemap source hashes correctly rejected
 new page definitions. The unchanged 123-URL discovery selection was rebuilt from
 a fresh 24-product public audit; do not weaken that binding guard.
 
+The old PHP review test required an overriding aria-label even when that label
+caused the observed visible-name mismatch. It now requires natural visible names
+without an override plus the real, unique new-tab description; browser axe checks
+independently verify the accessible result. Newly hashed shell files retain the
+captured whitespace; Git's trailing-whitespace warnings on those new paths are
+not a reason to bulk-format immutable source markup. Handwritten-code diff checks
+are clean, and the strict DOM comparison still passes.
+
 ## Delivery And Remaining Work
 
 Guarded staging content/homepage/discovery publication and final live/cache checks

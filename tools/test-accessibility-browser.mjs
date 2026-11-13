@@ -7,6 +7,10 @@ const frontendRequire=createRequire(path.resolve('staging/wp-content/plugins/ktk
 const axeSource=await readFile(frontendRequire.resolve('axe-core/axe.min.js'),'utf8');
 const [homeBase,pagesBase,output]=process.argv.slice(2);
 if(!homeBase||!pagesBase||!output)throw Error('Homepage, pages and fresh output directory required');
+for(const base of [homeBase,pagesBase]){
+ const url=new URL(base);
+ if(!(url.origin==='https://krawlthroughkrakow.com'&&url.pathname.replace(/\/$/,'')==='/staging')&&!(url.protocol==='http:'&&url.hostname==='127.0.0.1'&&url.pathname==='/'))throw Error('Staging or explicit loopback previews only');
+}
 try{await readFile(path.join(output,'report.json'));throw Error('Preserve earlier evidence');}catch(error){if(error.code!=='ENOENT')throw error;}
 await mkdir(output,{recursive:true});
 const report={checkedAt:new Date().toISOString(),scope:'Read-only own markup/keyboard/reflow checks, third parties blocked. Not whole-site WCAG, browser zoom, CMP, screen-reader or commerce certification.',checks:[],errors:[],realMutations:0};
