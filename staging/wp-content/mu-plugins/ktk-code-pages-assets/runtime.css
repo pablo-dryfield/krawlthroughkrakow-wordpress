@@ -108,6 +108,11 @@ dialog.ktk-parity-lightbox .mfp-arrow[hidden] { display: none; }
  body[data-ktk-page="post-jazz-bars-in-krakow"] #post-6169 > .entry-content { padding-right:16px; }
 }
 
+@media (max-width: 600px) {
+ body[data-ktk-page="post-krakow-live-music"] #post-6196 > .et_post_meta_wrapper:first-child,
+ body[data-ktk-page="post-krakow-live-music"] #post-6196 > .entry-content { padding-right:16px; }
+}
+
 /* BEGIN shared content accessibility */
 /* Darker pink is reserved for text on light content, not the seasonal artwork. */
 #main-content .et_pb_text:not(.et_pb_bg_layout_dark) a,

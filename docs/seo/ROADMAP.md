@@ -6,7 +6,7 @@ Updated: 2026-11-13 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 ## Where We Are
 
-**Current work:** The first jazz-guide factual batch is verified on staging, including normal and warmed desktop/mobile caches. Delivery progress now shows 15 verified staging batches, separate from the wider plan and production completion. Music-guide research and remaining venue checks continue; no articles merged or removed and production is unchanged.
+**Current work:** Working on the jazz and live-music choice guides: distinct purposes, checked operator links, original history and meaningful fragments retained. The owner confirmed HEVRE as a music-night recommendation; its current jazz programme remains unconfirmed. This batch is undergoing local and staging QA, not yet verified or in production.
 
 **Verified foundation milestones:** 7. **Website SEO production releases:** 0. The original website migration is a separate completed project, not counted as SEO implementation. Separately authorized OmniLodge reporting has its own release status.
 
@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 15 |
-| In progress | 1 |
+| In progress | 2 |
 | Verified live | 1 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Jazz and live-music choice guides](music-guides-2026-11-13/MUSIC-CHOICES.md) | C05, C08, D05 | In progress (website) | Not yet | Finish final source/mobile/keyboard checks, required CI, guarded staging release and actual cached-device verification. |
 | [Jazz guide: checked venue facts and booking clarity](music-guides-2026-11-13/JAZZ-FACTS.md) | C05, C08, D05 | Verified on staging (website) | 2026-11-13 | Owner review and eventual production approval; remaining jazz venues and wider music guides are separate work. |
 | [Music and venue guides](music-guides-2026-11-13/REVIEW.md) | C05, C08 | In progress (website) | Not yet | Continue remaining jazz-venue facts and wider music-guide and article-intent checks. |
 | [Budget-drinks guide refresh](budget-drinks-2026-11-13/README.md) | C04, D05 | Verified on staging (website) | 2026-11-13 | Owner review, menu maintenance and production approval. |

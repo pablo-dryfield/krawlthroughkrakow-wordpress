@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-13T16:40:34.430Z",
+  "startedAt": "2026-11-13T17:13:28.981Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -1307,6 +1307,31 @@
           "publicationPreserved": true
         },
         {
+          "type": "reviewed-music-guide",
+          "reviewedOn": "2026-11-13",
+          "retainedOriginalPhotos": [
+            0
+          ],
+          "removedBodyPhotos": 5,
+          "preservedFragments": [
+            "main-toc",
+            "legendaryjazzbarsinkrakow",
+            "harrispianojazzbarthebirthplaceofpolishjazz",
+            "piecartacousticjazzclubacozyhavenformusiclovers",
+            "upscaleandstylishvenues",
+            "thepianorougevaultedceilingsandcontemporarydesignelements",
+            "jazzbarsinkrakow",
+            "alchemiajazzclubalegendaryvenue",
+            "umuniakaajazzinstitution",
+            "alternativevenuesforanunconventionalnightout",
+            "hevrebaramprestauranthistoriccharmmeetscontemporarystyle",
+            "faqsinrelationtojazzbarsinkrakow",
+            "whatisajazzbar",
+            "whatiskrakowfamousfor",
+            "conclusion"
+          ]
+        },
+        {
           "type": "heading-level",
           "from": "h4",
           "to": "h2",
@@ -1318,26 +1343,6 @@
         },
         {
           "type": "main-landmark"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
         },
         {
           "type": "visually-reviewed-image-description",
@@ -1864,6 +1869,28 @@
     "post-krakow-live-music": {
       "content": [
         {
+          "type": "reviewed-music-guide",
+          "reviewedOn": "2026-11-13",
+          "retainedOriginalPhotos": [
+            1
+          ],
+          "removedBodyPhotos": 6,
+          "preservedFragments": [
+            "main-toc",
+            "jazzclubsinkrakow",
+            "hardrockcafeaglobalbrandwithanimpressivelineupoflivejazzperformances",
+            "harrispianojazzbarenjoysmoothtuneswhilesippingonsignaturecocktails",
+            "piecartacousticjazzclubdiscoverthishiddengemtuckedawayfromthebustlingstreets",
+            "historiclivemusicvenues",
+            "piwnicapodbaranami",
+            "thepianorougerestaurantwinebar",
+            "livemusiclocationsforaclassynightout",
+            "umuniakajazzclubahighenddestinationforjazzenthusiasts",
+            "fortykleparztwinbarsfeaturingeclectickrakowlivemusicacts",
+            "conclusion"
+          ]
+        },
+        {
           "type": "heading-level",
           "from": "h4",
           "to": "h2",
@@ -1875,30 +1902,6 @@
         },
         {
           "type": "main-landmark"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
         },
         {
           "type": "visually-reviewed-image-description",
@@ -8706,5 +8709,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-13T16:41:18.628Z"
+  "finishedAt": "2026-11-13T17:14:22.048Z"
 }
