@@ -100,3 +100,9 @@ SHA-256 `17005fa71180b035ce94c11521cbb4b94f75d5ce1b7ae4446c652d6360cda855`.
 The unchanged main source baseline is
 `beca27b4f9525f4530c1e282214da41a16088a4d`; Git also preserves the original
 three-asset homepage verifier before its additional checks.
+
+Verification-tool source and required checks are reviewed in
+[PR15](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/pull/15).
+Initial source93e46fd passed both required gates in CI43404559274; the PR records
+the final documentation checks and merge identity. GitHub performs checks only,
+not deployment. The task-owned preview and all browser/scan processes are closed.
