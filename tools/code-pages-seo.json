@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "reviewedOn": "2026-11-12",
+  "reviewedOn": "2026-11-13",
   "pages": {
     "/about-us/": {
       "role": "Operator identity and experience",
@@ -23,8 +23,8 @@
       "description": "Explore Krakow nightlife with Krawl Through Krakow: bars and clubs, getting around, paying for drinks and practical advice for your night out."
     },
     "/wheres-the-cheap-places-to-drink-in-krakow/": {
-      "role": "Existing budget-drinks guide; venue and price refresh still pending",
-      "description": "Looking for cheap places to drink in Krakow? Explore our guide to budget-friendly bars, pubs and drinking spots in the Old Town and Jewish Quarter."
+      "role": "Budget-drinks guide with dated venue-menu examples, not a citywide cheapest ranking",
+      "description": "Compare drink prices in Krakow using dated venue-menu examples and serving sizes. Find practical tips for cheap drinks and planning your night out."
     },
     "/krakow-stag-do/": {
       "role": "Stag group planning and enquiry",
