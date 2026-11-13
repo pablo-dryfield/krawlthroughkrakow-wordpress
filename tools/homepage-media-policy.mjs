@@ -9,6 +9,11 @@ export function applyHomepageMediaPolicy() {
   return revisions;
 }
 
+export function homepageAuditWriteKind(method, url) {
+  if (['GET', 'HEAD'].includes(method)) return null;
+  return /\/(?:wp-json\/ktk-storefront|api\/storefront)(?:\/|$)/.test(new URL(url).pathname) ? 'commerce' : 'other';
+}
+
 export function applyHomepageIconSizing() {
   const names = ['i6agsskidpgwcluwywc6', 'jgqte2id3waqv2vs8edd', 'ciaiu30657qcru0sdnnb', 'ppygtlcm5nb6j4lsr251', 'ccz58hmwdrzaaktxvokp', 'ygkzrcl8zu8ybudwpmys'];
   const originalSizes = '(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) and (max-width: 980px) 980px, (min-width: 981px) and (max-width: 1280px) 1280px, (min-width: 1281px) 2000px, 100vw';

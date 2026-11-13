@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {applyHomepageMediaPolicy,applyHomepageIconSizing} from '../homepage-media-policy.mjs';
+import {applyHomepageMediaPolicy,applyHomepageIconSizing,homepageAuditWriteKind} from '../homepage-media-policy.mjs';
 test('only loading priority changes; originals, alt labels and full-size destinations stay intact',()=>{
   const image=(id,attributes)=>({id,attributes:{...attributes},getAttribute(key){return this.attributes[key]??null;},setAttribute(key,value){this.attributes[key]=value;},removeAttribute(key){delete this.attributes[key];}});
   const logo=image('logo',{src:'logo.webp',alt:'Krawl Through Krakow',width:'101'});
@@ -16,6 +16,15 @@ test('only loading priority changes; originals, alt labels and full-size destina
 });
 
 const names=['i6agsskidpgwcluwywc6','jgqte2id3waqv2vs8edd','ciaiu30657qcru0sdnnb','ppygtlcm5nb6j4lsr251','ccz58hmwdrzaaktxvokp','ygkzrcl8zu8ybudwpmys'];
+test('isolated media audit blocks all writes and separately fails commerce attempts',()=>{
+ assert.equal(homepageAuditWriteKind('GET','https://krawlthroughkrakow.com/staging/'),null);
+ assert.equal(homepageAuditWriteKind('HEAD','https://example.invalid/image.webp'),null);
+ for(const method of ['POST','PUT','PATCH','DELETE']){
+  assert.equal(homepageAuditWriteKind(method,'https://krawlthroughkrakow.com/staging/wp-json/ktk-storefront/cart'),'commerce');
+  assert.equal(homepageAuditWriteKind(method,'https://omni-lodge.com/api/storefront/orders'),'commerce');
+  assert.equal(homepageAuditWriteKind(method,'https://example.invalid/collect'),'other');
+ }
+});
 const oldSizes='(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) and (max-width: 980px) 980px, (min-width: 981px) and (max-width: 1280px) 1280px, (min-width: 1281px) 2000px, 100vw';
 function icons(){return names.map(name=>{
  const base='https://krawlthroughkrakow.com/wp-content/uploads/2025/04/'+name+'_compressed_compressed';

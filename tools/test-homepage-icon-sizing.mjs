@@ -1,6 +1,7 @@
 import {createRequire} from 'node:module';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import path from 'node:path';
+import {homepageAuditWriteKind} from './homepage-media-policy.mjs';
 const require=createRequire(import.meta.url);
 const modules=path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules');
 const {chromium}=require(path.join(modules,'playwright'));
@@ -13,7 +14,7 @@ try{await readFile(path.join(output,'report.json'));throw Error('Preserve earlie
 await mkdir(output,{recursive:true});
 const names=['i6agsskidpgwcluwywc6','jgqte2id3waqv2vs8edd','ciaiu30657qcru0sdnnb','ppygtlcm5nb6j4lsr251','ccz58hmwdrzaaktxvokp','ygkzrcl8zu8ybudwpmys'];
 const matches=url=>names.some(name=>url.includes(name));
-const report={checks:[],views:[],errors:[],blockedWrites:0,control,scope:'Read-only homepage sizing; providers blocked, no forms/orders/consent changes. Explicit media sizes require no auto-sizing browser support.'};
+const report={checks:[],views:[],errors:[],blockedWrites:0,blockedCommerceWrites:0,blockedWriteOrigins:{},nonReadAllowed:0,control,scope:'Read-only homepage sizing; all non-read requests blocked, providers blocked, no forms/orders/consent changes. Explicit media sizes require no auto-sizing browser support.'};
 const check=(name,pass,detail)=>report.checks.push({name,pass:!!pass,detail});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
@@ -26,7 +27,8 @@ try{
    const fetched=[];
    await context.route('**/*',async route=>{
     const request=route.request(),url=new URL(request.url());
-    if(!['GET','HEAD'].includes(request.method())){report.blockedWrites++;return route.abort();}
+    const writeKind=homepageAuditWriteKind(request.method(),request.url());
+    if(writeKind){report.blockedWrites++;if(writeKind==='commerce')report.blockedCommerceWrites++;report.blockedWriteOrigins[url.origin]=(report.blockedWriteOrigins[url.origin]||0)+1;return route.abort();}
     if(url.origin!==origin)return route.abort();
     return route.continue();
    });
@@ -88,6 +90,6 @@ try{
 }catch(error){report.errors.push(error.stack);}finally{
  await browser.close();report.passed=report.checks.filter(row=>row.pass).length;report.total=report.checks.length;
  await writeFile(path.join(output,'report.json'),JSON.stringify(report,null,2)+'\n');
- console.log(JSON.stringify({passed:report.passed,total:report.total,errors:report.errors,blockedWrites:report.blockedWrites,failed:report.checks.filter(row=>!row.pass)},null,2));
- if(report.errors.length||report.blockedWrites||report.passed!==report.total)process.exitCode=1;
+ console.log(JSON.stringify({passed:report.passed,total:report.total,errors:report.errors,blockedWrites:report.blockedWrites,blockedCommerceWrites:report.blockedCommerceWrites,blockedWriteOrigins:report.blockedWriteOrigins,nonReadAllowed:report.nonReadAllowed,failed:report.checks.filter(row=>!row.pass)},null,2));
+ if(report.errors.length||report.blockedCommerceWrites||report.nonReadAllowed||report.passed!==report.total)process.exitCode=1;
 }
