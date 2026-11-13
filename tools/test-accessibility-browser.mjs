@@ -35,6 +35,7 @@ try{
    page.on('pageerror',error=>errors.push(error.message));
    await page.addInitScript(()=>{window.__KTK_FREEZE_CAROUSELS__=true;});
    const response=await page.goto(url.href,{waitUntil:'load'});await page.evaluate(()=>document.fonts.ready);
+   if(process.argv.includes('--screenshots'))await page.screenshot({path:path.join(output,route.replace(/[^a-z0-9]+/gi,'-').replace(/^-|-$/g,'')+'-'+width+'.png'),animations:'disabled'});
    const name=route+' '+width;
    check(name+' HTTP200 and one main landmark',response.status()===200&&await page.getByRole('main').count()===1);
    check(name+' no horizontal overflow at narrow/reflow width',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));

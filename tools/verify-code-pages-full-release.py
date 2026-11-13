@@ -1,5 +1,6 @@
 """Read-only checks for every audited staging content route and protected route family."""
 import argparse
+from collections import Counter
 import hashlib
 import html
 import json
@@ -84,6 +85,16 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
         return None
 
 
+def sharing_metadata_matches(parsed, metadata, base):
+    expected = Head()
+    expected.feed(metadata.replace('https://krawlthroughkrakow.com/', base + '/'))
+    def fields(rows):
+        return Counter((key, row[key], row.get('content', ''))
+                       for row in rows for key in ('property', 'name')
+                       if row.get(key, '').startswith(('og:', 'twitter:')))
+    return fields(parsed.meta) == fields(expected.meta)
+
+
 def get(url, agent, redirect=True):
     opener = urllib.request.build_opener() if redirect else urllib.request.build_opener(NoRedirect())
     request = urllib.request.Request(url, headers={'User-Agent': agent})
@@ -107,8 +118,8 @@ def main():
     if production: BASE = 'https://krawlthroughkrakow.com'
     policy = {row['url']:row for row in json.loads((ROOT / 'docs/code-pages/production-readiness/production-seo-baseline.json').read_text(encoding='utf-8'))['routes']} if production else {}
     manifest = json.loads((ROOT / 'docs/code-pages/full-migration/manifest.json').read_text(encoding='utf-8'))
-    seo_overrides = json.loads((ROOT / 'tools/code-pages-seo.json').read_text(encoding='utf-8'))['pages']
     registry = json.loads(subprocess.run(['php','-r',"define('ABSPATH', __DIR__); echo json_encode(require $argv[1]);",str(ASSETS / 'registry.php')],capture_output=True,text=True,check=True).stdout)
+    definitions = {} if production else json.loads(subprocess.run(['php','-r',"define('ABSPATH', __DIR__); $r=array(); foreach(glob($argv[1].'/pages/*.php') as $file){$d=require $file;$r[$d['key']]=$d;} echo json_encode($r);",str(ASSETS)],capture_output=True,text=True,check=True).stdout)
     checks = []
     responses = []
     assets = set()
@@ -128,10 +139,13 @@ def main():
                 parsed = Head(); parsed.feed(markup)
                 check(route['route'], device, 'HTTP 200', status == 200)
                 check(route['route'], device, 'correct code route', parsed.body.get('data-ktk-page') == route['key'])
-                check(route['route'], device, 'title preserved', parsed.title == source['title'])
+                expected_title = source['title'] if production else definitions[route['key']]['title']
+                check(route['route'], device, 'source production title' if production else 'reviewed staging title', parsed.title == expected_title)
                 descriptions = [m.get('content', '') for m in parsed.meta if m.get('name') == 'description']
-                description = source['metadata']['description'] if production else seo_overrides.get(route['route'], {}).get('description', source['metadata']['description'])
+                description = source['metadata']['description'] if production else definitions[route['key']]['description']
                 check(route['route'], device, 'production description preserved' if production else 'reviewed staging description', descriptions == ([description] if description else []))
+                if not production and definitions[route['key']]['metadata']:
+                    check(route['route'], device, 'exact reviewed social metadata without duplicates', sharing_metadata_matches(parsed, definitions[route['key']]['metadata'], BASE))
                 expected_canonical = policy[url]['canonical'] if production else [url]
                 check(route['route'], device, 'source production canonical policy' if production else 'one staging canonical', [l.get('href') for l in parsed.links if l.get('rel') == 'canonical'] == expected_canonical)
                 robots = [m.get('content', '') for m in parsed.meta if m.get('name') == 'robots']

@@ -18,7 +18,7 @@ export function codePageSchemaFacts() {
     headline: titles[0].textContent,
     published: root.querySelector('.post-meta .published')?.textContent ?? '',
     author: author ? {name: author.textContent, url: author.getAttribute('href')} : null,
-    image: image ? {src: image.getAttribute('src'), width: image.getAttribute('width'), height: image.getAttribute('height')} : null,
+    image: image ? {src: image.getAttribute('src'), width: image.getAttribute('width'), height: image.getAttribute('height'), alt: image.getAttribute('alt')} : null,
   };
 }
 

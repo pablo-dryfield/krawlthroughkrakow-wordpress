@@ -32,6 +32,7 @@ $css = $page['css'] ?? 'how-to-join.css';
 <title><?php echo esc_html($page['title']); ?></title><meta name="robots" content="noindex, nofollow">
 <?php if ('' !== $page['description']) { ?><meta name="description" content="<?php echo esc_attr($page['description']); ?>"><?php } ?>
 <link rel="canonical" href="<?php echo esc_url(home_url($route)); ?>">
+<?php echo str_replace('https://krawlthroughkrakow.com/', home_url('/'), $page['metadata'] ?? ''); ?>
 <?php foreach (($page['schema'] ?? array()) as $schema) { ?><script type="application/ld+json"><?php echo str_replace('https://krawlthroughkrakow.com/', home_url('/'), json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP)); ?></script><?php } ?>
 <link rel="stylesheet" href="/ktk-code-pages-assets/<?php echo esc_attr($css); ?>"><link rel="stylesheet" href="/ktk-code-pages-assets/font-resilience.css"><link rel="stylesheet" href="/ktk-code-pages-assets/runtime.css">
 </head><body class="<?php echo esc_attr($page['body_class']); ?> ktk-code-page" data-ktk-page="<?php echo esc_attr($page['key'] ?? 'how-to-join'); ?>" data-ktk-form-token-url="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">

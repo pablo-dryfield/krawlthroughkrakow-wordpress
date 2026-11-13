@@ -13,6 +13,8 @@ import {loadJazzEditorial,reviseJazzEditorial} from './jazz-editorial.mjs';
 import {loadMusicEditorial,reviseMusicEditorial} from './music-editorial.mjs';
 import {loadVenueEditorial,reviseVenueEditorial} from './venue-editorial.mjs';
 import {codePageDescription} from './code-pages-seo.mjs';
+import {codePageTitle,codePageHeadDescription,loadSharingImagePolicy,buildCodePageSharing} from './code-page-sharing.mjs';
+import {codePageSchemaFacts} from './code-pages-schema.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const [baseline,output]=process.argv.slice(2);
@@ -22,12 +24,14 @@ const budget=process.argv.includes('--budget');
 const jazz=process.argv.includes('--jazz');
 const music=process.argv.includes('--music');
 const venues=process.argv.includes('--venues');
+const sharing=process.argv.includes('--sharing');
 if(!baseline||!output)throw Error('Baseline worktree and fresh report required');
 try{await readFile(output);throw Error('Preserve earlier evidence');}catch(error){if(error.code!=='ENOENT')throw error;}
 const assets='staging/wp-content/mu-plugins/ktk-code-pages-assets/';
 const definitions=root=>JSON.parse(execFileSync('php',['-r',"define('ABSPATH',__DIR__);$a=$argv[1];$r=require $a.'registry.php';$o=array();foreach($r['routes'] as $e){$p=require $a.$e['file'];$o[$p['key']]=$p;}echo json_encode($o);",path.join(root,assets)],{encoding:'utf8',maxBuffer:10e6}));
 const before=definitions(baseline),after=definitions('.');
 const imageDescriptions=await loadReviewedImageDescriptions();
+const sharingImage=sharing?await loadSharingImagePolicy({expectedManifestSha256:imageDescriptions.assetManifestSha256}):null;
 const nightlifeRevision=nightlife?await loadNightlifeEditorial():null;
 const budgetRevision=budget?await loadBudgetEditorial():null;
 const jazzRevision=jazz?await loadJazzEditorial():null;
@@ -67,6 +71,15 @@ try{
    const descriptions=graph.filter(x=>['WebPage','BlogPosting'].includes(x['@type']));
    if(descriptions.length!==2||descriptions.some(x=>x.description!==previous.description))throw Error('Expected existing budget page/article descriptions');
    descriptions.forEach(x=>x.description=description);
+  }
+  if(sharing){
+   expectedMetadata.title=codePageTitle(previous.route,previous.title);
+   expectedMetadata.description=codePageHeadDescription(previous.route,previous.description);
+   const facts=await page.evaluate(codePageSchemaFacts);
+   const graph=expectedMetadata.schema.flatMap(item=>item['@graph']||[item]);
+   if(expectedMetadata.description!==previous.description)for(const entity of graph)if(entity.description===previous.description)entity.description=expectedMetadata.description;
+   const hasImage=graph.some(entity=>entity['@type']==='BlogPosting'&&entity.image);
+   expectedMetadata.metadata=buildCodePageSharing({route:previous.route,kind:previous.kind,title:expectedMetadata.title,description:expectedMetadata.description,inherited:previous.metadata,image:hasImage?await sharingImage(facts.image):null});
   }
   check(key+' SEO/schema/content identity unchanged except explicit reviewed headline/description policy',JSON.stringify(expectedMetadata)===JSON.stringify(metadata(definition)));
   check(key+' captured CSS unchanged',(await readFile(path.join(baseline,assets,previous.css))).equals(await readFile(assets+definition.css)));
