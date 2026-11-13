@@ -4,6 +4,7 @@ import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import path from 'node:path';
 import {reviseAccessibilitySemantics} from './accessibility-semantics.mjs';
 import {composeCodePage} from './code-page-template.mjs';
+import {loadReviewedImageDescriptions} from './content-image-descriptions.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const [baseline,output]=process.argv.slice(2);
@@ -12,6 +13,7 @@ try{await readFile(output);throw Error('Preserve earlier evidence');}catch(error
 const assets='staging/wp-content/mu-plugins/ktk-code-pages-assets/';
 const definitions=root=>JSON.parse(execFileSync('php',['-r',"define('ABSPATH',__DIR__);$a=$argv[1];$r=require $a.'registry.php';$o=array();foreach($r['routes'] as $e){$p=require $a.$e['file'];$o[$p['key']]=$p;}echo json_encode($o);",path.join(root,assets)],{encoding:'utf8',maxBuffer:10e6}));
 const before=definitions(baseline),after=definitions('.');
+const imageDescriptions=await loadReviewedImageDescriptions();
 const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
@@ -20,7 +22,7 @@ try{
   const previous=before[key];
   const markup=async(root,definition)=>composeCodePage(await readFile(path.join(root,assets,definition.shell_file),'utf8'),await readFile(path.join(root,assets,definition.main_file),'utf8'));
   const original=await markup(baseline,previous),candidate=await markup('.',definition);
-  await page.setContent(original);await page.evaluate(reviseAccessibilitySemantics,{key});
+  await page.setContent(original);await page.evaluate(reviseAccessibilitySemantics,{key,imageDescriptions});
   const expected=await page.evaluate(()=>document.body.innerHTML);
   await page.setContent(candidate);
   check(key+' only reviewed semantic attributes changed',expected===await page.evaluate(()=>document.body.innerHTML));
@@ -60,6 +62,20 @@ try{
  await page.setContent('<main id="main-content">Held article</main><a id="ktk-cta" href="/store2/">BOOK NOW</a>');
  await page.evaluate(reviseAccessibilitySemantics,{key:'post-hostel-hangover-cure'});
  check('health hold allows shared shell landmark without changing the article',await page.locator('main').innerHTML()==='Held article'&&await page.locator('main').getAttribute('tabindex')===null&&await page.getByRole('navigation',{name:'Book an experience'}).count()===1);
+ const imageFixture='<div id="main-content"><a href="/full.jpg"><img src="/missing.jpg"></a><img src="/decorative.jpg" alt=""><img src="/kept.jpg" alt="Existing description"><img src="/linked.jpg" alt=""><img src="toString"></div>';
+ const review={missing:{'/missing.jpg':'A reviewed photograph.','/kept.jpg':'Must not replace existing text.'},empty:{'/linked.jpg':'An explicitly reviewed linked photo.'}};
+ await page.setContent(imageFixture);await page.evaluate(reviseAccessibilitySemantics,{key:'fixture',imageDescriptions:review});
+ check('missing informative alt uses reviewed text',await page.locator('img').nth(0).getAttribute('alt')==='A reviewed photograph.');
+ check('unreviewed decorative empty alt remains empty',await page.locator('img').nth(1).getAttribute('alt')==='');
+ check('existing informative alt remains unchanged',await page.locator('img').nth(2).getAttribute('alt')==='Existing description');
+ check('only explicit empty-alt review may override empty alt',await page.locator('img').nth(3).getAttribute('alt')==='An explicitly reviewed linked photo.');
+ check('inherited object keys cannot become image descriptions',await page.locator('img').nth(4).getAttribute('alt')===null);
+ check('full-size link gets meaningful reviewed accessible name',await page.getByRole('link',{name:'View full-size photo: A reviewed photograph.'}).count()===1);
+ const reviewedOnce=await page.content();await page.evaluate(reviseAccessibilitySemantics,{key:'fixture',imageDescriptions:review});
+ check('reviewed descriptions and link names are idempotent',reviewedOnce===await page.content());
+ await page.setContent(imageFixture);const held=await page.locator('#main-content').innerHTML();
+ await page.evaluate(reviseAccessibilitySemantics,{key:'post-hostel-hangover-cure',imageDescriptions:review});
+ check('medical hold prevents reviewed image and link revisions',held===await page.locator('#main-content').innerHTML());
 }finally{await browser.close();}
 const report={checkedAt:new Date().toISOString(),baseline,passed:checks.filter(x=>x.pass).length,total:checks.length,checks};
 await mkdir(path.dirname(output),{recursive:true});await writeFile(output,JSON.stringify(report,null,2)+'\n');

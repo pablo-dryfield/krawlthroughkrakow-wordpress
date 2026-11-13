@@ -7,6 +7,10 @@ const require=createRequire(import.meta.url);
 const dependencies=path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules');
 const {chromium}=require(path.join(dependencies,'playwright')),sharp=require(path.join(dependencies,'sharp'));
 const [output]=process.argv.slice(2);if(!output)throw Error('Fresh private review directory required');
+const emptyLinked=process.argv.includes('--empty-linked');
+const routeOption=process.argv.indexOf('--routes');
+const selectedRoutes=routeOption>=0?process.argv[routeOption+1]?.split(','):null;
+if(selectedRoutes?.some(route=>!/^\/[a-z0-9/-]+\/$/.test(route)))throw Error('Explicit owned route paths required');
 try{await readFile(path.join(output,'images.json'));throw Error('Preserve image review evidence');}catch(error){if(error.code!=='ENOENT')throw error;}
 await mkdir(output,{recursive:true});
 const assets=path.resolve('staging/wp-content/mu-plugins/ktk-code-pages-assets');
@@ -15,11 +19,12 @@ const images=new Map(),browser=await chromium.launch({channel:'chrome',headless:
 try{
  const page=await browser.newPage({javaScriptEnabled:false});await page.route('**/*',route=>route.abort());
  for(const definition of definitions){
+  if(selectedRoutes&&!selectedRoutes.includes(definition.route))continue;
   await page.setContent(await readFile(path.join(assets,definition.file),'utf8'));
-  const missing=await page.locator('img:not([alt])').evaluateAll(nodes=>nodes.map(image=>{
+  const missing=await page.locator(emptyLinked?'a img[alt=""]':'img:not([alt])').evaluateAll((nodes,emptyLinked)=>nodes.filter(image=>!emptyLinked||!image.closest('a').textContent.trim()&&!image.closest('a').getAttribute('aria-label')).map(image=>{
    const heading=[...document.querySelectorAll('h1,h2,h3,h4,h5,h6')].filter(h=>h.compareDocumentPosition(image)&Node.DOCUMENT_POSITION_FOLLOWING).at(-1);
    return {src:image.getAttribute('src'),heading:heading?.textContent.trim()||'',caption:image.closest('figure,.wp-caption')?.querySelector('figcaption,.wp-caption-text')?.textContent.trim()||''};
-  }));
+  }),emptyLinked);
   for(const row of missing){
    const relative=row.src?.replace(/^__KTK_PAGE_ASSETS__/,'');
    if(!relative?.startsWith('media/')||relative.includes('..')||relative.includes('\\'))throw Error('Review unexpected image path');
@@ -45,6 +50,6 @@ for(let offset=0;offset<rows.length;offset+=24){
  }
  await sharp({create:{width:1440,height:780,channels:3,background:'#fff'}}).composite(composition).png().toFile(path.join(output,`sheet-${String(offset/24+1).padStart(2,'0')}.png`));
 }
-const report={checkedAt:new Date().toISOString(),scope:'Offline diagnostic contact sheets from unchanged owned assets. No website changes or generated alt guesses.',count:rows.length,images:rows};
+const report={checkedAt:new Date().toISOString(),mode:emptyLinked?'empty-linked':'missing',scope:'Offline diagnostic contact sheets from unchanged owned assets. No website changes or generated alt guesses.',count:rows.length,images:rows};
 await writeFile(path.join(output,'images.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({images:rows.length,sheets:Math.ceil(rows.length/24),output}));

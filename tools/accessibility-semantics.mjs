@@ -1,5 +1,5 @@
 // Runs against the captured DOM during generation, not against live WordPress.
-export function reviseAccessibilitySemantics({key}) {
+export function reviseAccessibilitySemantics({key,imageDescriptions={missing:{},empty:{}}}) {
  const evidence=[];
  const floating=document.querySelector('#ktk-cta');
  if(floating&&!floating.closest('nav,main,aside,header,footer,[role="region"]')){
@@ -16,6 +16,27 @@ export function reviseAccessibilitySemantics({key}) {
   main.setAttribute('role','main');evidence.push({type:'main-landmark'});
  }
  if(!main.hasAttribute('tabindex'))main.tabIndex=-1;
+ for(const image of main.querySelectorAll('img')){
+  const source=image.getAttribute('src');
+  const missing=Object.hasOwn(imageDescriptions.missing,source),empty=Object.hasOwn(imageDescriptions.empty,source);
+  const alt=!image.hasAttribute('alt')&&missing?imageDescriptions.missing[source]
+   :image.getAttribute('alt')===''&&empty?imageDescriptions.empty[source]:null;
+  if(typeof alt==='string'&&alt){image.setAttribute('alt',alt);evidence.push({type:'visually-reviewed-image-description',mode:empty?'empty-linked':'missing'});}
+ }
+ for(const link of main.querySelectorAll('a[href]')){
+  if(link.textContent.trim()||link.getAttribute('aria-label')?.trim())continue;
+  const target=link.getAttribute('href'),image=link.querySelector('img');
+  if(/\.(?:jpe?g|png|webp)(?:[?#]|$)/i.test(target)&&image?.getAttribute('alt')?.trim()){
+   link.setAttribute('aria-label','View full-size photo: '+image.getAttribute('alt'));
+   evidence.push({type:'named-full-size-photo-link'});
+  }else if(key==='otherbarcrawls'&&link.closest('.et_pb_main_blurb_image')){
+   const heading=link.closest('.et_pb_blurb')?.querySelector('.et_pb_module_header');
+   if(!heading?.textContent.trim())throw Error('Existing blurb heading required for image link');
+   link.setAttribute('aria-label',heading.textContent.trim());evidence.push({type:'existing-blurb-link-name'});
+  }else if(link.classList.contains('ktk-parity-module-link')&&target.startsWith('https://goo.gl/maps/')){
+   link.setAttribute('aria-label','Open location in Google Maps');evidence.push({type:'named-map-module-link'});
+  }
+ }
  for(const header of main.querySelectorAll('header.ktk-archive-heading')){
   header.setAttribute('role','presentation');evidence.push({type:'archive-header-not-banner'});
  }

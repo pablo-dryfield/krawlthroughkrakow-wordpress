@@ -120,6 +120,10 @@ body.ktk-homepage-standalone #page-container #main-content .et_pb_button_1 { col
 .ktk-code-page[data-ktk-page="new-years-eve"] #main-content .et_pb_toggle_content a { color: #c8006c; text-decoration: underline; }
 .ktk-code-page[data-ktk-page="new-years-eve"] #main-content .et_pb_text_3 a[href$="/contact/"] { color: #c8006c; text-decoration: underline; }
 .ktk-code-page[data-ktk-page="post-party-krakow"] #main-content .et_pb_text_4 a { color: #c8006c !important; }
+body.ktk-code-page[data-ktk-page="post-party-krakow"] #main-content .et_pb_text .c0 > a,
+body.ktk-code-page[data-ktk-page="post-party-krakow"] #main-content .et_pb_text_31 a { color: #c8006c !important; }
+.ktk-code-page[data-ktk-page="post-life-professional-drunk"] #main-content .et_pb_text a,
+.ktk-code-page[data-ktk-page="post-krakow-new-years-eve"] #main-content .et_pb_text a { text-decoration: underline; text-underline-offset: .15em; }
 .ktk-code-page[data-ktk-page="pub-crawl-jobs"] #main-content .et_pb_blurb_description { color: #666 !important; }
 .ktk-code-page[data-ktk-page="stagshens"] .wpcf7-form { color: #fff; }
 .ktk-code-page[data-ktk-page="stagshens"] .wpcf7-form .formField { color: #111; background: #fff; }
