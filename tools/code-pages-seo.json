@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "reviewedOn": "2026-11-13",
+  "reviewedOn": "2026-11-14",
   "pages": {
     "/about-us/": {
       "role": "Operator identity and experience",
@@ -39,8 +39,8 @@
       "description": "Read Krawl Through Krakow's 2020 nightlife guide, an archived introduction to the city's bars, clubs and nights out."
     },
     "/all-you-need-to-know-about-visiting-auschwitz/": {
-      "role": "Archived Auschwitz visit-planning guide; transport and entry facts need refresh",
-      "description": "Our archived guide to visiting Auschwitz from Krakow covers transport and visit planning. Confirm current entry arrangements with the museum."
+      "role": "Memorial visit planning, with source-reviewed entry and transport guidance",
+      "description": "Plan a visit to Auschwitz-Birkenau from Krakow: official entry passes, transport, opening hours and visitor guidance, with links to current Memorial information."
     },
     "/bachelor-party-organisers-krakow/": {
       "role": "Existing bachelor-party planning article; supports the main stag page",

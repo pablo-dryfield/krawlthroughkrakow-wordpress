@@ -44,6 +44,8 @@ jobs:
         run: node --test tools/tests/test_booking_destinations.mjs tools/tests/test_homepage_consent.mjs tools/tests/test_code_pages_seo.mjs tools/tests/test_semantic_headings.mjs tools/tests/test_canonical_links.mjs tools/tests/test_code_page_template.mjs tools/tests/test_homepage_media_policy.mjs tools/tests/test_search_console_delivery.mjs tools/tests/test_code_pages_schema.mjs tools/tests/test_read_only_http.mjs tools/tests/test_content_accessibility_styles.mjs tools/tests/test_content_image_descriptions.mjs tools/tests/test_internal_link_graph.mjs tools/tests/test_content_booking_events.mjs tools/tests/test_nightlife_editorial.mjs tools/tests/test_budget_editorial.mjs tools/tests/test_jazz_editorial.mjs tools/tests/test_music_editorial.mjs tools/tests/test_venue_editorial.mjs tools/tests/test_code_page_sharing.mjs tools/tests/test_site_offer_facts.mjs tools/tests/test_offer_pages_editorial.mjs tools/tests/test_event_promotions.mjs
       - name: Homepage full icon font contracts (no conversion or deployment)
         run: node --test tools/tests/test_homepage_icon_font.mjs
+      - name: Memorial visitor-guide source contracts
+        run: node --test tools/tests/test_memorial_editorial.mjs
       - name: PHP syntax and isolated integration contracts
         run: |
           php --version

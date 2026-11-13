@@ -9,7 +9,7 @@ const routes = manifest.routes.map(row => row.route);
 test('review covers all 77 inherited content gaps: 76 descriptions and one explicit health-content hold', () => {
   assert.equal(Object.keys(seoMetadata.pages).length, 76);
   assert.equal(Object.keys(seoMetadata.holds).length, 1);
-  assert.equal(seoMetadata.reviewedOn, '2026-11-13');
+  assert.equal(seoMetadata.reviewedOn, '2026-11-14');
   assert.doesNotThrow(() => validateSeoRoutes(routes));
 });
 

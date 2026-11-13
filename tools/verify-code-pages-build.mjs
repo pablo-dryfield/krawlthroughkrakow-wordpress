@@ -13,6 +13,7 @@ import {loadBudgetEditorial,reviseBudgetEditorial} from './budget-editorial.mjs'
 import {loadJazzEditorial,reviseJazzEditorial} from './jazz-editorial.mjs';
 import {loadMusicEditorial,reviseMusicEditorial} from './music-editorial.mjs';
 import {loadVenueEditorial,reviseVenueEditorial} from './venue-editorial.mjs';
+import {loadMemorialEditorial,reviseMemorialEditorial} from './memorial-editorial.mjs';
 import {codePageTitle,codePageHeadDescription,loadSharingImagePolicy,buildCodePageSharing} from './code-page-sharing.mjs';
 import {loadOfferPageRevisions,reviseOfferPages} from './offer-pages-editorial.mjs';
 import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
@@ -25,6 +26,7 @@ const budgetRevision=await loadBudgetEditorial();
 const jazzRevision=await loadJazzEditorial();
 const musicRevisions=await loadMusicEditorial();
 const venueRevisions=await loadVenueEditorial();
+const memorialRevision=await loadMemorialEditorial();
 const offerPageRevisions=await loadOfferPageRevisions();
 const campaignFacts=campaignTemplateValues(await loadOfferFacts());
 const imageReview=JSON.parse(await readFile('tools/content-image-descriptions.json','utf8'));
@@ -45,6 +47,7 @@ async function facts(html,revision){
   await page.evaluate(reviseJazzEditorial,{key:revision.key,revision:jazzRevision});
   await page.evaluate(reviseMusicEditorial,{key:revision.key,revision:musicRevisions.find(row=>row.key===revision.key)});
   await page.evaluate(reviseVenueEditorial,{key:revision.key,revision:venueRevisions.find(row=>row.key===revision.key)});
+  await page.evaluate(reviseMemorialEditorial,{key:revision.key,revision:memorialRevision});
   await page.evaluate(reviseContextualLinks,revision);
   await page.evaluate(reviseSemanticHeadings,revision);
   await page.evaluate(reviseOfferPages,{key:revision.key,revision:offerPageRevisions.find(row=>row.key===revision.key)});

@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 25 |
-| In progress | 0 |
+| In progress | 1 |
 | Verified live | 1 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Current Memorial visitor information](memorial-guide-2026-11-14/RESEARCH.md) | C08 | In progress (website) | Not yet | Complete atomic/source/browser/accessibility checks, required CI, guarded staging release and cached devices; eventual owner and production approval. |
 | [Lossless homepage icon-font delivery](staging-performance-2026-11-12/ICON-FONT-DELIVERY.md) | D02 | Verified on staging (website) | 2026-11-14 | Broader isolated multi-template/real-user performance work, owner review and production approval. Preserved live control raster differences are not hidden. |
 | [Remaining city-guide NYE promotion](nye-content-review-2026-11-13/GUIDE-CUTOFF.md) | C02, G01, D05 | Verified on staging (website) | 2026-11-13 | Owner review, broader campaign-copy review, stale-no-JS cutoff cache operations and production approval. |
 | [Jazz and live-music choice guides](music-guides-2026-11-13/MUSIC-CHOICES.md) | C05, C08, D05 | Verified on staging (website) | 2026-11-13 | Owner review, remaining music/venue guides, ongoing programme checks and production approval. |
