@@ -16,6 +16,7 @@ const cases=[
  {path:'/krakow-stag-do/',selector:'a[data-ktk-booking-product="40"]',destination:'/staging/store2/brewery-tour-40/'},
  {path:'/about-us/',selector:'#ktk-cta',destination:'/staging/store2/pub-crawl-28/',product:28}
 ];
+if(!production)cases.push({path:'/krakow-stag-do/',selector:'a[data-ktk-booking-product="30"]',destination:'/staging/store2/go-karting-30/',product:30});
 if(production)for(const item of cases)item.destination=item.destination.replace(/^\/staging/,'');
 const params={utm_source:'readiness-validation',utm_medium:'controlled-browser',utm_campaign:production?'production-link-handoff':'staging-link-handoff',gclid:'isolated-validation-click'};
 const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});

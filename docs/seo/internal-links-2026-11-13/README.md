@@ -1,0 +1,101 @@
+# Internal Discovery And Group Planning
+
+## Scope And Progress
+
+Staging-only continuation of T07/T08/C06/D05. No production, storefront commerce,
+OmniLodge, plugin, consent, form-backend or account changes. Group links are not a
+claim that every old article/venue/package has completed its separate fact check.
+
+- [x] Before application edits, full tracked source58b62f7 archived in
+  `deploy-backups/seo-internal-links-before-20261113.zip`, SHA256
+  `10b5c2dc6b9e73d1f04b10312aa9b002d9db2bb8acebdc1e2f20df0c651f495b`.
+- [x] Read all142 public initial-HTML pages: homepage,116 migrated routes,
+  catalogue and all24 products from the complete public catalogue. Bind registry,
+  catalogue and each response hash. No scripts/resources or business writes.
+- [x] Baseline:6,182 known link edges; stag, hen and other-crawl directory have
+  zero native incoming pages. Six tag archives also unreachable. One observed
+  noncanonical regular-crawl link path; empty Go-Karting CTA separately confirmed.
+- [x] Guarded source changes: five short contextual paragraphs, matching product30
+  destination for the empty Go-Karting button, clean accessible name preserving
+  its visual arrow, and exact incoming regular-crawl slash normalization.
+- [x] Local graph:6,206 edges, no unknown page paths. Stag/hen reachability depth2;
+  directory depth3; all24 products within depth2. Only six tag archives remain.
+- [x] Final source comparison381/381, build2320/2320, targeted28-view axe audit
+  zero violations and10 canonical/graph unit tests pass. Original article copy,
+  forms, page metadata/schema, captured CSS/media and medical body preserved except
+  the explicitly added paragraphs/corrected button. Final keyboard/reflow/control
+  browser checks284/284 pass, including the clean Go-Karting accessible name.
+- [ ] Required CI and guarded staging deployment.
+- [ ] Origin, scoped cache purge, complete normal/repeat graph and release checks.
+
+## Findings And Changes
+
+| Page | Initial Native Incoming Pages | Local Candidate | Native Depth |
+| --- | ---: | ---: | ---: |
+| `/krakow-stag-do/` | 0 | 2 | 2 |
+| `/krakow-hen-do/` | 0 | 3 | 2 |
+| `/otherbarcrawls/` | 0 | 1 | 3 |
+
+`stagshens` now links directly to the existing stag/hen pages. Three relevant
+planning articles link to those pages; the European crawl article points to the
+existing operator directory. No repeated keyword-heavy footer links or invented
+group sizes, prices, venues, credentials or offers were added. Six isolated tags
+need an intentional archive/content decision; no automatic noindex, deletion or
+forced linking is performed to make a crawler score green.
+
+The original blank `et_pb_button_16` belongs to the Go-Karting row. It now reaches
+the existing product30 checkout section, not another tour or a generic enquiry.
+Only the observed incoming `/store2/pub-crawl-28` path gets a trailing slash;
+query/fragment attribution is retained exactly. No storefront route, legacy-store
+setting, checkout implementation, quote, cart or price changes. Regenerating the
+homepage also applies nine meaningful gallery link names from its existing alts;
+strict source comparison proves those attributes and the canonical link are its
+only body changes, with original captured CSS exact.
+
+## Method And Limits
+
+`tools/internal-link-graph.mjs` distinguishes canonical-host staging links from
+external, non-HTTP, protected and media destinations. Query/fragment values are
+never stored. Exact case/path identity is retained; only explicit registry aliases
+resolve. Duplicate/self links do not inflate distinct incoming-page counts.
+Native followable anchors count for reachability; script-only modules and nofollow
+anchors do not. Six unit tests cover these boundaries and alias cycles.
+
+`audit-internal-links.mjs` parses actual initial HTML with scripts/resources off.
+It distinguishes shared shells/footer bands from contextual links, including21
+copied footer bands inside content wrappers. The deliberate sitewide staging
+nofollow guard is ignored only for structural reachability; this is not a Google
+crawl/indexing verdict or proof all client-rendered states behave identically.
+Local previews are explicitly labelled and may omit the production renderer's
+indexing metadata; public staging still must contain noindex or the audit fails.
+Products are discovered from the public catalogue, not assumed from the sitemap's
+smaller editorial selection. Protected Ecwid/forms/commerce URLs are not crawled.
+
+`contextual-links.mjs` asserts the original source paragraph/row before edits,
+verifies existing additions on repeat and refuses silently changed destinations.
+Builders and source/visible-text verification use the same reviewed policy.
+Homepage/article metadata, publication history, original photos and statue SVGs
+are unchanged. Existing enquiry fields/actions/recipients/backends remain.
+
+## Preserved Diagnostics
+
+- `graph-first.json` incorrectly interpreted an empty href as a literal null path;
+  corrected native attribute extraction and a negative unit test fix that
+  analysis artifact. The independently confirmed empty activity CTA is real.
+- `graph-local.json` correctly rejected the loopback homepage's missing renderer
+  noindex. Only explicitly configured previews now report that omission instead
+  of requiring WordPress metadata; public staging guard remains fail-closed.
+- `local-browser-final`220/272 focused links before first-Tab checks and therefore
+  changed the starting point. Native first-Tab/skip tests now run first, unchanged.
+- Two280/284 runs exposed the legacy pseudo-arrow's literal5 in the accessible
+  name, not a wrong destination. The repaired control now gets an exact meaningful
+  aria-label, preserving the visual arrow. Retain those failures and verify again.
+
+Previous medical, manual assistive-technology/provider and strict unchanged-logo
+raster limitations still apply. No conformance, pixel-identity, traffic or ranking
+improvement claim. All raw reports/screenshots are ignored, not erased.
+
+Previous image batch PR21 finaleb9ce7a passed CI43427701904, merged58b62f7 with exact
+tree9d8f92fa38a258e9998fe77a08292d48b0e04f42. Its temporary baseline was stopped
+and removed before deleting its completed branches. This batch has its own58b62f7
+detached source reference; clean it after verified merge/release.

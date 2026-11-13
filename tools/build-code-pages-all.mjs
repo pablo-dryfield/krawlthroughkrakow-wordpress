@@ -13,6 +13,7 @@ import {buildCodePageSchema,codePageSchemaFacts} from './code-pages-schema.mjs';
 import {reviseAccessibilitySemantics} from './accessibility-semantics.mjs';
 import {buildContentAccessibilityStyles} from './content-accessibility-styles.mjs';
 import {loadReviewedImageDescriptions} from './content-image-descriptions.mjs';
+import {reviseContextualLinks} from './contextual-links.mjs';
 const require = createRequire(import.meta.url);
 const { chromium } = require(path.join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const root = path.resolve('.');
@@ -201,6 +202,7 @@ try {
         });
       });
       const contentRevisions=await page.evaluate(reviseCodePageContent,{key:route.key,reviewCounts});
+      contentRevisions.push(...await page.evaluate(reviseContextualLinks,{key:route.key}));
       contentRevisions.push(...await page.evaluate(reviseSemanticHeadings,{key:route.key,kind:route.kind,title:capture.title,route:route.route}));
       contentRevisions.push(...await page.evaluate(reviseAccessibilitySemantics,{key:route.key,imageDescriptions}));
       css=preserveHeadingCss(css);

@@ -5,9 +5,12 @@ import path from 'node:path';
 import {reviseAccessibilitySemantics} from './accessibility-semantics.mjs';
 import {composeCodePage} from './code-page-template.mjs';
 import {loadReviewedImageDescriptions} from './content-image-descriptions.mjs';
+import {reviseContextualLinks} from './contextual-links.mjs';
+import {rewriteCanonicalLinks} from './canonical-links.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const [baseline,output]=process.argv.slice(2);
+const contextual=process.argv.includes('--contextual');
 if(!baseline||!output)throw Error('Baseline worktree and fresh report required');
 try{await readFile(output);throw Error('Preserve earlier evidence');}catch(error){if(error.code!=='ENOENT')throw error;}
 const assets='staging/wp-content/mu-plugins/ktk-code-pages-assets/';
@@ -23,6 +26,7 @@ try{
   const markup=async(root,definition)=>composeCodePage(await readFile(path.join(root,assets,definition.shell_file),'utf8'),await readFile(path.join(root,assets,definition.main_file),'utf8'));
   const original=await markup(baseline,previous),candidate=await markup('.',definition);
   await page.setContent(original);await page.evaluate(reviseAccessibilitySemantics,{key,imageDescriptions});
+  if(contextual){await page.evaluate(reviseContextualLinks,{key});await rewriteCanonicalLinks(page);}
   const expected=await page.evaluate(()=>document.body.innerHTML);
   await page.setContent(candidate);
   check(key+' only reviewed semantic attributes changed',expected===await page.evaluate(()=>document.body.innerHTML));
@@ -76,6 +80,38 @@ try{
  await page.setContent(imageFixture);const held=await page.locator('#main-content').innerHTML();
  await page.evaluate(reviseAccessibilitySemantics,{key:'post-hostel-hangover-cure',imageDescriptions:review});
  check('medical hold prevents reviewed image and link revisions',held===await page.locator('#main-content').innerHTML());
+ if(contextual){
+  const body=async directory=>{
+   const source=await readFile(path.join(directory,'staging/wp-content/mu-plugins/ktk-homepage-assets/parity-seasonal-content.php'),'utf8');
+   const match=source.match(/\$html = <<<'([^']+)'\r?\n([\s\S]*?)\r?\n\1;/);
+   if(!match)throw Error('Expected generated homepage nowdoc');return match[2];
+  };
+  await page.setContent(await body(baseline));await page.evaluate(reviseAccessibilitySemantics,{key:'homepage'});await rewriteCanonicalLinks(page);
+  const expectedHome=await page.evaluate(()=>document.body.innerHTML);await page.setContent(await body('.'));
+  check('homepage differs only by generated photo names and canonical booking link',expectedHome===await page.evaluate(()=>document.body.innerHTML));
+  check('homepage captured style bytes remain exact',(await readFile(path.join(baseline,'staging/wp-content/mu-plugins/ktk-homepage-assets/parity.css'))).equals(await readFile('staging/wp-content/mu-plugins/ktk-homepage-assets/parity.css')));
+  await page.setContent('<div id="main-content"><div class="et_pb_text_1"><div class="et_pb_text_inner"><p>KTK has been organizing events for groups.</p></div></div></div>');
+  await page.evaluate(reviseContextualLinks,{key:'stagshens'});
+  check('group links are native, named and environment-portable',await page.getByRole('link',{name:'stag do in Krakow'}).getAttribute('href')==='__KTK_HOME_URL__krakow-stag-do/'&&await page.getByRole('link',{name:'hen party in Krakow'}).getAttribute('href')==='__KTK_HOME_URL__krakow-hen-do/');
+  const once=await page.content();await page.evaluate(reviseContextualLinks,{key:'stagshens'});
+  check('contextual additions are idempotent',once===await page.content());
+  await page.getByRole('link',{name:'stag do in Krakow'}).evaluate(a=>a.setAttribute('href','/unexpected/'));
+  let rejected=false;try{await page.evaluate(reviseContextualLinks,{key:'stagshens'});}catch{rejected=true;}
+  check('changed reviewed destinations reject rather than silently duplicating',rejected);
+  await page.setContent('<div id="main-content"><p>Changed source.</p></div>');
+  rejected=false;try{await page.evaluate(reviseContextualLinks,{key:'stagshens'});}catch{rejected=true;}
+  check('missing reviewed source rejects',rejected);
+  const before=await page.content();await page.evaluate(reviseContextualLinks,{key:'post-hostel-hangover-cure'});
+  check('contextual revision preserves medical hold',before===await page.content());
+  await page.setContent('<div id="main-content"><div class="et_pb_row"><h2>Krakow Go-Karting</h2><a class="et_pb_button_16" href="">Book Tour</a></div></div>');
+  await page.evaluate(reviseContextualLinks,{key:'krakow-stag-do'});
+  check('empty karting control reaches matching product, not a generic offer',await page.getByRole('link',{name:'Book Go-Karting'}).getAttribute('href')==='__KTK_HOME_URL__store2/go-karting-30/#book'&&await page.getByRole('link',{name:'Book Go-Karting'}).getAttribute('data-ktk-booking-product')==='30');
+  const karting=await page.content();await page.evaluate(reviseContextualLinks,{key:'krakow-stag-do'});
+  check('karting correction is idempotent',karting===await page.content());
+  await page.locator('h2').evaluate(h=>h.textContent='A different activity');
+  rejected=false;try{await page.evaluate(reviseContextualLinks,{key:'krakow-stag-do'});}catch{rejected=true;}
+  check('changed activity row rejects product substitution',rejected);
+ }
 }finally{await browser.close();}
 const report={checkedAt:new Date().toISOString(),baseline,passed:checks.filter(x=>x.pass).length,total:checks.length,checks};
 await mkdir(path.dirname(output),{recursive:true});await writeFile(output,JSON.stringify(report,null,2)+'\n');
