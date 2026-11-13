@@ -17,6 +17,7 @@ const cases=[
  {path:'/about-us/',selector:'#ktk-cta',destination:'/staging/store2/pub-crawl-28/',product:28}
 ];
 if(!production)cases.push({path:'/krakow-stag-do/',selector:'a[data-ktk-booking-product="30"]',destination:'/staging/store2/go-karting-30/',product:30});
+if(!production)for(const selector of ['.et_pb_text_5 a[href*="store2"]','.et_pb_text_33 a[href*="store2"]'])cases.push({path:'/',selector,destination:'/staging/store2/pub-crawl-28/',homepage:true});
 if(!production)cases.push({path:'/wheres-the-cheap-places-to-drink-in-krakow/',selector:'.et_pb_text_0 a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 if(!production)cases.push({path:'/jazz-bars-in-krakow/',selector:'.entry-content a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 if(!production)cases.push({path:'/krakow-live-music/',selector:'.entry-content a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
@@ -48,6 +49,13 @@ try{
    check(item.path+' booking analytics withheld before consent',await page.evaluate(()=>!(window.dataLayer||[]).some(row=>row?.event==='ktk_page_booking_click')));
    await page.evaluate(()=>{window.KTK_ANALYTICS_CONSENT=true;});await anchor.evaluate(a=>a.click());
    check(item.path+' correct consented product event',await page.evaluate(id=>(window.dataLayer||[]).some(row=>row?.event==='ktk_page_booking_click'&&row.product_id===id),item.product));
+  }
+  if(item.homepage){
+   const journey=()=>page.evaluate(()=>JSON.parse(localStorage.getItem('ktk-storefront-journey-events-v1')||'[]'));
+   check(item.selector+' homepage journey withheld before consent',!(await journey()).some(row=>row.type==='homepage_button_clicked'));
+   await page.evaluate(()=>{window.KTK_ANALYTICS_CONSENT=true;});await anchor.evaluate(a=>a.click());
+   const clicks=(await journey()).filter(row=>row.type==='homepage_button_clicked');
+   check(item.selector+' consented click keeps label and clean destination',clicks.length===1&&clicks[0].details.buttonLabel===await anchor.innerText()&&clicks[0].details.destination==='/staging/store2/pub-crawl-28/#book');
   }
   await context.close();
  }

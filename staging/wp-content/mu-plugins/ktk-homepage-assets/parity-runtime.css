@@ -114,6 +114,19 @@ dialog.ktk-parity-lightbox button:focus-visible { outline: 2px solid #fff !impor
   .et_pb_image_3, .et_pb_image_4, .et_pb_image_5, .et_pb_image_6, .et_pb_image_7, .et_pb_image_8, .et_pb_column_27 { transition: none !important; }
 }
 
+/* BEGIN homepage offer clearance */
+/* Clearance for the existing left/right booking tabs; hero and wide layouts stay unchanged. */
+@media (max-width: 600px) {
+  body.ktk-homepage-standalone #main-content :is(.et_pb_text_2,.et_pb_text_3,.et_pb_text_4,.et_pb_text_5,.et_pb_text_8,.et_pb_text_10,.et_pb_text_11,.et_pb_text_12,.et_pb_text_13,.et_pb_text_15,.et_pb_text_16,.et_pb_text_18,.et_pb_text_22,.et_pb_text_24,.et_pb_text_30,.et_pb_text_33) .et_pb_text_inner {
+    padding-left: 8px;
+    padding-right: 24px;
+  }
+  body.ktk-homepage-standalone #main-content :is(.et_pb_blurb_3,.et_pb_blurb_4,.et_pb_blurb_5,.et_pb_blurb_8,.et_pb_blurb_11,.et_pb_blurb_12,.et_pb_blurb_13) .et_pb_blurb_container {
+    padding-right: 24px;
+  }
+}
+/* END homepage offer clearance */
+
 /* BEGIN shared content accessibility */
 /* Darker pink is reserved for text on light content, not the seasonal artwork. */
 #main-content .et_pb_text:not(.et_pb_bg_layout_dark) a,

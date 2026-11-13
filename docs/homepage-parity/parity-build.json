@@ -1,10 +1,10 @@
 {
   "capturedSource": "production-source-rendered-1920.html",
-  "builtAt": "2026-11-13T18:13:04.589Z",
+  "builtAt": "2026-11-13T19:24:41.373Z",
   "bodyClass": "home wp-singular page-template-default page page-id-278 custom-background wp-theme-Divi et_pb_button_helper_class et_fullwidth_nav et_fullwidth_secondary_nav et_non_fixed_nav et_show_nav et_primary_nav_dropdown_animation_slide et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_footer_columns1 et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db",
   "title": "Krawl Through Krakow | Best Pub Crawl in Krakow",
   "description": "",
-  "htmlBytes": 82232,
+  "htmlBytes": 78855,
   "cssBytes": 352718,
   "files": {
     "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/900/italic.woff2": {
@@ -930,6 +930,116 @@
     {
       "from": "https://krawlthroughkrakow.com/terms-and-conditions",
       "to": "__KTK_HOME_URL__terms-and-conditions/"
+    }
+  ],
+  "offerRevisions": [
+    {
+      "selector": ".et_pb_blurb_3 .et_pb_module_header",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_blurb_3 .et_pb_blurb_description",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_blurb_4 .et_pb_blurb_description",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_blurb_5 .et_pb_blurb_description",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_blurb_6 .et_pb_module_header",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_blurb_7 .et_pb_module_header",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_text_2 .et_pb_text_inner > :first-child",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_text_18 .et_pb_text_inner > :is(h2,h3)",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_text_22 .et_pb_text_inner > :is(h2,h3)",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_text_3 .et_pb_text_inner",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_text_4 .et_pb_text_inner",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_text_5 .et_pb_text_inner",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_text_8 .et_pb_text_inner",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_text_10 .et_pb_text_inner",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_text_11 .et_pb_text_inner > :is(h2,h3)",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_text_12 .et_pb_text_inner",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_text_13 .et_pb_text_inner",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_text_15 .et_pb_text_inner",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_text_16 .et_pb_text_inner",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_blurb_8 .et_pb_module_header",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_blurb_11 .et_pb_blurb_description",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_blurb_12 .et_pb_blurb_description",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_blurb_13 .et_pb_module_header",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_blurb_13 .et_pb_blurb_description",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_text_24 .et_pb_text_inner",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_text_30 .et_pb_text_inner",
+      "reviewedOn": "2026-11-13"
+    },
+    {
+      "selector": ".et_pb_text_33 .et_pb_text_inner",
+      "reviewedOn": "2026-11-13"
     }
   ],
   "mediaRevisions": [
