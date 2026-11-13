@@ -80,9 +80,43 @@ The first Python suite181 tests found the deliberately stale sitemap source
 binding, not a failed application test. Fresh public24-product review and
 123-URL discovery build retain exact entries/exclusions/robots/policy and update
 only115 definition source hashes. The catalog audit is read-only; no offer data
-changed. Full Python repeat, native browser checks, CI and staging release remain.
+changed. Full Python181 and native browser170 repeat pass, with actual
+phone/desktop screenshots inspected.
 
 Primary guidance checked13 November: [Open Graph](https://ogp.me/) and
 [Google title links](https://developers.google.com/search/docs/appearance/title-link).
 The former X Cards documentation redirects to its general developer overview;
 do not claim an external X validation/certification from that page.
+
+## Staging Release And Cache Proof
+
+Application32239b4 / PR30 required CI43484788543 passed both jobs. Content
+publisher completed18:44:05UTC:2072 independent hashes, saved WordPress state,
+homepage/storefront unchanged, helper removed. Backup184159 SHA256
+`cb50a1de96df81ee9c40ad5da95abe8ce78c9e3a8b6e464d09c760bc67104856`.
+Separate discovery publisher completed18:45:24UTC:3 hashes/protected staging and
+production files/saved state unchanged, helper removed, no cache-path change.
+Backup184503-601897 SHA256
+`f6efcb03a0944e5cd06b3fb51ffc53e573df1df4c02090bfb81b69c0f07f1b19`.
+
+Staging-only Cloudflare prefix purge accepted18:46:39.826UTC. All116 content
+routes across desktop/Android/iPad pass6193/6193 at origin, normal and warmed
+repeat, including exact social tags without duplicates. Normal252MISS/96HIT
+retained as mixed, not called all-MISS. Repeat report18:55:10UTC has348/348HIT
+and119 current active asset hashes/tokens. Files are `sharing-origin/clean/repeat-
+20261113.json` in the full-migration directory.
+
+Head/actual-image suites510/510 local/origin/normal/repeat pass, covering47 unique
+image GETs with exact MIME/hash/dimensions. Native browser170 local/origin/normal,
+attribution101 with no orders/navigation, discovery243origin/216normal/216repeat,
+homepage10 assets/all3HIT repeat and retained icon source21/all3HIT pass. The
+normal native sample intercepts80 provider POSTs,0 first-party booking/form writes
+or actual mutations. Providers remain blocked in these isolated tests: not a
+consent certificate, social-platform rendering certificate or full WCAG claim.
+
+Both roadmaps advance this bounded delivery:19 staging-verified, next main-offer
+review underway and1 separately live OmniLodge delivery. The read-only next-offer
+inventory is separate; no offer body/price was changed in this release. All finite
+scans/publishers are closed; reference PHP63259 closed, root5184/5185 previews
+remain needed. Final docs CI/merge/clean reference removal are recorded in PR30.
+No production, commerce, consent, account or OmniLodge update.
