@@ -52,9 +52,22 @@ all preset calendar calculations using America/Los_Angeles; explicit custom date
 are retained. Sourceab19a827 passed typecheck/lint, focused24 tests, full serial
 UI183 suites/1279 tests, synthetic actual-page49 checks across four widths/four
 timezones, and all required CI43329774277. Initial runner/locator failures remain.
-Merged20f0366712b40486925aa8c3229aff26aceb47e8; immutable Release43331452337 is
-running. Its third actual delivery/public identity/live preset proof is still
-pending; never substitute the second release's proof for it.
+Merged20f0366712b40486925aa8c3229aff26aceb47e8. Immutable Release43331452337
+attempt1 and managed deployment43333310604 succeeded; host terminal
+13 November00:06:25.519UTC. Trusted artifact13995757715 inner SHA256
+`65ffc620bb6d0049d8cc78fe95e5802d7bbe8193890bb523c3d52fb90e360d29` verified
+all2804 files. Exact public3/3 proves healthy-primary backend, UI metadata and
+reporting bundle `5542.914bc8a4.chunk.js` match the new release. The first0/3
+pre-activation check remains preserved, not overwritten.
+
+Actual signed-in Europe/Warsaw UI after local midnight defaults14Oct..10Nov:
+958/45,215/2.12%/9.41.365-day preset11Nov2025..10Nov2026 returns
+13,174/835,831/1.58%/10.75, and its previous11Nov2024..10Nov2025 period shows
+the approximate2025-07-12 boundary warning with four No comparison labels. Default
+unfiltered28-day view restored. Read-only Google/account/commerce state unchanged.
+Docs-only PR256 mergedcb6ecc48 with required CI; no additional application Release.
+Feature/merge tree equality verified before own branch cleanup, primary OmniLodge
+checkout clean and synchronized to master.
 
 Primary sources: [Google Search Analytics](https://developers.google.com/webmaster-tools/v1/searchanalytics/query)
 and [Google's history announcement](https://developers.google.com/search/blog/2018/01/introducing-new-search-console).

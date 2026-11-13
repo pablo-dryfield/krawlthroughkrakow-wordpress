@@ -5,6 +5,7 @@
     window.__ktkHomepageParityInitialized = true;
     const motion = matchMedia('(prefers-reduced-motion: reduce)');
     const mobile = matchMedia('(max-width: 980px)');
+    const compactMenu = matchMedia('(max-width: 1599px)');
     const userAgent = navigator.userAgent;
     const iPad = /iPad/.test(userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
     const mobileDevice = iPad || /Android|webOS|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
@@ -145,6 +146,7 @@
         if (restoreFocus) toggle.focus({ preventScroll: true });
       }
       setMobileOpen(false);
+      document.documentElement.classList.add('ktk-parity-menu-ready');
       toggle.addEventListener('click', () => setMobileOpen(toggle.getAttribute('aria-expanded') !== 'true'));
       toggle.addEventListener('keydown', event => {
         if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggle.click(); }
@@ -162,7 +164,7 @@
       mobileNav.addEventListener('focusout', () => requestAnimationFrame(() => {
         if (!mobileNav.contains(document.activeElement)) setMobileOpen(false);
       }));
-      mobile.addEventListener('change', () => setMobileOpen(false));
+      compactMenu.addEventListener('change', () => setMobileOpen(false));
     }
 
     document.querySelectorAll('#top-menu li').forEach(item => {

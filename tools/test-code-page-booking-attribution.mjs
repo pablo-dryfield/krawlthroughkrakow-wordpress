@@ -12,6 +12,7 @@ await mkdir(path.dirname(output),{recursive:true});
 const cases=[
  {path:'/',selector:'a[href*="store2/bottomless-brunch-29/"]',destination:'/staging/store2/bottomless-brunch-29/'},
  {path:'/new-years-eve/',selector:'#main-content .et_pb_button_0',destination:'/staging/store2/nye-pub-crawl-32/',product:32},
+ {path:'/new-years-eve-in-krakow/',selector:'#main-content a[href*="/nye-pub-crawl-32/"]',destination:'/staging/store2/nye-pub-crawl-32/',product:32},
  {path:'/krakow-stag-do/',selector:'a[data-ktk-booking-product="40"]',destination:'/staging/store2/brewery-tour-40/'},
  {path:'/about-us/',selector:'#ktk-cta',destination:'/staging/store2/pub-crawl-28/',product:28}
 ];
