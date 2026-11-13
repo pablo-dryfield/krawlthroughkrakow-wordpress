@@ -6,7 +6,7 @@ Updated: 2026-11-13 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 ## Where We Are
 
-**Current work:** Jazz and live-music choice guides are now staging cache-verified: distinct purposes, checked programme links and useful booking guidance. HEVRE remains a KTK recommendation with its current jazz programme unconfirmed. There are 16 verified staging deliveries; remaining music/venue guides and wider plan work continue. Production is unchanged.
+**Current work:** Working through the next six venue guides together: techno venues and event planning, Irish pubs, nightclubs, Kazimierz and shot bars. The owner confirmed all guide venues remain KTK recommendations; mutable schedules/prices are not invented. Local checks pass and staging release verification is next. Production remains unchanged.
 
 **Verified foundation milestones:** 7. **Website SEO production releases:** 0. The original website migration is a separate completed project, not counted as SEO implementation. Separately authorized OmniLodge reporting has its own release status.
 
@@ -24,7 +24,7 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | --- | --- | --- | --- | --- |
 | [Jazz and live-music choice guides](music-guides-2026-11-13/MUSIC-CHOICES.md) | C05, C08, D05 | Verified on staging (website) | 2026-11-13 | Owner review, remaining music/venue guides, ongoing programme checks and production approval. |
 | [Jazz guide: checked venue facts and booking clarity](music-guides-2026-11-13/JAZZ-FACTS.md) | C05, C08, D05 | Verified on staging (website) | 2026-11-13 | Owner review and eventual production approval; remaining jazz venues and wider music guides are separate work. |
-| [Music and venue guides](music-guides-2026-11-13/REVIEW.md) | C05, C08 | In progress (website) | Not yet | Continue the remaining venue guides, unresolved primary-source facts and techno article-intent decisions. |
+| [Six remaining venue guides](music-guides-2026-11-13/VENUE-GUIDES.md) | C05, C08, D05 | In progress (website) | Not yet | Required CI, guarded staging publication and live normal/warmed cache verification; wider plan work continues. |
 | [Budget-drinks guide refresh](budget-drinks-2026-11-13/README.md) | C04, D05 | Verified on staging (website) | 2026-11-13 | Owner review, menu maintenance and production approval. |
 | [Nightlife hub and historical-guide context](nightlife-venues-2026-11-13/README.md) | C03 | Verified on staging (website) | 2026-11-13 | Review other overlapping guides and approve production. |
 | [Group-planning links and booking handoff](internal-links-2026-11-13/README.md) | T08, C06 | Verified on staging (website) | 2026-11-13 | Archive and enhanced-client discovery review; production approval. |

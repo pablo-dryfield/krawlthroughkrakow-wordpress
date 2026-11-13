@@ -113,6 +113,18 @@ dialog.ktk-parity-lightbox .mfp-arrow[hidden] { display: none; }
  body[data-ktk-page="post-krakow-live-music"] #post-6196 > .entry-content { padding-right:16px; }
 }
 
+.entry-content table.ktk-venue-comparison { width:100%; table-layout:fixed; border-collapse:collapse; margin:18px 0 26px; }
+.entry-content table.ktk-venue-comparison caption { text-align:left; font-weight:700; padding:0 0 8px; }
+.entry-content table.ktk-venue-comparison th,
+.entry-content table.ktk-venue-comparison td { padding:10px; border:1px solid #d5d5d5; text-align:left; vertical-align:top; overflow-wrap:anywhere; }
+.entry-content table.ktk-venue-comparison th:first-child { width:34%; }
+.entry-content table.ktk-venue-comparison thead { background:#f3f3f3; color:#222; }
+@media (max-width:600px) {
+ body:is([data-ktk-page="post-krakow-techno-clubs"],[data-ktk-page="post-krakow-techno-clubs-2"],[data-ktk-page="post-irish-bars-krakow"],[data-ktk-page="post-krakow-nightclubs"],[data-ktk-page="post-krakow-bars-jewish-quarter"],[data-ktk-page="post-krakow-shot-bar"]) #main-content article > :is(.entry-content,.et_post_meta_wrapper:first-child) { padding-right:16px; }
+ .entry-content table.ktk-venue-comparison th,
+ .entry-content table.ktk-venue-comparison td { padding:8px; }
+}
+
 /* BEGIN shared content accessibility */
 /* Darker pink is reserved for text on light content, not the seasonal artwork. */
 #main-content .et_pb_text:not(.et_pb_bg_layout_dark) a,
