@@ -1,8 +1,8 @@
 # Remaining NYE Guide Promotion
 
-In progress, staging-only. The same approved 1 January 2027 noon Warsaw cutoff
+Verified on staging only. The same approved 1 January 2027 noon Warsaw cutoff
 must cover the remaining checkout promotion in `/new-years-eve-in-krakow/`.
-The hero and sales-page automation is already verified; this is a small extension,
+The hero and sales-page automation was already verified; this is a small extension,
 not a change to store availability, orders, consent, pricing or a new event.
 
 ## Checkpoint
@@ -46,8 +46,10 @@ payload, runtime JS/CSS, media, forms and protected sources remain exact.
 Focused browser checks260/260 include nine positive/negative DOM fixtures with
 atomic rejection, four widths before/at/after, cached JS, fresh server with and
 without JS, slow browser clocks, unchanged head metadata and actual native
-navigation to the sales page's future notice. PHP118/118 includes all previous
-hero/sales-page contracts plus the guide; shared JS123/123, Python184/184,
+navigation to the sales page's future notice. Final PHP143/143 includes all
+previous hero/sales-page/guide contracts plus a complete registered-page link
+inventory: all nine content checkout controls are covered and none remains
+after the cutoff. The hero is separately verified. Shared JS123/123, Python184/184,
 existing PHP763/763, stubbed forms31/31 and attribution136/136 pass.
 
 All four current layout/text/typography comparisons are exact. The strict PNG
@@ -63,9 +65,41 @@ incomplete rule groups. This is not full conformance, provider or consent proof.
 The owner explicitly kept the medical article on specialist-review hold; its
 body/definition remain exact, and that decision is recorded separately.
 
-Both guarded publisher dry runs validate the exact source. Not deployed yet:
-required CI, guarded staging/origin checks, scoped purge and normal/HIT checks
-remain. The complete public catalog review still selects the same6 products and
-catalog,123 intended URLs; only this definition's sitemap binding is refreshed.
+## Staging Release
+
+Application `6e0f369d39b9f4a27b0d19d867578b8c0ba7e14f` / PR35 passed both required
+CI jobs in `43518129421` before either guarded publisher ran. No application
+bytes changed afterward; final source updates contain tests/docs only.
+
+- Content2,073 independent hashes match; saved WordPress state, homepage and
+  storefront unchanged, helper removed. Completed22:20:12UTC. Backup
+  `ktk-code-pages-staging-20261113-221952.zip`, SHA-256
+  `802f7f9ca20278f7e7080f0a2663d5cd6f91130806855b88471ff244b8046555`.
+- Discovery3 hashes match; protected2,322 staging /2,158 production files and
+  saved state unchanged, helpers removed. Completed22:20:59UTC. Backup
+  `seo-discovery-staging-20261113-222049-401130.zip`, SHA-256
+  `6b12e5ab38c642c33b5b57928827c07a6b0a648eeeb0d692a69dc9fb2d3bc7c7`.
+- The public catalog review still selects the same6 products and catalog,123
+  intended URLs. Only this definition's sitemap binding was refreshed.
+- Full6,193 origin22:30:26UTC / normal22:32:43UTC / repeat22:37:58UTC all pass,
+  zero transport retries. Normal345 HIT /3 MISS; repeat348/348 HIT, all119 assets
+  current. The source scan includes the held article's unchanged original state.
+- Focused browser98/98 origin and98/98 normal pass, including actual native
+  arrival at the future sales-page notice. Future origin/normal four-view axe
+  each have zero violations and eight incomplete rule groups. Mobile screenshots
+  inspected; attribution136/136 and discovery243 origin /216 normal /216 repeat
+  pass. Unchanged homepage all ten active assets match on all three HIT variants.
+- After exact zone/account validation and current API-spec retrieval, Cloudflare
+  accepted only `krawlthroughkrakow.com/staging/new-years-eve-in-krakow/` at
+  `2026-11-13T22:31:14.286Z`, `success:true`, result ID
+  `4303f6a45f815c5570bb4bba5f86a423`. No other staging path, store or production
+  prefix was purged. No production, consent, commerce, account-setting or
+  OmniLodge change.
+
+Both roadmaps now record24 verified staging deliveries. This is not the entire
+plan completed. Rollback restores only the three changed content payload files
+and previous discovery binding from their checkpoints, preserving unrelated
+files and saved data. Never restore a global database for this file-only change.
+
 The stale pre-cutoff no-JS cache boundary documented in `PROMOTION-EXPIRY.md`
 still applies; no cron, future purge task or Cloudflare setting is installed.

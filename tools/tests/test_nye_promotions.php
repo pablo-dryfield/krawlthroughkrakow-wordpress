@@ -83,6 +83,24 @@ verify(ktk_pages_event_promotion_body($guide_body, $other_guide, 1798801201) ===
 $stale_guide = $guide; $stale_guide['event_promotion']['replacements'][0][0] = 'Changed guide target';
 try { ktk_pages_event_promotion_body($guide_body, $stale_guide, 1798801201); verify(false, 'Stale guide target must stop'); }
 catch (RuntimeException $error) { verify(true, 'Stale guide rejected before mutation'); }
+$registry = require $assets . 'registry.php'; $incoming = array();
+foreach ($registry['routes'] as $entry) {
+    $candidate = require $assets . $entry['file'];
+    $candidate_body = str_replace('__KTK_PAGE_MAIN_CONTENT__', file_get_contents($assets . $candidate['main_file']), file_get_contents($assets . $candidate['shell_file']));
+    $candidate_dom = parse_markup($candidate_body);
+    $links = $candidate_dom->query('//a[contains(@href,"store2/nye-pub-crawl-32/")]');
+    if (!$links->length) { continue; }
+    $incoming[$candidate['key']] = $links->length;
+    verify(in_array($candidate['key'], array('new-years-eve', 'post-new-years-eve-in-krakow'), true), 'New incoming NYE page requires an explicit cutoff policy');
+    verify(($candidate['event_promotion']['ends_at'] ?? null) === 1798801200, 'Every incoming promotion shares the confirmed deadline');
+    foreach ($links as $link) {
+        verify($link->getAttribute('data-ktk-expired-href') === '__KTK_HOME_URL__new-years-eve/#nye-updates', 'Every incoming NYE control has the reviewed information destination');
+        verify($link->getAttribute('data-ktk-event-promotion') === 'nye' || $candidate_dom->query('ancestor::*[@data-ktk-event-promotion="nye"]', $link)->length === 1, 'Every incoming NYE control belongs to its native lifecycle root');
+    }
+    verify(parse_markup(ktk_pages_event_promotion_body($candidate_body, $candidate, 1798801200))->query('//a[contains(@href,"store2/nye-pub-crawl-32/")]')->length === 0, 'No expired NYE checkout remains in any registered content page');
+}
+ksort($incoming);
+verify($incoming === array('new-years-eve' => 8, 'post-new-years-eve-in-krakow' => 1), 'Complete registered incoming NYE inventory remains explicit');
 $_GET['ktk_hero'] = 'halloween';
 verify(ktk_homepage_seasonal_hero(1798801199) === ktk_homepage_seasonal_hero(1798801201), 'Halloween preview is untouched by NYE cutoff');
 echo "NYE promotion PHP: $checks/$checks passed; no requests, orders or settings changed\n";
