@@ -30,6 +30,21 @@ class PublicParserTests(unittest.TestCase):
         self.assertFalse(parser.hidden_root)
         self.assertEqual(parser.styles, [])
 
+    def test_version_is_bound_to_one_explicit_source_constant(self):
+        self.assertEqual(module.renderer_version("\tconst VERSION = '2026.11.13.2';\n"), '2026.11.13.2')
+        for source in ['', "const VERSION = 'unknown';", "const VERSION = '2026.11.13.2';\nconst VERSION = '2026.11.13.3';"]:
+            with self.subTest(source=source), self.assertRaises(ValueError):
+                module.renderer_version(source)
+
+    def test_stale_version_or_missing_optimizer_exclusion_still_fails(self):
+        parser = module.PublicHTML()
+        parser.feed('<link rel="stylesheet" data-no-minify="1" href="/assets/storefront.css">'
+                    '<main id="ktk-storefront-public-content" data-public-content="2026.11.13.2"></main>')
+        self.assertTrue(module.current_renderer(parser, '2026.11.13.2'))
+        self.assertFalse(module.current_renderer(parser, '2026.11.12.2'))
+        parser.styles[0].pop('data-no-minify')
+        self.assertFalse(module.current_renderer(parser, '2026.11.13.2'))
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -46,6 +46,16 @@ class PublicHTML(HTMLParser):
 
 
 def normalize(value):return re.sub(r'\s+',' ',str(value or '')).strip()
+def renderer_version(source):
+    matches=re.findall(r"^\s*const VERSION = '([0-9]+(?:\.[0-9]+){3})';\s*$",source,re.MULTILINE)
+    if len(matches)!=1:raise ValueError('Expected one explicit public renderer version')
+    return matches[0]
+
+
+def current_renderer(public,expected_version):
+    return public.version==expected_version and any(urlsplit(item.get('href','')).path.endswith('/assets/storefront.css') and item.get('data-no-minify')=='1' for item in public.styles)
+
+
 def fetch(url,agent):
     request=urllib.request.Request(url,headers={'User-Agent':agent,'Accept':'text/html,application/json;q=0.9'})
     with urllib.request.urlopen(request,timeout=60) as response:return response.status,{key.lower():value for key,value in response.headers.items()},response.read()
@@ -55,6 +65,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',required=True);parser.add_argument('--cache-bust',action='store_true');args=parser.parse_args()
     output=ROOT/args.output
     if output.exists():raise RuntimeError('Preserve prior source report; select a new filename')
+    expected_version=renderer_version((ROOT/'staging/wp-content/plugins/ktk-storefront/includes/class-ktk-storefront-public-content.php').read_text(encoding='utf-8'))
     _,_,body=fetch(ORIGIN+'/staging/wp-json/ktk-storefront/v1/products',AGENTS['desktop'])
     products=json.loads(body)['products']
     resolved=json.loads(subprocess.run(['php','tools/tests/storefront-public-fixture.php'],input=json.dumps({'action':'resolve','products':products}).encode(),capture_output=True,check=True,cwd=ROOT).stdout)
@@ -70,7 +81,7 @@ def main():
             title=product['name'] if product else 'Krakow experiences';text=normalize(''.join(public.text));name=device+' '+route
             h1=[normalize(value) for value in public.h1]
             check(name+' HTTP/public marker',status==200 and public.marker and public.hidden_root)
-            check(name+' optimizer-safe current public renderer',public.version=='2026.11.12.2' and any(urlsplit(item.get('href','')).path.endswith('/assets/storefront.css') and item.get('data-no-minify')=='1' for item in public.styles))
+            check(name+' optimizer-safe current public renderer',current_renderer(public,expected_version),{'expectedVersion':expected_version,'actualVersion':public.version})
             check(name+' one actual primary heading',h1==[title],h1)
             robots=[item.get('content','').lower() for item in head.meta if item.get('name')=='robots']
             check(name+' noindex and exact staging canonical','noindex' in ','.join(robots) and [item.get('href') for item in head.links if item.get('rel')=='canonical']==[ORIGIN+route])
@@ -99,7 +110,7 @@ def main():
         old=subprocess.run(['git','show','dc22fa6c03734644ccde3f2ce725f2900151ff61:staging/wp-content/plugins/ktk-storefront/assets/'+filename],capture_output=True,check=True,cwd=ROOT).stdout
         _,_,body=fetch(ORIGIN+'/wp-content/plugins/ktk-storefront/assets/'+filename,AGENTS['desktop'])
         check('production original asset '+filename,hashlib.sha256(body).hexdigest()==hashlib.sha256(old).hexdigest())
-    report={'checkedAt':datetime.now(timezone.utc).isoformat(),'cacheBust':args.cache_bust,'products':len(products),'summary':{'passed':sum(item['passed'] for item in checks),'total':len(checks)},'checks':checks,'responses':responses}
+    report={'checkedAt':datetime.now(timezone.utc).isoformat(),'cacheBust':args.cache_bust,'expectedRendererVersion':expected_version,'products':len(products),'summary':{'passed':sum(item['passed'] for item in checks),'total':len(checks)},'checks':checks,'responses':responses}
     output.parent.mkdir(parents=True,exist_ok=True);output.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({'summary':report['summary'],'failed':[item for item in checks if not item['passed']]},indent=2))
     return int(report['summary']['passed']!=report['summary']['total'])
