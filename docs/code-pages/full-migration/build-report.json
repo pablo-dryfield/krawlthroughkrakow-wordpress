@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-13T12:57:23.199Z",
+  "startedAt": "2026-11-13T13:44:39.751Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -123,6 +123,10 @@
   "revisions": {
     "post-2020-krakow-nightlife-guide": {
       "content": [
+        {
+          "type": "historical-nightlife-notice",
+          "published": "2020-04-05"
+        },
         {
           "type": "heading-level",
           "from": "h4",
@@ -6116,6 +6120,51 @@
     "krakow-nightlife": {
       "content": [
         {
+          "type": "verified-nightlife-editorial",
+          "selector": ".et_pb_text_0 .et_pb_text_inner",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "verified-nightlife-editorial",
+          "selector": ".et_pb_text_1 .et_pb_text_inner",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "verified-nightlife-editorial",
+          "selector": ".et_pb_text_2 .et_pb_text_inner",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "verified-nightlife-editorial",
+          "selector": ".et_pb_text_3 .et_pb_text_inner",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "verified-nightlife-editorial",
+          "selector": ".et_pb_text_4 .et_pb_text_inner",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "verified-nightlife-editorial",
+          "selector": ".et_pb_text_5 .et_pb_text_inner",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "verified-nightlife-editorial",
+          "selector": ".et_pb_text_6 .et_pb_text_inner",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "verified-nightlife-editorial",
+          "selector": ".et_pb_text_7 .et_pb_text_inner",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "verified-nightlife-editorial",
+          "selector": ".et_pb_text_8 .et_pb_text_inner",
+          "reviewedOn": "2026-11-13"
+        },
+        {
           "type": "heading-level",
           "from": "h1",
           "to": "h2",
@@ -8654,5 +8703,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-13T12:58:12.919Z"
+  "finishedAt": "2026-11-13T13:45:30.620Z"
 }
