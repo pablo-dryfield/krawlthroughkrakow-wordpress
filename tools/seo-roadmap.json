@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "updatedOn": "2026-11-13",
   "websiteProductionReleases": 0,
-  "current": "Owner purge verified: content4320/4320 twice with all351 variants HIT on repeat; storefront692/692 twice with all75 variants HIT. Normal browser324/176, confirmed offers144 and handoff31 pass. Guarded short-window104 retains the original blocked-WP-Rocket attempt failures transparently. Accessibility and offer cache gate is complete, not the full plan. Content contrast/targets, editorial and measurement work remain; production unchanged",
+  "current": "Accessibility follow-up in progress: original20 local views now have zero automated violations, source363/build2204/keyboard324 pass. Expanded234-view review uncovered older article image/label issues; shared labels/targets/contrast are being finished and tested. Final staging release/cache verification is pending. Production unchanged; the full plan remains partial.",
   "milestones": [
     {"name":"Private GitHub source control and checks; manual deployments retained","status":"source_verified"},
     {"name":"76 reviewed page descriptions and maintainable metadata source; one health-content hold","status":"staging_verified"},
@@ -45,7 +45,7 @@
       "C10":{"title":"Trust, operator details & reviews","remaining":"Check identity, terms, review sources and shared offer consistency."},
       "D01":{"title":"Lighter, correctly sized images","remaining":"Finish responsive image delivery without degrading the artwork."},
       "D02":{"title":"Faster mobile page loading","remaining":"Reduce the measured mobile bottlenecks and rerun comparable tests."},
-      "D03":{"title":"Accessibility & mobile usability","remaining":"Fix remaining contrast and touch targets; finish assistive-technology checks."},
+      "D03":{"title":"Accessibility & mobile usability","remaining":"Verify the current staging release, review article photo descriptions and finish assistive-technology checks."},
       "D04":{"title":"A smoother booking & cart journey","remaining":"Review real booking friction with safe fixtures and consented evidence."},
       "D05":{"title":"Meeting directions & booking controls","remaining":"Finish meeting, floating-button and blocked-map checks across templates."},
       "D06":{"title":"Reliable contact & enquiry forms","remaining":"Review validation, feedback, spam protection and response ownership."},
@@ -75,7 +75,7 @@
       "C08":"article-triage-2026-11-13/README.md",
       "D01":"staging-performance-2026-11-12/README.md",
       "D02":"staging-performance-2026-11-12/README.md",
-      "D03":"accessibility-2026-11-13/README.md",
+      "D03":"content-accessibility-2026-11-13/README.md",
       "D05":"nye-content-review-2026-11-13/README.md"
     }
   },
@@ -106,7 +106,7 @@
     "C10":{"status":"not_started","note":"Full trust/operator/terms/review-source consistency review remains."},
     "D01":{"status":"in_progress","note":"Native photo policy/in-view gallery staging cache verified;66/66 local checks with exact six-view first pixels, original images unchanged. Real mobile initially one9016-byte photo,25 lazy; desktop/mobile gallery and scrolling pass. Responsive-thumbnail delivery remains."},
     "D02":{"status":"in_progress","note":"Post-purge normal mobile390 DPR3/CPU4x/Slow4G cold lab LCP12120/12281/8182ms, median12120, CLS0. Descriptive runs, not field CWV or controlled uplift. Original SVG remains bottleneck. Laptop header wrapping is fixed/cache-verified in D05; mobile performance work remains."},
-    "D03":{"status":"in_progress","note":"Accessibility/offer normal caches verified:content4320 twice/all351 HIT, browser324/176 and handoff31. Matched20 content views662 to182 nodes; contrast/targets/floating CTA remain. Original short101/104 failures preserve three blocked WP Rocket optimization attempts; precise acknowledged-abort classification/negative cases and guarded104/104 pass, zero completed non-read requests. Actual Chrome200/400% verified/reset. Full screen-reader/mobile-pinch and third-party/consent work remain; no conformance claim."},
+    "D03":{"status":"in_progress","note":"Follow-up local matched20 views now0 automated violations versus182 before. Source363/build2204/keyboard324/FAQ visual12/Python177 pass. Expanded234-view audit finds older article photos/labels outside that sample; shared labels/targets/contrast now implemented, final release/cache checks pending.212 distinct informative missing-alt sources need visual review, health body held. Full assistive-technology/mobile-pinch/third-party checks remain; no conformance claim or production change."},
     "D04":{"status":"not_started","note":"Full booking-friction review; no unapproved live purchases."},
     "D05":{"status":"in_progress","note":"Homepage laptop menu981..1599 fixed, wide/no-JS links preserved, native Enter/Escape/resize tested. NYE meeting/time/checkout guidance and repaired article handoff verified on staging. Full meeting/CTA/blocked-embed audit across page types remains."},
     "D06":{"status":"not_started","note":"Form usability/spam/response review remains; keep current backends."},

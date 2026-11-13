@@ -1327,9 +1327,9 @@ function ktk_homepage_static_body() {
 		</div>
 
 
-	</div><a id="ktk-cta" class="js-fh-book" href="__KTK_HOME_URL__store2/pub-crawl-28/#book">
+	</div><nav aria-label="Book an experience" data-ktk-floating-booking=""><a id="ktk-cta" class="js-fh-book" href="__KTK_HOME_URL__store2/pub-crawl-28/#book">
      BOOK NOW
-  </a>
+  </a></nav>
 KTK_PRODUCTION_PARITY_BODY_20261006;
     $reviews = array_column(ktk_homepage_review_sources(), null, 'name');
     $html = str_replace(array('__KTK_REVIEW_COUNT_TRIPADVISOR__', '__KTK_REVIEW_COUNT_GOOGLE__'), array(esc_html($reviews['Tripadvisor']['count']), esc_html($reviews['Google']['count'])), $html);

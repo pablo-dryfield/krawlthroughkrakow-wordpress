@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-13T00:48:24.717Z",
+  "startedAt": "2026-11-13T11:35:29.980Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -131,6 +131,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -183,6 +186,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -227,6 +233,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -261,6 +270,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -322,6 +334,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -402,6 +417,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -457,6 +475,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -491,6 +512,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -537,6 +561,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -579,6 +606,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -624,6 +654,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -660,6 +693,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -694,6 +730,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         }
       ],
       "bookings": [
@@ -719,6 +758,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -768,6 +810,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -802,6 +847,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -847,6 +895,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -890,6 +941,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -924,6 +978,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -962,6 +1019,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -996,6 +1056,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -1038,6 +1101,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -1072,6 +1138,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -1114,6 +1183,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -1150,6 +1222,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -1184,6 +1259,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -1227,6 +1305,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -1261,6 +1342,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -1299,6 +1383,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -1333,6 +1420,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -1371,6 +1461,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -1405,6 +1498,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -1451,6 +1547,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -1485,6 +1584,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -1523,6 +1625,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -1557,6 +1662,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -1602,6 +1710,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -1645,6 +1756,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -1681,6 +1795,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -1709,6 +1826,9 @@
     },
     "post-life-professional-drunk": {
       "content": [
+        {
+          "type": "floating-booking-landmark"
+        },
         {
           "type": "main-landmark"
         },
@@ -1834,6 +1954,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -1905,6 +2028,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -1945,6 +2071,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -1983,6 +2112,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -2028,6 +2160,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -2071,6 +2206,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -2105,6 +2243,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -2143,6 +2284,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -2172,6 +2316,9 @@
     "post-stages-of-drunkenness": {
       "content": [
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -2200,6 +2347,9 @@
     },
     "post-survive-pub-crawl": {
       "content": [
+        {
+          "type": "floating-booking-landmark"
+        },
         {
           "type": "main-landmark"
         },
@@ -2235,6 +2385,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -2278,6 +2431,9 @@
           "to": "h2",
           "text": "Bars / Pubs",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -2449,6 +2605,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -2527,6 +2686,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -2575,6 +2737,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -2609,6 +2774,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -2649,6 +2817,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -2698,6 +2869,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -2739,6 +2913,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -2788,6 +2965,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -2835,6 +3015,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -2876,6 +3059,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -2921,6 +3107,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -2962,6 +3151,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -3011,6 +3203,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -3052,6 +3247,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -3097,6 +3295,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -3138,6 +3339,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -3183,6 +3387,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -3224,6 +3431,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -3269,6 +3479,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -3310,6 +3523,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -3355,6 +3571,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -3396,6 +3615,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -3441,6 +3663,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -3482,6 +3707,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -3527,6 +3755,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -3568,6 +3799,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -3613,6 +3847,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -3654,6 +3891,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -3699,6 +3939,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -3740,6 +3983,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -3785,6 +4031,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -3826,6 +4075,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -3925,6 +4177,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -3997,6 +4252,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -4053,6 +4311,9 @@
           "to": "h2",
           "text": "Contact us:",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -4118,6 +4379,9 @@
           "to": "h2",
           "text": "Contact us:",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -4275,6 +4539,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -4328,6 +4595,9 @@
           "to": "h2",
           "text": "Contact us:",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -4426,6 +4696,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -4513,6 +4786,9 @@
           "to": "h2",
           "text": "Contact us:",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -4693,6 +4969,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -4745,6 +5024,9 @@
           "to": "h2",
           "text": "Contact us:",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -4963,6 +5245,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -5026,6 +5311,9 @@
           "to": "h2",
           "text": "Contact us:",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -5122,6 +5410,9 @@
           "to": "h2",
           "text": "Contact us:",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -5315,6 +5606,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -5399,6 +5693,9 @@
           "to": "h2",
           "text": "Contact us:",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -5490,6 +5787,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -5547,6 +5847,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -5556,6 +5859,114 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "your-name"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "your-email"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "activities[]"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "number-people"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "date-370"
+        },
+        {
+          "type": "existing-enquiry-field-label",
+          "name": "textarea-253"
         }
       ],
       "bookings": [
@@ -5634,6 +6045,9 @@
           "to": "h2",
           "text": "Contact us:",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -5837,6 +6251,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -5886,6 +6303,9 @@
           "to": "h2",
           "text": "Contact us:",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -5956,6 +6376,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -6008,6 +6431,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -6049,6 +6475,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -6094,6 +6523,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -6135,6 +6567,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -6180,6 +6615,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -6221,6 +6659,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -6266,6 +6707,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -6307,6 +6751,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -6352,6 +6799,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -6395,6 +6845,9 @@
           "id": ""
         },
         {
+          "type": "floating-booking-landmark"
+        },
+        {
           "type": "main-landmark"
         },
         {
@@ -6436,6 +6889,9 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "floating-booking-landmark"
         },
         {
           "type": "main-landmark"
@@ -6564,5 +7020,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-13T00:49:21.243Z"
+  "finishedAt": "2026-11-13T11:36:08.782Z"
 }

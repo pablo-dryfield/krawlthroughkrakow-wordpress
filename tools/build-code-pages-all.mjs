@@ -11,10 +11,12 @@ import {preserveHeadingCss,reviseSemanticHeadings} from './semantic-headings.mjs
 import {canonicalLinkPolicy,rewriteCanonicalLinks} from './canonical-links.mjs';
 import {buildCodePageSchema,codePageSchemaFacts} from './code-pages-schema.mjs';
 import {reviseAccessibilitySemantics} from './accessibility-semantics.mjs';
+import {buildContentAccessibilityStyles} from './content-accessibility-styles.mjs';
 const require = createRequire(import.meta.url);
 const { chromium } = require(path.join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const root = path.resolve('.');
 const assets = path.join(root, 'staging/wp-content/mu-plugins/ktk-code-pages-assets');
+await buildContentAccessibilityStyles(path.join(assets,'runtime.css'));
 const manifestPath = 'docs/code-pages/full-migration/manifest.json';
 const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
 validateSeoRoutes(manifest.routes.map(row => row.route));

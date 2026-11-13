@@ -1,9 +1,17 @@
 // Runs against the captured DOM during generation, not against live WordPress.
 export function reviseAccessibilitySemantics({key}) {
- if(key==='post-hostel-hangover-cure')return [];
+ const evidence=[];
+ const floating=document.querySelector('#ktk-cta');
+ if(floating&&!floating.closest('nav,main,aside,header,footer,[role="region"]')){
+  const navigation=document.createElement('nav');
+  navigation.setAttribute('aria-label','Book an experience');
+  navigation.dataset.ktkFloatingBooking='';
+  floating.before(navigation);navigation.append(floating);
+  evidence.push({type:'floating-booking-landmark'});
+ }
+ if(key==='post-hostel-hangover-cure')return evidence;
  const main=document.querySelector('#main-content');
  if(!main)throw Error(`${key}: main content required`);
- const evidence=[];
  if(!main.hasAttribute('role')){
   main.setAttribute('role','main');evidence.push({type:'main-landmark'});
  }
@@ -42,6 +50,19 @@ export function reviseAccessibilitySemantics({key}) {
    question.id=id;
   }
   field.setAttribute('aria-labelledby',question.id);evidence.push({type:'captcha-question-label'});
+ }
+ if(key==='stagshens')for(const [index,field] of [...main.querySelectorAll('.wpcf7-form input:not([type="hidden"]):not([type="submit"]),.wpcf7-form textarea')].entries()){
+  if(field.labels?.length||field.hasAttribute('aria-labelledby'))continue;
+  const paragraph=field.closest('p');
+  const label=field.closest('.wpcf7-list-item')?.querySelector('.wpcf7-list-item-label')
+   ||paragraph?.previousElementSibling?.querySelector('.fieldLabel');
+  if(!label?.textContent.trim())throw Error('Existing enquiry field label required: '+field.name);
+  if(!label.id){
+   const id=`ktk-enquiry-label-${index}`;
+   if(document.getElementById(id))throw Error('Enquiry label ID collision');
+   label.id=id;
+  }
+  field.setAttribute('aria-labelledby',label.id);evidence.push({type:'existing-enquiry-field-label',name:field.name});
  }
  return evidence;
 }

@@ -1,6 +1,7 @@
 import {createRequire} from 'node:module';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const frontendRequire=createRequire(path.resolve('staging/wp-content/plugins/ktk-storefront/frontend/package.json'));
@@ -25,6 +26,12 @@ for(const value of [base,homeBase]){
  if(!(url.origin==='https://krawlthroughkrakow.com'&&url.pathname==='/staging')&&!(url.protocol==='http:'&&url.hostname==='127.0.0.1'&&url.pathname==='/'))throw Error('Only staging or explicit loopback previews');
 }
 const report={checkedAt:new Date().toISOString(),engine:axePackage.version,scope:'Read-only staging WCAG-oriented automated audit, not full conformance or a screen-reader/consent/payment certificate. Third-party services and non-read requests blocked in isolated browsers. No personal data, submissions, carts, quotes or orders.',views:[],errors:[],pageErrors:[],blockedRequests:0};
+const fingerprint=async()=>{
+ const result={};
+ for(const file of ['ktk-code-pages-assets/runtime.css','ktk-code-pages-assets/runtime.js','ktk-homepage-assets/parity-runtime.css','ktk-homepage-assets/parity.js','ktk-homepage-assets/hero.css'])result[file]=createHash('sha256').update(await readFile('staging/wp-content/mu-plugins/'+file)).digest('hex');
+ return result;
+};
+report.localSourceHashes=await fingerprint();
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
  for(const route of routes)for(const width of widths){
@@ -54,14 +61,15 @@ try{
     const select=rows=>rows.map(row=>({id:row.id,impact:row.impact,description:row.description,help:row.help,helpUrl:row.helpUrl,tags:row.tags,nodes:row.nodes.map(node=>({target:node.target,html:node.html,failureSummary:node.failureSummary,checks:[...node.any,...node.all,...node.none].map(check=>({id:check.id,message:check.message,data:check.data}))}))}));
     return {violations:select(audit.violations),incomplete:select(audit.incomplete),passes:audit.passes.map(row=>row.id),inapplicable:audit.inapplicable.map(row=>row.id),overflow:document.documentElement.scrollWidth>innerWidth+1,title:document.title,storefrontState:document.getElementById('ktk-storefront-public-content')?'public-initial':document.getElementById('ktk-storefront-root')?.hidden===false?'enhanced':null};
    });
-   report.views.push({route,width,status:response.status(),...result});
+   report.views.push({route,width,status:response.status(),htmlSha256:createHash('sha256').update(await response.body()).digest('hex'),...result});
    console.log(route+' '+width+': '+result.violations.length+' violation rules, '+result.incomplete.length+' incomplete');
   }catch(error){report.errors.push({route,width,error:error.message});}
   finally{await context.close();}
  }
 }finally{
  await browser.close();report.violationInstances=report.views.reduce((sum,view)=>sum+view.violations.reduce((n,rule)=>n+rule.nodes.length,0),0);
+ report.sourceStable=JSON.stringify(report.localSourceHashes)===JSON.stringify(await fingerprint());
  await writeFile(path.join(output,'report.json'),JSON.stringify(report,null,2)+'\n');
  console.log(JSON.stringify({views:report.views.length,violationInstances:report.violationInstances,errors:report.errors,pageErrors:report.pageErrors}));
- if(report.errors.length||process.argv.includes('--require-clean')&&report.violationInstances)process.exitCode=1;
+ if(report.errors.length||!report.sourceStable||process.argv.includes('--require-clean')&&report.violationInstances)process.exitCode=1;
 }
