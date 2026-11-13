@@ -2,6 +2,8 @@
 
 Updated: 2026-11-13 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; edit that source, not this page.
 
+**Visual dashboard:** [Open ROADMAP.html](ROADMAP.html). The HTML and this Markdown view use the same maintained source.
+
 ## Where We Are
 
 **Current work:** Owner purge verified: content4320/4320 twice with all351 variants HIT on repeat; storefront692/692 twice with all75 variants HIT. Normal browser324/176, confirmed offers144 and handoff31 pass. Guarded short-window104 retains the original blocked-WP-Rocket attempt failures transparently. Accessibility and offer cache gate is complete, not the full plan. Content contrast/targets, editorial and measurement work remain; production unchanged.

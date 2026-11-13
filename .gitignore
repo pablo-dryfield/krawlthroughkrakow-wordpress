@@ -27,6 +27,7 @@
 /docs/**
 !/docs/**/
 !/docs/**/*.md
+!/docs/seo/ROADMAP.html
 /docs/commission-stripe-fees/**
 /docs/clarity-journey-links/delivery/**
 !/docs/homepage-parity/production-source-rendered-1920.html
