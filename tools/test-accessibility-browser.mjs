@@ -13,7 +13,7 @@ for(const base of [homeBase,pagesBase]){
 }
 try{await readFile(path.join(output,'report.json'));throw Error('Preserve earlier evidence');}catch(error){if(error.code!=='ENOENT')throw error;}
 await mkdir(output,{recursive:true});
-const report={checkedAt:new Date().toISOString(),scope:'Read-only own markup/keyboard/reflow checks, third parties blocked. Not whole-site WCAG, browser zoom, CMP, screen-reader or commerce certification.',checks:[],errors:[],realMutations:0};
+const report={checkedAt:new Date().toISOString(),scope:'Read-only own markup/keyboard/reflow checks, third parties and all non-read requests blocked before transmission. Not whole-site WCAG, browser zoom, CMP, screen-reader or commerce certification.',checks:[],errors:[],realMutations:0,blockedNonReadRequests:[]};
 const check=(name,pass,detail)=>report.checks.push({name,pass:!!pass,detail});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
@@ -24,7 +24,7 @@ try{
   try{
    await context.route('**/*',request=>{
     const req=request.request(),target=new URL(req.url());
-    if(!['GET','HEAD'].includes(req.method())){report.realMutations++;return request.abort();}
+    if(!['GET','HEAD'].includes(req.method())){report.blockedNonReadRequests.push({route,width,method:req.method(),origin:target.origin,path:target.pathname});return request.abort();}
     if(target.origin!==url.origin||/\/(?:quote|checkout|carts|orders)(?:\/|$)/.test(target.pathname))return request.abort();
     return request.continue();
    });
@@ -55,6 +55,7 @@ try{
    const semantic=await page.evaluate(async()=>{const result=await axe.run(document,{runOnly:{type:'rule',values:['aria-allowed-role','frame-title','image-alt','label','label-content-name-mismatch','landmark-one-main','landmark-no-duplicate-banner','landmark-unique','link-name']},iframes:false});return result.violations.map(row=>({id:row.id,targets:row.nodes.map(node=>node.target)}));});
    check(name+' reviewed semantic rules clear',!semantic.length,semantic);
    check(name+' no observed script errors',!errors.length,errors);
+   check(name+' no attempted first-party booking or form writes',!report.blockedNonReadRequests.some(row=>row.route===route&&row.width===width&&row.origin===url.origin&&/\/(?:wp-admin\/admin-(?:post|ajax)\.php|wp-json\/ktk-storefront\/v1\/(?:cart|checkout|orders|ongoing-carts|saved-carts)(?:\/|$))/.test(row.path)));
    if(width===390&&['/','/faqs/','/contact/'].includes(route))await page.screenshot({path:path.join(output,(route==='/'?'home':route.replaceAll('/',''))+'-390.png')});
   }catch(error){report.errors.push({route,width,error:error.stack});}finally{await context.close();}
  }

@@ -70,8 +70,40 @@ are clean, and the strict DOM comparison still passes.
 
 ## Delivery And Remaining Work
 
-Guarded staging content/homepage/discovery publication and final live/cache checks
-are pending. No claim that Cloudflare serves this batch yet.
+Guarded staging deployment is complete. Content publisher independently verifies
+all 2,051 hashes and unchanged saved WP/homepage/storefront state; its helper is
+removed. Completed 00:57:59 UTC. Backup
+`ktk-code-pages-staging-20261113-005341.zip`, SHA-256
+`d6ac8f70eacc5caf51997d55481adff65ab33121ad7d8b33d3034fbeae09978f`.
+Homepage assets-only verifies all232 hashes without rewriting saved posts/settings;
+backup `ktk-homepage-shortcode-staging-20261113-005948.zip`, SHA-256
+`e63f5cf5de63e8125ea628043c0d4eb8005d668da9e5734322fcb248c26ffaf3`.
+Discovery verifies all three hashes, protected staging/production and saved state;
+backup `seo-discovery-staging-20261113-010209-714677.zip`, SHA-256
+`606e883c115122b301cf3130a3fcfa9aba8e1783ebfec5bb5deb860bb1fc41c5`.
+It changes source bindings, not the123 selected URLs or any production endpoint.
+
+Live origin keyboard/reflow/semantic checks pass324/324 and discovery243/243.
+Final broad content and normal cached-URL verification remain pending the scoped
+Cloudflare refresh requested from the owner. Website production is unchanged.
+
+Preserve `browser-content-origin`276/288: it started before the separate homepage
+publisher finished and therefore correctly rejected the old homepage. The later
+`browser-origin-final` has288/288 semantic checks but exit1 because a harness
+counter mislabelled145 **blocked** external collection POST attempts as actual
+mutations. A bounded diagnostic identifies Google /ccm/collect, /ccm/s/collect and
+/g/collect paths. All were aborted before transmission. The corrected harness
+retains sanitized blocked attempts separately, rejects any attempted first-party
+commerce/form writes, and passes324/324 (`browser-origin-guarded`). No tracking,
+provider or consent code was modified to make that test pass.
+
+The initial storefront scans did not wait for client handoff, so are not a full
+interactive-product audit. A separate explicit handoff-ready six-view baseline
+finds61 violation nodes on the **unchanged** storefront and six inherited fbq
+errors with the provider blocked. Catalogue landmarks/stamp semantics, select
+visible-name matching, zoom and contrast need their own staging follow-up.
+Do not compare its count directly with the public-initial scan or call it a
+regression caused by these content-page changes.
 
 Contrast, small targets, the duplicate zoom-restricting storefront viewport,
 manual screen-reader/zoom checks and other incompletes remain. Third-party frames

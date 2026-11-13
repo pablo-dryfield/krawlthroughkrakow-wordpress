@@ -18,6 +18,8 @@ const widths=option('--widths','390,1440').split(',').map(Number);
 if(widths.some(width=>!Number.isInteger(width)||width<320||width>2560))throw Error('Invalid viewport');
 const base=option('--base','https://krawlthroughkrakow.com/staging').replace(/\/$/,'');
 const homeBase=option('--home-base',base).replace(/\/$/,'');
+const storeState=option('--store-state','observed');
+if(!['observed','enhanced'].includes(storeState))throw Error('Store state must be observed or enhanced');
 for(const value of [base,homeBase]){
  const url=new URL(value);
  if(!(url.origin==='https://krawlthroughkrakow.com'&&url.pathname==='/staging')&&!(url.protocol==='http:'&&url.hostname==='127.0.0.1'&&url.pathname==='/'))throw Error('Only staging or explicit loopback previews');
@@ -42,12 +44,15 @@ try{
    const response=await page.goto(target.href,{waitUntil:'load',timeout:60000});
    if(response.status()!==200)throw Error('HTTP'+response.status());
    await page.evaluate(()=>document.fonts.ready);
-   if(route.startsWith('/store2/'))await page.locator('[data-ktk-public-handoff="ready"],.ktk-storefront-app,#ktk-storefront-root').first().waitFor({state:'attached',timeout:10000}).catch(()=>{});
+   if(route.startsWith('/store2/')&&storeState==='enhanced'){
+    await page.waitForFunction(()=>!document.getElementById('ktk-storefront-public-content')&&document.getElementById('ktk-storefront-root')?.hidden===false,{},{timeout:20000});
+    if(await page.locator('#ktk-storefront-root .ktk-error').count())throw Error('Enhanced storefront is in error state, not a usable product/catalog');
+   }
    await page.addScriptTag({content:axeSource});
    const result=await page.evaluate(async()=>{
     const audit=await window.axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa','best-practice']},iframes:false});
     const select=rows=>rows.map(row=>({id:row.id,impact:row.impact,description:row.description,help:row.help,helpUrl:row.helpUrl,tags:row.tags,nodes:row.nodes.map(node=>({target:node.target,html:node.html,failureSummary:node.failureSummary,checks:[...node.any,...node.all,...node.none].map(check=>({id:check.id,message:check.message,data:check.data}))}))}));
-    return {violations:select(audit.violations),incomplete:select(audit.incomplete),passes:audit.passes.map(row=>row.id),inapplicable:audit.inapplicable.map(row=>row.id),overflow:document.documentElement.scrollWidth>innerWidth+1,title:document.title};
+    return {violations:select(audit.violations),incomplete:select(audit.incomplete),passes:audit.passes.map(row=>row.id),inapplicable:audit.inapplicable.map(row=>row.id),overflow:document.documentElement.scrollWidth>innerWidth+1,title:document.title,storefrontState:document.getElementById('ktk-storefront-public-content')?'public-initial':document.getElementById('ktk-storefront-root')?.hidden===false?'enhanced':null};
    });
    report.views.push({route,width,status:response.status(),...result});
    console.log(route+' '+width+': '+result.violations.length+' violation rules, '+result.incomplete.length+' incomplete');
