@@ -255,47 +255,47 @@ function ktk_homepage_static_body() {
 				
 				<div class="et_pb_module et_pb_gallery et_pb_gallery_0 et_pb_bg_layout_light et_pb_slider et_pb_gallery_fullwidth et_slider_auto et_slider_speed_3500 clearfix">
 				<div class="et_pb_gallery_items et_post_gallery clearfix" data-per_page="4"><div class="et_pb_gallery_item et_pb_bg_layout_light et_pb_gallery_item_0_0 et-pb-active-slide" style="display: block;"><div class="et_pb_gallery_image landscape">
-					<a href="__KTK_PARITY_ASSETS__parity/ec17c2a38924-hayrc73kcachi3b8n7t8_compressed_compressed.webp" title="hayrc73kcachi3b8n7t8_compressed_compressed">
+					<a href="__KTK_PARITY_ASSETS__parity/ec17c2a38924-hayrc73kcachi3b8n7t8_compressed_compressed.webp" title="hayrc73kcachi3b8n7t8_compressed_compressed" aria-label="View full-size photo: Person holding a pink sign that reads &quot;PUB KRAWL&quot; at night in a city square, with other people and streetlights in the background.">
 					<img decoding="async" width="480" height="320" src="__KTK_PARITY_ASSETS__parity/ec17c2a38924-hayrc73kcachi3b8n7t8_compressed_compressed.webp" alt="Person holding a pink sign that reads &quot;PUB KRAWL&quot; at night in a city square, with other people and streetlights in the background." class="wp-image-8718 entered lazyloaded" sizes="(max-width: 480px) 100vw, 480px" srcset="__KTK_PARITY_ASSETS__parity/ec17c2a38924-hayrc73kcachi3b8n7t8_compressed_compressed.webp 480w, __KTK_PARITY_ASSETS__parity/ebf0bf97d079-hayrc73kcachi3b8n7t8_compressed_compressed-300x200.webp 300w" loading="lazy">
 					
 				</a>
 				</div></div><div class="et_pb_gallery_item et_pb_bg_layout_light et_pb_gallery_item_0_1" style="display: none;"><div class="et_pb_gallery_image landscape">
-					<a href="__KTK_PARITY_ASSETS__parity/33a8cc2bc2ef-bcxwqcxvnrhqca0kxevy_compressed_compressed.webp" title="bcxwqcxvnrhqca0kxevy_compressed_compressed">
+					<a href="__KTK_PARITY_ASSETS__parity/33a8cc2bc2ef-bcxwqcxvnrhqca0kxevy_compressed_compressed.webp" title="bcxwqcxvnrhqca0kxevy_compressed_compressed" aria-label="View full-size photo: A group of people sitting around a table at a nightclub, holding drinks and sharing a platter of food, with colorful lighting and wall art in the background.">
 					<img decoding="async" width="960" height="640" src="__KTK_PARITY_ASSETS__parity/33a8cc2bc2ef-bcxwqcxvnrhqca0kxevy_compressed_compressed.webp" alt="A group of people sitting around a table at a nightclub, holding drinks and sharing a platter of food, with colorful lighting and wall art in the background." class="wp-image-8717" srcset="__KTK_PARITY_ASSETS__parity/33a8cc2bc2ef-bcxwqcxvnrhqca0kxevy_compressed_compressed.webp 960w, __KTK_PARITY_ASSETS__parity/a5d24e59ea0e-bcxwqcxvnrhqca0kxevy_compressed_compressed-480x320.webp 480w" sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 960px, 100vw" loading="lazy">
 					
 				</a>
 				</div></div><div class="et_pb_gallery_item et_pb_bg_layout_light et_pb_gallery_item_0_2" style="display: none;"><div class="et_pb_gallery_image landscape">
-					<a href="__KTK_PARITY_ASSETS__parity/26d4359cfb7a-idzt6dif3hxiknmr28ln_compressed_compressed.webp" title="idzt6dif3hxiknmr28ln_compressed_compressed">
+					<a href="__KTK_PARITY_ASSETS__parity/26d4359cfb7a-idzt6dif3hxiknmr28ln_compressed_compressed.webp" title="idzt6dif3hxiknmr28ln_compressed_compressed" aria-label="View full-size photo: A man with curly hair smiles behind a table filled with orange drinks, with sparklers lit in the foreground, in a decorated indoor setting.">
 					<img decoding="async" width="480" height="320" src="__KTK_PARITY_ASSETS__parity/26d4359cfb7a-idzt6dif3hxiknmr28ln_compressed_compressed.webp" alt="A man with curly hair smiles behind a table filled with orange drinks, with sparklers lit in the foreground, in a decorated indoor setting." class="wp-image-8719" srcset="__KTK_PARITY_ASSETS__parity/26d4359cfb7a-idzt6dif3hxiknmr28ln_compressed_compressed.webp 480w, __KTK_PARITY_ASSETS__parity/152146b9eedb-idzt6dif3hxiknmr28ln_compressed_compressed-300x200.webp 300w" sizes="(max-width: 480px) 100vw, 480px" loading="lazy">
 					
 				</a>
 				</div></div><div class="et_pb_gallery_item et_pb_bg_layout_light et_pb_gallery_item_0_3" style="display: none;"><div class="et_pb_gallery_image landscape">
-					<a href="__KTK_PARITY_ASSETS__parity/7827cf7e098c-ohycfobknaj9fezv604t_compressed_compressed.webp" title="ohycfobknaj9fezv604t_compressed_compressed">
+					<a href="__KTK_PARITY_ASSETS__parity/7827cf7e098c-ohycfobknaj9fezv604t_compressed_compressed.webp" title="ohycfobknaj9fezv604t_compressed_compressed" aria-label="View full-size photo: A crowded bar scene with people socializing; two men in the foreground pose with drinks, one arm around the other, as others gather around tables with beverages.">
 					<img decoding="async" width="960" height="640" src="__KTK_PARITY_ASSETS__parity/7827cf7e098c-ohycfobknaj9fezv604t_compressed_compressed.webp" alt="A crowded bar scene with people socializing; two men in the foreground pose with drinks, one arm around the other, as others gather around tables with beverages." class="wp-image-8720" srcset="__KTK_PARITY_ASSETS__parity/7827cf7e098c-ohycfobknaj9fezv604t_compressed_compressed.webp 960w, __KTK_PARITY_ASSETS__parity/123ac8cce509-ohycfobknaj9fezv604t_compressed_compressed-480x320.webp 480w" sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 960px, 100vw" loading="lazy">
 					
 				</a>
 				</div></div><div class="et_pb_gallery_item et_pb_bg_layout_light et_pb_gallery_item_0_4" style="display: none;"><div class="et_pb_gallery_image landscape">
-					<a href="__KTK_PARITY_ASSETS__parity/33323b64f1a6-ssxdp1wpbgakhopwbgk7_compressed_compressed.webp" title="ssxdp1wpbgakhopwbgk7_compressed_compressed">
+					<a href="__KTK_PARITY_ASSETS__parity/33323b64f1a6-ssxdp1wpbgakhopwbgk7_compressed_compressed.webp" title="ssxdp1wpbgakhopwbgk7_compressed_compressed" aria-label="View full-size photo: Four young adults holding drinks pose together in a nightclub with colorful lighting; event logo visible in the corner.">
 					<img decoding="async" width="960" height="640" src="__KTK_PARITY_ASSETS__parity/33323b64f1a6-ssxdp1wpbgakhopwbgk7_compressed_compressed.webp" alt="Four young adults holding drinks pose together in a nightclub with colorful lighting; event logo visible in the corner." class="wp-image-8721" srcset="__KTK_PARITY_ASSETS__parity/33323b64f1a6-ssxdp1wpbgakhopwbgk7_compressed_compressed.webp 960w, __KTK_PARITY_ASSETS__parity/9063e0b2ae7c-ssxdp1wpbgakhopwbgk7_compressed_compressed-480x320.webp 480w" sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 960px, 100vw" loading="lazy">
 					
 				</a>
 				</div></div><div class="et_pb_gallery_item et_pb_bg_layout_light et_pb_gallery_item_0_5" style="display: none;"><div class="et_pb_gallery_image landscape">
-					<a href="__KTK_PARITY_ASSETS__parity/a04437629524-toym4uwmfwtlpyqi1b5v_compressed_compressed.webp" title="toym4uwmfwtlpyqi1b5v_compressed_compressed">
+					<a href="__KTK_PARITY_ASSETS__parity/a04437629524-toym4uwmfwtlpyqi1b5v_compressed_compressed.webp" title="toym4uwmfwtlpyqi1b5v_compressed_compressed" aria-label="View full-size photo: A group of people socialize and dance in a dimly lit bar; a woman in front holds two drinks and makes a playful face at the camera.">
 					<img decoding="async" width="960" height="640" src="__KTK_PARITY_ASSETS__parity/a04437629524-toym4uwmfwtlpyqi1b5v_compressed_compressed.webp" alt="A group of people socialize and dance in a dimly lit bar; a woman in front holds two drinks and makes a playful face at the camera." class="wp-image-8722" srcset="__KTK_PARITY_ASSETS__parity/a04437629524-toym4uwmfwtlpyqi1b5v_compressed_compressed.webp 960w, __KTK_PARITY_ASSETS__parity/e41e03145b5c-toym4uwmfwtlpyqi1b5v_compressed_compressed-480x320.webp 480w" sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 960px, 100vw" loading="lazy">
 					
 				</a>
 				</div></div><div class="et_pb_gallery_item et_pb_bg_layout_light et_pb_gallery_item_0_6" style="display: none;"><div class="et_pb_gallery_image landscape">
-					<a href="__KTK_PARITY_ASSETS__parity/9d4f2b36b113-wm8nfsgxpmi3ryk0hbfg_compressed_compressed.webp" title="wm8nfsgxpmi3ryk0hbfg_compressed_compressed">
+					<a href="__KTK_PARITY_ASSETS__parity/9d4f2b36b113-wm8nfsgxpmi3ryk0hbfg_compressed_compressed.webp" title="wm8nfsgxpmi3ryk0hbfg_compressed_compressed" aria-label="View full-size photo: Three people stand closely together, smiling at the camera in a dimly lit lounge, all wearing matching black graphic t-shirts. A drink sits on a table beside them.">
 					<img decoding="async" width="960" height="640" src="__KTK_PARITY_ASSETS__parity/9d4f2b36b113-wm8nfsgxpmi3ryk0hbfg_compressed_compressed.webp" alt="Three people stand closely together, smiling at the camera in a dimly lit lounge, all wearing matching black graphic t-shirts. A drink sits on a table beside them." class="wp-image-8723" srcset="__KTK_PARITY_ASSETS__parity/9d4f2b36b113-wm8nfsgxpmi3ryk0hbfg_compressed_compressed.webp 960w, __KTK_PARITY_ASSETS__parity/458412d9f464-wm8nfsgxpmi3ryk0hbfg_compressed_compressed-480x320.webp 480w" sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 960px, 100vw" loading="lazy">
 					
 				</a>
 				</div></div><div class="et_pb_gallery_item et_pb_bg_layout_light et_pb_gallery_item_0_7" style="display: none;"><div class="et_pb_gallery_image landscape">
-					<a href="__KTK_PARITY_ASSETS__parity/c0526733eaa4-yqs8tys9cemdoke8jfy5_compressed_compressed.webp" title="yqs8tys9cemdoke8jfy5_compressed_compressed">
+					<a href="__KTK_PARITY_ASSETS__parity/c0526733eaa4-yqs8tys9cemdoke8jfy5_compressed_compressed.webp" title="yqs8tys9cemdoke8jfy5_compressed_compressed" aria-label="View full-size photo: A performer breathes fire in front of an audience inside a nightclub, with a large geometric symbol displayed on the wall in the background.">
 					<img decoding="async" width="480" height="320" src="__KTK_PARITY_ASSETS__parity/c0526733eaa4-yqs8tys9cemdoke8jfy5_compressed_compressed.webp" alt="A performer breathes fire in front of an audience inside a nightclub, with a large geometric symbol displayed on the wall in the background." class="wp-image-8725" srcset="__KTK_PARITY_ASSETS__parity/c0526733eaa4-yqs8tys9cemdoke8jfy5_compressed_compressed.webp 480w, __KTK_PARITY_ASSETS__parity/8a37a9db6929-yqs8tys9cemdoke8jfy5_compressed_compressed-300x200.webp 300w" sizes="(max-width: 480px) 100vw, 480px" loading="lazy">
 					
 				</a>
 				</div></div><div class="et_pb_gallery_item et_pb_bg_layout_light et_pb_gallery_item_0_8" style="display: none;"><div class="et_pb_gallery_image landscape">
-					<a href="__KTK_PARITY_ASSETS__parity/bfca90e7da7b-ynqh1jc9wxqiihva2pd5_compressed_compressed.webp" title="ynqh1jc9wxqiihva2pd5_compressed_compressed">
+					<a href="__KTK_PARITY_ASSETS__parity/bfca90e7da7b-ynqh1jc9wxqiihva2pd5_compressed_compressed.webp" title="ynqh1jc9wxqiihva2pd5_compressed_compressed" aria-label="View full-size photo: A group of young adults pose for a photo while holding drinks at a lively indoor party or nightclub.">
 					<img decoding="async" width="960" height="640" src="__KTK_PARITY_ASSETS__parity/bfca90e7da7b-ynqh1jc9wxqiihva2pd5_compressed_compressed.webp" alt="A group of young adults pose for a photo while holding drinks at a lively indoor party or nightclub." class="wp-image-8724" srcset="__KTK_PARITY_ASSETS__parity/bfca90e7da7b-ynqh1jc9wxqiihva2pd5_compressed_compressed.webp 960w, __KTK_PARITY_ASSETS__parity/16836b8ab070-ynqh1jc9wxqiihva2pd5_compressed_compressed-480x320.webp 480w" sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 960px, 100vw" loading="lazy">
 					
 				</a>
@@ -1139,7 +1139,7 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><p><span>To automatically guarantee a place on the crawl </span><a href="__KTK_HOME_URL__store2/pub-crawl-28?book=1">buy your ticket</a><span>&nbsp;online. </span></p>
+				<div class="et_pb_text_inner"><p><span>To automatically guarantee a place on the crawl </span><a href="__KTK_HOME_URL__store2/pub-crawl-28/?book=1">buy your ticket</a><span>&nbsp;online. </span></p>
 <p><span>For only 120 zl you will have an incredible night with amazing people.</span></p>
 <p>Look <span>out for the pink umbrella and our professional guides!</span></p></div>
 			</div><div class="et_pb_button_module_wrapper et_pb_button_5_wrapper et_pb_button_alignment_left et_pb_module">

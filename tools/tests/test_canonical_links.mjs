@@ -14,6 +14,11 @@ test('foreign origins, private routes and protected legacy store are not rewritt
  for(const value of ['#contact','https://example.com/how-to-join/','https://krawlthroughkrakow.com:444/how-to-join/','javascript:alert(1)','/store/Bottomless-Brunch-p661114244','/store2/cart/','/wp-admin/','/unknown/'])assert.equal(canonicalDestination(value),null);
 });
 
+test('only the observed slashless public booking destination is normalized, preserving all query and fragment values',()=>{
+ assert.equal(canonicalDestination('https://krawlthroughkrakow.com/staging/store2/pub-crawl-28?utm_source=partner&gclid=click#book'),'__KTK_HOME_URL__store2/pub-crawl-28/?utm_source=partner&gclid=click#book');
+ for(const value of ['/store2/pub-crawl-28/','/store2/unknown-999','/store2/cart','https://foreign.test/store2/pub-crawl-28','https://user:password@krawlthroughkrakow.com/store2/pub-crawl-28'])assert.equal(canonicalDestination(value),null);
+});
+
 test('reviewed broken aliases cannot shadow current routes or silently cross commerce boundaries',()=>{
  const known=['/student-trips-poland/','/all-you-need-to-know-about-visiting-auschwitz/'];
  assert.equal(validateLinkPolicy(canonicalLinkPolicy,known,[]),true);

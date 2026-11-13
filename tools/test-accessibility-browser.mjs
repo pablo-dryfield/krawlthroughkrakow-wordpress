@@ -6,6 +6,8 @@ const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtime
 const frontendRequire=createRequire(path.resolve('staging/wp-content/plugins/ktk-storefront/frontend/package.json'));
 const axeSource=await readFile(frontendRequire.resolve('axe-core/axe.min.js'),'utf8');
 const [homeBase,pagesBase,output]=process.argv.slice(2);
+const routes=process.argv.includes('--routes')?process.argv[process.argv.indexOf('--routes')+1].split(','):['/','/about-us/','/about-us/how-to-join/','/contact/','/faqs/','/gallery/','/blog/','/category/krakow-guides/','/new-years-eve-in-krakow/'];
+if(routes.some(route=>!route.startsWith('/')||route.startsWith('//')||/[?#]/.test(route)))throw Error('Only explicit clean staging paths');
 if(!homeBase||!pagesBase||!output)throw Error('Homepage, pages and fresh output directory required');
 for(const base of [homeBase,pagesBase]){
  const url=new URL(base);
@@ -17,7 +19,7 @@ const report={checkedAt:new Date().toISOString(),scope:'Read-only own markup/key
 const check=(name,pass,detail)=>report.checks.push({name,pass:!!pass,detail});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
- for(const route of ['/','/about-us/','/about-us/how-to-join/','/contact/','/faqs/','/gallery/','/blog/','/category/krakow-guides/','/new-years-eve-in-krakow/'])for(const width of [320,390,768,1440]){
+ for(const route of routes)for(const width of [320,390,768,1440]){
   const base=route==='/'?homeBase:pagesBase,url=new URL(base.replace(/\/$/,'')+route);
   if(process.argv.includes('--cache-bust'))url.searchParams.set('ktk_accessibility','20261113-'+Date.now());
   const context=await browser.newContext({viewport:{width,height:900},reducedMotion:'reduce'}),page=await context.newPage(),errors=[];
@@ -50,6 +52,20 @@ try{
     await button.focus();await page.keyboard.press('Enter');check(name+' FAQ Enter changes once',await button.getAttribute('aria-expanded')!==before);
     await page.keyboard.press('Space');check(name+' FAQ Space reverses once',await button.getAttribute('aria-expanded')===before);
     check(name+' native button inherits original heading typography',await button.evaluate(node=>['fontFamily','fontSize','fontWeight','lineHeight','color','textAlign'].every(key=>getComputedStyle(node)[key]===getComputedStyle(node.parentElement)[key])));
+   }
+   const planning=page.locator('[data-ktk-contextual-links]');
+   if(['/stagshens/','/bachelor-party-organisers-krakow/','/hen-do-ideas-abroad/','/krakow-hen-party-reviews/','/best-pub-crawls-in-europe/'].includes(route))check(name+' expected contextual block exists',await planning.count()===1);
+   if(await planning.count()){
+    check(name+' contextual links are visible native links within their paragraph',await planning.evaluate(p=>[...p.querySelectorAll('a[href]')].every(a=>{
+     const r=a.getBoundingClientRect(),parent=p.getBoundingClientRect();return a.textContent.trim()&&r.width>0&&r.height>0&&r.left>=parent.left-1&&r.right<=parent.right+1;
+    })));
+    const anchor=planning.getByRole('link').first();await anchor.focus();
+    check(name+' contextual planning link accepts native keyboard focus',await anchor.evaluate(a=>a===document.activeElement));
+    if(process.argv.includes('--capture-context')&&[390,1440].includes(width))await planning.screenshot({path:path.join(output,route.replaceAll('/','')+'-'+width+'-planning.png')});
+   }
+   if(route==='/krakow-stag-do/'){
+    const karting=page.getByRole('link',{name:/^book go-karting$/i});
+    check(name+' repaired activity CTA reaches matching current product',await karting.count()===1&&await karting.getAttribute('data-ktk-booking-product')==='30'&&new URL(await karting.getAttribute('href')).pathname==='/staging/store2/go-karting-30/');
    }
    await page.addScriptTag({content:axeSource});
    const semantic=await page.evaluate(async()=>{const result=await axe.run(document,{runOnly:{type:'rule',values:['aria-allowed-role','frame-title','image-alt','label','label-content-name-mismatch','landmark-one-main','landmark-no-duplicate-banner','landmark-unique','link-name']},iframes:false});return result.violations.map(row=>({id:row.id,targets:row.nodes.map(node=>node.target)}));});

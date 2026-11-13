@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-13T12:15:03.699Z",
+  "startedAt": "2026-11-13T12:57:23.199Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -224,6 +224,13 @@
         {
           "type": "remove-missing-contents-entry",
           "id": "differentgamemodesavailable"
+        },
+        {
+          "type": "contextual-planning-links",
+          "key": "post-bachelor-party-organisers-krakow",
+          "targets": [
+            "/krakow-stag-do/"
+          ]
         },
         {
           "type": "heading-level",
@@ -735,6 +742,13 @@
     "post-best-pub-crawls-in-europe": {
       "content": [
         {
+          "type": "contextual-planning-links",
+          "key": "post-best-pub-crawls-in-europe",
+          "targets": [
+            "/otherbarcrawls/"
+          ]
+        },
+        {
           "type": "heading-level",
           "from": "h1",
           "to": "h2",
@@ -989,6 +1003,13 @@
     },
     "post-hen-do-ideas-abroad": {
       "content": [
+        {
+          "type": "contextual-planning-links",
+          "key": "post-hen-do-ideas-abroad",
+          "targets": [
+            "/krakow-hen-do/"
+          ]
+        },
         {
           "type": "heading-level",
           "from": "h4",
@@ -1754,6 +1775,13 @@
     },
     "post-krakow-hen-party-reviews": {
       "content": [
+        {
+          "type": "contextual-planning-links",
+          "key": "post-krakow-hen-party-reviews",
+          "targets": [
+            "/krakow-hen-do/"
+          ]
+        },
         {
           "type": "heading-level",
           "from": "h4",
@@ -5425,6 +5453,10 @@
         {
           "from": "__KTK_HOME_URL__terms-and-conditions",
           "to": "__KTK_HOME_URL__terms-and-conditions/"
+        },
+        {
+          "from": "__KTK_HOME_URL__store2/pub-crawl-28?book=1",
+          "to": "__KTK_HOME_URL__store2/pub-crawl-28/?book=1"
         }
       ]
     },
@@ -5547,6 +5579,10 @@
         {
           "from": "__KTK_HOME_URL__terms-and-conditions",
           "to": "__KTK_HOME_URL__terms-and-conditions/"
+        },
+        {
+          "from": "__KTK_HOME_URL__store2/pub-crawl-28?book=1",
+          "to": "__KTK_HOME_URL__store2/pub-crawl-28/?book=1"
         }
       ]
     },
@@ -5610,6 +5646,10 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
+        },
+        {
+          "from": "__KTK_HOME_URL__store2/pub-crawl-28?book=1",
+          "to": "__KTK_HOME_URL__store2/pub-crawl-28/?book=1"
         },
         {
           "from": "__KTK_HOME_URL__terms-and-conditions",
@@ -5775,6 +5815,10 @@
           "to": "__KTK_HOME_URL__about-us/how-to-join/"
         },
         {
+          "from": "__KTK_HOME_URL__store2/pub-crawl-28?book=1",
+          "to": "__KTK_HOME_URL__store2/pub-crawl-28/?book=1"
+        },
+        {
           "from": "__KTK_HOME_URL__terms-and-conditions",
           "to": "__KTK_HOME_URL__terms-and-conditions/"
         }
@@ -5875,6 +5919,10 @@
         {
           "from": "__KTK_HOME_URL__terms-and-conditions",
           "to": "__KTK_HOME_URL__terms-and-conditions/"
+        },
+        {
+          "from": "__KTK_HOME_URL__store2/pub-crawl-28?book=1",
+          "to": "__KTK_HOME_URL__store2/pub-crawl-28/?book=1"
         }
       ]
     },
@@ -6147,6 +6195,10 @@
         {
           "from": "__KTK_HOME_URL__terms-and-conditions",
           "to": "__KTK_HOME_URL__terms-and-conditions/"
+        },
+        {
+          "from": "__KTK_HOME_URL__store2/pub-crawl-28?book=1",
+          "to": "__KTK_HOME_URL__store2/pub-crawl-28/?book=1"
         }
       ]
     },
@@ -6156,6 +6208,10 @@
           "type": "replace-ecwid-booking",
           "legacyProduct": "637056338",
           "product": 40
+        },
+        {
+          "type": "repair-empty-go-karting-booking",
+          "product": 30
         },
         {
           "type": "heading-level",
@@ -6559,6 +6615,10 @@
         {
           "from": "__KTK_HOME_URL__terms-and-conditions",
           "to": "__KTK_HOME_URL__terms-and-conditions/"
+        },
+        {
+          "from": "__KTK_HOME_URL__store2/pub-crawl-28?book=1",
+          "to": "__KTK_HOME_URL__store2/pub-crawl-28/?book=1"
         }
       ]
     },
@@ -6846,6 +6906,10 @@
         {
           "from": "__KTK_HOME_URL__terms-and-conditions",
           "to": "__KTK_HOME_URL__terms-and-conditions/"
+        },
+        {
+          "from": "__KTK_HOME_URL__store2/pub-crawl-28?book=1",
+          "to": "__KTK_HOME_URL__store2/pub-crawl-28/?book=1"
         }
       ]
     },
@@ -7246,6 +7310,10 @@
         {
           "from": "__KTK_HOME_URL__terms-and-conditions",
           "to": "__KTK_HOME_URL__terms-and-conditions/"
+        },
+        {
+          "from": "__KTK_HOME_URL__store2/pub-crawl-28?book=1",
+          "to": "__KTK_HOME_URL__store2/pub-crawl-28/?book=1"
         }
       ]
     },
@@ -7353,11 +7421,23 @@
         {
           "from": "__KTK_HOME_URL__terms-and-conditions",
           "to": "__KTK_HOME_URL__terms-and-conditions/"
+        },
+        {
+          "from": "__KTK_HOME_URL__store2/pub-crawl-28?book=1",
+          "to": "__KTK_HOME_URL__store2/pub-crawl-28/?book=1"
         }
       ]
     },
     "stagshens": {
       "content": [
+        {
+          "type": "contextual-planning-links",
+          "key": "stagshens",
+          "targets": [
+            "/krakow-stag-do/",
+            "/krakow-hen-do/"
+          ]
+        },
         {
           "type": "heading-level",
           "from": "h1",
@@ -7518,6 +7598,10 @@
         {
           "from": "__KTK_HOME_URL__terms-and-conditions",
           "to": "__KTK_HOME_URL__terms-and-conditions/"
+        },
+        {
+          "from": "__KTK_HOME_URL__store2/pub-crawl-28?book=1",
+          "to": "__KTK_HOME_URL__store2/pub-crawl-28/?book=1"
         }
       ]
     },
@@ -7610,6 +7694,10 @@
         {
           "from": "__KTK_HOME_URL__terms-and-conditions",
           "to": "__KTK_HOME_URL__terms-and-conditions/"
+        },
+        {
+          "from": "__KTK_HOME_URL__store2/pub-crawl-28?book=1",
+          "to": "__KTK_HOME_URL__store2/pub-crawl-28/?book=1"
         }
       ]
     },
@@ -7868,6 +7956,10 @@
         {
           "from": "__KTK_HOME_URL__terms-and-conditions",
           "to": "__KTK_HOME_URL__terms-and-conditions/"
+        },
+        {
+          "from": "__KTK_HOME_URL__store2/pub-crawl-28?book=1",
+          "to": "__KTK_HOME_URL__store2/pub-crawl-28/?book=1"
         }
       ]
     },
@@ -8562,5 +8654,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-13T12:15:43.996Z"
+  "finishedAt": "2026-11-13T12:58:12.919Z"
 }
