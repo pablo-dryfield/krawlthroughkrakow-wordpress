@@ -141,8 +141,10 @@ class RoadmapTests(unittest.TestCase):
 
     def test_future_delivery_progress_uses_data_not_notes_or_frozen_counts(self):
         data=copy.deepcopy(self.data)
-        before=module.delivery_model(data)['counts']
         row=next(item for item in data['deliveries'] if item['id']=='music-guide-review')
+        row['stage']='in_progress';row.pop('verifiedOn',None)
+        data['tickets']['C05']['status']='in_progress'
+        before=module.delivery_model(data)['counts']
         row['stage']='staging_verified';row['verifiedOn']=data['updatedOn']
         after=module.delivery_model(data)['counts']
         self.assertEqual(after['staging_verified'],before['staging_verified']+1)

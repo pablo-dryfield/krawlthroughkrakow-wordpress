@@ -87,12 +87,38 @@ No production, commerce, OmniLodge, plugin, consent or account setting changes.
 - [x] Atomic guard fixtures reject scripts/images/handlers/foreign links/lost
   fragments/wrong photo slots/invalid table scope and changed source content.
   Exact selected original photographs and idempotency checked.
-- [ ] Required CI and guarded manual staging publication with original saved
-  WordPress/home/store state protected, independent hashes and helper removal.
-- [ ] Live origin/normal browser, attribution and full-route/discovery/graph checks.
-- [ ] Scoped staging purge, normal/warmed desktop/Android/iPad cache proof.
-- [ ] Advance the existing remaining-venue delivery only after verified release;
-  keep C05/C08 production and continuing-maintenance gates honest.
+- [x] Application31a9c64 / PR28 required CI43475922432 both jobs pass. Manual
+  staging publisher completed17:47:08UTC,2072 independent hashes/protected saved
+  WordPress/home/storefront state unchanged and helper removed. Backup
+  `ktk-code-pages-staging-20261113-174644.zip`, SHA256
+  `005396273456e118dc29932747e666f33c5da79d6e1b3b21b9d9dc96d92995c0`.
+- [x] Actual origin/normal browser492 each; attribution101 with0 writes/no
+  navigation/orders;24 normal axe views0 violations/21 incomplete groups;
+  discovery243 origin/216 normal; graph142/6225/no unknowns/same6 held tags pass.
+  Homepage10 active assets pass; full-route and warmed-cache proof still running.
+- [x] Staging-only Cloudflare prefix purge accepted17:49:28.813UTC; no production
+  purge/settings change. API acceptance alone is not final cache verification.
+- [x] Content5848 origin/normal/repeat each pass. Final17:59:34UTC repeat348/348
+  HIT across desktop/Android/iPad,119 current asset hashes/tokens. Initial normal
+  239 MISS/109 HIT retained, not called all-HIT.
+- [x] Discovery243 origin/216 normal/216 repeat, homepage10 assets/all3 HIT repeat,
+  graph142/6225/no unknowns/same6 held tags pass. Live phone screenshots inspected.
+- [x] Advance the existing remaining-venue delivery only:17 staging-verified,
+  new measured-icon task underway,1 live OmniLodge batch. All8 scoped venue/music
+  guides have now been refreshed; C05/C08 production and maintenance stay open.
+
+Final documentation changes no application bytes: staged payload is exactly
+31a9c64. Definitions/discovery unchanged, no separate home/discovery/storefront
+publisher. All finite current scans/publishers are closed. Root previews remain
+needed for the next image-sizing batch; no reference preview runs. Final docs
+CI/merge and clean reference/branch cleanup are recorded in PR28. No whole-site
+conformance, traffic uplift or production SEO release claim.
 
 Sources were read online, not personal venue visits. No photos/lyrics copied
 from operator/artist sites. Existing assets/public URLs retained for rollback.
+
+Roadmap fixtures now test every expanded delivery and the actual recent rows,
+not a frozen budget-guide position. Initial UI17/18 and Python179/180 diagnostics
+are retained: the venue row legitimately advanced and pushed budget outside
+the newest four. Final source-driven roadmap317/317 and Python180/180 pass;
+no application guard or progress state was weakened to satisfy the fixtures.
