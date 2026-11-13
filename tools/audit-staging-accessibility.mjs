@@ -15,6 +15,8 @@ await mkdir(output,{recursive:true});
 const sample=['/','/about-us/','/about-us/how-to-join/','/contact/','/faqs/','/gallery/','/blog/','/new-years-eve/','/new-years-eve-in-krakow/','/category/krakow-guides/','/store2/','/store2/pub-crawl-28/','/store2/nye-pub-crawl-32/'];
 const routes=option('--routes')?option('--routes').split(','):sample;
 if(routes.some(route=>!route.startsWith('/')||route.startsWith('//')||/[?#]/.test(route)))throw Error('Only explicit clean staging paths');
+const promotionEpoch=option('--promotion-epoch');
+if(promotionEpoch&&(promotionEpoch!=='1798801200'||routes.some(route=>!['/','/new-years-eve/'].includes(route))))throw Error('Only the explicit owner-approved NYE cutoff and its two routes may be simulated');
 const widths=option('--widths','390,1440').split(',').map(Number);
 if(widths.some(width=>!Number.isInteger(width)||width<320||width>2560))throw Error('Invalid viewport');
 const base=option('--base','https://krawlthroughkrakow.com/staging').replace(/\/$/,'');
@@ -26,6 +28,7 @@ for(const value of [base,homeBase]){
  if(!(url.origin==='https://krawlthroughkrakow.com'&&url.pathname==='/staging')&&!(url.protocol==='http:'&&url.hostname==='127.0.0.1'&&url.pathname==='/'))throw Error('Only staging or explicit loopback previews');
 }
 const report={checkedAt:new Date().toISOString(),engine:axePackage.version,scope:'Read-only staging WCAG-oriented automated audit, not full conformance or a screen-reader/consent/payment certificate. Third-party services and non-read requests blocked in isolated browsers. No personal data, submissions, carts, quotes or orders.',views:[],errors:[],pageErrors:[],blockedRequests:0};
+report.simulatedPromotionEpoch=promotionEpoch||null;
 const fingerprint=async()=>{
  const result={};
  for(const file of ['ktk-code-pages-assets/runtime.css','ktk-code-pages-assets/runtime.js','ktk-homepage-assets/parity-runtime.css','ktk-homepage-assets/parity.js','ktk-homepage-assets/hero.css'])result[file]=createHash('sha256').update(await readFile('staging/wp-content/mu-plugins/'+file)).digest('hex');
@@ -37,6 +40,7 @@ try{
  for(const route of routes)for(const width of widths){
   const context=await browser.newContext({viewport:{width,height:900},reducedMotion:'reduce'}),page=await context.newPage();
   try{
+   if(promotionEpoch)await context.addInitScript(epoch=>{Date.now=()=>Number(epoch)*1000;},promotionEpoch);
    await context.route('**/*',request=>{
     const req=request.request(),url=new URL(req.url());
     const local=url.protocol==='http:'&&url.hostname==='127.0.0.1'&&[new URL(base).origin,new URL(homeBase).origin].includes(url.origin);
@@ -51,6 +55,7 @@ try{
    const response=await page.goto(target.href,{waitUntil:'load',timeout:60000});
    if(response.status()!==200)throw Error('HTTP'+response.status());
    await page.evaluate(()=>document.fonts.ready);
+   if(promotionEpoch)await page.waitForFunction(()=>[...document.querySelectorAll('[data-ktk-event-promotion="nye"]')].length>0&&[...document.querySelectorAll('[data-ktk-event-promotion="nye"]')].every(node=>node.dataset.ktkPromotionState==='expired'));
    if(route.startsWith('/store2/')&&storeState==='enhanced'){
     await page.waitForFunction(()=>!document.getElementById('ktk-storefront-public-content')&&document.getElementById('ktk-storefront-root')?.hidden===false,{},{timeout:20000});
     if(await page.locator('#ktk-storefront-root .ktk-error').count())throw Error('Enhanced storefront is in error state, not a usable product/catalog');

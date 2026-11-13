@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-13T20:36:04.350Z",
+  "checkedAt": "2026-11-13T21:29:42.604Z",
   "routes": 116,
   "passed": 2320,
   "total": 2320,
@@ -54,7 +54,7 @@
     "ktk-code-pages-assets/content/krakow-nightlife.html": "773eccde5d0eb77c7a49f340056c0ab768fb91405a6a44e73c677ecb57918e39",
     "ktk-code-pages-assets/content/krakow-stag-do.html": "0928f21ed12d4227eec128d934cfe979d60e11a20dbddf5915a2096ff7c8db97",
     "ktk-code-pages-assets/content/meeting-point.html": "035a35003d13f0106a43f13697c1d99e2d423c2e22b3a2f0948e048074fcc662",
-    "ktk-code-pages-assets/content/new-years-eve.html": "d7c621442d10c77865209778ed533090dafc3d9b24edcad6e9d61d1452093e0f",
+    "ktk-code-pages-assets/content/new-years-eve.html": "de5cb9952e34fec80049ea982c462289d424f136ea2c6ffc0ebae16c0fb8f633",
     "ktk-code-pages-assets/content/other-tours.html": "0e5d5bb7c6f29fdcc577835574fe78f1780f10b344121bfa35a4e5ab40c7ad69",
     "ktk-code-pages-assets/content/otherbarcrawls.html": "2a3b998b36638271e036dc37e3fed330016650c6c257c86f08b94338abd4fb22",
     "ktk-code-pages-assets/content/post-2020-krakow-nightlife-guide.html": "2c30c8cab349df61ca55017a2d67a828f1456caa6b8ec1fb289cf313f0e824c3",
@@ -1575,7 +1575,7 @@
     "ktk-code-pages-assets/pages/krakow-nightlife.php": "600efda13792f71c194703c21c870f9fe66b0c8b0807e066de5e71f0a6dfab56",
     "ktk-code-pages-assets/pages/krakow-stag-do.php": "3f03f8ddce70ae6918ad794f2daab5792abb37267fe5054e252cfc7a272a46c3",
     "ktk-code-pages-assets/pages/meeting-point.php": "ab2631a6a92edeeb86b215076f6b11de1505524a4357ac15695d456dcdf49516",
-    "ktk-code-pages-assets/pages/new-years-eve.php": "765b0fc28f5a5f10a67b9f6926c962e757c6c15b6b8cdcea77dbad0f6ab70e39",
+    "ktk-code-pages-assets/pages/new-years-eve.php": "5c5c4f7d6e2328f6d493d39798802d71e6c26e4e8efce07afe6708c67927f9e4",
     "ktk-code-pages-assets/pages/other-tours.php": "a122ad77e7a82c0e9e803e3c98800da5c9a0f7f277df2b06c44916a4f4e20c0f",
     "ktk-code-pages-assets/pages/otherbarcrawls.php": "66c587a0dec37687a2758586bba8e76e896b32b5a64632b8347c92cbdff12319",
     "ktk-code-pages-assets/pages/post-2020-krakow-nightlife-guide.php": "fed83f932f562d9d68636b08899cd476eb43e3900b26f47c22733cd4c2101571",
@@ -1643,8 +1643,8 @@
     "ktk-code-pages-assets/pages/testimonials.php": "3bb2519da704dd346b8e72c1fc77125a5a1799e135d3cdc9cdb0b885a9d43128",
     "ktk-code-pages-assets/pages/tour-service-disclaimer.php": "ef523d8002ee23246c47f83d07631eb2c8af28e48cb2dd350710bb03c0de5a50",
     "ktk-code-pages-assets/registry.php": "42b68c69de286f834e7fe4473e0ebd5df02cd279d310eab6e689e59441c25c5d",
-    "ktk-code-pages-assets/runtime.css": "545f71d6c1469fd966c9b73066ce7085b2aa6056f8db29200d37ba230701cc1f",
-    "ktk-code-pages-assets/runtime.js": "9162c9195d4d0ffa8b93a6983fddc51ae66992353165dbb008f9eaf902c4274f",
+    "ktk-code-pages-assets/runtime.css": "0058799311e2ff2450348a013bd75f4b974907e425cb7b11e3c0eb6a01dbacef",
+    "ktk-code-pages-assets/runtime.js": "a592f35a02ac80f76c6db450ac39757225cf4621db715edc7877f4a6c80a7b07",
     "ktk-code-pages-assets/shells/.htaccess": "b839261c1ee52349560b726218f0bc9cb1afee95e07e9d50f95919d5e8e6cdf2",
     "ktk-code-pages-assets/shells/00cb208f1a3e751e0e0e.html": "00cb208f1a3e751e0e0ec48852bfcecf159d44785dc0e90e135170f1824db35c",
     "ktk-code-pages-assets/shells/0c5706ee06ae7b293792.html": "0c5706ee06ae7b293792b330a2c7c20dc841fdd82ec8a6ed6f29d875147295d8",
@@ -1683,6 +1683,7 @@
     "ktk-code-pages-assets/shells/7c7ca47beb132e57ef87.html": "7c7ca47beb132e57ef876b2dc0619d4ce0f4f3b50e91b05b32d85237b5a62fec",
     "ktk-code-pages-assets/shells/7d987fdd44d5f0adc7a8.html": "7d987fdd44d5f0adc7a81170c1645090a3dc8cebb70195aec9c988a5f821dc7c",
     "ktk-code-pages-assets/shells/7e770b5aa0cf76639ec7.html": "7e770b5aa0cf76639ec783c8cfeba881a4c211f8c3e6bd8135348050c79f1b14",
+    "ktk-code-pages-assets/shells/7f490f48bedf68f7ea3a.html": "7f490f48bedf68f7ea3a9ae05016ee6bfe9287904c9de01d5b22e60d2ab2d547",
     "ktk-code-pages-assets/shells/804e5d26e93b76b62b3e.html": "804e5d26e93b76b62b3eac0ce12a914212071ff36a3c254b6010002f3b55a549",
     "ktk-code-pages-assets/shells/81a54df87ecf6979c8dc.html": "81a54df87ecf6979c8dcee75c81807a217e227cff07d1a5a9faf6a33b62a1782",
     "ktk-code-pages-assets/shells/8356401a352082bd1a82.html": "8356401a352082bd1a827b5e337b62a77c0124480f2f26d5d22efb7e27917c9e",
@@ -2075,7 +2076,7 @@
     "ktk-code-pages-assets/styles/fbcd91d5a9681c5662ef.css": "fbcd91d5a9681c5662ef0e13d24206e06dfc52c7260e6830aa63a319f8916665",
     "ktk-code-pages-assets/styles/fe46668d0d0a835deeba.css": "fe46668d0d0a835deebada2dcd185c2c8923e85390aac55c40570b5072350d0b",
     "ktk-code-pages-assets/styles/fef95b1452e6c9552295.css": "fef95b1452e6c9552295dff729f0173940dee84afb2ecc1a65d03996905510d5",
-    "ktk-code-pages.php": "b8dd6192ed5ae7cb85d7f7dc82a5648f2dcc791a9f2885cda9678cbadc6744dd"
+    "ktk-code-pages.php": "d7e2d733e88737de1382b6b5d6effa395c142b4d33ee1893790f9a8d4061d481"
   },
   "checks": [
     {
