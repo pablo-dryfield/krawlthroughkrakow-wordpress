@@ -2,6 +2,10 @@
 
 ## Scope And State
 
+Follow-up: [the first scoped jazz factual batch](JAZZ-FACTS.md) now passes local
+checks and awaits required CI/staging verification. The read-only observations
+below retain their original scope; this does not make the music review complete.
+
 Read-only C05/C08 preparation on13 November2026. No guide rewrite, redirect,
 canonical/indexing change or production deployment in this review. Current
 application delivery remains the separate staging budget-guide batch.
