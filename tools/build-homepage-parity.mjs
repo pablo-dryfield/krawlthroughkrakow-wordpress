@@ -5,7 +5,7 @@ import path from 'node:path';
 import {rewriteBookingLinks} from './booking-destinations.mjs';
 import {preserveHeadingCss,reviseSemanticHeadings} from './semantic-headings.mjs';
 import {rewriteCanonicalLinks} from './canonical-links.mjs';
-import {applyHomepageMediaPolicy} from './homepage-media-policy.mjs';
+import {applyHomepageMediaPolicy,applyHomepageIconSizing} from './homepage-media-policy.mjs';
 import {reviseAccessibilitySemantics} from './accessibility-semantics.mjs';
 import {buildContentAccessibilityStyles} from './content-accessibility-styles.mjs';
 
@@ -172,6 +172,7 @@ try {
   data.bookingRevisions.push(...await rewriteCanonicalLinks(page));
   data.headingRevisions=await page.evaluate(reviseSemanticHeadings,{key:'homepage',kind:'homepage',title:data.title,route:'/',externalPrimary:true});
   data.mediaRevisions=await page.evaluate(applyHomepageMediaPolicy);
+  data.iconSizingRevisions=await page.evaluate(applyHomepageIconSizing);
   data.accessibilityRevisions=await page.evaluate(reviseAccessibilitySemantics,{key:'homepage'});
   data.html=await page.evaluate(()=>document.body.innerHTML);
   data.links=await page.evaluate(()=>[...document.querySelectorAll('a[href],[data-parity-href]')].flatMap(e=>['href','data-parity-href'].filter(attribute=>e.hasAttribute(attribute)).map(attribute=>({attribute,url:e.getAttribute(attribute)}))));
@@ -219,6 +220,7 @@ await writeFile(path.join(sourceDir, 'parity-build.json'), JSON.stringify({
   files: Object.fromEntries(files),
   bookingRevisions:data.bookingRevisions,
   mediaRevisions:data.mediaRevisions,
+  iconSizingRevisions:data.iconSizingRevisions,
   accessibilityRevisions:data.accessibilityRevisions,
 }, null, 2));
 console.log(JSON.stringify({ htmlBytes: Buffer.byteLength(data.html), cssBytes: Buffer.byteLength(css), assetCount: files.size, title: data.title }));
