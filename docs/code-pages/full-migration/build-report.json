@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-12T22:24:16.188Z",
+  "startedAt": "2026-11-13T00:04:44.763Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -940,6 +940,11 @@
     "post-krakow-new-years-eve": {
       "content": [
         {
+          "type": "nye-editorial-correction",
+          "from": "The best part though? Ski passes will cost just a fraction of the price they do in France or Austria – think £15 for a full day’s skiing!",
+          "to": "Check current lift-pass prices, snow conditions and transport with the resort before planning a ski day. Prices and opening dates vary; an old price comparison is not a current quote."
+        },
+        {
           "type": "heading-level",
           "from": "h1",
           "to": "h2",
@@ -1304,11 +1309,92 @@
     "post-new-years-eve-in-krakow": {
       "content": [
         {
+          "type": "nye-local-contents",
+          "id": "holiday-getaway"
+        },
+        {
+          "type": "nye-local-contents",
+          "id": "christmas-traditions"
+        },
+        {
+          "type": "nye-local-contents",
+          "id": "new-years-celebrations"
+        },
+        {
+          "type": "nye-local-contents",
+          "id": "nye-pub-crawl"
+        },
+        {
+          "type": "nye-local-contents",
+          "id": "plan-your-getaway"
+        },
+        {
+          "type": "nye-local-contents",
+          "id": "festive-itinerary"
+        },
+        {
+          "type": "nye-local-contents",
+          "id": "closing-thoughts"
+        },
+        {
+          "type": "nye-local-contents",
+          "id": "book-nye"
+        },
+        {
+          "type": "nye-booking-typo",
+          "product": 32
+        },
+        {
+          "type": "nye-editorial-correction",
+          "from": "With the arrival of winter in Krakow, the Old Town Market Square, recognized as a UNESCO World Heritage Site, takes center stage in the city’s holiday festivities. Picture yourself entering a storybook world as this square is transformed into a magical wonderland, illuminated by countless shimmering lights and elegantly adorned Christmas trees.",
+          "to": "The Main Market Square sits within Krakow's UNESCO-listed Historic Centre. It is a useful starting point for exploring the Old Town in winter; check current Christmas-market dates and opening times before making plans."
+        },
+        {
+          "type": "nye-editorial-correction",
+          "from": "Krakow’s New Year’s Eve Countdown Extravaganza features a stunning fireworks display over the Vistula River, creating a vibrant and celebratory atmosphere. The heart of the celebration is in the Market Square, with live music and a grand countdown. It’s an unforgettable way to ring in the New Year with the local community and fellow travelers.",
+          "to": "Krakow offers different ways to spend New Year's Eve, from ticketed nightlife events to a meal with friends. A city-centre stage, public countdown or fireworks display is not confirmed by this guide. Check the current city programme and the details of any event you book."
+        },
+        {
+          "type": "nye-editorial-correction",
+          "from": "While the year draws to a close, Krakow welcomes New Year’s Eve with a bang. The night sky is illuminated by a spectacular fireworks display, casting colorful reflections on the Vistula River. It’s a mesmerizing sight that sets the stage for the night’s festivities.",
+          "to": "Do not plan your evening around a promised fireworks display over the Vistula. Check current official announcements and local guidance; previous celebrations do not confirm this year's programme."
+        },
+        {
+          "type": "nye-editorial-correction",
+          "from": "The highlight of Krakow’s New Year’s Eve celebration is the grand countdown extravaganza in the Market Square. An enormous stage hosts live musical performances, and the excitement builds as the clock nears midnight.",
+          "to": "If you want an organised midnight celebration, confirm its location, start time, entry conditions and transport before booking. Do not assume a free Market Square stage or live concert is scheduled."
+        },
+        {
+          "type": "nye-editorial-correction",
+          "from": "And let’s not forget the centerpiece of this experience – the open bar. Yes, you read that right. For two whole hours, guests can enjoy complimentary drinks, including whisky, rum, gin, vodka, beer, and champagne, setting the stage for a night of uninhibited enjoyment. The open bar isn’t just about the drinks; it’s about the liberation to savor the moment without the worry of additional costs. Additionally, there’s a delectable buffet that adds to the evening’s delights, ensuring that you’ll have everything you need to make this New Year’s Eve truly unforgettable.",
+          "to": "For the Krawl Through Krakow NYE event, check the current event page for the open-bar and buffet inclusions, available groups, price and meeting-point updates. Do not assume champagne or any named venue is included unless the current offer confirms it."
+        },
+        {
+          "type": "nye-editorial-correction",
+          "from": "It’s important to note that nearly every venue charges a door entrance fee on NYE in Krakow, usually between 100 and 200zl, and they sell out fast. We have secured entry for all of our guests in each place so you dont have to worry about not being able to get in to a club, you’ll also be able to enjoy our 2 hours open bar and smorgasbord buffet dinner full of the tastiest Polish and International cuisine starting the celebrations with a bang whilst saving your pocket.",
+          "to": "New Year's Eve entry conditions vary by venue. Compare the current event inclusions rather than relying on historical door-price estimates or assuming every club has space. Follow the confirmed booking details for your group."
+        },
+        {
+          "type": "nye-editorial-correction",
+          "from": "The culmination of this exhilarating journey takes you to the grand New Year’s Eve Countdown at the heart of the city’s festivities. Surrounded by the energy of the crowd, the pulsating music, and the joyous atmosphere, you’ll join in the chorus of cheers as the clock strikes midnight.",
+          "to": "Your midnight plans depend on the event and group you choose. Follow the confirmed itinerary and meeting-point updates; this article does not promise a city-organised countdown, concert or fireworks display."
+        },
+        {
+          "type": "nye-editorial-correction",
+          "from": "Choosing the best place to spend New Year’s Eve in Krakow depends on personal preferences, but the Old Town Market Square is a prime location for a lively celebration. The square transforms into a festive hub with dazzling lights, a vibrant atmosphere, and often a grand countdown event. Many bars, restaurants, and clubs in the vicinity contribute to the lively ambiance. Additionally, large cities like Krakow often organize special events and fireworks displays in prominent locations, making the city center a fantastic choice for those seeking a memorable and spirited New Year’s Eve experience.",
+          "to": "The best place to spend New Year's Eve depends on your plans: a ticketed pub crawl, a reserved restaurant or a club event offer different experiences. Check the actual programme, location and entry arrangements rather than assuming a public Market Square countdown is taking place."
+        },
+        {
+          "type": "nye-editorial-correction",
+          "from": "As the clock strikes midnight in Krakow, fireworks illuminate the Vistula River, painting the night sky with a breathtaking display. The city pulses with life as various New Year’s Eve parties and concerts unfold, offering a diverse range of celebrations. For those seeking a stylish celebration, numerous restaurants, bars, and clubs host special events. The vibrant nightlife scene, perfectly complemented by Krakow’s historical charm, creates an atmosphere brimming with excitement for welcoming the new year. To add a dash of extra flair to your celebration, consider joining the renowned “Krawl through Krakow” pub crawl. This dynamic experience introduces you to the city’s best nightlife spots, ensuring a night filled with laughter, camaraderie, and unforgettable moments. Whether you fancy a lively outdoor experience, an intimate dinner, or a night of dancing, Krakow promises a New Year’s Eve celebration tailored to every preference.",
+          "to": "Krakow can suit a New Year's Eve break combining Old Town sightseeing with a booked evening event. Compare the current programmes of restaurants, bars, clubs and guided events, and reserve ahead where required. Check official city announcements separately; this guide does not confirm a Vistula fireworks display or a public concert."
+        },
+        {
           "type": "heading-level",
           "from": "h1",
           "to": "h2",
           "text": "Embracing Krakow’s Holiday Magic: A Festive Getaway to Remember",
-          "id": ""
+          "id": "holiday-getaway"
         },
         {
           "type": "heading-level",
@@ -5067,5 +5153,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-12T22:25:08.384Z"
+  "finishedAt": "2026-11-13T00:05:39.463Z"
 }

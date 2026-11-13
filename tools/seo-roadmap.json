@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedOn": "2026-11-13",
-  "current": "Schema and photo loading pass refreshed staging checks: content4320/4320 clean/repeat, schema3221/3221, current homepage assets on all three device variants. Native Google totals match OmniLodge; Manual Actions and Security Issues show none. Submitted old sitemap is404 and needs an approved production cutover. Pacific-preset reporting follow-up is releasing; website stays staging-only.",
+  "current": "Schema and photo loading pass refreshed staging checks. M01 reporting is delivered with exact release proof and native Google agreement. NYE guide corrections and the homepage laptop-menu fix are deploying to staging; production website remains unchanged. Native Google identified the old submitted sitemap404 for the production handoff",
   "milestones": [
     {"name":"Private GitHub source control and checks; manual deployments retained","status":"source_verified"},
     {"name":"76 reviewed page descriptions and maintainable metadata source; one health-content hold","status":"staging_verified"},
@@ -14,7 +14,7 @@
     {"name":"Owner approval, guarded production promotion and Search Console follow-up","status":"not_started"}
   ],
   "tickets": {
-    "M01":{"status":"in_progress","note":"Independent totals/pagination/filter and long-date coverage fixes genuinely deployed/verified, including native Google agreement. UI local-midnight presets follow-up PR255 passed all CI/full UI1279/browser49 and merged20f03667; Release43331452337 running, exact actual delivery remains. No commerce changes."},
+    "M01":{"status":"live_verified","note":"Complete: independent totals, pagination/coverage, exact query/page/filter alignment, heuristic/no-data labels and date coverage. Latest Release43331452337/deploy43333310604/public exact3/3 pass; signed-in Pacific presets and native Google28-day totals agree. Full UI1279/browser49/all required CI pass; no commerce/account changes."},
     "M02":{"status":"in_progress","note":"Corrected28/90/180/365 summaries/all returned pages retained privately; native28-day totals/leading rows agree. Query detail2211 unique reaches provider end, not whole totals; device cohorts reconcile958/45215 with81% mobile clicks. Longer queries, reviewed brand/intent cohorts and supported prior-year exports remain."},
     "M03":{"status":"not_started","note":"Full funnel reconciliation and consent-aware measurement review remain."},
     "M04":{"status":"in_progress","note":"Native Manual Actions/Security Issues show none;9Nov indexing133/39 reviewed. Crawl Stats11Nov:8.12k/90 days,507ms, no host problems. Seven stored inspections indexed with crawl-date caveats. Submitted old sitemap404 and three old missing URLs need follow-up; no account/indexing requests."},

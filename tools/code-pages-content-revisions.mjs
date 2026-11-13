@@ -65,6 +65,41 @@ export function reviseCodePageContent({key,reviewCounts}) {
   const module=widget.closest('.et_pb_code');if(!module)throw new Error('Expected original Ecwid code module');module.remove();
   evidence.push({type:'replace-ecwid-booking',legacyProduct:'637056338',product:40});
  }
+ if(key==='post-krakow-new-years-eve'||key==='post-new-years-eve-in-krakow'){
+  const paragraph=(prefix,text)=>{
+   const matches=[...root.querySelectorAll('p')].filter(p=>p.textContent.trim().startsWith(prefix));
+   if(matches.length!==1)throw new Error(`${key}: review changed NYE paragraph: ${prefix}`);
+   const from=matches[0].textContent;matches[0].textContent=text;
+   evidence.push({type:'nye-editorial-correction',from,to:text});
+  };
+  if(key==='post-krakow-new-years-eve'){
+   paragraph('The best part though? Ski passes', 'Check current lift-pass prices, snow conditions and transport with the resort before planning a ski day. Prices and opening dates vary; an old price comparison is not a current quote.');
+  }else{
+   const toc=[...root.querySelectorAll('a[href]')].filter(a=>a.getAttribute('href').startsWith('https://docs.google.com/document/')&&a.getAttribute('href').includes('/edit#heading='));
+   if(toc.length!==8)throw new Error('Review changed eight NYE contents links');
+   const ids=['holiday-getaway','christmas-traditions','new-years-celebrations','nye-pub-crawl','plan-your-getaway','festive-itinerary','closing-thoughts','book-nye'];
+   const normalize=value=>value.toLowerCase().replace(/[^a-z0-9]/g,'');
+   toc.forEach((anchor,index)=>{
+    const matches=[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].filter(h=>normalize(h.textContent)===normalize(anchor.textContent));
+    if(matches.length!==1||matches[0].id||document.getElementById(ids[index]))throw new Error('Review changed NYE contents heading: '+anchor.textContent);
+    matches[0].id=ids[index];anchor.setAttribute('href','#'+ids[index]);
+    evidence.push({type:'nye-local-contents',id:ids[index]});
+   });
+   const typo=[...root.querySelectorAll('a[href]')].filter(a=>a.getAttribute('href')==='http://www.krawlthoughkrakow.com');
+   if(typo.length!==1)throw new Error('Review changed NYE typo-domain booking link');
+   typo[0].setAttribute('href','__KTK_HOME_URL__store2/nye-pub-crawl-32/#book');
+   evidence.push({type:'nye-booking-typo',product:32});
+   paragraph('With the arrival of winter in Krakow,', 'The Main Market Square sits within Krakow\'s UNESCO-listed Historic Centre. It is a useful starting point for exploring the Old Town in winter; check current Christmas-market dates and opening times before making plans.');
+   paragraph('Krakow’s New Year’s Eve Countdown Extravaganza features', 'Krakow offers different ways to spend New Year\'s Eve, from ticketed nightlife events to a meal with friends. A city-centre stage, public countdown or fireworks display is not confirmed by this guide. Check the current city programme and the details of any event you book.');
+   paragraph('While the year draws to a close,', 'Do not plan your evening around a promised fireworks display over the Vistula. Check current official announcements and local guidance; previous celebrations do not confirm this year\'s programme.');
+   paragraph('The highlight of Krakow’s New Year’s Eve celebration', 'If you want an organised midnight celebration, confirm its location, start time, entry conditions and transport before booking. Do not assume a free Market Square stage or live concert is scheduled.');
+   paragraph('And let’s not forget the centerpiece of this experience', 'For the Krawl Through Krakow NYE event, check the current event page for the open-bar and buffet inclusions, available groups, price and meeting-point updates. Do not assume champagne or any named venue is included unless the current offer confirms it.');
+   paragraph('It’s important to note that nearly every venue charges', 'New Year\'s Eve entry conditions vary by venue. Compare the current event inclusions rather than relying on historical door-price estimates or assuming every club has space. Follow the confirmed booking details for your group.');
+   paragraph('The culmination of this exhilarating journey', 'Your midnight plans depend on the event and group you choose. Follow the confirmed itinerary and meeting-point updates; this article does not promise a city-organised countdown, concert or fireworks display.');
+   paragraph('Choosing the best place to spend New Year’s Eve', 'The best place to spend New Year\'s Eve depends on your plans: a ticketed pub crawl, a reserved restaurant or a club event offer different experiences. Check the actual programme, location and entry arrangements rather than assuming a public Market Square countdown is taking place.');
+   paragraph('As the clock strikes midnight in Krakow,', 'Krakow can suit a New Year\'s Eve break combining Old Town sightseeing with a booked evening event. Compare the current programmes of restaurants, bars, clubs and guided events, and reserve ahead where required. Check official city announcements separately; this guide does not confirm a Vistula fireworks display or a public concert.');
+  }
+ }
  const allowedFragments={
   'post-bachelor-party-organisers-krakow':['houseoffearcitygames','differentgamemodesavailable'],
   'post-escape-rooms-for-a-stag-do-in-krakow':['wheretoeatanddrinkafteryouradventure','suggesteditinerariesforafunweekendaway'],

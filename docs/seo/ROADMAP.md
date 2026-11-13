@@ -4,15 +4,16 @@ Updated: 2026-11-13 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 ## Where We Are
 
-**Current work:** Schema and photo loading pass refreshed staging checks: content4320/4320 clean/repeat, schema3221/3221, current homepage assets on all three device variants. Native Google totals match OmniLodge; Manual Actions and Security Issues show none. Submitted old sitemap is404 and needs an approved production cutover. Pacific-preset reporting follow-up is releasing; website stays staging-only..
+**Current work:** Schema and photo loading pass refreshed staging checks. M01 reporting is delivered with exact release proof and native Google agreement. NYE guide corrections and the homepage laptop-menu fix are deploying to staging; production website remains unchanged. Native Google identified the old submitted sitemap404 for the production handoff.
 
 **Verified foundation milestones:** 7. **Website SEO production releases:** 0. The original website migration is a separate completed project, not counted as SEO implementation. Separately authorized OmniLodge reporting has its own release status.
 
 | Full-Plan Status | Workstreams |
 | --- | --- |
-| In progress / partial staging | 20 |
+| In progress / partial staging | 19 |
 | Not started | 19 |
 | Deferred | 1 |
+| Verified live | 1 |
 | Total | 40 |
 
 These are unequal-sized workstreams, not a time-based percentage. Partial work is not counted as finished. A ticket remains open until its full acceptance criteria, approvals, deployment and applicable verification are complete. Recurring reviews continue after launch.
@@ -46,7 +47,7 @@ Acceptance criteria and research: [full improvement plan](SEO-AND-WEBSITE-IMPROV
 
 | ID | Priority / Effort | Work | Status | Progress / Next Step |
 | --- | --- | --- | --- | --- |
-| M01 | P0 / M | Fix OmniLodge Search Console reporting: independent whole-property/date totals; paginated detailed rows with explicit coverage; exact-query vs substring groups; metrics aligned to the displayed page; separate query/page aggregation; filters by country/device/search type; no-data vs truncated flags. Label heuristic recommendations. | In progress / partial staging | Independent totals/pagination/filter and long-date coverage fixes genuinely deployed/verified, including native Google agreement. UI local-midnight presets follow-up PR255 passed all CI/full UI1279/browser49 and merged20f03667; Release43331452337 running, exact actual delivery remains. No commerce changes. |
+| M01 | P0 / M | Fix OmniLodge Search Console reporting: independent whole-property/date totals; paginated detailed rows with explicit coverage; exact-query vs substring groups; metrics aligned to the displayed page; separate query/page aggregation; filters by country/device/search type; no-data vs truncated flags. Label heuristic recommendations. | Verified live | Complete: independent totals, pagination/coverage, exact query/page/filter alignment, heuristic/no-data labels and date coverage. Latest Release43331452337/deploy43333310604/public exact3/3 pass; signed-in Pacific presets and native Google28-day totals agree. Full UI1279/browser49/all required CI pass; no commerce/account changes. |
 | M02 | P0 / S | Establish dated SEO baseline and annotate homepage/content releases separately. Export complete available 28/90/180/365-day data and comparable prior-year periods; split brand/nonbrand, UK/Poland/other markets, mobile/desktop, commercial/editorial/PDF/legacy pages. | In progress / partial staging | Corrected28/90/180/365 summaries/all returned pages retained privately; native28-day totals/leading rows agree. Query detail2211 unique reaches provider end, not whole totals; device cohorts reconcile958/45215 with81% mobile clicks. Longer queries, reviewed brand/intent cohorts and supported prior-year exports remain. |
 | M03 | P1 / M | Verify the full measurement funnel: landing -> named booking CTA -> product -> booking start -> payment completion -> revenue. Keep journey history and UTM handoff; distinguish direct/organic/paid/Google booking integrations. Avoid counting button clicks or failed payments as purchases. | Not started | Full funnel reconciliation and consent-aware measurement review remain. |
 | M04 | P1 / S | Check native GSC Page Indexing, Crawl Stats, submitted sitemaps, Manual Actions and Security Issues; inspect representative page types after Google's next crawl. Configure meaningful failure alerts/weekly review, not a noisy total-keyword scoreboard. | In progress / partial staging | Native Manual Actions/Security Issues show none;9Nov indexing133/39 reviewed. Crawl Stats11Nov:8.12k/90 days,507ms, no host problems. Seven stored inspections indexed with crawl-date caveats. Submitted old sitemap404 and three old missing URLs need follow-up; no account/indexing requests. |
