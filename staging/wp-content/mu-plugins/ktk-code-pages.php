@@ -66,11 +66,11 @@ function ktk_pages_definition($route = null) {
 }
 function ktk_pages_event_promotion_expired($page, $timestamp = null) {
     if (null !== $timestamp && !is_int($timestamp)) { throw new InvalidArgumentException('An explicit epoch timestamp is required.'); }
-    return 'new-years-eve' === ($page['key'] ?? '') && isset($page['event_promotion']['ends_at'])
+    return in_array($page['key'] ?? '', array('new-years-eve', 'post-new-years-eve-in-krakow'), true) && isset($page['event_promotion']['ends_at'])
         && (null === $timestamp ? time() : $timestamp) >= $page['event_promotion']['ends_at'];
 }
 function ktk_pages_event_page_state($page, $timestamp = null) {
-    if (!ktk_pages_event_promotion_expired($page, $timestamp)) { return $page; }
+    if (!ktk_pages_event_promotion_expired($page, $timestamp) || !isset($page['event_promotion']['expired_head'])) { return $page; }
     $head = $page['event_promotion']['expired_head'];
     foreach (array('description', 'metadata', 'schema') as $field) { $page[$field] = $head[$field]; }
     return $page;

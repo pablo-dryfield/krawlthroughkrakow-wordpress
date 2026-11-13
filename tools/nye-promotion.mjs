@@ -1,7 +1,17 @@
 // Runs after the reviewed NYE content and semantic revisions, against the complete page DOM.
 export function prepareNyePromotion({key,campaignFacts}){
- if(key!=='new-years-eve')return null;
+ if(!['new-years-eve','post-new-years-eve-in-krakow'].includes(key))return null;
  if(campaignFacts?.nyeDate!=='2026-12-31'||campaignFacts.nyePromotionEndsTimestamp!=='1798801200')throw Error('Owner-reviewed NYE promotion cutoff required');
+ if(key==='post-new-years-eve-in-krakow'){
+  const main=document.querySelector('#main-content'),links=[...main?.querySelectorAll('a[href]')||[]].filter(a=>a.getAttribute('href')==='__KTK_HOME_URL__store2/nye-pub-crawl-32/#book');
+  const link=links[0];
+  if(!main||main.hasAttribute('data-ktk-event-promotion')||links.length!==1||!link.matches('h2#book-nye > a')||link.textContent.trim()!=='Book the ultimate New years eve experience with krawl through krakow!')throw Error('Review changed NYE guide promotion before any mutation');
+  const ends=campaignFacts.nyePromotionEndsTimestamp;
+  main.dataset.ktkEventPromotion='nye';main.dataset.ktkPromotionEnds=ends;main.dataset.ktkPromotionState='current';
+  link.dataset.ktkEventLink='guide-0';link.dataset.ktkExpiredHref='__KTK_HOME_URL__new-years-eve/#nye-updates';link.dataset.ktkExpiredLabel='Next NYE dates to be announced';
+  const expired=link.cloneNode(true);expired.setAttribute('href',expired.dataset.ktkExpiredHref);expired.textContent=expired.dataset.ktkExpiredLabel;
+  return {ends_at:Number(ends),event_date:campaignFacts.nyeDate,time_zone:'Europe/Warsaw',replacements:[[link.outerHTML,expired.outerHTML]]};
+ }
  const main=document.querySelector('#main-content'),timers=main?.querySelectorAll('.et_pb_countdown_timer'),links=[...document.querySelectorAll('a[href]')].filter(a=>a.getAttribute('href')==='__KTK_HOME_URL__store2/nye-pub-crawl-32/#book');
  const prices=main?.querySelectorAll('.et_pb_heading_8 p[data-ktk-heading-origin="h1"]'),availability=[...main?.querySelectorAll('.et_pb_text_3 p')||[]].filter(p=>p.textContent.trim()==="Book online to reserve your place for New Year's Eve.");
  if(!main||main.hasAttribute('data-ktk-event-promotion')||timers.length!==1||links.length!==8||prices.length!==1||prices[0].textContent.trim()!=='All for only 250 PLN'||availability.length!==1||document.getElementById('nye-updates'))throw Error('Review changed NYE promotion targets before any mutation');

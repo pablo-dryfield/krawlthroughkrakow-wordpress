@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-13T21:29:42.604Z",
+  "checkedAt": "2026-11-13T22:08:11.435Z",
   "routes": 116,
   "passed": 2320,
   "total": 2320,
@@ -97,7 +97,7 @@
     "ktk-code-pages-assets/content/post-krakow-winter-activities.html": "05448ffa6dd49d9180038c34bb518e92fe5c7b7a0efa80558f02c0c5c5b48f2e",
     "ktk-code-pages-assets/content/post-krawl-through-krakow-winter-newsletter.html": "68ccc9ecde2bd98c47600e0186d28c828e8dab65b60081f07966bf7b9469a5c8",
     "ktk-code-pages-assets/content/post-life-professional-drunk.html": "14a5ae1ef46c63077e46f7b1d8dcad2c5d4e27d90bb314816fb2d45da6f49623",
-    "ktk-code-pages-assets/content/post-new-years-eve-in-krakow.html": "75a9117ea87da78ee87ac7b4d075309ba6f88ce50723f6dac8337c8aaafe6475",
+    "ktk-code-pages-assets/content/post-new-years-eve-in-krakow.html": "f435b39d39468b782f858fd0177ed61da3892390d849c588f38bdd65256efb92",
     "ktk-code-pages-assets/content/post-party-krakow.html": "197113be75892e475e44d24f6d556fde119288ffbb2f0eb7335e73b62f10b2f3",
     "ktk-code-pages-assets/content/post-six-reasons-you-need-to-party-with-the-krawl-through-krakow.html": "25673dfb12837db0280773a27ef3c8089fc23f03517fa3390ec23b4388eccea8",
     "ktk-code-pages-assets/content/post-spa-hotels-krakow.html": "13b96a90c5f0159d52b8b21076b774e9f828abafaa1a4a0d0f392e91916b756c",
@@ -1618,7 +1618,7 @@
     "ktk-code-pages-assets/pages/post-krakow-winter-activities.php": "3790ca2e508e3e49ceb96226fc6fb3448207ff35c3bb33a22cd686db1f898649",
     "ktk-code-pages-assets/pages/post-krawl-through-krakow-winter-newsletter.php": "b5a0d53e6277554ab8aebe25ac801f754571d527af3660ad4ea4718685a79828",
     "ktk-code-pages-assets/pages/post-life-professional-drunk.php": "5632050d807bbef44e0a90ede881f71b926d0c8f30ad6a26c78558326a1da5f1",
-    "ktk-code-pages-assets/pages/post-new-years-eve-in-krakow.php": "0d0a178fa84b57f602637762b0668ddaf1e7b6c236eb78462c5fc580310794ba",
+    "ktk-code-pages-assets/pages/post-new-years-eve-in-krakow.php": "1d6b6350e2d0f7ffa2202d1ed1c7f58583c8aa828370acdc1de6951fa8ca17a3",
     "ktk-code-pages-assets/pages/post-party-krakow.php": "a69a54017cab21af8d35f49c51fa4bb13b8ba6c8fe32133211ba1659c0be4dd2",
     "ktk-code-pages-assets/pages/post-six-reasons-you-need-to-party-with-the-krawl-through-krakow.php": "4d000acb2c14460da2e882024df8fdc93c710d181982e94cb83cf1c1fbe0eab3",
     "ktk-code-pages-assets/pages/post-spa-hotels-krakow.php": "68c4ff4d99d6ec614f3bd27692bd5fcd98108742cca5ef091b0fe3003c9f59e5",
@@ -2076,7 +2076,7 @@
     "ktk-code-pages-assets/styles/fbcd91d5a9681c5662ef.css": "fbcd91d5a9681c5662ef0e13d24206e06dfc52c7260e6830aa63a319f8916665",
     "ktk-code-pages-assets/styles/fe46668d0d0a835deeba.css": "fe46668d0d0a835deebada2dcd185c2c8923e85390aac55c40570b5072350d0b",
     "ktk-code-pages-assets/styles/fef95b1452e6c9552295.css": "fef95b1452e6c9552295dff729f0173940dee84afb2ecc1a65d03996905510d5",
-    "ktk-code-pages.php": "d7e2d733e88737de1382b6b5d6effa395c142b4d33ee1893790f9a8d4061d481"
+    "ktk-code-pages.php": "58114851e424449fbb40c615a9d2771c31db70921ea4281913a6e25c60b6105b"
   },
   "checks": [
     {

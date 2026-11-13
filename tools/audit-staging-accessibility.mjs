@@ -16,7 +16,7 @@ const sample=['/','/about-us/','/about-us/how-to-join/','/contact/','/faqs/','/g
 const routes=option('--routes')?option('--routes').split(','):sample;
 if(routes.some(route=>!route.startsWith('/')||route.startsWith('//')||/[?#]/.test(route)))throw Error('Only explicit clean staging paths');
 const promotionEpoch=option('--promotion-epoch');
-if(promotionEpoch&&(promotionEpoch!=='1798801200'||routes.some(route=>!['/','/new-years-eve/'].includes(route))))throw Error('Only the explicit owner-approved NYE cutoff and its two routes may be simulated');
+if(promotionEpoch&&(promotionEpoch!=='1798801200'||routes.some(route=>!['/','/new-years-eve/','/new-years-eve-in-krakow/'].includes(route))))throw Error('Only the explicit owner-approved NYE cutoff and its three routes may be simulated');
 const widths=option('--widths','390,1440').split(',').map(Number);
 if(widths.some(width=>!Number.isInteger(width)||width<320||width>2560))throw Error('Invalid viewport');
 const base=option('--base','https://krawlthroughkrakow.com/staging').replace(/\/$/,'');

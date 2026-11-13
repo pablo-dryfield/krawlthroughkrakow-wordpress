@@ -9,7 +9,7 @@ await mkdir(output,{recursive:true});
 const report={checkedAt:new Date().toISOString(),scope:'Exact current-date local layout/styles/text and deterministic viewport PNG comparison against the own clean PR33 reference. No provider calls, submissions or commerce. Not a complete whole-site pixel certificate.',checks:[],errors:[]},check=(name,pass,detail)=>report.checks.push({name,pass:!!pass,detail});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
- for(const route of ['','new-years-eve/'])for(const width of [320,390,768,1440]){
+ for(const route of process.argv.includes('--guide-only')?['new-years-eve-in-krakow/']:['','new-years-eve/'])for(const width of [320,390,768,1440]){
   const states=[];
   for(const baseline of [true,false]){
    const context=await browser.newContext({viewport:{width,height:900},reducedMotion:'reduce'});
@@ -24,7 +24,8 @@ try{
      for(const text of textNodes){const range=document.createRange();range.selectNodeContents(text);for(const r of range.getClientRects())textBounds.push([r.x,r.y,r.width,r.height]);}
      return {tag:node.tagName,class:node.getAttribute('class'),text:textNodes.map(n=>n.textContent.replace(/\s+/g,' ').trim()).join(''),bounds:[bounds.x,bounds.y,bounds.width,bounds.height],textBounds,style:['fontFamily','fontSize','fontWeight','lineHeight','letterSpacing','textAlign','color','display','position','padding','margin'].map(key=>style[key])};
     }));
-    const screenshot=await page.screenshot({path:path.join(output,(route?'event':'home')+'-'+width+'-'+(baseline?'baseline':'candidate')+'.png'),animations:'disabled'});
+    const stem=route?(route==='new-years-eve/'?'event':'guide'):'home';
+    const screenshot=await page.screenshot({path:path.join(output,stem+'-'+width+'-'+(baseline?'baseline':'candidate')+'.png'),animations:'disabled'});
     states.push({snapshot,pngHash:createHash('sha256').update(screenshot).digest('hex')});
    }finally{await context.close();}
   }
