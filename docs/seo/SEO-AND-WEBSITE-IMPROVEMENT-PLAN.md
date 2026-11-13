@@ -3,7 +3,7 @@
 Created: 2026-11-07, Europe/Warsaw  
 Status: Staging-only implementation; see the live roadmap for current verified batches
 
-**Progress dashboard:** [ROADMAP.md](ROADMAP.md) shows every workstream, delivered milestones, current work and remaining dependencies. The detailed acceptance criteria below remain authoritative; an unchecked ticket can have partial staging work completed.
+**Progress dashboard:** [Visual roadmap](ROADMAP.html) shows the status graphics, delivery path, remaining work and searchable task details. The [Markdown roadmap](ROADMAP.md) remains available. Both are generated from the same maintained source; the detailed acceptance criteria below remain authoritative. An unchecked ticket can have partial staging work completed.
 
 Evidence tables and reporting limitations below describe the original7 November
 baseline, not the latest delivery state. M01 reporting has since been completed;

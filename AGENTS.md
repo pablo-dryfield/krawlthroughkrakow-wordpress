@@ -8,6 +8,12 @@
 - Compiled deployable assets are `assets/storefront.js`, `assets/storefront.css`, and the bundled font files.
 - OmniLodge is a separate application at `C:\Users\pjcam\Documents\Projects\omni-lodge`. Do not deploy OmniLodge unless the user explicitly requests it.
 
+## Visual SEO Roadmap (2026-11-13)
+
+- Owner requested a visual roadmap. `docs/seo/ROADMAP.html` is a self-contained, offline local project dashboard, not a public/staging website route. Open directly; no server/hosting needed. `tools/build-seo-roadmap.py` generates BOTH HTML and Markdown from `tools/seo-roadmap.json` plus the full plan's original scope/acceptance criteria. Layout/interaction source `tools/seo-roadmap-view.html`; do not hand-edit generated output. Details: `docs/seo/visual-roadmap/README.md`.
+- All40 original statuses/notes,9 milestone states and current delivery evidence are unchanged:1 complete,22 partial,16 not-started,1 deferred;7 verified foundations,0 website SEO production releases. New readable `view` fields and explicit `websiteProductionReleases` counter are presentation/maintenance, not new delivery progress. Unequal workstreams must not be shown as an effort percentage or false 100% plan completion. Source-driven tests allow legitimate future status/count updates.
+- Source-driven browser231/231 across320/390/768/1024/1440/1920,0 script errors/HTTP requests; filters, native dialog/focus, print layout, long labels, real logo and40-row no-JS fallback pass. Six axe views0 violations,4 incomplete rule groups retained; not a conformance certificate. Earlier217/217 and231/231 reports preserved. Full Python173/173/focused10/10. Original KTK logo is embedded unchanged;17 Lucide1.72.0 icons and license are vendored under tools only. Exact HTML allowlist addition only, no application bytes, website/OmniLodge deployment or cache purge. Test sessions closed, no server started. Review/CI/merge recorded in the task PR.
+
 ## Cloudflare MCP Purge Access (2026-11-13)
 
 - Owner reauthorized the existing `cloudflare` MCP agent and explicitly requests remembering it for future purges. Use `mcp__cloudflare__search`/`execute` for already-approved edge-cache purge scopes; do not routinely ask the owner to purge manually or generate another API token. Canonical runbook: `docs/cloudflare/CACHE-PURGE.md`, containing the non-secret account/zone IDs, authentication caveats and release procedure. Local Cloudflare skill points to it too.
