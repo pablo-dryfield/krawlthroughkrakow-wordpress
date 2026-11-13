@@ -161,8 +161,12 @@ rounded45.2k impressions/2.1% CTR/9.4 position, with identical leading query row
 Native UI rounding does not expose the exact45,215 denominator without export.
 No traffic uplift is inferred from correcting the former top100-derived totals.
 
-M02 remains partial: full-precision API exports, query/page intent cohorts, supported prior-year matching
-windows and future retained-history policy remain. No BigQuery/account storage
+The [full-precision summary follow-up](FULL-PRECISION-SUMMARIES.md) now retains
+independent exact28/90/180/365 property summaries and supported prior-year28/90
+windows, retrieved read-only13 November. Original rounded UI exports remain.
+
+M02 remains partial: full-precision detail exports, query/page intent cohorts
+and future retained-history policy remain. No BigQuery/account storage
 configuration was created. Browser Pacific-day presets are delivered and verified;
 the default unfiltered28-day view is restored after exports.
 

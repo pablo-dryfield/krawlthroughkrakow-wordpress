@@ -12,6 +12,7 @@ import {loadNightlifeEditorial,reviseNightlifeEditorial} from './nightlife-edito
 import {loadBudgetEditorial,reviseBudgetEditorial} from './budget-editorial.mjs';
 import {loadJazzEditorial,reviseJazzEditorial} from './jazz-editorial.mjs';
 import {loadMusicEditorial,reviseMusicEditorial} from './music-editorial.mjs';
+import {loadVenueEditorial,reviseVenueEditorial} from './venue-editorial.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const base='staging/wp-content/mu-plugins/ktk-code-pages-assets/';
@@ -20,6 +21,7 @@ const nightlifeRevision=await loadNightlifeEditorial();
 const budgetRevision=await loadBudgetEditorial();
 const jazzRevision=await loadJazzEditorial();
 const musicRevisions=await loadMusicEditorial();
+const venueRevisions=await loadVenueEditorial();
 validateSeoRoutes(manifest.routes.map(row=>row.route));
 const seoBaseline=JSON.parse(await readFile('docs/code-pages/production-readiness/production-seo-baseline.json','utf8'));
 const reviewCounts=JSON.parse(execFileSync('php',['-r',"define('ABSPATH', __DIR__); require $argv[1]; echo json_encode(array_column(ktk_homepage_review_sources(), 'count', 'name'));",'staging/wp-content/mu-plugins/ktk-homepage-assets/reviews.php'],{encoding:'utf8'}));
@@ -35,6 +37,7 @@ async function facts(html,revision){
   await page.evaluate(reviseBudgetEditorial,{key:revision.key,revision:budgetRevision});
   await page.evaluate(reviseJazzEditorial,{key:revision.key,revision:jazzRevision});
   await page.evaluate(reviseMusicEditorial,{key:revision.key,revision:musicRevisions.find(row=>row.key===revision.key)});
+  await page.evaluate(reviseVenueEditorial,{key:revision.key,revision:venueRevisions.find(row=>row.key===revision.key)});
   await page.evaluate(reviseContextualLinks,revision);
   await page.evaluate(reviseSemanticHeadings,revision);
  }

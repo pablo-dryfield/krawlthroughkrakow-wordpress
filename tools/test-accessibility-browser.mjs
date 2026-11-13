@@ -1,11 +1,13 @@
 import {createRequire} from 'node:module';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import path from 'node:path';
+import {loadVenueEditorial} from './venue-editorial.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const frontendRequire=createRequire(path.resolve('staging/wp-content/plugins/ktk-storefront/frontend/package.json'));
 const axeSource=await readFile(frontendRequire.resolve('axe-core/axe.min.js'),'utf8');
 const [homeBase,pagesBase,output]=process.argv.slice(2);
+const venueRevisions=process.argv.includes('--capture-venues')?await loadVenueEditorial():[];
 const routes=process.argv.includes('--routes')?process.argv[process.argv.indexOf('--routes')+1].split(','):['/','/about-us/','/about-us/how-to-join/','/contact/','/faqs/','/gallery/','/blog/','/category/krakow-guides/','/new-years-eve-in-krakow/'];
 if(routes.some(route=>!route.startsWith('/')||route.startsWith('//')||/[?#]/.test(route)))throw Error('Only explicit clean staging paths');
 if(!homeBase||!pagesBase||!output)throw Error('Homepage, pages and fresh output directory required');
@@ -86,6 +88,41 @@ try{
      await article.locator('#oldsmobil-cocktail-examples').scrollIntoViewIfNeeded();
      await page.screenshot({path:path.join(output,'budget-'+width+'-comparison.png')});
     }
+   }
+   const venue=venueRevisions.find(r=>route==='/'+r.key.slice(5)+'/');
+   if(venue){
+    const article=page.locator('[data-ktk-venue-review="2026-11-13.venues-1"]');
+    for(const photo of await article.locator('img').all()){await photo.scrollIntoViewIfNeeded();await photo.evaluate(n=>n.decode());}
+    const expected=await page.evaluate(r=>{
+     const source=new DOMParser().parseFromString(r.sourceHtml,'text/html'),template=new DOMParser().parseFromString(r.markup,'text/html');
+     return {publication:source.querySelector('#main-content .published').textContent.trim(),ids:[...template.querySelectorAll('[id]')].map(n=>n.id).sort(),photos:template.querySelectorAll('template').length,first:new URL(template.querySelector('a[href^="#"]').getAttribute('href'),'https://example.test/').hash};
+    },venue);
+    check(name+' one reviewed venue body with original publication',await article.count()===1&&await page.locator('.published').textContent()===expected.publication);
+    check(name+' actual review date visible',await article.locator('time[datetime="2026-11-13"]').textContent()==='13 November 2026');
+    check(name+' all meaningful fragments retained uniquely',JSON.stringify(await article.locator('[id]').evaluateAll(ns=>ns.map(n=>n.id).sort()))===JSON.stringify(expected.ids));
+    check(name+' selected original images decode and have reviewed descriptions',await article.locator('img').count()===expected.photos&&await article.locator('img').evaluateAll(ns=>ns.every(n=>n.complete&&n.naturalWidth>0&&n.alt.trim())));
+    check(name+' one named two-column comparison table',await article.locator('table caption').count()===1&&await article.locator('thead th[scope="col"]').count()===2&&await article.locator('tbody th[scope="row"]').count()>1);
+    const geometry=await article.locator('table').evaluate(table=>{const r=table.getBoundingClientRect();return {left:r.left,right:r.right,width:r.width,overflow:table.scrollWidth>table.clientWidth+1};});
+    check(name+' comparison table fits without horizontal scrolling',geometry.left>=0&&geometry.right<=width+1&&!geometry.overflow,geometry);
+    check(name+' native current booking link retained',new URL(await article.getByRole('link',{name:'current Krakow pub-crawl inclusions',exact:true}).getAttribute('href'),url).pathname==='/staging/store2/pub-crawl-28/');
+    const copy=await article.textContent();
+    check(name+' no old fabricated guarantees or blanket accusations',!/the following artists will perform|Born in Krakow but based in Berlin|criminal-owned|dodgy establishments|historic Jewish ghetto|most clubs staying open until sunrise|has sparked quite a debate/.test(copy));
+    const clearance=node=>{
+     const cta=document.getElementById('ktk-cta');if(!cta?.getClientRects().length)return {present:false,overlaps:[]};
+     const b=cta.getBoundingClientRect(),walker=document.createTreeWalker(node,NodeFilter.SHOW_TEXT),overlaps=[];let text;
+     while((text=walker.nextNode())){if(!text.textContent.trim())continue;const r=document.createRange();r.selectNodeContents(text);if([...r.getClientRects()].some(t=>t.width&&t.height&&t.right>b.left-2&&t.left<b.right+2&&t.bottom>b.top&&t.top<b.bottom))overlaps.push(text.textContent.trim().slice(0,80));}
+     return {present:true,overlaps};
+    };
+    await page.evaluate(()=>scrollTo({top:0,left:0,behavior:'instant'}));
+    const landing=await page.locator('#main-content').evaluate(clearance);check(name+' headline clears visible booking tab',landing.present&&!landing.overlaps.length,landing);
+    if([390,1440].includes(width))await page.screenshot({path:path.join(output,venue.key+'-'+width+'-landing.png')});
+    const first=article.locator('a[href]').filter({hasText:route==='/krakow-techno-clubs/'?'Compare the venue options':route==='/krakow-techno-clubs-2/'?'Start with a venue and date':route==='/irish-bars-krakow/'?'Compare three Irish pubs':route==='/krakow-nightclubs/'?'Choose the type of night':route==='/krakow-bars-jewish-quarter/'?'Choose the kind of evening':'Compare the bar options'}).first();
+    await first.focus();await page.keyboard.press('Enter');
+    check(name+' native contents Enter reaches original fragment',await page.evaluate(hash=>location.hash===hash&&document.getElementById(hash.slice(1)).getBoundingClientRect().top>=-2&&document.getElementById(hash.slice(1)).getBoundingClientRect().top<innerHeight,expected.first));
+    const body=await article.evaluate(clearance);check(name+' body clears visible booking tab',body.present&&!body.overlaps.length,body);
+    await article.locator('table').scrollIntoViewIfNeeded();
+    const comparison=await article.evaluate(clearance);check(name+' comparison clears visible booking tab',comparison.present&&!comparison.overlaps.length,comparison);
+    if([390,1440].includes(width))await page.screenshot({path:path.join(output,venue.key+'-'+width+'-comparison.png')});
    }
    if(['/jazz-bars-in-krakow/','/krakow-live-music/'].includes(route)&&process.argv.includes('--capture-music')){
     const jazz=route==='/jazz-bars-in-krakow/',kind=jazz?'jazz':'live-music';

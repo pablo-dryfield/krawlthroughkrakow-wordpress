@@ -11,6 +11,7 @@ import {loadNightlifeEditorial,reviseNightlifeEditorial} from './nightlife-edito
 import {loadBudgetEditorial,reviseBudgetEditorial} from './budget-editorial.mjs';
 import {loadJazzEditorial,reviseJazzEditorial} from './jazz-editorial.mjs';
 import {loadMusicEditorial,reviseMusicEditorial} from './music-editorial.mjs';
+import {loadVenueEditorial,reviseVenueEditorial} from './venue-editorial.mjs';
 import {codePageDescription} from './code-pages-seo.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
@@ -20,6 +21,7 @@ const nightlife=process.argv.includes('--nightlife');
 const budget=process.argv.includes('--budget');
 const jazz=process.argv.includes('--jazz');
 const music=process.argv.includes('--music');
+const venues=process.argv.includes('--venues');
 if(!baseline||!output)throw Error('Baseline worktree and fresh report required');
 try{await readFile(output);throw Error('Preserve earlier evidence');}catch(error){if(error.code!=='ENOENT')throw error;}
 const assets='staging/wp-content/mu-plugins/ktk-code-pages-assets/';
@@ -30,6 +32,7 @@ const nightlifeRevision=nightlife?await loadNightlifeEditorial():null;
 const budgetRevision=budget?await loadBudgetEditorial():null;
 const jazzRevision=jazz?await loadJazzEditorial():null;
 const musicRevisions=music?await loadMusicEditorial():[];
+const venueRevisions=venues?await loadVenueEditorial():[];
 const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
@@ -43,6 +46,7 @@ try{
   if(budget)await page.evaluate(reviseBudgetEditorial,{key,revision:budgetRevision});
   if(jazz)await page.evaluate(reviseJazzEditorial,{key,revision:jazzRevision});
   if(music)await page.evaluate(reviseMusicEditorial,{key,revision:musicRevisions.find(row=>row.key===key)});
+  if(venues)await page.evaluate(reviseVenueEditorial,{key,revision:venueRevisions.find(row=>row.key===key)});
   if(contextual){await page.evaluate(reviseContextualLinks,{key});await rewriteCanonicalLinks(page);}
   const expected=await page.evaluate(()=>document.body.innerHTML);
   await page.setContent(candidate);
@@ -235,6 +239,40 @@ try{
   await page.locator('h2').evaluate(h=>h.textContent='A different activity');
   rejected=false;try{await page.evaluate(reviseContextualLinks,{key:'krakow-stag-do'});}catch{rejected=true;}
   check('changed activity row rejects product substitution',rejected);
+ }
+ if(venues)for(const revision of venueRevisions){
+  const key=revision.key,selector=key==='post-krakow-nightclubs'?'.entry-content .et_pb_text_0 .et_pb_text_inner':'.entry-content';
+  const original=await readFile(path.join(baseline,assets,before[key].main_file),'utf8');
+  await page.setContent(original);
+  const publication=await page.locator('.post-meta').innerHTML(),headline=await page.locator('h1.entry-title').innerHTML();
+  const fragments=await page.locator(selector+' [id]').evaluateAll(ns=>[...new Set(ns.map(n=>n.id).filter(id=>id==='main-toc'||(!id.endsWith('-toc')&&!/^649[0-9a-f]+_\d+$/.test(id)&&id!=='isPasted')))].sort());
+  const photos=await page.locator(selector+' img').evaluateAll(ns=>ns.map(n=>n.outerHTML));
+  const changes=await page.evaluate(reviseVenueEditorial,{key,revision});
+  check(key+' one source-bound venue text revision',changes.length===1&&changes[0].preservedFragments.length===fragments.length);
+  check(key+' title and publication remain exact',publication===await page.locator('.post-meta').innerHTML()&&headline===await page.locator('h1.entry-title').innerHTML());
+  check(key+' meaningful fragments remain exactly once',JSON.stringify(fragments)===JSON.stringify(await page.locator(selector+' [id]').evaluateAll(ns=>ns.map(n=>n.id).sort())));
+  check(key+' exact selected original photographs retained',JSON.stringify(changes[0].retainedOriginalPhotos.map(i=>photos[i]))===JSON.stringify(await page.locator(selector+' img').evaluateAll(ns=>ns.map(n=>n.outerHTML))));
+  check(key+' accessible two-column comparison present',await page.locator(selector+' table caption').count()===1&&await page.locator(selector+' thead th[scope="col"]').count()===2);
+  const once=await page.content();check(key+' venue revision is idempotent',(await page.evaluate(reviseVenueEditorial,{key,revision})).length===0&&once===await page.content());
+  for(const [name,markup] of [
+   ['script',revision.markup+'<script>alert(1)</script>'],['new image',revision.markup+'<img src="https://example.invalid/a.jpg">'],
+   ['handler',revision.markup.replace('<p>','<p onclick="alert(1)">')],['foreign link',revision.markup.replace('__KTK_HOME_URL__store2/pub-crawl-28/#book','https://example.invalid/')],
+   ['lost fragment',revision.markup.replace('id="conclusion"','id="other"')],['duplicate fragment',revision.markup+'<h2 id="conclusion">Duplicate</h2>'],
+   ['wrong photo slot',revision.markup.replace(/data-ktk-original-photo="\d+"/,'data-ktk-original-photo="99"')],['unnamed table header',revision.markup.replace('scope="row"','scope="other"')]
+  ]){
+   await page.setContent(original);const snapshot=await page.content();let rejected=false;
+   try{await page.evaluate(reviseVenueEditorial,{key,revision:{...revision,markup}});}catch{rejected=true;}
+   check(key+' '+name+' rejects atomically',rejected&&snapshot===await page.content());
+  }
+  for(const change of ['source-photo','publication','intro','duplicate-source-id']){
+   await page.setContent(original);
+   if(change==='source-photo')await page.locator(selector+' img').nth(changes[0].retainedOriginalPhotos[0]).evaluate(n=>{n.removeAttribute('data-lazy-src');n.src='https://example.invalid/wrong.png';});
+   if(change==='publication')await page.locator('.published').evaluate(n=>n.textContent='Jan 1, 2020');
+   if(change==='intro')await page.locator(selector+' p').first().evaluate(n=>n.textContent='Changed original introduction');
+   if(change==='duplicate-source-id')await page.locator('#conclusion').evaluate(n=>n.after(n.cloneNode(true)));
+   const snapshot=await page.content();let rejected=false;try{await page.evaluate(reviseVenueEditorial,{key,revision});}catch{rejected=true;}
+   check(key+' changed '+change+' rejects atomically',rejected&&snapshot===await page.content());
+  }
  }
  if(music)for(const revision of musicRevisions){
   const key=revision.key,jazzGuide=key==='post-jazz-bars-in-krakow';
