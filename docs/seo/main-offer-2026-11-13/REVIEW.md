@@ -1,7 +1,8 @@
 # Main Offer Review
 
-Read-only C01/G01/D05 preparation13 November2026. No homepage, product, price,
-checkout, hero artwork or production change in this preparation.
+C01/G01/D05 staging work, 13 November 2026. Homepage body copy is now a local
+candidate, not deployed. Product pricing, checkout, hero artwork and production
+are unchanged.
 
 ## Current Evidence
 
@@ -52,9 +53,43 @@ preserving meaningful IDs, original module styling/controls and all other sectio
 Keep pricing and availability authoritative in the existing live storefront;
 do not silently change checkout, discounts or upstream configuration.
 
-Minimum age/ID and the advertised return-visit offer require business confirmation;
-work on other verified facts continues meanwhile. No new cancellation policy,
-prize value, bar itinerary, arrival grace period or admission guarantee is assumed.
+Owner confirmation received: minimum age 18; bringing valid ID is recommended.
+The owner corrected the return-visit procedure before release: cash return guests
+speak with the leader to confirm their previous participation; online guests show
+the leader their previous booking confirmation to receive a discount code, or use
+the code from the previous day's WhatsApp group. No amount, actual code, universal eligibility
+or new checkout logic is invented. No cancellation policy, prize value, bar
+itinerary, arrival grace period or admission guarantee is assumed.
+
+## Local Candidate
+
+`tools/site-offer-facts.json` is the reviewed shared build input, with strict
+identity/policy guards; it is not a live link to the product database. The source-
+bound template changes exactly 27 homepage text targets, including three unsupported
+number-one claims replaced by factual operator/history headings. Hero, photos, meaningful
+IDs, heading elements/attributes, navigation, CTA buttons, review counts, all
+styles and integration code are preserved. New links use the existing environment-
+relative URL pipeline. Prices and actual availability stay in the storefront.
+
+Initial source test `source-first.json` retained two test-contract failures: new
+template links had not been passed through the expected staging URL mapping, and
+the old `5 DIFFERENT VENUES` substring also matched the correct `4-5` range. The
+test now applies the existing explicit portability step and checks the complete
+new heading. No application guard or screenshot tolerance was weakened.
+Initial responsive copy run: 282/282 checks, ten JS/no-JS views at 320-1920px.
+Final local source20/20, corrected responsive312/312, native keyboard/reflow36/36,
+shared JavaScript106/106, Python181/181 and homepage PHP integration pass. Two
+axe views have zero violations and five incomplete groups requiring manual review,
+not a whole-site conformance certificate. Actual mobile/desktop captures inspected.
+Required CI, staging release and normal-cache verification remain pending.
+
+The next run (`browser-corrected-policy/report.json`, 306/312) retained six
+heading-line-box assertions. A 1440px clean baseline/control comparison shows
+the identical font and -3px glyph ascent on both versions, visible overflow and
+no collision with the following heading. The browser test now measures horizontal
+containment, actual clipping ancestors and neighbouring text collisions rather
+than treating normal font ascent as clipping. No font/CSS edit, hidden content,
+screenshot mask or increased tolerance was used.
 
 Validate source identity, excluded hero/media/consent, responsive text fitting,
 navigation/attribution, no-JS content and guarded staging/cache delivery. Treat

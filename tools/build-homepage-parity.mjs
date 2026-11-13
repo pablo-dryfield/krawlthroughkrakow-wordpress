@@ -8,6 +8,7 @@ import {rewriteCanonicalLinks} from './canonical-links.mjs';
 import {applyHomepageMediaPolicy,applyHomepageIconSizing} from './homepage-media-policy.mjs';
 import {reviseAccessibilitySemantics} from './accessibility-semantics.mjs';
 import {buildContentAccessibilityStyles} from './content-accessibility-styles.mjs';
+import {loadHomepageOfferRevision,reviseHomepageOffer} from './homepage-offer-editorial.mjs';
 
 // Build a local, code-owned snapshot from the read-only production capture.
 const require = createRequire(import.meta.url);
@@ -21,6 +22,7 @@ const assets = path.join(root, 'staging/wp-content/mu-plugins/ktk-homepage-asset
 await buildContentAccessibilityStyles(path.join(assets,'parity-runtime.css'));
 const origin = 'https://krawlthroughkrakow.com/';
 const html = await readFile(path.join(sourceDir, 'production-source-rendered-1920.html'), 'utf8');
+const offerRevision=await loadHomepageOfferRevision();
 const styles = JSON.parse(await readFile(path.join(sourceDir, 'production-source-styles-1920.json'), 'utf8'));
 const sheets = styles.cssom;
 if (!Array.isArray(sheets) || sheets.some(sheet => sheet.error)) throw new Error('A complete CSSOM snapshot is required.');
@@ -171,6 +173,7 @@ try {
   data.bookingRevisions=await rewriteBookingLinks(page);
   data.bookingRevisions.push(...await rewriteCanonicalLinks(page));
   data.headingRevisions=await page.evaluate(reviseSemanticHeadings,{key:'homepage',kind:'homepage',title:data.title,route:'/',externalPrimary:true});
+  data.offerRevisions=await page.evaluate(reviseHomepageOffer,offerRevision);
   data.mediaRevisions=await page.evaluate(applyHomepageMediaPolicy);
   data.iconSizingRevisions=await page.evaluate(applyHomepageIconSizing);
   data.accessibilityRevisions=await page.evaluate(reviseAccessibilitySemantics,{key:'homepage'});
@@ -219,6 +222,7 @@ await writeFile(path.join(sourceDir, 'parity-build.json'), JSON.stringify({
   htmlBytes: Buffer.byteLength(data.html), cssBytes: Buffer.byteLength(css),
   files: Object.fromEntries(files),
   bookingRevisions:data.bookingRevisions,
+  offerRevisions:data.offerRevisions,
   mediaRevisions:data.mediaRevisions,
   iconSizingRevisions:data.iconSizingRevisions,
   accessibilityRevisions:data.accessibilityRevisions,

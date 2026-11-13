@@ -212,8 +212,8 @@ function ktk_homepage_static_body() {
 				<div class="et_pb_blurb_content">
 					<div class="et_pb_main_blurb_image"><span class="et_pb_image_wrap"><span class="et_pb_animation_top et_pb_animation_top_tablet et_pb_animation_top_phone et-pb-icon">N</span></span></div>
 					<div class="et_pb_blurb_container">
-						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>PRICELESS NIGHT OUT: 4-5 VENUES</span></h3>
-						<div class="et_pb_blurb_description"><p>Every night we go to different venues!</p></div>
+						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4">4-5 VENUES</h3>
+						<div class="et_pb_blurb_description"><p>Entry to 4-5 bars and clubs is included.</p></div>
 					</div>
 				</div>
 			</div><div class="et_pb_module et_pb_blurb et_pb_blurb_4 et_pb_text_align_left et_pb_blurb_position_left et_pb_bg_layout_light">
@@ -225,7 +225,7 @@ function ktk_homepage_static_body() {
 					<div class="et_pb_main_blurb_image"><span class="et_pb_image_wrap"><span class="et_pb_animation_top et_pb_animation_top_tablet et_pb_animation_top_phone et-pb-icon">N</span></span></div>
 					<div class="et_pb_blurb_container">
 						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>professional guides and photographer</span></h3>
-						<div class="et_pb_blurb_description"><p>We will bring you to the best&nbsp; parties in town!</p></div>
+						<div class="et_pb_blurb_description"><p>Meet the group, follow the guides and enjoy the night.</p></div>
 					</div>
 				</div>
 			</div><div class="et_pb_module et_pb_blurb et_pb_blurb_5 et_pb_text_align_left et_pb_blurb_position_left et_pb_bg_layout_light">
@@ -237,7 +237,7 @@ function ktk_homepage_static_body() {
 					<div class="et_pb_main_blurb_image"><span class="et_pb_image_wrap"><span class="et_pb_animation_top et_pb_animation_top_tablet et_pb_animation_top_phone et-pb-icon">N</span></span></div>
 					<div class="et_pb_blurb_container">
 						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>contests &amp; games</span></h3>
-						<div class="et_pb_blurb_description"><p style="text-align: left;">Win our pub krawl t-shirts and much more!</p></div>
+						<div class="et_pb_blurb_description"><p>Get to know fellow travellers through optional games.</p></div>
 					</div>
 				</div>
 			</div><div class="et_pb_module et_pb_cta_0 et_pb_promo et_pb_text_align_center et_pb_bg_layout_light">
@@ -307,7 +307,7 @@ function ktk_homepage_static_body() {
 				<div class="et_pb_blurb_content">
 					<div class="et_pb_main_blurb_image"><span class="et_pb_image_wrap"><span class="et_pb_animation_off et_pb_animation_off_tablet et_pb_animation_off_phone et-pb-icon"></span></span></div>
 					<div class="et_pb_blurb_container">
-						<h2 class="et_pb_module_header"><span>WE RUN EVERY NIGHT!</span></h2>
+						<h2 class="et_pb_module_header">REGULAR START: 9 PM</h2>
 						
 					</div>
 				</div>
@@ -319,7 +319,7 @@ function ktk_homepage_static_body() {
 				<div class="et_pb_blurb_content">
 					<div class="et_pb_main_blurb_image"><span class="et_pb_image_wrap"><span class="et_pb_animation_off et_pb_animation_off_tablet et_pb_animation_off_phone et-pb-icon"></span></span></div>
 					<div class="et_pb_blurb_container">
-						<p class="et_pb_module_header" data-ktk-heading-origin="h2"><span>120 zl</span></p>
+						<p class="et_pb_module_header" data-ktk-heading-origin="h2">TICKETS ONLINE</p>
 						
 					</div>
 				</div>
@@ -358,27 +358,30 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><h2 style="color: magenta;" data-ktk-heading-origin="h1">WE’RE THE #1 PUB CRAWL IN KRAKOW SINCE 2008</h2>
+				<div class="et_pb_text_inner"><h2 style="color: magenta;" data-ktk-heading-origin="h1">KRAKOW PUB CRAWL SINCE 2008</h2>
 <h2>Explore the magic of Krakow nightlife and meet people from all over the world!</h2></div>
 			</div><div class="et_pb_module et_pb_text et_pb_text_3 et_pb_text_align_center et_pb_bg_layout_light">
 				
 				
 				
 				
-				<div class="et_pb_text_inner"><p>Imagine exploring the best bars and clubs of an amazing European city, meeting awesome people from all over the world having an amazing night out!</p>
-<p>If that sounds fun to you, then Krawl Through Krakow Pub Crawl is simply unmissable. It’s the ultimate tour of <a href="__KTK_HOME_URL__krakow-nightlife/?swcfpc=1">Krakow nightlife</a> run by our friendly and fun loving professional Pub Crawl Guides. We cater for absolutely anyone who wants to party, from backpackers and travellers to local students.</p></div>
+				<div class="et_pb_text_inner"><p>A night out is better with people to share it with. Join Krawl Through Krakow for a guided Krakow pub crawl, from the first bar to the city's nightlife.</p>
+  <p>The regular crawl includes a 1-hour open bar, entry to 4-5 bars and clubs, welcome shots, guides and a photographer. Explore the offer, pick a bookable date and meet your group.</p></div>
 			</div><div class="et_pb_module et_pb_text et_pb_text_4 et_pb_text_align_center et_pb_bg_layout_light">
 				
 				
 				
 				
-				<div class="et_pb_text_inner"><p>At Krawl Through Krakow Pub Crawl we have over 14 years of crazy experience and we throw the biggest and the best parties in Krakow. We’re the guys that everyone else sets out to imitate so don’t accept any knockoffs. Our Pub Crawl runs every single night of the year, starting at 9pm from the Adam’s Statue in the main market square. If you want to join the fun, <a href="__KTK_HOME_URL__about-us/how-to-join/">click here</a></p></div>
+				<div class="et_pb_text_inner"><p>We've been bringing people together since 2008. The regular crawl starts at <strong>9 PM</strong> at Adam Mickiewicz Monument (Adam Statue) in Krakow's Main Market Square. Read <a href="__KTK_HOME_URL__about-us/how-to-join/">how to join</a> before heading out.</p></div>
 			</div><div class="et_pb_module et_pb_text et_pb_text_5 et_pb_text_align_center et_pb_bg_layout_light">
 				
 				
 				
 				
-				<div class="et_pb_text_inner"><p><strong>The price is only 120 <span style="text-decoration: underline;">zl </span>and there’s discounts for guests crazy enough to make it out a second night (just keep hold of your wristband).</strong></p></div>
+				<div class="et_pb_text_inner"><p><strong><a href="__KTK_HOME_URL__store2/pub-crawl-28/#book">Check dates, availability and current prices</a></strong> on the booking page. Special events can have different start times and meeting arrangements.</p>
+  <p>The regular pub crawl is for guests aged <strong>18 and over</strong>. Bringing a valid ID is recommended.</p>
+  <p>Coming back for another night? For a cash return booking, speak with the pub crawl leader to confirm you joined a previous crawl.</p>
+  <p>For online return bookings, show your previous booking confirmation to the leader to receive a discount code, or use the code shared in the previous day's WhatsApp group.</p></div>
 			</div>
 			</div>
 				
@@ -443,7 +446,8 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><p>We, the Krawl Through Krakow have run for almost a decade. In that time we have concocted a recipe for the most outrageous night out you will ever live through. Scenes from the Hangover set in the backdrop of Medieval Europe are what you should picture. <a href="__KTK_HOME_URL__krakow-nightclubs/" target="_blank" rel="noopener noreferrer">Best underground bars and clubs</a>, toasting with local nutters and punishing your friends in drinking games. It’s any fun person’s wet dream of a night out! What are you waiting for? <a href="__KTK_HOME_URL__about-us/how-to-join/">Join us tonight</a> for the best Pub Crawl experience you’ll probably forget.</p></div>
+				<div class="et_pb_text_inner"><p>Whether you're travelling solo, with a friend or as a group, a Krakow pub crawl brings you together for a shared night out. Our guides organise the route, and the opening bar gives you time to meet other travellers before moving on.</p>
+  <p>Curious about the wider city? Explore our <a href="__KTK_HOME_URL__krakow-nightlife/">Krakow nightlife guide</a>, or go straight to <a href="__KTK_HOME_URL__store2/pub-crawl-28/#book">regular pub-crawl dates and tickets</a>.</p></div>
 			</div>
 			</div>
 				
@@ -467,7 +471,8 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><p>It all begins with a seemingly innocent brightly coloured wristband. We kickstart our night with a truly unbeatable drinks deal: ‘THE KRAWL THROUGH KRAKOW’S POWER HOUR’. It’s an hour of Unlimited Drinks in one of the best bars in town (and we really really mean Unlimited!), and it’s Rocket Fuel for the fun and debauchery to come. During our Pub Crawl’s Power Hour take&nbsp; advantage of the open bar with unlimited drinks… As strong and plentiful as you like, as many as you can handle. Order a couple for yourself and save having to make the trip back to the bar, or get a tray for you and your friends. We’re not out to trick you like some lesser Pub Crawl in other cities. We’re going to have fun! Check out <a href="__KTK_HOME_URL__about-us/how-to-join/">how to join</a> the best Pub Crawl in Krakow.</p></div>
+				<div class="et_pb_text_inner"><p>The regular crawl begins with a 1-hour open bar, with spirits, beer and soft drinks. Settle in, meet your fellow krawlers and enjoy the first stop at your own pace.</p>
+  <p>Optional upgrades, where available, are shown separately on the booking page so you can choose the night that's right for you.</p></div>
 			</div>
 			</div><div class="et_pb_column et_pb_column_1_2 et_pb_column_10 et_pb_css_mix_blend_mode_passthrough et-last-child">
 				
@@ -509,19 +514,19 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><h3 style="text-align: center;">Krakow Pub Crawl drinking games, prizes and contests:</h3></div>
+				<div class="et_pb_text_inner"><h3 style="text-align: center;">Games, new people and a shared night out</h3></div>
 			</div><div class="et_pb_module et_pb_text et_pb_text_12 et_pb_text_align_justified et_pb_bg_layout_light">
 				
 				
 				
 				
-				<div class="et_pb_text_inner"><p>Also featured during the Power Hour: drinking games (too many to list but some of our favourites are horse race, flip club, drinking Jenga). Our prize giveaways include our special Krawl Through Krakow pub crawl t-shirts for people who successfully pass challenges set by our Pub Crawl Guides. It’s the perfect way to break the ice at the start of the night and get the party going in Krakow! After all of this (and I know it sounds like a lot for the first hour), we hit up three more of Krakow’s top bars and clubs. The selection of bars and clubs varies from night to night. It is totally up to our skilled guides to sniff out where the best party will be. They can smell a good time like a hammerhead shark can find a bleeding diver. You will be treated to welcome shots upon entry to each bar and club and there’s no waiting in line as we skip the queue at each venue. We do NOT believe in pause buttons. We are the original and the best Pub Crawl in Krakow.<a href="__KTK_HOME_URL__about-us/how-to-join/"> Join us</a> tonight!</p></div>
+				<div class="et_pb_text_inner"><p>Games can help break the ice, but you don't have to join every round. Take part in what you enjoy, chat with the group or choose a soft drink.</p></div>
 			</div><div class="et_pb_module et_pb_text et_pb_text_13 et_pb_text_align_justified et_pb_bg_layout_light">
 				
 				
 				
 				
-				<div class="et_pb_text_inner"><p>Also featured during the Power Hour: drinking games (too many to list but some of our favourites are horse race, flip club, drinking Jenga). Our prize giveaways include our special Krawl Through Krakow pub crawl t-shirts for people who successfully pass challenges set by our Pub Crawl Guides. It’s the perfect way to break the ice at the start of the night and get the party going in Krakow! After all of this (and I know it sounds like a lot for the first hour), we hit up three more of Krakow’s top bars and clubs. The selection of bars and clubs varies from night to night. It is totally up to our skilled guides to sniff out where the best party will be. They can smell a good time like a hammerhead shark can find a bleeding diver. You will be treated to welcome shots upon entry to each bar and club and there’s no waiting in line as we skip the queue at each venue. We do NOT believe in pause buttons. We are the original and the best Pub Crawl in Krakow.<a href="__KTK_HOME_URL__about-us/how-to-join/"> Join us</a> tonight!</p></div>
+				<div class="et_pb_text_inner"><p>Entry to 4-5 bars and clubs is included in the regular crawl. The route can vary, so it isn't a guaranteed list of particular venues. Follow the guides between stops and check with the team if you need help finding the group.</p></div>
 			</div>
 			</div>
 				
@@ -545,14 +550,15 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><p>The types of venues we tend to find ourselves in vary. They range from cool Polish shot bars and clubs, to funky Disco era underground pubs with a stripper pole on the dance floor to grind away on, or kicking karaoke clubs. We end each night in a pumping club where you can party the night away till the early hours. And all the while our professional photographer will record your night with the kind of clarity your pickled hippocampus won’t allow you to. From start to finish the adventures will be set into digital history, and uploaded to our Facebook profile. Freeze frames to testify to a well night well partied in one of the most beautiful european cities.</p></div>
+				<div class="et_pb_text_inner"><p>Want a night out without choosing each stop yourself? Our guides bring the group between venues, with welcome shots included on arrival. A photographer is part of the regular offer; ask the team about photos from your night.</p>
+  <p>For a particular music style or an independent night out, use the <a href="__KTK_HOME_URL__krakow-nightlife/">nightlife guide</a> to explore your options. Recommended venues in our guides aren't a fixed pub-crawl itinerary.</p></div>
 			</div><div class="et_pb_module et_pb_text et_pb_text_16 et_pb_text_align_justified et_pb_bg_layout_light">
 				
 				
 				
 				
-				<div class="et_pb_text_inner"><p>Our main tenets are thus: – To make sure that EVERY one of our pubcrawlers is kept safe as they explode into the nightlife culture of Poland and Krakow and all it’s awesome little nooks and crannies. – To make sure that Every one of our pubcrawlers has an amazing time and looks back on their night out as the best part of their days spent in the city.</p>
-<p>We take Partying Seriously.<br>We are Krawl Through Krakow Pub Crawl.</p></div>
+				<div class="et_pb_text_inner"><p>Keep your belongings with you, stay aware of the group and ask your guides if you need assistance. Join the games if you feel like it, and take the night at your own pace.</p>
+  <p><strong>Local guides. New people. A night in Krakow.</strong></p></div>
 			</div><div class="et_pb_module et_pb_cta_1 et_hover_enabled et_pb_promo et_pb_text_align_center et_pb_bg_layout_light et_pb_no_bg">
 				
 				
@@ -611,7 +617,7 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><h2 style="text-align: center;" id="t_a2">Voted #1 Pubcrawl in Krakow</h2></div>
+				<div class="et_pb_text_inner"><h2 style="text-align: center;" id="t_a2">Krawl Through Krakow since 2008</h2></div>
 			</div>
 			</div><div class="et_pb_column et_pb_column_1_3 et_pb_column_17 et_pb_css_mix_blend_mode_passthrough et-last-child">
 				
@@ -684,7 +690,7 @@ function ktk_homepage_static_body() {
 				<div class="et_pb_blurb_content">
 					
 					<div class="et_pb_blurb_container">
-						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>5 DIFFERENT VENUES</span></h3>
+						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4">4-5 DIFFERENT VENUES</h3>
 						<div class="et_pb_blurb_description"><p>We will visit 4 to 5 different bars/clubs</p></div>
 					</div>
 				</div>
@@ -763,7 +769,7 @@ function ktk_homepage_static_body() {
 					
 					<div class="et_pb_blurb_container">
 						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>PRICELESS NIGHT OUT</span></h3>
-						<div class="et_pb_blurb_description"><p><span>Every night we go to different venues! Entrance fees included!</span></p></div>
+						<div class="et_pb_blurb_description"><p>Entry is included; the route can vary by night.</p></div>
 					</div>
 				</div>
 			</div>
@@ -787,7 +793,7 @@ function ktk_homepage_static_body() {
 					
 					<div class="et_pb_blurb_container">
 						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>CONTESTS &amp; GAMES</span></h3>
-						<div class="et_pb_blurb_description"><p>Win our pub krawl t-shirts and much more!</p></div>
+						<div class="et_pb_blurb_description"><p>Meet fellow travellers through optional games.</p></div>
 					</div>
 				</div>
 			</div>
@@ -810,8 +816,8 @@ function ktk_homepage_static_body() {
 				<div class="et_pb_blurb_content">
 					
 					<div class="et_pb_blurb_container">
-						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4"><span>PROFESSIONAL DRUNK GUIDES</span></h3>
-						<div class="et_pb_blurb_description"><p>We will bring you to the best&nbsp; parties in town!</p></div>
+						<h3 class="et_pb_module_header" data-ktk-heading-origin="h4">PROFESSIONAL GUIDES</h3>
+						<div class="et_pb_blurb_description"><p>Follow the guides between bars and clubs.</p></div>
 					</div>
 				</div>
 			</div>
@@ -841,7 +847,7 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><h2 style="text-align: center;">WE’RE THE #1 PUB CRAWL IN KRAKOW SINCE 2008</h2></div>
+				<div class="et_pb_text_inner"><h2 style="text-align: center;">KRAKOW PUB CRAWL SINCE 2008</h2></div>
 			</div>
 			</div>
 				
@@ -865,8 +871,8 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><p style="text-align: justify;"><span>We, the Krawl Through Krakow, have run for more than a decade. In that time we have concocted a recipe for the most outrageous balls-to-the-wall night out you will ever live through. </span></p>
-<p style="text-align: justify;"><span>Scenes from the Hangover set in the backdrop of Medieval Europe are what you should picture. The </span><a href="__KTK_HOME_URL__krakow-nightclubs/" target="_blank" rel="noopener noreferrer">best underground bars and clubs</a><span>, toasting with local nutters, and punishing your friends in drinking games. It’s any fun person’s wet dream of a night out! What are you waiting for? </span><a href="__KTK_HOME_URL__about-us/how-to-join/">Join Us tonight</a><span>&nbsp;for the best Pub Crawl experience you’ll probably forget.</span></p></div>
+				<div class="et_pb_text_inner"><p>Krawl Through Krakow has organised nights out since 2008. Meet new people, explore Krakow nightlife and let the guides lead the way between venues.</p>
+  <p>Find out <a href="__KTK_HOME_URL__about-us/how-to-join/">how to join the regular crawl</a> and what to expect at the meeting point. For New Year's Eve, use the <a href="__KTK_HOME_URL__new-years-eve/">separate NYE offer and confirmed start times</a>.</p></div>
 			</div><div class="et_pb_module et_pb_text et_pb_text_25 et_pb_text_align_left et_pb_bg_layout_light">
 				
 				
@@ -1048,10 +1054,8 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><p style="text-align: justify;">We want <strong>every one</strong> of our pub crawlers to have an amazing time and look back on their night out as the best part of their days spent in the city.</p>
-<p style="text-align: justify;">Our guides make sure that <b>every one</b>&nbsp;of our pub crawlers is kept safe as they explode into the nightlife culture of Poland and Krakow and all its awesome little nooks and crannies.</p>
-<p><span style="text-decoration: underline;">We take Partying seriously.</span></p>
-<p><span style="color: #ee357b;">We are Krawl Through Krakow Pub Crawl!</span></p></div>
+				<div class="et_pb_text_inner"><p>Come for the bars and clubs, stay for the people you meet. Our guides bring the group together for a shared Krakow night out.</p>
+  <p>The regular meeting is at 9 PM by Adam Statue. Check the <a href="__KTK_HOME_URL__meeting-point/">meeting-point directions</a> and your booking details before setting off.</p></div>
 			</div>
 			</div><div class="et_pb_column et_pb_column_1_2 et_pb_column_36 et_pb_css_mix_blend_mode_passthrough et-last-child">
 				
@@ -1139,9 +1143,9 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_text_inner"><p><span>To automatically guarantee a place on the crawl </span><a href="__KTK_HOME_URL__store2/pub-crawl-28/?book=1">buy your ticket</a><span>&nbsp;online. </span></p>
-<p><span>For only 120 zl you will have an incredible night with amazing people.</span></p>
-<p>Look <span>out for the pink umbrella and our professional guides!</span></p></div>
+				<div class="et_pb_text_inner"><p><a href="__KTK_HOME_URL__store2/pub-crawl-28/#book">Choose your date and book the regular pub crawl online</a>. Availability and the current price are shown before checkout.</p>
+  <p>Look for the pink umbrella and the guides at Adam Statue for the regular 9 PM start. Keep your booking confirmation handy.</p>
+  <p>New Year's Eve is a separate event with 5 PM and 7:30 PM groups and meeting points to be announced. Check the <a href="__KTK_HOME_URL__new-years-eve/">NYE details</a> rather than using the regular meeting instructions.</p></div>
 			</div><div class="et_pb_button_module_wrapper et_pb_button_5_wrapper et_pb_button_alignment_left et_pb_module">
 				<a class="et_pb_button et_pb_button_5 et_pb_bg_layout_light" href="__KTK_HOME_URL__store2/pub-crawl-28/#book" data-icon="E">Book now!</a>
 			</div>
