@@ -92,3 +92,10 @@ private-token non-disclosure, invalid/duplicate/incomplete/wrong-aggregation dat
 and non-averaging. Full Python suite158/158 passes. M02 remains partial:
 full-precision API, query/page intent pairs, supported prior-year windows and
 future retention policy still need work. No production or account change is made.
+
+The native-response follow-up did not yield complete raw exports. The browser
+connector rejects file output under this website workspace and truncates its
+inline response. No file, credential or connection-setting workaround was used;
+the report above remains honestly bound to the retained UI exports, not relabelled
+as raw API precision. PR13 source3a0c0de passed both required checks and was merged
+as0622ac2 after exact tree comparison; completed task branches were removed.

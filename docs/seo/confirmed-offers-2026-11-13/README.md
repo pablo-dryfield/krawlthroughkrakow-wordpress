@@ -79,3 +79,9 @@ purge; origin checks are cache-busting evidence only. No production SEO release
 or OmniLodge configuration change is included. Use the existing12-file staging
 publisher with this verified checkpoint for any scoped follow-up, never the
 default production storefront publisher.
+
+Final source PR12 f3f8d31 passed required CI43348648109 and merged as7f68530 with
+exact tree equality. Completed task branch removed. A bounded normal-URL sample
+still finds the old desktop renderer2026.11.12.2 while Android/iPad get fresh .3
+MISS responses, so cached delivery is not marked complete. All task test/publisher
+and local preview processes are closed; production remains unchanged.
