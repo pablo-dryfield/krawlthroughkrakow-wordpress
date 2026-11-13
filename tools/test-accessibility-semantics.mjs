@@ -15,6 +15,7 @@ import {loadVenueEditorial,reviseVenueEditorial} from './venue-editorial.mjs';
 import {codePageDescription} from './code-pages-seo.mjs';
 import {codePageTitle,codePageHeadDescription,loadSharingImagePolicy,buildCodePageSharing} from './code-page-sharing.mjs';
 import {codePageSchemaFacts} from './code-pages-schema.mjs';
+import {loadOfferPageRevisions,reviseOfferPages} from './offer-pages-editorial.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const [baseline,output]=process.argv.slice(2);
@@ -25,6 +26,7 @@ const jazz=process.argv.includes('--jazz');
 const music=process.argv.includes('--music');
 const venues=process.argv.includes('--venues');
 const sharing=process.argv.includes('--sharing');
+const offerPages=process.argv.includes('--offer-pages');
 if(!baseline||!output)throw Error('Baseline worktree and fresh report required');
 try{await readFile(output);throw Error('Preserve earlier evidence');}catch(error){if(error.code!=='ENOENT')throw error;}
 const assets='staging/wp-content/mu-plugins/ktk-code-pages-assets/';
@@ -37,6 +39,7 @@ const budgetRevision=budget?await loadBudgetEditorial():null;
 const jazzRevision=jazz?await loadJazzEditorial():null;
 const musicRevisions=music?await loadMusicEditorial():[];
 const venueRevisions=venues?await loadVenueEditorial():[];
+const offerPageRevisions=offerPages?await loadOfferPageRevisions():[];
 const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
@@ -46,6 +49,7 @@ try{
   const markup=async(root,definition)=>composeCodePage(await readFile(path.join(root,assets,definition.shell_file),'utf8'),await readFile(path.join(root,assets,definition.main_file),'utf8'));
   const original=await markup(baseline,previous),candidate=await markup('.',definition);
   await page.setContent(original);await page.evaluate(reviseAccessibilitySemantics,{key,imageDescriptions});
+  if(offerPages)await page.evaluate(reviseOfferPages,{key,revision:offerPageRevisions.find(row=>row.key===key)});
   if(nightlife)await page.evaluate(reviseNightlifeEditorial,{key,revision:nightlifeRevision});
   if(budget)await page.evaluate(reviseBudgetEditorial,{key,revision:budgetRevision});
   if(jazz)await page.evaluate(reviseJazzEditorial,{key,revision:jazzRevision});
@@ -347,6 +351,33 @@ try{
    else await page.evaluate(()=>document.querySelector('#harrispianojazzbarthebirthplaceofpolishjazz').after(document.querySelector('#harrispianojazzbarthebirthplaceofpolishjazz').cloneNode(true)));
    const snapshot=await page.content();let rejected=false;try{await page.evaluate(reviseJazzEditorial,{key,revision});}catch{rejected=true;}
    check('jazz '+change+' fails closed without partial edits',rejected&&snapshot===await page.content());
+  }
+ }
+ if(offerPages){
+  for(const revision of offerPageRevisions){
+   const original=await readFile(path.join(baseline,assets,before[revision.key].main_file),'utf8');
+   const identities=()=>page.evaluate(()=>({ids:[...document.querySelectorAll('[id]')].map(n=>n.id),headings:[...document.querySelectorAll('h1,h2,h3,h4,h5,h6,[data-ktk-heading-origin]')].map(n=>({tag:n.tagName,attributes:[...n.attributes].filter(a=>a.name!=='data-ktk-offer-copy').map(a=>[a.name,a.value])})),media:[...document.querySelectorAll('img,iframe,svg')].map(n=>n.outerHTML),forms:[...document.forms].map(n=>n.outerHTML)}));
+   await page.setContent(original);const identity=await identities();const changes=await page.evaluate(reviseOfferPages,{key:revision.key,revision});
+   check(revision.key+' complete offer targets changed',changes.length===(revision.key==='how-to-join'?3:revision.key==='faqs'?15:1));
+   check(revision.key+' original IDs, heading types/attributes, maps/photos/forms unchanged',JSON.stringify(identity)===JSON.stringify(await identities()));
+   const once=await page.content();await page.evaluate(reviseOfferPages,{key:revision.key,revision});check(revision.key+' offer recipe is idempotent',once===await page.content());
+   for(const [name,mutate] of [
+    ['unknown target',r=>{r.markup=r.markup.replace('.et_pb_text_1 .et_pb_text_inner','#main-header');}],
+    ['missing target',r=>{r.markup=r.markup.replace(/<template[^>]*>[\s\S]*?<\/template>/,'');}],
+    ['script',r=>{r.markup+='<script>alert(1)</script>';}],
+    ['image',r=>{r.markup=r.markup.replace('<p>','<p><img src="x">');}],
+    ['handler',r=>{r.markup=r.markup.replace('<p>','<p onclick="alert(1)">');}],
+    ['foreign booking link',r=>{r.markup=r.markup.replace('__KTK_HOME_URL__store2/pub-crawl-28/#book','https://example.invalid/');}],
+    ['hardcoded UTM',r=>{r.markup=r.markup.replace('store2/pub-crawl-28/#book','store2/pub-crawl-28/?utm_source=wrong#book');}],
+    ['foreign review profile',r=>{r.reviewLinks[0]='https://example.invalid/';}],
+    ['duplicate review profile',r=>{r.reviewLinks=[r.reviewLinks[0],r.reviewLinks[0],r.reviewLinks[0]];}]
+   ]){
+    await page.setContent(original);const snapshot=await page.content(),changed=structuredClone(revision);mutate(changed);let rejected=false;try{await page.evaluate(reviseOfferPages,{key:revision.key,revision:changed});}catch{rejected=true;}check(revision.key+' '+name+' rejects atomically',rejected&&snapshot===await page.content());
+   }
+   for(const change of ['stale text','duplicate target','nested control']){
+    await page.setContent(original);await page.locator('.et_pb_text_1 .et_pb_text_inner').evaluate((n,change)=>{if(change==='stale text')n.textContent='Unreviewed edit';else if(change==='duplicate target')n.after(n.cloneNode(true));else n.insertAdjacentHTML('beforeend','<input value="preserve">');},change);
+    const snapshot=await page.content();let rejected=false;try{await page.evaluate(reviseOfferPages,{key:revision.key,revision});}catch{rejected=true;}check(revision.key+' '+change+' rejects atomically',rejected&&snapshot===await page.content());
+   }
   }
  }
 }finally{await browser.close();}

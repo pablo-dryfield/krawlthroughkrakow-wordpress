@@ -66,9 +66,12 @@ foreach (ktk_pages_registry()['routes'] as $route => $entry) {
 }
 $_SERVER['REQUEST_URI'] = '/staging/about-us/how-to-join/';
 $body = ktk_pages_static_body();
-foreach (array('HOW TO JOIN THE PUB CRAWL', '9 PM EVERY NIGHT', 'ADAM STATUE', '120 zl', 'RESERVE YOUR SPOT!', 'THE MEETING POINT', 'Follow us!', 'Contact us:') as $text) {
+foreach (array('HOW TO JOIN THE PUB CRAWL', '9 PM EVERY NIGHT', 'ADAM STATUE', 'TICKETS ONLINE', 'RESERVE YOUR SPOT!', 'THE MEETING POINT', 'Follow us!', 'Contact us:') as $text) {
     check(str_contains($body, $text), 'Complete content: ' . $text);
 }
+check(str_contains($body, '18 or over') && str_contains($body, 'Bringing a valid ID is recommended'), 'Confirmed eligibility is rendered without inventing mandatory ID');
+check(str_contains($body, 'For a cash return booking, speak with the pub crawl leader') && str_contains($body, 'show your previous booking confirmation to the leader to receive a discount code'), 'Distinct owner-confirmed cash and online return rules');
+check(!str_contains($body, '120 zl') && !str_contains(strtolower($body), 'wristband'), 'Static price and obsolete wristband instructions removed');
 check(!preg_match('/<script\b|\son\w+\s*=/i', $body), 'No captured scripts/handlers');
 check(!str_contains($body, '__KTK_'), 'All portable tokens resolved');
 check(!preg_match('#href="https://krawlthroughkrakow.com/(?!staging/)#', $body), 'All internal navigation remains in staging');

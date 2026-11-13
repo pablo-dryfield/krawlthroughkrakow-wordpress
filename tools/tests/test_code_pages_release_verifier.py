@@ -1,6 +1,10 @@
 import importlib.util
+import http.client
+import io
 import unittest
+import urllib.error
 from pathlib import Path
+from unittest.mock import Mock, patch
 
 SPEC=importlib.util.spec_from_file_location('release_verifier',Path(__file__).resolve().parents[1]/'verify-code-pages-full-release.py')
 module=importlib.util.module_from_spec(SPEC);SPEC.loader.exec_module(module)
@@ -42,6 +46,43 @@ class VerifierTests(unittest.TestCase):
         for markup, valid in [(expected, True), (expected + '<meta name="description" content="unrelated">', True), (expected + expected, False), (metadata, False), (expected.replace('summary', 'summary_large_image'), False), (expected.replace('og:title', 'og:other'), False)]:
             parsed = module.Head(); parsed.feed(markup)
             self.assertEqual(module.sharing_metadata_matches(parsed, metadata, 'https://krawlthroughkrakow.com/staging'), valid)
+
+
+class TransportTests(unittest.TestCase):
+    def setUp(self):
+        module.TRANSPORT_RETRIES.clear()
+
+    def response(self, body):
+        response = Mock(status=200, headers={'Content-Type':'text/plain'})
+        response.__enter__ = Mock(return_value=response)
+        response.__exit__ = Mock(return_value=False)
+        if isinstance(body, Exception): response.read.side_effect = body
+        else: response.read.return_value = body
+        return response
+
+    def test_body_reset_retries_whole_get_and_never_returns_partial_data(self):
+        first, second = self.response(http.client.IncompleteRead(b'partial', 8)), self.response(b'complete')
+        opener = Mock(); opener.open.side_effect = [first, second]
+        with patch.object(module.urllib.request, 'build_opener', return_value=opener), patch.object(module.time, 'sleep'):
+            self.assertEqual(module.get('https://krawlthroughkrakow.com/staging/example/?private=value', 'agent'), (200, {'Content-Type':'text/plain'}, b'complete'))
+        self.assertEqual(opener.open.call_count, 2)
+        self.assertEqual(module.TRANSPORT_RETRIES, [{'path':'/staging/example/','attempt':1,'error':'IncompleteRead'}])
+        self.assertEqual(first.__exit__.call_count, 1)
+        self.assertTrue(all(call.args[0].get_method() == 'GET' for call in opener.open.call_args_list))
+
+    def test_persistent_transport_error_stops_after_three_attempts(self):
+        opener = Mock(); opener.open.side_effect = ConnectionResetError('interrupted')
+        with patch.object(module.urllib.request, 'build_opener', return_value=opener), patch.object(module.time, 'sleep'):
+            with self.assertRaises(ConnectionResetError): module.get('https://krawlthroughkrakow.com/staging/example/', 'agent')
+        self.assertEqual(opener.open.call_count, 3)
+        self.assertEqual([row['attempt'] for row in module.TRANSPORT_RETRIES], [1,2])
+
+    def test_real_http_denial_is_reported_without_retry_or_bypass(self):
+        error = urllib.error.HTTPError('https://krawlthroughkrakow.com/staging/example/',403,'Forbidden',{},io.BytesIO(b'denied'))
+        opener = Mock(); opener.open.side_effect = error
+        with patch.object(module.urllib.request, 'build_opener', return_value=opener), patch.object(module.time, 'sleep') as sleep:
+            self.assertEqual(module.get(error.url,'agent'),(403,{},b'denied'))
+        self.assertEqual(opener.open.call_count,1); sleep.assert_not_called(); self.assertEqual(module.TRANSPORT_RETRIES,[])
 
 
 if __name__=='__main__':unittest.main()

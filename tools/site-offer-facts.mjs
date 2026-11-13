@@ -29,5 +29,7 @@ export async function loadOfferFacts(){return validateOfferFacts(JSON.parse(awai
 export function offerTemplateValues(data){
  validateOfferFacts(data);
  return {brand:data.operator.name,since:String(data.operator.since),regularTime:offerTime(data.regular.startTime),openBarHours:String(data.regular.openBarMinutes/60),venueRange:data.regular.venueCount.minimum+'-'+data.regular.venueCount.maximum,
-  minimumAge:String(data.regular.minimumAge),meetingName:data.regular.meeting.name,meetingShort:data.regular.meeting.shortName,meetingPlace:data.regular.meeting.place,lookFor:data.regular.meeting.lookFor,nyeEarly:offerTime(data.nye.startTimes[0]),nyeLate:offerTime(data.nye.startTimes[1])};
+  minimumAge:String(data.regular.minimumAge),meetingName:data.regular.meeting.name,meetingShort:data.regular.meeting.shortName,meetingPlace:data.regular.meeting.place,lookFor:data.regular.meeting.lookFor,nyeEarly:offerTime(data.nye.startTimes[0]),nyeLate:offerTime(data.nye.startTimes[1]),
+  cashReturnInstructions:'Coming back for another night? For a cash return booking, speak with the pub crawl leader to confirm you joined a previous crawl.',
+  onlineReturnInstructions:"For online return bookings, show your previous booking confirmation to the leader to receive a discount code, or use the code shared in the previous day's WhatsApp group."};
 }

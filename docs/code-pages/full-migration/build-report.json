@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-13T18:31:56.603Z",
+  "startedAt": "2026-11-13T19:45:43.828Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -5514,6 +5514,21 @@
           "id": ""
         },
         {
+          "type": "reviewed-offer-copy",
+          "identity": "target:.et_pb_text_1 .et_pb_text_inner",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "reviewed-offer-copy",
+          "identity": "target:.et_pb_blurb_2 .et_pb_module_header",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "reviewed-offer-copy",
+          "identity": "target:.et_pb_cta_0 .et_pb_promo_description > div",
+          "reviewedOn": "2026-11-13"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -5540,10 +5555,6 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
-        },
-        {
-          "from": "__KTK_HOME_URL__krakow-activities/",
-          "to": "__KTK_HOME_URL__other-tours/"
         },
         {
           "from": "__KTK_HOME_URL__terms-and-conditions",
@@ -5809,6 +5820,81 @@
           "id": ""
         },
         {
+          "type": "reviewed-offer-copy",
+          "identity": "target:.et_pb_text_1 .et_pb_text_inner",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "reviewed-offer-copy",
+          "identity": "question:How much does the crawl cost?",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "reviewed-offer-copy",
+          "identity": "question:How can I join?",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "reviewed-offer-copy",
+          "identity": "question:Do you guys run every night?",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "reviewed-offer-copy",
+          "identity": "question:Where is your meeting point",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "reviewed-offer-copy",
+          "identity": "question:What if I'm late?",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "reviewed-offer-copy",
+          "identity": "question:What bars/clubs are we going?",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "reviewed-offer-copy",
+          "identity": "question:How long is the Pub Crawl?",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "reviewed-offer-copy",
+          "identity": "question:Do you stay close to the main square?",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "reviewed-offer-copy",
+          "identity": "question:What if I'm Alone?",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "reviewed-offer-copy",
+          "identity": "question:Is there a Dress Code?",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "reviewed-offer-copy",
+          "identity": "question:Where are your Photos?",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "reviewed-offer-copy",
+          "identity": "question:Can I Read your Reviews?",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "reviewed-offer-copy",
+          "identity": "target:.et_pb_text_2 .et_pb_text_inner",
+          "reviewedOn": "2026-11-13"
+        },
+        {
+          "type": "reviewed-offer-copy",
+          "identity": "target:.et_pb_text_5 .et_pb_text_inner",
+          "reviewedOn": "2026-11-13"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -5835,14 +5921,6 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
-        },
-        {
-          "from": "https://fareharbor.com/embeds/book/krawlthroughkrakow/items/calendar/?full-items=yes&flow=660691",
-          "to": "__KTK_HOME_URL__store2/"
-        },
-        {
-          "from": "__KTK_HOME_URL__how-to-join/",
-          "to": "__KTK_HOME_URL__about-us/how-to-join/"
         },
         {
           "from": "__KTK_HOME_URL__store2/pub-crawl-28?book=1",
@@ -6658,6 +6736,11 @@
           "to": "h2",
           "text": "Contact us:",
           "id": ""
+        },
+        {
+          "type": "reviewed-offer-copy",
+          "identity": "target:.et_pb_text_1 .et_pb_text_inner",
+          "reviewedOn": "2026-11-13"
         },
         {
           "type": "floating-booking-landmark"
@@ -8729,5 +8812,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-13T18:32:51.913Z"
+  "finishedAt": "2026-11-13T19:46:33.299Z"
 }

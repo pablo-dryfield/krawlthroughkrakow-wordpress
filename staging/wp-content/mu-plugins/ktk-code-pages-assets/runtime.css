@@ -125,6 +125,13 @@ dialog.ktk-parity-lightbox .mfp-arrow[hidden] { display: none; }
  .entry-content table.ktk-venue-comparison td { padding:8px; }
 }
 
+/* Narrow offer copy must remain clear of the existing right-hand booking tab. */
+body.ktk-code-page:is([data-ktk-page="how-to-join"],[data-ktk-page="meeting-point"],[data-ktk-page="faqs"]) #main-content [data-ktk-offer-copy] a { color: #c8006c; text-decoration: underline; text-underline-offset: .15em; }
+body.ktk-code-page[data-ktk-page="how-to-join"] #main-content .et_pb_promo [data-ktk-offer-copy] a { color: #fff; }
+@media (max-width: 600px) {
+  body.ktk-code-page:is([data-ktk-page="how-to-join"],[data-ktk-page="meeting-point"],[data-ktk-page="faqs"]) #main-content [data-ktk-offer-copy] { padding-right: 24px; }
+}
+
 /* BEGIN shared content accessibility */
 /* Darker pink is reserved for text on light content, not the seasonal artwork. */
 #main-content .et_pb_text:not(.et_pb_bg_layout_dark) a,

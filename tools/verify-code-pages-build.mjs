@@ -14,6 +14,7 @@ import {loadJazzEditorial,reviseJazzEditorial} from './jazz-editorial.mjs';
 import {loadMusicEditorial,reviseMusicEditorial} from './music-editorial.mjs';
 import {loadVenueEditorial,reviseVenueEditorial} from './venue-editorial.mjs';
 import {codePageTitle,codePageHeadDescription,loadSharingImagePolicy,buildCodePageSharing} from './code-page-sharing.mjs';
+import {loadOfferPageRevisions,reviseOfferPages} from './offer-pages-editorial.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const base='staging/wp-content/mu-plugins/ktk-code-pages-assets/';
@@ -23,6 +24,7 @@ const budgetRevision=await loadBudgetEditorial();
 const jazzRevision=await loadJazzEditorial();
 const musicRevisions=await loadMusicEditorial();
 const venueRevisions=await loadVenueEditorial();
+const offerPageRevisions=await loadOfferPageRevisions();
 const imageReview=JSON.parse(await readFile('tools/content-image-descriptions.json','utf8'));
 const sharingImage=await loadSharingImagePolicy({expectedManifestSha256:imageReview.assetManifestSha256});
 validateSeoRoutes(manifest.routes.map(row=>row.route));
@@ -43,6 +45,7 @@ async function facts(html,revision){
   await page.evaluate(reviseVenueEditorial,{key:revision.key,revision:venueRevisions.find(row=>row.key===revision.key)});
   await page.evaluate(reviseContextualLinks,revision);
   await page.evaluate(reviseSemanticHeadings,revision);
+  await page.evaluate(reviseOfferPages,{key:revision.key,revision:offerPageRevisions.find(row=>row.key===revision.key)});
  }
  return page.evaluate(()=>{const root=document.querySelector('#main-content');root.querySelectorAll('script,style,noscript,.mejs-controls,.mejs-layers,video a,[data-single-product-id],[data-ktk-booking-product]').forEach(e=>e.remove());return {text:root.textContent.replace(/\s+/g,' ').trim(),missingAlt:root.querySelectorAll('img:not([alt])').length,sections:root.querySelectorAll('.et_pb_section').length,headings:[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(e=>({tag:e.tagName,text:e.textContent.trim()})),primary:root.querySelectorAll('h1').length,forms:root.querySelectorAll('form.et_pb_contact_form,form.wpcf7-form').length,scripts:root.querySelectorAll('script').length,handlers:[...root.querySelectorAll('*')].flatMap(e=>[...e.attributes].filter(a=>/^on/i.test(a.name)).map(a=>a.name))};});
 }
