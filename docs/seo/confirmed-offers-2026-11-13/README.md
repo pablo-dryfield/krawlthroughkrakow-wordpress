@@ -85,3 +85,15 @@ exact tree equality. Completed task branch removed. A bounded normal-URL sample
 still finds the old desktop renderer2026.11.12.2 while Android/iPad get fresh .3
 MISS responses, so cached delivery is not marked complete. All task test/publisher
 and local preview processes are closed; production remains unchanged.
+
+## Post-Purge Verification Complete
+
+The owner confirmed the staging-prefix purge. Normal-URL source checks pass
+692/692 twice, with all75 product/catalogue device responses HIT on repeat.
+Focused Food/Halloween initial/client facts, photos, native links, past-event
+schema/social metadata and canonical/noindex checks pass144/144. General keyboard
+176/176 and the guarded short-window104/104 checks pass; original attempts-only
+beacon failures and blocked-provider script errors are retained, not hidden.
+[Full cache evidence](../cache-verification-2026-11-13/README.md) closes the earlier
+pending-cache status. No source application redeployment or production update
+was needed for this follow-up.
