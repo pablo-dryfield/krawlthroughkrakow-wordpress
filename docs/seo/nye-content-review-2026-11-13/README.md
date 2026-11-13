@@ -38,7 +38,11 @@ and390px article screenshots inspected. Discovery regression216/216 passes;
 unchanged page-definition bindings need no data redeployment. Origin homepage
 tokens/asset bytes/noindex/canonical pass all three device variants. Owner confirmed
 another staging-prefix purge; homepage normal/repeat assets pass, all three HIT on
-repeat. Broader content cached regression is still running, not yet claimed here.
+repeat. Full origin and normal/repeat content regressions pass4320/4320 each;
+normal includes329 MISS/22 warmed HIT, repeat all351 HIT with zero errors/retries.
+Normal cached browser also110/110. Attribution handoff31/31 includes the newly
+repaired article checkout link, in isolated storage without navigation/orders.
+Final Python suite147/147 includes the query-cohort analysis tests.
 
 Preserve `local-first`107/110: button padding made its control box taller than the
 other links; visible-text rectangles correctly test same-line alignment. No visual

@@ -8,8 +8,8 @@ Read-only authenticated OmniLodge reporting after verified M01 release
 filter, finalized data and Pacific dates. Independent Google summary totals, not
 sums of a top-row table. No paid SERP sample, saved action or account change.
 
-These are corrected API-backed reports viewed in OmniLodge, NOT a completed native
-Google Search Console UI comparison. Raw full available page rows are privately
+These are corrected API-backed reports viewed in OmniLodge; the matching28-day
+native Google comparison is now complete, as documented below. Raw full available page rows are privately
 retained in the dated schema evidence directory; they are not committed because
 some URLs contain Google booking/attribution tokens. Reaching the provider's end
 of returned rows is not a guarantee of every possible detail observation.
@@ -30,8 +30,9 @@ These aggregate reports alone cannot establish migration harm or benefit.
 The365-day previous period reaches2024-11-11, before Google's rolling history.
 Its displayed delta is not a valid complete-year comparison. This uncovered a
 date-coverage follow-up within the approved M01 reporting scope: warn explicitly
-and suppress a delta when either period exceeds available history. It is currently
-in development/testing, separate from the genuinely completed first release.
+and suppress a delta when either period exceeds available history. Both date
+follow-ups are genuinely deployed and verified under the distinct release identities
+in the reporting notes, including actual browser-Pacific presets.
 Do not use that old long-range comparison for an SEO success/decline claim.
 
 ## Priority Inputs, Not Automatic Decisions
@@ -95,10 +96,46 @@ totals by subtraction.
 |krakow new years eve|1|146|0.68%|7.91|
 
 The NYE query observations support reviewing the existing guides and sales path;
-they do not justify creating/merging pages based only on shared keywords. Full
-90/180/365 query extraction and reviewed brand/intent classifications remain.
+they do not justify creating/merging pages based only on shared keywords.
 Private28-day query export SHA256:
 `08d0554a5e8cd4d56ad0614a38288582ab2b259c64f687317039429cd2d49892`.
+
+All returned90/180/365-day UI query rows were subsequently retained on13 November,
+after the browser-Pacific release. Each reaches End of returned rows with no
+duplicate query keys. One annual page took more than the initial12-second polling
+window; observing its completed response before the next click preserved sequential
+pagination, not a forced retry or fabricated end-of-data state.
+
+| Window | Returned Query Rows | Returned Clicks | Returned Impressions |
+| --- | ---: | ---: | ---: |
+|28 days|2,211|443|22,549|
+|90 days|4,368|1,178|64,588|
+|180 days|7,836|2,449|146,096|
+|365 days|13,807|5,715|395,779|
+
+These are **displayed UI exports**: click/impression integers are exact as shown;
+CTR/position are rounded display values, not full-precision raw API exports.
+The same caveat applies to the earlier2211-row table record. Summary totals in the
+first table remain separate. Do not calculate missing-query or complete nonbrand
+traffic by subtracting these rows from property totals.
+
+Reviewed explicit-brand rule: the full phrase Krawl Through Krakow or the compact
+domain/name. Misspelled `crawl through krakow` and reordered Krawl/Krakow variants
+remain a separate intent-review bucket. Generic Pub Crawl Krakow is not silently
+classified as brand. The tested `tools/summarize-seo-query-cohorts.py` reproduces
+the counts, rejects incomplete/duplicate/invalid exports and never averages positions.
+
+| Window | Explicit-Brand Clicks / Impressions | Brand-Variant Review | Other Returned Queries |
+| --- | ---: | ---: | ---: |
+|28 days|55 /364|9 /73|379 /22,112|
+|90 days|101 /1,399|16 /212|1,061 /62,977|
+|180 days|175 /3,017|25 /482|2,249 /142,597|
+|365 days|286 /5,644|39 /946|5,390 /389,189|
+
+Private UI query export SHA256:
+- 90-day `cc0ec4fd823c7819dc4decc92b10c884c87d2363bbeec5ad4130c5c6b27c1fe1`.
+- 180-day `015e7bcd0c539f3dd6f7aff5469d84c95ac00cdbcbf0e43cdc4d1643fb0d26ca`.
+- 365-day `eeb72d458cf9085831012c35eb792eb61e518e0ec68cc4d09c960a5e4972dc0e`.
 
 ## Evidence Binding And Remaining Work
 
@@ -114,12 +151,10 @@ rounded45.2k impressions/2.1% CTR/9.4 position, with identical leading query row
 Native UI rounding does not expose the exact45,215 denominator without export.
 No traffic uplift is inferred from correcting the former top100-derived totals.
 
-M02 remains partial: longer available query exports,
-reviewed brand/nonbrand and intent cohorts, supported prior-year matching
+M02 remains partial: full-precision API exports, wider reviewed intent/URL cohorts, supported prior-year matching
 windows and future retained-history policy remain. No BigQuery/account storage
-configuration was created. Browser Pacific-day preset correction is releasing;
-its actual delivery must be verified before comparing new preset exports. Explicit
-date windows already support the matching baseline above.
+configuration was created. Browser Pacific-day presets are delivered and verified;
+the default unfiltered28-day view is restored after exports.
 
 [Google's performance report](https://support.google.com/webmasters/answer/7576553?hl=en)
 and [Search Analytics API](https://developers.google.com/webmaster-tools/v1/searchanalytics/query)
