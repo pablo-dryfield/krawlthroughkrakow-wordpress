@@ -8,7 +8,7 @@ import {rewriteCanonicalLinks} from './canonical-links.mjs';
 import {applyHomepageMediaPolicy,applyHomepageIconSizing} from './homepage-media-policy.mjs';
 import {reviseAccessibilitySemantics} from './accessibility-semantics.mjs';
 import {buildContentAccessibilityStyles} from './content-accessibility-styles.mjs';
-import {loadHomepageOfferRevision,reviseHomepageOffer} from './homepage-offer-editorial.mjs';
+import {loadHomepageOfferRevision,reviseHomepageOffer,buildHomepageOfferStyles} from './homepage-offer-editorial.mjs';
 
 // Build a local, code-owned snapshot from the read-only production capture.
 const require = createRequire(import.meta.url);
@@ -20,6 +20,7 @@ const root = path.resolve('.');
 const sourceDir = path.join(root, 'docs/homepage-parity');
 const assets = path.join(root, 'staging/wp-content/mu-plugins/ktk-homepage-assets');
 await buildContentAccessibilityStyles(path.join(assets,'parity-runtime.css'));
+await buildHomepageOfferStyles(path.join(assets,'parity-runtime.css'));
 const origin = 'https://krawlthroughkrakow.com/';
 const html = await readFile(path.join(sourceDir, 'production-source-rendered-1920.html'), 'utf8');
 const offerRevision=await loadHomepageOfferRevision();

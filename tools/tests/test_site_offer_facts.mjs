@@ -1,7 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {mkdtemp,readFile,writeFile,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import path from 'node:path';
+import {createRequire} from 'node:module';
 import {loadOfferFacts,validateOfferFacts,offerTemplateValues,offerTime} from '../site-offer-facts.mjs';
-import {loadHomepageOfferRevision,reviseHomepageOffer} from '../homepage-offer-editorial.mjs';
+import {loadHomepageOfferRevision,reviseHomepageOffer,buildHomepageOfferStyles} from '../homepage-offer-editorial.mjs';
+const require=createRequire(new URL('../../staging/wp-content/plugins/ktk-storefront/frontend/package.json',import.meta.url));
+const postcss=require('postcss');
 
 test('shared reviewed facts keep regular and seasonal offers distinct without a fixed price',async()=>{
  const facts=await loadOfferFacts(),values=offerTemplateValues(facts);
@@ -31,4 +37,23 @@ test('homepage recipe binds original source and expands all reviewed facts',asyn
  assert.ok(!/120 zl|previous wristband|almost a decade|every single night of the year/i.test(revision.html));
  for(const candidate of [{},{...revision,version:'other'},{...revision,reviewedOn:'2025-01-01'},{...revision,sourceSha256:'0'.repeat(64)},{...revision,sourceHtml:null},{...revision,html:null}])assert.throws(()=>reviseHomepageOffer(candidate),/source identity/);
  assert.deepEqual(reviseHomepageOffer(null),[]);
+});
+
+test('homepage-only mobile clearance preserves the complete original cascade and builds idempotently',async()=>{
+ const directory=await mkdtemp(path.join(tmpdir(),'ktk-offer-'));
+ try{
+  const file=path.join(directory,'runtime.css'),original='/* existing */\na {color:red;}\n\n/* BEGIN shared content accessibility */\np {color:black;}\n/* END shared content accessibility */\n';
+  await writeFile(file,original);await buildHomepageOfferStyles(file);const once=await readFile(file,'utf8');
+  const stylesheet=(await readFile(new URL('../homepage-offer.css',import.meta.url),'utf8')).trim();
+  assert.equal(once.replace('\n\n/* BEGIN homepage offer clearance */\n'+stylesheet+'\n/* END homepage offer clearance */',''),original);
+  await buildHomepageOfferStyles(file);assert.equal(await readFile(file,'utf8'),once);
+  assert.match(stylesheet,/@media \(max-width: 600px\)/);assert.equal((stylesheet.match(/body\.ktk-homepage-standalone/g)||[]).length,2);
+  assert.ok(!/hero|et_pb_section_0/.test(stylesheet.replace(/^\/\*[^]*?\*\//,'')));
+  const ast=postcss.parse(stylesheet),rules=[];ast.walkRules(rule=>rules.push(rule));assert.equal(rules.length,2);
+  for(const rule of rules){assert.equal(rule.parent.type,'atrule');assert.equal(rule.parent.name,'media');assert.equal(rule.parent.params,'(max-width: 600px)');assert.ok(rule.selector.startsWith('body.ktk-homepage-standalone #main-content :is('));}
+  assert.deepEqual(rules.map(rule=>rule.nodes.map(n=>[n.prop,n.value])),[[['padding-left','8px'],['padding-right','24px']],[['padding-right','24px']]]);
+  for(const source of ['missing markers','/* BEGIN shared content accessibility */\n/* BEGIN homepage offer clearance */','/* BEGIN homepage offer clearance *//* END homepage offer clearance *//* BEGIN shared content accessibility *//* BEGIN shared content accessibility */','/* END homepage offer clearance *//* BEGIN homepage offer clearance *//* BEGIN shared content accessibility */']){
+   await writeFile(file,source);await assert.rejects(buildHomepageOfferStyles(file));assert.equal(await readFile(file,'utf8'),source);
+  }
+ }finally{await rm(directory,{recursive:true,force:true});}
 });

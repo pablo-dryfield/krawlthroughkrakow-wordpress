@@ -1,6 +1,6 @@
 import {createRequire} from 'node:module';
 import {execFileSync} from 'node:child_process';
-import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {readFile,writeFile,mkdir,readdir} from 'node:fs/promises';
 import path from 'node:path';
 import {loadHomepageOfferRevision,reviseHomepageOffer} from './homepage-offer-editorial.mjs';
 
@@ -50,8 +50,15 @@ try{
   await page.evaluate(change=>{const n=document.querySelector('.et_pb_text_33 .et_pb_text_inner');if(change==='stale final target')n.textContent='Another author changed this';else if(change==='duplicated target')n.after(n.cloneNode(true));else n.insertAdjacentHTML('beforeend','<input value="must survive">');},change);
   const snapshot=await page.content();let rejected=false;try{await page.evaluate(reviseHomepageOffer,revision);}catch{rejected=true;}check(change+' rejected atomically',rejected&&snapshot===await page.content());
  }
- const changedFiles=execFileSync('git',['diff','--name-only','--',assets],{encoding:'utf8'}).trim().split('\n').filter(Boolean);
- check('only one deployable homepage file differs',changedFiles.length===1&&changedFiles[0]===assets+'/parity-seasonal-content.php',changedFiles);
+ const walk=async(directory,prefix='')=>{const files=[];for(const entry of await readdir(directory,{withFileTypes:true})){const relative=prefix+entry.name;if(entry.isDirectory())files.push(...await walk(path.join(directory,entry.name),relative+'/'));else files.push(relative);}return files.sort();};
+ const originalFiles=await walk(path.join(baseline,assets)),currentFiles=await walk(assets),changedFiles=[];
+ check('homepage asset file inventory unchanged',JSON.stringify(originalFiles)===JSON.stringify(currentFiles));
+ for(const file of originalFiles)if(!(await readFile(path.join(baseline,assets,file))).equals(await readFile(path.join(assets,file))))changedFiles.push(file);
+ check('only reviewed body and scoped runtime clearance differ',JSON.stringify(changedFiles)===JSON.stringify(['parity-runtime.css','parity-seasonal-content.php']),changedFiles);
+ const css=await readFile(assets+'/parity-runtime.css','utf8'),clearance=(await readFile('tools/homepage-offer.css','utf8')).trim();
+ const block='\n\n/* BEGIN homepage offer clearance */\n'+clearance+'\n/* END homepage offer clearance */';
+ check('runtime CSS outside the explicit clearance block is byte-identical',css.includes(block)&&css.replace(block,'')===await readFile(path.join(baseline,assets,'parity-runtime.css'),'utf8'));
+ for(const file of ['ktk-homepage-shortcode.php','ktk-homepage-shortcode-content.php'])check(file+' unchanged',(await readFile('staging/wp-content/mu-plugins/'+file)).equals(await readFile(path.join(baseline,'staging/wp-content/mu-plugins',file))));
 }finally{await browser.close();}
 const report={checkedAt:new Date().toISOString(),baseline,passed:checks.filter(c=>c.pass).length,total:checks.length,checks};
 await mkdir(path.dirname(output),{recursive:true});await writeFile(output,JSON.stringify(report,null,2)+'\n');

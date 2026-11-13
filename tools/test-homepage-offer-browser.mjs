@@ -43,9 +43,11 @@ try{
      for(let parent=n;parent&&parent!==document.body;parent=parent.parentElement){const style=getComputedStyle(parent),box=parent.getBoundingClientRect();if(['hidden','clip'].includes(style.overflowY))clipped.push(...ranges.filter(r=>r.top<box.top-2||r.bottom>box.bottom+2));}
      const next=/^H[1-6]$/.test(n.tagName)&&n.nextElementSibling?rects(n.nextElementSibling):[];
      const collisions=ranges.filter(r=>next.some(other=>r.left<other.right&&r.right>other.left&&r.top<other.bottom&&r.bottom>other.top));
-     return {box:{left:b.left,right:b.right,top:b.top,bottom:b.bottom},overflow,clipped,collisions};
+     const tabs=[...document.querySelectorAll('#ktk-cta,.et_pb_text_1')].filter(tab=>tab.getClientRects().length).map(tab=>tab.getBoundingClientRect());
+     const tabOverlaps=ranges.filter(r=>tabs.some(tab=>r.left<tab.right+2&&r.right>tab.left-2&&r.top<tab.bottom+2&&r.bottom>tab.top-2));
+     return {box:{left:b.left,right:b.right,top:b.top,bottom:b.bottom},overflow,clipped,collisions,tabOverlaps};
     });
-    const fits=!bounds.overflow.length&&!bounds.clipped.length&&!bounds.collisions.length;
+    const fits=!bounds.overflow.length&&!bounds.clipped.length&&!bounds.collisions.length&&!bounds.tabOverlaps.length;
     check(label+' '+selector+' text fits without clipping or overlap',fits,fits?undefined:bounds);
    }
    const booking=page.locator('.et_pb_text_5 a[href*="store2"]');

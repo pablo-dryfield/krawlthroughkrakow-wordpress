@@ -1,8 +1,8 @@
 # Main Offer Review
 
-C01/G01/D05 staging work, 13 November 2026. Homepage body copy is now a local
-candidate, not deployed. Product pricing, checkout, hero artwork and production
-are unchanged.
+C01/G01/D05 staging work, 13 November 2026. Initial copy is deployed to staging;
+the mobile-clearance follow-up below is local pending its own CI/release checks.
+Product pricing, checkout, hero artwork and production are unchanged.
 
 ## Current Evidence
 
@@ -67,7 +67,7 @@ itinerary, arrival grace period or admission guarantee is assumed.
 identity/policy guards; it is not a live link to the product database. The source-
 bound template changes exactly 27 homepage text targets, including three unsupported
 number-one claims replaced by factual operator/history headings. Hero, photos, meaningful
-IDs, heading elements/attributes, navigation, CTA buttons, review counts, all
+IDs, heading elements/attributes, navigation, CTA buttons, review counts, captured
 styles and integration code are preserved. New links use the existing environment-
 relative URL pipeline. Prices and actual availability stay in the storefront.
 
@@ -82,6 +82,33 @@ shared JavaScript106/106, Python181/181 and homepage PHP integration pass. Two
 axe views have zero violations and five incomplete groups requiring manual review,
 not a whole-site conformance certificate. Actual mobile/desktop captures inspected.
 Required CI, staging release and normal-cache verification remain pending.
+
+## First Staging Release And Mobile Follow-up
+
+Application45714e8 / PR31 passed both required jobs in CI43490619753. The manual
+assets-only publisher completed19:19:53UTC with232 independent hash matches,
+origin cache cleared and helper removed. It does not rewrite saved posts/settings;
+this is not a whole-database snapshot audit. Backup:
+`deploy-backups/ktk-homepage-shortcode-staging-20261113-191841.zip`, SHA256
+`94797dd97f2cf38c2406283b7a4cf664eb59bd48930f30e518412a6cfaca596d`.
+
+Origin/normal initial-copy checks87/87 and browser322/322 pass; staged attribution
+115/115 includes the two new native homepage links, correctly withheld journey
+records before consent and clean labelled destinations afterwards. No navigation,
+cart, order or payment is submitted. MCP staging-only prefix purge accepted
+19:21:11.647UTC; all three device variants MISS then HIT. Home10 asset hashes and
+native36/36 pass; two normal axe views have zero violations/five incomplete groups.
+Initial graph142 pages/6217 edges/no unknown paths retains the same six held tags.
+
+Actual mobile inspection then found copy close enough to the existing floating
+tab to be obscured, despite the initial fit assertions. The initial reports and
+screenshots are retained, not treated as final visual success. A narrow homepage-
+only <=600px clearance block now covers the revised modules; no other original
+runtime rule, captured CSS, artwork or wide layout changes. The test now checks
+actual intersections with both booking tabs. Local source24/24, browser312/312,
+native36/36 and two axe views with zero violations pass. The new mobile screenshot
+is inspected. This follow-up needs required CI, its own backup/manual deployment
+and new normal cached-device verification before the delivery is marked verified.
 
 The next run (`browser-corrected-policy/report.json`, 306/312) retained six
 heading-line-box assertions. A 1440px clean baseline/control comparison shows

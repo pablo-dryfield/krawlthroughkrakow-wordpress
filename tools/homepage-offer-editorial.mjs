@@ -1,6 +1,21 @@
-import {readFile} from 'node:fs/promises';
+import {readFile,writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {loadOfferFacts,offerTemplateValues} from './site-offer-facts.mjs';
+
+export async function buildHomepageOfferStyles(file){
+ const source=await readFile(file,'utf8'),css=(await readFile(new URL('./homepage-offer.css',import.meta.url),'utf8')).trim();
+ const start='/* BEGIN homepage offer clearance */',end='/* END homepage offer clearance */',shared='/* BEGIN shared content accessibility */',sharedEnd='/* END shared content accessibility */';
+ const count=marker=>source.split(marker).length-1;
+ if(count(shared)!==1||count(sharedEnd)!==1||source.indexOf(sharedEnd)<source.indexOf(shared)||count(start)!==count(end)||count(start)>1)throw Error('Ambiguous homepage offer stylesheet boundaries');
+ let base=source;
+ if(count(start)){
+  const first=source.indexOf(start),last=source.indexOf(end);
+  if(last<first||source.slice(last+end.length,source.indexOf(shared)).trim()||last>source.indexOf(shared))throw Error('Unexpected homepage offer stylesheet order');
+  base=source.slice(0,first).trimEnd()+'\n\n'+source.slice(last+end.length).trimStart();
+ }
+ const index=base.indexOf(shared);
+ await writeFile(file,base.slice(0,index).trimEnd()+'\n\n'+start+'\n'+css+'\n'+end+'\n\n'+base.slice(index));
+}
 
 export async function loadHomepageOfferRevision(){
  const sourceHtml=await readFile('docs/homepage-parity/production-source-rendered-1920.html','utf8');
