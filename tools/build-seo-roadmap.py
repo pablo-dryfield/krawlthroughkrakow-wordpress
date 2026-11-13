@@ -6,6 +6,7 @@ import json
 import re
 import xml.etree.ElementTree as ET
 from collections import Counter
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,6 +19,45 @@ GROUPS = {'M': ('Measurement', 'chart-no-axes-combined'), 'T': ('Technical SEO',
 BUCKETS = {'live_verified': 'complete', 'not_started': 'not_started', 'deferred': 'deferred',
            'in_progress': 'in_progress', 'awaiting_cache': 'in_progress',
            'source_verified': 'in_progress', 'staging_verified': 'in_progress'}
+DELIVERY_LABELS = {'staging_verified': 'Verified on staging', 'in_progress': 'In progress', 'live_verified': 'Verified live'}
+
+
+def delivery_model(data):
+    rows = data.get('deliveries')
+    if not isinstance(rows, list) or not rows:
+        raise ValueError('Explicit evidence-backed deliveries required')
+    updated = date.fromisoformat(data['updatedOn'])
+    result, seen = [], set()
+    required = {'id', 'title', 'workstreams', 'stage', 'environment', 'summary', 'remaining', 'evidence'}
+    for row in rows:
+        if not isinstance(row, dict) or not required <= row.keys() or row.keys() - (required | {'verifiedOn'}):
+            raise ValueError('Complete delivery fields required; unknown fields rejected')
+        if not isinstance(row['id'], str) or not re.fullmatch(r'[a-z][a-z0-9-]+', row['id']) or row['id'] in seen:
+            raise ValueError('Unique delivery identity required')
+        seen.add(row['id'])
+        if row['stage'] not in DELIVERY_LABELS or row['environment'] not in ('website', 'omnilodge'):
+            raise ValueError('Explicit delivery stage and environment required')
+        if any(not isinstance(row[key], str) or not row[key].strip() for key in ('title', 'summary', 'remaining', 'evidence')):
+            raise ValueError('Readable delivery scope, remaining work and evidence required')
+        ids = row['workstreams']
+        if not isinstance(ids, list) or not ids or any(not isinstance(identity, str) or identity not in data['tickets'] for identity in ids) or len(set(ids)) != len(ids):
+            raise ValueError('Delivery must reference existing distinct workstreams')
+        target = (ROOT / 'docs/seo' / row['evidence']).resolve()
+        if not row['evidence'].endswith('.md') or (ROOT / 'docs/seo').resolve() not in target.parents or not target.is_file():
+            raise ValueError('Existing local delivery evidence required')
+        if row['stage'] == 'in_progress':
+            if 'verifiedOn' in row:
+                raise ValueError('Unfinished delivery cannot have a verification date')
+        else:
+            verified = date.fromisoformat(row.get('verifiedOn', ''))
+            if verified > updated:
+                raise ValueError('Future delivery verification is not evidence')
+        if row['stage'] == 'staging_verified' and row['environment'] != 'website':
+            raise ValueError('Website staging and OmniLodge live evidence are separate')
+        if row['stage'] == 'live_verified' and row['environment'] == 'website' and data.get('websiteProductionReleases', 0) < 1:
+            raise ValueError('Website live delivery requires a recorded production release')
+        result.append({**row, 'stageLabel': DELIVERY_LABELS[row['stage']]})
+    return {'items': result, 'counts': {stage: sum(row['stage'] == stage for row in result) for stage in DELIVERY_LABELS}}
 
 
 def parse_plan(plan):
@@ -43,6 +83,7 @@ def render(data, plan):
     if type(releases) is not int or releases < 0:
         raise ValueError('Website production release count must be a nonnegative integer')
     counts = Counter(item['status'] for item in data['tickets'].values())
+    deliveries = delivery_model(data)
     completed = sum(item['status'] in ('source_verified','staging_verified','live_verified') for item in data['milestones'])
     lines = ['# SEO Roadmap And Progress','',
              'Updated: '+data['updatedOn']+' (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; edit that source, not this page.','',
@@ -50,7 +91,15 @@ def render(data, plan):
              '## Where We Are','',
              '**Current work:** '+data['current']+'.','',
              f'**Verified foundation milestones:** {completed}. **Website SEO production releases:** {releases}. The original website migration is a separate completed project, not counted as SEO implementation. Separately authorized OmniLodge reporting has its own release status.','',
-             '| Full-Plan Status | Workstreams |','| --- | --- |']
+             '## Delivery Progress', '',
+             'These are scoped batches, not completed whole workstreams. A verified staging batch can still need owner review and production approval. OmniLodge live delivery is separate from website production.', '',
+             '| Delivery Stage | Batches |', '| --- | ---: |']
+    for stage, count in deliveries['counts'].items():
+        lines.append(f'| {DELIVERY_LABELS[stage]} | {count} |')
+    lines += ['', '| Batch | Related Work | Stage | Verified | What Remains |', '| --- | --- | --- | --- | --- |']
+    for row in deliveries['items']:
+        lines.append(f"| [{row['title']}]({row['evidence']}) | {', '.join(row['workstreams'])} | {row['stageLabel']} ({row['environment']}) | {row.get('verifiedOn', 'Not yet')} | {row['remaining']} |")
+    lines += ['', '## End-to-End Plan Status', '', '| Full-Plan Status | Workstreams |','| --- | --- |']
     for status in LABELS:
         if counts[status]: lines.append(f'| {LABELS[status]} | {counts[status]} |')
     lines += ['| Total | 40 |','',
@@ -105,6 +154,7 @@ def build_model(data, plan):
             'tickets': tickets, 'milestones': milestones, 'counts': counts, 'total': len(tickets),
             'verifiedMilestones': sum(row['status'] in ('source_verified', 'staging_verified', 'live_verified') for row in milestones),
             'websiteProductionReleases': data.get('websiteProductionReleases', 0), 'focus': view['focus'],
+            'deliveries': delivery_model(data),
             'groups': [{'id': key, 'name': name, 'icon': icon} for key, (name, icon) in GROUPS.items()],
             'sourceSha256': hashlib.sha256((json.dumps(data, sort_keys=True) + plan).encode()).hexdigest()}
 
@@ -127,7 +177,10 @@ def render_html(data, plan):
     template = (ROOT / 'tools/seo-roadmap-view.html').read_text(encoding='utf-8')
     logo = base64.b64encode((ROOT / 'staging/wp-content/mu-plugins/ktk-homepage-assets/logo.webp').read_bytes()).decode()
     license_text = (ROOT / 'tools/seo-roadmap-assets/lucide/LICENSE').read_text(encoding='utf-8')
-    fallback = '<table><caption>All 40 workstreams</caption><thead><tr><th>ID</th><th>Work</th><th>Status</th><th>Remaining</th></tr></thead><tbody>'
+    fallback = '<h2>Delivery progress</h2><p>Scoped batches, not completed whole workstreams. Staging and live delivery remain separate.</p><ul class="delivery-fallback">'
+    for row in model['deliveries']['items']:
+        fallback += '<li><strong>' + html.escape(row['title']) + '</strong>: ' + html.escape(row['stageLabel'] + ' / ' + row['environment']) + '<p>' + html.escape(row['summary']) + '</p><p>Next: ' + html.escape(row['remaining']) + '</p><a href="' + html.escape(row['evidence'], quote=True) + '">Evidence</a></li>'
+    fallback += '</ul><table><caption>All 40 workstreams</caption><thead><tr><th>ID</th><th>Work</th><th>Status</th><th>Remaining</th></tr></thead><tbody>'
     for row in model['tickets']:
         fallback += '<tr>' + ''.join('<td>' + html.escape(row[key]) + '</td>' for key in ('id', 'title', 'statusLabel', 'remaining')) + '</tr>'
     fallback += '</tbody></table>'
