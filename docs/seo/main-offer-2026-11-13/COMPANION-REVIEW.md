@@ -61,6 +61,58 @@ report predated the final native link-colour rules. A fresh2320/2320 build
 verification now binds the final payload. Do not bypass this publisher guard.
 PHP integration now passes763/763 and form contracts31/31 (mail stubbed).
 
+## Staging Deployment
+
+Final payload/report commit4d24558 passed both required CI43496862649 jobs. The
+manual incremental content publisher completed19:58:36UTC with2072 independent
+owned hash matches. Saved WordPress state and guarded homepage/storefront checks
+are unchanged; its expiring helper is removed. Changed-file rollback archive:
+`deploy-backups/ktk-code-pages-staging-20261113-195815.zip`, SHA256
+`3c93f2d5aaa565104a31cebe6b00267ac82cb83884a2bc5c039abf1d8ff52b8c`.
+
+Initial origin checks75/75 cover all19 copy targets/native links, canonical,
+noindex and current runtime CSS token on desktop/Android/iPad. Actual origin
+focused browser361/361 and attribution136/136 pass, with no navigation/orders or
+transmitted writes; discovery243/243 passes. Full6193-assertion origin crawl is
+initially failed on an interrupted asset read; the failure and bounded transport
+retry correction are retained in [ORIGIN-TRANSFER-FAILURE.md](ORIGIN-TRANSFER-FAILURE.md).
+Application bytes remain4d24558; new preparation/tool notes do not require
+another application deployment.
+
+## Final Staging Verification
+
+The fresh full origin rerun passed6193/6193 at20:16:58UTC with zero retries.
+Cloudflare MCP checked the exact expected zone/account, then accepted only
+`{"prefixes":["krawlthroughkrakow.com/staging/"]}` at20:20:59.203UTC, successtrue,
+result4303f6a45f815c5570bb4bba5f86a423. No production prefix/configuration changed.
+
+- Full normal URLs6193/6193 at20:23:44UTC,339 MISS/9 HIT; all119 assets current.
+- Full warmed repeat6193/6193 at20:25:26UTC,348/348 content/device responses HIT.
+- Exact initial copy/native links75/75 on desktop/Android/iPad:9 MISS, then9 HIT.
+- Actual cached focused browser361/361, native keyboard/reflow118/118 and
+  attribution136/136, with zero transmitted writes or navigation to checkout.
+- Six cached axe views:zero violations,12 incomplete groups retained; this is
+  not complete assistive-technology/WCAG/provider certification.
+- Discovery216/216 normal and repeat; unchanged homepage10 asset hashes/current
+  three-device references; icon hints21/21, all3 home variants HIT on repeat.
+- Initial-HTML link graph142 pages/6241 edges, zero unknown paths/errors; the same
+  six deliberately held tag destinations remain unreachable.
+- Actual final mobile screenshots inspected; text remains legible and clear of
+  the floating tab. All12 questions remain native keyboard controls. Initial
+  no-JS HTML includes every answer, but the inherited accordion shows only its
+  first answer without JavaScript; do not claim JS-free accordion interaction.
+
+Full reports: `docs/code-pages/full-migration/offer-companion-{origin-retry,clean,repeat}-20261113.json`.
+Focused reports/screenshots are `companion-*-clean`, `companion-repeat-copy.json`,
+`companion-discovery-repeat.json`, `companion-home-repeat.json` in this folder.
+Raw reports remain local evidence under the existing ignore policy.
+
+Both roadmaps now count21 staging-verified batches, one NYE follow-up underway
+and one live OmniLodge reporting batch. All40 original ticket states retain their
+scope; this is not100% plan completion. Website SEO production releases remain0.
+Next campaign preparation is read-only; owner review and separate production
+approval remain. GitHub source/checks do not deploy the website.
+
 | Page | Current conflict | Planned correction |
 | --- | --- | --- |
 | How to Join | Static 120 PLN; automatic guaranteed availability; vague return discount | Native current booking/availability link, confirmed eligibility, leader/confirmation return procedure, useful meeting/FAQ links |

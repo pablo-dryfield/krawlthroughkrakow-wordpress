@@ -2,10 +2,14 @@
 import argparse
 from collections import Counter
 import hashlib
+import http.client
 import html
 import json
 import re
 import subprocess
+import sys
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -15,6 +19,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE = 'https://krawlthroughkrakow.com/staging'
 ASSETS = ROOT / 'staging/wp-content/mu-plugins/ktk-code-pages-assets'
+TRANSPORT_RETRIES = []
 DEVICES = {
     'desktop': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36',
     'android': 'Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Mobile Safari/537.36',
@@ -98,16 +103,27 @@ def sharing_metadata_matches(parsed, metadata, base):
 def get(url, agent, redirect=True):
     opener = urllib.request.build_opener() if redirect else urllib.request.build_opener(NoRedirect())
     request = urllib.request.Request(url, headers={'User-Agent': agent})
-    try:
-        response = opener.open(request, timeout=60)
-    except urllib.error.HTTPError as error:
-        response = error
-    with response:
-        return response.status, dict(response.headers.items()), response.read()
+    for attempt in range(3):
+        try:
+            try:
+                response = opener.open(request, timeout=60)
+            except urllib.error.HTTPError as error:
+                response = error
+            # Read the complete body inside the retry boundary, never accept partial bytes.
+            with response:
+                return response.status, dict(response.headers.items()), response.read()
+        except (OSError, urllib.error.URLError, http.client.HTTPException) as error:
+            if attempt == 2:
+                raise
+            path = urllib.parse.urlsplit(url).path
+            TRANSPORT_RETRIES.append(dict(path=path, attempt=attempt + 1, error=type(error).__name__))
+            print(f'Retrying interrupted verification read {attempt + 1}/2: {path}', file=sys.stderr)
+            time.sleep(attempt + 1)
 
 
 def main():
     global BASE
+    TRANSPORT_RETRIES.clear()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--cache-bust', action='store_true')
     parser.add_argument('--label', default='staging-full-release')
@@ -203,7 +219,7 @@ def main():
         status, _, _ = get(BASE + '/wp-content/mu-plugins/ktk-code-pages-assets/' + relative + '?ktk_template_check=' + stamp, DEVICES['desktop'])
         check(relative, 'template', 'raw templates cannot be indexed', status in (403,404))
     report = dict(checkedAt=datetime.now(timezone.utc).isoformat(), environment=args.environment, cacheBusted=args.cache_bust,
-                  summary=dict(passed=sum(c['passed'] for c in checks),total=len(checks),routes=len(manifest['routes']),assets=len(assets)),responses=responses,checks=checks)
+                  summary=dict(passed=sum(c['passed'] for c in checks),total=len(checks),routes=len(manifest['routes']),assets=len(assets)),responses=responses,checks=checks,retries=TRANSPORT_RETRIES)
     directory = 'production-release' if production else 'full-migration'
     destination = ROOT / f'docs/code-pages/{directory}/{args.label}.json'
     destination.parent.mkdir(parents=True,exist_ok=True)

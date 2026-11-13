@@ -37,6 +37,11 @@ Do not use that old long-range comparison for an SEO success/decline claim.
 
 ## Priority Inputs, Not Automatic Decisions
 
+The [four-window NYE query/page follow-up](NYE-PAGE-INTENT.md) now checks the three
+exact canonical NYE URLs with full-precision independent page summaries and
+returned-query coverage. It supports distinct sales/planning roles, not an
+automatic consolidation or migration-impact claim.
+
 Canonical URL metrics in the28-day page table support reviewing the existing
 pages below. Matching uses exact URLs, NOT pathname-only maps that accidentally
 overwrite canonical rows with attribution variants. CTR/position are native page
