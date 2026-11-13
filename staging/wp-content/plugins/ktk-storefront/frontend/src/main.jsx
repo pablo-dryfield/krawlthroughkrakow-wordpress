@@ -791,7 +791,7 @@ function Catalog({ navigate }) {
   };
 
   return (
-    <>
+    <main className="ktk-catalog-page">
       <section className="ktk-hero">
         <div className="ktk-hero__glow" aria-hidden="true" />
         <div className="ktk-hero__grid">
@@ -826,7 +826,7 @@ function Catalog({ navigate }) {
                         d="M24 2 C44 9 61 20 74 36"
                       />
                     </svg>
-                    <div className="ktk-hero__stamp" aria-label={`${state.products.length} activities`}>
+                    <div className="ktk-hero__stamp" role="img" aria-label={`${state.products.length} activities`}>
                       <svg viewBox="0 0 100 100" aria-hidden="true">
                     <defs>
                       <radialGradient id="ktk-ball-fill" cx="30%" cy="24%" r="76%">
@@ -1028,7 +1028,7 @@ function Catalog({ navigate }) {
           ))}
         </div>
       </section>
-    </>
+    </main>
   );
 }
 
@@ -1153,7 +1153,7 @@ function ProductDetail({ slug, navigate, addToCart, cart, contact, setContact })
   const hasGallery = content.gallery.length > 0;
 
   return (
-    <article className="ktk-detail">
+    <main className="ktk-detail">
       <nav className="ktk-detail__nav" aria-label="Product navigation">
         <StorefrontLink className="ktk-back" navigate={navigate}>
           <span aria-hidden="true">{'\u2190'}</span> All experiences
@@ -1174,7 +1174,7 @@ function ProductDetail({ slug, navigate, addToCart, cart, contact, setContact })
       </header>
 
       <div className="ktk-detail__layout">
-        <main className="ktk-detail__main">
+        <div className="ktk-detail__main">
           <section className="ktk-gallery" aria-label={`${product.name} gallery`}>
             <div className="ktk-gallery__stage">
               {hasGallery ? (
@@ -1294,7 +1294,7 @@ function ProductDetail({ slug, navigate, addToCart, cart, contact, setContact })
               </details>
             </section>
           )}
-        </main>        <aside id="build-your-booking" className="ktk-booking" aria-label="Configure this experience">
+        </div>        <aside id="build-your-booking" className="ktk-booking" aria-label="Configure this experience">
           <ProductConfigurator
             product={product}
             initialItem={[...cart].reverse().find(item => Number(item.productId) === Number(product.id)) || null}
@@ -1339,7 +1339,7 @@ function ProductDetail({ slug, navigate, addToCart, cart, contact, setContact })
           />
         </aside>
       </div>
-    </article>
+    </main>
   );
 }
 

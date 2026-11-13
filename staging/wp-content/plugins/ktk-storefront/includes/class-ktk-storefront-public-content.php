@@ -2,7 +2,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 final class KTK_Storefront_Public_Content {
-	const VERSION = '2026.11.12.2';
+	const VERSION = '2026.11.13.2';
 
 	private static function compact( $values ) {
 		return array_values( array_unique( array_filter( $values, function ( $value ) {
@@ -88,11 +88,11 @@ final class KTK_Storefront_Public_Content {
 
 	private static function product( $data ) {
 		$product = $data['product']; $content = self::resolve( $product );
-		?><article class="ktk-detail">
+		?><main class="ktk-detail">
 			<nav class="ktk-detail__nav" aria-label="Product navigation"><a class="ktk-back" href="<?php echo esc_url( home_url( '/store2/' ) ); ?>"><span aria-hidden="true">&#8592;</span> All experiences</a><span>Local crew. Secure booking.</span></nav>
 			<header class="ktk-detail__hero"><div class="ktk-detail__intro"><h1><?php echo esc_html( $product['name'] ); ?></h1><p><?php echo esc_html( $content['summary'] ); ?></p></div>
 			<?php if ( self::price( $product ) ) { ?><div class="ktk-detail__starting-price"><span>From</span><strong><?php echo esc_html( self::price( $product ) ); ?></strong><small>per person</small></div><?php } ?></header>
-			<div class="ktk-detail__layout"><main class="ktk-detail__main">
+			<div class="ktk-detail__layout"><div class="ktk-detail__main">
 				<?php if ( ! empty( $content['gallery'] ) ) { ?><section class="ktk-gallery" aria-label="<?php echo esc_attr( $product['name'] . ' gallery' ); ?>"><div class="ktk-gallery__stage"><img src="<?php echo esc_url( $content['gallery'][0] ); ?>" alt="<?php echo esc_attr( $product['name'] . ' experience' ); ?>" decoding="async" fetchpriority="high" data-no-lazy="1" width="1200" height="750"></div></section><?php } ?>
 				<?php if ( $content['description'] ) { ?><section class="ktk-product-story"><div><p class="ktk-eyebrow">The experience</p><h2>Organised chaos,<br>handled locally.</h2></div><p><?php echo esc_html( $content['description'] ); ?></p></section><?php } ?>
 				<?php if ( ! empty( $content['highlights'] ) ) { ?><section class="ktk-inclusions"><h2 class="ktk-eyebrow ktk-inclusions__heading">Inclusions</h2><div class="ktk-highlights">
@@ -108,7 +108,7 @@ final class KTK_Storefront_Public_Content {
 					<?php if ( $content['importantInformation'] ) { ?><div class="ktk-practical-info__section ktk-practical-info__section--important"><h2 class="ktk-eyebrow">Important information</h2><ul><?php foreach ( $content['importantInformation'] as $item ) { ?><li><?php echo esc_html( $item ); ?></li><?php } ?></ul></div><?php } ?>
 				</section><?php } ?>
 				<?php if ( ! empty( $data['cancellationPolicy']['title'] ) ) { $policy = $data['cancellationPolicy']; ?><section class="ktk-cancellation-policy"><details><summary class="ktk-cancellation-policy__toggle"><span class="ktk-cancellation-policy__heading"><span class="ktk-eyebrow">Booking terms</span><span class="ktk-cancellation-policy__title" role="heading" aria-level="2"><?php echo esc_html( $policy['title'] ); ?></span></span><span class="ktk-cancellation-policy__icon" aria-hidden="true"></span></summary><div class="ktk-cancellation-policy__content"><?php if ( ! empty( $policy['summary'] ) ) { ?><p><?php echo esc_html( $policy['summary'] ); ?></p><?php } ?><?php foreach ( ( $policy['items'] ?? array() ) as $item ) { ?><article><strong><?php echo esc_html( $item['title'] ?? '' ); ?></strong><p><?php echo esc_html( $item['description'] ?? '' ); ?></p></article><?php } ?></div></details></section><?php } ?>
-			</main><aside class="ktk-public-booking"><h2>Bookings</h2><a class="ktk-commerce__primary" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact us</a></aside></div>
-		</article><?php
+			</div><aside class="ktk-public-booking"><h2>Bookings</h2><a class="ktk-commerce__primary" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact us</a></aside></div>
+		</main><?php
 	}
 }

@@ -246,6 +246,7 @@ export function CustomSelect({
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
   const rootRef = useRef(null);
+  const triggerRef = useRef(null);
   const selectedIndex = Math.max(
     0,
     options.findIndex((option) => String(option.value) === String(value)),
@@ -263,7 +264,7 @@ export function CustomSelect({
       if (!rootRef.current?.contains(event.target)) setOpen(false);
     };
     const escape = (event) => {
-      if (event.key === 'Escape') setOpen(false);
+      if (event.key === 'Escape') { setOpen(false); triggerRef.current?.focus(); }
     };
     document.addEventListener('pointerdown', close);
     document.addEventListener('keydown', escape);
@@ -282,8 +283,9 @@ export function CustomSelect({
     <div className={`ktk-custom-select ${className}`.trim()} ref={rootRef}>
       <button
         className={`ktk-custom-select__trigger${open ? ' is-open' : ''}`}
+        ref={triggerRef}
         type="button"
-        aria-label={label}
+        aria-label={`${label}: ${selected?.label ?? ''}`}
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-invalid={invalid}
@@ -329,6 +331,7 @@ export function CustomSelect({
                 onClick={() => {
                   onChange(option.value);
                   setOpen(false);
+                  triggerRef.current?.focus();
                 }}
               >
                 {option.label}

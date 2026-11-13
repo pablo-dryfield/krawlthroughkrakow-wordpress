@@ -16,6 +16,7 @@ final class KTK_Storefront {
 		add_action( 'init', array( __CLASS__, 'register_rewrite_rules' ) );
 		add_filter( 'query_vars', array( __CLASS__, 'register_query_vars' ) );
 		add_action( 'template_redirect', array( __CLASS__, 'remove_legacy_ecwid_output' ), 0 );
+		add_action( 'template_redirect', array( __CLASS__, 'allow_staging_storefront_zoom' ), 1 );
 		add_filter( 'template_include', array( __CLASS__, 'use_storefront_template' ), 99 );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'dequeue_unused_assets' ), 999 );
@@ -110,6 +111,13 @@ final class KTK_Storefront {
 	public static function public_html_enabled() {
 		return self::is_storefront_request() && home_url( '/' ) === 'https://krawlthroughkrakow.com/staging/'
 			&& site_url( '/' ) === 'https://krawlthroughkrakow.com/staging/';
+	}
+
+	public static function allow_staging_storefront_zoom() {
+		if ( self::public_html_enabled() ) {
+			// The standalone template already supplies a viewport without zoom restrictions.
+			remove_action( 'wp_head', 'et_add_viewport_meta', 10 );
+		}
 	}
 
 	public static function public_style_tag( $html, $handle ) {
