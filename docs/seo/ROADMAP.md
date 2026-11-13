@@ -6,7 +6,7 @@ Updated: 2026-11-13 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 ## Where We Are
 
-**Current work:** Budget guide is staging cache-verified: content5848 origin/normal/repeat, all348 device responses HIT, browser78 and attribution45 pass. Original history/assets retained; mobile title/body clear the floating tab. Music review compares both techno articles and triages six other guides, separating primary facts from source gaps; no music redirects/rewrites. Owner review and broader plan work remain. Production unchanged..
+**Current work:** The budget-drinks guide is refreshed and checked on staging, including cached desktop and mobile pages. Its established URL, article history and original photo are preserved; mobile text no longer sits behind Book Now. The music-guide review is underway, with no articles merged or removed. The wider plan and production approval remain open; production is unchanged.
 
 **Verified foundation milestones:** 7. **Website SEO production releases:** 0. The original website migration is a separate completed project, not counted as SEO implementation. Separately authorized OmniLodge reporting has its own release status.
 

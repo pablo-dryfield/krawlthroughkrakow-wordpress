@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "updatedOn": "2026-11-13",
   "websiteProductionReleases": 0,
-  "current": "Budget guide is staging cache-verified: content5848 origin/normal/repeat, all348 device responses HIT, browser78 and attribution45 pass. Original history/assets retained; mobile title/body clear the floating tab. Music review compares both techno articles and triages six other guides, separating primary facts from source gaps; no music redirects/rewrites. Owner review and broader plan work remain. Production unchanged.",
+  "current": "The budget-drinks guide is refreshed and checked on staging, including cached desktop and mobile pages. Its established URL, article history and original photo are preserved; mobile text no longer sits behind Book Now. The music-guide review is underway, with no articles merged or removed. The wider plan and production approval remain open; production is unchanged",
   "milestones": [
     {"name":"Private GitHub source control and checks; manual deployments retained","status":"source_verified"},
     {"name":"76 reviewed page descriptions and maintainable metadata source; one health-content hold","status":"staging_verified"},
