@@ -1,5 +1,9 @@
 # WordPress Plugin Removal Review
 
+The owner subsequently deleted WPCode. Fresh checks confirm it is absent from
+both environments. See [the complete remaining-plugin audit](ALL-PLUGINS.md) for
+current decisions. The inventory below is the retained pre-deletion checkpoint.
+
 Owner asked whether WPCode can be removed before further SEO work. This review
 does not deactivate/uninstall anything, rewrite settings, clear caches or approve
 removing other plugins. Code-managed pages still run on WordPress infrastructure.
