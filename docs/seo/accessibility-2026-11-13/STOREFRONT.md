@@ -101,3 +101,16 @@ The old blocked-provider `fbq is not defined` errors remain a separate inherited
 integration issue. No provider or consent code is changed in this batch. Content
 semantics await the previously requested staging-prefix purge; no production
 improvement deployment is authorized by this work.
+
+## Cached Follow-up Complete
+
+After the owner confirmed the staging-only purge, normal storefront checks
+pass692/692 twice; all75 page/device responses are HIT on repeat, at the latest
+confirmed-offer renderer2026.11.13.3. Initial/client keyboard176/176 and focused
+Food/Halloween144/144 pass. Short-window guarded104/104 passes with zero completed
+non-read requests; the original101/104 attempts-only failures remain retained.
+Only an already-aborted, exact WP Rocket optimization-feedback signature is
+classified separately, with strict negative tests and the false zero-attempt
+observations still present. See the full
+[cache verification record](../cache-verification-2026-11-13/README.md).
+No production or privacy/account settings were changed.

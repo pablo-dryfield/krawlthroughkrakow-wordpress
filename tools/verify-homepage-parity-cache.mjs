@@ -5,7 +5,9 @@ const url = 'https://krawlthroughkrakow.com/staging/';
 const output=process.argv.includes('--output')?process.argv[process.argv.indexOf('--output')+1]:'docs/homepage-parity/staging-clean-cache-verification.json';
 try{await readFile(output);throw new Error('Preserve earlier evidence; provide --output');}catch(error){if(error.code!=='ENOENT')throw error;}
 const requestUrl=url+(process.argv.includes('--cache-bust')?'?ktk_media_check='+Date.now():'');
-const files = ['parity.css', 'parity-runtime.css', 'parity.js'];
+const files = ['parity.css', 'parity-runtime.css', 'parity.js', 'journey.js', 'hero.css',
+  'hero-statue-regular.svg', 'hero-statue-seasonal.svg',
+  'review-google.svg', 'review-tripadvisor.png', 'review-getyourguide.svg'];
 const expected = {};
 for (const file of files) expected[file] = createHash('sha256').update(await readFile(`staging/wp-content/mu-plugins/ktk-homepage-assets/${file}`)).digest('hex');
 const agents = {
@@ -38,6 +40,7 @@ for (const [file, href] of assetUrls) {
   report.passed &&= result.passed;
   report.assets.push(result);
 }
+report.passed &&= report.assets.length === files.length;
 await writeFile(output, JSON.stringify(report, null, 2));
 console.log(JSON.stringify(report, null, 2));
 if (!report.passed) process.exitCode = 1;

@@ -121,3 +121,15 @@ claim full accessibility because the narrower semantic regression passes.
 
 References: [axe API](https://github.com/dequelabs/axe-core/blob/v4.14.0/doc/API.md),
 [WAI preliminary evaluation](https://www.w3.org/WAI/test-evaluate/preliminary/).
+
+## Post-Purge Cache Verification
+
+The owner confirmed both outstanding staging-prefix purges. Normal content scans
+pass4320/4320 twice, with all351 page/device responses HIT on repeat and zero
+transport errors/retries. Cached content keyboard/reflow/semantic324/324, booking
+handoff31/31, discovery216/216 twice and homepage asset/destination checks pass.
+Storefront/focused-offer checks are also complete; the original strict beacon
+failure and corrected blocked-only guard are fully recorded in
+[cache verification](../cache-verification-2026-11-13/README.md).
+This supersedes the earlier pending-cache statements, not the residual contrast,
+third-party/consent or manual-accessibility limitations. Production is unchanged.
