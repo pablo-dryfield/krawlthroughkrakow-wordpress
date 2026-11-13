@@ -151,6 +151,10 @@
 
   document.querySelectorAll('[data-parity-href]').forEach(e => {
     e.setAttribute('role', 'link'); e.tabIndex = 0;
+    if (!e.textContent.trim() && !e.hasAttribute('aria-label')) {
+      const target = new URL(e.dataset.parityHref, location.href);
+      e.setAttribute('aria-label', 'Visit ' + target.hostname);
+    }
     const activate = event => {
       if (closest(event.target, 'a,button,input,textarea,select')) return;
       if (event.type === 'keydown' && event.key !== 'Enter') return;
@@ -167,6 +171,7 @@
     if (!title || !content) return;
     const button=create('button','ktk-toggle-button');button.type='button';
     button.append(...title.childNodes);title.append(button);
+    if (!button.textContent.trim() && content.querySelector('form')) button.setAttribute('aria-label','Toggle contact form');
     title.removeAttribute('role');title.removeAttribute('tabindex');
     if(!content.id)content.id=`ktk-toggle-panel-${index}`;
     button.setAttribute('aria-controls',content.id);
@@ -194,7 +199,7 @@
 
   let lightboxOpen = false;
   const refreshAutoplay = [];
-  document.querySelectorAll('.et_pb_gallery_fullwidth,.et_pb_slider').forEach(root => {
+  document.querySelectorAll('.et_pb_gallery_fullwidth,.et_pb_slider').forEach((root,index) => {
     const gallery = root.classList.contains('et_pb_gallery_fullwidth');
     const slides = [...root.querySelectorAll(gallery ? '.et_pb_gallery_item' : ':scope > .et_pb_slides > .et_pb_slide')];
     const containers = slides.map(slide => slide.querySelector('.et_pb_container')).filter(Boolean);
@@ -221,7 +226,7 @@
     fit(); document.fonts.ready.then(fit); addEventListener('resize', fit, {passive:true});
     root.querySelectorAll('img').forEach(image => image.addEventListener('load', fit));
     if (slides.length < 2) return;
-    root.setAttribute('role', 'region'); root.setAttribute('aria-roledescription', 'carousel'); root.setAttribute('aria-label', gallery ? 'Photo gallery' : 'Featured content');
+    root.setAttribute('role', 'region'); root.setAttribute('aria-roledescription', 'carousel'); root.setAttribute('aria-label', (gallery ? 'Photo gallery ' : 'Featured content ') + (index+1));
     let selected = 0, timer, hovering = false, userPaused = false, inView = !('IntersectionObserver' in window);
     const automatic = root.classList.contains('et_slider_auto');
     const delay = Math.max(1000, Number(root.className.match(/et_slider_speed_(\d+)/)?.[1]) || 7000);

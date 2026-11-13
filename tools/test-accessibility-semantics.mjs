@@ -27,7 +27,7 @@ try{
   const metadata=({shell_file,...rest})=>rest;
   check(key+' SEO/schema/content identity unchanged',JSON.stringify(metadata(previous))===JSON.stringify(metadata(definition)));
   check(key+' captured CSS unchanged',(await readFile(path.join(baseline,assets,previous.css))).equals(await readFile(assets+definition.css)));
-  if(key==='post-hostel-hangover-cure')check('health hold remains byte-identical',original===candidate);
+  if(key==='post-hostel-hangover-cure')check('health article body remains byte-identical',(await readFile(path.join(baseline,assets,previous.main_file))).equals(await readFile(assets+definition.main_file)));
  }
  const fixture='<div id="main-content"><h1>Questions</h1><div class="et_pb_accordion">'+[0,1].map(n=>`<div class="et_pb_toggle et_pb_toggle_close"><h2 class="et_pb_toggle_title">Question ${n+1}</h2><div class="et_pb_toggle_content">Answer ${n+1}</div></div>`).join('')+'</div><form><span class="et_pb_contact_captcha_question">4 + 7</span><input class="et_pb_contact_captcha" name="captcha"></form></div><footer><span class="et-social-icon"><a class="icon" href="#facebook"><span>Facebook</span></a></span></footer>';
  await page.setContent(fixture);await page.evaluate(reviseAccessibilitySemantics,{key:'fixture'});
@@ -52,6 +52,14 @@ try{
  check('footer social link has source-derived accessible name',await page.getByRole('link',{name:'Facebook',exact:true}).count()===1);
  const ids=await page.locator('[id]').evaluateAll(nodes=>nodes.map(node=>node.id));
  check('unique generated control and label IDs',ids.length===new Set(ids).size);
+ await page.setContent('<main id="main-content"></main><a id="ktk-cta" href="/store2/">BOOK NOW</a>');
+ await page.evaluate(reviseAccessibilitySemantics,{key:'fixture'});
+ check('floating CTA has a named native landmark',await page.getByRole('navigation',{name:'Book an experience'}).getByRole('link',{name:'BOOK NOW'}).count()===1);
+ const landmark=await page.content();await page.evaluate(reviseAccessibilitySemantics,{key:'fixture'});
+ check('floating CTA landmark is idempotent',landmark===await page.content());
+ await page.setContent('<main id="main-content">Held article</main><a id="ktk-cta" href="/store2/">BOOK NOW</a>');
+ await page.evaluate(reviseAccessibilitySemantics,{key:'post-hostel-hangover-cure'});
+ check('health hold allows shared shell landmark without changing the article',await page.locator('main').innerHTML()==='Held article'&&await page.locator('main').getAttribute('tabindex')===null&&await page.getByRole('navigation',{name:'Book an experience'}).count()===1);
 }finally{await browser.close();}
 const report={checkedAt:new Date().toISOString(),baseline,passed:checks.filter(x=>x.pass).length,total:checks.length,checks};
 await mkdir(path.dirname(output),{recursive:true});await writeFile(output,JSON.stringify(report,null,2)+'\n');

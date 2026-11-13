@@ -28,9 +28,16 @@ Wrangler login is not the credential source for this MCP connection.
 - A separate `GET /zones/4303f6a45f815c5570bb4bba5f86a423` succeeds and reports
   `#cache_purge:edit` in its legacy membership-permission list.
 - The current API specification requires `Cache Purge` for the purge endpoint.
-- **No purge POST has been sent yet.** Reported membership permissions are not
-  proof of a successful write through the OAuth session; verify the response on
-  the first actually authorized purge, not by issuing a test purge now.
+- First approved purge POST succeeded on **2026-11-13 at12:00:05.494UTC**, scoped
+  only to `krawlthroughkrakow.com/staging/`, following the SEO accessibility
+  staging release. API `success:true`; returned result ID
+  `4303f6a45f815c5570bb4bba5f86a423`. No host-wide/production purge was sent.
+  The initial documentation checkpoint had not tested writes; that historical
+  limitation is now superseded by actual scoped execution, not just membership.
+- Clean homepage desktop/Android/iPad responses and all10 active asset hashes
+  pass after that purge. Full content clean/repeat verification is recorded in
+  [the release evidence](../seo/content-accessibility-2026-11-13/README.md), not
+  inferred from API acceptance alone.
 
 The generic `/user/tokens/verify` request returned 401 through this connection,
 while subsequent zone GETs still succeeded. Do not use that endpoint alone to
@@ -81,7 +88,7 @@ do not assume `/` means homepage-only in prefix matching.
 
 WP Rocket/origin-cache invalidation remains a separate, existing publisher duty.
 Do not replace it with an edge purge. Do not purge anything simply to test access.
-No cache purge, deployment, account change or authentication-file edit was made
-while recording this runbook.
+No account settings or authentication files were changed. The initial runbook
+was documentation-only; the later approved staging purge is recorded above.
 
 Primary reference: [Cloudflare purge API](https://developers.cloudflare.com/api/resources/cache/methods/purge/).

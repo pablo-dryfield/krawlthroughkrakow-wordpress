@@ -48,7 +48,7 @@
 #ktk-seasonal-hero .ktk-hero-schedule strong { color: var(--hero-accent); font-size: calc(1em * var(--schedule-time-scale)); font-weight: 900; }
 #ktk-seasonal-hero .ktk-hero-cta { display: inline-flex; flex-shrink: 0; gap: 20px; align-items: center; justify-content: center; min-height: 54px; min-width: 196px; padding: 14px 18px; border: 2px solid var(--hero-accent); border-radius: 0; color: #fff; background: var(--hero-accent); font: 800 16px/1.25 var(--hero-font); text-transform: uppercase; text-decoration: none; transition: background-color 150ms ease, color 150ms ease; }
 #ktk-seasonal-hero .ktk-hero-cta:hover { background: #fff; border-color: #fff; color: #090a0c; }
-#ktk-seasonal-hero .ktk-hero-panel--regular .ktk-hero-cta { color: #080a0c; }
+#ktk-seasonal-hero .ktk-hero-panel--regular .ktk-hero-cta { color: #000; }
 #ktk-seasonal-hero .ktk-hero-cta:focus-visible { outline: 3px solid #fff; outline-offset: 5px; }
 #ktk-seasonal-hero .ktk-hero-cta-icon { flex: 0 0 22px; width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; }
 #ktk-seasonal-hero .ktk-hero-bottomline { width: 100%; max-width: 196px; padding: 0; margin: 14px 0 0; font: 700 11px/1.3 var(--hero-font); text-transform: uppercase; text-align: center; }

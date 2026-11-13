@@ -113,3 +113,59 @@ dialog.ktk-parity-lightbox button:focus-visible { outline: 2px solid #fff !impor
   .et_pb_gallery_fullwidth *, .ktk-parity-lightbox * { animation: none !important; transition: none !important; }
   .et_pb_image_3, .et_pb_image_4, .et_pb_image_5, .et_pb_image_6, .et_pb_image_7, .et_pb_image_8, .et_pb_column_27 { transition: none !important; }
 }
+
+/* BEGIN shared content accessibility */
+/* Darker pink is reserved for text on light content, not the seasonal artwork. */
+#main-content .et_pb_text:not(.et_pb_bg_layout_dark) a,
+.single-post #main-content .entry-content a,
+#main-content .pagination a,
+#main-content .nav-single a,
+#main-content .et_pb_bg_layout_light.et_pb_button,
+#main-content .et_pb_bg_layout_light .et_pb_button,
+#main-content .et_pb_contact_submit { color: #c8006c; }
+#main-content .et_pb_text:not(.et_pb_bg_layout_dark) p a,
+.single-post #main-content .entry-content p a,
+.single-post #main-content .entry-content li a,
+#main-content .post-meta a,
+#main-content .et_pb_text:not(.et_pb_bg_layout_dark) li a { text-decoration: underline; text-underline-offset: .15em; }
+#main-content .et_pb_text.pink h2,
+#main-content .et_pb_text:not(.et_pb_bg_layout_dark) span[style*="#ee357b"] { color: #c8006c !important; }
+body.ktk-homepage-standalone #page-container #main-content .et_pb_button_1 { color: #c8006c !important; }
+.ktk-homepage-standalone #main-content .et_pb_section_4.et_pb_section { background-color: #c8306b !important; }
+.ktk-homepage-standalone #main-content #t_a1,
+.ktk-homepage-standalone #main-content #t_a2 { font-size: 24px; line-height: 1.4; }
+@media (max-width: 767px) {
+  .ktk-homepage-standalone #main-content #t_a1,
+  .ktk-homepage-standalone #main-content #t_a2 { font-size: 18px; }
+}
+#main-content .et_pb_button:hover,
+#main-content .et_pb_contact_submit:hover { color: #fff !important; background-color: #c8006c; }
+.ktk-code-page[data-ktk-page="how-to-join"] #main-content .et_pb_promo { background-color: #c8006c !important; }
+.ktk-code-page[data-ktk-page="new-years-eve"] .et_pb_countdown_timer .label { color: #aaa !important; opacity: 1; }
+.ktk-code-page[data-ktk-page="new-years-eve"] #main-content .et_pb_toggle_content a { color: #c8006c; text-decoration: underline; }
+.ktk-code-page[data-ktk-page="new-years-eve"] #main-content .et_pb_text_3 a[href$="/contact/"] { color: #c8006c; text-decoration: underline; }
+.ktk-code-page[data-ktk-page="post-party-krakow"] #main-content .et_pb_text_4 a { color: #c8006c !important; }
+.ktk-code-page[data-ktk-page="pub-crawl-jobs"] #main-content .et_pb_blurb_description { color: #666 !important; }
+.ktk-code-page[data-ktk-page="stagshens"] .wpcf7-form { color: #fff; }
+.ktk-code-page[data-ktk-page="stagshens"] .wpcf7-form .formField { color: #111; background: #fff; }
+body.ktk-code-page[data-ktk-page="student-trips-poland"] #page-container #main-content .et_pb_contact_submit { background: #c8006c !important; color: #fff !important; }
+.ktk-code-page #main-content [id^="instagram-media-payload-"] a,
+.ktk-code-page #main-content [id^="instagram-media-payload-"] a > div { color: #245f9e !important; }
+.ktk-code-page #main-content [id^="instagram-media-payload-"] a [style*="#3897f0"] { color: #245f9e !important; }
+.ktk-code-page #main-content [id^="instagram-media-payload-"] p a { color: #666 !important; text-decoration: underline; }
+.ktk-code-page #main-content blockquote[data-instgrm-version] a [style*="#3897f0"] { color: #245f9e !important; }
+.ktk-code-page #main-content blockquote[data-instgrm-version] p a { color: #666 !important; text-decoration: underline; }
+.ktk-code-page #main-content blockquote[data-instgrm-version] time { color: #666; }
+.ktk-code-page .et_pb_post .entry-title a { display: inline-block; min-height: 24px; }
+/* Retain small visible dots, but give each one its own 24px target. */
+#main-content .et-pb-controllers { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px; }
+#main-content .et-pb-controllers a {
+  flex: 0 0 24px; width: 24px; height: 24px; margin: 0; padding: 0;
+  background: radial-gradient(circle, currentColor 0 3.5px, transparent 4px);
+  color: #fff; opacity: .6; border-radius: 0;
+}
+#main-content .et-pb-controllers a.et-pb-active-control { opacity: 1; }
+#main-content .et-pb-controllers a:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
+#main-footer .widget_nav_menu a { display: inline-block; min-height: 24px; padding-top: 3px; padding-bottom: 3px; }
+.et_pb_text.et_clickable:has(> .ktk-parity-module-link) { min-height: 32px; }
+/* END shared content accessibility */
