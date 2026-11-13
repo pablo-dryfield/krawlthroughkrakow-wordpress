@@ -36,5 +36,12 @@ class VerifierTests(unittest.TestCase):
             parser=module.Head();parser.feed(source)
             self.assertFalse(module.staging_clarity_policy(parser)['one Clarity consent bridge retained'])
 
+    def test_sharing_metadata_requires_exact_fields_without_duplicates(self):
+        metadata = '<meta property="og:title" content="A &amp; B"><meta property="og:url" content="https://krawlthroughkrakow.com/about-us/"><meta name="twitter:card" content="summary">'
+        expected = metadata.replace('https://krawlthroughkrakow.com/', 'https://krawlthroughkrakow.com/staging/')
+        for markup, valid in [(expected, True), (expected + '<meta name="description" content="unrelated">', True), (expected + expected, False), (metadata, False), (expected.replace('summary', 'summary_large_image'), False), (expected.replace('og:title', 'og:other'), False)]:
+            parsed = module.Head(); parsed.feed(markup)
+            self.assertEqual(module.sharing_metadata_matches(parsed, metadata, 'https://krawlthroughkrakow.com/staging'), valid)
+
 
 if __name__=='__main__':unittest.main()

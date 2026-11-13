@@ -19,6 +19,7 @@ import {loadBudgetEditorial,reviseBudgetEditorial} from './budget-editorial.mjs'
 import {loadJazzEditorial,reviseJazzEditorial} from './jazz-editorial.mjs';
 import {loadMusicEditorial,reviseMusicEditorial} from './music-editorial.mjs';
 import {loadVenueEditorial,reviseVenueEditorial} from './venue-editorial.mjs';
+import {codePageTitle,codePageHeadDescription,loadSharingImagePolicy,buildCodePageSharing} from './code-page-sharing.mjs';
 const require = createRequire(import.meta.url);
 const { chromium } = require(path.join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const root = path.resolve('.');
@@ -27,6 +28,7 @@ await buildContentAccessibilityStyles(path.join(assets,'runtime.css'));
 const manifestPath = 'docs/code-pages/full-migration/manifest.json';
 const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
 const imageDescriptions=await loadReviewedImageDescriptions();
+const sharingImage=await loadSharingImagePolicy({expectedManifestSha256:imageDescriptions.assetManifestSha256});
 const nightlifeRevision=await loadNightlifeEditorial();
 const budgetRevision=await loadBudgetEditorial();
 const jazzRevision=await loadJazzEditorial();
@@ -224,9 +226,14 @@ try {
       const bookingRevisions=await rewriteBookingLinks(page);
       bookingRevisions.push(...await rewriteCanonicalLinks(page));
       if(contentRevisions.length||bookingRevisions.length)report.revisions[route.key]={content:contentRevisions,bookings:bookingRevisions};
+      const schemaFacts=await page.evaluate(codePageSchemaFacts);
+      const title=codePageTitle(route.route,capture.title),description=codePageHeadDescription(route.route,codePageDescription(route.route,capture.metadata.description));
       const schema=buildCodePageSchema({route:route.route,kind:route.kind,
-        description:codePageDescription(route.route,capture.metadata.description),facts:await page.evaluate(codePageSchemaFacts),
+        description,facts:schemaFacts,
         routes:manifest.routes,inherited:capture.metadata.schema});
+      const hasFeaturedSchemaImage=schema.some(item=>(item['@graph']||[item]).some(entity=>entity['@type']==='BlogPosting'&&entity.image));
+      const metadata=buildCodePageSharing({route:route.route,kind:route.kind,title,description,inherited:capture.metadata.extra,
+        image:hasFeaturedSchemaImage?await sharingImage(schemaFacts.image):null});
       const portable=await page.evaluate(()=>document.body.innerHTML);
       const [shell, main] = portable.split('\n__KTK_SPLIT_MAIN__\n');
       if (!main || !shell.includes('__KTK_PAGE_MAIN_CONTENT__')) throw new Error('Template split failed');
@@ -234,8 +241,8 @@ try {
       const mainFile = `content/${route.key}.html`;
       const cssFile = `styles/${digest(css).slice(0,20)}.css`;
       await writeFile(path.join(assets, shellFile), shell); await writeFile(path.join(assets, mainFile), main); await writeFile(path.join(assets, cssFile), css);
-      const definition = { key: route.key, route: route.route, kind: route.kind, post_id: route.postId, title: capture.title,
-        description: codePageDescription(route.route, capture.metadata.description), metadata: capture.metadata.extra, schema,
+      const definition = { key: route.key, route: route.route, kind: route.kind, post_id: route.postId, title,
+        description, metadata, schema,
         body_class: data.bodyClass, shell_file: shellFile, main_file: mainFile, css: cssFile, forms: data.forms, ecwid: data.ecwid,
         source_sha256: digest(source), expected_sections: route.expectedSections };
       const seo=productionSeo.get(route.key);
