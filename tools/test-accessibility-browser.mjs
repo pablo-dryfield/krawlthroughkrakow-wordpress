@@ -53,6 +53,22 @@ try{
     await page.keyboard.press('Space');check(name+' FAQ Space reverses once',await button.getAttribute('aria-expanded')===before);
     check(name+' native button inherits original heading typography',await button.evaluate(node=>['fontFamily','fontSize','fontWeight','lineHeight','color','textAlign'].every(key=>getComputedStyle(node)[key]===getComputedStyle(node.parentElement)[key])));
    }
+   if(route==='/krakow-nightlife/'&&process.argv.includes('--capture-editorial')){
+    const reviewed=page.locator('[data-ktk-editorial-review="2026-11-13"]');
+    check(name+' all nine reviewed overview modules rendered',await reviewed.count()===9);
+    check(name+' reviewed overview headline rendered',await page.locator('h1').textContent()==='Krakow nightlife: where to go after dark');
+    check(name+' visible review date retained',await page.locator('time[datetime="2026-11-13"]').textContent()==='13 November 2026');
+    const copy=await page.locator('#main-content').textContent();
+    check(name+' owner-confirmed venue streets retained',copy.includes('Frantic at S\u0142awkowska 6a')&&copy.includes('Aura on Szpitalna')&&!copy.includes('Miodowa'));
+    check(name+' unsupported old promises absent',!/highest concentration|five years running|guarantee you|hefty fines|priciest options/i.test(copy));
+    check(name+' overview links have names and fit their module',await reviewed.evaluateAll(nodes=>nodes.flatMap(n=>[...n.querySelectorAll('a')]).every(a=>{
+     const r=a.getBoundingClientRect(),p=a.closest('[data-ktk-editorial-review]').getBoundingClientRect();return a.textContent.trim()&&r.width>0&&r.left>=p.left-1&&r.right<=p.right+1;
+    })));
+    if([390,1440].includes(width)){
+     await page.locator('.et_pb_text_0').screenshot({path:path.join(output,'nightlife-'+width+'-headline.png')});
+     await page.locator('.et_pb_text_4').screenshot({path:path.join(output,'nightlife-'+width+'-shortlist.png')});
+    }
+   }
    const planning=page.locator('[data-ktk-contextual-links]');
    if(['/stagshens/','/bachelor-party-organisers-krakow/','/hen-do-ideas-abroad/','/krakow-hen-party-reviews/','/best-pub-crawls-in-europe/'].includes(route))check(name+' expected contextual block exists',await planning.count()===1);
    if(await planning.count()){

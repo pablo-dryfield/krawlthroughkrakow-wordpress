@@ -1,0 +1,17 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {loadNightlifeEditorial,reviseNightlifeEditorial} from '../nightlife-editorial.mjs';
+
+test('the current source-bound hub review loads from tracked editorial HTML',async()=>{
+ const revision=await loadNightlifeEditorial();
+ assert.equal(revision.key,'krakow-nightlife');assert.equal(revision.reviewedOn,'2026-11-13');
+ assert.equal(revision.sourceSha256,'e83fbda3b261310970c1b2755f11237de8ff9e10b8df328c18d5dcdf193a081e');
+ assert.equal((revision.markup.match(/<template /g)||[]).length,9);
+});
+test('unrelated pages and the medical hold do not even access a DOM',()=>{
+ for(const key of ['post-hostel-hangover-cure','post-krakow-nightclubs','toString',''])assert.deepEqual(reviseNightlifeEditorial({key}),[]);
+});
+test('missing or stale source identity is rejected before accessing a DOM',async()=>{
+ const original=await loadNightlifeEditorial();
+ for(const revision of [undefined,{}, {...original,key:'other'}, {...original,sourceSha256:'0'.repeat(64)}, {...original,reviewedOn:'2020-01-01'}])assert.throws(()=>reviseNightlifeEditorial({key:'krakow-nightlife',revision}),/source identity/);
+});
