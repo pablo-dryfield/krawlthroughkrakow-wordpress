@@ -162,18 +162,22 @@
     e.addEventListener('click', activate); e.addEventListener('keydown', activate);
   });
 
-  document.querySelectorAll('.et_pb_toggle').forEach(toggle => {
+  document.querySelectorAll('.et_pb_toggle').forEach((toggle,index) => {
     const title = toggle.querySelector('.et_pb_toggle_title'), content = toggle.querySelector('.et_pb_toggle_content');
     if (!title || !content) return;
-    title.setAttribute('role', 'button'); title.tabIndex = 0;
-    const setOpen = open => { toggle.classList.toggle('et_pb_toggle_open', open); toggle.classList.toggle('et_pb_toggle_close', !open); title.setAttribute('aria-expanded', String(open)); content.style.display = open ? 'block' : 'none'; };
+    const button=create('button','ktk-toggle-button');button.type='button';
+    button.append(...title.childNodes);title.append(button);
+    title.removeAttribute('role');title.removeAttribute('tabindex');
+    if(!content.id)content.id=`ktk-toggle-panel-${index}`;
+    button.setAttribute('aria-controls',content.id);
+    const setOpen = open => { toggle.classList.toggle('et_pb_toggle_open', open); toggle.classList.toggle('et_pb_toggle_close', !open); button.setAttribute('aria-expanded', String(open)); content.style.display = open ? 'block' : 'none'; };
     setOpen(toggle.classList.contains('et_pb_toggle_open'));
     const activate = () => {
-      const open = title.getAttribute('aria-expanded') !== 'true';
-      if (open) toggle.closest('.et_pb_accordion')?.querySelectorAll('.et_pb_toggle').forEach(other => { if (other !== toggle) { other.classList.remove('et_pb_toggle_open'); other.classList.add('et_pb_toggle_close'); other.querySelector('.et_pb_toggle_title')?.setAttribute('aria-expanded', 'false'); const box = other.querySelector('.et_pb_toggle_content'); if (box) box.style.display = 'none'; } });
+      const open = button.getAttribute('aria-expanded') !== 'true';
+      if (open) toggle.closest('.et_pb_accordion')?.querySelectorAll('.et_pb_toggle').forEach(other => { if (other !== toggle) { other.classList.remove('et_pb_toggle_open'); other.classList.add('et_pb_toggle_close'); other.querySelector('.ktk-toggle-button')?.setAttribute('aria-expanded', 'false'); const box = other.querySelector('.et_pb_toggle_content'); if (box) box.style.display = 'none'; } });
       setOpen(open);
     };
-    title.addEventListener('click', activate); title.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
+    title.addEventListener('click', activate);
   });
 
   document.querySelectorAll('.et_pb_salvattore_content[data-columns]').forEach(grid => {

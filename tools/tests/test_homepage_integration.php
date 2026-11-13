@@ -141,9 +141,13 @@ $production_divi_late_css = <<<'HTML'
         </script>
 HTML;
 ktk_test_check( '' === ktk_homepage_filter_hook_html( $production_divi_late_css ), 'The production Divi late-CSS loader must not dereference its removed style handle' );
+$archive_divi_late_css = str_replace( '278\\/et-divi-dynamic-278-late.css', 'taxonomy\\/category\\/51\\/et-divi-dynamic-late.css', $production_divi_late_css );
+ktk_test_check( $archive_divi_late_css !== $production_divi_late_css && '' === ktk_homepage_filter_hook_html( $archive_divi_late_css ), 'Observed archive variant must not dereference the removed style handle' );
 foreach ( array(
     str_replace( '</script>', 'window.keepOtherIntegration = true;</script>', $production_divi_late_css ),
     str_replace( 'et-divi-dynamic-278-late.css', 'unrelated.css', $production_divi_late_css ),
+    str_replace( 'taxonomy\\/category\\/51', 'taxonomy\\/unknown\\/51', $archive_divi_late_css ),
+    str_replace( '</script>', 'window.keepArchiveIntegration = true;</script>', $archive_divi_late_css ),
     '<script>document.querySelector("#other-style").parentNode; window.marker = "et-dynamic-late-css";</script>',
 ) as $unrelated ) {
     ktk_test_check( $unrelated === ktk_homepage_filter_hook_html( $unrelated ), 'Divi late-CSS cleanup removed an unrelated or mixed script' );
@@ -228,7 +232,9 @@ foreach ( $review_links as $index => $anchor ) {
     ktk_test_check( false !== strpos( $anchor->textContent, (string) (float) $review['rating'] . '/5' ), 'Review row must show the checked rating without zero decimals' );
     $count_label = empty( $review['count'] ) ? 'Read reviews' : $review['count'] . ' reviews';
     ktk_test_check( false !== strpos( $anchor->textContent, $count_label ), 'Review row must use the checked count or honest fallback' );
-    ktk_test_check( false !== strpos( $anchor->getAttribute( 'aria-label' ), $review['name'] ), 'Compact review links must retain an accessible platform name' );
+    ktk_test_check( ! $anchor->hasAttribute( 'aria-label' ) && ! $anchor->hasAttribute( 'aria-labelledby' ), 'Review names must use their complete visible platform/rating/count, not an overriding label' );
+    $review_hint = $xpath->query( './/span[@id="ktk-review-new-tab-note"]', $review_rows->item( 0 ) );
+    ktk_test_check( 'ktk-review-new-tab-note' === $anchor->getAttribute( 'aria-describedby' ) && 1 === $review_hint->length && 'Opens in a new tab' === $review_hint->item( 0 )->textContent, 'Each review link needs the real shared new-tab description' );
     $logos = $xpath->query( './/span[@class="ktk-hero-review-logo"]/img', $anchor );
     ktk_test_check( 1 === $logos->length, 'Each platform must have one local logo' );
     $logo = $logos->item( 0 );

@@ -8,6 +8,13 @@
 - Compiled deployable assets are `assets/storefront.js`, `assets/storefront.css`, and the bundled font files.
 - OmniLodge is a separate application at `C:\Users\pjcam\Documents\Projects\omni-lodge`. Do not deploy OmniLodge unless the user explicitly requests it.
 
+## Accessibility Review Started (2026-11-13, Staging Only)
+
+- NYE/menu PR9 finalf9fd591 required CI43337265185 passed both gates, merged `a1a2f6b89f1bd516172a31642afcd78266df42c3`; exact feature/merge trees verified before own feature branch cleanup. All task PHP preview/test/publisher sessions from that batch are CLOSED, including33117/19208/32014; no active process may be assumed from historical notes below.
+- Current branch `codex/staging-accessibility-review`, basea1a2f6b. Before edits, full tracked-source archive `deploy-backups/seo-accessibility-before-20261113.zip`,2956 entries independently verified against current files, SHA256 `dcc899eb30b971e6cf0da877c273ca8abc78d5d657056d8d7103f23175aaa6ec`. Website remains staging-only. No new application payload deployment yet.
+- Preparing automated WCAG-oriented checks plus actual keyboard/zoom tasks; not a full conformance certificate. Verified official GitHub and npm current axe-core4.14.0 (5Oct2026), exact dev-only dependency; never import it into application bundles. DevTools and Windows Sky work, but use separate browser profiles; preserve user tabs/auth and do not copy tokens.
+- Two current owner questions pending: Food Tour10 vs13-14 tastings and Halloween past-event/next-campaign treatment. Do not guess or update OmniLodge product configuration; only M01 reporting was separately authorized there. Existing public catalog's18 copy/seasonal holds remain documented.
+
 ## SEO Cache And Native Google Review (2026-11-13)
 
 - Latest final verification: owner confirmed staging-prefix purge. NYE/menu origin4320/4320; normal4320/4320 with329 MISS/22 warmed HIT, repeat4320/4320 with all351 HIT, zero errors/retries. Local/origin/normal browser110/110 each; isolated attribution31/31 includes repaired NYE article link. Discovery216/216; homepage assets/canonical/noindex pass all three normal/repeat variants. Homepage232 assets-only publisher completed, saved WP posts/settings not rewritten; checkpoint `ktk-homepage-shortcode-staging-20261113-001204.zip` SHA256 `8562592f6d8923d3bc7bed0f7c1fe2fdf906fd00d6279d7063dc212f9052a54c`. Old session32014 is CLOSED. Native PHP previews33117/19208 can close after source closeout. Website PR9 source6ed9196/required CI43336100007 passed; final documentation/cohort tooling follow-up not yet committed/merged.
