@@ -164,6 +164,9 @@ No traffic uplift is inferred from correcting the former top100-derived totals.
 The [full-precision summary follow-up](FULL-PRECISION-SUMMARIES.md) now retains
 independent exact28/90/180/365 property summaries and supported prior-year28/90
 windows, retrieved read-only13 November. Original rounded UI exports remain.
+The [country/device follow-up](COUNTRY-DEVICE-FOLLOWUP.md) reconciles both
+dimensions with independent totals in all four windows and records priority/
+translation limits. No raw visitor URL or account credentials are published.
 
 M02 remains partial: full-precision detail exports, query/page intent cohorts
 and future retained-history policy remain. No BigQuery/account storage

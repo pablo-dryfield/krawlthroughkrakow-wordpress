@@ -1,10 +1,10 @@
 {
   "capturedSource": "production-source-rendered-1920.html",
-  "builtAt": "2026-11-13T12:49:12.116Z",
+  "builtAt": "2026-11-13T18:13:04.589Z",
   "bodyClass": "home wp-singular page-template-default page page-id-278 custom-background wp-theme-Divi et_pb_button_helper_class et_fullwidth_nav et_fullwidth_secondary_nav et_non_fixed_nav et_show_nav et_primary_nav_dropdown_animation_slide et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_footer_columns1 et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db",
   "title": "Krawl Through Krakow | Best Pub Crawl in Krakow",
   "description": "",
-  "htmlBytes": 83138,
+  "htmlBytes": 82232,
   "cssBytes": 352718,
   "files": {
     "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/900/italic.woff2": {
@@ -1082,6 +1082,38 @@
       "previousLoading": null,
       "previousPriority": null,
       "loading": "lazy"
+    }
+  ],
+  "iconSizingRevisions": [
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/i6agsskidpgwcluwywc6_compressed_compressed.webp",
+      "previous": "(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) and (max-width: 980px) 980px, (min-width: 981px) and (max-width: 1280px) 1280px, (min-width: 1281px) 2000px, 100vw",
+      "sizes": "(max-width: 980px) 40vw, 12vw"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/jgqte2id3waqv2vs8edd_compressed_compressed.webp",
+      "previous": "(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) and (max-width: 980px) 980px, (min-width: 981px) and (max-width: 1280px) 1280px, (min-width: 1281px) 2000px, 100vw",
+      "sizes": "(max-width: 980px) 40vw, 12vw"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ciaiu30657qcru0sdnnb_compressed_compressed.webp",
+      "previous": "(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) and (max-width: 980px) 980px, (min-width: 981px) and (max-width: 1280px) 1280px, (min-width: 1281px) 2000px, 100vw",
+      "sizes": "(max-width: 980px) 40vw, 12vw"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ppygtlcm5nb6j4lsr251_compressed_compressed.webp",
+      "previous": "(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) and (max-width: 980px) 980px, (min-width: 981px) and (max-width: 1280px) 1280px, (min-width: 1281px) 2000px, 100vw",
+      "sizes": "(max-width: 980px) 40vw, 12vw"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ccz58hmwdrzaaktxvokp_compressed_compressed.webp",
+      "previous": "(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) and (max-width: 980px) 980px, (min-width: 981px) and (max-width: 1280px) 1280px, (min-width: 1281px) 2000px, 100vw",
+      "sizes": "(max-width: 980px) 40vw, 12vw"
+    },
+    {
+      "src": "https://krawlthroughkrakow.com/wp-content/uploads/2025/04/ygkzrcl8zu8ybudwpmys_compressed_compressed.webp",
+      "previous": "(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) and (max-width: 980px) 980px, (min-width: 981px) and (max-width: 1280px) 1280px, (min-width: 1281px) 2000px, 100vw",
+      "sizes": "(max-width: 980px) 40vw, 12vw"
     }
   ],
   "accessibilityRevisions": [
