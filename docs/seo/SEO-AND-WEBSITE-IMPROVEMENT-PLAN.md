@@ -1,9 +1,14 @@
 # Krawl Through Krakow: SEO and Website Improvement Plan
 
 Created: 2026-11-07, Europe/Warsaw  
-Status: Staging-only implementation; metadata and discovery foundations verified, public storefront HTML in progress
+Status: Staging-only implementation; see the live roadmap for current verified batches
 
 **Progress dashboard:** [ROADMAP.md](ROADMAP.md) shows every workstream, delivered milestones, current work and remaining dependencies. The detailed acceptance criteria below remain authoritative; an unchecked ticket can have partial staging work completed.
+
+Evidence tables and reporting limitations below describe the original7 November
+baseline, not the latest delivery state. M01 reporting has since been completed;
+the dated evidence and roadmap record subsequent staging changes and remaining
+gates. Preserve the original baseline when comparing later measurements.
 
 Goal: More qualified organic visitors, more completed direct bookings, and a clearer, faster, reliable website.
 

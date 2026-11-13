@@ -71,4 +71,55 @@ check(null===KTK_Storefront::public_html_data(),'Outage leaves existing client f
 $fallback=KTK_Storefront_Public_Content::resolve(array('slug'=>'bubble-football-43','config'=>array()));
 check(str_contains($fallback['description'],'Bubble Football') && count($fallback['gallery'])===3,'Existing frontend fallback is shared with PHP');
 check(''===KTK_Storefront_Public_Content::render(null),'Missing data is not rendered');
+$food = array('id'=>48,'slug'=>'food-tour-krakow-48','name'=>'Food Tour Krakow','config'=>array('content'=>array('highlights'=>array('13-14 Polish food tastings'))));
+check(str_contains(KTK_Storefront_Public_Content::resolve($food)['summary'],'13-14 Polish food tastings'),'Confirmed tasting count fills missing Food Tour summary');
+$food['config']['content']['summary']='Current configured summary';
+check(KTK_Storefront_Public_Content::resolve($food)['summary']==='Current configured summary','Existing configured Food Tour summary has precedence');
+$halloween = array('id'=>51,'slug'=>'halloween-pub-crawl-51','name'=>'Halloween Pub Crawl','price'=>array('amount'=>135,'currency'=>'PLN'),
+    'config'=>array('availability'=>array('dateMode'=>'allowed_dates','allowedDates'=>array('2026-10-29','2026-10-30','2026-10-31')),
+        'content'=>array('description'=>'Original upcoming campaign','highlights'=>array('Original inclusion'))));
+foreach (array('2026-10-28','2026-10-31','invalid') as $day) {
+    check(null===KTK_Storefront_Public_Content::past_campaign($halloween,$day),'Past notice is not premature or based on an invalid date');
+}
+foreach (array('2026-11-01','2026-11-13') as $day) {
+    check(str_contains(KTK_Storefront_Public_Content::past_campaign($halloween,$day)['nextDates'],'to be announced'),'Completed confirmed campaign has no invented future date');
+}
+foreach (array(
+    array('dateMode'=>'fixed','fixedDate'=>'2027-10-31'),
+    array('allowedDates'=>array('2027-10-29','2027-10-30','2027-10-31')),
+    array('allowedDates'=>array('2026-10-29','2026-10-30','2026-10-31','2027-10-31')),
+    array('allowedDates'=>array()),
+    array('dateOverrides'=>array(array('date'=>'2026-11-20','mode'=>'available'))),
+    array('dateOverrides'=>'invalid')
+) as $change) {
+    $future=$halloween;$future['config']['availability']=array_merge($future['config']['availability'],$change);
+    check(null===KTK_Storefront_Public_Content::past_campaign($future,'2026-11-13'),'New or unknown campaign configuration is not blocked by old editorial data');
+}
+foreach (array(array('date'=>'2026-11-20','mode'=>'blocked'),array('date'=>'2026-11-20','mode'=>'closed'),array('date'=>'2026-11-20','enabled'=>false)) as $override) {
+    $closed=$halloween;$closed['config']['availability']['dateOverrides']=array($override);
+    check(null!==KTK_Storefront_Public_Content::past_campaign($closed,'2026-11-13'),'Disabled/closed override does not reopen past event');
+}
+$wrong=$halloween;$wrong['id']=52;
+check(null===KTK_Storefront_Public_Content::past_campaign($wrong,'2026-11-13'),'Wrong product identity never receives campaign notice');
+$html=KTK_Storefront_Public_Content::render(array('kind'=>'product','product'=>$halloween));
+check(str_contains($html,'Halloweekend 2026 has finished') && str_contains($html,'Next Halloween dates: to be announced.'),'Public past-event message survives without JavaScript');
+check(!str_contains($html,'PLN 135.00') && !str_contains($html,'Original upcoming campaign'),'Old price and upcoming promises are not presented as current');
+check(str_contains($html,'Original inclusion') && str_contains($html,'/staging/store2/pub-crawl-28/'),'Historical details retained with a native regular-crawl alternative');
+$html=KTK_Storefront_Public_Content::render(array('kind'=>'catalog','products'=>array($halloween)));
+check(str_contains($html,'Past event - next dates TBA') && !str_contains($html,'PLN 135.00'),'Catalogue retains historical URL without a current price');
+
+function absint($value) { return abs((int)$value); }
+function wp_list_pluck($items,$key) { return array_column($items,$key); }
+function add_query_arg($key,$value,$url) { return $url.'?'.http_build_query(array($key=>$value)); }
+$metadata=array('product'=>$halloween,'canonical'=>'https://krawlthroughkrakow.com/staging/store2/halloween-pub-crawl-51/',
+    'description'=>'Past event. Next dates TBA.','title'=>'Halloween Pub Crawl','images'=>array(),'image'=>array());
+$schema_method=new ReflectionMethod('KTK_Storefront','product_schema');
+$schema=$schema_method->invoke(null,$metadata,'Halloween Pub Crawl');
+check(count($schema['@graph'])===1 && $schema['@graph'][0]['@type']==='WebPage','Past event emits WebPage, not an active Product Offer');
+check(!str_contains(json_encode($schema),'InStock') && !str_contains(json_encode($schema),'mainEntity'),'Past page schema has no current stock claim or dangling product reference');
+$GLOBALS['home']=$GLOBALS['site']='https://krawlthroughkrakow.com/';
+$original_schema=$schema_method->invoke(null,$metadata,'Halloween Pub Crawl');
+check(count($original_schema['@graph'])===2 && isset($original_schema['@graph'][1]['offers']),'Existing non-staging schema behavior remains untouched');
+$GLOBALS['home']=$GLOBALS['site']='https://krawlthroughkrakow.com/staging/';
+
 echo "Public storefront contracts: $checks/$checks passed\n";

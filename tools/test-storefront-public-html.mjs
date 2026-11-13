@@ -64,7 +64,12 @@ try{
       check(name+' one final heading after handoff',facts.h1.length===1&&(!product||facts.h1[0]===product.name),facts.h1);
       check(name+' no duplicate/hidden public copy',await page.locator('#ktk-storefront-public-content').count()===0);
       check(name+' no horizontal clipping',facts.scroll<=width+1&&!facts.overflows.length,facts.overflows);
-      if(product)check(name+' booking configurator retained',await page.locator('#build-your-booking .ktk-configurator').count()===1);
+      if(product){
+        const content=getProductContent(product);
+        check(name+' correct current booking or past-event state',content.pastCampaign
+          ?await page.locator('.ktk-past-campaign').count()===1&&await page.locator('.ktk-configurator').count()===0
+          :await page.locator('#build-your-booking .ktk-configurator').count()===1);
+      }
       else check(name+' native linked product titles',await page.locator('.ktk-product-card h3 a').count()===input.products.length);
     }
     await page.goto(base);await page.locator('.ktk-product-card h3 a').first().waitFor();

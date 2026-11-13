@@ -1011,21 +1011,24 @@ function Catalog({ navigate }) {
           <h2 id="ktk-catalog-title">Choose the energy</h2>
         </div>
         <div className="ktk-product-grid">
-          {state.products.map((product, index) => (
+          {state.products.map((product, index) => {
+            const pastCampaign = getProductContent(product).pastCampaign;
+            return (
             <article className="ktk-product-card" key={product.id}>
               <ProductCardMedia product={product} index={index} />
               <div className="ktk-product-card__body">
                 <p>{product.productType?.name || 'Experience'}</p>
                 <h3><StorefrontLink path={product.slug} navigate={navigate}>{product.name}</StorefrontLink></h3>
                 <div className="ktk-product-card__footer">
-                  <strong>From {money.format(product.price.amount)}</strong>
+                  <strong>{pastCampaign ? 'Past event - next dates TBA' : `From ${money.format(product.price.amount)}`}</strong>
                   <StorefrontLink path={product.slug} navigate={navigate} aria-label={`View ${product.name}`}>
                     View <span>{'\u2197'}</span>
                   </StorefrontLink>
                 </div>
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
       </section>
     </main>
@@ -1166,11 +1169,11 @@ function ProductDetail({ slug, navigate, addToCart, cart, contact, setContact })
           <h1>{product.name}</h1>
           <p>{content.summary}</p>
         </div>
-        <div className="ktk-detail__starting-price">
+        {!content.pastCampaign && <div className="ktk-detail__starting-price">
           <span>From</span>
           <strong>{money.format(basePrice)}</strong>
           <small>per person</small>
-        </div>
+        </div>}
       </header>
 
       <div className="ktk-detail__layout">
@@ -1225,7 +1228,7 @@ function ProductDetail({ slug, navigate, addToCart, cart, contact, setContact })
 
           {content.highlights.length > 0 && (
             <section className="ktk-inclusions">
-              <p className="ktk-eyebrow ktk-inclusions__heading">Inclusions</p>
+              <p className="ktk-eyebrow ktk-inclusions__heading">{content.pastCampaign ? `${content.pastCampaign.lastDates[0].slice(0, 4)} inclusions` : 'Inclusions'}</p>
               <div className="ktk-highlights">
                 {content.highlights.map((highlight, index) => (
                   <article key={highlight}>
@@ -1241,7 +1244,7 @@ function ProductDetail({ slug, navigate, addToCart, cart, contact, setContact })
             <section className="ktk-practical-info" aria-label="Important product information">
               {content.meetingPoint && (
                 <div className="ktk-practical-info__section ktk-practical-info__section--meeting">
-                  <p className="ktk-eyebrow">Meeting point</p>
+                  <p className="ktk-eyebrow">{content.pastCampaign ? `${content.pastCampaign.lastDates[0].slice(0, 4)} meeting point` : 'Meeting point'}</p>
                   {content.meetingPoint.name && <h2>{content.meetingPoint.name}</h2>}
                   {content.meetingPoint.address && <p>{content.meetingPoint.address}</p>}
                   {content.meetingPoint.instructions && (
@@ -1294,7 +1297,16 @@ function ProductDetail({ slug, navigate, addToCart, cart, contact, setContact })
               </details>
             </section>
           )}
-        </div>        <aside id="build-your-booking" className="ktk-booking" aria-label="Configure this experience">
+        </div>
+        {content.pastCampaign ? (
+          <aside className="ktk-public-booking ktk-past-campaign" aria-label="Past event">
+            <h2>{content.pastCampaign.label}</h2>
+            <p>{content.pastCampaign.nextDates}</p>
+            <StorefrontLink className="ktk-commerce__primary" path="pub-crawl-28" navigate={navigate}>
+              <span>View regular Pub Crawl</span><span aria-hidden="true">{'\u2197'}</span>
+            </StorefrontLink>
+          </aside>
+        ) : <aside id="build-your-booking" className="ktk-booking" aria-label="Configure this experience">
           <ProductConfigurator
             product={product}
             initialItem={[...cart].reverse().find(item => Number(item.productId) === Number(product.id)) || null}
@@ -1337,7 +1349,7 @@ function ProductDetail({ slug, navigate, addToCart, cart, contact, setContact })
             onJourneyEvent={trackJourney}
             onAvailabilityRedirect={(availability) => followAvailabilityRedirect(availability, navigate)}
           />
-        </aside>
+        </aside>}
       </div>
     </main>
   );

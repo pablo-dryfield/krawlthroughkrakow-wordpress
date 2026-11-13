@@ -8,6 +8,12 @@
 - Compiled deployable assets are `assets/storefront.js`, `assets/storefront.css`, and the bundled font files.
 - OmniLodge is a separate application at `C:\Users\pjcam\Documents\Projects\omni-lodge`. Do not deploy OmniLodge unless the user explicitly requests it.
 
+## Confirmed Offer Follow-up (2026-11-13, Staging Only)
+
+- PR11 final786156d required CI43346833381 passed both gates; merged `eb82911e122f8aca64272adc4cd71619c9870e4b`, exact trees matched; own branch removed, one root worktree. Website production unchanged. New branch `codex/staging-confirmed-offers`; pre-edit61-entry independently verified archive `storefront-confirmed-offers-before-20261113.zip`, SHA256 `ec71cf13c7d91c7a946e653db271cf70f3ce7d9d3aa60950eeeacc52bf263fd5`.
+- Owner confirms Food Tour13-14 tastings; its incorrect10 is an unused upstream card stat, not a current rendered summary. Website shared fallback fills the actually absent summary; upstream stats/config remain untouched. Owner confirms Halloween URL retained as past event/next dates TBA. Shared JSON and PHP/client notice require product51/exact2026 dates/past Warsaw day, release on newly configured campaign or available override; no invented dates or shared availability mutations. Past current-price/configurator becomes a native regular-crawl alternative; historical photos/inclusions/meeting retained and labelled2026. Past metadata uses WebPage, no active Offer/social price/stock; non-staging policy unchanged.
+- Source version2026.11.13.3 is LOCAL ONLY, not deployed yet. Local focused120/PHP70/proxy8/frontend60/Python152/cart18/short-window104 pass; four enhanced local axe views have0 violations with incompletes. Preserve first focused104/120 (CSS uppercase innerText vs exact mixed-case textContent harness error), original screenshots and all earlier release reports. Final payload811/browser176 still running; do not publish until they pass. No OmniLodge/production/account/privacy/pricing/payment updates. All offer source/evidence notes in `docs/seo/confirmed-offers-2026-11-13/README.md`. The earlier requested owner staging-prefix purge remains pending.
+
 ## Storefront Accessibility Follow-up (2026-11-13, Staging Only)
 
 - Corrected full origin HTTP verification now passes692/692 across25 routes/three user agents, exact owned assets and protected production controls (`storefront-origin-current.json`). Normal cache proof remains pending owner purge; do not mistake this cache-busting result for edge verification.

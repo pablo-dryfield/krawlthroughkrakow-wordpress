@@ -20,7 +20,7 @@ MU='/public_html/staging/wp-content/mu-plugins'
 PREFIX='../plugins/ktk-storefront/'
 FILES=tuple(sorted(common.store2.DEPLOY_FILES))
 BASELINE='dc22fa6c03734644ccde3f2ce725f2900151ff61'
-VERSION='2026.11.13.2'
+VERSION='2026.11.13.3'
 
 
 def sha(value): return hashlib.sha256(value).hexdigest()
