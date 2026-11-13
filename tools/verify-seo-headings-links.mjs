@@ -4,6 +4,7 @@ import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {composeCodePage} from './code-page-template.mjs';
+import {fetchCompleteResponse} from './read-only-http.mjs';
 
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
@@ -18,12 +19,10 @@ const payload=JSON.parse(execFileSync('php',['-r',"define('ABSPATH',__DIR__);$a=
 const agents={desktop:'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/154.0.0.0 Safari/537.36',
  android:'Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 Chrome/154.0.0.0 Mobile Safari/537.36',
  ipad:'Mozilla/5.0 (iPad; CPU OS 17_0 like Mac OS X) AppleWebKit/605.1.15 Version/17.0 Mobile/15E148 Safari/604.1'};
-const report={checkedAt:new Date().toISOString(),base,cacheBust:!!bust,checks:[],responses:[],errors:[],mutations:0};
+const report={checkedAt:new Date().toISOString(),base,cacheBust:!!bust,checks:[],responses:[],errors:[],transportRetries:[],mutations:0};
 const check=(name,pass,detail)=>report.checks.push({name,pass:!!pass,detail});
 const digest=bytes=>createHash('sha256').update(bytes).digest('hex');
-const get=async(url,agent,method='GET')=>{
- for(let attempt=0;attempt<3;attempt++)try{return await fetch(url,{redirect:'manual',method,headers:{'User-Agent':agent},signal:AbortSignal.timeout(60000)});}catch(error){if(attempt===2)throw error;}
-};
+const get=(url,agent,method='GET')=>fetchCompleteResponse(url,{redirect:'manual',method,headers:{'User-Agent':agent}}, {onRetry:row=>report.transportRetries.push(row)});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
  const parser=await browser.newPage({javaScriptEnabled:false});await parser.route('**/*',route=>route.abort());
@@ -101,6 +100,6 @@ try{
 }catch(error){report.errors.push(error.stack);}finally{
  await browser.close();report.passed=report.checks.filter(row=>row.pass).length;report.total=report.checks.length;
  await mkdir(path.dirname(output),{recursive:true});await writeFile(output,JSON.stringify(report,null,2)+'\n');
- console.log(JSON.stringify({passed:report.passed,total:report.total,errors:report.errors,failed:report.checks.filter(row=>!row.pass).slice(0,30)},null,2));
+ console.log(JSON.stringify({passed:report.passed,total:report.total,errors:report.errors,transportRetries:report.transportRetries,failed:report.checks.filter(row=>!row.pass).slice(0,30)},null,2));
  if(report.errors.length||report.passed!==report.total)process.exitCode=1;
 }

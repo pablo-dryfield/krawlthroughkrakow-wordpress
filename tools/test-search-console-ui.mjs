@@ -14,7 +14,7 @@ const noop=()=>{};export const useSearchConsoleSites=()=>({data:[{siteUrl:'https
 export const useSeoActionLogs=()=>({data:[],refetch:noop}); export const useInspectSearchConsoleUrl=()=>({});export const useAnalyzeGoogleSerp=()=>({});export const useCreateSeoActionLog=()=>({});
 export function useSearchConsolePerformance(params){const [count,setCount]=useState(1);const key=JSON.stringify(params);useEffect(()=>setCount(1),[key]);window.__requests=(window.__requests||[]);window.__requests.push(params);
  const empty=location.search.includes('empty'); const rows=empty?[]:Array.from({length:count},(_,i)=>({keys:params.dimensions[0]==='page'?['https://krawlthroughkrakow.com/store2/pub-crawl-28/']:params.dimensions.length>1?['krakow pub crawl','https://krawlthroughkrakow.com/store2/pub-crawl-28/']:['krakow pub crawl'],clicks:2,impressions:50,ctr:.04,position:7}));
- return{isSuccess:true,isLoading:false,refetch:noop,hasNextPage:!empty&&count<2,isFetchingNextPage:false,fetchNextPage:()=>setCount(c=>c+1),data:{rows,dimensions:params.dimensions,summary:empty?null:{clicks:9000,impressions:90000,ctr:.1,position:5},summaryAggregation:'byProperty',detailAggregation:params.dimensions.includes('page')?'byPage':'byProperty'}};}`;
+ return{isSuccess:true,isLoading:false,refetch:noop,hasNextPage:!empty&&count<2,isFetchingNextPage:false,fetchNextPage:()=>setCount(c=>c+1),data:{rows,dimensions:params.dimensions,dateCoverage:{historyBoundaryDate:'2025-07-12',startsBeforeHistoryBoundary:location.search.includes('history'),endsInFuture:false},summary:empty?null:{clicks:9000,impressions:90000,ctr:.1,position:5},summaryAggregation:'byProperty',detailAggregation:params.dimensions.includes('page')?'byPage':'byProperty'}};}`;
 const bundle=await build({absWorkingDir:ui,bundle:true,write:false,outfile:'fixture.js',jsx:'automatic',define:{'process.env.NODE_ENV':'"production"'},plugins:[{
  name:'isolated-report-fixture',setup(builder){
   builder.onResolve({filter:/api\/searchConsole$/},()=>({path:'api',namespace:'fixture'}));
@@ -46,7 +46,33 @@ try{
   await page.goto('http://127.0.0.1:'+server.address().port+'/?empty');
   await page.getByText('No summary data returned for these filters and dates.').waitFor();
   check(width+' empty data is not a fake zero or create-page recommendation',await page.getByText('9,000',{exact:true}).count()===0&&await page.getByText(/Investigate query coverage/).count()===0);
+  await page.goto('http://127.0.0.1:'+server.address().port+'/?history');
+  await page.getByText('Date range may be incomplete',{exact:true}).first().waitFor();
+  check(width+' explicit date coverage warning',await page.getByText(/approximate 16-month history boundary/).count()>0);
+  check(width+' incomplete comparison never displays a delta',await page.getByText('No comparison',{exact:true}).count()===4&&await page.getByText('+0.00',{exact:true}).count()===0);
+  check(width+' history notices fit without page overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1&&[...document.querySelectorAll('[role="alert"]')].every(node=>node.getBoundingClientRect().width<=innerWidth)));
+  if(width===390){await page.getByText('Date range may be incomplete',{exact:true}).first().scrollIntoViewIfNeeded();await page.screenshot({path:path.join(output,'history-'+width+'.png')});}
   await context.close();
+ }
+ for(const timezoneId of ['Europe/Warsaw','America/New_York','America/Los_Angeles','Asia/Tokyo']){
+  for(const [instant,start,end,yearStart,previousStart,previousEnd] of [
+   ['2026-11-13T07:59:00Z','2026-10-14','2026-11-10','2025-11-11','2024-11-11','2025-11-10'],
+   ['2026-11-13T08:01:00Z','2026-10-15','2026-11-11','2025-11-12','2024-11-12','2025-11-11']
+  ]){
+   const context=await browser.newContext({viewport:{width:390,height:900},timezoneId});
+   await context.route('**/*',route=>new URL(route.request().url()).hostname==='127.0.0.1'&&route.request().method()==='GET'?route.continue():route.abort());
+   const page=await context.newPage();page.on('pageerror',error=>report.errors.push(error.message));
+   await page.clock.setFixedTime(new Date(instant));
+   await page.goto('http://127.0.0.1:'+server.address().port);
+   await page.getByText('9,000',{exact:true}).first().waitFor();
+   const initial=await page.evaluate(()=>window.__requests[0]);
+   check(timezoneId+' '+instant+' browser preset uses Pacific dates',initial.startDate===start&&initial.endDate===end,initial);
+   await page.getByRole('textbox',{name:'Range',exact:true}).click();
+   await page.getByRole('option',{name:'Last 12 months',exact:true}).click();
+   const requests=await page.evaluate(()=>window.__requests.slice(-8));
+   check(timezoneId+' '+instant+' year comparison uses exact matching calendar periods',requests[0].startDate===yearStart&&requests[0].endDate===end&&requests[1].startDate===previousStart&&requests[1].endDate===previousEnd,requests.slice(0,2));
+   await context.close();
+  }
  }
  check('no browser errors',report.errors.length===0,report.errors);
 }catch(error){report.errors.push(error.stack);}finally{

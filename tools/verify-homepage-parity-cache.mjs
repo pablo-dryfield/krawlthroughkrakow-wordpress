@@ -2,6 +2,9 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 
 const url = 'https://krawlthroughkrakow.com/staging/';
+const output=process.argv.includes('--output')?process.argv[process.argv.indexOf('--output')+1]:'docs/homepage-parity/staging-clean-cache-verification.json';
+try{await readFile(output);throw new Error('Preserve earlier evidence; provide --output');}catch(error){if(error.code!=='ENOENT')throw error;}
+const requestUrl=url+(process.argv.includes('--cache-bust')?'?ktk_media_check='+Date.now():'');
 const files = ['parity.css', 'parity-runtime.css', 'parity.js'];
 const expected = {};
 for (const file of files) expected[file] = createHash('sha256').update(await readFile(`staging/wp-content/mu-plugins/ktk-homepage-assets/${file}`)).digest('hex');
@@ -10,10 +13,10 @@ const agents = {
   android: 'Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Mobile Safari/537.36',
   ipad: 'Mozilla/5.0 (iPad; CPU OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1',
 };
-const report = { url, checkedAt: new Date().toISOString(), expected, devices: [], assets: [], passed: true };
+const report = { url, requestUrl, cacheBusted: requestUrl !== url, checkedAt: new Date().toISOString(), expected, devices: [], assets: [], passed: true };
 const assetUrls = new Map();
 for (const [device, userAgent] of Object.entries(agents)) {
-  const response = await fetch(url, { headers: { 'User-Agent': userAgent }, signal: AbortSignal.timeout(60000) });
+  const response = await fetch(requestUrl, { headers: { 'User-Agent': userAgent }, signal:AbortSignal.timeout(60000) });
   const html = await response.text();
   const assets = Object.fromEntries(files.map(file => {
     const match = html.match(new RegExp(`(?:href|src)=["']([^"']*/ktk-homepage-assets/${file.replace('.', '\\.')}(?:\\?[^"']*)?)["']`));
@@ -35,6 +38,6 @@ for (const [file, href] of assetUrls) {
   report.passed &&= result.passed;
   report.assets.push(result);
 }
-await writeFile('docs/homepage-parity/staging-clean-cache-verification.json', JSON.stringify(report, null, 2));
+await writeFile(output, JSON.stringify(report, null, 2));
 console.log(JSON.stringify(report, null, 2));
 if (!report.passed) process.exitCode = 1;

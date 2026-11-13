@@ -5,6 +5,7 @@ import path from 'node:path';
 import {rewriteBookingLinks} from './booking-destinations.mjs';
 import {preserveHeadingCss,reviseSemanticHeadings} from './semantic-headings.mjs';
 import {rewriteCanonicalLinks} from './canonical-links.mjs';
+import {applyHomepageMediaPolicy} from './homepage-media-policy.mjs';
 
 // Build a local, code-owned snapshot from the read-only production capture.
 const require = createRequire(import.meta.url);
@@ -167,6 +168,7 @@ try {
   data.bookingRevisions=await rewriteBookingLinks(page);
   data.bookingRevisions.push(...await rewriteCanonicalLinks(page));
   data.headingRevisions=await page.evaluate(reviseSemanticHeadings,{key:'homepage',kind:'homepage',title:data.title,route:'/',externalPrimary:true});
+  data.mediaRevisions=await page.evaluate(applyHomepageMediaPolicy);
   data.html=await page.evaluate(()=>document.body.innerHTML);
   data.links=await page.evaluate(()=>[...document.querySelectorAll('a[href],[data-parity-href]')].flatMap(e=>['href','data-parity-href'].filter(attribute=>e.hasAttribute(attribute)).map(attribute=>({attribute,url:e.getAttribute(attribute)}))));
 } finally { await browser.close(); }
@@ -212,5 +214,6 @@ await writeFile(path.join(sourceDir, 'parity-build.json'), JSON.stringify({
   htmlBytes: Buffer.byteLength(data.html), cssBytes: Buffer.byteLength(css),
   files: Object.fromEntries(files),
   bookingRevisions:data.bookingRevisions,
+  mediaRevisions:data.mediaRevisions,
 }, null, 2));
 console.log(JSON.stringify({ htmlBytes: Buffer.byteLength(data.html), cssBytes: Buffer.byteLength(css), assetCount: files.size, title: data.title }));
