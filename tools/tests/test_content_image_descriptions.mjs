@@ -4,8 +4,17 @@ import {mkdtemp,mkdir,writeFile,readFile,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
-import {loadReviewedImageDescriptions} from '../content-image-descriptions.mjs';
+import {loadReviewedImageDescriptions,localizeReviewedImageMarkup} from '../content-image-descriptions.mjs';
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
+
+test('release comparison expands both actual portable asset and home-link tokens',()=>{
+ const base='https://krawlthroughkrakow.com/staging';
+ assert.equal(localizeReviewedImageMarkup('<img src="__KTK_PAGE_ASSETS__media/photo.jpg"><a href="__KTK_HOME_URL__terms/" aria-label="Terms">Terms</a>',base),'<img src="'+base+'/wp-content/mu-plugins/ktk-code-pages-assets/media/photo.jpg"><a href="'+base+'/terms/" aria-label="Terms">Terms</a>');
+});
+test('release localization does not rewrite ordinary external links or attribution',()=>{
+ const original='<a href="https://other.test/photo.jpg?utm_source=retained#photo" aria-label="Source photo">Photo</a>';
+ assert.equal(localizeReviewedImageMarkup(original,'https://krawlthroughkrakow.com/staging'),original);
+});
 
 async function fixture(change=()=>{}){
  const directory=await mkdtemp(path.join(tmpdir(),'ktk-image-review-'));

@@ -4,7 +4,7 @@ import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
 import {fetchCompleteResponse} from './read-only-http.mjs';
-import {loadReviewedImageDescriptions} from './content-image-descriptions.mjs';
+import {loadReviewedImageDescriptions,localizeReviewedImageMarkup} from './content-image-descriptions.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const option=name=>process.argv[process.argv.indexOf(name)+1];
@@ -25,13 +25,14 @@ const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
  const page=await browser.newPage({javaScriptEnabled:false});await page.route('**/*',route=>route.abort());
- const facts=async html=>{
-  await page.setContent(html.replaceAll('__KTK_PAGE_ASSETS__',base+'/wp-content/mu-plugins/ktk-code-pages-assets/').replaceAll('__KTK_BASE__',base));
-  return page.evaluate(origin=>{
-   const main=document.querySelector('#main-content');if(!main)throw Error('Main content required');
+ const facts=html=>{
+  const markup=localizeReviewedImageMarkup(html,base);
+  return page.evaluate(({origin,markup})=>{
+   const doc=new DOMParser().parseFromString(markup,'text/html');
+   const main=doc.querySelector('#main-content');if(!main)throw Error('Main content required');
    const url=value=>new URL(value,origin).href;
    return {images:[...main.querySelectorAll('img')].map(e=>({src:url(e.getAttribute('src')),alt:e.getAttribute('alt')})),links:[...main.querySelectorAll('a[href][aria-label]')].map(e=>({href:url(e.getAttribute('href')),label:e.getAttribute('aria-label')}))};
-  },base+'/');
+  },{origin:base+'/',markup});
  };
  for(const definition of definitions){
   const expected=await facts(await readFile(root+definition.file,'utf8'));

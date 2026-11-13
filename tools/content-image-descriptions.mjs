@@ -3,6 +3,10 @@ import {createHash} from 'node:crypto';
 import path from 'node:path';
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 
+export function localizeReviewedImageMarkup(html,base) {
+ return html.replaceAll('__KTK_PAGE_ASSETS__',base+'/wp-content/mu-plugins/ktk-code-pages-assets/').replaceAll('__KTK_HOME_URL__',base+'/');
+}
+
 export async function loadReviewedImageDescriptions({
  reviewFile=new URL('./content-image-descriptions.json',import.meta.url),
  manifestFile=new URL('../docs/code-pages/full-migration/assets.json',import.meta.url),

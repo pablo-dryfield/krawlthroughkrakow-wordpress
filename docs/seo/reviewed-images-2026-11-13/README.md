@@ -19,13 +19,30 @@ screen-reader, real-device zoom or third-party testing.
 - [x] Accessible names for formerly unnamed photo, partner and map links. Link
   destinations, visible text, original CSS/media, metadata and forms unchanged.
 - [x] Scoped fixes for remaining copied-article contrast and inline-link cues.
-- [x] Build2320/2320; semantic/source preservation371/371; loader12/12;
+- [x] Build2320/2320; semantic/source preservation371/371; loader14/14;
   Python177/177; exact FAQ screenshot comparisons12/12.
 - [x] Stable-source234-view desktop/mobile audit:485 repeated node instances to14,
   all14 confined to the held article;232 clear views. Zero scan/page errors.
   Retain265 incomplete rule groups for manual work, not a conformance claim.
-- [ ] Required source CI and guarded staging deployment.
-- [ ] Origin, normal cached and repeat verification after staging-only purge.
+- [x] Source1636d89 required CI43424850952 passed both jobs. Content2072 hashes
+  and homepage232 assets-only hashes independently verified on staging, saved
+  WordPress state/storefront preserved; content helper removed. Later tooling/docs
+  follow-up requires fresh CI before merge.
+- [x] Origin content5848/5848, keyboard324/324, discovery243/243 and homepage10
+  active asset hashes/current version tokens pass. Initial image comparison has
+  all348 image arrays correct;72 named-link comparisons exposed a test-side
+  unexpanded home-URL token, preserved in `image-attributes-origin.json`.
+  The comparator now expands the actual token, with two explicit regression tests;
+  no application edits were made for that harness issue.
+- [x] Staging-only Cloudflare prefix purge accepted12:36:53.561UTC through MCP.
+- [x] Corrected exact image/named-link comparisons348/348 each on origin, normal
+  and repeat; all348 normal-repeat content/device responses HIT. No application
+  bytes changed for the comparator correction.
+- [x] Full origin, normal and repeat content5848/5848 each; all348 content/device
+  variants HIT on repeat. Homepage three HIT and10 current asset hashes, native
+  keyboard324/324, attribution31/31, discovery216/216 normal/repeat pass.
+- [x] Complete normal-URL234-view browser audit agrees with local:14 held nodes,
+  232 clear views,265 incomplete groups, stable source, zero page/scan errors.
 
 ## Source And Review Method
 
@@ -65,3 +82,18 @@ payments are submitted by these tests.
 First batch PR20 final d6c3ca0 passed required CI43422932990 and merged as a19ed25
 with exact tree equality3a9913239605aae2b4c16a1fe608a35dfdcf8850. Its detached
 reference was stopped/removed; this batch uses its own a19ed25 reference.
+
+## Release Checkpoint
+
+Content backup `ktk-code-pages-staging-20261113-122550.zip`, SHA256
+`6abc6d92c9841e8b54be3f47bb697f29c2fe5134e6cb706f24e6093ca8b79da2`.
+Homepage backup `ktk-homepage-shortcode-staging-20261113-122824.zip`, SHA256
+`b47b0de0ed30a8ca105b17481e22b13ee936b8757df2b14ac1b3272bd07bf405`.
+`pages-publish.json` / `home-publish.json` retain independent checksums/state
+proof; origin/full normal/repeat content reports are in
+`docs/code-pages/full-migration/reviewed-images-*-20261113.json` as they complete.
+The discovery payload did not change and was verified, not redeployed.
+
+Final local Python177 and shared JS54 pass. The visual roadmap was regenerated
+after actual verification, keeping D03 partial. Source review/CI/merge are recorded
+in PR21; GitHub does not deploy. New internal-link audit work is a separate batch.
