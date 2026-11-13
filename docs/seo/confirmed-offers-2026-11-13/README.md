@@ -39,7 +39,7 @@ The past-event schema choice follows Google's requirement for current,
 representative [structured data](https://developers.google.com/search/docs/appearance/structured-data/sd-policies).
 No future Event, price, dates, review rating or stock value is fabricated.
 
-## Verification In Progress
+## Verification
 
 Local focused initial/client checks120/120 across320/390/768/1440, PHP public70/70,
 proxy8/8, frontend60/60 and Python152/152 pass. Four local enhanced Food/Halloween
@@ -55,6 +55,27 @@ from the arrow and removes the default anchor underline. Historical inclusions
 and meeting labels explicitly carry2026. No claim that every lazy thumbnail was
 loaded in a full-page capture is made.
 
-Final payload-bound public matrix and staging delivery/live/cache follow-up remain
-pending. Use the existing12-file staging-only publisher with the verified .2
-previous release; never use the default production storefront publisher.
+Final payload-bound public matrix811/811 and general accessibility176/176 pass.
+The eight sampled normal-height geometry comparisons remain unchanged; screenshot
+bytes differ from the earlier pre-contrast baseline, not a claim of pixel identity.
+
+## Staging Delivery
+
+Version2026.11.13.3 is deployed. Publisher finished01:53:49UTC, independently
+verified all12 owned files/runtime plus unchanged protected staging, production
+and saved state; temporary helpers removed. Backup
+`storefront-public-staging-20261113-015324-982800.zip`, SHA-256
+`53bdf40ba04c4e37516d00db7985e790d72b84ce52ca93170d36b29f56eff5e7`.
+
+Actual origin public HTTP692/692, focused initial/client144/144 (including live
+schema, social metadata, canonical and noindex), general accessibility176/176
+and short-window104/104 pass. Four enhanced origin Food/Halloween views have zero automated violations
+and retain incomplete checks. The inherited blocked-Facebook-provider fbq errors
+are recorded, not hidden or repaired by changing tracking. Actual mobile/desktop
+screenshots inspected, including the clearer historical labels and centred CTA.
+
+Normal edge-cache verification awaits the already requested owner staging-prefix
+purge; origin checks are cache-busting evidence only. No production SEO release
+or OmniLodge configuration change is included. Use the existing12-file staging
+publisher with this verified checkpoint for any scoped follow-up, never the
+default production storefront publisher.
