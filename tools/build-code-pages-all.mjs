@@ -257,11 +257,13 @@ try {
         body_class: data.bodyClass, shell_file: shellFile, main_file: mainFile, css: cssFile, forms: data.forms, ecwid: data.ecwid,
         source_sha256: digest(source), expected_sections: route.expectedSections };
       if(eventPromotion){
+       if(eventPromotion.expired_description){
         const expiredFacts={...schemaFacts,headline:"New Year's Eve in Krakow"};
         const expiredDescription=eventPromotion.expired_description;
         eventPromotion.expired_head={description:expiredDescription,
           metadata:buildCodePageSharing({route:route.route,kind:route.kind,title,description:expiredDescription,inherited:capture.metadata.extra,image:null}),
           schema:buildCodePageSchema({route:route.route,kind:route.kind,description:expiredDescription,facts:expiredFacts,routes:manifest.routes,inherited:capture.metadata.schema})};
+       }
         definition.event_promotion=eventPromotion;
       }
       const seo=productionSeo.get(route.key);

@@ -16,8 +16,8 @@ test('the exact owner-approved noon cutoff is explicit and does not create a new
 });
 
 test('the page policy leaves unrelated keys alone and rejects unknown cutoffs before DOM access',()=>{
- for(const key of ['how-to-join','post-new-years-eve-in-krakow','__proto__',null])assert.equal(prepareNyePromotion({key}),null);
- for(const campaignFacts of [undefined,{}, {nyeDate:'2026-12-31',nyePromotionEndsTimestamp:'1'}])assert.throws(()=>prepareNyePromotion({key:'new-years-eve',campaignFacts}),/cutoff/);
+ for(const key of ['how-to-join','post-krakow-new-years-eve','__proto__',null])assert.equal(prepareNyePromotion({key}),null);
+ for(const key of ['new-years-eve','post-new-years-eve-in-krakow'])for(const campaignFacts of [undefined,{}, {nyeDate:'2026-12-31',nyePromotionEndsTimestamp:'1'}])assert.throws(()=>prepareNyePromotion({key,campaignFacts}),/cutoff/);
 });
 
 test('the shared runtime adds one idempotent bounded block without changing original code',async()=>{
