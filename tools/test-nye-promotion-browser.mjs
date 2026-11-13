@@ -9,17 +9,18 @@ for(const base of [homeBase,pagesBase])if(!['http://127.0.0.1:5184/','http://127
 try{await readFile(path.join(output,'report.json'));throw Error('Preserve prior evidence');}catch(error){if(error.code!=='ENOENT')throw error;}
 await mkdir(output,{recursive:true});
 const facts=campaignTemplateValues(await loadOfferFacts()),cutoff=Number(facts.nyePromotionEndsTimestamp)*1000,local=homeBase.startsWith('http://127.0.0.1:');
-const report={checkedAt:new Date().toISOString(),scope:'Isolated read-only promotion lifecycle. All providers/non-read/commerce requests blocked. Server future/no-JS clock override exists only in loopback preview tools, never public application routes. Not consent/payment/global cache-timing certification.',checks:[],errors:[],blockedWrites:0,commerceAttempts:[],informationNavigations:[],serverFutureTested:local};
+const report={checkedAt:new Date().toISOString(),scope:'Isolated read-only promotion lifecycle. All providers/non-read/commerce requests blocked; native first-party information-page reads allowed. Server future/no-JS clock override exists only in loopback preview tools, never public application routes. Not consent/payment/global cache-timing certification.',checks:[],errors:[],blockedWrites:0,speculativeInformationReads:[],commerceAttempts:[],informationNavigations:[],nativeActivations:[],serverFutureTested:local};
 const check=(name,pass,detail)=>report.checks.push({name,pass:!!pass,detail});
 const browser=await chromium.launch({channel:'chrome',headless:true});
-async function open(route,width,js,epoch,{server=false}={}){
- const base=route?pagesBase:homeBase,url=new URL(route,base),context=await browser.newContext({viewport:{width,height:900},javaScriptEnabled:js,reducedMotion:'reduce'}),navigationProbe={enabled:false};
- if(server){if(!local)throw Error('No public clock override');url.searchParams.set('ktk_preview_epoch',String(epoch/1000));}
+async function open(route,width,js,epoch,{server=false,serverEpoch=epoch}={}){
+ const base=route?pagesBase:homeBase,url=new URL(route,base),context=await browser.newContext({viewport:{width,height:900},javaScriptEnabled:js,reducedMotion:'reduce',serviceWorkers:'block'});
+ if(server){if(!local)throw Error('No public clock override');url.searchParams.set('ktk_preview_epoch',String(serverEpoch/1000));}
  else if(process.argv.includes('--cache-bust'))url.searchParams.set('ktk_promotion_check',Date.now());
- await context.route('**/*',route=>{const r=route.request(),u=new URL(r.url());if(!['GET','HEAD'].includes(r.method())){report.blockedWrites++;return route.abort();}if(/\/(?:store2|wp-json\/ktk-storefront)(?:\/|$)/.test(u.pathname)){report.commerceAttempts.push({method:r.method(),path:u.pathname});return route.abort();}if(navigationProbe.enabled&&r.isNavigationRequest()){report.informationNavigations.push({url:r.url(),method:r.method()});return route.abort();}return u.origin===url.origin?route.continue():route.abort();});
- await context.addInitScript(epoch=>{window.__KTK_FREEZE_CAROUSELS__=true;window.__ktkPromotionTestNow=epoch;Date.now=()=>window.__ktkPromotionTestNow;},epoch);
+ await context.route('**/*',route=>{const r=route.request(),u=new URL(r.url());if(!['GET','HEAD'].includes(r.method())){report.blockedWrites++;return route.abort();}if(/\/(?:store2|wp-json\/ktk-storefront)(?:\/|$)/.test(u.pathname)){report.commerceAttempts.push({method:r.method(),path:u.pathname});return route.abort();}if(u.origin===url.origin&&/\/(?:staging\/)?new-years-eve\/$/.test(u.pathname)){const headers=r.headers(),purpose=headers['sec-purpose']||headers.purpose||'';if(purpose)report.speculativeInformationReads.push({path:u.pathname,purpose});if(r.isNavigationRequest())report.informationNavigations.push({url:r.url(),method:r.method()});}return u.origin===url.origin?route.continue():route.abort();});
+ await context.exposeBinding('__recordPromotionActivation',(_,value)=>report.nativeActivations.push({route,width,...value}));
+ await context.addInitScript(epoch=>{window.__KTK_FREEZE_CAROUSELS__=true;window.__ktkPromotionTestNow=epoch;Date.now=()=>window.__ktkPromotionTestNow;addEventListener('click',event=>{const a=event.target.closest('a[data-ktk-event-link],.ktk-hero-panel--nye a.ktk-hero-cta');if(a)window.__recordPromotionActivation({id:a.dataset.ktkEventLink||'hero',href:a.href,prevented:event.defaultPrevented});});},epoch);
  const page=await context.newPage();page.on('pageerror',error=>report.errors.push({route,width,js,message:error.message}));
- try{await page.goto(url.href,{waitUntil:'load'});await page.evaluate(()=>document.fonts.ready);return {page,context,navigationProbe};}catch(error){await context.close();throw error;}
+ try{await page.goto(url.href,{waitUntil:'load'});await page.evaluate(()=>document.fonts.ready);return {page,context};}catch(error){await context.close();throw error;}
 }
 async function fitText(page,locator,label){
  const result=await locator.evaluate(node=>{
@@ -76,21 +77,31 @@ try{
    check(label+' never revives an expired offer after clock rollback',await page.locator('[data-ktk-event-promotion="nye"][data-ktk-promotion-state="current"]').count()===0);
   }catch(error){report.errors.push({label,message:error.message});}finally{await context.close();}
  }
+ if(local)for(const route of ['', 'new-years-eve/'])for(const width of [320,390,768,1440])for(const epoch of [cutoff-1000,cutoff+1000]){
+  const {page,context}=await open(route,width,true,epoch,{server:true,serverEpoch:cutoff}),label=(route||'home')+' expired server with JS '+width+' client '+epoch;
+  try{await inspect(page,route,label,true);check(label+' server state never revives with a slow browser clock',await page.locator('[data-ktk-event-promotion="nye"][data-ktk-promotion-state="current"]').count()===0);}catch(error){report.errors.push({label,message:error.message});}finally{await context.close();}
+ }
  for(const route of ['', 'new-years-eve/'])for(const width of [320,390,1440]){
-  const {page,context,navigationProbe}=await open(route,width,true,cutoff),label=(route||'home')+' native expired activation '+width;
+  const {page,context}=await open(route,width,true,cutoff),label=(route||'home')+' native expired activation '+width;
   try{
-   navigationProbe.enabled=true;const before=report.informationNavigations.length;
    if(!route){
-    const navigation=page.waitForEvent('requestfailed',{predicate:r=>r.isNavigationRequest()});
-    await page.locator('[data-campaign="nye"] .ktk-hero-cta').click({noWaitAfter:true});await navigation;
-    const nav=report.informationNavigations[before];check(label+' reaches information URL without commerce',report.informationNavigations.length===before+1&&nav?.method==='GET'&&/\/(?:staging\/)?new-years-eve\/$/.test(new URL(nav.url).pathname));
+    const button=page.locator('[data-campaign="nye"] .ktk-hero-cta'),destination=await button.getAttribute('href'),before=report.nativeActivations.length;
+    await button.click();await page.waitForURL(destination,{timeout:10000});
+    check(label+' reaches actual information document with native default',context.pages().length===1&&page.url()===destination&&report.nativeActivations.slice(before).some(a=>a.id==='hero'&&!a.prevented&&a.href===destination));
    }else{
-    await page.evaluate(()=>{window.__promotionActivations=[];addEventListener('click',event=>{const anchor=event.target.closest('a[data-ktk-event-link]');if(anchor)window.__promotionActivations.push({id:anchor.dataset.ktkEventLink,prevented:event.defaultPrevented});});});
-    for(const anchor of await page.locator('a[data-ktk-event-link]').all()){
-     const id=await anchor.getAttribute('data-ktk-event-link');await anchor.click();
-     check(label+' native fragment for control '+id,new URL(page.url()).hash==='#nye-updates'&&await page.evaluate(id=>window.__promotionActivations.some(a=>a.id===id&&!a.prevented),id));
+    const initial=page.url(),ids=await page.locator('a[data-ktk-event-link]').evaluateAll(nodes=>nodes.map(a=>a.dataset.ktkEventLink));
+    if(new URL(initial).search){
+     for(const [index,id]of ids.entries()){
+      if(index){await page.goto(initial,{waitUntil:'load'});await page.evaluate(()=>document.fonts.ready);}
+      const anchor=page.locator('a[data-ktk-event-link="'+id+'"]'),destination=await anchor.getAttribute('href'),start=report.nativeActivations.length;
+      await anchor.click();await page.waitForURL(destination,{timeout:10000});
+      check(label+' actual information reload from query URL for control '+id,page.url()===destination&&report.nativeActivations.slice(start).some(a=>a.id===id&&!a.prevented&&a.href===destination));
+     }
+    }else{
+     const before=report.informationNavigations.length;
+     for(const id of ids){const start=report.nativeActivations.length;await page.locator('a[data-ktk-event-link="'+id+'"]').click();check(label+' native fragment for control '+id,new URL(page.url()).hash==='#nye-updates'&&report.nativeActivations.slice(start).some(a=>a.id===id&&!a.prevented));}
+     check(label+' controls do not start another document navigation',report.informationNavigations.length===before);
     }
-    check(label+' controls do not start another document navigation',report.informationNavigations.length===before);
    }
   }catch(error){report.errors.push({label,message:error.message});}finally{await context.close();}
  }
