@@ -26,6 +26,45 @@ export function validateOfferFacts(data){
 
 export async function loadOfferFacts(){return validateOfferFacts(JSON.parse(await readFile(new URL('./site-offer-facts.json',import.meta.url),'utf8')));}
 
+export function campaignTemplateValues(data){
+ validateOfferFacts(data);
+ if(data.regular.meeting.shortName.split(' ').length!==2)throw Error('Review the two-line hero meeting label before rebuilding');
+ const date=new Date(data.nye.date+'T12:00:00Z'),year=date.getUTCFullYear(),welcomeYear=year+1;
+ const midnight=`${welcomeYear}-01-01T00:00:00+01:00`;
+ const minutes=value=>{const display=offerTime(value);return value.endsWith(':00')?display.replace(' ',':00 '):display;};
+ return {brand:data.operator.name,regularProductId:data.regular.productId,regularSlug:data.regular.slug,
+  regularTime:offerTime(data.regular.startTime),regularMeetingShort:data.regular.meeting.shortName,
+  nyeProductId:data.nye.productId,nyeSlug:data.nye.slug,nyeDate:data.nye.date,
+  nyeDateLabel:new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'Europe/Warsaw'}).format(date),
+  nyeYear:String(year),welcomeYear:String(welcomeYear),nyeEarly:minutes(data.nye.startTimes[0]),nyeLate:minutes(data.nye.startTimes[1]),
+  midnight,midnightTimestamp:String(Date.parse(midnight)/1000)};
+}
+
+export function offerCampaignReviewStatus(data,instant){
+ validateOfferFacts(data);
+ if(!(instant instanceof Date)||!Number.isFinite(instant.getTime()))throw Error('Explicit valid review instant required');
+ const parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Warsaw',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(instant);
+ const part=type=>parts.find(p=>p.type===type).value,localDate=part('year')+'-'+part('month')+'-'+part('day');
+ return {timeZone:'Europe/Warsaw',localDate,eventDate:data.nye.date,state:localDate<data.nye.date?'upcoming':localDate===data.nye.date?'event-date':'review-required',
+  nextDatesConfirmed:false,changesBookingAvailability:false};
+}
+
+const metadataRoutes=['/about-us/how-to-join/','/meeting-point/','/new-years-eve/'];
+export function expandOfferMetadata(data,facts){
+ const values={...offerTemplateValues(facts),...campaignTemplateValues(facts)},result=structuredClone(data);
+ for(const [route,page] of Object.entries(result.pages||{})){
+  if(typeof page.description!=='string')continue;
+ const tokens=[...page.description.matchAll(/\{\{([A-Za-z]+)\}\}/g)];
+  if(tokens.length&&!metadataRoutes.includes(route))throw Error('Offer metadata tokens require an explicit reviewed route');
+  page.description=page.description.replace(/\{\{([A-Za-z]+)\}\}/g,(_,name)=>{
+   if(!['regularTime','meetingShort','lookFor','nyeDateLabel','nyeEarly','nyeLate'].includes(name))throw Error('Unknown offer metadata token: '+name);
+   return name==='nyeEarly'||name==='nyeLate'?offerTime(facts.nye.startTimes[name==='nyeEarly'?0:1]):values[name];
+  });
+  if(/[{}]/.test(page.description))throw Error('Unresolved offer metadata token');
+ }
+ return result;
+}
+
 export function offerTemplateValues(data){
  validateOfferFacts(data);
  return {brand:data.operator.name,since:String(data.operator.since),regularTime:offerTime(data.regular.startTime),openBarHours:String(data.regular.openBarMinutes/60),venueRange:data.regular.venueCount.minimum+'-'+data.regular.venueCount.maximum,

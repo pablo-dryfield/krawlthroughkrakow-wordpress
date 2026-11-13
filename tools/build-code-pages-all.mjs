@@ -21,6 +21,7 @@ import {loadMusicEditorial,reviseMusicEditorial} from './music-editorial.mjs';
 import {loadVenueEditorial,reviseVenueEditorial} from './venue-editorial.mjs';
 import {codePageTitle,codePageHeadDescription,loadSharingImagePolicy,buildCodePageSharing} from './code-page-sharing.mjs';
 import {loadOfferPageRevisions,reviseOfferPages} from './offer-pages-editorial.mjs';
+import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
 const require = createRequire(import.meta.url);
 const { chromium } = require(path.join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const root = path.resolve('.');
@@ -36,6 +37,7 @@ const jazzRevision=await loadJazzEditorial();
 const musicRevisions=await loadMusicEditorial();
 const venueRevisions=await loadVenueEditorial();
 const offerPageRevisions=await loadOfferPageRevisions();
+const campaignFacts=campaignTemplateValues(await loadOfferFacts());
 validateSeoRoutes(manifest.routes.map(row => row.route));
 const reviewCounts=JSON.parse(execFileSync('php',['-r',"define('ABSPATH', __DIR__); require $argv[1]; echo json_encode(array_column(ktk_homepage_review_sources(), 'count', 'name'));",path.join(root,'staging/wp-content/mu-plugins/ktk-homepage-assets/reviews.php')],{encoding:'utf8'}));
 const seoBaseline=JSON.parse(await readFile('docs/code-pages/production-readiness/production-seo-baseline.json','utf8'));
@@ -215,7 +217,7 @@ try {
           }
         });
       });
-      const contentRevisions=await page.evaluate(reviseCodePageContent,{key:route.key,reviewCounts});
+      const contentRevisions=await page.evaluate(reviseCodePageContent,{key:route.key,reviewCounts,campaignFacts});
       contentRevisions.push(...await page.evaluate(reviseNightlifeEditorial,{key:route.key,revision:nightlifeRevision}));
       contentRevisions.push(...await page.evaluate(reviseBudgetEditorial,{key:route.key,revision:budgetRevision}));
       contentRevisions.push(...await page.evaluate(reviseJazzEditorial,{key:route.key,revision:jazzRevision}));
