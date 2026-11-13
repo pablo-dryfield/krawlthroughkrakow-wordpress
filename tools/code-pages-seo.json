@@ -8,15 +8,15 @@
     },
     "/about-us/how-to-join/": {
       "role": "Practical joining and booking instructions",
-      "description": "Join Krawl Through Krakow's pub crawl at 9 PM every night. Book your ticket online and meet the guides at Adam Statue in Krakow's main market square."
+      "description": "Book the regular Krakow pub crawl, starting at {{regularTime}} by {{meetingShort}}. Find joining instructions, return-guest guidance and separate New Year's Eve details."
     },
     "/meeting-point/": {
       "role": "Regular crawl meeting instructions, not NYE",
-      "description": "Find Krawl Through Krakow at Adam Statue in the main market square at 9 PM. Look for the guides with the big pink Pub Krawl sign."
+      "description": "Find the regular Krakow pub crawl at {{meetingShort}} at {{regularTime}}. Look for the {{lookFor}}; New Year's Eve has separate times and meeting-point updates."
     },
     "/new-years-eve/": {
       "role": "Current NYE pub crawl sales page; product 32 handles booking",
-      "description": "Celebrate New Year's Eve in Krakow with our pub crawl on 31 December 2026. Choose the 5 PM or 7:30 PM group; meeting points are to be confirmed."
+      "description": "Celebrate New Year's Eve in Krakow with our pub crawl on {{nyeDateLabel}}. Choose the {{nyeEarly}} or {{nyeLate}} group; meeting points are to be confirmed."
     },
     "/krakow-nightlife/": {
       "role": "Nightlife advice hub, not a duplicate booking page",

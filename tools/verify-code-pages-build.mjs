@@ -15,6 +15,7 @@ import {loadMusicEditorial,reviseMusicEditorial} from './music-editorial.mjs';
 import {loadVenueEditorial,reviseVenueEditorial} from './venue-editorial.mjs';
 import {codePageTitle,codePageHeadDescription,loadSharingImagePolicy,buildCodePageSharing} from './code-page-sharing.mjs';
 import {loadOfferPageRevisions,reviseOfferPages} from './offer-pages-editorial.mjs';
+import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const base='staging/wp-content/mu-plugins/ktk-code-pages-assets/';
@@ -25,6 +26,7 @@ const jazzRevision=await loadJazzEditorial();
 const musicRevisions=await loadMusicEditorial();
 const venueRevisions=await loadVenueEditorial();
 const offerPageRevisions=await loadOfferPageRevisions();
+const campaignFacts=campaignTemplateValues(await loadOfferFacts());
 const imageReview=JSON.parse(await readFile('tools/content-image-descriptions.json','utf8'));
 const sharingImage=await loadSharingImagePolicy({expectedManifestSha256:imageReview.assetManifestSha256});
 validateSeoRoutes(manifest.routes.map(row=>row.route));
@@ -37,7 +39,7 @@ const page=await browser.newPage({javaScriptEnabled:false});await page.route('**
 async function facts(html,revision){
  await page.setContent(html);
  if(revision){
-  await page.evaluate(reviseCodePageContent,{key:revision.key,reviewCounts});
+  await page.evaluate(reviseCodePageContent,{key:revision.key,reviewCounts,campaignFacts});
   await page.evaluate(reviseNightlifeEditorial,{key:revision.key,revision:nightlifeRevision});
   await page.evaluate(reviseBudgetEditorial,{key:revision.key,revision:budgetRevision});
   await page.evaluate(reviseJazzEditorial,{key:revision.key,revision:jazzRevision});

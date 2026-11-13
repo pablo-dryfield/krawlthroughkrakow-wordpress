@@ -1,5 +1,5 @@
 // Executed in a parsed source DOM. Keep captures immutable and assert every edited source contract.
-export function reviseCodePageContent({key,reviewCounts}) {
+export function reviseCodePageContent({key,reviewCounts,campaignFacts}) {
  const root=document.querySelector('#main-content');
  const evidence=[];
  const one=selector=>{const matches=root.querySelectorAll(selector);if(matches.length!==1)throw new Error(`${key}: expected one ${selector}, found ${matches.length}`);return matches[0];};
@@ -10,21 +10,24 @@ export function reviseCodePageContent({key,reviewCounts}) {
   evidence.push({type:'text',selector,from,to});
  };
  if(key==='new-years-eve'){
+  if(!campaignFacts||campaignFacts.nyeDate!=='2026-12-31'||campaignFacts.nyeProductId!==32||campaignFacts.nyeSlug!=='nye-pub-crawl-32')throw new Error('Reviewed shared NYE campaign facts required');
   const bookingLinks=[...root.querySelectorAll('a[href]')].filter(a=>a.getAttribute('href').startsWith('https://fareharbor.com/embeds/book/krawlthroughkrakow/'));
   if(![6,7].includes(bookingLinks.length))throw new Error('Review changed NYE booking controls');
-  bookingLinks.forEach(a=>a.setAttribute('href','__KTK_HOME_URL__store2/nye-pub-crawl-32/#book'));
+  bookingLinks.forEach(a=>a.setAttribute('href','__KTK_HOME_URL__store2/'+campaignFacts.nyeSlug+'/#book'));
   evidence.push({type:'nye-booking-links',count:bookingLinks.length,product:32});
-  replace('.et_pb_countdown_timer .title','Krakow New Years Eve Party 2025 / 2026','Krakow New Years Eve Party 2026 / 2027');
+  replace('.et_pb_countdown_timer .title','Krakow New Years Eve Party 2025 / 2026','Krakow New Years Eve Party '+campaignFacts.nyeYear+' / '+campaignFacts.welcomeYear);
   const countdown=one('.et_pb_countdown_timer');
   if(countdown.dataset.endTimestamp!=='1767222000')throw new Error('Review changed NYE countdown source');
-  countdown.dataset.endTimestamp=String(Date.parse('2027-01-01T00:00:00+01:00')/1000);
-  evidence.push({type:'countdown',date:'2027-01-01T00:00:00+01:00'});
-  replace('.et_pb_text_0 .et_pb_text_inner','start to 2026.','start to 2027.');
-  replace('.et_pb_text_3 .et_pb_text_inner','Beginning 2026','Beginning 2027');
-  replace('.et_pb_text_3 .et_pb_text_inner','venues. The celebrations kick off at 5 pm and 7:30 PM (depending the group you choose),','The celebrations start at 5:00 PM or 7:30 PM, depending on the group you choose,');
+  countdown.dataset.endTimestamp=campaignFacts.midnightTimestamp;
+  countdown.dataset.eventDate=campaignFacts.nyeDate;
+  countdown.dataset.eventTimezone='Europe/Warsaw';
+  evidence.push({type:'countdown',date:campaignFacts.midnight});
+  replace('.et_pb_text_0 .et_pb_text_inner','start to 2026.','start to '+campaignFacts.welcomeYear+'.');
+  replace('.et_pb_text_3 .et_pb_text_inner','Beginning 2026','Beginning '+campaignFacts.welcomeYear);
+  replace('.et_pb_text_3 .et_pb_text_inner','venues. The celebrations kick off at 5 pm and 7:30 PM (depending the group you choose),','The celebrations start at '+campaignFacts.nyeEarly+' or '+campaignFacts.nyeLate+', depending on the group you choose,');
   replace('.et_pb_heading_8 h1','All for only 250 zl or just 59 euro','All for only 250 PLN');
   replace('.et_pb_heading_4 h1','VIP Entrance and Welcome Shots','Photos from previous NYE events');
-  for(const [selector,time] of [['.et_pb_text_1 .et_pb_text_inner','5:00 PM'],['.et_pb_text_2 .et_pb_text_inner','7:30 PM']]){
+  for(const [selector,time] of [['.et_pb_text_1 .et_pb_text_inner',campaignFacts.nyeEarly],['.et_pb_text_2 .et_pb_text_inner',campaignFacts.nyeLate]]){
    const itinerary=one(selector);
    if(!itinerary.textContent.includes('Choice Music Club'))throw new Error('Review changed original NYE itinerary');
    const entries=[['Start time: ',time],['Meeting point: ','TBA'],['Venue itinerary: ','To be confirmed'],['Midnight: ','Celebrate in the club or at Market Square, with re-entry using your wristband.']];

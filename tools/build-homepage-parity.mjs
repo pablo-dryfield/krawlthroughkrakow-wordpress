@@ -2,6 +2,7 @@ import { createRequire } from 'node:module';
 import { readFile, writeFile, mkdir, access } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
+import {buildHeroOfferFacts} from './build-hero-offer-facts.mjs';
 import {rewriteBookingLinks} from './booking-destinations.mjs';
 import {preserveHeadingCss,reviseSemanticHeadings} from './semantic-headings.mjs';
 import {rewriteCanonicalLinks} from './canonical-links.mjs';
@@ -19,6 +20,7 @@ try { ({ chromium } = require('playwright')); } catch {
 const root = path.resolve('.');
 const sourceDir = path.join(root, 'docs/homepage-parity');
 const assets = path.join(root, 'staging/wp-content/mu-plugins/ktk-homepage-assets');
+await buildHeroOfferFacts(path.join(assets,'hero.php'));
 await buildContentAccessibilityStyles(path.join(assets,'parity-runtime.css'));
 await buildHomepageOfferStyles(path.join(assets,'parity-runtime.css'));
 const origin = 'https://krawlthroughkrakow.com/';
