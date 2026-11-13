@@ -55,6 +55,12 @@ checks. Preserve that initial failure; no route/consent/form guard is relaxed.
 Homepage rebuild is byte-identical, definitions/discovery unchanged and only3
 content bodies plus scoped runtime CSS differ. CI and staging release remain.
 
+Application2ad1283 / PR32 passed both required jobs in CI43496522159. The first
+packaging dry run correctly stopped before any connection/upload: its fingerprint
+report predated the final native link-colour rules. A fresh2320/2320 build
+verification now binds the final payload. Do not bypass this publisher guard.
+PHP integration now passes763/763 and form contracts31/31 (mail stubbed).
+
 | Page | Current conflict | Planned correction |
 | --- | --- | --- |
 | How to Join | Static 120 PLN; automatic guaranteed availability; vague return discount | Native current booking/availability link, confirmed eligibility, leader/confirmation return procedure, useful meeting/FAQ links |
