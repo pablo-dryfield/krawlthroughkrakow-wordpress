@@ -15,6 +15,7 @@ import {buildContentAccessibilityStyles} from './content-accessibility-styles.mj
 import {loadReviewedImageDescriptions} from './content-image-descriptions.mjs';
 import {reviseContextualLinks} from './contextual-links.mjs';
 import {loadNightlifeEditorial,reviseNightlifeEditorial} from './nightlife-editorial.mjs';
+import {loadBudgetEditorial,reviseBudgetEditorial} from './budget-editorial.mjs';
 const require = createRequire(import.meta.url);
 const { chromium } = require(path.join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const root = path.resolve('.');
@@ -24,6 +25,7 @@ const manifestPath = 'docs/code-pages/full-migration/manifest.json';
 const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
 const imageDescriptions=await loadReviewedImageDescriptions();
 const nightlifeRevision=await loadNightlifeEditorial();
+const budgetRevision=await loadBudgetEditorial();
 validateSeoRoutes(manifest.routes.map(row => row.route));
 const reviewCounts=JSON.parse(execFileSync('php',['-r',"define('ABSPATH', __DIR__); require $argv[1]; echo json_encode(array_column(ktk_homepage_review_sources(), 'count', 'name'));",path.join(root,'staging/wp-content/mu-plugins/ktk-homepage-assets/reviews.php')],{encoding:'utf8'}));
 const seoBaseline=JSON.parse(await readFile('docs/code-pages/production-readiness/production-seo-baseline.json','utf8'));
@@ -205,6 +207,7 @@ try {
       });
       const contentRevisions=await page.evaluate(reviseCodePageContent,{key:route.key,reviewCounts});
       contentRevisions.push(...await page.evaluate(reviseNightlifeEditorial,{key:route.key,revision:nightlifeRevision}));
+      contentRevisions.push(...await page.evaluate(reviseBudgetEditorial,{key:route.key,revision:budgetRevision}));
       contentRevisions.push(...await page.evaluate(reviseContextualLinks,{key:route.key}));
       contentRevisions.push(...await page.evaluate(reviseSemanticHeadings,{key:route.key,kind:route.kind,title:capture.title,route:route.route}));
       contentRevisions.push(...await page.evaluate(reviseAccessibilitySemantics,{key:route.key,imageDescriptions}));

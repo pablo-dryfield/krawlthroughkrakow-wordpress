@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-13T13:44:39.751Z",
+  "startedAt": "2026-11-13T14:11:09.060Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -3965,6 +3965,35 @@
     "post-wheres-the-cheap-places-to-drink-in-krakow": {
       "content": [
         {
+          "type": "reviewed-budget-guide",
+          "reviewedOn": "2026-11-13",
+          "retainedOriginalPhotos": [
+            4
+          ],
+          "removedBodyPhotos": 8,
+          "preservedFragmentIds": [
+            "main-toc",
+            "divebarsinkrakow",
+            "banilukapopularamongsportsenthusiastswithbigscreensforgames",
+            "pijalniawodkiipiwachainyourgotoforaffordablebooze",
+            "oldsmobil-cocktail-examples",
+            "chicas-krakow-menus",
+            "compare-drink-prices",
+            "banialukaahavenfornightowlsandearlybirdsalike",
+            "budgetfriendlydrinkingspotsinjewishquarter",
+            "pubpropagandaagrungyspotperfectforbudgetfriendlydrinks",
+            "freepubanotheroptionforcheapdrinkswhileminglingwithfellowtravellers",
+            "ulicakrokodylibarandcafe",
+            "duffysirishbar",
+            "historicbarmlecznyestablishments",
+            "faqsinrelationtowheresthecheapplacestodrinkinkrakow",
+            "arethereanyhappyhourspecialsatpubsandbarsinkrakow",
+            "wherecanifindthecheapestbeerinkrakow",
+            "arethereanystudentdiscountsavailableondrinksinkrakow",
+            "conclusion"
+          ]
+        },
+        {
           "type": "heading-level",
           "from": "h4",
           "to": "h2",
@@ -3976,38 +4005,6 @@
         },
         {
           "type": "main-landmark"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
-        },
-        {
-          "type": "visually-reviewed-image-description",
-          "mode": "missing"
         },
         {
           "type": "visually-reviewed-image-description",
@@ -8608,7 +8605,7 @@
     }
   },
   "seoMetadata": {
-    "reviewedOn": "2026-11-12",
+    "reviewedOn": "2026-11-13",
     "routes": [
       "/about-us/",
       "/about-us/how-to-join/",
@@ -8687,7 +8684,7 @@
       "/testimonials/",
       "/tour-service-disclaimer/"
     ],
-    "sourceSha256": "fb57ed6139d3d30fdbfd266781b97691f9b15a5510abddeb5bb54531823a3708"
+    "sourceSha256": "fdc6c84c5b26f8b34e774393b98e696f621a7e13617d05ec9eae2fba7c740d77"
   },
   "reviewedRedirects": [
     {
@@ -8703,5 +8700,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-13T13:45:30.620Z"
+  "finishedAt": "2026-11-13T14:12:05.172Z"
 }

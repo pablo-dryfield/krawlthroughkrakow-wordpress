@@ -53,6 +53,40 @@ try{
     await page.keyboard.press('Space');check(name+' FAQ Space reverses once',await button.getAttribute('aria-expanded')===before);
     check(name+' native button inherits original heading typography',await button.evaluate(node=>['fontFamily','fontSize','fontWeight','lineHeight','color','textAlign'].every(key=>getComputedStyle(node)[key]===getComputedStyle(node.parentElement)[key])));
    }
+   if(route==='/wheres-the-cheap-places-to-drink-in-krakow/'&&process.argv.includes('--capture-budget')){
+    const article=page.locator('.et_pb_text_0 [data-ktk-editorial-review="2026-11-13"]');
+    const inspectTabClearance=node=>{
+     const cta=document.getElementById('ktk-cta');if(!cta?.getClientRects().length)return {present:false,overlaps:[]};
+     const box=cta.getBoundingClientRect(),walker=document.createTreeWalker(node,NodeFilter.SHOW_TEXT),overlaps=[];let text;
+     while((text=walker.nextNode())){if(!text.textContent.trim())continue;const range=document.createRange();range.selectNodeContents(text);if([...range.getClientRects()].some(r=>r.width&&r.height&&r.right>box.left-2&&r.left<box.right+2&&r.bottom>box.top&&r.top<box.bottom))overlaps.push(text.textContent.trim().slice(0,80));}
+     return {present:true,overlaps};
+    };
+    check(name+' one reviewed budget module rendered',await article.count()===1);
+    check(name+' dated venue-price review is visible',await article.locator('time[datetime="2026-11-13"]').textContent()==='13 November 2026');
+    const copy=await article.textContent();
+    check(name+' checked serving sizes and price examples rendered together',copy.includes('400 ml, 11 PLN')&&copy.includes('290 ml, 25 PLN')&&copy.includes('210 ml for 36 PLN')&&copy.includes('250 ml for 34 PLN'));
+    check(name+' one original identified venue photograph retained',await article.locator('img').count()===1&&/Bania Luka sign/.test(await article.locator('img').getAttribute('alt')));
+    check(name+' nineteen meaningful fragment IDs are unique',await article.locator('[id]').evaluateAll(nodes=>nodes.length===19&&new Set(nodes.map(node=>node.id)).size===19));
+    check(name+' historic venue anchor keeps its named topic',await article.locator('#pubpropagandaagrungyspotperfectforbudgetfriendlydrinks').textContent()==='Pub Propaganda');
+    check(name+' reviewed description matches the refreshed guide',(await page.locator('meta[name="description"]').getAttribute('content')).includes('dated venue-menu examples'));
+    await page.evaluate(()=>scrollTo({top:0,left:0,behavior:'instant'}));
+    const headerClearance=await page.locator('#main-content').evaluate(inspectTabClearance);
+    check(name+' landing headline and metadata clear the visible floating tab',headerClearance.present&&!headerClearance.overlaps.length,headerClearance);
+    if([390,1440].includes(width))await page.screenshot({path:path.join(output,'budget-'+width+'-landing.png')});
+    check(name+' four native contents links resolve',await article.locator('a[href]').evaluateAll(nodes=>{
+     const contents=nodes.filter(a=>{const u=new URL(a.href,location.href);return u.origin===location.origin&&u.pathname===location.pathname&&u.search===location.search&&u.hash;});
+     return contents.length===4&&contents.every(a=>document.getElementById(new URL(a.href).hash.slice(1)));
+    }));
+    const first=article.getByRole('link',{name:'Places and checked menu examples',exact:true}),fragment=new URL(await first.getAttribute('href'),url).hash.slice(1);await first.focus();await page.keyboard.press('Enter');
+    check(name+' contents Enter scrolls to its native target',await page.evaluate(id=>location.hash==='#'+id&&document.getElementById(id).getBoundingClientRect().top>=-2&&document.getElementById(id).getBoundingClientRect().top<innerHeight,fragment));
+    const clearance=await article.evaluate(inspectTabClearance);
+    check(name+' budget copy stays clear of the visible floating booking tab',clearance.present&&!clearance.overlaps.length,clearance);
+    if([390,1440].includes(width)){
+     await page.screenshot({path:path.join(output,'budget-'+width+'-examples.png')});
+     await article.locator('#oldsmobil-cocktail-examples').scrollIntoViewIfNeeded();
+     await page.screenshot({path:path.join(output,'budget-'+width+'-comparison.png')});
+    }
+   }
    if(route==='/2020-krakow-nightlife-guide/'&&process.argv.includes('--capture-editorial')){
     const notice=page.locator('[data-ktk-historical-notice="nightlife-2020"]');
     check(name+' one visible archive notice is inside the original introduction',await notice.count()===1&&await notice.isVisible()&&await notice.evaluate(n=>n.parentElement.matches('.et_pb_text_0 .et_pb_text_inner')));

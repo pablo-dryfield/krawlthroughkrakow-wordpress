@@ -8,11 +8,14 @@ import {loadReviewedImageDescriptions} from './content-image-descriptions.mjs';
 import {reviseContextualLinks} from './contextual-links.mjs';
 import {rewriteCanonicalLinks} from './canonical-links.mjs';
 import {loadNightlifeEditorial,reviseNightlifeEditorial} from './nightlife-editorial.mjs';
+import {loadBudgetEditorial,reviseBudgetEditorial} from './budget-editorial.mjs';
+import {codePageDescription} from './code-pages-seo.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const [baseline,output]=process.argv.slice(2);
 const contextual=process.argv.includes('--contextual');
 const nightlife=process.argv.includes('--nightlife');
+const budget=process.argv.includes('--budget');
 if(!baseline||!output)throw Error('Baseline worktree and fresh report required');
 try{await readFile(output);throw Error('Preserve earlier evidence');}catch(error){if(error.code!=='ENOENT')throw error;}
 const assets='staging/wp-content/mu-plugins/ktk-code-pages-assets/';
@@ -20,6 +23,7 @@ const definitions=root=>JSON.parse(execFileSync('php',['-r',"define('ABSPATH',__
 const before=definitions(baseline),after=definitions('.');
 const imageDescriptions=await loadReviewedImageDescriptions();
 const nightlifeRevision=nightlife?await loadNightlifeEditorial():null;
+const budgetRevision=budget?await loadBudgetEditorial():null;
 const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
@@ -30,6 +34,7 @@ try{
   const original=await markup(baseline,previous),candidate=await markup('.',definition);
   await page.setContent(original);await page.evaluate(reviseAccessibilitySemantics,{key,imageDescriptions});
   if(nightlife)await page.evaluate(reviseNightlifeEditorial,{key,revision:nightlifeRevision});
+  if(budget)await page.evaluate(reviseBudgetEditorial,{key,revision:budgetRevision});
   if(contextual){await page.evaluate(reviseContextualLinks,{key});await rewriteCanonicalLinks(page);}
   const expected=await page.evaluate(()=>document.body.innerHTML);
   await page.setContent(candidate);
@@ -43,7 +48,15 @@ try{
    if(webpage.length!==1||crumbs.length!==1)throw Error('Expected existing hub page/breadcrumb schema');
    webpage[0].name=name;crumbs[0].itemListElement.at(-1).name=name;
   }
-  check(key+' SEO/schema/content identity unchanged except reviewed hub headline',JSON.stringify(expectedMetadata)===JSON.stringify(metadata(definition)));
+  if(budget&&key===budgetRevision.key){
+   const description=codePageDescription(previous.route,previous.description);
+   expectedMetadata.description=description;
+   const graph=expectedMetadata.schema.at(-1)['@graph'];
+   const descriptions=graph.filter(x=>['WebPage','BlogPosting'].includes(x['@type']));
+   if(descriptions.length!==2||descriptions.some(x=>x.description!==previous.description))throw Error('Expected existing budget page/article descriptions');
+   descriptions.forEach(x=>x.description=description);
+  }
+  check(key+' SEO/schema/content identity unchanged except explicit reviewed headline/description policy',JSON.stringify(expectedMetadata)===JSON.stringify(metadata(definition)));
   check(key+' captured CSS unchanged',(await readFile(path.join(baseline,assets,previous.css))).equals(await readFile(assets+definition.css)));
   if(key==='post-hostel-hangover-cure')check('health article body remains byte-identical',(await readFile(path.join(baseline,assets,previous.main_file))).equals(await readFile(assets+definition.main_file)));
  }
@@ -92,6 +105,48 @@ try{
  await page.setContent(imageFixture);const held=await page.locator('#main-content').innerHTML();
  await page.evaluate(reviseAccessibilitySemantics,{key:'post-hostel-hangover-cure',imageDescriptions:review});
  check('medical hold prevents reviewed image and link revisions',held===await page.locator('#main-content').innerHTML());
+ if(budget){
+  const original=await readFile(path.join(baseline,assets,'content/'+budgetRevision.key+'.html'),'utf8');
+  await page.setContent(original);
+  const headline=await page.locator('h1').innerHTML(),publication=await page.locator('.post-meta').innerHTML();
+  const originalFragments=await page.locator('.et_pb_text_0 h2[id],.et_pb_text_0 h3[id],.et_pb_text_0 h4[id]').evaluateAll(nodes=>nodes.map(node=>node.id).sort());
+  const photograph=await page.locator('.et_pb_text_0 img').nth(4).evaluate(node=>node.outerHTML);
+  const changes=await page.evaluate(reviseBudgetEditorial,{key:budgetRevision.key,revision:budgetRevision});
+  check('budget revision changes only the reviewed module',changes.length===1&&changes[0].retainedOriginalPhotos.join(',')==='4'&&changes[0].removedBodyPhotos===8);
+  check('budget H1 and publication/byline remain exact',headline===await page.locator('h1').innerHTML()&&publication===await page.locator('.post-meta').innerHTML());
+  const candidateFragments=await page.locator('.et_pb_text_0 [id]').evaluateAll(nodes=>nodes.map(node=>node.id));
+  check('all sixteen meaningful heading fragments survive once with three reviewed new anchors',originalFragments.length===16&&originalFragments.every(id=>candidateFragments.filter(value=>value===id).length===1)&&candidateFragments.length===19&&new Set(candidateFragments).size===19);
+  check('old Pub Propaganda anchor keeps its topic instead of becoming a different venue',await page.locator('#pubpropagandaagrungyspotperfectforbudgetfriendlydrinks').textContent()==='Pub Propaganda');
+  check('new Oldsmobil section has its own meaningful anchor',await page.locator('#oldsmobil-cocktail-examples').textContent()==='Oldsmobil: a different cocktail comparison');
+  check('only the exact identifiable original Banialuka photograph remains in the module',await page.locator('.et_pb_text_0 img').count()===1&&photograph===await page.locator('.et_pb_text_0 img').evaluate(node=>node.outerHTML));
+  const copy=await page.locator('.et_pb_text_0').textContent();
+  check('checked venue menu examples retain named serving sizes and prices',copy.includes('400 ml, 11 PLN')&&copy.includes('290 ml, 25 PLN')&&copy.includes('500 ml, 7 PLN')&&copy.includes('Aperol Spritz at 210 ml for 36 PLN')&&copy.includes('Blue Lagoon at 250 ml for 34 PLN'));
+  check('price examples show an actual check date and no effective-date guarantee',await page.locator('time[datetime="2026-11-13"]').textContent()==='13 November 2026'&&copy.includes('menus do not display an effective date'));
+  check('unsupported old shot, milk-bar and always-open promises removed',!/flavoured shots at just 7zl|expanded their menus to include inexpensive alcoholic|10 a\.m\. until 6 a\.m\.|very low prices/i.test(copy));
+  check('new menu-source links are native and named',await page.getByRole('link',{name:'published menu',exact:true}).getAttribute('href')==='https://banialuka.com/index.php/menu/'&&await page.getByRole('link',{name:'own menu page',exact:true}).getAttribute('href')==='https://oldsmobilpub.pl/menu/');
+  check('all four native contents links resolve in this article',await page.locator('.et_pb_text_0 a[href^="#"]').evaluateAll(nodes=>nodes.length===4&&nodes.every(node=>document.querySelectorAll('[id="'+node.getAttribute('href').slice(1)+'"]').length===1)));
+  const once=await page.content();
+  check('budget revision is idempotent',(await page.evaluate(reviseBudgetEditorial,{key:budgetRevision.key,revision:budgetRevision})).length===0&&once===await page.content());
+  for(const [name,markup] of [
+   ['script',budgetRevision.markup+'<script>alert(1)</script>'],
+   ['event attribute',budgetRevision.markup.replace('<p>For cheap','<p onclick="alert(1)">For cheap')],
+   ['foreign link',budgetRevision.markup.replace('https://oldsmobilpub.pl/menu/','https://example.invalid/')],
+   ['new remote image',budgetRevision.markup+'<img src="https://example.invalid/photo.jpg">'],
+   ['wrong original photo',budgetRevision.markup.replace('data-ktk-original-photo="4"','data-ktk-original-photo="3"')],
+   ['lost original fragment',budgetRevision.markup.replace('id="conclusion"','id="changed"')],
+   ['duplicate fragment',budgetRevision.markup+'<p id="conclusion">Duplicate</p>']
+  ]){
+   await page.setContent(original);const before=await page.content();let rejected=false;
+   try{await page.evaluate(reviseBudgetEditorial,{key:budgetRevision.key,revision:{...budgetRevision,markup}});}catch{rejected=true;}
+   check('budget '+name+' rejects atomically',rejected&&before===await page.content());
+  }
+  await page.setContent(original);await page.locator('.et_pb_text_0 img').nth(4).evaluate(node=>node.src='https://example.invalid/wrong.jpg');
+  const changedPhoto=await page.content();let rejected=false;
+  try{await page.evaluate(reviseBudgetEditorial,{key:budgetRevision.key,revision:budgetRevision});}catch{rejected=true;}
+  check('changed original photo identity rejects without deleting other content',rejected&&changedPhoto===await page.content());
+  await page.setContent(original);const held=await page.content();
+  check('budget policy leaves medical and unrelated content untouched',(await page.evaluate(reviseBudgetEditorial,{key:'post-hostel-hangover-cure',revision:budgetRevision})).length===0&&held===await page.content());
+ }
  if(nightlife){
   const original=await readFile(path.join(baseline,assets,'content/krakow-nightlife.html'),'utf8');
   await page.setContent(original);

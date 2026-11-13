@@ -9,11 +9,13 @@ import {reviseSemanticHeadings} from './semantic-headings.mjs';
 import {buildCodePageSchema,codePageSchemaFacts} from './code-pages-schema.mjs';
 import {reviseContextualLinks} from './contextual-links.mjs';
 import {loadNightlifeEditorial,reviseNightlifeEditorial} from './nightlife-editorial.mjs';
+import {loadBudgetEditorial,reviseBudgetEditorial} from './budget-editorial.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const base='staging/wp-content/mu-plugins/ktk-code-pages-assets/';
 const manifest=JSON.parse(await readFile('docs/code-pages/full-migration/manifest.json','utf8'));
 const nightlifeRevision=await loadNightlifeEditorial();
+const budgetRevision=await loadBudgetEditorial();
 validateSeoRoutes(manifest.routes.map(row=>row.route));
 const seoBaseline=JSON.parse(await readFile('docs/code-pages/production-readiness/production-seo-baseline.json','utf8'));
 const reviewCounts=JSON.parse(execFileSync('php',['-r',"define('ABSPATH', __DIR__); require $argv[1]; echo json_encode(array_column(ktk_homepage_review_sources(), 'count', 'name'));",'staging/wp-content/mu-plugins/ktk-homepage-assets/reviews.php'],{encoding:'utf8'}));
@@ -21,7 +23,7 @@ const definitions=JSON.parse(execFileSync('php',['-r',"define('ABSPATH', __DIR__
 const checks=[];const check=(key,name,pass,detail)=>checks.push({key,name,pass:!!pass,detail});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 const page=await browser.newPage({javaScriptEnabled:false});await page.route('**/*',r=>r.abort());
-async function facts(html,revision){await page.setContent(html);if(revision){await page.evaluate(reviseCodePageContent,{key:revision.key,reviewCounts});await page.evaluate(reviseNightlifeEditorial,{key:revision.key,revision:nightlifeRevision});await page.evaluate(reviseContextualLinks,revision);await page.evaluate(reviseSemanticHeadings,revision);}return page.evaluate(()=>{const root=document.querySelector('#main-content');root.querySelectorAll('script,style,noscript,.mejs-controls,.mejs-layers,video a,[data-single-product-id],[data-ktk-booking-product]').forEach(e=>e.remove());return {text:root.textContent.replace(/\s+/g,' ').trim(),missingAlt:root.querySelectorAll('img:not([alt])').length,sections:root.querySelectorAll('.et_pb_section').length,headings:[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(e=>({tag:e.tagName,text:e.textContent.trim()})),primary:root.querySelectorAll('h1').length,forms:root.querySelectorAll('form.et_pb_contact_form,form.wpcf7-form').length,scripts:root.querySelectorAll('script').length,handlers:[...root.querySelectorAll('*')].flatMap(e=>[...e.attributes].filter(a=>/^on/i.test(a.name)).map(a=>a.name))};});}
+async function facts(html,revision){await page.setContent(html);if(revision){await page.evaluate(reviseCodePageContent,{key:revision.key,reviewCounts});await page.evaluate(reviseNightlifeEditorial,{key:revision.key,revision:nightlifeRevision});await page.evaluate(reviseBudgetEditorial,{key:revision.key,revision:budgetRevision});await page.evaluate(reviseContextualLinks,revision);await page.evaluate(reviseSemanticHeadings,revision);}return page.evaluate(()=>{const root=document.querySelector('#main-content');root.querySelectorAll('script,style,noscript,.mejs-controls,.mejs-layers,video a,[data-single-product-id],[data-ktk-booking-product]').forEach(e=>e.remove());return {text:root.textContent.replace(/\s+/g,' ').trim(),missingAlt:root.querySelectorAll('img:not([alt])').length,sections:root.querySelectorAll('.et_pb_section').length,headings:[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(e=>({tag:e.tagName,text:e.textContent.trim()})),primary:root.querySelectorAll('h1').length,forms:root.querySelectorAll('form.et_pb_contact_form,form.wpcf7-form').length,scripts:root.querySelectorAll('script').length,handlers:[...root.querySelectorAll('*')].flatMap(e=>[...e.attributes].filter(a=>/^on/i.test(a.name)).map(a=>a.name))};});}
 try{
  for(const route of manifest.routes){
   const definition=definitions[route.key],capture=JSON.parse(await readFile(route.source+'/production-1920.json','utf8'));
