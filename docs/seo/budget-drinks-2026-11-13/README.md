@@ -30,9 +30,22 @@ prices charged by KTK, OmniLodge, plugin, consent or account changes.
 - [x] Scope a16px mobile header/body inset to this article only, keeping the
   floating tab visible while title/category and price/copy ranges stay clear.
   No global layout/font/CTA change.
-- [ ] Required CI, guarded staging content/discovery publishing and actual live
-  origin/normal/warmed cache checks.
-- [ ] Update roadmaps from delivery, final CI/merge and own reference cleanup.
+- [x] Required CI43443754402 passed both jobs for source d68f2e5 / PR24.
+- [x] Guarded content2072/discovery3 staging hashes verified; protected saved
+  WordPress state, homepage, storefront and production guards pass; helpers removed.
+- [x] Scoped Cloudflare staging-prefix purge accepted at14:35:45.926UTC.
+- [x] Actual origin/normal browser78 each; isolated pre/post-purge native booking
+  attribution45 each, graph142/6213/no unknowns/same6 held tags; discovery243
+  origin/216 normal; homepage10 assets pass. Four normal axe views0 violations/
+  4 incomplete groups, no page errors. Live mobile screenshot inspected.
+- [x] Full content origin/normal/repeat5848 each pass,119 current asset hashes/
+  version tokens; warmed348/348 content responses HIT across desktop/Android/
+  iPad. Normal first pass209 MISS/139 HIT was fresh, not misreported all-HIT.
+- [x] Repeat discovery216 and homepage10 assets/all3 device HIT pass. All finite
+  tests/publishers and both task preview servers are closed.
+- [x] Roadmaps reflect verified staging delivery, not whole-plan completion.
+  [PR24](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/pull/24)
+  records final documentation CI, merge and task-reference cleanup status.
 
 ## Maintainable Source
 
@@ -84,6 +97,31 @@ retain exact content/storefront entries, exclusions, robots preview and policy.
 Only this article's definition hash changes in source bindings. Publish the
 three owned staging discovery files after the content release; no production
 feed/account change or Search Console submission is authorized.
+
+## Deployment Checkpoints
+
+- Content backup `ktk-code-pages-staging-20261113-143418.zip`, SHA256
+  `8b7f16c2a092dc745620eaf8907655d3095db03bb82795956530b12a7b130ebf`.
+- Discovery backup `seo-discovery-staging-20261113-143458-457846.zip`, SHA256
+  `f692d5f7d8faa9eed6f17bcd5442af687012a7b6b40820fbb4d19e76dfb2b645`.
+- Reports `pages-publish.json`, `discovery-publish.json`, `cloudflare-purge.json`.
+  API acceptance is not proof of cache eviction; the full clean/repeat reports
+  independently establish current hashes and warmed content HIT responses.
+- `attribution-origin.json` is the isolated clean-URL handoff check immediately
+  after publishing, not a cache-busting origin test despite its retained filename.
+  `attribution-clean.json` is the post-purge repeat. Neither submits a booking.
+
+Full evidence is retained under `docs/code-pages/full-migration/`:
+`budget-origin-20261113.json`, `budget-clean-20261113.json` and
+`budget-repeat-20261113.json`. Final repeat completed14:43:52UTC. Focused browser/
+axe/attribution/graph/discovery/home reports remain in this dated directory.
+No actual-transfer, field-CWV, full accessibility-conformance, improved-ranking
+or production-release claim follows from these staging checks.
+
+The [music-guide review](../music-guides-2026-11-13/REVIEW.md) records the next
+C05/C08 read-only work: two techno captures compared, all six other guide heading
+structures triaged, primary venue/artist/festival facts checked and unresolved
+sources separated. No music body, redirect or canonical changed in this batch.
 
 ## Previous Batch
 
