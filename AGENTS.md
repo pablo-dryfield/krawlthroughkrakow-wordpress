@@ -8,6 +8,12 @@
 - Compiled deployable assets are `assets/storefront.js`, `assets/storefront.css`, and the bundled font files.
 - OmniLodge is a separate application at `C:\Users\pjcam\Documents\Projects\omni-lodge`. Do not deploy OmniLodge unless the user explicitly requests it.
 
+## Cloudflare MCP Purge Access (2026-11-13)
+
+- Owner reauthorized the existing `cloudflare` MCP agent and explicitly requests remembering it for future purges. Use `mcp__cloudflare__search`/`execute` for already-approved edge-cache purge scopes; do not routinely ask the owner to purge manually or generate another API token. Canonical runbook: `docs/cloudflare/CACHE-PURGE.md`, containing the non-secret account/zone IDs, authentication caveats and release procedure. Local Cloudflare skill points to it too.
+- Authenticated identity, zone list and separate zone GET succeeded; active `krawlthroughkrakow.com` reports `#cache_purge:edit` in its legacy membership list. No purge POST yet, so actual OAuth purge execution is NOT tested. `/user/tokens/verify` returned401 while later zone GETs succeeded; do not use that token endpoint or the unrelated old Wrangler config as sole evidence that MCP access fails. Earlier missing-issuer startup was resolved by reauthorization.
+- Access is not blanket mutation permission. Purge only within the current owner-approved release scope; staging SEO remains staging-only. Default narrowly to affected staging URLs/prefixes, never silently broaden to host/zone/production. Ask when scope is unclear or broader approval is required, not for repeat manual dashboard work. Require API acceptance plus normal clean desktop/Android/iPad response/hash checks and a cache repeat; origin/WP Rocket invalidation remains separate. No purge/deployment/configuration or auth-file change in this documentation task.
+
 ## Remaining Plugin Audit After Owner WPCode Deletion (2026-11-13)
 
 - Owner says WPCode deleted and requests checking ALL remaining plugins; this authorizes audit, not deactivation/deletion/settings changes. Fresh final inventories confirm WPCode ABSENT on both; production8 regular plugins, staging9 (UpdraftPlus only extra), all active. Source/tools/docs-only work; no website/OmniLodge deployment or cache purge. Tools `audit-plugins.ps1`/`.py` use expiring authenticated read-only helpers, independently removed/verified; two snapshots/environment show unchanged saved config/inventory/protected files (staging2301/production2163). Raw reports ignored; sanitized record `docs/plugin-audit-2026-11-13/ALL-PLUGINS.md`.
