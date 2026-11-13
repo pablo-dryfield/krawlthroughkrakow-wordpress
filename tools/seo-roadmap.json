@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "updatedOn": "2026-11-13",
-  "current": "NYE guide and laptop-menu fixes are staging/cache verified: full regression4320/4320 twice, browser110/110 and attribution31/31. M01 reporting is complete and native Google agrees. All returned28/90/180/365 query rows retained with explicit privacy/precision limits. Website production remains unchanged; current work moves into accessibility, link/intent and offer-fact review",
+  "current": "Accessibility semantics are staging origin-verified:324 browser checks,4320 content checks and31 attribution checks pass. Final edge-cache verification awaits the scoped purge. Matched content axe nodes662 to182; contrast, targets and storefront/manual work remain. M01 reporting is complete. Food Tour13-14 tastings and past-event Halloween/TBA are confirmed for the next content update. Website production remains unchanged",
   "milestones": [
     {"name":"Private GitHub source control and checks; manual deployments retained","status":"source_verified"},
     {"name":"76 reviewed page descriptions and maintainable metadata source; one health-content hold","status":"staging_verified"},
@@ -40,7 +40,7 @@
     "C10":{"status":"not_started","note":"Full trust/operator/terms/review-source consistency review remains."},
     "D01":{"status":"in_progress","note":"Native photo policy/in-view gallery staging cache verified;66/66 local checks with exact six-view first pixels, original images unchanged. Real mobile initially one9016-byte photo,25 lazy; desktop/mobile gallery and scrolling pass. Responsive-thumbnail delivery remains."},
     "D02":{"status":"in_progress","note":"Post-purge normal mobile390 DPR3/CPU4x/Slow4G cold lab LCP12120/12281/8182ms, median12120, CLS0. Descriptive runs, not field CWV or controlled uplift. Original SVG remains bottleneck. Laptop header wrapping is fixed/cache-verified in D05; mobile performance work remains."},
-    "D03":{"status":"in_progress","note":"Pinned axe4.14 audit26 staging views finds680 violation instances, not680 unique bugs; zero scan errors, archive script errors preserved. Own landmarks/labels/FAQ controls and exact obsolete loader cleanup under local tests. Contrast/target sizes/storefront zoom/manual screen-reader audit remain; no full conformance claim."},
+    "D03":{"status":"in_progress","note":"Own landmarks/labels/native FAQ controls and exact obsolete loader cleanup staging-origin verified:324 browser/360 source/4320 content/31 handoff, exact FAQ visual12. Matched20 content views662 to182 repeated axe nodes; remaining contrast/targets/floating CTA. Separate unchanged enhanced-storefront6 views61 nodes. Cache/manual screen-reader/zoom/storefront fixes remain; no full conformance claim."},
     "D04":{"status":"not_started","note":"Full booking-friction review; no unapproved live purchases."},
     "D05":{"status":"in_progress","note":"Homepage laptop menu981..1599 fixed, wide/no-JS links preserved, native Enter/Escape/resize tested. NYE meeting/time/checkout guidance and repaired article handoff verified on staging. Full meeting/CTA/blocked-embed audit across page types remains."},
     "D06":{"status":"not_started","note":"Form usability/spam/response review remains; keep current backends."},

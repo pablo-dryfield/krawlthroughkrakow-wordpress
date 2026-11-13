@@ -83,9 +83,17 @@ backup `seo-discovery-staging-20261113-010209-714677.zip`, SHA-256
 `606e883c115122b301cf3130a3fcfa9aba8e1783ebfec5bb5deb860bb1fc41c5`.
 It changes source bindings, not the123 selected URLs or any production endpoint.
 
-Live origin keyboard/reflow/semantic checks pass324/324 and discovery243/243.
-Final broad content and normal cached-URL verification remain pending the scoped
+Live origin keyboard/reflow/semantic checks pass324/324, discovery243/243,
+full content regression4,320/4,320 with zero errors/retries, and isolated booking
+handoff31/31. Final normal cached-URL verification remains pending the scoped
 Cloudflare refresh requested from the owner. Website production is unchanged.
+
+Matched20 content views now show182 remaining axe-node instances versus662 in
+the same initial views: color contrast, small targets and the floating CTA outside
+a landmark. There are zero scan or script errors. Repeated nodes are not unique
+bugs; the other115 content bodies' preserved markup is not a manual screen-reader
+certificate. Do not include the separately measured interactive storefront in
+this comparison.
 
 Preserve `browser-content-origin`276/288: it started before the separate homepage
 publisher finished and therefore correctly rejected the old homepage. The later
