@@ -133,7 +133,7 @@ function ktk_homepage_is_divi_late_css_loader( $markup ) {
     $files = json_decode( $match[1], true );
     if ( ! is_array( $files ) || ! $files ) { return false; }
     foreach ( $files as $file ) {
-        if ( ! is_string( $file ) || ! preg_match( '#/wp-content/et-cache/[0-9]+/et-divi-dynamic-[0-9]+-late\.css$#', (string) parse_url( $file, PHP_URL_PATH ) ) ) {
+        if ( ! is_string( $file ) || ! preg_match( '#/wp-content/et-cache/(?:[0-9]+/et-divi-dynamic-[0-9]+|taxonomy/category/[0-9]+/et-divi-dynamic)-late\.css$#', (string) parse_url( $file, PHP_URL_PATH ) ) ) {
             return false;
         }
     }

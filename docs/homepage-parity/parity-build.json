@@ -1,10 +1,10 @@
 {
   "capturedSource": "production-source-rendered-1920.html",
-  "builtAt": "2026-11-12T22:09:08.122Z",
+  "builtAt": "2026-11-13T00:44:48.998Z",
   "bodyClass": "home wp-singular page-template-default page page-id-278 custom-background wp-theme-Divi et_pb_button_helper_class et_fullwidth_nav et_fullwidth_secondary_nav et_non_fixed_nav et_show_nav et_primary_nav_dropdown_animation_slide et_secondary_nav_dropdown_animation_fade et_header_style_left et_pb_footer_columns1 et_pb_gutter et_pb_gutters3 et_pb_pagebuilder_layout et_no_sidebar et_divi_theme et-db",
   "title": "Krawl Through Krakow | Best Pub Crawl in Krakow",
   "description": "",
-  "htmlBytes": 81367,
+  "htmlBytes": 81491,
   "cssBytes": 352718,
   "files": {
     "https://krawlthroughkrakow.com/cf-fonts/s/montserrat/5.2.8/vietnamese/900/italic.woff2": {
@@ -1078,6 +1078,28 @@
       "previousLoading": null,
       "previousPriority": null,
       "loading": "lazy"
+    }
+  ],
+  "accessibilityRevisions": [
+    {
+      "type": "main-landmark"
+    },
+    {
+      "type": "social-link-name",
+      "label": "Facebook"
+    },
+    {
+      "type": "social-link-name",
+      "label": "X"
+    },
+    {
+      "type": "decorative-review-thumbnail"
+    },
+    {
+      "type": "decorative-review-thumbnail"
+    },
+    {
+      "type": "map-frame-title"
     }
   ]
 }

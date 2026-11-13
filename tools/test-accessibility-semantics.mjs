@@ -1,0 +1,59 @@
+import {createRequire} from 'node:module';
+import {execFileSync} from 'node:child_process';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import path from 'node:path';
+import {reviseAccessibilitySemantics} from './accessibility-semantics.mjs';
+import {composeCodePage} from './code-page-template.mjs';
+const require=createRequire(import.meta.url);
+const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
+const [baseline,output]=process.argv.slice(2);
+if(!baseline||!output)throw Error('Baseline worktree and fresh report required');
+try{await readFile(output);throw Error('Preserve earlier evidence');}catch(error){if(error.code!=='ENOENT')throw error;}
+const assets='staging/wp-content/mu-plugins/ktk-code-pages-assets/';
+const definitions=root=>JSON.parse(execFileSync('php',['-r',"define('ABSPATH',__DIR__);$a=$argv[1];$r=require $a.'registry.php';$o=array();foreach($r['routes'] as $e){$p=require $a.$e['file'];$o[$p['key']]=$p;}echo json_encode($o);",path.join(root,assets)],{encoding:'utf8',maxBuffer:10e6}));
+const before=definitions(baseline),after=definitions('.');
+const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});
+const browser=await chromium.launch({channel:'chrome',headless:true});
+try{
+ const page=await browser.newPage();await page.route('**/*',route=>route.abort());
+ for(const [key,definition] of Object.entries(after)){
+  const previous=before[key];
+  const markup=async(root,definition)=>composeCodePage(await readFile(path.join(root,assets,definition.shell_file),'utf8'),await readFile(path.join(root,assets,definition.main_file),'utf8'));
+  const original=await markup(baseline,previous),candidate=await markup('.',definition);
+  await page.setContent(original);await page.evaluate(reviseAccessibilitySemantics,{key});
+  const expected=await page.evaluate(()=>document.body.innerHTML);
+  await page.setContent(candidate);
+  check(key+' only reviewed semantic attributes changed',expected===await page.evaluate(()=>document.body.innerHTML));
+  const metadata=({shell_file,...rest})=>rest;
+  check(key+' SEO/schema/content identity unchanged',JSON.stringify(metadata(previous))===JSON.stringify(metadata(definition)));
+  check(key+' captured CSS unchanged',(await readFile(path.join(baseline,assets,previous.css))).equals(await readFile(assets+definition.css)));
+  if(key==='post-hostel-hangover-cure')check('health hold remains byte-identical',original===candidate);
+ }
+ const fixture='<div id="main-content"><h1>Questions</h1><div class="et_pb_accordion">'+[0,1].map(n=>`<div class="et_pb_toggle et_pb_toggle_close"><h2 class="et_pb_toggle_title">Question ${n+1}</h2><div class="et_pb_toggle_content">Answer ${n+1}</div></div>`).join('')+'</div><form><span class="et_pb_contact_captcha_question">4 + 7</span><input class="et_pb_contact_captcha" name="captcha"></form></div><footer><span class="et-social-icon"><a class="icon" href="#facebook"><span>Facebook</span></a></span></footer>';
+ await page.setContent(fixture);await page.evaluate(reviseAccessibilitySemantics,{key:'fixture'});
+ const once=await page.content();await page.evaluate(reviseAccessibilitySemantics,{key:'fixture'});
+ check('semantic revision is idempotent',once===await page.content());
+ const error=await page.evaluate(reviseAccessibilitySemantics,{key:'post-hostel-hangover-cure'});
+ check('health hold performs no revisions',!error.length&&once===await page.content());
+ await page.addStyleTag({content:await readFile(assets+'runtime.css','utf8')});
+ await page.addScriptTag({content:await readFile(assets+'runtime.js','utf8')});
+ const first=page.locator('.ktk-toggle-button').nth(0),second=page.locator('.ktk-toggle-button').nth(1);
+ check('FAQ native buttons preserve heading semantics',await page.locator('h2 > button[type="button"]').count()===2&&await page.locator('h2[role="button"]').count()===0);
+ await first.focus();await page.keyboard.press('Enter');
+ check('FAQ Enter opens once',await first.getAttribute('aria-expanded')==='true'&&await page.locator('#'+await first.getAttribute('aria-controls')).isVisible());
+ await page.keyboard.press('Space');check('FAQ Space closes once',await first.getAttribute('aria-expanded')==='false');
+ await page.keyboard.press('Enter');await second.focus();await page.keyboard.press('Space');
+ check('accordion closes sibling and updates both buttons',await first.getAttribute('aria-expanded')==='false'&&await second.getAttribute('aria-expanded')==='true');
+ await page.locator('.et_pb_toggle_title').first().click({position:{x:1,y:1}});
+ check('heading/pseudo-icon pointer path still opens',await first.getAttribute('aria-expanded')==='true'&&await second.getAttribute('aria-expanded')==='false');
+ check('captcha accessible name follows refreshed question',await page.locator('input').getAttribute('aria-labelledby')==='ktk-captcha-question-0');
+ await page.locator('#ktk-captcha-question-0').evaluate(e=>e.textContent='8 + 2');
+ check('captcha label uses live question rather than fixed answer',await page.getByRole('textbox',{name:'8 + 2'}).count()===1);
+ check('footer social link has source-derived accessible name',await page.getByRole('link',{name:'Facebook',exact:true}).count()===1);
+ const ids=await page.locator('[id]').evaluateAll(nodes=>nodes.map(node=>node.id));
+ check('unique generated control and label IDs',ids.length===new Set(ids).size);
+}finally{await browser.close();}
+const report={checkedAt:new Date().toISOString(),baseline,passed:checks.filter(x=>x.pass).length,total:checks.length,checks};
+await mkdir(path.dirname(output),{recursive:true});await writeFile(output,JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({passed:report.passed,total:report.total,failed:checks.filter(x=>!x.pass)},null,2));
+if(report.passed!==report.total)process.exitCode=1;

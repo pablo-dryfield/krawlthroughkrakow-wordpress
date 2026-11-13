@@ -107,7 +107,7 @@ function ktk_homepage_static_body() {
 					</header> <!-- #main-header -->
 			<div id="et-main-area">
 	
-<div id="main-content" data-ktk-semantic-headings="1">
+<div id="main-content" data-ktk-semantic-headings="1" role="main" tabindex="-1">
 
 
 			
@@ -884,13 +884,13 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_code_inner"><div class="cont_TA"><div class="TA_image"> <img decoding="async" width="150px" height="100px" src="__KTK_PARITY_ASSETS__parity/9ed41528feac-instagram4.jpg" class="TA_image entered lazyloaded" loading="lazy"> </div><div class="TA_text"> <p class="TA_H">Check us out on Tripadvisor</p> <div class="div_dot"> <span class="dot"></span> <span class="dot"></span> <span class="dot"></span> <span class="dot"></span> <span class="dot"></span> <p class="rev">__KTK_REVIEW_COUNT_TRIPADVISOR__ reviews</p>  </div></div></div></div>
+				<div class="et_pb_code_inner"><div class="cont_TA"><div class="TA_image"> <img decoding="async" width="150px" height="100px" src="__KTK_PARITY_ASSETS__parity/9ed41528feac-instagram4.jpg" class="TA_image entered lazyloaded" loading="lazy" alt=""> </div><div class="TA_text"> <p class="TA_H">Check us out on Tripadvisor</p> <div class="div_dot"> <span class="dot"></span> <span class="dot"></span> <span class="dot"></span> <span class="dot"></span> <span class="dot"></span> <p class="rev">__KTK_REVIEW_COUNT_TRIPADVISOR__ reviews</p>  </div></div></div></div>
 			<a href="https://www.tripadvisor.com/Attraction_Review-g274772-d2725527-Reviews-Krawl_Through_Krakow_Pub_Crawl-Krakow_Lesser_Poland_Province_Southern_Poland.html" target="_blank" class="ktk-parity-module-link" aria-label="Check us out on Tripadvisor __KTK_REVIEW_COUNT_TRIPADVISOR__ reviews" style="position: absolute; inset: 0px; z-index: 1;" rel="noopener noreferrer"></a></div><div class="et_pb_module et_pb_code et_pb_code_1 et_clickable et_pb_text_align_left et_pb_text_align_center-phone">
 				
 				
 				
 				
-				<div class="et_pb_code_inner"><div class="cont_TA"><div class="TA_image"> <img decoding="async" width="150px" height="100px" src="__KTK_PARITY_ASSETS__parity/34c4a15dc6e9-rev_google.jpg" class="TA_image entered lazyloaded" loading="lazy"> </div><div class="TA_text"> <p class="TA_H">Check us out on Google</p><div class="div_dot"> <span class="dot2">⭐</span> <span class="dot2">⭐</span> <span class="dot2">⭐</span> <span class="dot2">⭐</span> <span class="dot2">⭐</span> <p class="rev">__KTK_REVIEW_COUNT_GOOGLE__ reviews</p>  </div></div></div></div>
+				<div class="et_pb_code_inner"><div class="cont_TA"><div class="TA_image"> <img decoding="async" width="150px" height="100px" src="__KTK_PARITY_ASSETS__parity/34c4a15dc6e9-rev_google.jpg" class="TA_image entered lazyloaded" loading="lazy" alt=""> </div><div class="TA_text"> <p class="TA_H">Check us out on Google</p><div class="div_dot"> <span class="dot2">⭐</span> <span class="dot2">⭐</span> <span class="dot2">⭐</span> <span class="dot2">⭐</span> <span class="dot2">⭐</span> <p class="rev">__KTK_REVIEW_COUNT_GOOGLE__ reviews</p>  </div></div></div></div>
 			<a href="https://www.google.com/search?sca_esv=b5608bee10f15177&amp;sxsrf=AHTn8zrXe7mS4xuL9QH7FkZ6xZet3u2HXA:1745670227187&amp;q=krawl+through+krakow&amp;si=APYL9bs7Hg2KMLB-4tSoTdxuOx8BdRvHbByC_AuVpNyh0x2KzXQmvRlWLkxwGZiAdPkzPfSgl_NMTNnJG5adiy7TIOJjpMUeBZ_0k5pxYh4YCswWXdoL0zE%3D&amp;uds=ABqPDvw-jKaQoDjbMXKjrQ0xZpdqi4pcSjnDQmczq2nOTZzMRqpWNInL1ZJIDCqHhNuurzfndcCXcyXyM5hGdZ6NMOJcCaSsatI-G-QY7nAJ82Wypip9lcY&amp;sa=X&amp;ved=2ahUKEwi-gKWu2PWMAxUtcvEDHf3qFWMQ3PALegQIGhAE&amp;biw=1536&amp;bih=695&amp;dpr=1.25" target="_blank" class="ktk-parity-module-link" aria-label="Check us out on Google ⭐ ⭐ ⭐ ⭐ ⭐ __KTK_REVIEW_COUNT_GOOGLE__ reviews" style="position: absolute; inset: 0px; z-index: 1;" rel="noopener noreferrer"></a></div>
 			</div>
 				
@@ -1121,7 +1121,7 @@ function ktk_homepage_static_body() {
 				
 				
 				
-				<div class="et_pb_code_inner"><iframe loading="lazy" src="https://www.google.com/maps/d/embed?mid=1_Pv-09EbFJQWehlbyeS1V3xMofKCz-g&amp;ehbc=2E312F" width="640" height="480" data-ll-status="loaded" class="entered lazyloaded"></iframe></div>
+				<div class="et_pb_code_inner"><iframe loading="lazy" src="https://www.google.com/maps/d/embed?mid=1_Pv-09EbFJQWehlbyeS1V3xMofKCz-g&amp;ehbc=2E312F" width="640" height="480" data-ll-status="loaded" class="entered lazyloaded" title="Krawl Through Krakow meeting point map"></iframe></div>
 			</div>
 			</div><div class="et_pb_column et_pb_column_1_2 et_pb_column_39 et_pb_css_mix_blend_mode_passthrough et-last-child">
 				
@@ -1311,12 +1311,12 @@ function ktk_homepage_static_body() {
 				<ul class="et-social-icons">
 
 	<li class="et-social-icon et-social-facebook">
-		<a href="https://www.facebook.com/krawlthroughkrakow/" class="icon">
+		<a href="https://www.facebook.com/krawlthroughkrakow/" class="icon" aria-label="Facebook">
 			<span>Facebook</span>
 		</a>
 	</li>
 	<li class="et-social-icon et-social-twitter">
-		<a href="__KTK_HOME_URL__" class="icon">
+		<a href="__KTK_HOME_URL__" class="icon" aria-label="X">
 			<span>X</span>
 		</a>
 	</li>

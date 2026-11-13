@@ -1,5 +1,14 @@
 # Staging Catalog Discovery Review
 
+## Owner Clarifications, November 13
+
+Food Tour has **13-14 tastings**, not10. Keep Halloween's established URL as a
+past-event page, with **next dates to be announced**; do not invent the next year
+or dates. These are confirmed editorial instructions, not proof that the product
+configuration, booking availability or storefront have already been changed.
+Apply and verify a separate staging-only content update; no OmniLodge product
+configuration or production-commerce changes are authorized by this clarification.
+
 Date: November 12, 2026. Scope: T03/T06/T10 investigation and a data-only
 staging sitemap-preview update. Production, storefront application code,
 WordPress settings, legacy Ecwid routes/feeds, consent, prices, availability,

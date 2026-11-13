@@ -117,13 +117,14 @@ function ktk_homepage_seasonal_hero() {
             <?php foreach ( ktk_homepage_review_sources() as $review ) :
                 $rating = isset( $review['rating'] ) ? (string) (float) $review['rating'] : '';
             ?>
-                <a href="<?php echo esc_url( $review['url'] ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr( 'Read Krawl Through Krakow reviews on ' . $review['name'] . ( '' === $rating ? '' : ', rated ' . $rating . ' out of 5' ) . ( empty( $review['count'] ) ? '' : ', ' . $review['count'] . ' reviews' ) . ' (opens in a new tab)' ); ?>">
+                <a href="<?php echo esc_url( $review['url'] ); ?>" target="_blank" rel="noopener noreferrer" aria-describedby="ktk-review-new-tab-note">
                     <?php if ( ! empty( $review['logo'] ) ) : ?><span class="ktk-hero-review-logo" aria-hidden="true"><img src="<?php echo esc_url( ktk_homepage_asset( $review['logo'] ) ); ?>" alt="" width="40" height="40" decoding="async"></span><?php endif; ?>
                     <span class="ktk-hero-review-copy"><span class="ktk-hero-review-name"><?php echo esc_html( $review['name'] ); ?></span><span class="ktk-hero-review-details"><?php if ( '' !== $rating ) : ?><strong class="ktk-hero-review-rating"><?php echo esc_html( $rating ); ?>/5</strong><?php endif; ?><span class="ktk-hero-review-count"><?php echo empty( $review['count'] ) ? 'Read reviews' : esc_html( $review['count'] ) . ' reviews'; ?></span></span></span>
                     <?php echo ktk_homepage_icon( 'arrow-up-right', 'ktk-hero-review-icon' ); ?>
                 </a>
             <?php endforeach; ?>
             </div>
+            <span id="ktk-review-new-tab-note" class="ktk-hero-review-note">Opens in a new tab</span>
         </nav>
     </section>
     <?php return ob_get_clean();

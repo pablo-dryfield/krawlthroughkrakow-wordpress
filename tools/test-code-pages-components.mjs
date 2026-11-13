@@ -32,7 +32,7 @@ try{
   check(label+' no horizontal overflow',await page.evaluate(()=>document.documentElement.scrollWidth===innerWidth));
   const toggle=page.locator('.mobile_menu_bar');
   if(width<=1379){await toggle.focus();await page.keyboard.press('Enter');check(label+' keyboard menu opens',await toggle.getAttribute('aria-expanded')==='true');await page.keyboard.press('Escape');check(label+' menu Escape',await toggle.getAttribute('aria-expanded')==='false');}
-  const faq=page.locator('.et_pb_toggle_title').first();
+  const faq=page.locator('.ktk-toggle-button').first();
   if(await faq.count()){const before=await faq.getAttribute('aria-expanded');await faq.focus();await page.keyboard.press('Enter');check(label+' FAQ keyboard',await faq.getAttribute('aria-expanded')!==before);}
   for(const carousel of await page.locator('.et_pb_gallery_fullwidth,.et_pb_slider').all()){
    const next=carousel.locator('.et-pb-arrow-next');if(!await next.count())continue;

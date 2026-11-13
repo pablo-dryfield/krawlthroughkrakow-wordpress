@@ -278,6 +278,7 @@
 #ktk-seasonal-hero .ktk-hero-review-rating { color: #fff; font: 800 14px/1.5 var(--hero-font); }
 #ktk-seasonal-hero .ktk-hero-review-count { color: #c5c5c5; font: 500 13px/1.5 var(--hero-font); }
 #ktk-seasonal-hero .ktk-hero-review-icon { flex: 0 0 20px; width: 20px; height: 20px; fill: none; stroke: #d93574; stroke-width: 2; }
+#ktk-seasonal-hero .ktk-hero-review-note { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
 #ktk-seasonal-hero .ktk-hero-reviews a:hover .ktk-hero-review-name { color: #f083ac; }
 #ktk-seasonal-hero .ktk-hero-reviews a:focus-visible { outline: 2px solid #f083ac; outline-offset: -2px; }
 @container ktk-hero (max-width: 1099px) {
