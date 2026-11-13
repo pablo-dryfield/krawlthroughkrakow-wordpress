@@ -88,8 +88,84 @@ into a new campaign. It is an on-demand diagnostic, not a scheduled automation,
 operational booking cutoff or runtime expiry implementation. Fake clocks verify
 the retained countdown clamps to zero and does not invent a new year/event.
 
-The owner has been asked when promotional messaging should switch to next-dates
-TBA. That answer is pending; no arbitrary cutoff, automatic CTA change or store
-availability change has been implemented. Broader runtime expiry remains open.
+The owner initially was asked when promotional messaging should switch to next-
+dates TBA. They have now explicitly confirmed **1 January2027 at noon, Warsaw
+time** (`2027-01-01T12:00:00+01:00`). The follow-up must switch promotional
+messaging to next-dates-TBA and link to the NYE information page, not checkout.
+No unconfirmed2027 event, product availability change or alteration to existing
+bookings is authorized. Runtime expiry implementation is the next bounded batch;
+it is not included in the165ef85 shared-facts payload documented below.
 CI, guarded staging releases and origin/normal/cache verification still remain
 for this shared-facts batch. Production and OmniLodge are unchanged.
+
+## Staging Publish Checkpoint
+
+Application165ef857e96398eb3e220715cf26c1aa7ad58bdd / PR33 passed both required
+checks43503666671. Additional local native138/138, eight axe views0 violations/
+17 incomplete groups and roadmap317/317 pass. Source/artwork boundaries remain
+exact; final tools/docs changes after that commit do not alter application bytes.
+
+- Content completed20:41:56UTC:2072 hashes, protected saved WordPress/home/store
+  unchanged; helper removed. Backup204136 SHA256
+  `e7f272d017c31d79a708c4487c7a4b66499f548cd5e948f5fcf4c1a340dc831b`.
+- Homepage assets-only:232 independent hashes match, original posts/settings not
+  rewritten, origin cache cleared and200 smoke. This publisher is not a complete
+  database-audit claim. Backup204330 SHA256
+  `6221ff472c3c505514930348805b07c0167400c3da816445b0a1f33ea5cd89d9`.
+- Discovery completed20:45:32UTC:3 hashes,2321 protected staging files,2158
+  production files and saved WordPress state unchanged; helpers removed. Backup
+  `seo-discovery-staging-20261113-204521-485955.zip`, SHA256
+  `38c4f3a42d605e8c4341d07e8ad5264c0755bf05dfcebee8d40d3a8099618f19`.
+
+Origin event/browser49 then strengthened51/51, responsive110/110, native138/138,
+attribution136/136 and discovery243/243 pass; unchanged10 homepage asset hashes
+also match. The strengthened check independently compares the current public
+product32 date/groups/TBA with the shared reviewed facts and fails on drift;
+negative contracts cover wrong identity/date/group order/named meeting point.
+It is a read-only check, not automatic backend synchronization.
+
+The full origin scan is still pending. Do not mark this delivery verified or
+purge before it passes; normal/cache-repeat proof and final CI/merge remain.
+
+The full origin subsequently passed6193/6193 at20:52:07UTC, zero retries. After
+exact zone/account verification, Cloudflare accepted only the staging prefix at
+20:52:41.706UTC (success, result4303f6a45f815c5570bb4bba5f86a423). Full normal
+URLs passed6193/6193 at20:57:53UTC,347 MISS/1 HIT/current119 assets. Warm repeat
+still pending at this checkpoint.
+
+The first cached event harness passed39/51: its body-text regex also scanned
+scripts, and matched the legitimate `{{let` nested block in WP Rocket's
+`rocket_lazyload_css-js-after`, outside main. No customer copy token was found.
+The corrected matcher excludes only SCRIPT/STYLE text, still checks hidden text,
+accessible labels and description metadata. Seven positive/negative browser
+fixtures prove it distinguishes source code from unresolved business values.
+Fresh local56/56/cached58/58 pass; original39/51 is preserved. No application
+change, hiding/masking or tolerance relaxation was made to resolve this harness
+failure. Cached responsive110/native138/attribution136/discovery216 and8 axe
+views0 violations/17 incomplete groups pass. Homepage10 assets/icon21/all3 HIT
+repeat also pass. Whole-site warm-repeat proof and final source CI/merge remain.
+
+## Verified Shared-Facts Delivery
+
+Warm full-site repeat passed6193/6193 at20:59:54UTC, all348 content/device responses
+HIT,119 current assets and zero transport retries. Together with the distinct
+origin and normal reports, this verifies the165ef85 application on staging.
+Final shared JS117/117 passes; all finite release scanners/publishers are closed.
+Eight normal axe views retain17 incomplete groups, not full conformance. Actual
+mobile artwork/layout was inspected; source comparison retains exact vector/CSS
+and current rendered hero except nonvisual event attributes. No new strict
+pixel-suite, field-speed, consent, payment or production claim is made.
+
+Reports: `docs/code-pages/full-migration/nye-shared-{origin,clean,repeat}-20261113.json`;
+focused `shared-event-browser-clean-guarded`, `shared-responsive-clean`,
+`shared-native-clean`, `shared-axe-clean`, `shared-attribution-clean.json`,
+`shared-discovery-{origin,clean,repeat}.json`, `shared-home-repeat.json` and
+`shared-icons-repeat.json` in this folder. Original failed39/51 and local
+stale-discovery evidence remain. App bytes are unchanged since165ef85; final
+QA/docs changes require CI/merge, not another application deployment.
+
+Both roadmaps now show22 verified staging batches and one approved expiry batch
+underway, plus the separately live OmniLodge reporting. The genuine C09 resource
+inventory moves that ticket to in-progress, not complete:1 complete/30 partial/
+8 not-started/1 deferred. Website SEO production releases remain0. The cutoff
+has been confirmed, but no runtime transition is yet implemented in this batch.

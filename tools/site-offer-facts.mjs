@@ -49,6 +49,15 @@ export function offerCampaignReviewStatus(data,instant){
   nextDatesConfirmed:false,changesBookingAvailability:false};
 }
 
+export function validateNyeCatalogFacts(data,product){
+ validateOfferFacts(data);
+ const config=product?.config,meeting=config?.content?.meetingPoint;
+ if(product?.id!==data.nye.productId||product?.slug!==data.nye.slug||config?.availability?.dateMode!=='fixed'
+  ||config.availability.fixedDate!==data.nye.date||JSON.stringify(config.startTimes)!==JSON.stringify(data.nye.startTimes)
+  ||meeting?.name!=='TBA'||meeting.address!==''||meeting.instructions!=='')throw Error('Public NYE product differs from reviewed event facts; review before publishing');
+ return {id:product.id,slug:product.slug,date:config.availability.fixedDate,startTimes:[...config.startTimes],meetingPoint:meeting.name};
+}
+
 const metadataRoutes=['/about-us/how-to-join/','/meeting-point/','/new-years-eve/'];
 export function expandOfferMetadata(data,facts){
  const values={...offerTemplateValues(facts),...campaignTemplateValues(facts)},result=structuredClone(data);

@@ -4,7 +4,7 @@ import {mkdtemp,readFile,writeFile,rm} from 'node:fs/promises';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
 import {createRequire} from 'node:module';
-import {loadOfferFacts,validateOfferFacts,offerTemplateValues,offerTime,campaignTemplateValues,offerCampaignReviewStatus,expandOfferMetadata} from '../site-offer-facts.mjs';
+import {loadOfferFacts,validateOfferFacts,offerTemplateValues,offerTime,campaignTemplateValues,offerCampaignReviewStatus,expandOfferMetadata,validateNyeCatalogFacts} from '../site-offer-facts.mjs';
 import {renderHeroOfferFacts,buildHeroOfferFacts} from '../build-hero-offer-facts.mjs';
 import {execFileSync} from 'node:child_process';
 import {loadHomepageOfferRevision,reviseHomepageOffer,buildHomepageOfferStyles} from '../homepage-offer-editorial.mjs';
@@ -52,6 +52,13 @@ test('freshness review uses Warsaw calendar boundaries, not an invented sale cut
   assert.equal(result.nextDatesConfirmed,false);assert.equal(result.changesBookingAvailability,false);
  }
  for(const instant of [null,'2027-01-01',new Date('invalid')])assert.throws(()=>offerCampaignReviewStatus(facts,instant));
+});
+
+test('a public catalog change cannot silently leave independent NYE facts stale',async()=>{
+ const facts=await loadOfferFacts(),product={id:32,slug:'nye-pub-crawl-32',config:{availability:{dateMode:'fixed',fixedDate:'2026-12-31'},startTimes:['17:00','19:30'],content:{meetingPoint:{name:'TBA',address:'',instructions:''}}}},before=JSON.stringify(product);
+ assert.deepEqual(validateNyeCatalogFacts(facts,product),{id:32,slug:'nye-pub-crawl-32',date:'2026-12-31',startTimes:['17:00','19:30'],meetingPoint:'TBA'});assert.equal(JSON.stringify(product),before);
+ for(const mutate of [p=>{p.id=28;},p=>{p.slug='unconfirmed';},p=>{p.config.availability.fixedDate='2027-12-31';},p=>{p.config.availability.dateMode='recurring';},p=>{p.config.startTimes.reverse();},p=>{p.config.content.meetingPoint.name='Adam Statue';},p=>{p.config.content.meetingPoint.address='New address';},p=>{delete p.config.content;}]){const candidate=structuredClone(product);mutate(candidate);assert.throws(()=>validateNyeCatalogFacts(facts,candidate));}
+ for(const candidate of [null,{},[]])assert.throws(()=>validateNyeCatalogFacts(facts,candidate));
 });
 
 test('only three reviewed descriptions expand known offer facts without mutating the source',async()=>{
