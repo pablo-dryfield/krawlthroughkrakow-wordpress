@@ -6,8 +6,28 @@ function compact(values) {
   )];
 }
 
+export function getPastCampaign(product, today) {
+  const campaign = PRODUCT_CONTENT[product.slug]?.pastCampaign;
+  if (!campaign || Number(product.id) !== campaign.productId) return null;
+  const availability = product.config?.availability;
+  const dates = availability?.allowedDates;
+  if (availability?.dateMode !== 'allowed_dates' || !Array.isArray(dates)
+    || dates.length !== campaign.lastDates.length
+    || !campaign.lastDates.every((date) => dates.includes(date))) return null;
+  const day = today ?? new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Warsaw', year: 'numeric', month: '2-digit', day: '2-digit',
+  }).format(new Date());
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(day)
+    || campaign.lastDates.some((date) => date >= day)) return null;
+  if (availability.dateOverrides && !Array.isArray(availability.dateOverrides)) return null;
+  if (availability.dateOverrides?.some((rule) => rule.enabled !== false
+    && !['blocked', 'closed'].includes(rule.mode) && rule.date >= day)) return null;
+  return campaign;
+}
+
 export function getProductContent(product) {
   const mapped = PRODUCT_CONTENT[product.slug] ?? {};
+  const pastCampaign = getPastCampaign(product);
   const configured = product.config?.content && typeof product.config.content === 'object'
     ? product.config.content
     : {};
@@ -28,11 +48,13 @@ export function getProductContent(product) {
       product.productType?.name ||
       'Krakow experience',
     summary:
+      pastCampaign?.summary ||
       configured.summary ||
       product.summary ||
       mapped.summary ||
       'A locally operated Krakow experience, ready to become the best part of your trip.',
     description:
+      pastCampaign?.description ||
       configured.description ||
       product.description ||
       mapped.description ||
@@ -60,5 +82,6 @@ export function getProductContent(product) {
       product.checkoutUrl ||
       mapped.checkoutUrl ||
       'https://krawlthroughkrakow.com/store',
+    pastCampaign,
   };
 }

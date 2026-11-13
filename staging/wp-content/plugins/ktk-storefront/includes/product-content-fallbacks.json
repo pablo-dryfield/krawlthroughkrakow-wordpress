@@ -1,4 +1,17 @@
 {
+  "food-tour-krakow-48": {
+    "summary": "Explore Krakow with a local guide and 13-14 Polish food tastings."
+  },
+  "halloween-pub-crawl-51": {
+    "pastCampaign": {
+      "productId": 51,
+      "lastDates": ["2026-10-29", "2026-10-30", "2026-10-31"],
+      "label": "Halloweekend 2026 has finished",
+      "summary": "Our 29-31 October 2026 Halloweekend has finished. Next Halloween dates are to be announced.",
+      "description": "The 2026 Halloweekend edition brought costumes, party games and a pub crawl through Krakow. The photos and inclusions below describe that past event, not a confirmed future programme.",
+      "nextDates": "Next Halloween dates: to be announced."
+    }
+  },
   "bubble-football-43": {
     "kicker": "Private group activity",
     "summary": "Bounce, crash and laugh your way through Krakow in giant inflatable bubbles.",

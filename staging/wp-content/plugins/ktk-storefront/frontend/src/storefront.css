@@ -981,6 +981,27 @@ body.ktk-storefront-page {
   color: var(--ktk-black);
 }
 
+.ktk-past-campaign h2 {
+  margin: 0 0 16px;
+}
+
+.ktk-past-campaign p {
+  margin: 0 0 24px;
+}
+
+.ktk-app .ktk-past-campaign .ktk-commerce__primary {
+  width: 100%;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+}
+
+.ktk-past-campaign .ktk-commerce__primary > span:first-child {
+  flex: 1;
+}
+
 @media (max-height: 450px) {
   .ktk-app > .ktk-cart-link {
     position: static;

@@ -474,7 +474,8 @@ final class KTK_Storefront {
 		if ( self::public_html_enabled() ) { $content = KTK_Storefront_Public_Content::resolve( $product ); }
 		$parts = array();
 
-		foreach ( array( 'description', 'summary' ) as $field ) {
+		$fields = ! empty( $content['pastCampaign'] ) ? array( 'summary', 'description' ) : array( 'description', 'summary' );
+		foreach ( $fields as $field ) {
 			$value = isset( $content[ $field ] ) ? self::normalized_text( $content[ $field ] ) : '';
 			if ( '' !== $value && ! in_array( $value, $parts, true ) ) {
 				$parts[] = $value;
@@ -622,7 +623,8 @@ final class KTK_Storefront {
 				self::output_meta_tag( 'property', 'og:image:height', $image['height'] );
 			}
 		}
-		if ( ! empty( $product['price']['amount'] ) && ! empty( $product['price']['currency'] ) ) {
+		$past_campaign = self::public_html_enabled() && ! empty( $product ) ? KTK_Storefront_Public_Content::past_campaign( $product ) : null;
+		if ( ! $past_campaign && ! empty( $product['price']['amount'] ) && ! empty( $product['price']['currency'] ) ) {
 			self::output_meta_tag( 'property', 'product:price:amount', number_format( (float) $product['price']['amount'], 2, '.', '' ) );
 			self::output_meta_tag( 'property', 'product:price:currency', strtoupper( sanitize_text_field( $product['price']['currency'] ) ) );
 			self::output_meta_tag( 'property', 'product:availability', 'in stock' );
@@ -704,6 +706,10 @@ final class KTK_Storefront {
 		);
 		if ( ! empty( $metadata['image']['url'] ) ) {
 			$webpage['primaryImageOfPage'] = $metadata['image']['url'];
+		}
+		if ( self::public_html_enabled() && KTK_Storefront_Public_Content::past_campaign( $product ) ) {
+			unset( $webpage['mainEntity'] );
+			return array( '@context' => 'https://schema.org', '@graph' => array( $webpage ) );
 		}
 
 		return array(
