@@ -2,6 +2,21 @@
 require __DIR__ . '/storefront-public-stubs.php';
 $checks = 0;
 function check( $pass, $name ) { $GLOBALS['checks']++; if (!$pass) { throw new RuntimeException($name); } }
+function remove_action( $hook, $callback, $priority = 10 ) { $GLOBALS['removed_actions'][] = array($hook,$callback,$priority); }
+$GLOBALS['removed_actions']=array();
+KTK_Storefront::allow_staging_storefront_zoom();
+check($GLOBALS['removed_actions']===array(array('wp_head','et_add_viewport_meta',10)),'Only the observed duplicate Divi viewport callback is removed on owned staging storefront');
+foreach (array(
+    array('https://krawlthroughkrakow.com/','https://krawlthroughkrakow.com/','1'),
+    array('https://example.com/staging/','https://example.com/staging/','1'),
+    array('https://krawlthroughkrakow.com/staging/','https://krawlthroughkrakow.com/','1'),
+    array('https://krawlthroughkrakow.com/staging/','https://krawlthroughkrakow.com/staging/','0')
+) as $context) {
+    list($GLOBALS['home'],$GLOBALS['site'],$GLOBALS['query']['ktk_storefront'])=$context;
+    $GLOBALS['removed_actions']=array();KTK_Storefront::allow_staging_storefront_zoom();
+    check(!$GLOBALS['removed_actions'],'Production, foreign, mixed and non-store viewport behavior is untouched');
+}
+$GLOBALS['home']=$GLOBALS['site']='https://krawlthroughkrakow.com/staging/';$GLOBALS['query']['ktk_storefront']='1';
 $product = array('id'=>28,'slug'=>'pub-crawl-28','name'=>'Pub Crawl','price'=>array('amount'=>135,'currency'=>'PLN'),
     'images'=>array(array('url'=>'https://example.com/crawl.jpg')),'config'=>array('content'=>array(
         'description'=>'Actual crawl description','highlights'=>array('Actual inclusion'),
@@ -25,6 +40,9 @@ $GLOBALS['query']['ktk_storefront_path']='pub-crawl-28';
 $GLOBALS['transients']['ktk_sf_'.md5('product_pub-crawl-28')]=array('product'=>$product,'customer'=>array('email'=>'private@example.invalid'),
     'storefrontConfig'=>array('cancellationPolicy'=>array('title'=>'Cancellation policy','summary'=>'Actual terms'),'journeyReplay'=>array('enabled'=>true,'projectId'=>'private-marker')));
 $data=KTK_Storefront::public_html_data(); $html=KTK_Storefront_Public_Content::render($data);
+$document=new DOMDocument();@$document->loadHTML($html);$xpath=new DOMXPath($document);
+check($xpath->query('//main')->length===1 && $xpath->query('//main//main')->length===0,'Product initial HTML has one non-nested main landmark');
+check($xpath->query('//main//h1')->length===1 && $xpath->query('//main//aside')->length===1,'Product heading and booking contact are inside its main landmark');
 foreach (array('<h1>Pub Crawl</h1>','Actual crawl description','Actual inclusion','Adam Statue','Bring valid ID','Actual terms','PLN 135.00','crawl.jpg','/staging/store2/','/staging/contact/') as $text) {
     check(str_contains($html,$text),'Initial HTML includes '.$text);
 }

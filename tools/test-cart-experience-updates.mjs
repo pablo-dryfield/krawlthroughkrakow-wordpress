@@ -97,11 +97,11 @@ try {
     }
     const update = page.getByRole('button', { name: /^Update booking/ });
     await update.waitFor();
-    assert.equal((await page.getByRole('button', { name: 'Number of men', exact: true }).innerText()).trim(), '1');
+    assert.equal((await page.getByRole('button', { name: 'Number of men: 1', exact: true }).innerText()).trim(), '1');
     report.checks.push(`${width}: returned product form prefills existing guests and shows Update booking`);
-    await page.getByRole('button', { name: 'T-Shirts', exact: true }).click();
+    await page.getByRole('button', { name: /^T-Shirts: / }).click();
     await page.getByRole('option', { name: /^1 / }).click();
-    await page.getByRole('button', { name: 'XL T-shirt quantity', exact: true }).click();
+    await page.getByRole('button', { name: /^XL T-shirt quantity: / }).click();
     await page.getByRole('option', { name: '1', exact: true }).click();
     await update.click();
     await page.waitForURL('**/cart');
@@ -129,9 +129,9 @@ try {
       items.push({ ...items[0], key: 'other-date', cartItemNumber: 2, experienceDate: '2030-12-15' });
       localStorage.setItem('ktk-storefront-cart-v1', JSON.stringify(items));
     });
-    await page.getByRole('button', { name: 'T-Shirts', exact: true }).click();
+    await page.getByRole('button', { name: /^T-Shirts: / }).click();
     await page.getByRole('option', { name: /^1 / }).click();
-    await page.getByRole('button', { name: 'XL T-shirt quantity', exact: true }).click();
+    await page.getByRole('button', { name: /^XL T-shirt quantity: / }).click();
     await page.getByRole('option', { name: '1', exact: true }).click();
     await update.click();
     await page.waitForURL('**/cart');
