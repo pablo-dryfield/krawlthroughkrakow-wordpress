@@ -2,13 +2,14 @@
 
 ## Scope And State
 
-Follow-up: [the first scoped jazz factual batch](JAZZ-FACTS.md) now passes local
-checks and awaits required CI/staging verification. The read-only observations
-below retain their original scope; this does not make the music review complete.
+Follow-up: [the first scoped jazz factual batch](JAZZ-FACTS.md) is now staging
+cache-verified. The read-only observations below retain their original scope;
+this does not make the whole music review complete.
 
 Read-only C05/C08 preparation on13 November2026. No guide rewrite, redirect,
 canonical/indexing change or production deployment in this review. Current
-application delivery remains the separate staging budget-guide batch.
+application delivery at that initial checkpoint was the separate staging
+budget-guide batch. The follow-up link above records later scoped changes.
 
 The initial two-page comparison covers the immutable article captures, their
 current generated bodies and primary operator/artist sources. It is not a
@@ -96,6 +97,19 @@ Additional primary checks completed13 November2026:
 No current primary Duffy's/Pod Papugami/Ronnie Drew's programme was cleared in
 this pass. Directory/aggregator results and inaccessible social pages remain
 leads only. Venue media/menus have not been licensed/copied into the application.
+
+### Later13 November Source Follow-up
+
+The old Alchemia `/en/` path failed, but the [Polish contact page](https://alchemia.com.pl/kontakt/),
+[programme](https://alchemia.com.pl/program/) and [English contact subdomain](https://en.alchemia.com.pl/contact-details/)
+are accessible. Both contact editions identify Estery5; some contact-person/phone
+details differ, so do not merge them into an invented current contact record.
+The programme carries dated November2026 performances and multiple genres,
+not only jazz. Relative today/tomorrow labels lag the actual review day in the
+retrieved page; use explicit dates/current event confirmation, not copied
+relative-time promises. These sources do not establish the old article's
+over30-years claim. No Alchemia copy change is included in the first three-venue
+jazz batch; this is evidence for the next scoped review.
 
 ## Proposed Editorial Treatment
 

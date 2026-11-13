@@ -25,8 +25,20 @@ venue/history statement in this article or the other music guides.
 - [x] Local build2320/source381/native browser74/Python180/shared JS77/PHP760/
   forms31 stubbed pass. Four axe views0 violations/4 incomplete groups, no page
   errors; actual phone screenshot inspected. Not full accessibility conformance.
-- [ ] Required CI, guarded staging deployment and live origin/normal/cache checks.
-- [ ] Add the verified batch to the roadmap only after staging checks pass.
+- [x] Sourcece12edd / PR26 required CI43465780942 both jobs pass; guarded staging
+  publisher independently verifies2072 owned hashes and saved state/home/store
+  unchanged, helper removed. No discovery/home/storefront deployment needed.
+- [x] Actual origin/normal browser74 each, consent-aware attribution52, discovery
+  243 origin, four normal axe views0/4 incompletes and current10 homepage assets
+  pass. Live mobile screenshot inspected. Staging-only Cloudflare purge accepted
+  at16:47:58.621UTC; API acceptance alone is not cache proof.
+- [x] Full content5848 origin/normal/repeat each pass,119 asset hashes/tokens
+  current. Final repeat16:55:26UTC has348/348 content HIT across three device
+  variants. First normal scan232 MISS/116 HIT was not called all-HIT.
+- [x] Graph142 pages/6214 edges/no unknowns/same6 held tags; discovery243 origin/
+  216 normal/216 repeat and homepage10 assets/all3 HIT pass. No discovery changes.
+- [x] Roadmap advances this batch only, now15 staging/1 underway/1 OmniLodge live.
+  Full C05 remains open. Task previews and all finite scans/publishers are closed.
 
 ## Sources And Limits
 
@@ -68,6 +80,12 @@ to the existing pre-marker manual section; guard unchanged, full116-page build
 then passed. No malformed intermediate payload was deployed.
 
 ## Next Work
+
+Delivery checkpoint: `ktk-code-pages-staging-20261113-164617.zip`, SHA256
+`2b6f00f37e3b4966ae716b28db494e39d106492ebfbb71a9298681aae65494d7`;
+publisher finished16:46:37UTC. Reports use the `jazz-` prefix in this directory;
+full content scans use `jazz-origin/clean/repeat-20261113.json` under the shared
+full-migration evidence directory. No whole-site accessibility/ranking claim.
 
 Finish current-primary checks for the remaining jazz venues, then broader music
 and overlapping-techno intent work described in [REVIEW.md](REVIEW.md). Keep both

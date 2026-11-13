@@ -53,7 +53,17 @@ status changes rather than freezing today's completed count. Workstreams are
 unequal-sized: the chart is a count distribution, not an effort/time percentage,
 deadline, ranking forecast or declaration that all staging work is production-ready.
 
-## Staging Delivery View,13 November2026
+## Current Delivery Follow-up
+
+The first [jazz factual batch](../music-guides-2026-11-13/JAZZ-FACTS.md) is now
+staging cache-verified. Its explicit batch advances to verified while the wider
+C05 music-guide work remains open:15 staging,1 underway and1 OmniLodge live
+batch,17 total. All40 end-to-end statuses remain unchanged. These figures are a
+dated checkpoint; the maintained JSON/generator supplies future live counts.
+Fixtures now find IDs and compare source environments, rather than assuming
+list positions or that every future live delivery must be OmniLodge.
+
+## Initial Staging Delivery View,13 November2026
 
 The owner could not see progress while finished staging batches remained inside
 open end-to-end workstreams. The new top-level delivery view separates14 verified

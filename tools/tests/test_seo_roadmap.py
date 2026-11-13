@@ -107,7 +107,11 @@ class RoadmapTests(unittest.TestCase):
         self.assertEqual((ROOT / 'docs/seo/ROADMAP.html').read_text(encoding='utf-8'),module.render_html(self.data,self.plan))
 
     def test_deliveries_do_not_complete_or_double_count_workstreams(self):
-        model=module.build_model(self.data,self.plan)
+        data=copy.deepcopy(self.data)
+        data['tickets']['C04']['status']='in_progress'
+        batch=next(row for row in data['deliveries'] if row['id']=='budget-guide')
+        batch.update(stage='staging_verified',environment='website',verifiedOn=data['updatedOn'])
+        model=module.build_model(data,self.plan)
         self.assertEqual(len(model['deliveries']['items']),len(self.data['deliveries']))
         self.assertEqual(sum(model['deliveries']['counts'].values()),len(self.data['deliveries']))
         self.assertEqual(model['total'],40)
@@ -118,7 +122,7 @@ class RoadmapTests(unittest.TestCase):
     def test_delivery_fields_and_evidence_fail_closed(self):
         for change in ['missing','duplicate','id','stage','title','scope','duplicate_scope','path','missing_evidence','future','unfinished_date','environment','live_website','unknown_field']:
             data=copy.deepcopy(self.data)
-            row=data['deliveries'][1]
+            row=next(item for item in data['deliveries'] if item['id']=='budget-guide')
             if change=='missing': del data['deliveries']
             elif change=='duplicate': data['deliveries'].append(copy.deepcopy(row))
             elif change=='id': row['id']='../bad'
@@ -138,7 +142,7 @@ class RoadmapTests(unittest.TestCase):
     def test_future_delivery_progress_uses_data_not_notes_or_frozen_counts(self):
         data=copy.deepcopy(self.data)
         before=module.delivery_model(data)['counts']
-        row=data['deliveries'][0]
+        row=next(item for item in data['deliveries'] if item['id']=='music-guide-review')
         row['stage']='staging_verified';row['verifiedOn']=data['updatedOn']
         after=module.delivery_model(data)['counts']
         self.assertEqual(after['staging_verified'],before['staging_verified']+1)

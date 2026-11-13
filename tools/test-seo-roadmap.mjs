@@ -45,7 +45,8 @@ try{
    check(width+' no false full-plan percentage',(await page.locator('.status-section .method').textContent()).includes('not a time estimate or an overall completion percentage'));
    check(width+' source-bound delivery counts',Object.entries(model.deliveries.counts).every(([stage,count])=>source.deliveries.filter(row=>row.stage===stage).length===count));
    check(width+' recent deliveries visible',await page.locator('[data-delivery]').count()===Math.min(4,source.deliveries.length));
-   check(width+' staging delivery does not complete whole workstream',model.tickets.find(row=>row.id==='C04').bucket==='in_progress'&&model.deliveries.items.find(row=>row.id==='budget-guide').stage==='staging_verified');
+   const sourceBuckets={live_verified:'complete',in_progress:'in_progress',not_started:'not_started',deferred:'deferred',awaiting_cache:'in_progress',source_verified:'in_progress',staging_verified:'in_progress'};
+   check(width+' delivery stages do not override whole-workstream states',model.tickets.every(row=>row.bucket===sourceBuckets[source.tickets[row.id].status]));
    await page.locator('#delivery-expand').click();
    check(width+' expand shows every delivery',await page.locator('[data-delivery]').count()===source.deliveries.length&&await page.locator('#delivery-expand').getAttribute('aria-expanded')==='true');
    await geometry(page,width+' expanded deliveries');
@@ -53,7 +54,8 @@ try{
    check(width+' staging delivery filter is independent',await page.locator('[data-delivery]').count()===model.deliveries.counts.staging_verified&&await page.locator('#overview').isVisible()&&await page.locator('#delivery-stage').inputValue()==='staging_verified');
    check(width+' pressed delivery filter keeps keyboard focus',await page.locator('[data-delivery-stage="staging_verified"]').getAttribute('aria-pressed')==='true'&&await page.locator('[data-delivery-stage="staging_verified"]').evaluate(node=>node===document.activeElement));
    await page.locator('#delivery-stage').selectOption('live_verified');
-   check(width+' live delivery filter keeps environment explicit',await page.locator('[data-delivery]').count()===model.deliveries.counts.live_verified&&(await page.locator('[data-delivery] .pill').allTextContents()).every(text=>text.includes('OmniLodge')));
+   const liveLabels=await page.locator('[data-delivery]').evaluateAll(nodes=>nodes.map(node=>({id:node.dataset.delivery,label:node.querySelector('.pill').textContent.trim()})));
+   check(width+' live delivery filter keeps environment explicit',liveLabels.length===model.deliveries.counts.live_verified&&liveLabels.every(row=>row.label==='Verified live'+(source.deliveries.find(item=>item.id===row.id).environment==='omnilodge'?' / OmniLodge':'')));
    await page.locator('#delivery-stage').selectOption('in_progress');
    check(width+' unfinished delivery has no verification date',(await page.locator('[data-delivery] small').allTextContents()).every(text=>text.includes('Not yet verified')));
    await page.locator('#delivery-stage').selectOption('all');
