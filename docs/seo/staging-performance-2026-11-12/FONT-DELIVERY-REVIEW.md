@@ -1,5 +1,9 @@
 # Original Icon Font Delivery Review
 
+Later homepage-only implementation and actual staging evidence are recorded in
+[ICON-FONT-DELIVERY.md](ICON-FONT-DELIVERY.md). The read-only preparation below
+describes the earlier checkpoint, not the current deployable asset inventory.
+
 Read-only preparation13 November2026. No font, CSS, application file, server/cache
 configuration, consent setting or production change in this investigation.
 

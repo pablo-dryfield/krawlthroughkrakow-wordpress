@@ -1,12 +1,12 @@
 # SEO Roadmap And Progress
 
-Updated: 2026-11-13 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; edit that source, not this page.
+Updated: 2026-11-14 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; edit that source, not this page.
 
 **Visual dashboard:** [Open ROADMAP.html](ROADMAP.html). The HTML and this Markdown view use the same maintained source.
 
 ## Where We Are
 
-**Current work:** The approved cutoff now covers the hero and every registered content NYE checkout link, verified on cached staging. Continuing mobile-performance, content and measurement work. The health article is held for specialist review; production remains unchanged.
+**Current work:** Lossless homepage icon-font delivery is verified on cached staging. Continuing source-checked article improvements, starting with the Memorial visitor guide. The health article remains held for specialist review; production is unchanged.
 
 **Verified foundation milestones:** 7. **Website SEO production releases:** 0. The original website migration is a separate completed project, not counted as SEO implementation. Separately authorized OmniLodge reporting has its own release status.
 
@@ -16,12 +16,13 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 
 | Delivery Stage | Batches |
 | --- | ---: |
-| Verified on staging | 24 |
+| Verified on staging | 25 |
 | In progress | 0 |
 | Verified live | 1 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Lossless homepage icon-font delivery](staging-performance-2026-11-12/ICON-FONT-DELIVERY.md) | D02 | Verified on staging (website) | 2026-11-14 | Broader isolated multi-template/real-user performance work, owner review and production approval. Preserved live control raster differences are not hidden. |
 | [Remaining city-guide NYE promotion](nye-content-review-2026-11-13/GUIDE-CUTOFF.md) | C02, G01, D05 | Verified on staging (website) | 2026-11-13 | Owner review, broader campaign-copy review, stale-no-JS cutoff cache operations and production approval. |
 | [Jazz and live-music choice guides](music-guides-2026-11-13/MUSIC-CHOICES.md) | C05, C08, D05 | Verified on staging (website) | 2026-11-13 | Owner review, remaining music/venue guides, ongoing programme checks and production approval. |
 | [Jazz guide: checked venue facts and booking clarity](music-guides-2026-11-13/JAZZ-FACTS.md) | C05, C08, D05 | Verified on staging (website) | 2026-11-13 | Owner review and eventual production approval; remaining jazz venues and wider music guides are separate work. |
