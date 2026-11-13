@@ -74,11 +74,34 @@ Checked online on 13 November 2026; no external photographs copied.
   and8 incomplete groups, not full conformance. Actual mobile/desktop screenshots
   inspected; visible booking tab, native fragments and original photo identities
   pass. Roadmap browser311 passes. Immutable asset manifest remains exact.
-- [ ] Isolated live attribution after the staging release.
-- [ ] Required CI, reviewed manual staging publisher, independent remote hashes
-  and unchanged protected WordPress/home/store state.
-- [ ] Scoped staging cache purge and normal/repeat device/cache verification.
-- [ ] Advance this delivery on both roadmaps from actual final evidence.
+- [x] Source4dc08ed / PR27 required CI43471154012 passes both jobs. Guarded
+  staging publisher verifies2072 owned hashes and unchanged saved WordPress
+  state/home/storefront; helper removed. Completed17:18:04UTC. Backup
+  `ktk-code-pages-staging-20261113-171745.zip`, SHA256
+  `aaf8a748534def8ba2181117b311cfd24a18065b3265ed7ca5467c60885c3251`.
+- [x] Actual origin and normal browser156 each, isolated attribution59 with no
+  navigation/orders/writes, discovery243 origin and normal8-view axe0 violations/
+  8 incomplete groups pass. Normal live mobile screenshots inspected. Homepage
+  active assets pass; full-route and warmed-cache verification remain below.
+- [x] Staging-only Cloudflare prefix purge accepted17:18:57.668UTC. No production
+  purge/settings change. API acceptance alone is not cache proof.
+- [x] Full content5848 origin/normal/repeat each pass,119 assets/tokens current.
+  Final repeat17:26:00UTC:348/348 content HIT across desktop/Android/iPad.
+  First normal261 MISS/87 HIT is retained, not described as all-HIT.
+- [x] Graph142 pages/6214 edges/no unknowns/same6 held tag archives; discovery
+  243 origin/216 normal/216 repeat and homepage10 assets/all3 HIT repeat pass.
+  Initial homepage repeat warming is separate from final content-cache proof.
+- [x] Both roadmaps advance this batch only:16 staging-verified,1 wider music
+  review underway,1 OmniLodge live delivery. All40 wider ticket states remain;
+  C05/C08 are not finished. No website SEO production release.
+
+Reports use `music-` names in this directory; full shared content reports are
+`music-choices-origin/clean/repeat-20261113.json`. App payload remains exactly
+4dc08ed; subsequent documentation/roadmap changes require no second deployment.
+Definitions/discovery bytes are exact, so no separate discovery/home/storefront
+publisher was run. All finite scans/publishers and task previews are closed;
+ports5184/5185 have no listeners. Final docs CI/merge/own reference cleanup is
+recorded in PR27, not inferred from the application CI alone.
 
 Initial diagnostics retained: source405/407 caught fixture filtering of the
 `main-toc` ID itself, then corrected to exclude only auxiliary IDs; browser

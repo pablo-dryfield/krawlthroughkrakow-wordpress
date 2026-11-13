@@ -6,6 +6,13 @@ Follow-up: [the first scoped jazz factual batch](JAZZ-FACTS.md) is now staging
 cache-verified. The read-only observations below retain their original scope;
 this does not make the whole music review complete.
 
+The next scoped [jazz and live-music choice batch](MUSIC-CHOICES.md) now covers
+the remaining jazz choices and distinguishes performance formats on the live
+music URL. Its release checklist records actual QA/cache state. The owner has
+also confirmed HEVRE as a KTK music-night recommendation; a current public jazz
+programme is not independently verified. The techno/other-guide holds below
+remain open, not silently cleared by these two article revisions.
+
 Read-only C05/C08 preparation on13 November2026. No guide rewrite, redirect,
 canonical/indexing change or production deployment in this review. Current
 application delivery at that initial checkpoint was the separate staging
