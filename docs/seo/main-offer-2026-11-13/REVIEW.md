@@ -1,7 +1,7 @@
 # Main Offer Review
 
-C01/G01/D05 staging work, 13 November 2026. Initial copy is deployed to staging;
-the mobile-clearance follow-up below is local pending its own CI/release checks.
+C01/G01/D05 staging work, 13 November 2026. Homepage copy and the mobile-clearance
+follow-up are deployed and verified on normal cached staging pages.
 Product pricing, checkout, hero artwork and production are unchanged.
 
 ## Current Evidence
@@ -109,6 +109,50 @@ actual intersections with both booking tabs. Local source24/24, browser312/312,
 native36/36 and two axe views with zero violations pass. The new mobile screenshot
 is inspected. This follow-up needs required CI, its own backup/manual deployment
 and new normal cached-device verification before the delivery is marked verified.
+
+## Final Verified Staging Delivery
+
+Application0a00906 passed both required jobs in CI43492193402. The second manual
+assets-only publisher completed19:29:51UTC with232 independent SHA256 matches,
+origin cache cleared and its helper removed; saved posts/settings are not rewritten
+(not a full database-state snapshot). Follow-up backup:
+`deploy-backups/ktk-homepage-shortcode-staging-20261113-192834.zip`, SHA256
+`dfa70fcfc241db4aee66cac36ecabc84cf7610336acfa0ceb05f270c306cef52`.
+For full feature rollback use the original191841 checkpoint, not just this
+intermediate copy-without-clearance checkpoint. Restore only owned feature files.
+
+Final checks:
+
+- Source24/24: all asset inventory retained; only body PHP and one exact, scoped
+  runtime-CSS block differ. Original runtime bytes outside that block are exact.
+- Responsive312/312 local;322/322 origin and normal staging, ten JS/no-JS views,
+  320-1920px. These include text intersections with both floating tabs.
+- Native keyboard/reflow36/36 origin and normal; actual mobile/desktop screenshots
+  inspected. The final390px rules screenshot is also exactly identical in decoded
+  pixels to the inspected local clearance view (zero changed pixels). This is one
+  view, not whole-page or original-copy pixel identity.
+- Shared JavaScript107/107, Python181/181 and homepage PHP integration pass.
+- Two normal axe views: zero violations, five incomplete groups; no full-WCAG,
+  assistive-technology, cookie-safety or payment certification claimed.
+- Copy87/87 origin, clean and repeat: all27 targets and new native links, canonical
+  and noindex checked on desktop, Android and iPad. Final normal variants are HIT.
+- Home10 active asset hashes/version tokens and all six icon hints21/21 current.
+- Attribution115/115 on the final cached pages: two new body links hand off incoming
+  attribution, no hardcoded values, denied journey withheld and consented labelled
+  clicks recorded only in isolated browser storage. Zero writes/navigation/orders.
+
+The first follow-up browser/asset sample started while the publisher was finishing;
+it is preserved but not used as release proof. Fresh `*-clearance-final` origin
+reports were started only after publisher exit0. The final staging-only Cloudflare
+prefix purge was accepted19:31:36.804UTC; `offer-clean-clearance.json` has three
+MISS responses, `offer-repeat-clearance.json` three HIT. API acceptance alone was
+not treated as eviction proof. Both publishers and all finite test sessions are
+closed. Baseline PHP86617 is closed; root previews remain for the next batch.
+
+No website production, product/coupon configuration, storefront application,
+commerce, forms, consent, account or OmniLodge change. The homepage URL and its
+metadata/indexing contract remain intact. Joining/meeting/FAQ consistency is the
+next reviewed scope, not already delivered by this homepage release.
 
 The next run (`browser-corrected-policy/report.json`, 306/312) retained six
 heading-line-box assertions. A 1440px clean baseline/control comparison shows
