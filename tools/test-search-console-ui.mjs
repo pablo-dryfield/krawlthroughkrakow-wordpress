@@ -54,6 +54,26 @@ try{
   if(width===390){await page.getByText('Date range may be incomplete',{exact:true}).first().scrollIntoViewIfNeeded();await page.screenshot({path:path.join(output,'history-'+width+'.png')});}
   await context.close();
  }
+ for(const timezoneId of ['Europe/Warsaw','America/New_York','America/Los_Angeles','Asia/Tokyo']){
+  for(const [instant,start,end,yearStart,previousStart,previousEnd] of [
+   ['2026-11-13T07:59:00Z','2026-10-14','2026-11-10','2025-11-11','2024-11-11','2025-11-10'],
+   ['2026-11-13T08:01:00Z','2026-10-15','2026-11-11','2025-11-12','2024-11-12','2025-11-11']
+  ]){
+   const context=await browser.newContext({viewport:{width:390,height:900},timezoneId});
+   await context.route('**/*',route=>new URL(route.request().url()).hostname==='127.0.0.1'&&route.request().method()==='GET'?route.continue():route.abort());
+   const page=await context.newPage();page.on('pageerror',error=>report.errors.push(error.message));
+   await page.clock.setFixedTime(new Date(instant));
+   await page.goto('http://127.0.0.1:'+server.address().port);
+   await page.getByText('9,000',{exact:true}).first().waitFor();
+   const initial=await page.evaluate(()=>window.__requests[0]);
+   check(timezoneId+' '+instant+' browser preset uses Pacific dates',initial.startDate===start&&initial.endDate===end,initial);
+   await page.getByRole('textbox',{name:'Range',exact:true}).click();
+   await page.getByRole('option',{name:'Last 12 months',exact:true}).click();
+   const requests=await page.evaluate(()=>window.__requests.slice(-8));
+   check(timezoneId+' '+instant+' year comparison uses exact matching calendar periods',requests[0].startDate===yearStart&&requests[0].endDate===end&&requests[1].startDate===previousStart&&requests[1].endDate===previousEnd,requests.slice(0,2));
+   await context.close();
+  }
+ }
  check('no browser errors',report.errors.length===0,report.errors);
 }catch(error){report.errors.push(error.stack);}finally{
  await browser.close();await new Promise(resolve=>server.close(resolve));report.passed=report.checks.filter(row=>row.pass).length;report.total=report.checks.length;

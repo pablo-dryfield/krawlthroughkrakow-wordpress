@@ -55,6 +55,44 @@ mobile loading cost, led by the exact original SVG. Do not report good field CWV
 
 ## Next Verification
 
+### Post-Purge Verification
+
+The owner confirmed the staging-prefix purge on13 November local time. Normal
+homepage asset/token/canonical/noindex checks pass across desktop, Android and iPad;
+the repeat is HIT on all three. The original stale-cache reports are retained.
+Full content clean/repeat4320/4320 and actual schema3221/3221 also pass, with zero
+transport errors. Website production remains unchanged.
+
+Three normal-URL cold-browser-cache mobile lab traces use390x844, DPR3, CPU4x and
+Slow4G: LCP12,120 /12,281 /8,182ms (median12,120ms), CLS0.00 each. These descriptive
+staging observations are NOT field CWV or a controlled before/after percentage.
+The original pre-edit17,020ms observation was a single run, and the earlier12,542ms
+follow-up used an origin query URL; neither is silently substituted for a matched
+three-run baseline. Raw trace-file saving remains unavailable; summaries/insights
+are retained instead.
+
+The original regular SVG is LCP in all three runs; its load/render time remains
+the main mobile bottleneck. Preserve exact artwork while separately reviewing
+possible delivery options. Native image-delivery estimates now show19.8kB for the
+logo/review image, not the previous eager below-fold photo load. Do not claim this
+alone guarantees a good mobile score or authorize unrelated third-party changes.
+
+Real normal-URL mobile runtime confirms both hero SVGs decode eagerly,25 body
+photos remain lazy and just one9,016-byte body photo initially loads. Gallery
+adjacent warming, click/keyboard navigation and scrolling to a lower portrait work.
+The actual consent dialog initially contained focus; normal Reject in this isolated
+task browser releases it. An interleaved Sky/DevTools keyboard observation did not
+advance; explicit foreground plus uninterrupted native Enter does. No application
+patch or consent bypass was made to obtain the correct result. Desktop1440x900
+repeat advances1 of9 ->2 of9 with native keyboard Enter, decodes the active image,
+warms adjacent images and loads the lower portrait without overflow. Desktop and
+390px mobile screenshots were visually inspected: original vectors/photos render.
+The desktop header's Book Now control wraps below the navigation at1440px. This
+is a separate responsive defect, not changed or hidden by the photo policy; retain
+it for the next staging batch. Gallery checks do not certify all accessibility.
+
+### Earlier Deployment And Local Evidence
+
 The assets-only staging publisher verified all232 owned files, without rewriting
 saved WordPress posts/settings. Backup
 `ktk-homepage-shortcode-staging-20261112-221242.zip`, SHA256

@@ -58,6 +58,48 @@ parameters. Preserve legitimate handoff/attribution; investigate representative
 canonical/indexing behavior before proposing any URL changes. No live token values
 are copied into this document.
 
+## Device And Market Cohorts
+
+The same28-day dates, Web Search and independent native summaries were used.
+No query/page filter. Country means search location, not customer nationality.
+
+| Cohort | Clicks | Impressions | CTR | Avg Position |
+| --- | ---: | ---: | ---: | ---: |
+|All countries, mobile|773|32,045|2.41%|8.29|
+|All countries, desktop|180|12,849|1.40%|12.20|
+|All countries, tablet|5|321|1.56%|10.39|
+|Poland, all devices|301|13,635|2.21%|8.41|
+|United Kingdom, all devices|259|13,655|1.90%|11.36|
+
+Device click/impression counts reconcile exactly to958/45,215; mobile contributes
+about81% of clicks. These cohorts support mobile prioritization, not a claim that
+mobile and desktop rank/CTR are directly comparable for identical queries. UK was
+observed in the real UI; the other four cohorts additionally retain private raw
+request/metric evidence. Remaining countries contribute398 clicks/17,925
+impressions by subtraction; no rounded position averages were combined.
+
+## Available Query Detail
+
+The28-day query table reached End of returned rows after native offsets0,1000 and
+2000:2,211 unique query rows. Returned rows contain443 clicks/22,549 impressions,
+not the958/45,215 property totals. Anonymized queries and provider detail limits
+prevent treating those rows as all search demand or deriving complete nonbrand
+totals by subtraction.
+
+| Exact Returned Query | Clicks | Impressions | CTR | Avg Position |
+| --- | ---: | ---: | ---: | ---: |
+|pub crawl krakow|56|566|9.89%|4.53|
+|krawl through krakow|54|319|16.93%|9.43|
+|krakow pub crawl|49|528|9.28%|3.23|
+|krakow new year|1|300|0.33%|7.38|
+|krakow new years eve|1|146|0.68%|7.91|
+
+The NYE query observations support reviewing the existing guides and sales path;
+they do not justify creating/merging pages based only on shared keywords. Full
+90/180/365 query extraction and reviewed brand/intent classifications remain.
+Private28-day query export SHA256:
+`08d0554a5e8cd4d56ad0614a38288582ab2b259c64f687317039429cd2d49892`.
+
 ## Evidence Binding And Remaining Work
 
 Private raw report SHA256 values:
@@ -67,10 +109,17 @@ Private raw report SHA256 values:
 - 180-day `f2549e32e5d8383969d76e4c42631913ca08b6d9c8a93fd81e1492aef6306878`.
 - 365-day `9c35695edfa216d5c0fdb359a5289b26e67ace656d0afa8e3a6659cb0f2791f4`.
 
-M02 remains partial: native account comparison, complete available query exports,
-brand/nonbrand and country/device/intent cohorts, supported prior-year matching
+Native Google comparison is complete for the same28-day window:958 clicks and
+rounded45.2k impressions/2.1% CTR/9.4 position, with identical leading query rows.
+Native UI rounding does not expose the exact45,215 denominator without export.
+No traffic uplift is inferred from correcting the former top100-derived totals.
+
+M02 remains partial: longer available query exports,
+reviewed brand/nonbrand and intent cohorts, supported prior-year matching
 windows and future retained-history policy remain. No BigQuery/account storage
-configuration was created. The browser was restored to28-day unfiltered Queries.
+configuration was created. Browser Pacific-day preset correction is releasing;
+its actual delivery must be verified before comparing new preset exports. Explicit
+date windows already support the matching baseline above.
 
 [Google's performance report](https://support.google.com/webmasters/answer/7576553?hl=en)
 and [Search Analytics API](https://developers.google.com/webmaster-tools/v1/searchanalytics/query)

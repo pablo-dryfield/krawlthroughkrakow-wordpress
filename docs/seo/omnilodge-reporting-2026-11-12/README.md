@@ -84,8 +84,11 @@ PR253 passed required CI43320207297 and merged as
 `121755b3e018d6af63940b829d060e810a5548b6`; Markdown/docs are excluded from Release,
 so this did not require another application deployment. Primary OmniLodge checkout
 is clean on synchronized master; own completed local/remote branches are removed.
-Native Google Search Console tab is signed out; the owner was asked to sign in for
-the still-outstanding native comparison/indexing/actions/security review.
+Native Google review is now complete for the matching28-day window: totals and
+leading query rows agree. Manual Actions/Security Issues show none; indexing,
+crawl and sitemap findings are in the [native review](../indexing-review-2026-11-13/README.md).
+The subsequent date-coverage and browser-Pacific preset fixes have distinct source,
+release and deployment identities; see [the follow-up](DATE-COVERAGE.md).
 
 ## Implementation Contract
 

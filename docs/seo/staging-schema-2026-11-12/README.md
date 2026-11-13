@@ -66,13 +66,19 @@ production page/storefront controls. This is recovery evidence, NOT a passing
 all-route regression or attribution of who initiated maintenance. No host/plugin/
 maintenance settings were changed.
 
-Final normal-cache checks await the requested staging purge. Do not call this
-production-delivered or Google Rich Results Test-certified. Staging remains noindex;
-owner review and separate production promotion remain. PR8's current sourcee5e42af
-passes CI43323883038 tests/build and secret scanning; further evidence updates must
-pass their own current CI too. Preserve the a9cf168 comparator worktree. PHP previews
-5185/5186 and the original5184 are stopped; a new5184 reference was started for the
-last run and can now be closed. No tests/publishers depend on those old sessions.
+After the owner confirmed the staging-prefix purge, the normal heading/content
+regression passes4320/4320:348 content responses MISS and three warmed homepage
+variants HIT. The repeat passes4320/4320 with all351 responses HIT. Both have zero
+errors/transport retries. Normal actual schema passes3221/3221 with all348 responses
+HIT; discovery216/216 passes. No application changes or production promotion were
+needed for these read-only checks. Preserve every earlier failed/incomplete report.
+
+This is verified on staging, not production-delivered or Google Rich Results
+Test-certified. Staging remains noindex; owner review and separate production
+promotion remain. PR8 source1e63037 passed CI43326170853; new evidence updates must
+pass their own current CI. Preserve the a9cf168 comparator until this batch closes.
+Old PHP previews are stopped; task5184 reference session33117 was used successfully
+for the final complete scans and can close after remaining browser checks.
 
 Original Ahrefs CSV reports three schema.org notices and zero Google-rich-results
 errors, but does not contain their affected URLs or field details. A fresh detailed

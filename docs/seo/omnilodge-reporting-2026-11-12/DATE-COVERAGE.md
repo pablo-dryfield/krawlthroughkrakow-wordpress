@@ -12,8 +12,11 @@ This follow-up is within the explicitly approved reporting-only M01 scope.
   runtime, release tooling and migrations. Redundant same-source push CI43323737598
   was deliberately cancelled after the real PR run existed, not an application failure.
 - Merged951ec3227a8d0923ab229dfcbf35f6f1253e5da8 at23:04:40UTC. Immutable
-  Release43325692291 is running; this follow-up is NOT yet deployed/verified.
-  It must have its own exact artifact and actual managed-deployment proof.
+  Release43325692291 and actual managed deployment43327415186 succeeded; host
+  terminal23:24:43UTC. Exact healthy-primary backend/UI/reporting bundle3/3 pass
+  against provenance-checked artifact13993387336. See `date-delivery-final.json`;
+  the earlier0/3 old-release report is retained. Real365-day report warns about
+  the approximate2025-07-12 boundary and suppresses all four comparison deltas.
 - Pre-edit tracked-source ZIP `omni-search-date-before-20261112.zip`, SHA256
   `7401520d7fd6fe28528692ffc845ebbe6e63ff29a6fa18f6d8734838aac075cf`,
   integrity verified. Backend typecheck/UI typecheck+lint pass, full backend350
@@ -38,8 +41,20 @@ boundary. The16-month history is an external provider contract, not an arbitrary
 administrator setting or a guarantee that every retained day has observations.
 
 No booking, price, payment, consent, account setting or database migration changes.
-Native Google UI agreement still awaits the owner's account login. Existing saved
-exports are needed for otherwise unavailable older comparisons.
+Native Google UI agreement is complete for the explicit28-day baseline. Existing
+saved exports are needed for otherwise unavailable older comparisons.
+
+## Browser Preset Follow-up
+
+After Warsaw midnight, live review found that UI presets still used local days,
+overriding the corrected backend fallback with explicit dates. UI-only PR255 fixes
+all preset calendar calculations using America/Los_Angeles; explicit custom dates
+are retained. Sourceab19a827 passed typecheck/lint, focused24 tests, full serial
+UI183 suites/1279 tests, synthetic actual-page49 checks across four widths/four
+timezones, and all required CI43329774277. Initial runner/locator failures remain.
+Merged20f0366712b40486925aa8c3229aff26aceb47e8; immutable Release43331452337 is
+running. Its third actual delivery/public identity/live preset proof is still
+pending; never substitute the second release's proof for it.
 
 Primary sources: [Google Search Analytics](https://developers.google.com/webmaster-tools/v1/searchanalytics/query)
 and [Google's history announcement](https://developers.google.com/search/blog/2018/01/introducing-new-search-console).
