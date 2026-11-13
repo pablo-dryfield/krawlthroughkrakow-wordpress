@@ -9,6 +9,7 @@ import {reviseContextualLinks} from './contextual-links.mjs';
 import {rewriteCanonicalLinks} from './canonical-links.mjs';
 import {loadNightlifeEditorial,reviseNightlifeEditorial} from './nightlife-editorial.mjs';
 import {loadBudgetEditorial,reviseBudgetEditorial} from './budget-editorial.mjs';
+import {loadJazzEditorial,reviseJazzEditorial} from './jazz-editorial.mjs';
 import {codePageDescription} from './code-pages-seo.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
@@ -16,6 +17,7 @@ const [baseline,output]=process.argv.slice(2);
 const contextual=process.argv.includes('--contextual');
 const nightlife=process.argv.includes('--nightlife');
 const budget=process.argv.includes('--budget');
+const jazz=process.argv.includes('--jazz');
 if(!baseline||!output)throw Error('Baseline worktree and fresh report required');
 try{await readFile(output);throw Error('Preserve earlier evidence');}catch(error){if(error.code!=='ENOENT')throw error;}
 const assets='staging/wp-content/mu-plugins/ktk-code-pages-assets/';
@@ -24,6 +26,7 @@ const before=definitions(baseline),after=definitions('.');
 const imageDescriptions=await loadReviewedImageDescriptions();
 const nightlifeRevision=nightlife?await loadNightlifeEditorial():null;
 const budgetRevision=budget?await loadBudgetEditorial():null;
+const jazzRevision=jazz?await loadJazzEditorial():null;
 const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
@@ -35,6 +38,7 @@ try{
   await page.setContent(original);await page.evaluate(reviseAccessibilitySemantics,{key,imageDescriptions});
   if(nightlife)await page.evaluate(reviseNightlifeEditorial,{key,revision:nightlifeRevision});
   if(budget)await page.evaluate(reviseBudgetEditorial,{key,revision:budgetRevision});
+  if(jazz)await page.evaluate(reviseJazzEditorial,{key,revision:jazzRevision});
   if(contextual){await page.evaluate(reviseContextualLinks,{key});await rewriteCanonicalLinks(page);}
   const expected=await page.evaluate(()=>document.body.innerHTML);
   await page.setContent(candidate);
@@ -227,6 +231,27 @@ try{
   await page.locator('h2').evaluate(h=>h.textContent='A different activity');
   rejected=false;try{await page.evaluate(reviseContextualLinks,{key:'krakow-stag-do'});}catch{rejected=true;}
   check('changed activity row rejects product substitution',rejected);
+ }
+ if(jazz){
+  const key=jazzRevision.key,markup=await readFile(path.join(baseline,assets,before[key].main_file),'utf8');
+  await page.setContent(markup);
+  const identities=()=>page.evaluate(()=>({ids:[...document.querySelectorAll('.entry-content [id]')].map(n=>n.id),photos:[...document.querySelectorAll('img')].map(n=>n.outerHTML),published:document.querySelector('.post-meta')?.outerHTML}));
+  const original=await identities();
+  check('jazz factual revision performs one eight-edit batch',(await page.evaluate(reviseJazzEditorial,{key,revision:jazzRevision}))[0]?.edits===8);
+  check('jazz fragment/photo/publication identities unchanged',JSON.stringify(original)===JSON.stringify(await identities()));
+  check('jazz correction is idempotent',(await page.evaluate(reviseJazzEditorial,{key,revision:jazzRevision})).length===0);
+  for(const change of ['missing-text','script','image','handler','foreign-link','unknown-selector','duplicate-target']){
+   await page.setContent(markup);const revision=structuredClone(jazzRevision);
+   if(change==='missing-text')revision.edits[7].expectedText='Changed original paragraph';
+   else if(change==='script')revision.edits[7].markup='<script>alert(1)</script>';
+   else if(change==='image')revision.edits[7].markup='<img src="https://example.invalid/photo.jpg">';
+   else if(change==='handler')revision.edits[7].markup='<a href="__KTK_HOME_URL__krakow-nightlife/" onclick="alert(1)">Bad</a>';
+   else if(change==='foreign-link')revision.edits[7].markup='<a href="https://example.invalid/">Unreviewed</a>';
+   else if(change==='unknown-selector')revision.edits[7].selector='footer p';
+   else await page.evaluate(()=>document.querySelector('#harrispianojazzbarthebirthplaceofpolishjazz').after(document.querySelector('#harrispianojazzbarthebirthplaceofpolishjazz').cloneNode(true)));
+   const snapshot=await page.content();let rejected=false;try{await page.evaluate(reviseJazzEditorial,{key,revision});}catch{rejected=true;}
+   check('jazz '+change+' fails closed without partial edits',rejected&&snapshot===await page.content());
+  }
  }
 }finally{await browser.close();}
 const report={checkedAt:new Date().toISOString(),baseline,passed:checks.filter(x=>x.pass).length,total:checks.length,checks};

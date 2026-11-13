@@ -87,6 +87,31 @@ try{
      await page.screenshot({path:path.join(output,'budget-'+width+'-comparison.png')});
     }
    }
+   if(route==='/jazz-bars-in-krakow/'&&process.argv.includes('--capture-jazz')){
+    const article=page.locator('#post-6169>.entry-content'),notice=article.locator('[data-ktk-jazz-review="2026-11-13"]');
+    check(name+' one scoped venue-check notice is visible',await notice.count()===1&&await notice.isVisible()&&(await notice.textContent()).includes('Harris, PIEC Art and U Muniaka'));
+    check(name+' original publication and separate check date retained',await page.locator('.published').textContent()==='Jul 18, 2023'&&await notice.locator('time').getAttribute('datetime')==='2026-11-13');
+    const copy=await article.textContent();
+    check(name+' unsupported jazz-origin and 1950s claims removed',!/birthplace of Polish jazz|since the 1950s/i.test(copy)&&copy.includes('January 1997'));
+    check(name+' original fifteen section IDs are unique',await article.locator('[id]').evaluateAll(nodes=>nodes.length===15&&new Set(nodes.map(n=>n.id)).size===15));
+    check(name+' original six inline photos retained',await article.locator('img').count()===6);
+    check(name+' primary programme and reservation links rendered',await article.locator('a[href]').evaluateAll(nodes=>['https://harris.krakow.pl/o-nas/','https://www.piecart.pl/?lang=pl','https://jazzumuniaka.club/','https://jazzumuniaka.club/regulamin/'].every(href=>nodes.some(a=>a.getAttribute('href')===href))));
+    check(name+' matching product handoff is native',new URL(await article.getByRole('link',{name:'current Krakow pub-crawl inclusions',exact:true}).getAttribute('href'),url).pathname==='/staging/store2/pub-crawl-28/');
+    const clearance=node=>{
+     const cta=document.getElementById('ktk-cta');if(!cta?.getClientRects().length)return {present:false,overlaps:[]};
+     const box=cta.getBoundingClientRect(),walker=document.createTreeWalker(node,NodeFilter.SHOW_TEXT),overlaps=[];let text;
+     while((text=walker.nextNode())){if(!text.textContent.trim())continue;const r=document.createRange();r.selectNodeContents(text);if([...r.getClientRects()].some(t=>t.width&&t.height&&t.right>box.left-2&&t.left<box.right+2&&t.bottom>box.top&&t.top<box.bottom))overlaps.push(text.textContent.trim().slice(0,80));}
+     return {present:true,overlaps};
+    };
+    await page.evaluate(()=>scrollTo({top:0,left:0,behavior:'instant'}));
+    const landing=await page.locator('#main-content').evaluate(clearance);check(name+' jazz headline clears visible floating tab',landing.present&&!landing.overlaps.length,landing);
+    if([390,1440].includes(width))await page.screenshot({path:path.join(output,'jazz-'+width+'-landing.png')});
+    const contents=article.getByRole('link',{name:'Harris Piano Jazz Bar: live music on the Main Square',exact:true});
+    await contents.focus();await page.keyboard.press('Enter');
+    check(name+' updated contents text keeps original native fragment',await page.evaluate(()=>location.hash==='#harrispianojazzbarthebirthplaceofpolishjazz'&&document.getElementById('harrispianojazzbarthebirthplaceofpolishjazz').getBoundingClientRect().top<innerHeight));
+    const body=await article.evaluate(clearance);check(name+' jazz body clears visible floating tab',body.present&&!body.overlaps.length,body);
+    if([390,1440].includes(width))await page.screenshot({path:path.join(output,'jazz-'+width+'-harris.png')});
+   }
    if(route==='/2020-krakow-nightlife-guide/'&&process.argv.includes('--capture-editorial')){
     const notice=page.locator('[data-ktk-historical-notice="nightlife-2020"]');
     check(name+' one visible archive notice is inside the original introduction',await notice.count()===1&&await notice.isVisible()&&await notice.evaluate(n=>n.parentElement.matches('.et_pb_text_0 .et_pb_text_inner')));
