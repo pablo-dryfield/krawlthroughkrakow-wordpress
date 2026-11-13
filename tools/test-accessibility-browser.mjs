@@ -53,6 +53,13 @@ try{
     await page.keyboard.press('Space');check(name+' FAQ Space reverses once',await button.getAttribute('aria-expanded')===before);
     check(name+' native button inherits original heading typography',await button.evaluate(node=>['fontFamily','fontSize','fontWeight','lineHeight','color','textAlign'].every(key=>getComputedStyle(node)[key]===getComputedStyle(node.parentElement)[key])));
    }
+   if(route==='/2020-krakow-nightlife-guide/'&&process.argv.includes('--capture-editorial')){
+    const notice=page.locator('[data-ktk-historical-notice="nightlife-2020"]');
+    check(name+' one visible archive notice is inside the original introduction',await notice.count()===1&&await notice.isVisible()&&await notice.evaluate(n=>n.parentElement.matches('.et_pb_text_0 .et_pb_text_inner')));
+    check(name+' original archive publication day retained',await page.locator('.post-meta .published').textContent()==='Apr 5, 2020');
+    check(name+' archive notice has native link to the current overview',await notice.getByRole('link',{name:'current Krakow nightlife overview'}).getAttribute('href')==='https://krawlthroughkrakow.com/staging/krakow-nightlife/');
+    if([390,1440].includes(width))await notice.screenshot({path:path.join(output,'nightlife-'+width+'-archive-notice.png')});
+   }
    if(route==='/krakow-nightlife/'&&process.argv.includes('--capture-editorial')){
     const reviewed=page.locator('[data-ktk-editorial-review="2026-11-13"]');
     check(name+' all nine reviewed overview modules rendered',await reviewed.count()===9);

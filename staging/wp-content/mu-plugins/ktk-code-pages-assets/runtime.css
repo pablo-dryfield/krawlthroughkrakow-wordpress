@@ -89,6 +89,15 @@ dialog.ktk-parity-lightbox .mfp-arrow[hidden] { display: none; }
   .ktk-code-page[data-ktk-page="about-us"] .cont_TA .rev { white-space: nowrap; }
 }
 
+/* The archived guide's native Instagram fallbacks must fit narrow screens. */
+@media (max-width: 600px) {
+  body[data-ktk-page="post-2020-krakow-nightlife-guide"] blockquote:is(.instagram-media,.instagram-media-registered) { min-width: 0 !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box; }
+  body[data-ktk-page="post-2020-krakow-nightlife-guide"] blockquote:is(.instagram-media,.instagram-media-registered) div { min-width: 0; }
+  body[data-ktk-page="post-2020-krakow-nightlife-guide"] blockquote:is(.instagram-media,.instagram-media-registered) p { white-space: normal !important; overflow: visible !important; }
+  body[data-ktk-page="post-2020-krakow-nightlife-guide"] blockquote:is(.instagram-media,.instagram-media-registered) a,
+  body[data-ktk-page="post-2020-krakow-nightlife-guide"] blockquote:is(.instagram-media,.instagram-media-registered) time { white-space: normal; overflow-wrap: anywhere; }
+}
+
 /* BEGIN shared content accessibility */
 /* Darker pink is reserved for text on light content, not the seasonal artwork. */
 #main-content .et_pb_text:not(.et_pb_bg_layout_dark) a,

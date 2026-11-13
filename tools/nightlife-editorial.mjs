@@ -11,6 +11,23 @@ export async function loadNightlifeEditorial() {
 
 // Build-time only: replace nine reviewed text modules, never media, forms or shells.
 export function reviseNightlifeEditorial({key,revision}) {
+ if(key==='post-2020-krakow-nightlife-guide'){
+  const main=document.querySelector('#main-content');
+  if(!main)throw Error('Archived nightlife main content required');
+  const title=main.querySelector('h1.entry-title'),published=main.querySelector('.post-meta .published');
+  const articles=main.querySelectorAll('.entry-content');
+  if(title?.textContent.trim()!=='Ultimate 2020 Krakow Nightlife Guide'||published?.textContent.trim()!=='Apr 5, 2020'||articles.length!==1)throw Error('Review changed archived nightlife identity');
+  const intros=articles[0].querySelectorAll('.et_pb_text_0 .et_pb_text_inner');
+  if(intros.length!==1)throw Error('Expected original archive introduction module');
+  const notice=document.createElement('p');notice.dataset.ktkHistoricalNotice='nightlife-2020';
+  const strong=document.createElement('strong');strong.textContent='From the archive: ';
+  const link=document.createElement('a');link.setAttribute('href','__KTK_HOME_URL__krakow-nightlife/');link.textContent='current Krakow nightlife overview';
+  notice.append(strong,document.createTextNode('this guide was published in 2020. Its venue details, prices and promotions are historical, not current offers. Start with our '),link,document.createTextNode(' for the latest KTK shortlist and planning advice.'));
+  const existing=main.querySelector('[data-ktk-historical-notice]');
+  if(existing){if(existing.outerHTML!==notice.outerHTML||existing.parentElement!==intros[0]||existing!==intros[0].firstElementChild)throw Error('Review changed archived nightlife notice');return [];}
+  if(!intros[0].textContent.replace(/\s+/g,' ').trim().startsWith('There\u2019s one thing for sure'))throw Error('Review changed archived nightlife article');
+  intros[0].prepend(notice);return [{type:'historical-nightlife-notice',published:'2020-04-05'}];
+ }
  if(key!=='krakow-nightlife')return [];
  if(revision?.key!==key||revision.sourceSha256!=='e83fbda3b261310970c1b2755f11237de8ff9e10b8df328c18d5dcdf193a081e'||revision.reviewedOn!=='2026-11-13')throw Error('Reviewed nightlife source identity required');
  const source=document.createElement('template');source.innerHTML=revision.markup;

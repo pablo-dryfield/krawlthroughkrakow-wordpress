@@ -130,6 +130,16 @@ try{
   check('unexpected original media rejects instead of deleting it',rejected&&unexpectedMedia===await page.content());
   await page.setContent(original);const held=await page.content();
   check('editorial revision leaves medical and unrelated keys alone',(await page.evaluate(reviseNightlifeEditorial,{key:'post-hostel-hangover-cure',revision:nightlifeRevision})).length===0&&held===await page.content());
+  const archive=await readFile(path.join(baseline,assets,'content/post-2020-krakow-nightlife-guide.html'),'utf8');
+  await page.setContent(archive);const article=await page.locator('.entry-content').innerHTML(),meta=await page.locator('.post-meta').innerHTML();
+  check('dated article receives only one native historical notice',(await page.evaluate(reviseNightlifeEditorial,{key:'post-2020-krakow-nightlife-guide'})).length===1&&await page.locator('[data-ktk-historical-notice]').count()===1);
+  check('historical notice links to the current hub',await page.getByRole('link',{name:'current Krakow nightlife overview'}).getAttribute('href')==='__KTK_HOME_URL__krakow-nightlife/');
+  check('historical article and publication metadata stay exact',article===await page.locator('.entry-content').evaluate(n=>{const copy=n.cloneNode(true);copy.querySelector('[data-ktk-historical-notice]').remove();return copy.innerHTML;})&&meta===await page.locator('.post-meta').innerHTML());
+  const onceArchived=await page.content();
+  check('archive notice is idempotent',(await page.evaluate(reviseNightlifeEditorial,{key:'post-2020-krakow-nightlife-guide'})).length===0&&onceArchived===await page.content());
+  await page.locator('.post-meta .published').evaluate(n=>n.textContent='Apr 5, 2026');let changedDateRejected=false;
+  try{await page.evaluate(reviseNightlifeEditorial,{key:'post-2020-krakow-nightlife-guide'});}catch{changedDateRejected=true;}
+  check('changed archive publication identity rejects the notice',changedDateRejected);
  }
  if(contextual){
   const body=async directory=>{
