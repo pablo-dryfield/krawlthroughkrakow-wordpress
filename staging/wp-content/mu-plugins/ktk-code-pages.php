@@ -64,6 +64,27 @@ function ktk_pages_definition($route = null) {
     if (!$entry || !preg_match('#^(?:pages/)?[a-z0-9-]+\.php$#D', $entry['file'])) { return null; }
     return require __DIR__ . '/ktk-code-pages-assets/' . $entry['file'];
 }
+function ktk_pages_event_promotion_expired($page, $timestamp = null) {
+    if (null !== $timestamp && !is_int($timestamp)) { throw new InvalidArgumentException('An explicit epoch timestamp is required.'); }
+    return 'new-years-eve' === ($page['key'] ?? '') && isset($page['event_promotion']['ends_at'])
+        && (null === $timestamp ? time() : $timestamp) >= $page['event_promotion']['ends_at'];
+}
+function ktk_pages_event_page_state($page, $timestamp = null) {
+    if (!ktk_pages_event_promotion_expired($page, $timestamp)) { return $page; }
+    $head = $page['event_promotion']['expired_head'];
+    foreach (array('description', 'metadata', 'schema') as $field) { $page[$field] = $head[$field]; }
+    return $page;
+}
+function ktk_pages_event_promotion_body($html, $page, $timestamp = null) {
+    if (!ktk_pages_event_promotion_expired($page, $timestamp)) { return $html; }
+    $replacements = $page['event_promotion']['replacements'];
+    foreach ($replacements as $pair) {
+        if (!is_array($pair) || count($pair) !== 2 || !is_string($pair[0]) || !is_string($pair[1]) || '' === $pair[0]
+            || 1 !== substr_count($html, $pair[0]) + substr_count($html, $pair[1])) { throw new RuntimeException('NYE promotion source no longer matches its reviewed state.'); }
+    }
+    $html = str_replace(array_column($replacements, 0), array_column($replacements, 1), $html);
+    return str_replace('data-ktk-promotion-state="current"', 'data-ktk-promotion-state="expired"', $html);
+}
 function ktk_pages_static_body() {
     $page = ktk_pages_definition();
     if (!$page) { return ''; }
@@ -73,6 +94,7 @@ function ktk_pages_static_body() {
         if (!preg_match('#^shells/[a-f0-9]{20}\.html$#D', $page['shell_file']) || !preg_match('#^content/[a-z0-9-]+\.html$#D', $page['main_file'])) { return ''; }
         $html = str_replace('__KTK_PAGE_MAIN_CONTENT__', file_get_contents($base . $page['main_file']), file_get_contents($base . $page['shell_file']));
     }
+    $html = ktk_pages_event_promotion_body($html, $page);
     $html = ktk_pages_prepare_forms($html, $page);
     return str_replace(array('__KTK_PAGE_ASSETS__', '__KTK_HOME_URL__'), array(
         esc_url(content_url('/mu-plugins/ktk-code-pages-assets/')), esc_url(home_url('/')),
@@ -107,7 +129,7 @@ add_action('template_redirect', function () {
     }
     if (!ktk_pages_shortcode_is_replica_page()) { return; }
     status_header(200);
-    $page = ktk_pages_definition();
+    $page = ktk_pages_event_page_state(ktk_pages_definition());
     $policy = ktk_pages_page_policy($page);
     if (!empty($policy['x_robots_tag'])) { header('X-Robots-Tag: ' . str_replace(array("\r", "\n"), '', $policy['x_robots_tag']), true); }
     $url = home_url($page['route'] ?? '/about-us/how-to-join/');
@@ -127,7 +149,7 @@ add_action('template_redirect', function () {
     <meta property="og:title" content="<?php echo esc_attr($page['title']); ?>">
     <meta property="og:description" content="<?php echo esc_attr($page['description']); ?>">
     <meta property="og:url" content="<?php echo esc_url($url); ?>"><?php } else { echo $extra; } ?>
-    <?php foreach (($page['schema'] ?? array()) as $schema) { ?><script type="application/ld+json"><?php echo str_replace('https://krawlthroughkrakow.com/', home_url('/'), wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP)); ?></script><?php } ?>
+    <?php foreach (($page['schema'] ?? array()) as $schema) { ?><script type="application/ld+json"<?php if ('new-years-eve' === ($page['key'] ?? '')) { ?> data-ktk-event-schema=""<?php } ?>><?php echo str_replace('https://krawlthroughkrakow.com/', home_url('/'), wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP)); ?></script><?php } ?>
     <link rel="stylesheet" href="<?php echo esc_url(ktk_pages_asset($css)); ?>">
     <link rel="stylesheet" href="<?php echo esc_url(ktk_pages_asset('font-resilience.css')); ?>">
     <link rel="stylesheet" href="<?php echo esc_url(ktk_pages_asset('runtime.css')); ?>">

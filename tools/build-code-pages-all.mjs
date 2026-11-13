@@ -22,11 +22,16 @@ import {loadVenueEditorial,reviseVenueEditorial} from './venue-editorial.mjs';
 import {codePageTitle,codePageHeadDescription,loadSharingImagePolicy,buildCodePageSharing} from './code-page-sharing.mjs';
 import {loadOfferPageRevisions,reviseOfferPages} from './offer-pages-editorial.mjs';
 import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
+import {buildEventPromotionRuntime} from './event-promotion-runtime.mjs';
+import {prepareNyePromotion} from './nye-promotion.mjs';
+import {buildNyePromotionStyles} from './nye-promotion-styles.mjs';
 const require = createRequire(import.meta.url);
 const { chromium } = require(path.join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const root = path.resolve('.');
 const assets = path.join(root, 'staging/wp-content/mu-plugins/ktk-code-pages-assets');
+await buildEventPromotionRuntime(path.join(assets,'runtime.js'));
 await buildContentAccessibilityStyles(path.join(assets,'runtime.css'));
+await buildNyePromotionStyles(path.join(assets,'runtime.css'));
 const manifestPath = 'docs/code-pages/full-migration/manifest.json';
 const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
 const imageDescriptions=await loadReviewedImageDescriptions();
@@ -230,6 +235,7 @@ try {
       css=preserveHeadingCss(css);
       const bookingRevisions=await rewriteBookingLinks(page);
       bookingRevisions.push(...await rewriteCanonicalLinks(page));
+      const eventPromotion=await page.evaluate(prepareNyePromotion,{key:route.key,campaignFacts});
       if(contentRevisions.length||bookingRevisions.length)report.revisions[route.key]={content:contentRevisions,bookings:bookingRevisions};
       const schemaFacts=await page.evaluate(codePageSchemaFacts);
       const title=codePageTitle(route.route,capture.title),description=codePageHeadDescription(route.route,codePageDescription(route.route,capture.metadata.description));
@@ -250,6 +256,14 @@ try {
         description, metadata, schema,
         body_class: data.bodyClass, shell_file: shellFile, main_file: mainFile, css: cssFile, forms: data.forms, ecwid: data.ecwid,
         source_sha256: digest(source), expected_sections: route.expectedSections };
+      if(eventPromotion){
+        const expiredFacts={...schemaFacts,headline:"New Year's Eve in Krakow"};
+        const expiredDescription=eventPromotion.expired_description;
+        eventPromotion.expired_head={description:expiredDescription,
+          metadata:buildCodePageSharing({route:route.route,kind:route.kind,title,description:expiredDescription,inherited:capture.metadata.extra,image:null}),
+          schema:buildCodePageSchema({route:route.route,kind:route.kind,description:expiredDescription,facts:expiredFacts,routes:manifest.routes,inherited:capture.metadata.schema})};
+        definition.event_promotion=eventPromotion;
+      }
       const seo=productionSeo.get(route.key);
       if(!seo||seo.status!==200||seo.url!==route.sourceUrl||seo.title!==capture.title)throw new Error('Production SEO source identity/title mismatch');
       definition.production_seo={source_url:seo.url,checked_at:seoBaseline.checkedAt,

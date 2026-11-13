@@ -11,13 +11,13 @@ export function validateOfferFacts(data){
  keys(data,'schemaVersion,reviewedOn,operator,regular,nye,evidence');
  keys(data.operator,'name,since');keys(data.regular,'productId,slug,startTime,openBarMinutes,minimumAge,idAdvice,repeatVisit,venueCount,meeting');
  keys(data.regular.repeatVisit,'cashProof,onlineProof,onlineDiscountDelivery,amount');
- keys(data.regular.venueCount,'minimum,maximum');keys(data.regular.meeting,'name,shortName,place,lookFor');keys(data.nye,'productId,slug,date,startTimes,meetingStatus');
+ keys(data.regular.venueCount,'minimum,maximum');keys(data.regular.meeting,'name,shortName,place,lookFor');keys(data.nye,'productId,slug,date,promotionEndsAt,startTimes,meetingStatus');
  if(data.schemaVersion!==1||data.reviewedOn!=='2026-11-13'||data.operator.name!=='Krawl Through Krakow'||data.operator.since!==2008
   ||data.regular.productId!==28||data.regular.slug!=='pub-crawl-28'||data.regular.startTime!=='21:00'||data.regular.openBarMinutes!==60
   ||data.regular.minimumAge!==18||data.regular.idAdvice!=='bring-valid-id'
   ||data.regular.repeatVisit.cashProof!=='participation-confirmed-with-leader'||data.regular.repeatVisit.onlineProof!=='previous-booking-confirmation-to-leader'||data.regular.repeatVisit.onlineDiscountDelivery!=='leader-code-or-previous-day-whatsapp-group'||data.regular.repeatVisit.amount!=='not-specified'
   ||data.regular.venueCount.minimum!==4||data.regular.venueCount.maximum!==5
-  ||data.nye.productId!==32||data.nye.slug!=='nye-pub-crawl-32'||data.nye.date!=='2026-12-31'||data.nye.meetingStatus!=='to-be-announced'
+  ||data.nye.productId!==32||data.nye.slug!=='nye-pub-crawl-32'||data.nye.date!=='2026-12-31'||data.nye.promotionEndsAt!=='2027-01-01T12:00:00+01:00'||data.nye.meetingStatus!=='to-be-announced'
   ||JSON.stringify(data.nye.startTimes)!==JSON.stringify(['17:00','19:30']))throw Error('Confirmed offer identity/facts changed; review the policy before rebuilding');
  for(const value of Object.values(data.regular.meeting))if(typeof value!=='string'||!value.trim()||value!==value.trim()||/[<>\u0000-\u001f]/.test(value))throw Error('Plain reviewed meeting facts required');
  if(!Array.isArray(data.evidence)||!data.evidence.length||data.evidence.some(value=>typeof value!=='string'||!value.trim()||/[<>\u0000-\u001f]/.test(value)))throw Error('Offer evidence required');
@@ -37,7 +37,7 @@ export function campaignTemplateValues(data){
   nyeProductId:data.nye.productId,nyeSlug:data.nye.slug,nyeDate:data.nye.date,
   nyeDateLabel:new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'Europe/Warsaw'}).format(date),
   nyeYear:String(year),welcomeYear:String(welcomeYear),nyeEarly:minutes(data.nye.startTimes[0]),nyeLate:minutes(data.nye.startTimes[1]),
-  midnight,midnightTimestamp:String(Date.parse(midnight)/1000)};
+  midnight,midnightTimestamp:String(Date.parse(midnight)/1000),nyePromotionEndsAt:data.nye.promotionEndsAt,nyePromotionEndsTimestamp:String(Date.parse(data.nye.promotionEndsAt)/1000)};
 }
 
 export function offerCampaignReviewStatus(data,instant){

@@ -132,6 +132,36 @@ body.ktk-code-page[data-ktk-page="how-to-join"] #main-content .et_pb_promo [data
   body.ktk-code-page:is([data-ktk-page="how-to-join"],[data-ktk-page="meeting-point"],[data-ktk-page="faqs"]) #main-content [data-ktk-offer-copy] { padding-right: 24px; }
 }
 
+/* BEGIN NYE promotion state */
+body.ktk-code-page[data-ktk-page="new-years-eve"] .ktk-nye-expiry-notice {
+  padding:32px 24px;
+  background:#080808;
+  color:#fff;
+  text-align:center;
+}
+body.ktk-code-page[data-ktk-page="new-years-eve"] .ktk-nye-expiry-notice h1 {
+  margin:0 0 16px;
+  color:#fff;
+  font-size:32px;
+  line-height:1.15;
+}
+body.ktk-code-page[data-ktk-page="new-years-eve"] .ktk-nye-expiry-notice p {
+  max-width:680px;
+  margin:12px auto 0;
+  font-size:16px;
+  line-height:1.6;
+}
+body.ktk-code-page[data-ktk-page="new-years-eve"] .ktk-nye-expiry-notice a {
+  color:#fff;
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+@media(max-width:600px){
+  body.ktk-code-page[data-ktk-page="new-years-eve"] .ktk-nye-expiry-notice {padding-right:56px;}
+  body.ktk-code-page[data-ktk-page="new-years-eve"] .ktk-nye-expiry-notice h1 {font-size:28px;}
+}
+/* END NYE promotion state */
+
 /* BEGIN shared content accessibility */
 /* Darker pink is reserved for text on light content, not the seasonal artwork. */
 #main-content .et_pb_text:not(.et_pb_bg_layout_dark) a,

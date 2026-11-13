@@ -19,6 +19,8 @@ function ktk_homepage_hero_offer_facts() {
         'nyeLate' => '7:30 PM',
         'midnight' => '2027-01-01T00:00:00+01:00',
         'midnightTimestamp' => '1798758000',
+        'nyePromotionEndsAt' => '2027-01-01T12:00:00+01:00',
+        'nyePromotionEndsTimestamp' => '1798801200',
     );
 }
 // END reviewed hero offer facts
@@ -92,16 +94,29 @@ function ktk_homepage_hero_art( $theme ) {
     <?php return ob_get_clean();
 }
 
-function ktk_homepage_hero_cta( $campaign, $product_id, $slug, $label ) {
-    return '<a class="ktk-hero-cta" data-book="hero-' . esc_attr( $campaign ) . '" data-product-id="' . esc_attr( $product_id )
-        . '" href="' . esc_url( ktk_homepage_product_url( $slug ) ) . '"><span>' . esc_html( $label ) . '</span>'
+function ktk_homepage_nye_promotion_expired( $timestamp = null ) {
+    if ( null !== $timestamp && ! is_int( $timestamp ) ) { throw new InvalidArgumentException( 'An explicit epoch timestamp is required.' ); }
+    $offers = ktk_homepage_hero_offer_facts();
+    return ( null === $timestamp ? time() : $timestamp ) >= (int) $offers['nyePromotionEndsTimestamp'];
+}
+
+function ktk_homepage_hero_cta( $campaign, $product_id, $slug, $label, $expired = false ) {
+    $nye = 'nye' === $campaign;
+    $updates = $nye ? home_url( '/new-years-eve/' ) : '';
+    $attributes = $nye ? ' data-ktk-expired-href="' . esc_url( $updates ) . '" data-ktk-expired-label="NYE updates"' : '';
+    $identity = $nye && $expired ? 'nye-updates' : 'hero-' . $campaign;
+    $product = $nye && $expired ? '' : ' data-product-id="' . esc_attr( $product_id ) . '"';
+    $href = $nye && $expired ? $updates : ktk_homepage_product_url( $slug );
+    return '<a class="ktk-hero-cta" data-book="' . esc_attr( $identity ) . '"' . $product . $attributes
+        . ' href="' . esc_url( $href ) . '"><span' . ( $nye ? ' data-ktk-promotion-label=""' : '' ) . '>' . esc_html( $nye && $expired ? 'NYE updates' : $label ) . '</span>'
         . ktk_homepage_icon( 'arrow-up-right', 'ktk-hero-cta-icon' ) . '</a>';
 }
 
-function ktk_homepage_seasonal_hero() {
+function ktk_homepage_seasonal_hero( $timestamp = null ) {
     $campaign = ktk_homepage_hero_campaign();
     $nye = 'nye' === $campaign;
     $offers = ktk_homepage_hero_offer_facts();
+    $expired = $nye && ktk_homepage_nye_promotion_expired( $timestamp );
     $meeting_words = explode( ' ', $offers['regularMeetingShort'], 2 );
     ob_start(); ?>
     <section id="ktk-seasonal-hero" class="et_pb_section et_pb_section_0 ktk-seasonal-hero" aria-label="Krakow pub crawls">
@@ -118,21 +133,21 @@ function ktk_homepage_seasonal_hero() {
             </div>
             <?php echo ktk_homepage_hero_art( 'regular' ); ?>
         </article>
-        <article class="ktk-hero-panel ktk-hero-panel--seasonal ktk-hero-panel--<?php echo esc_attr( $campaign ); ?>" data-campaign="<?php echo esc_attr( $campaign ); ?>"<?php if ( $nye ) : ?> data-event-date="<?php echo esc_attr( $offers['nyeDate'] ); ?>" data-event-timezone="Europe/Warsaw"<?php endif; ?> aria-labelledby="ktk-hero-season-title">
+        <article class="ktk-hero-panel ktk-hero-panel--seasonal ktk-hero-panel--<?php echo esc_attr( $campaign ); ?>" data-campaign="<?php echo esc_attr( $campaign ); ?>"<?php if ( $nye ) : ?> data-event-date="<?php echo esc_attr( $offers['nyeDate'] ); ?>" data-event-timezone="Europe/Warsaw" data-ktk-event-promotion="nye" data-ktk-promotion-ends="<?php echo esc_attr( $offers['nyePromotionEndsTimestamp'] ); ?>" data-ktk-promotion-state="<?php echo $expired ? 'expired' : 'current'; ?>"<?php endif; ?> aria-labelledby="ktk-hero-season-title">
             <?php echo ktk_homepage_hero_rays( true ); ?>
             <p class="ktk-hero-banner ktk-hero-banner--last">Pubcrawl in Krakow</p>
             <div class="ktk-hero-copy">
                 <h2 id="ktk-hero-season-title" class="ktk-hero-heading"><span class="ktk-hero-occasion"><?php echo $nye ? 'NYE' : 'Halloweekend'; ?></span> <span class="ktk-hero-brand"><?php echo esc_html( $offers['brand'] ); ?></span> <span class="ktk-hero-city">Krakow</span> <span class="ktk-hero-season-name"><span class="ktk-hero-season-pub">Pub</span> <span class="ktk-hero-season-crawl">Crawl</span></span></h2>
                 <?php if ( $nye ) : ?>
-                <p class="ktk-hero-date">New Year's Eve<br><strong><?php echo esc_html( $offers['nyeDateLabel'] ); ?></strong></p>
-                <dl class="ktk-hero-times"><div><dt>First group</dt><dd><?php echo esc_html( $offers['nyeEarly'] ); ?></dd></div><div><dt>Second group</dt><dd><?php echo esc_html( $offers['nyeLate'] ); ?></dd></div></dl>
-                <?php echo ktk_homepage_hero_cta( 'nye', $offers['nyeProductId'], $offers['nyeSlug'], 'Book NYE' ); ?>
+                <p class="ktk-hero-date" data-ktk-expired-text="Next dates to be announced"><?php if ( $expired ) : ?>Next dates to be announced<?php else : ?>New Year's Eve<br><strong><?php echo esc_html( $offers['nyeDateLabel'] ); ?></strong><?php endif; ?></p>
+                <?php if ( ! $expired ) : ?><dl class="ktk-hero-times" data-ktk-promotion-remove=""><div><dt>First group</dt><dd><?php echo esc_html( $offers['nyeEarly'] ); ?></dd></div><div><dt>Second group</dt><dd><?php echo esc_html( $offers['nyeLate'] ); ?></dd></div></dl><?php endif; ?>
+                <?php echo ktk_homepage_hero_cta( 'nye', $offers['nyeProductId'], $offers['nyeSlug'], 'Book NYE', $expired ); ?>
                 <?php else : ?>
                 <p class="ktk-hero-season-line">Thursday 29<br>Friday 30<br>&amp; Saturday 31</p>
                 <p class="ktk-hero-halloween-detail"><strong>9 PM</strong></p>
                 <?php echo ktk_homepage_hero_cta( 'halloween', 51, 'halloween-pub-crawl-51', 'Book Halloween' ); ?>
                 <?php endif; ?>
-                <p class="ktk-hero-bottomline"><?php echo $nye ? 'One last night. A whole new year.' : 'Best costumes win prizes.'; ?></p>
+                <p class="ktk-hero-bottomline"<?php if ( $nye ) : ?> data-ktk-expired-text="Check back for NYE updates."<?php endif; ?>><?php echo $nye ? ( $expired ? 'Check back for NYE updates.' : 'One last night. A whole new year.' ) : 'Best costumes win prizes.'; ?></p>
             </div>
             <?php echo ktk_homepage_hero_art( $campaign ); ?>
         </article>
