@@ -59,13 +59,62 @@ Actual390px hen/student introductions inspected. Copy/layout changes are
 deliberate, not a claim of original full-page pixel identity.
 
 Twelve local axe views: zero automated violations,22 incomplete rule groups
-retained. Local form regression487/487 passes with intercepted messages, no
-real delivery; separate PHP forms31/31 mail-stubbed, PHP page integration763/763
+retained. Local form regression487/487 and the full error-axe repeat501/501 pass
+with intercepted messages, no real delivery; separate PHP forms31/31 mail-stubbed, PHP page integration763/763
 and NYE143/143 pass. Python192/192, sharedJavaScript160/160, roadmap317/317 and
 guarded2073-file staging dry run pass. No new discovery/home/store publisher is
-required; only the content payload changes. These are local checks, not yet a
-verified staging release or a mail-delivery certificate. Do not treat a cache
-purge response, CI pass or checklist as proof of complete delivery.
+required; only the content payload changes. These are not a mail-delivery
+certificate. Do not treat a cache purge response, CI pass or checklist as proof
+of complete delivery.
+
+## Staging Publication
+
+Applicationcda926966635ff7f9c6843e8497f71ac9d75f7f5, PR42, required
+CI43548587676: both jobs pass. Guarded manual content2073 publisher completed
+14 November02:54:08.327815UTC. All independent hashes match, original saved
+WordPress state, homepage and storefront remain unchanged, temporary helper
+removed. Seven-entry rollback ZIP
+`ktk-code-pages-staging-20261114-025345.zip`, all CRCs pass, SHA256
+`0fd3f51ed48ad4abf803ab5c1a283a87952b8881997db0582342212bc1baa13d`.
+No homepage, discovery, storefront or OmniLodge release was needed or performed.
+
+Focused origin318/318 and initial normal318/318 pass, including native form/next-field
+and intercepted joining navigation. Twelve origin and12 normal axe views each
+have zero automated violations and22 incomplete groups, retained rather than
+called conformance. Full form regression501/501 origin and normal, attribution143,
+unchanged homepage10/images21/font20, discovery243 origin/216 normal pass. No
+real enquiry, cart, booking, payment, account or consent change.
+
+Cloudflare MCP retrieved the current purge specification and validated exact
+zone/account before purging only `krawlthroughkrakow.com/staging/` at
+02:57:04.341UTC. No production or host-wide purge. Full all-route reports:
+
+| Report in docs/code-pages/full-migration | Completion UTC14 November | Result | Cache / retries |
+| --- | --- | --- | --- |
+|group-planning-origin-20261114.json|03:02:44.322021|6193/6193|348 DYNAMIC/0 retries|
+|group-planning-normal-20261114.json|03:02:44.357659|6193/6193|295 MISS/53 HIT/0 retries|
+|group-planning-repeat-20261114.json|03:04:41.330090|6193/6193|348 HIT/0 retries|
+
+All cover all116 routes on desktop/Android/iPad and119 current asset hashes/
+version tokens. Expanded local354/354 and normal354/354 also verify every
+reviewed text line, including all student feature panels, lies outside the
+floating-tab column at all six widths with/without JS, not just sampled scroll
+positions. Discovery repeat216/216 passes. Actual cached390px hen/student
+introductions inspected. Application bytes remain exactcda9269; no republish is
+needed for QA tooling or documentation.
+
+Both roadmaps now30 verified website staging deliveries, one separately live
+OmniLodge reporting delivery and zero website SEO production releases. Whole
+workstream states remain1 complete/31 partial/7 not started/1 deferred; a delivery
+count is not the percentage of the entire plan completed. C06 remains partial:
+original activity-package/safety-article reviews and business confirmations are
+still outstanding. The explicit medical specialist hold, monthly/seasonal
+policy without automation, pending inbox/SLA and separately requested form-only
+production decision are unchanged.
+
+All finite test/publisher/watch sessions are closed; root preview servers remain
+for the active plan. Final QA/docs CI, merge identity and completed-branch cleanup
+follow. No production/commerce/consent/account/OmniLodge change.
 
 ## Retained Diagnostics
 
@@ -81,6 +130,20 @@ purge response, CI pass or checklist as proof of complete delivery.
 - The redundant PowerShell ZIP verifier was stopped only after an independent
   structured ZIP check verified every3191 original Git blob and CRC. No application
   publisher or user process was stopped.
+- A multi-file final-document patch used an outdated progress-log table heading
+  and failed atomically. The unchanged files were checked before reapplying the
+  corrected patch; no application payload or saved state was affected.
+- The optional strict form-paint comparison is56/64, with8 of21 unmasked PNG
+  pairs different. All form geometry, computed typography/colors and original
+  markup checks pass; no form CSS rule changed. Actual390px hen form pairs were
+  inspected. The changed introduction layout moves later content to different
+  subpixel positions; this is observed, not a complete attribution of every
+  changed pixel. Nine independent candidate repeats are byte-identical, source
+  stable, but counterfactual test-DOM phase alignment does not reproduce original
+  pixels. Preserve both raw failures and diagnostic images; no masks, tolerances
+  or assertions were weakened. Do not claim a fully passing strict pixel suite
+  or original-page/form pixel identity. The separate501 functional/error-state
+  suites and exact source/geometry checks pass.
 
 ## Previous Delivery Closure
 
