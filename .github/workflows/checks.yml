@@ -68,6 +68,8 @@ jobs:
         run: node --test tools/tests/test_safety_guides_editorial.mjs
       - name: Party advice and offer source contracts
         run: node --test tools/tests/test_party_guide_editorial.mjs
+      - name: Games resource source contracts
+        run: node --test tools/tests/test_games_resource_editorial.mjs
       - name: PHP syntax and isolated integration contracts
         run: |
           php --version

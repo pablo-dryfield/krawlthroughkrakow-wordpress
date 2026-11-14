@@ -38,6 +38,20 @@ retained. Remaining activity details and production copy have not all been
 reviewed or promoted; the isolated production endpoint repair is a separate
 release.
 
+## Games Copy And Brand Tone
+
+The owner confirmed on14 November that KTK Drunken Jenga should be presented as
+a fun KTK activity alongside the other games. Do not substitute a regular-Jenga
+recommendation or add optional-participation wording to these guides. Preserve
+the useful KTK rule-sheet downloads and authentic branding; do not restore
+instructions that encourage excessive or compulsory consumption.
+
+This is an editorial preference, not a consent-control change. There is no
+identified automatic organic-search penalty simply for the game's name. Do not
+present an agent's tone preference as a Google requirement or confuse separate
+Google Ads alcohol policies with organic ranking. The games release records
+the checked primary guidance and exact staging scope.
+
 ## Review Checklist
 
 Complete at least one review each calendar month. Also check a campaign before
