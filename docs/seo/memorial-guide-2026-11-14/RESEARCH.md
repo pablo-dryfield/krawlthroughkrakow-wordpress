@@ -57,7 +57,7 @@ official guidance and keep practical document advice qualified. Lajkonik's
 linked by the Memorial, loads and lists the MDA/Bosacka18 route; its own notice
 says times may change. Do not republish fixed times/fare/platform promises.
 
-## Source Checkpoint
+## Source Checkpoint Before Publishing
 
 Font PR36 finalaf4f287 CI43526515328 passed both jobs, merged as
 ebeef7a with exact tree3197e8de65a38aca26099fb76fd697865b8618ae.
@@ -126,3 +126,63 @@ only3 existing content files plus the one discovery-definition binding differ;
 all other115 bodies/definitions and the entire homepage/artwork remain exact.
 Content2073/discovery3 dry runs pass. Required CI, guarded staging release and
 normal-device/cache checks remain; no publisher has run.
+
+## Staging Release
+
+Application commit `015aad288c39a37cbcc1f1aff1da57595c0e7284`, PR37, passed both
+required jobs in CI43529622034 before publishing. Content publisher completed
+13 November at23:49:00.113568UTC (14 November Warsaw), independently verifying
+all2073 owned hashes, unchanged saved WordPress state/homepage/storefront and
+helper removal. Incremental rollback archive has6 entries, CRC clean:
+`ktk-code-pages-staging-20261113-234837.zip`, SHA-256
+`08a10140695888c8d00321c26d23d5ed574262f5989a122f294bbad5981bc8d5`.
+
+Discovery publisher completed23:50:08.768332UTC: all3 owned hashes match,
+2323 protected staging files and2158 production files remain unchanged, saved
+state preserved and helpers removed. Four-entry rollback archive, CRC clean:
+`seo-discovery-staging-20261113-234956-938642.zip`, SHA-256
+`dbe0ee1946b1c2610ecbcd6e4cfe96099046272907f85e6655395ad1b632e4d5`.
+These are scoped rollback archives, not complete server/database backups.
+
+Focused origin browser114/114, discovery243/243, isolated booking attribution
+136/136, homepage10 active assets/image hints21/font20 all pass. Four-view
+origin axe finds0 violations/4 incomplete rule groups and no page errors; this
+is not full accessibility conformance. Full origin and normal-device/cache
+verification are still required before calling the batch verified on staging.
+No homepage/storefront/production/OmniLodge publisher or account/consent change.
+
+## Final Cache Verification
+
+All6193 full origin checks pass at00:02:27.092517UTC14 November, covering
+116 routes and119 asset hashes/version tokens on desktop/Android/iPad. Two
+bounded first retries, for the stag-activities and privacy-policy reads, recovered
+from transport timeouts. Their records are retained, not reported as zero retries.
+No HTTP-error policy or assertion was bypassed.
+
+After fresh API-spec and exact zone/account validation, Cloudflare MCP accepted
+only `{"prefixes":["krawlthroughkrakow.com/staging/"]}` at
+`2026-11-14T00:02:41.734Z`, success true, result ID
+`4303f6a45f815c5570bb4bba5f86a423`. No production/host-wide purge or settings edit.
+
+Normal full checks pass6193/6193 at00:08:27.074933UTC with348 fresh MISS content
+responses and zero retries. Repeat passes6193/6193 at00:10:26.966010UTC with all348
+responses HIT, current119 assets and zero retries. Reports are retained in
+`docs/code-pages/full-migration/memorial-guide-{origin,normal,repeat}-20261114.json`.
+Focused normal browser114/114, four-view axe0 violations/4 incompletes, discovery
+216/216 normal and repeat, homepage10 assets/image hints21/font20 pass. Homepage
+three variants move MISS to HIT. The actual origin390px directions screenshot
+was inspected: readable text, usable link and no old blank-map gap or CTA overlap.
+
+Both roadmaps now record26 verified staging batches,1 separate live OmniLodge
+reporting batch and0 website SEO production releases. Whole40-ticket states are
+1 complete/31 partial/7 not started/1 deferred after the independently approved
+monthly/seasonal review policy. This is not a plan-completion percentage.
+
+The new strict enquiry-form audit separately detected a pre-existing hidden
+`action` input shadowing `form.action`; the broad554-check POST simulator had not
+verified that endpoint. A read-only live Contact DOM check confirms the wrong
+property type without sending a message. The next D06 repair retains the existing
+backends and strengthens interception/field-error tests. Full source/HTTP checks
+here do not certify real email delivery. Medical hold and other115 bodies remain
+unchanged. Final QA/docs CI and merge are recorded in PR37; no application bytes
+changed after015aad2 and no second publication is needed for documentation.
