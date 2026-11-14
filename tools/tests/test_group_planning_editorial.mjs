@@ -8,9 +8,12 @@ import {loadGroupPlanningEditorial,reviseGroupPlanningEditorial,buildGroupPlanni
 test('three source-bound group pages use shared facts and their existing enquiry anchors',async()=>{
  const rows=await loadGroupPlanningEditorial();assert.deepEqual(rows.map(r=>r.key),['krakow-stag-do','krakow-hen-do','student-trips-poland']);
  for(const [i,r]of rows.entries()){
+  assert.equal(r.version,'2026-11-14.group-planning-2');
   assert.equal((r.markup.match(/<template /g)||[]).length,i===2?9:1);assert.equal((r.markup.match(/<li>/g)||[]).length,4);assert.equal((r.markup.match(/<h2>/g)||[]).length,1);
   assert.ok(r.markup.includes('9 PM'));assert.ok(r.markup.includes('18'));assert.ok(r.markup.includes('valid ID'));assert.ok(!/\{\{|utm_|gclid|store2|24\/7|lowest price|11.000|minimum of \d|\d+%|PLN/.test(r.markup));
   assert.ok(r.markup.includes(['#stag_trip_form','#hen_do_form','#et_pb_contact_form_0'][i]));
+  for(const value of ['individual quote','private arrangements','booking lead times','deposits','payment dates','cancellation terms','Our team replies by email after reviewing your enquiry.'])assert.ok(r.markup.includes(value),r.key+' '+value);
+  assert.ok(!/within \d+|\d+ hours|\d+ minutes/.test(r.markup));
  }
 });
 test('unrelated and medically held pages remain unchanged before DOM access',()=>{

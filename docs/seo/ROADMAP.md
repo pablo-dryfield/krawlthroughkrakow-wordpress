@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 31 |
-| In progress | 0 |
+| In progress | 1 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Clear email replies and individual group quotes](enquiry-policy-2026-11-14/README.md) | C06, D06 | In progress (website) | Not yet | Publish staging and verify origin/normal caches, then owner review and separate production approval. Actual inbox assurance, manual accessibility and older package reviews remain; no fixed reply-time promise. |
 | [Production form endpoint-only repair](production-form-hotfix-2026-11-14/README.md) | D06 | Verified live (website) | 2026-11-14 | Owner inbox assurance, spam/manual checks and approval for the broader staged form UI. All31 SEO batches remain staging-only; no messages, orders or consent settings changed in testing. |
 | [Practical stag costume guidance](stag-costume-2026-11-14/README.md) | C06, C08, D03, D05 | Verified on staging (website) | 2026-11-14 | Owner review, related advice/activity-package work and separate production approval. No admission, whole-page pixel-identity or full accessibility guarantee; incomplete/manual checks remain. |
 | [Stag, hen and student-trip planning](group-planning-2026-11-14/README.md) | C06, D05, D06 | Verified on staging (website) | 2026-11-14 | Apply the newly confirmed individual-quote policy, review older activity packages and safety advice, assure actual mail delivery and obtain separate production approval. No fixed minima, deposits or response-time promise. |
