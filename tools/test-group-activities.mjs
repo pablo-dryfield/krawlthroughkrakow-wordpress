@@ -11,6 +11,10 @@ const require=createRequire(import.meta.url),{chromium}=require(path.join(proces
 const checks=[],errors=[],writes=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail}),files=[root+'runtime.js',root+'runtime.css','tools/group-activities-editorial.mjs','tools/test-group-activities.mjs','docs/code-pages/full-migration/assets.json'];
 const candidates={};for(const r of rows){const file=root+'content/'+r.key+'.html';files.push(file);candidates[r.key]=await readFile(file,'utf8');}
 const hashes=async()=>{const out={};for(const file of files)out[file]=createHash('sha256').update(await readFile(file)).digest('hex');return out;},initial=await hashes();
+async function readyVisibleImages(page){
+ await page.waitForFunction(()=>[...document.images].filter(n=>{const b=n.getBoundingClientRect();return b.width&&b.height&&b.bottom>0&&b.top<innerHeight&&b.right>0&&b.left<innerWidth;}).every(n=>n.complete&&n.naturalWidth>0),null,{timeout:10000});
+ await page.evaluate(async()=>{for(const n of document.images){const b=n.getBoundingClientRect();if(b.width&&b.height&&b.bottom>0&&b.top<innerHeight&&b.right>0&&b.left<innerWidth)await n.decode();}});
+}
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
  const fixture=await browser.newPage({javaScriptEnabled:false});await fixture.route('**/*',r=>r.abort());
@@ -49,7 +53,7 @@ try{
    check(label+' HTTP200 exact reviewed modules',response.status()===200&&state.exact,state);check(label+' original photos and single H1',state.photos&&state.h1);check(label+' no page overflow',!state.overflow);check(label+' individual-quote language and no old numerical package promises',state.text.includes('individual quote')&&!/\b(?:15|30|200)\b|3x8|free beer|guaranteeing|safe venues/.test(state.text));
    const boxes=[];let index=0;for(const module of await page.locator('[data-ktk-group-activity-review]').all()){
     await module.scrollIntoViewIfNeeded();boxes.push(...await module.evaluate(n=>{const hits=[],c=document.querySelector('#ktk-cta')?.getBoundingClientRect(),walker=document.createTreeWalker(n,NodeFilter.SHOW_TEXT);while(walker.nextNode()){if(!walker.currentNode.textContent.trim())continue;const range=document.createRange();range.selectNodeContents(walker.currentNode);for(const b of range.getClientRects())if(b.width&&b.height&&(b.left<0||b.right>innerWidth+1||c&&b.right>c.left&&b.left<c.right))hits.push({text:walker.currentNode.textContent,left:b.left,right:b.right,cta:c?.left});}return hits;}));
-    if(width===390&&javaScriptEnabled)await page.screenshot({path:path.join(output,r.key+'-module-'+index+'.png'),animations:'disabled'});index++;
+    if(width===390&&javaScriptEnabled){await readyVisibleImages(page);await page.screenshot({path:path.join(output,r.key+'-module-'+index+'.png'),animations:'disabled'});}index++;
    }check(label+' every activity text line stays outside the floating CTA column',!boxes.length,boxes);
    if([390,1440].includes(width)){
     const stag=r.key==='krakow-stag-do',fragment=stag?'#stag_trip_form':'#hen_do_form',link=page.locator(stag?'a.et_pb_button_14':'a.et_pb_button_1');await link.focus();await page.keyboard.press('Enter');await page.waitForURL(url=>url.hash===fragment,{timeout:10000});await page.waitForFunction(id=>{const b=document.querySelector(id).getBoundingClientRect();return b.top<innerHeight&&b.bottom>0;},fragment);check(label+' native activity CTA reaches original enquiry form',await page.locator(fragment+' form').count()===1);await page.keyboard.press('Tab');check(label+' keyboard enters original enquiry fields',await page.evaluate(()=>!!document.activeElement?.closest('form')&&document.activeElement.matches('input,textarea,select')));

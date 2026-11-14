@@ -27,7 +27,7 @@ a tracked-source checkpoint, not a full server/database backup.
   two-hour workshop with food and unlimited drinks. Retain useful inclusion
   questions without inventing a new package or rate.
 
-All seven activity headings/options remain, including the existing private-boat
+Existing activity headings/options remain, including the private-boat
 enquiry choice. No new admission, availability, price or safety guarantee.
 Photos, forms, recipients, buttons, original IDs, metadata, intro policy, styles
 and runtime must remain exact outside those seven module bodies. A scoped
@@ -98,4 +98,57 @@ An earlier dry run correctly stopped before connection because the fresh full
 build-verification process had not finished updating its payload binding.
 That guard remains; no upload occurred on the failed attempt.
 Final group-introduction354/354 and intercepted-form501/501 regressions also
-pass. CI and staging publication/cache verification are still pending.
+pass.
+
+## Staging Publication And Cache Verification
+
+Application `47c9b54b6b1680ec4758a6f15a6094fc0f091cac`, PR46, passed both
+required jobs in run43564776821. Guarded manual staging publication completed
+at2026-11-14T06:09:16.250588UTC: all2,073 owned hashes match, saved WordPress
+state, homepage and storefront unchanged, temporary helper removed.
+Six-entry rollback ZIP CRC independently verified:
+`deploy-backups/ktk-code-pages-staging-20261114-060856.zip`, SHA256
+`54eee3012492414129015ca616ad9e099ead7da15a50d8956649ab6a77d37a62`.
+
+Focused local/origin/normal browser172/172, group354/354 and intercepted
+forms501/501 pass. Attribution143/143 origin/normal, discovery243 origin and
+216 normal/repeat, unchanged homepage10 assets, image21 and font20 checks also
+pass. The repeat homepage check has all three device variants HIT.
+Fresh API permission and exact zone/account checks preceded only the staging
+prefix purge at06:17:30.899UTC. No production or account-setting change.
+
+Each full report covers116 routes on desktop/Android/iPad plus119 public assets,
+passes6,193/6,193 and has zero HTTP retries:
+
+| Report suffix | Completion UTC | Device/page cache responses |
+| --- | --- | --- |
+| `origin-20261114.json` |06:17:05.976412 |348 DYNAMIC |
+| `normal-20261114.json` |06:22:27.246135 |302 MISS /46 HIT |
+| `repeat-20261114.json` |06:24:17.537905 |348 HIT |
+
+Full report prefix: `docs/code-pages/full-migration/group-activities-`.
+Both roadmaps now count33 staging-verified website deliveries. Remaining
+activity/article review, actual inbox assurance, operational confirmation,
+manual accessibility and production approval remain distinct work.
+No application byte changed after the CI-tested commit. No production,
+commerce, consent or OmniLodge deployment is part of this release.
+
+Initial local/cached390px screenshots are only3/7 byte-identical; the other four
+remain as evidence, not a pixel-pass claim. A separate decoded-image diagnostic
+confirms the strip-section JPEG is sharp after decoding: both local and cached
+browsers select the same480px candidate for312px display width. Its first cached
+screenshot caught a progressive image mid-decode. This diagnoses that example,
+not every difference. The test-only screenshot follow-up now explicitly waits
+for visible images to complete and decode, using fresh evidence directories.
+No application bytes, image files, masks or tolerances are changed.
+
+Fresh decoded-image browser runs also pass172/172 locally and on normal cached
+URLs. Their full-viewport PNGs are only2/7 byte-identical (`pixel-decoded.json`);
+five strict differences remain, including image regions above/below the text.
+This is not a whole-page pixel-parity pass. All eight normal axe views have
+zero violations/18 incomplete rule groups; the earlier real target-size failure
+and all preceding screenshot reports remain. Source2377/2377 after publication
+again confirms all application bytes outside the reviewed scope are exact.
+
+The final changes after47c9b54 are QA/docs/roadmap only. No additional website
+upload or cache purge is required for final CI, merge and branch cleanup.
