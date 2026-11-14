@@ -43,7 +43,7 @@ export function reviseSemanticHeadings({key,kind,title,route,externalPrimary=fal
   return replacement;
  };
  let primary=externalPrimary?null:main.querySelector('#ktk-hero-title,h1.entry-title,h1');
- const titleText={faqs:'Read our most Frequently Asked Questions','privacy-policy':'PRIVACY POLICY',
+ const titleText={contact:'Contact Us',faqs:'Read our most Frequently Asked Questions','privacy-policy':'PRIVACY POLICY',
   'terms-and-conditions':'TERMS AND CONDITIONS','tour-service-disclaimer':'KRAWL THROUGH KRAKOW TOURS SERVICE DISCLAIMER'}[key];
  if(titleText){
   const titles=[...main.querySelectorAll('.et_pb_text_0 h2,.et_pb_text_0 p')].filter(node=>clean(node.textContent)===titleText);

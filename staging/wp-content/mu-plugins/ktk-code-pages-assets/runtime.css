@@ -7,6 +7,16 @@
 }
 /* END Memorial visitor guide */
 
+/* BEGIN Contact details */
+body.ktk-code-page[data-ktk-page="contact"] [data-ktk-contact-map] > iframe { width: 100%; max-width: 100%; height: auto; aspect-ratio: 4 / 3; }
+body.ktk-code-page[data-ktk-page="contact"] [data-ktk-contact-map] > iframe[src="about:blank"] { display: none; }
+body.ktk-code-page[data-ktk-page="contact"] .ktk-contact-map-fallback { padding: 24px 0; overflow-wrap: anywhere; }
+body.ktk-code-page[data-ktk-page="contact"] :is([data-ktk-contact-copy],.ktk-contact-map-fallback) a { color: #c8006c; text-decoration: underline; text-underline-offset: .15em; }
+@media (max-width: 600px) {
+  body.ktk-code-page[data-ktk-page="contact"] :is([data-ktk-contact-copy],[data-ktk-contact-map]) { padding-right: 24px; }
+}
+/* END Contact details */
+
 /* Native interaction states, layered over the captured page cascade. */
 .ktk-code-page form[data-ktk-form="contact"] :is(input:not([type="hidden"]):not([type="checkbox"]), textarea):not(:placeholder-shown) {
   color: #262626;

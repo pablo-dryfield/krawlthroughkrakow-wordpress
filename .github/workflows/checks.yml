@@ -46,6 +46,8 @@ jobs:
         run: node --test tools/tests/test_homepage_icon_font.mjs
       - name: Memorial visitor-guide source contracts
         run: node --test tools/tests/test_memorial_editorial.mjs
+      - name: Contact directions and offer source contracts
+        run: node --test tools/tests/test_contact_details.mjs
       - name: PHP syntax and isolated integration contracts
         run: |
           php --version
