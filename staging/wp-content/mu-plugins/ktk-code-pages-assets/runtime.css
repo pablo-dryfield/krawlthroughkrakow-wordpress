@@ -7,6 +7,17 @@
 }
 /* END Memorial visitor guide */
 
+/* BEGIN Group planning */
+body.ktk-code-page #main-content [data-ktk-group-planning-review] { text-align: left; }
+body.ktk-code-page #main-content [data-ktk-group-planning-review] h2 { font-family: inherit; font-size: 22px; font-weight: 700; line-height: 1.35; margin: 18px 0 12px; }
+body.ktk-code-page #main-content [data-ktk-group-planning-review] ul { padding-left: 1.25em; margin-bottom: 1em; }
+body.ktk-code-page #main-content [data-ktk-group-planning-review] li + li { margin-top: .5em; }
+body.ktk-code-page #main-content [data-ktk-group-planning-review] a { color: #c8006c; text-decoration: underline; text-underline-offset: .15em; }
+@media (max-width: 600px) {
+  body.ktk-code-page #main-content [data-ktk-group-planning-review] { padding-right: 24px; }
+}
+/* END Group planning */
+
 /* BEGIN Established NYE guide */
 @media (max-width: 600px) {
   body.ktk-code-page[data-ktk-page="post-krakow-new-years-eve"] #main-content [data-ktk-established-nye-review] { padding-right: 24px; }
