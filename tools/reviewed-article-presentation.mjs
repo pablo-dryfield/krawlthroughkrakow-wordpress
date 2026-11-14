@@ -10,7 +10,7 @@ const exactKeys=(value,keys)=>value&&typeof value==='object'&&!Array.isArray(val
 export async function loadReviewedArticlePresentation({catalogFile=new URL('./reviewed-article-presentation.json',import.meta.url)}={}){
  const bytes=await readFile(catalogFile),data=JSON.parse(bytes),manifest=JSON.parse(await readFile(path.join(root,'docs/code-pages/full-migration/manifest.json'),'utf8')),assetsBytes=await readFile(path.join(root,'docs/code-pages/full-migration/assets.json')),assets=JSON.parse(assetsBytes);
  if(!exactKeys(data,['schemaVersion','status','reviewedOn','version','assetManifestSha256','articles','containers','photo'])||data.schemaVersion!==1||data.status!=='source-reviewed'||data.reviewedOn!=='2026-11-14'||data.version!=='2026-11-14.article-presentation-2'||data.assetManifestSha256!==hash(assetsBytes))throw Error('Reviewed article presentation identity required');
- if(!Array.isArray(data.articles)||data.articles.length!==19||!Array.isArray(data.containers)||data.containers.length!==40)throw Error('Explicit nineteen-article/forty-container scope required');
+ if(!Array.isArray(data.articles)||data.articles.length!==21||!Array.isArray(data.containers)||data.containers.length!==40)throw Error('Explicit twenty-one-article/forty-container scope required');
  const held=manifest.routes.find(r=>r.key==='post-hostel-hangover-cure');if(!held)throw Error('Held article identity required');
  const articleKeys=new Set(),ids=new Set();
  for(const a of data.articles){
@@ -27,7 +27,7 @@ export async function loadReviewedArticlePresentation({catalogFile=new URL('./re
   const sourceHtml=await readFile(path.join(root,route.source,'production-1920.html'),'utf8');if(hash(sourceHtml)!==c.captureSha256)throw Error('Original card capture changed: '+c.key);
   cards+=c.cardKeys.length;revisions.push({key:c.key,kind:'cards',version:data.version,reviewedOn:data.reviewedOn,catalogSha256:hash(bytes),sourceHtml,sourceSha256:c.captureSha256,cardKeys:c.cardKeys,articles:data.articles});
  }
- if(cards!==65)throw Error('Review the exact sixty-five-card scope before expanding it');
+ if(cards!==71)throw Error('Review the exact seventy-one-card scope before expanding it');
  const p=data.photo,article=manifest.routes.find(r=>r.key==='post-stages-of-drunkenness'),asset=assets[p.sourceUrl];
  if(!exactKeys(p,['key','captureSha256','sourceUrl','file','sha256','oldAlt','alt'])||p.key!==article.key||p.captureSha256!=='50a460acbc7a9ba69692f4a17c97397eb284834ad67b5883b0e1d0a06f3c6bc0'||p.sourceUrl!=='https://krawlthroughkrakow.com/wp-content/uploads/2016/07/UDEIMHp.jpg'||p.file!=='media/1cd6452f2538-UDEIMHp.jpg'||asset?.file!==p.file||asset.sha256!==p.sha256||hash(await readFile(path.join(root,'staging/wp-content/mu-plugins/ktk-code-pages-assets',p.file)))!==p.sha256||p.oldAlt!=='A man is lying on the ground, possibly in one of the stages of drunkenness, in front of police officers.'||p.alt!=='Police officers near people on the ground on a city street at night.')throw Error('Exact visually reviewed photo description required');
  const sourceHtml=await readFile(path.join(root,article.source,'production-1920.html'),'utf8');if(hash(sourceHtml)!==p.captureSha256)throw Error('Original photo capture changed');
@@ -47,7 +47,7 @@ export function reviseReviewedArticlePresentation({key,revision}){
   if(b[0].getAttribute('alt')===p.alt)return [];
   b[0].setAttribute('alt',p.alt);return[{type:'neutral-article-image-description',key,reviewedOn:revision.reviewedOn,file:p.file}];
  }
- if(!Array.isArray(revision.articles)||revision.articles.length!==19||!Array.isArray(revision.cardKeys))throw Error('Reviewed card identities required');
+ if(!Array.isArray(revision.articles)||revision.articles.length!==21||!Array.isArray(revision.cardKeys))throw Error('Reviewed card identities required');
  const articles=revision.articles,find=root=>[...root.querySelectorAll('article.et_pb_post')].map(node=>({node,article:articles.find(a=>node.classList.contains('post-'+a.postId))})).filter(r=>r.article),sourceCards=find(original),currentCards=find(main),expected=JSON.stringify(revision.cardKeys);
  if(JSON.stringify(sourceCards.map(r=>r.article.key))!==expected||JSON.stringify(currentCards.map(r=>r.article.key))!==expected||new Set(revision.cardKeys).size!==revision.cardKeys.length)throw Error('Original card order/count changed');
  const marker=main.getAttribute('data-ktk-reviewed-excerpts');if(marker&&marker!==revision.version)throw Error('Article-summary version changed');
