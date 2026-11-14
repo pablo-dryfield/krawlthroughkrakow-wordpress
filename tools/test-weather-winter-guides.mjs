@@ -14,7 +14,7 @@ const require = createRequire(import.meta.url), {chromium} = require(path.join(p
 if (frontend('axe-core/package.json').version !== '4.14.0') throw Error('Pinned axe version required');
 const axe = await readFile(frontend.resolve('axe-core/axe.min.js'), 'utf8'), browser = await chromium.launch({channel: 'chrome', headless: true}); let views = 0;
 async function bounded(promise, label) {let timer; try {return await Promise.race([promise, new Promise((_, reject) => {timer = setTimeout(() => reject(Error(label + ' exceeded30s')), 30000);})]);} finally {clearTimeout(timer);}}
-async function visible(page, id) {const end = Date.now() + 10000; do {if (await page.evaluate(id => {const b = document.getElementById(id)?.getBoundingClientRect(); return !!b && b.top < innerHeight && b.bottom > 0;}, id)) return true; await new Promise(r => setTimeout(r, 50));} while (Date.now() < end); return false;}
+async function visible(page, id) {const end = Date.now() + 10000; do {if (await page.evaluate(id => {const b = document.getElementById(id)?.getBoundingClientRect(); return location.hash === '#' + id && !!b && b.top < innerHeight && b.bottom > 0;}, id)) return true; await new Promise(r => setTimeout(r, 50));} while (Date.now() < end); return false;}
 try {
   for (const [index, key] of keys.entries()) for (const width of [320, 390, 768, 1440]) for (const javaScriptEnabled of [true, false]) {
     const weather = index === 0, name = key + ' ' + width + ' ' + (javaScriptEnabled ? 'JS' : 'no-JS'), context = await browser.newContext({viewport: {width, height: 900}, javaScriptEnabled, reducedMotion: 'reduce', serviceWorkers: 'block'});
@@ -40,7 +40,7 @@ try {
       await page.keyboard.press('Enter'); check(name + ' Enter opens contents', await summary.evaluate(n => n.parentElement.open)); await page.keyboard.press('Space'); check(name + ' Space closes contents', !await summary.evaluate(n => n.parentElement.open));
       await page.keyboard.press('Enter'); await page.keyboard.press('Tab'); check(name + ' Tab reaches the first topic', await page.evaluate(() => document.activeElement?.matches('[data-ktk-weather-review] nav a')));
       const topics = await page.locator('[data-ktk-weather-review] nav a').evaluateAll(nodes => nodes.map(n => new URL(n.href).hash.slice(1))), results = [];
-      for (const id of topics) {await page.locator('[data-ktk-weather-review] nav a[href$="#' + id + '"]').focus(); await page.keyboard.press('Enter'); results.push({id, pass: new URL(page.url()).hash === '#' + id && await visible(page, id)});}
+      for (const id of topics) {await page.locator('[data-ktk-weather-review] nav a[href$="#' + id + '"]').focus(); await page.keyboard.press('Enter'); results.push({id, pass: await visible(page, id)});}
       check(name + ' every topic reached with real Enter', results.length === [16, 22][index] && results.every(r => r.pass), results);
       const images = []; for (const image of await page.locator('#main-content img').all()) {await image.scrollIntoViewIfNeeded(); images.push(await bounded(image.evaluate(async n => {try {await n.decode(); const b = n.getBoundingClientRect(); return {src: n.currentSrc, pass: n.complete && n.naturalWidth > 0 && b.width > 0 && b.height > 0};} catch (e) {return {src: n.currentSrc, pass: false, error: e.message};}}), 'Weather/winter photo'));}
       check(name + ' every original inline and featured photo decodes visibly', images.length === [5, 11][index] && images.every(i => i.pass), images);

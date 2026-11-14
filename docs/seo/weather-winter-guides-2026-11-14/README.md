@@ -205,3 +205,90 @@ dry-run and reference2,320 remain current. Every finite local check is closed;
 only the retained root5184/5185 preview servers remain. `git diff --check` passes.
 No application upload/purge yet. Required CI must pass before guarded staging
 content publication, then the independently guarded discovery data publication.
+
+## Guarded Staging Publication
+
+Application `50225bdef2a907a9ce4dc2b2f919c166a4ac6750`, PR59 and required
+CI43638498200 both pass. Content publication completed20:40:21.237276UTC14Nov;
+all2,073 independent remote hashes match, saved WordPress/homepage/storefront
+state is unchanged and the helper is removed. The15-entry rollback archive
+`deploy-backups/ktk-code-pages-staging-20261114-203946.zip` passes CRC, exact
+entry-set and per-file SHA verification; archive SHA256
+`b1b713c9e061d3a0c06a524a2d8dff244d8071398eab6d42cd3c3cd16041169d`.
+
+The independently guarded discovery release completed20:41:12.851870UTC:
+only generated data changes; all three expected payload hashes match,2,324
+protected staging and2,158 production hashes/saved state are unchanged, helper
+removed and no origin cache paths cleared. Its four-entry rollback archive
+`deploy-backups/seo-discovery-staging-20261114-204101-629392.zip` passes CRC and
+every per-file SHA; archive SHA256
+`a62a20aeb8c76a1c9558cf4a5b6e4b673291c38ea93a2a9c1243df93a063ab9e`.
+
+`payload-reviewed-commit.json` independently matches all2,073 released SHA256s
+and Git blobs to the exact reviewed commit. The first ad-hoc implementation
+used a20MB synchronous Git-show buffer and stopped on a larger unchanged MP4
+with ENOBUFS. The corrected read-only proof streams local bytes against Git's
+tree identities and release SHA256s; no file, application or guard was changed.
+Initial origin body208/discovery243/home10/icons21/ET-font20/social-font15
+checks pass. Full-origin, archive, form and attribution checks are still running;
+no Cloudflare purge or verified-delivery count advance yet. Do not rebuild or
+republish this frozen application for subsequent evidence/document changes.
+
+## Origin And Retained Native-Fragment Diagnostic
+
+Full origin6,193/6,193 passes across116 routes/119 assets. Live cards1,693,
+forms501, attribution269, discovery243 and homepage/font checks all pass.
+Only the approved staging prefix was purged through authenticated Cloudflare
+MCP at20:51:23.948UTC, after fresh API and exact zone/account checks; no host,
+production or settings purge. `staging-prefix-purge.json` records acceptance,
+not a substitute for subsequent cached-response evidence.
+
+The first normal body run is retained at207/208: one Winter1440-JS native topic
+`whatmakeskrakowspecial` failed its immediate navigation/visibility conjunction.
+Every other check, all other targets and all four axe views passed. Three
+separate unchanged-page1440-JS runs reached66/66 real native targets, all unique,
+with immediate/frame/settled state retained. They did not reproduce the failure;
+the exact original cause is not proven. No page/application repair was made.
+
+Code inspection separately found the harness checked cached `page.url()` before
+its existing visibility wait, short-circuiting that wait if URL observation had
+not settled. QA now reads exact `location.hash` and target-in-viewport together
+inside the same existing10-second bounded wait after real Enter. This does not
+simulate navigation, increase timeout, change geometry or weaken the required
+hash/visibility assertion. The independent three-run diagnostic remains
+separate. Fresh local/origin/normal208-check runs use the corrected QA tool;
+their results must close before counting verification. Application remains
+exact50225bd; no rebuild, upload or extra purge is needed for this QA correction.
+
+## Cached Verification Complete
+
+The corrected native test passes208/208 locally, at origin and on normal cached
+URLs, including16 JS/no-JS views and all38 real Enter topics in each view.
+Final four cached axe views show zero automated violations/four incomplete
+color-contrast groups, not full accessibility certification. Cards pass1,693
+across56 live views at both origin and normal URLs; forms501 and attribution269
+pass in both contexts. Homepage10/icon21/ET-font20/social-font15 pass; normal
+follow-up font/icon device responses are HIT. Discovery243 origin/216 normal/
+216 repeat pass with123 canonical targets and unchanged production controls.
+
+Full6,193/6,193 passes across116 routes/119 assets:
+- Origin20:50:58.009909UTC:348 DYNAMIC responses, zero transport retries.
+- Normal21:00:23.031123UTC:348 MISS responses, zero transport retries.
+- Repeat21:03:22.026879UTC:348 HIT responses, zero transport retries.
+
+All six actual cached390px native-final screenshots were visually inspected:
+readable copy, useful image display, no text intrusion into the floating tab.
+Three are exactly equal to current local screenshots. Unmasked RGBA comparisons
+retain three differences: Weather booking80,684 pixels at[39,526,351,900];
+Weather header43,432 at[39,141,351,336]; Winter header37,892 at[39,174,351,382].
+These rectangles lie within the original displayed photos. No cause, mask,
+tolerance, image-file change or original whole-page pixel identity is claimed.
+`cached-pixel-comparison.json` and the original PNGs remain available.
+
+Both roadmaps now record45 verified staging deliveries. C08 has31 major staged
+revisions,2 targeted changes/notices,1 specialist hold and22 awaiting substantive
+review. The33-identity/128-summary catalog is not33 full fact audits. All finite
+checks are closed; root5184/5185 previews are retained. Application files remain
+exact50225bd. Final QA/docs CI and exact-tree merge/branch cleanup remain;
+do not reupload or purge for documentation. No production, commerce, consent,
+medical-hold, active-competition or OmniLodge change.
