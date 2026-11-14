@@ -50,6 +50,7 @@ Supporting evidence:
 
 | Observation | Evidence / confidence | Meaning |
 | --- | --- | --- |
+| 2026-11-14 | C06/D03/D05, group-activity claims verified on staging | Seven stag/hen modules now use quote-specific arrangements, practical official safety advice and relevant karting copy. Mobile text clearance and the karting CTA hit area are fixed. Source 2,377; build 2,320; browser 172 local/origin/normal and decoded repeats; group 354; forms 501 and full 6,193 origin/normal/repeat checks pass, with 348 warmed HIT responses and zero HTTP retries. Eight cached axe views have zero violations/18 incomplete groups. [Evidence and retained failures](group-activities-2026-11-14/README.md), including strict screenshot differences, not a full pixel pass. Roadmaps: 33 verified staging deliveries. Original media/forms/metadata and other 114 bodies remain exact; production, commerce, consent and the medical hold are unchanged. |
 | Core booking demand already exists | Live GSC exact query rows; high confidence | Protect current pub-crawl visibility before experimenting. |
 | Nightlife/local-guide opportunity repeats over time | GSC four-window review plus Ahrefs competitor gap; high confidence in opportunity, not forecast uplift | Improve existing local content rather than unrelated traffic topics. |
 | Search Console dashboard understates/limits its own coverage | Source inspection: every request asks for 100 rows; UI sums those rows; confirmed | Its cards are not dependable sitewide totals. Fix before declaring growth, decline or missing demand. |

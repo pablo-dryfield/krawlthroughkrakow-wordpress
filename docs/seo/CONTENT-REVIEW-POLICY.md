@@ -32,9 +32,11 @@ delivery or permission to send real test enquiries.
 Group minimums, private arrangements, booking lead times and deposit/cancellation
 terms are confirmed individually in each quote. Do not invent standard numbers
 or terms. Contact and the stag/hen/student introductions now state these rules
-on staging, verified14 November. Older activity details and production copy have
-not all been reviewed or promoted; the isolated production endpoint repair is
-a separate release.
+on staging, verified14 November. Seven older stag/hen activity modules have also
+been reviewed on staging; their original media and enquiry/booking controls are
+retained. Remaining activity details and production copy have not all been
+reviewed or promoted; the isolated production endpoint repair is a separate
+release.
 
 ## Review Checklist
 

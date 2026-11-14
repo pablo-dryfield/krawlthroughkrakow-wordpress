@@ -7,6 +7,14 @@
 }
 /* END Memorial visitor guide */
 
+/* BEGIN Group activity clarity */
+body.ktk-code-page #main-content [data-ktk-group-activity-review] { text-align: left; }
+@media (max-width: 600px) {
+  body.ktk-code-page #main-content [data-ktk-group-activity-review] { padding-right: 24px; }
+}
+body.ktk-code-page[data-ktk-page="krakow-stag-do"] #main-content .et_pb_row_16:has([data-ktk-group-activity-review]) { max-height: none; }
+/* END Group activity clarity */
+
 /* BEGIN Stag costume guide */
 body.ktk-code-page[data-ktk-page="post-stag-do-costume"] #main-content [data-ktk-costume-review] { font-size: 16px; line-height: 1.65; letter-spacing: 0; }
 body.ktk-code-page[data-ktk-page="post-stag-do-costume"] #main-content [data-ktk-costume-review] :is(h2,h3,h4) { font-family: inherit; font-weight: 700; line-height: 1.35; letter-spacing: 0; margin: 24px 0 12px; }
