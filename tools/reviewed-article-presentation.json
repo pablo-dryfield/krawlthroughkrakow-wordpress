@@ -118,6 +118,18 @@
       "postId": 6189,
       "route": "/wheres-the-cheap-places-to-drink-in-krakow/",
       "summary": "Compare owner-recommended Krakow bars and budgeting choices using checked venue links. Confirm current menus and offers rather than relying on an old happy hour or price."
+    },
+    {
+      "key": "post-is-krakow-safe-for-stag",
+      "postId": 6198,
+      "route": "/is-krakow-safe-for-stag/",
+      "summary": "Plan a stag weekend in Krakow with clear group choices, checked activity conditions and independent return options. Use official sources for current safety information rather than a risk-free promise."
+    },
+    {
+      "key": "post-krakow-safety-guide",
+      "postId": 6178,
+      "route": "/krakow-safety-guide/",
+      "summary": "Prepare for Krakow with practical checks on transport, belongings, access needs and how to ask for help. Use current official sources without treating a city guide or tour as a safety guarantee."
     }
   ],
   "containers": [
@@ -202,7 +214,9 @@
       "captureSha256": "d444065b28e1ff74d4571f44e9873fea2316ef8481c80fe38d3f66c2a0967982",
       "key": "archive-author-dpbowman-page-4",
       "cardKeys": [
-        "post-irish-bars-krakow"
+        "post-irish-bars-krakow",
+        "post-krakow-safety-guide",
+        "post-is-krakow-safe-for-stag"
       ]
     },
     {
@@ -305,13 +319,15 @@
       "cardKeys": [
         "post-krakow-techno-clubs-2",
         "post-krakow-live-music",
-        "post-irish-bars-krakow"
+        "post-irish-bars-krakow",
+        "post-krakow-safety-guide"
       ]
     },
     {
       "captureSha256": "c752f876ddb67763624e50eb1360c0e83a58a3211f48edb33ebfa3588d6197bb",
       "key": "archive-category-uncategorized-page-3",
       "cardKeys": [
+        "post-is-krakow-safe-for-stag",
         "post-hostel-etiquette-tips",
         "post-wheres-the-cheap-places-to-drink-in-krakow"
       ]
@@ -334,12 +350,14 @@
       "key": "blog",
       "cardKeys": [
         "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+        "post-krakow-safety-guide",
         "post-krakow-techno-clubs",
         "post-all-you-need-to-know-about-visiting-auschwitz",
         "post-krakow-new-years-eve",
         "post-stag-do-costume",
         "post-krakow-shot-bar",
         "post-krakow-techno-clubs-2",
+        "post-is-krakow-safe-for-stag",
         "post-hostel-etiquette-tips",
         "post-2020-krakow-nightlife-guide",
         "post-stages-of-drunkenness",

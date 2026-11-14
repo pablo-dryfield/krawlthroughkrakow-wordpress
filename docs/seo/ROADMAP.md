@@ -6,7 +6,7 @@ Updated: 2026-11-14 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 ## Where We Are
 
-**Current work:** 36 website staging deliveries are verified and unpromoted. Reviewed summaries and their decoded images now pass cached-device checks. Next: refresh the two older safety guides. Of56 articles,17 have major staged revisions,2 have narrower corrections,1 is held and36 still need substantive fact review. Separate production form repair and specialist/consent holds remain unchanged.
+**Current work:** 36 website staging deliveries are verified and unpromoted. Two older safety guides are now in source review:9 inline photos, original history and6 archive-card instances inventoried. Of56 articles,17 have major staged revisions,2 have narrower corrections,1 is held and36 still need substantive fact review. No new safety copy deployed; separate production form repair and specialist/consent holds remain unchanged.
 
 **Verified foundation milestones:** 7. **Website production releases in this plan:** 1. Read each delivery scope: an isolated functional hotfix does not promote the staged SEO batches. The original website migration is a separate completed project. Separately authorized OmniLodge reporting has its own release status.
 
@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 36 |
-| In progress | 0 |
+| In progress | 1 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Practical Krakow and stag safety guides](safety-guides-2026-11-14/README.md) | C08, C06, D03, D05, T08 | In progress (website) | Not yet | Required CI, guarded staging publication, origin checks and scoped cache verification before advancing delivery/article-review counts. Production, commerce, consent and specialist holds remain unchanged. |
 | [Consistent blog and archive summaries](article-summaries-2026-11-14/README.md) | C08, T06, T08, D03 | Verified on staging (website) | 2026-11-14 | Remaining article facts, unreviewed archive-card readability, manual accessibility, owner review and separate production approval. Retained DNS/QA diagnostics are not hidden; this consistency pass is not19 completed article fact reviews. |
 | [Practical pub-crawl and intoxication guidance](night-out-guidance-2026-11-14/README.md) | C08, D03, D05, T08 | Verified on staging (website) | 2026-11-14 | Manual accessibility, owner review and separate production approval. The later summary release resolves the old excerpts and neutral-photo follow-up. The medical hold remains; no medical qualification or risk-free claim is implied. |
 | [Practical prank, hostel and nightlife-dating guidance](respectful-guides-2026-11-14/README.md) | C08, D03, D05, T08 | Verified on staging (website) | 2026-11-14 | Unverified prank products, medical hold, manual accessibility, owner review and production approval remain separate. No original whole-page pixel or safety guarantee; remaining articles still need review. |
