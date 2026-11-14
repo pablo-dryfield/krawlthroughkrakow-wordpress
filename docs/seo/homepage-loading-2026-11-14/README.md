@@ -1,6 +1,6 @@
 # Homepage Loading: Exact Social-Font Delivery
 
-Status: local candidate under verification, not deployed. Scope is one homepage
+Status: staging cache-verified; final repository records pending. Scope is one homepage
 font-face addition and one derivative WOFF2. No statue SVG, photo, text, layout,
 provider, consent, commerce or content-page change is proposed.
 
@@ -81,7 +81,7 @@ is not a consent or provider-ingestion test. Node deadlines bound font/image
 promises even with page JavaScript disabled.
 
 Need completed browser/source/shared/Python/PHP/attribution and roadmap checks,
-required CI, guarded staging233-file release, origin/normal/cache verification
+required CI, guarded staging234-file release, origin/normal/cache verification
 and final records before counting a new staging delivery. No production release
 is authorized. No measured LCP gain will be claimed without comparable evidence.
 
@@ -112,7 +112,7 @@ request/hash and JS/no-JS missing-derivative fallbacks. Source2376/sharedJS240/
 Python214/roadmap317 and homepage PHP integration checks pass. Both actual390px
 campaign screenshots and the nonblank social atlas were visually inspected.
 No original whole-page screenshot identity or accessibility conformance claim
-is made. Guarded assets-only dry run contains233 files. Application source is
+is made. Guarded assets-only dry run contains234 files. Application source is
 still exactly one CSS declaration plus one new font; no staging upload yet.
 
 A further read-only runtime observation shows Analytics collect requests and
@@ -120,3 +120,59 @@ only AW/GTM identifiers in the visible Google runtime. This supports M03's
 explicit caveat: absence of a public GA4 tag is not proof of no Analytics
 destination elsewhere. It does not establish a complete GA4 purchase funnel,
 provider receipt, request consent compliance or the purpose of `/9z78/`.
+
+## Staging Release And Final Evidence
+
+Application75ff72d, PR54, required CI43601930259 both pass. The manual assets-only
+publisher completed successfully; its report was written13:57:39.7464517UTC.
+All234 owned local/remote hashes match. Saved posts/settings were not rewritten;
+the existing origin homepage-cache purge succeeds. The report's legacy
+`cloudflare_available:false` describes that publisher helper, not MCP access.
+The separately validated MCP purge succeeds below.
+
+Rollback `deploy-backups/ktk-homepage-shortcode-staging-20261114-135620.zip`, SHA256
+`344058dd48eb1b32175cdd934535639e13604bb9a2de2bf88d8363f3c1da07b8`.
+All234 ZIP entries, exact manifest set,233 original file hashes and CRC pass.
+Comparison with the publication proves exactly one changed CSS file and one
+added font. The earlier note's233 payload estimate was a counting error:
+there are232 owned asset files plus two renderer/content files,234 in total.
+No unknown/untracked asset was uploaded.
+
+Source2376, final browser130 local/origin/normal, attribution143 origin/normal,
+homepage10/icons21/full-ETmodules20 and new-font15 origin/normal/repeat pass.
+All three normal font-device responses are MISS, then all three HIT. The only
+edge purge is `krawlthroughkrakow.com/staging/` at14:00:24.914UTC, after current
+API/zone/account validation and completed origin checks. No production prefix,
+host-wide or domain-wide purge is sent.
+
+The final harness also binds its own/tool/generator hashes and rejects
+same-origin requests outside staging except the exact existing email decoder.
+This prevents the unidentified `/9z78/` provider script being included in a
+font-only functional test. Earlier127 reports are retained as source/layout
+evidence, not treated as fully provider-isolated measurements. The stricter130
+reruns pass without changing the application or lowering any threshold. A
+combined documentation patch with missing context was rejected atomically;
+the exact source-only patch was then applied before fresh runs.
+
+Both actual cached390px campaign screenshots and the nonblank atlas were
+inspected. The two cached campaign PNGs exactly match the inspected current
+local views. This is not original whole-page pixel identity. Full original
+font/artwork/content and the protected medical/commerce/consent boundaries
+remain unchanged.
+
+Three normal-URL cold-cache mobile traces before release have LCP11542/11449/
+11437ms, median11449; after release10707/10904/11295ms, median10904. CLS before
+is.01/.01/.01, after.00/.01/.00. Same390x844/DPR3/CPU4x/Slow4G profile and no
+consent choice; other tabs remain untouched. Live provider/network behavior
+varies, so these are descriptive lab observations, not a guaranteed causal
+uplift, field CWV or good-mobile-score claim. Returned summaries and sanitized
+Resource Timing artifacts are retained; raw trace-file saving was unavailable.
+After-run1 actual transfer verifies932 encoded/decoded social-font bytes, no
+original brands download, and unchanged279474/669694 regular SVG bytes. The
+SVG remains the main bottleneck.
+
+Every finite build/publisher/audit/trace is closed. Task-owned DevTools page2
+is closed; existing page1 is untouched. The existing local homepage preview
+on5184 is retained. Both roadmaps now record40 verified staging batches, not
+40 completed workstreams. Final QA/docs CI, exact-tree merge and completed-branch
+cleanup remain; no application reupload or extra purge is needed for these notes.

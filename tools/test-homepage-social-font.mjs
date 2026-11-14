@@ -8,6 +8,7 @@ import { socialFontFiles, socialFontCodepoints } from './homepage-social-font.mj
 const require = createRequire(import.meta.url);
 const { chromium } = require(path.join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const [base, baseline, output] = process.argv.slice(2);
+const cacheBusted = process.argv.includes('--cache-bust');
 if (!['http://127.0.0.1:5184/', 'https://krawlthroughkrakow.com/staging/'].includes(base)
     || !/^[a-f0-9]{40}$/.test(baseline || '') || !output) throw new Error('Explicit preview/staging URL, Git baseline and fresh output directory required');
 try { await readFile(path.join(output, 'report.json')); throw new Error('Preserve previous evidence'); }
@@ -15,13 +16,15 @@ catch (error) { if (error.code !== 'ENOENT') throw error; }
 await mkdir(output, { recursive: true });
 const root = 'staging/wp-content/mu-plugins/ktk-homepage-assets/';
 const oldCss = execFileSync('git', ['show', `${baseline}:${root}parity-runtime.css`]);
-const inputs = [root + 'parity-runtime.css', ...Object.keys(socialFontFiles).map(file => root + file)];
+const inputs = [root + 'parity-runtime.css', ...Object.keys(socialFontFiles).map(file => root + file),
+  'tools/test-homepage-social-font.mjs', 'tools/homepage-social-font.mjs', 'tools/build-homepage-social-font.py'];
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const sourceHashes = {};
 for (const file of inputs) sourceHashes[file] = hash(await readFile(file));
 const report = { checkedAt: new Date().toISOString(), base, baseline, sourceHashes,
+  cacheBusted,
   scope: 'Original/candidate homepage CSS, both campaigns, four widths, JS/no-JS; exact social glyph pixels and fallback. Providers and all non-read requests aborted.',
-  checks: [], errors: [], screenshots: [], blockedNonReadRequests: 0 };
+  checks: [], errors: [], screenshots: [], blockedNonReadRequests: 0, blockedOutsideScopeRequests: 0 };
 const check = (name, pass, detail) => report.checks.push({ name, pass: Boolean(pass), detail });
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const prefix = base.startsWith('http://127.') ? '/ktk-homepage-assets/' : '/staging/wp-content/mu-plugins/ktk-homepage-assets/';
@@ -38,7 +41,12 @@ async function visit(width, campaign, javascript, reference, fallback = false) {
   await context.route('**/*', route => {
     const request = route.request(), url = new URL(request.url());
     if (!['GET', 'HEAD'].includes(request.method())) { report.blockedNonReadRequests++; return route.abort(); }
-    if (url.origin !== new URL(base).origin) return route.abort();
+    if (url.origin !== new URL(base).origin || base.startsWith('https:')
+        && !url.pathname.startsWith('/staging/')
+        && url.pathname !== '/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js') {
+      report.blockedOutsideScopeRequests++;
+      return route.abort();
+    }
     if (reference && url.pathname === prefix + 'parity-runtime.css') {
       return route.fulfill({ status: 200, contentType: 'text/css', body: oldCss });
     }
@@ -52,7 +60,9 @@ async function visit(width, campaign, javascript, reference, fallback = false) {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   try {
-    const url = new URL(base); url.searchParams.set('ktk_hero', campaign);
+    const url = new URL(base);
+    if (campaign === 'halloween') url.searchParams.set('ktk_hero', campaign);
+    if (cacheBusted) url.searchParams.set('ktk_social_font_check', String(Date.now()));
     const response = await page.goto(url.href, { waitUntil: 'load', timeout: 60000 });
     if (response.status() !== 200) throw new Error('Homepage HTTP' + response.status());
     await deadline(page.evaluate(() => document.fonts.ready.then(() => true)), 'Native font loading');
