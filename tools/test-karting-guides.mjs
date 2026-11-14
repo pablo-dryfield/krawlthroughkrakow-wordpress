@@ -1,0 +1,78 @@
+import {readFile, writeFile, mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {createRequire} from 'node:module';
+import path from 'node:path';
+
+const [base, output] = process.argv.slice(2);
+if (!['http://127.0.0.1:5185/', 'https://krawlthroughkrakow.com/staging/'].includes(base) || !output) throw Error('Explicit local/staging base and fresh report required');
+try {await readFile(path.join(output, 'report.json')); throw Error('Preserve earlier evidence');} catch (e) {if (e.code !== 'ENOENT') throw e;}
+await mkdir(output, {recursive: true});
+const root = 'staging/wp-content/mu-plugins/ktk-code-pages-assets/', keys = ['post-go-karting-krakow', 'post-krakow-go-karting'], files = ['tools/test-karting-guides.mjs', 'tools/karting-guides-editorial.mjs', 'tools/content/karting-planning.html', 'tools/content/karting-first-visit.html', 'tools/reviewed-article-presentation.json', root + 'runtime.css', root + 'runtime.js'], candidates = {};
+for (const key of keys) {files.push(root + 'content/' + key + '.html'); candidates[key] = await readFile(root + 'content/' + key + '.html', 'utf8');}
+const hashes = async () => Object.fromEntries(await Promise.all(files.map(async f => [f, createHash('sha256').update(await readFile(f)).digest('hex')])));
+const initial = await hashes(), checks = [], errors = [], writes = [], axeViews = [], check = (name, pass, detail) => checks.push({name, pass: !!pass, detail});
+const require = createRequire(import.meta.url), {chromium} = require(path.join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright')), frontend = createRequire(path.resolve('staging/wp-content/plugins/ktk-storefront/frontend/package.json'));
+if (frontend('axe-core/package.json').version !== '4.14.0') throw Error('Pinned axe version required');
+const axe = await readFile(frontend.resolve('axe-core/axe.min.js'), 'utf8'), browser = await chromium.launch({channel: 'chrome', headless: true}); let views = 0;
+async function bounded(promise, label) {let timer; try {return await Promise.race([promise, new Promise((_, reject) => {timer = setTimeout(() => reject(Error(label + ' exceeded30s')), 30000);})]);} finally {clearTimeout(timer);}}
+async function visible(page, id) {
+  const end = Date.now() + 10000;
+  do {if (await page.evaluate(id => {const b = document.getElementById(id)?.getBoundingClientRect(); return !!b && b.top < innerHeight && b.bottom > 0;}, id)) return true; await new Promise(r => setTimeout(r, 50));} while (Date.now() < end);
+  return false;
+}
+try {
+  for (const [index, key] of keys.entries()) for (const width of [320, 390, 768, 1440]) for (const javaScriptEnabled of [true, false]) {
+    const name = key + ' ' + width + ' ' + (javaScriptEnabled ? 'JS' : 'no-JS'), context = await browser.newContext({viewport: {width, height: 900}, javaScriptEnabled, reducedMotion: 'reduce', serviceWorkers: 'block'});
+    try {
+      await context.route('**/*', route => {
+        const r = route.request(), u = new URL(r.url()); if (!['GET', 'HEAD'].includes(r.method())) {writes.push({name, method: r.method(), path: u.pathname}); return route.abort();}
+        return u.origin === new URL(base).origin && (u.hostname === '127.0.0.1' || u.pathname.startsWith('/staging/') || u.pathname === '/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js') ? route.continue() : route.abort();
+      });
+      const page = await context.newPage(); page.on('pageerror', e => errors.push({name, message: e.message}));
+      const url = new URL(key.slice(5) + '/', base); if (process.argv.includes('--cache-bust')) url.searchParams.set('ktk_karting_check', Date.now().toString());
+      const response = await page.goto(url.href, {waitUntil: 'load', timeout: 60000}); await bounded(page.evaluate(() => document.fonts.ready), 'Karting fonts');
+      const expected = candidates[key].replaceAll('__KTK_HOME_URL__', 'https://krawlthroughkrakow.com/staging/').replaceAll('__KTK_PAGE_ASSETS__', base.startsWith('http:') ? '/ktk-code-pages-assets/' : base + 'wp-content/mu-plugins/ktk-code-pages-assets/');
+      const facts = await page.evaluate(expected => {
+        const d = new DOMParser().parseFromString(expected, 'text/html'), body = document.querySelector('[data-ktk-karting-review]'), clean = s => (s || '').replace(/\s+/g, ' ').trim();
+        const nodes = (doc, selector, fn) => [...doc.querySelectorAll(selector)].map(fn), same = (selector, fn) => JSON.stringify(nodes(d, selector, fn)) === JSON.stringify(nodes(document, selector, fn));
+        const style = getComputedStyle(body), ids = [...body.querySelectorAll('[id]')].map(n => n.id), toc = [...body.querySelectorAll('nav a')];
+        return {key: document.body.dataset.ktkPage, text: same('[data-ktk-karting-review]', n => clean(n.textContent)), headings: same('#main-content h1,[data-ktk-karting-review] h2,[data-ktk-karting-review] h3', n => [n.tagName, n.id, clean(n.textContent)]), links: same('[data-ktk-karting-review] a', n => [new URL(n.getAttribute('href'), location.href).href, clean(n.textContent)]), photos: same('#main-content img', n => n.outerHTML), history: same('#main-content .post-meta', n => n.outerHTML), h1: document.querySelectorAll('#main-content h1').length, markers: document.querySelectorAll('[data-ktk-karting-review]').length, toc: toc.length, unique: new Set(ids).size === ids.length, targets: toc.every(n => document.getElementById(new URL(n.href).hash.slice(1))), collapsed: !body.querySelector('details').open, overflow: document.documentElement.scrollWidth > innerWidth + 1, type: {font: style.fontSize, line: style.lineHeight, spacing: style.letterSpacing, align: style.textAlign, padding: style.paddingRight}, paragraphs: [...body.querySelectorAll('p')].filter(n => clean(n.textContent)).map(n => ({font: getComputedStyle(n).fontSize, line: getComputedStyle(n).lineHeight})), headingTypes: [...body.querySelectorAll('h2,h3')].map(n => ({tag: n.tagName, font: getComputedStyle(n).fontSize})), colors: [...body.querySelectorAll('a')].map(n => getComputedStyle(n).color), bookings: [...body.querySelectorAll('a')].filter(n => n.getAttribute('href').includes('/store2/')).map(n => n.href)};
+      }, expected);
+      check(name + ' exact reviewed text, headings and destinations', response.status() === 200 && facts.key === key && facts.text && facts.headings && facts.links, facts);
+      check(name + ' original H1, publication and every photo element exact', facts.h1 === 1 && facts.history && facts.photos, facts);
+      check(name + ' complete unique native contents', facts.markers === 1 && facts.toc === [17, 9][index] && facts.unique && facts.targets && facts.collapsed, facts);
+      check(name + ' fixed readable type, mobile clearance and no overflow', !facts.overflow && facts.type.font === '16px' && facts.type.line === '26.4px' && facts.type.align === 'left' && ['0px', 'normal'].includes(facts.type.spacing) && facts.type.padding === (width <= 600 ? '24px' : '0px') && facts.paragraphs.every(t => t.font === '16px' && t.line === '26.4px') && facts.headingTypes.every(t => t.font === (t.tag === 'H2' ? '22px' : '18px')), facts);
+      check(name + ' contrast and our clean product30 booking links', facts.colors.length && facts.colors.every(c => c === 'rgb(200, 0, 108)') && facts.bookings.length === 2 && facts.bookings.every(h => h === 'https://krawlthroughkrakow.com/staging/store2/go-karting-30/#book'), {colors: facts.colors, bookings: facts.bookings});
+      const summary = page.locator('[data-ktk-karting-review] summary'); await summary.focus();
+      check(name + ' visible keyboard focus', await summary.evaluate(n => getComputedStyle(n).outlineWidth === '2px' && getComputedStyle(n).outlineStyle === 'solid'));
+      await page.keyboard.press('Enter'); check(name + ' Enter opens native contents', await summary.evaluate(n => n.parentElement.open));
+      await page.keyboard.press('Space'); check(name + ' Space closes native contents', !await summary.evaluate(n => n.parentElement.open));
+      await page.keyboard.press('Enter'); await page.keyboard.press('Tab'); check(name + ' Tab reaches the first topic link', await page.evaluate(() => document.activeElement?.matches('[data-ktk-karting-review] nav a')));
+      const topics = await page.locator('[data-ktk-karting-review] nav a').evaluateAll(nodes => nodes.map(n => new URL(n.href).hash.slice(1))), results = [];
+      for (const id of topics) {await page.locator('[data-ktk-karting-review] nav a[href$="#' + id + '"]').focus(); await page.keyboard.press('Enter'); results.push({id, pass: new URL(page.url()).hash === '#' + id && await visible(page, id)});}
+      check(name + ' every topic reached using real Enter', results.length === [17, 9][index] && results.every(r => r.pass), results);
+      const photos = [];
+      for (const image of await page.locator('#main-content img').all()) {await image.scrollIntoViewIfNeeded(); photos.push(await bounded(image.evaluate(async n => {try {await n.decode(); return {src: n.currentSrc, pass: n.complete && n.naturalWidth > 0};} catch (e) {return {src: n.currentSrc, pass: false, error: e.message};}}), 'Karting photo'));}
+      check(name + ' all original inline and featured photos decode', photos.length === [7, 6][index] && photos.every(p => p.pass), photos);
+      const clearance = await page.locator('[data-ktk-karting-review]').evaluate((body, width) => {
+        const tab = document.getElementById('ktk-cta')?.getBoundingClientRect(), bad = []; if (!tab || width > 600) return {bad};
+        for (const n of body.querySelectorAll('p,h2,h3,li,summary')) {if (!n.getClientRects().length || !n.textContent.trim()) continue; const range = document.createRange(); range.selectNodeContents(n); if ([...range.getClientRects()].some(b => b.width > 0 && b.right > tab.left + .5)) bad.push(n.textContent.slice(0, 80));}
+        return {bad, tabLeft: tab.left};
+      }, width);
+      check(name + ' text outside floating CTA column', !clearance.bad.length, clearance);
+      if (javaScriptEnabled && [390, 1440].includes(width)) {
+        await page.addScriptTag({content: axe}); const result = await bounded(page.evaluate(() => axe.run(document.querySelector('#main-content'), {runOnly: {type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']}})), 'Karting axe');
+        axeViews.push({name, violations: result.violations, incomplete: result.incomplete.map(r => ({id: r.id, nodes: r.nodes.length}))}); check(name + ' no automated axe violations', !result.violations.length, result.violations);
+      }
+      if (width === 390 && javaScriptEnabled) {
+        if (await summary.evaluate(n => n.parentElement.open)) {await summary.focus(); await page.keyboard.press('Enter');}
+        for (const [label, selector] of [['header', '#main-content h1.entry-title'], ['intro', '[data-ktk-karting-review]'], ['booking', '[data-ktk-karting-review] h2[id="conclusion"]']]) {await page.locator(selector).evaluate(n => n.scrollIntoView({block: 'start'})); await page.screenshot({path: path.join(output, key + '-' + label + '.png')});}
+      }
+      views++;
+    } finally {await context.close();}
+  }
+} catch (e) {errors.push(e.stack);} finally {await browser.close();}
+check('All16 JS/no-JS views completed', views === 16, views); check('No script/harness errors', !errors.length, errors); check('No writes or provider events', !writes.length, writes); check('All recorded inputs remain exact', JSON.stringify(initial) === JSON.stringify(await hashes()));
+const report = {checkedAt: new Date().toISOString(), base, scope: 'Two karting guides, four widths, native keyboard/26 topics, exact content/media/publication, readable fixed type, mobile CTA clearance and four JS-only axe views. All provider/non-read requests blocked; not full accessibility or original-page pixel certification.', sourceHashes: initial, passed: checks.filter(c => c.pass).length, total: checks.length, views, checks, errors, writes, axeViews};
+await writeFile(path.join(output, 'report.json'), JSON.stringify(report, null, 2) + '\n'); console.log(JSON.stringify({passed: report.passed, total: report.total, views, axe: axeViews.map(v => ({name: v.name, violations: v.violations.length, incomplete: v.incomplete.length})), failed: checks.filter(c => !c.pass), errors}, null, 2));
+if (report.passed !== report.total) process.exitCode = 1;
