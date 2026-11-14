@@ -202,6 +202,24 @@
       "postId": 6200,
       "route": "/krakow-winter-activities/",
       "summary": "Build a flexible Krakow winter break with Old Town sights, indoor visits, food and nightlife. Check the announced market and rink season, holiday opening and mountain conditions rather than relying on snow or guaranteed availability."
+    },
+    {
+      "key": "post-best-places-to-eat",
+      "postId": 3097,
+      "route": "/best-places-to-eat/",
+      "summary": "Choose Krakow meals from breakfast to late-night food, with KTK recommendations, operator links and practical plans beyond old fixed-price promises."
+    },
+    {
+      "key": "post-krakow-food-truck-parks",
+      "postId": 6192,
+      "route": "/krakow-food-truck-parks/",
+      "summary": "Compare Krakow market food, Plac Nowy counters and station-area dining, with specific event checks and practical guidance for a street-food stop."
+    },
+    {
+      "key": "post-krakow-milkbars",
+      "postId": 6172,
+      "route": "/krakow-milkbars/",
+      "summary": "Compare Krakow milk-bar choices, Polish lunch options and practical ordering tips, with sourced history and branch information."
     }
   ],
   "containers": [
@@ -258,7 +276,8 @@
       "cardKeys": [
         "post-go-karting-krakow",
         "post-krakow-shot-bar",
-        "post-jazz-bars-in-krakow"
+        "post-jazz-bars-in-krakow",
+        "post-krakow-milkbars"
       ]
     },
     {
@@ -283,6 +302,7 @@
       "cardKeys": [
         "post-krakow-shot-bar",
         "post-jazz-bars-in-krakow",
+        "post-krakow-milkbars",
         "post-krakow-techno-clubs-2",
         "post-krakow-live-music"
       ]
@@ -301,6 +321,7 @@
       "captureSha256": "33e25e5df750f5c669de5728b810e5729b75e3261ef292229223a8d0c9db00b3",
       "key": "archive-author-dpbowman-page-5",
       "cardKeys": [
+        "post-krakow-food-truck-parks",
         "post-hostel-etiquette-tips",
         "post-wheres-the-cheap-places-to-drink-in-krakow",
         "post-krakow-budget-activities"
@@ -328,6 +349,7 @@
       "key": "archive-author-dpbowman-page-8",
       "cardKeys": [
         "post-weekend-in-krakow",
+        "post-best-places-to-eat",
         "post-party-krakow",
         "post-best-drinking-games"
       ]
@@ -385,6 +407,7 @@
       "captureSha256": "256dc6ac892184da4dc1d15003b0fbeeca5ae6679a020e6f8c69567d9649afb4",
       "key": "archive-category-krakow-guides-page-3",
       "cardKeys": [
+        "post-best-places-to-eat",
         "post-2020-krakow-nightlife-guide",
         "post-travel-krakow-your-comprehensive-city-guide",
         "post-survive-pub-crawl"
@@ -427,6 +450,7 @@
       "key": "archive-category-uncategorized-page-3",
       "cardKeys": [
         "post-is-krakow-safe-for-stag",
+        "post-krakow-food-truck-parks",
         "post-hostel-etiquette-tips",
         "post-wheres-the-cheap-places-to-drink-in-krakow",
         "post-krakow-money-saving-tips"
@@ -452,7 +476,9 @@
       "key": "blog",
       "cardKeys": [
         "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+        "post-krakow-milkbars",
         "post-krakow-safety-guide",
+        "post-krakow-food-truck-parks",
         "post-krakow-budget-activities",
         "post-krakow-go-karting",
         "post-krakow-techno-clubs",
@@ -468,6 +494,7 @@
         "post-is-krakow-safe-for-stag",
         "post-hostel-etiquette-tips",
         "post-krakow-free-activities-2",
+        "post-best-places-to-eat",
         "post-2020-krakow-nightlife-guide",
         "post-travel-krakow-your-comprehensive-city-guide",
         "post-stages-of-drunkenness",
@@ -496,7 +523,9 @@
     {
       "captureSha256": "8e80de83e5c3be84a0be5f9465ce828dda79fd306ba75660e7125ce3fa5ab5d0",
       "key": "archive-tag-krakow-food",
-      "cardKeys": []
+      "cardKeys": [
+        "post-best-places-to-eat"
+      ]
     },
     {
       "captureSha256": "75d768c1fa8a02cef1fa6ff4ce9d78c964cec868076c82a9278b48ad154f1b0a",
@@ -519,6 +548,7 @@
       "key": "archive-tag-krakow",
       "cardKeys": [
         "post-weekend-in-krakow",
+        "post-best-places-to-eat",
         "post-krakow-weather-guide",
         "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow"
       ]
@@ -551,6 +581,7 @@
       "key": "archive-tag-tips",
       "cardKeys": [
         "post-weekend-in-krakow",
+        "post-best-places-to-eat",
         "post-party-krakow",
         "post-best-drinking-games"
       ]

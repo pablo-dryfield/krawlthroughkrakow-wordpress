@@ -78,6 +78,8 @@ jobs:
         run: node --test tools/tests/test_karting_guides_editorial.mjs
       - name: Weather and winter guide source contracts
         run: node --test tools/tests/test_weather_winter_editorial.mjs
+      - name: Food guide source contracts
+        run: node --test tools/tests/test_food_guide_editorial.mjs
       - name: Booking selection recovery contracts
         run: node --test tools/tests/test_booking_selection_recovery.mjs tools/tests/test_blocked_meta_pageview.mjs
       - name: Read-only booking measurement contracts (no provider events)

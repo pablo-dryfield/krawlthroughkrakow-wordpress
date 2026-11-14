@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 45 |
-| In progress | 1 |
+| In progress | 2 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Useful food, milk-bar and street-food guides](food-guide-clarity-2026-11-14/README.md) | C08, T01, T06, T08, D03, D05, T10 | In progress (website) | Not yet | Finish final local release guards, required CI, guarded staging publication, attribution/discovery and origin/normal/warmed-cache proof.45 verified staging deliveries remain unchanged until these gates pass. Production, commerce, consent, active competition and specialist hold remain unchanged. |
 | [Source-backed weather and winter planning](weather-winter-guides-2026-11-14/README.md) | C08, C02, G01, T01, T06, T08, D03, D05, T10 | Verified on staging (website) | 2026-11-14 | Remaining article and operator facts, manual accessibility, owner review and separate production approval. One initial native-fragment test miss and its independent66-target diagnostic are retained; no application change or cause claim. No whole-page pixel, commerce or consent guarantee. The active competition and specialist hold remain unchanged. |
 | [Distinct karting planning and first-visit guides](karting-guides-2026-11-14/README.md) | C08, C06, T01, T06, T08, D03, T10 | Verified on staging (website) | 2026-11-14 | Remaining article and operator facts, manual accessibility, owner review and separate production approval. No private-track, whole-page pixel, commerce or consent guarantee. The active competition and specialist hold are unchanged. |
 | [Booking selection and keyboard recovery](booking-friction-2026-11-14/README.md) | D04, D03, T10 | Verified on staging (website) | 2026-11-14 | Broader invalid-code, weekday-eligibility, payment/paid-state, manual accessibility and consented journey review remain separate; synthetic fixtures do not certify backend charges or provider receipt. Owner review and production approval remain. No monetary, availability, discount, cart/payment, backend or consent change. |
