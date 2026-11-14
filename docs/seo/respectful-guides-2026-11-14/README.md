@@ -87,9 +87,45 @@ than replacing the three articles with short summaries.
 Twelve axe views report zero violations and12 incomplete rule groups; manual
 accessibility remains. Forms501/501 use intercepted submissions, PHP forms31/31
 stub mail, PHP integration763/763, NYE143/143, Python214/214 and JS186/186 pass.
-The guarded2,073-file staging dry run passes. CI, application publication and
-cached-device release checks are pending. No new payload is deployed; the33
-previous staging deliveries remain the last verified website state.
+The guarded2,073-file staging dry run passes. Application commit
+`71968b29e0fa19ed2bf403778b5d5875126f4081` passed both required GitHub jobs in
+run `43569275769`. Manual staging publication completed at07:05:37.615097UTC;
+all2,073 independent hashes match, protected saved WordPress records, homepage
+and storefront remain unchanged, and the temporary helper is removed.
+
+The seven-entry, CRC-clean scoped rollback is
+`deploy-backups/ktk-code-pages-staging-20261114-070515.zip`, SHA256
+`52a1e647a864a3fb3eb22fb10570ce27eeeabe05e764c25338b9f381c301ebc9`.
+It is distinct from the full tracked-source pre-edit archive above.
+
+Live origin browser303, forms501, attribution143 and discovery243 checks pass.
+The all-route origin scan passes6,193/6,193 across116 routes and119 assets.
+After rechecking the API permission and exact zone/account, only the staging
+prefix was purged at07:13:24.751UTC. API acceptance is recorded in
+`cache-purge.json`, not treated as cache correctness.
+
+| Full release scan | Completed UTC | Assertions | Device/page cache results |
+| --- | --- | ---: | --- |
+| Origin | 07:13:15.610660 | 6,193/6,193 | 348 DYNAMIC |
+| Normal URLs | 07:18:52.242714 | 6,193/6,193 | 348 MISS |
+| Warmed repeat | 07:20:50.232202 | 6,193/6,193 | 348 HIT |
+
+All three scans verify116 routes and119 current asset hashes/version tokens;
+each has zero HTTP retries. Reports are the three
+`respectful-guides-{origin,normal,repeat}-20261114.json` files under
+`docs/code-pages/full-migration/`. Browser303/303 and forms501/501 pass on normal
+URLs too; attribution143/143, discovery216/216 normal and repeat, unchanged
+homepage10 assets, image21 and font20 checks pass. Twelve normal axe views have
+zero violations and12 incomplete groups. Three actual cached390px article
+screenshots were inspected as well as the six local screenshots. These are
+readability/behavior checks, not a claim of original whole-page pixel identity
+or completed manual accessibility certification.
+
+Final source2,385, Python214 and JavaScript186 checks pass without application
+changes after the reviewed commit. Both roadmaps record34 staging-verified
+website deliveries. Production SEO, the medical hold, functional consent,
+commerce and OmniLodge remain unchanged. The whole40-workstream plan remains
+open; this batch is not production promotion or a ranking-uplift claim.
 
 Read-only graph:142 pages,24 public products and6,257 edges; no unknown paths.
 The same six previously held tags remain unreachable, not new orphans introduced

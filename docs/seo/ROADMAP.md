@@ -6,7 +6,7 @@ Updated: 2026-11-14 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 ## Where We Are
 
-**Current work:** 33 website staging deliveries are verified and unpromoted. Reviewing the prank, hostel-etiquette and nightlife-dating guides together: practical choices, respectful boundaries and working contents links, while preserving original URLs, history and photographs. The separate production form repair and specialist/consent holds remain unchanged.
+**Current work:** 34 website staging deliveries are verified and unpromoted, including the prank, hostel-etiquette and nightlife-dating revisions. Next: review older intoxication and pub-crawl advice against official guidance, preserving URLs and historical identity. The separate production form repair and specialist/consent holds remain unchanged.
 
 **Verified foundation milestones:** 7. **Website production releases in this plan:** 1. Read each delivery scope: an isolated functional hotfix does not promote the staged SEO batches. The original website migration is a separate completed project. Separately authorized OmniLodge reporting has its own release status.
 
@@ -16,13 +16,13 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 
 | Delivery Stage | Batches |
 | --- | ---: |
-| Verified on staging | 33 |
-| In progress | 1 |
+| Verified on staging | 34 |
+| In progress | 0 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
-| [Practical prank, hostel and nightlife-dating guidance](respectful-guides-2026-11-14/README.md) | C08, D03, D05, T08 | In progress (website) | Not yet | CI, guarded staging publication and normal/warmed cached-device verification. Unverified prank products, the medical hold, manual accessibility, owner review and production approval remain separate. |
+| [Practical prank, hostel and nightlife-dating guidance](respectful-guides-2026-11-14/README.md) | C08, D03, D05, T08 | Verified on staging (website) | 2026-11-14 | Unverified prank products, medical hold, manual accessibility, owner review and production approval remain separate. No original whole-page pixel or safety guarantee; remaining articles still need review. |
 | [Honest group-activity inclusions and practical precautions](group-activities-2026-11-14/README.md) | C06, D03, D05 | Verified on staging (website) | 2026-11-14 | Remaining activity and advice-article facts, owner review, manual accessibility and separate production approval. Operational meeting confirmation and actual inbox assurance remain pending; no whole-page pixel or safety guarantee. |
 | [Clear email replies and individual group quotes](enquiry-policy-2026-11-14/README.md) | C06, D06 | Verified on staging (website) | 2026-11-14 | Owner review and separate production approval, actual inbox assurance, manual accessibility and older activity claims. No fixed reply-time, group minimum or deposit amount is promised. |
 | [Production form endpoint-only repair](production-form-hotfix-2026-11-14/README.md) | D06 | Verified live (website) | 2026-11-14 | Owner inbox assurance, spam/manual checks and approval for the broader staged form UI. All broader SEO/site changes remain staging-only; no messages, orders or consent settings changed in testing. |
