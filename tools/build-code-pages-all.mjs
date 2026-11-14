@@ -33,6 +33,7 @@ import {loadPartyGuideEditorial,revisePartyGuideEditorial,buildPartyGuideStyles}
 import {loadGamesResourceEditorial,reviseGamesResourceEditorial,buildGamesResourceStyles} from './games-resource-editorial.mjs';
 import {loadBudgetTravelEditorial,reviseBudgetTravelEditorial,buildBudgetTravelStyles} from './budget-travel-editorial.mjs';
 import {loadCityTripEditorial,reviseCityTripEditorial,buildCityTripStyles} from './city-trip-editorial.mjs';
+import {loadOwnedVodkaLinks,reviseOwnedVodkaLinks} from './owned-vodka-links.mjs';
 import {codePageTitle,codePageHeadDescription,loadSharingImagePolicy,buildCodePageSharing} from './code-page-sharing.mjs';
 import {loadOfferPageRevisions,reviseOfferPages} from './offer-pages-editorial.mjs';
 import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
@@ -84,6 +85,7 @@ const partyGuides=await loadPartyGuideEditorial();
 const gamesGuides=await loadGamesResourceEditorial();
 const budgetTravelGuides=await loadBudgetTravelEditorial();
 const cityTripGuides=await loadCityTripEditorial();
+const ownedVodkaLinks=await loadOwnedVodkaLinks();
 const campaignFacts=campaignTemplateValues(await loadOfferFacts());
 validateSeoRoutes(manifest.routes.map(row => row.route));
 const reviewCounts=JSON.parse(execFileSync('php',['-r',"define('ABSPATH', __DIR__); require $argv[1]; echo json_encode(array_column(ktk_homepage_review_sources(), 'count', 'name'));",path.join(root,'staging/wp-content/mu-plugins/ktk-homepage-assets/reviews.php')],{encoding:'utf8'}));
@@ -291,6 +293,7 @@ try {
       css=preserveHeadingCss(css);
       const bookingRevisions=await rewriteBookingLinks(page);
       bookingRevisions.push(...await rewriteCanonicalLinks(page));
+      contentRevisions.push(...await page.evaluate(reviseOwnedVodkaLinks,{key:route.key,revision:ownedVodkaLinks.find(row=>row.key===route.key)}));
       const eventPromotion=await page.evaluate(prepareNyePromotion,{key:route.key,campaignFacts});
       if(contentRevisions.length||bookingRevisions.length)report.revisions[route.key]={content:contentRevisions,bookings:bookingRevisions};
       const schemaFacts=await page.evaluate(codePageSchemaFacts);

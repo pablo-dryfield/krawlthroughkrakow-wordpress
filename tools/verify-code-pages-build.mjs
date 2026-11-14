@@ -29,6 +29,7 @@ import {loadPartyGuideEditorial,revisePartyGuideEditorial} from './party-guide-e
 import {loadGamesResourceEditorial,reviseGamesResourceEditorial} from './games-resource-editorial.mjs';
 import {loadBudgetTravelEditorial,reviseBudgetTravelEditorial} from './budget-travel-editorial.mjs';
 import {loadCityTripEditorial,reviseCityTripEditorial} from './city-trip-editorial.mjs';
+import {loadOwnedVodkaLinks,reviseOwnedVodkaLinks} from './owned-vodka-links.mjs';
 import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
@@ -54,6 +55,7 @@ const partyGuides=await loadPartyGuideEditorial();
 const gamesGuides=await loadGamesResourceEditorial();
 const budgetTravelGuides=await loadBudgetTravelEditorial();
 const cityTripGuides=await loadCityTripEditorial();
+const ownedVodkaLinks=await loadOwnedVodkaLinks();
 const campaignFacts=campaignTemplateValues(await loadOfferFacts());
 const imageReview=JSON.parse(await readFile('tools/content-image-descriptions.json','utf8'));
 const sharingImage=await loadSharingImagePolicy({expectedManifestSha256:imageReview.assetManifestSha256});
@@ -92,6 +94,7 @@ async function facts(html,revision){
   await page.evaluate(reviseBudgetTravelEditorial,{key:revision.key,revision:budgetTravelGuides.find(row=>row.key===revision.key)});
   await page.evaluate(reviseCityTripEditorial,{key:revision.key,revision:cityTripGuides.find(row=>row.key===revision.key)});
   await page.evaluate(reviseReviewedArticlePresentation,{key:revision.key,revision:articlePresentations.find(row=>row.key===revision.key)});
+  await page.evaluate(reviseOwnedVodkaLinks,{key:revision.key,revision:ownedVodkaLinks.find(row=>row.key===revision.key)});
  }
  return page.evaluate(()=>{const root=document.querySelector('#main-content');root.querySelectorAll('script,style,noscript,.mejs-controls,.mejs-layers,video a,[data-single-product-id],[data-ktk-booking-product]').forEach(e=>e.remove());return {text:root.textContent.replace(/\s+/g,' ').trim(),missingAlt:root.querySelectorAll('img:not([alt])').length,sections:root.querySelectorAll('.et_pb_section').length,headings:[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(e=>({tag:e.tagName,text:e.textContent.trim()})),primary:root.querySelectorAll('h1').length,forms:root.querySelectorAll('form.et_pb_contact_form,form.wpcf7-form').length,scripts:root.querySelectorAll('script').length,handlers:[...root.querySelectorAll('*')].flatMap(e=>[...e.attributes].filter(a=>/^on/i.test(a.name)).map(a=>a.name))};});
 }

@@ -38,7 +38,9 @@
     anchor.href = attributedHref(anchor.href);
     if (window.KTK_ANALYTICS_CONSENT !== true) return;
     const url = new URL(anchor.href, location.href);
-    const productId = { 'pub-crawl-28': 28, 'nye-pub-crawl-32': 32, 'halloween-pub-crawl-51': 51, 'go-karting-30': 30 }[url.pathname.replace(/^\/(?:staging\/)?store2\//, '').replace(/\/$/, '')];
+    const products = { 'pub-crawl-28': 28, 'nye-pub-crawl-32': 32, 'halloween-pub-crawl-51': 51, 'go-karting-30': 30, 'polish-vodka-tasting-44': 44 };
+    const slug = url.pathname.replace(/^\/(?:staging\/)?store2\//, '').replace(/\/$/, '');
+    const productId = Object.prototype.hasOwnProperty.call(products, slug) ? products[slug] : null;
     if (url.origin !== location.origin || !productId) return;
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event: 'ktk_page_booking_click', page: document.body.dataset.ktkPage || 'how-to-join', product_id: productId,

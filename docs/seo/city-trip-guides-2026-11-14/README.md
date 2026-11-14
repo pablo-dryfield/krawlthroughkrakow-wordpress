@@ -176,3 +176,112 @@ purge, normal and warmed-cache checks remain. Both roadmaps still show41
 verified staging deliveries plus this underway batch and the separate partial
 measurement audit. No production, commerce, consent, medical-hold, active
 competition/form or OmniLodge change.
+
+## Staging Publication
+
+Application `95d96782608e09f29629d55bb3d6e40db6238358`, PR56 and required
+CI43617029371 pass both Offline Tests and Build and Secret Scan. The manual
+guarded2073-file incremental staging publication completed at
+16:44:39.459861UTC, starting16:43:31.870154UTC. Every owned remote checksum
+matches local source; saved WordPress state, homepage and storefront are
+unchanged, and the temporary helper was removed. The application still exactly
+matches the reviewed commit; subsequent records are QA/docs only.
+
+Rollback `deploy-backups/ktk-code-pages-staging-20261114-164401.zip` has16 exact
+entries: the manifest and15 original files, with no new files. Independent
+manifest-set, per-file SHA256 and ZIP CRC checks pass. Archive SHA256
+`ed920053020ebc37d2a8ca0ea101fe2e034ffcf45c37cdbbd9ab965efb899b3e`
+matches the publisher's report. This is a bounded application rollback, not a
+whole hosting/database backup.
+
+Origin body216 already passes for all16 views and four axe views0 violations/
+four incomplete groups. The complete origin release scan, forms, affected-card
+views, expanded attribution and discovery checks are running. No edge purge
+has been sent for this release yet. Wait for successful complete origin checks
+before the staging-only purge, then verify normal and warmed-cache responses.
+Do not advance the41 verified-staging count merely because upload succeeded.
+
+## Consented Product-Click Follow-Up
+
+The expanded origin attribution run is retained184/185: all actual booking
+destinations, UTM/click-ID handoff and withholding before consent pass, but
+product44 does not emit the existing consented `ktk_page_booking_click` event.
+The existing native runtime only recognizes four products. This is an existing
+coverage gap, not a broken checkout or an external destination.
+
+The owner's follow-up says vodka tasting must link to our store product. Fresh
+public catalog reading independently confirms ID44, name Polish Vodka Tasting,
+slug `polish-vodka-tasting-44`, and the staging product returns200. The guide
+already links directly to `/staging/store2/polish-vodka-tasting-44/#book`, not
+FareHarbor, Ecwid or an external Taste Vodka page. Production promotion will
+resolve the normal production base, not retain `/staging/`.
+
+Before this native-event follow-up, a second tracked Git archive of the reviewed
+95d9678 source passed exact3,312-file/Git-blob and ZIP CRC checks:
+`deploy-backups/seo-city-trip-before-product44-event-20261114.zip`, SHA256
+`9449ae1028ae17923898f5aed47cc5950efba88531d69c6341f5782c58161450`.
+It is the exact reviewed Git state, not later uncommitted release notes or a
+hosting/database backup. No edge purge has been issued for the candidate.
+
+Original95 origin full6193, body216, affected-card1723/80views, form501 and
+discovery243 pass, but the failed event assertion prevents calling the release
+verified. The fix will add only the known public44 identity and ensure inherited
+object keys cannot become product events. Keep the existing strict consent
+gate, UTM behavior, event name/fields, provider/container settings and all
+other application bytes. This does not implement article-to-cart history,
+full GA4 coverage, provider receipt or revenue reconciliation; M03 stays partial.
+
+Three new offline native-bootstrap contracts reproduced both issues before the
+application change:4/7 pass, with product44, its consent transition and inherited
+object-key cases failing. The narrow runtime fix adds the existing public44
+mapping and uses an own-key lookup rather than treating inherited properties
+such as `constructor` as products. The original consent gate, attribution,
+event fields and the four previous IDs are unchanged. An independent full-file
+inverse requires every other runtime byte to remain exact; it does not merely
+allow an arbitrary runtime diff. Application scope is now14 files, not the
+earlier13. Fresh checks/CI and another guarded staging update are required.
+
+## Owner-Requested Vodka Link Sweep
+
+A read-only scan of all117 local rendered pages found six service anchors:
+the weekend guide already points to our product44, but five anchors in four
+older articles still point to Other Tours or Taste Vodka. The source-bound
+recipe now changes only those five hrefs, preserving their exact anchor text,
+all surrounding copy, native contents, photos, publication history and forms.
+Six vodka-photo links and the hen article's native contents link stay intact.
+The four link-only articles are not added to the substantive review count or
+summary catalog. This is a link repair, not a fact review of their old claims.
+
+The exact four capture hashes are pinned in `tools/owned-vodka-links.mjs`;
+both the full builder and independent reference use the same bounded recipe.
+All anchors are checked before mutation, including the second food-guide link;
+missing, duplicated, changed-text, changed-source or wrong destinations fail
+atomically. Offline raw/prepared/no-op/outside-inverse/negative fixtures pass
+53/53, and four new source contracts plus seven runtime contracts pass11/11.
+The verified second source archive above covers the pre-edit state.
+
+The native44 follow-up builder has closed; its independent2320 reference and
+fresh216 body checks pass. The combined five-link/runtime rebuild and complete
+fresh release checks are still pending. Application scope becomes18 files:
+the original13, one bounded runtime lookup and four link-only bodies. No edge
+purge or production change has been made;41 verified staging batches remains
+the honest count until the follow-up and normal/warmed-cache checks finish.
+
+## Combined Follow-Up Local Verification
+
+The complete116-page rebuild has closed successfully with the immutable media
+manifest unchanged. The18-file source guard passes2396; independent reference
+2320, body216/16views, all-card4219/296views, forms501, body fixtures71,
+summary fixtures737, link fixtures53, shared JavaScript266, Python215,
+roadmap317 and PHP763/forms31/NYE143 pass. The complete2073-file staging dry run
+passes. All finite local checks are closed; root previews are retained.
+
+All six final390px guide screenshots are byte-identical to the previously
+inspected guide screenshots. Four fresh JS axe views have zero violations and
+four incomplete groups, not full accessibility certification. The wider117-page
+render scan confirms six service links now use our product44, the hen contents
+anchor remains native, and six full-size photo links still open photos. The
+new graph is142 pages/24 products/6293 edges, zero unknown paths and the same
+six deliberately held tags. No actual customer booking, provider measurement
+request or real form submission was made. Required CI and the guarded staging
+follow-up/origin/cache verification remain before marking this release verified.
