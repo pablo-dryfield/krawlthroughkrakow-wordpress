@@ -1,5 +1,9 @@
 # Practical Krakow Safety Guides
 
+**Current result:** staging publication and cache verification are complete.
+See Final Cache Verification below; earlier local/publication checkpoints are
+retained as the actual work sequence, not the current release status.
+
 ## Scope And Backup
 
 Staging-only follow-up to PR49. Current branch `codex/staging-safety-guides` starts
@@ -59,7 +63,7 @@ remain an unanswered owner question. Do not infer a disruption or publish new
 meeting details. The specialist alcohol-health hold and protected products38/39
 remain unchanged and unpromoted.
 
-## Status
+## Local Checkpoint (Historical)
 
 The source/card inventory is complete. Two source-bound text modules now have
 native contents, exact original photo slots, readable scoped type and matching
@@ -136,3 +140,69 @@ Local graph:142 pages,24 products,6265 edges, no unknown paths and the same6
 held isolated tags. Both generated roadmaps pass317 checks. Guarded full
 incremental staging dry run validates2073 owned files. Repository policy and
 whitespace checks pass. No upload or purge has occurred yet.
+
+## Staging Publication
+
+Application commit `e33804db229cc8515f579aff10a71d25b32cda01`, PR50,
+required CI43586968991: both jobs pass. The guarded manual2073-file staging
+publisher completed14 November2026 at10:49:50.402008UTC. Independent final owned
+hashes match; saved WordPress posts/options, protected homepage and storefront
+remain unchanged. The temporary helper was removed and independently checked.
+
+Changed-file rollback archive:
+`deploy-backups/ktk-code-pages-staging-20261114-104923.zip`, SHA256
+`3dbd79412dde325475ccf335945f980179eafb36b61b865344888459a674baf7`.
+All10 ZIP entries, exact manifest file set, each archived SHA and ZIP CRC pass.
+This is a scoped application rollback, not a full database/hosting backup.
+
+Origin focused228, card919, forms501, attribution143, discovery243 and unchanged homepage
+10/icon21/font20 checks pass. Post-publication source2390 confirms the application
+still matches the reviewed commit. Full origin regression is still
+running; no edge purge or delivery-count advancement yet. Final normal cached
+desktop/Android/iPad and warmed-repeat verification remain required.
+
+Read-only next-batch inspection found the older `/party-krakow/` guide still
+promotes a96%-strength shot challenge, intoxication challenges and an old60PLN
+offer. Its companion six-reasons article has obsolete/unsupported operational
+and demographic claims. Neither article was changed in this release. Plan
+separate source-bound work; do not treat the current two-guide release as their
+fact review or promote unconfirmed packages/meeting arrangements.
+
+## Final Cache Verification
+
+All three independent full release checks pass6193/6193 across116 routes,
+desktop/Android/iPad and119 current assets, with zero HTTP transport retries:
+
+| Run | Completed UTC14 November2026 |348 content responses |
+| --- | --- | --- |
+| Origin |10:57:12.987347|348 DYNAMIC|
+| Normal URLs |11:02:51.108293|336 MISS /12 HIT|
+| Warmed repeat |11:04:53.995601|348 HIT|
+
+After green origin checks, fresh API-schema and exact zone/account validation,
+the Cloudflare MCP accepted only `krawlthroughkrakow.com/staging/` at
+10:57:53.379UTC. No production/host-wide purge, DNS or security changes.
+The API result alone was not treated as cache proof; the normal and warmed
+responses above independently verify it. Origin WP Rocket invalidation remains
+the guarded publisher's separate operation.
+
+Final focused228 and card919 checks pass on normal cached URLs; forms501 pass
+locally, at origin and cached URLs with all submissions intercepted. Attribution
+143 passes before/after purge; discovery243 origin/216 normal/216 repeat;
+unchanged homepage10/icon21/font20 checks pass before/after purge. Eight cached
+accessibility views retain0 automated violations and8 incomplete color-contrast
+rule groups, not a full manual-conformance claim. Source2390 and sharedJS210
+repeat pass; application bytes still match the reviewed e33804d commit.
+
+All four actual cached390px screenshots were inspected and are byte-identical
+to the inspected current local views. This is not a whole-page or original
+pre-edit pixel-identity assertion. All finite publisher/build/test/watch sessions
+are closed; root5184/5185 previews are retained for continuing work.
+
+Both roadmaps now record37 verified staging batches. The56-article classification
+is19 major staged revisions,2 narrower corrections/notices,1 specialist hold and
+34 awaiting substantive review. The21 revised identities have71 matching card
+summaries; not all21 have complete fact audits, and none of this grants owner or
+production approval. Current release changes remain exactly7 application files.
+Final documentation CI, exact-tree PR50 merge and completed-branch cleanup are
+the remaining repository closeout; no further upload/purge is needed for docs.
