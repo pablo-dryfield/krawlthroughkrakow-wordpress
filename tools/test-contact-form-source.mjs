@@ -1,0 +1,22 @@
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
+import path from 'node:path';
+const [baseline,output]=process.argv.slice(2);
+if(!baseline||!output)throw Error('Explicit immutable baseline commit and fresh report required');
+try{await readFile(output);throw Error('Preserve previous evidence');}catch(error){if(error.code!=='ENOENT')throw error;}
+const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});
+const root='staging/wp-content/mu-plugins/ktk-code-pages-assets/',jsPath=root+'runtime.js',cssPath=root+'runtime.css';
+const old=relative=>execFileSync('git',['show',baseline+':'+relative],{encoding:'utf8',maxBuffer:20*1024*1024});
+const changed=execFileSync('git',['diff','--name-only',baseline,'--','staging/wp-content'],{encoding:'utf8'}).trim().split(/\r?\n/).filter(Boolean);
+check('Only scoped form runtime and dynamic-error styles change',changed.length===2&&changed.every(p=>[jsPath,cssPath].includes(p)),changed);
+const js=await readFile(jsPath,'utf8'),before=old(jsPath),start="  document.querySelectorAll('form[data-ktk-form]').forEach",end='\n})();\n\n/* BEGIN shared event promotion runtime */';
+check('Exactly one original and revised form block',before.split(start).length===2&&js.split(start).length===2&&before.split(end).length===2&&js.split(end).length===2);
+check('All earlier interaction/consent/journey code unchanged',before.slice(0,before.indexOf(start))===js.slice(0,js.indexOf(start)));
+check('All following promotion code unchanged',before.slice(before.indexOf(end))===js.slice(js.indexOf(end)));
+const css=await readFile(cssPath,'utf8'),rule='.ktk-code-page form[data-ktk-form="contact"] .et_pb_contact_field_checkbox > input[type="checkbox"] {\n  display: block;\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 24px;\n  height: 24px;\n  margin: 0;\n  padding: 0;\n  border: 0;\n  opacity: 0;\n  z-index: 1;\n  cursor: pointer;\n}\n.ktk-code-page form[data-ktk-form="contact"] .et_pb_contact_field_checkbox > input[type="checkbox"]:focus-visible + label {\n  outline: 2px solid currentColor;\n  outline-offset: 4px;\n}\n.ktk-code-page form[data-ktk-form] .ktk-form-field-error {\n  display: block;\n  margin: 4px 0;\n  padding-left: 8px;\n  border-left: 2px solid currentColor;\n  color: inherit;\n  font-size: 14px;\n  font-weight: 600;\n  line-height: 1.4;\n  overflow-wrap: anywhere;\n}\n';
+const valueRule='.ktk-code-page form[data-ktk-form="contact"] :is(input:not([type="hidden"]):not([type="checkbox"]), textarea):not(:placeholder-shown) {\n  color: #262626;\n}\n';
+check('All original styles unchanged outside scoped form contrast, feedback and checkbox additions',css.split(rule).length===2&&css.split(valueRule).length===2&&css.replace(rule,'').replace(valueRule,'')===old(cssPath));
+const report={checkedAt:new Date().toISOString(),baseline,passed:checks.filter(c=>c.pass).length,total:checks.length,checks};
+await mkdir(path.dirname(output),{recursive:true});await writeFile(output,JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({passed:report.passed,total:report.total,failed:checks.filter(c=>!c.pass)},null,2));
+if(report.passed!==report.total)process.exitCode=1;

@@ -11,8 +11,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 arguments=argparse.ArgumentParser(description=__doc__)
 arguments.add_argument('--production',action='store_true')
+arguments.add_argument('--output',type=Path)
 args=arguments.parse_args()
 base='https://krawlthroughkrakow.com' + ('' if args.production else '/staging')
+destination=args.output or ROOT / ('docs/code-pages/production-release/form-contracts.json' if args.production else 'docs/code-pages/full-migration/staging-form-contracts.json')
+if not destination.is_absolute():
+    destination=ROOT / destination
+if destination.exists():
+    raise SystemExit('Preserve earlier evidence; provide a fresh --output path')
 
 
 class Forms(HTMLParser):
@@ -56,7 +62,7 @@ for form_id in sorted(cf7):
     except Exception as error:
         checks.append(dict(cf7_id=form_id,passed=False,error=str(error)))
 report = dict(checkedAt=datetime.now(timezone.utc).isoformat(),passed=sum(c['passed'] for c in checks),total=len(checks),checks=checks,noMessagesSubmitted=True)
-destination='docs/code-pages/production-release/form-contracts.json' if args.production else 'docs/code-pages/full-migration/staging-form-contracts.json'
-(ROOT / destination).write_text(json.dumps(report,indent=2),encoding='utf-8')
+destination.parent.mkdir(parents=True,exist_ok=True)
+destination.write_text(json.dumps(report,indent=2),encoding='utf-8')
 print(json.dumps(report,indent=2))
 raise SystemExit(int(report['passed'] != report['total']))

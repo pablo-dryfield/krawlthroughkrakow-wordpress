@@ -8,6 +8,38 @@
 /* END Memorial visitor guide */
 
 /* Native interaction states, layered over the captured page cascade. */
+.ktk-code-page form[data-ktk-form="contact"] :is(input:not([type="hidden"]):not([type="checkbox"]), textarea):not(:placeholder-shown) {
+  color: #262626;
+}
+.ktk-code-page form[data-ktk-form="contact"] .et_pb_contact_field_checkbox > input[type="checkbox"] {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+.ktk-code-page form[data-ktk-form="contact"] .et_pb_contact_field_checkbox > input[type="checkbox"]:focus-visible + label {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+.ktk-code-page form[data-ktk-form] .ktk-form-field-error {
+  display: block;
+  margin: 4px 0;
+  padding-left: 8px;
+  border-left: 2px solid currentColor;
+  color: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
 :where([data-ktk-heading-origin="p"]) { font-weight: inherit; }
 .ktk-archive-heading { margin: 0 0 32px; }
 .ktk-archive-heading h1 { margin: 0; padding: 0; color: #111; font-family: inherit; font-size: 28px; font-weight: 700; line-height: 1.25; overflow-wrap: anywhere; }
