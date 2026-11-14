@@ -1,5 +1,8 @@
 # Enquiry And Individual-Quote Policy
 
+Status: **staging cache-verified**.32 scoped SEO/site batches remain on staging;
+the separately approved production endpoint repair is not this copy release.
+
 ## Scope And Confirmations
 
 Staging only: Contact plus stag, hen and student group introductions. The owner
@@ -58,9 +61,47 @@ incomplete rule groups; this is not manual accessibility conformance.
 
 Four390px viewport screenshots inspected: quote policy and email paragraph are
 readable and clear of the floating CTA. No messages submitted. Guarded staging
-dry-run validates2073 owned files; no publish or cache purge yet.
+dry-run validates2073 owned files; that local checkpoint preceded publication.
 
 Read-only text inventory found no other fixed minimum/deposit/response deadline
 in these four bodies. Older activity-specific private-package promises and a
 stag-page safety guarantee still need their separate factual review; preserving
 them here does not certify them as accurate. C06 stays partial.
+
+## Publication And Final Verification
+
+Application6c8b910f9493abb2c6697f2af84da64efc6d9217 / PR45 passed both required
+jobs in43561016163. Guarded incremental staging publisher completed at
+2026-11-14T05:21:46.083392UTC:2073 independent owned hashes match, saved WordPress
+state, homepage and storefront unchanged, temporary helper removed. Seven-entry
+rollback ZIP CRC clean:
+`deploy-backups/ktk-code-pages-staging-20261114-052124.zip`, SHA256
+`b0f3bb21914e5465960ac51e1210eb0c19e793c21566b8903d2b507dc44cae10`.
+
+Fresh Cloudflare API permission and exact zone/account checks preceded only the
+staging-prefix purge at05:29:52.733UTC. No production cache or account changes.
+Full116-route x3-UA /119-asset reports each pass6193/6193, zero HTTP retries:
+
+| Report | Completion UTC | HTML cache responses |
+| --- | --- | --- |
+| `enquiry-policy-origin-20261114.json` |05:28:55.286037 |348 DYNAMIC |
+| `enquiry-policy-normal-20261114.json` |05:35:07.287175 |335 MISS /13 HIT |
+| `enquiry-policy-repeat-20261114.json` |05:37:07.044345 |348 HIT |
+
+Local, origin and normal group354/354, Contact190/190 and full form501/501 all
+pass. Attribution143/143 origin/normal, discovery243 origin/216 normal/216
+repeat, unchanged homepage10 assets/image21/font20 origin/normal checks pass;
+all three normal homepage variants are HIT.16 cached initial axe views also
+have zero violations/26 incomplete groups; manual work remains. Four current
+390px cached viewport PNGs are byte-identical to the inspected current local
+versions, not a claim of old full-page identity. No masks/tolerance changes.
+
+An extra production boundary read with Python's default User-Agent returned403;
+a paired same-URL standard-browser-UA read returns200 and the exact unchanged
+production JS47ae06b7... hash. No security setting, cookie or credential changed.
+This is not an assessment of real Googlebot access or a claim about who manages
+the host firewall. The actual browser-route tests are independently passing.
+
+No application byte changed after6c8b910. Final QA/docs/roadmap closure requires
+CI/merge only, not another deployment or purge. Owner inbox assurance remains
+pending, and no actual emails/orders/payments were sent during automated tests.

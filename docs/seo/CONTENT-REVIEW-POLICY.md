@@ -31,8 +31,10 @@ delivery or permission to send real test enquiries.
 
 Group minimums, private arrangements, booking lead times and deposit/cancellation
 terms are confirmed individually in each quote. Do not invent standard numbers
-or terms. These confirmations guide subsequent staging copy; they do not mean
-that every current page has already been updated.
+or terms. Contact and the stag/hen/student introductions now state these rules
+on staging, verified14 November. Older activity details and production copy have
+not all been reviewed or promoted; the isolated production endpoint repair is
+a separate release.
 
 ## Review Checklist
 
