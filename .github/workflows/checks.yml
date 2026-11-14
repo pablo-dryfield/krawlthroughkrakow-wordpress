@@ -70,6 +70,8 @@ jobs:
         run: node --test tools/tests/test_party_guide_editorial.mjs
       - name: Games resource source contracts
         run: node --test tools/tests/test_games_resource_editorial.mjs
+      - name: Read-only booking measurement contracts (no provider events)
+        run: node --test tools/tests/test_booking_measurement.mjs
       - name: PHP syntax and isolated integration contracts
         run: |
           php --version
