@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 1,
+  "status": "source-reviewed",
+  "reviewedOn": "2026-11-14",
+  "version": "2026-11-14.article-presentation-2",
+  "assetManifestSha256": "f5ad7b270678fedff20eef108fb5dc6372d540fbaef2a3181cb2748435ede691",
+  "articles": [
+    {
+      "key": "post-2020-krakow-nightlife-guide",
+      "postId": 2968,
+      "route": "/2020-krakow-nightlife-guide/",
+      "summary": "An archived 2020 nightlife guide, retained with its original history. Use its context notice and links to the current nightlife hub when planning a new Krakow visit."
+    },
+    {
+      "key": "post-all-you-need-to-know-about-visiting-auschwitz",
+      "postId": 2681,
+      "route": "/all-you-need-to-know-about-visiting-auschwitz/",
+      "summary": "Plan a respectful visit to Auschwitz-Birkenau using official booking, access and transport information, with practical links and guidance for the day."
+    },
+    {
+      "key": "post-hostel-etiquette-tips",
+      "postId": 6186,
+      "route": "/hostel-etiquette-tips/",
+      "summary": "Seven practical hostel etiquette tips covering shared rooms, late returns, belongings, privacy and considerate social plans. Check your own property's arrangements before relying on a general rule."
+    },
+    {
+      "key": "post-irish-bars-krakow",
+      "postId": 6181,
+      "route": "/irish-bars-krakow/",
+      "summary": "Compare Irish-bar options in Krakow and use checked operator links to confirm current arrangements. Choose the atmosphere you want without assuming a particular event or opening schedule."
+    },
+    {
+      "key": "post-jazz-bars-in-krakow",
+      "postId": 6169,
+      "route": "/jazz-bars-in-krakow/",
+      "summary": "Explore Krakow jazz venues and compare listening-room, restaurant and music-club settings. Check the actual programme and booking arrangements rather than assuming a performance every night."
+    },
+    {
+      "key": "post-krakow-bars-jewish-quarter",
+      "postId": 6394,
+      "route": "/krakow-bars-jewish-quarter/",
+      "summary": "Explore bar options in Kazimierz by the kind of evening you want. Use checked venue links for current arrangements, and leave room for different music, seating and conversation preferences."
+    },
+    {
+      "key": "post-krakow-live-music",
+      "postId": 6196,
+      "route": "/krakow-live-music/",
+      "summary": "Choose a Krakow live-music evening by venue, programme and booking format. Compare the options and check the current performance rather than relying on an old weekly schedule."
+    },
+    {
+      "key": "post-krakow-new-years-eve",
+      "postId": 1788,
+      "route": "/krakow-new-years-eve/",
+      "summary": "Compare New Year's Eve city-break ideas in Krakow using checked attraction, programme, transport and winter-activity sources. Confirm current arrangements instead of relying on old prices or event promises."
+    },
+    {
+      "key": "post-krakow-nightclubs",
+      "postId": 6126,
+      "route": "/krakow-nightclubs/",
+      "summary": "Compare Krakow nightclub options by music and the kind of evening you want. Check operator information, current events and entry arrangements before building the whole night around one venue."
+    },
+    {
+      "key": "post-krakow-shot-bar",
+      "postId": 6166,
+      "route": "/krakow-shot-bar/",
+      "summary": "Compare Krakow shot-bar options using checked venue links and practical planning notes. Keep participation optional and confirm current menus instead of treating an old offer as a drinking target."
+    },
+    {
+      "key": "post-krakow-techno-clubs-2",
+      "postId": 6253,
+      "route": "/krakow-techno-clubs-2/",
+      "summary": "A focused Krakow techno-club shortlist with checked operator links and practical comparisons. Use the current programme and ticket details to decide which night suits you."
+    },
+    {
+      "key": "post-krakow-techno-clubs",
+      "postId": 6123,
+      "route": "/krakow-techno-clubs/",
+      "summary": "Plan a Krakow techno night around the actual event, venue and ticket arrangements. Compare the guide's options without assuming a fixed weekly programme or guaranteed entry."
+    },
+    {
+      "key": "post-new-years-eve-in-krakow",
+      "postId": 7506,
+      "route": "/new-years-eve-in-krakow/",
+      "summary": "An existing Krakow New Year's Eve guide with corrected tour facts and current booking links. Use the confirmed offer details to check arrangements for the event you want."
+    },
+    {
+      "key": "post-stag-do-costume",
+      "postId": 6376,
+      "route": "/stag-do-costume/",
+      "summary": "Choose stag costumes around the groom's preferences, comfort and an easy way to opt out. Plan considerate group ideas and check venue restrictions without assuming every outfit guarantees admission."
+    },
+    {
+      "key": "post-stag-pranks",
+      "postId": 6387,
+      "route": "/stag-pranks/",
+      "summary": "Plan opt-in stag surprises, creative costumes and shared jokes without pressure or public humiliation. Keep the groom's preferences central and make the plan easy to stop."
+    },
+    {
+      "key": "post-stages-of-drunkenness",
+      "postId": 1276,
+      "route": "/stages-of-drunkenness/",
+      "summary": "The historical Eleven Stages title is not a medical scale or a drinking target. Read practical guidance about choices, taking concerns seriously and seeking urgent help when needed."
+    },
+    {
+      "key": "post-survive-pub-crawl",
+      "postId": 1115,
+      "route": "/survive-pub-crawl/",
+      "summary": "Prepare for a pub crawl with independent travel plans, optional drinking and respect for other guests. Know where to find current joining details and appropriate urgent-help guidance."
+    },
+    {
+      "key": "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+      "postId": 7492,
+      "route": "/the-ultimate-guide-to-dating-in-nightlife-krakow/",
+      "summary": "Plan a considerate nightlife date with clear choices, privacy and an independent way home. Compare different settings without assuming a romantic outcome or pressuring anyone to stay."
+    },
+    {
+      "key": "post-wheres-the-cheap-places-to-drink-in-krakow",
+      "postId": 6189,
+      "route": "/wheres-the-cheap-places-to-drink-in-krakow/",
+      "summary": "Compare owner-recommended Krakow bars and budgeting choices using checked venue links. Confirm current menus and offers rather than relying on an old happy hour or price."
+    }
+  ],
+  "containers": [
+    {
+      "captureSha256": "7b701cf3d00ae10d085c1995d6f52f2f715b48ef7f2cc037531a01468a247983",
+      "key": "archive-category-drinking-games",
+      "cardKeys": []
+    },
+    {
+      "captureSha256": "a6e55947deb0e149824878041c74f4ace26ca7bf3acf3c06c5d54e51c3c01cd7",
+      "key": "archive-category-hen-do",
+      "cardKeys": []
+    },
+    {
+      "captureSha256": "07830b7d56f65dc5ae98168956af9e0377755eadf08128c87658b3c43aff290a",
+      "key": "archive-category-krakow-guides",
+      "cardKeys": [
+        "post-new-years-eve-in-krakow",
+        "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+        "post-krakow-bars-jewish-quarter"
+      ]
+    },
+    {
+      "captureSha256": "558e5b25e5d265bc4f8f113b3e310f05ff7ae4e2f91918ce6013181277645ccd",
+      "key": "archive-category-krakow-nightlife",
+      "cardKeys": [
+        "post-krakow-bars-jewish-quarter",
+        "post-krakow-nightclubs",
+        "post-krakow-techno-clubs"
+      ]
+    },
+    {
+      "captureSha256": "339870a1b3aa9619199f5f00b8b2bd9bb34b450d6b7c8af989891f6ac35b59b0",
+      "key": "archive-category-party-tips",
+      "cardKeys": [
+        "post-krakow-nightclubs",
+        "post-krakow-techno-clubs"
+      ]
+    },
+    {
+      "captureSha256": "151b3a5feba08ac81f2aa403e02cb0610ca19af0258629c14ac0aa6894030bb2",
+      "key": "archive-category-stag-do",
+      "cardKeys": [
+        "post-stag-do-costume",
+        "post-stag-pranks"
+      ]
+    },
+    {
+      "captureSha256": "75a0c821b265659baeea0aa7c8cdee04aef198cb2b7e32705b53f114c8c5747b",
+      "key": "archive-category-uncategorized",
+      "cardKeys": [
+        "post-krakow-shot-bar",
+        "post-jazz-bars-in-krakow"
+      ]
+    },
+    {
+      "captureSha256": "87fc67a682a18e3ba4286c3f76732e07a8c024c9c96059eb85733ee69ad1fe08",
+      "key": "archive-author-dpbowman",
+      "cardKeys": [
+        "post-stag-do-costume",
+        "post-stag-pranks"
+      ]
+    },
+    {
+      "captureSha256": "1748cd0c66c3e66b17c6eff6b3642ba99ccc48f726f93c1cb01915af0be2f2ab",
+      "key": "archive-author-dpbowman-page-2",
+      "cardKeys": [
+        "post-krakow-bars-jewish-quarter"
+      ]
+    },
+    {
+      "captureSha256": "6caa8a79b8ceec3648e032d5e616772c12126068fd336ea9b7986685d48f04c6",
+      "key": "archive-author-dpbowman-page-3",
+      "cardKeys": [
+        "post-krakow-shot-bar",
+        "post-jazz-bars-in-krakow",
+        "post-krakow-techno-clubs-2",
+        "post-krakow-live-music"
+      ]
+    },
+    {
+      "captureSha256": "d444065b28e1ff74d4571f44e9873fea2316ef8481c80fe38d3f66c2a0967982",
+      "key": "archive-author-dpbowman-page-4",
+      "cardKeys": [
+        "post-irish-bars-krakow"
+      ]
+    },
+    {
+      "captureSha256": "33e25e5df750f5c669de5728b810e5729b75e3261ef292229223a8d0c9db00b3",
+      "key": "archive-author-dpbowman-page-5",
+      "cardKeys": [
+        "post-hostel-etiquette-tips",
+        "post-wheres-the-cheap-places-to-drink-in-krakow"
+      ]
+    },
+    {
+      "captureSha256": "d6fe0d9912698f97c04022ef4c3db383678c11db6208c242e11b7422768e09ea",
+      "key": "archive-author-dpbowman-page-6",
+      "cardKeys": []
+    },
+    {
+      "captureSha256": "8b57d96793e50623d6a0f84a61a17240d05e12bdf1d43b7ddacee1e7e41397eb",
+      "key": "archive-author-dpbowman-page-7",
+      "cardKeys": [
+        "post-krakow-nightclubs",
+        "post-krakow-techno-clubs"
+      ]
+    },
+    {
+      "captureSha256": "a3912dbcbcafb5eadae74d98f684f43b81ba94316d90a9160efdc894bad1805a",
+      "key": "archive-author-dpbowman-page-8",
+      "cardKeys": []
+    },
+    {
+      "captureSha256": "ecdec7f67d6c1ca9b5bfa773c0ebd164df594e8e9c1d6973bff2d19ad859189e",
+      "key": "archive-author-dpbowman-page-9",
+      "cardKeys": [
+        "post-2020-krakow-nightlife-guide"
+      ]
+    },
+    {
+      "captureSha256": "93214811edd580d7e109bbeffcf8d4200f5cf8c51545900d543079fd6ac8232e",
+      "key": "archive-author-jessie",
+      "cardKeys": [
+        "post-all-you-need-to-know-about-visiting-auschwitz"
+      ]
+    },
+    {
+      "captureSha256": "45227c0215de5e19b5cbe11b8be0c1031b73084a7a41167dcb3ca8fa9bca67ea",
+      "key": "archive-author-pubthroughkrakow",
+      "cardKeys": [
+        "post-new-years-eve-in-krakow",
+        "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+        "post-krakow-new-years-eve"
+      ]
+    },
+    {
+      "captureSha256": "2b759cf71d58e6341753500055f60727f0428c8a440acf16973047f33ba13cb2",
+      "key": "archive-author-pubthroughkrakow-page-2",
+      "cardKeys": [
+        "post-survive-pub-crawl"
+      ]
+    },
+    {
+      "captureSha256": "5145f38b1b2eaa71313c6277038373a476d14e3ca34027b0762abdcdf0b22a6b",
+      "key": "archive-author-thirsty",
+      "cardKeys": [
+        "post-stages-of-drunkenness"
+      ]
+    },
+    {
+      "captureSha256": "26b4512b7b1bca1811c5746c2d1529f82b10766e12e74d357cb40d8a06d7456c",
+      "key": "archive-category-krakow-guides-page-2",
+      "cardKeys": []
+    },
+    {
+      "captureSha256": "256dc6ac892184da4dc1d15003b0fbeeca5ae6679a020e6f8c69567d9649afb4",
+      "key": "archive-category-krakow-guides-page-3",
+      "cardKeys": [
+        "post-2020-krakow-nightlife-guide",
+        "post-survive-pub-crawl"
+      ]
+    },
+    {
+      "captureSha256": "0728421d25e2b49ce5f848fe25eb2e16b06171c12aa4206be1036ec13a58357d",
+      "key": "archive-category-krakow-nightlife-page-2",
+      "cardKeys": [
+        "post-2020-krakow-nightlife-guide",
+        "post-stages-of-drunkenness",
+        "post-survive-pub-crawl"
+      ]
+    },
+    {
+      "captureSha256": "7cfd611efa93eea2ca0e9ee95f59a1979cf2cf51630bc72c6b6f06e362e1b1f1",
+      "key": "archive-category-party-tips-page-2",
+      "cardKeys": [
+        "post-2020-krakow-nightlife-guide",
+        "post-stages-of-drunkenness",
+        "post-survive-pub-crawl"
+      ]
+    },
+    {
+      "captureSha256": "14ca803496c4c271f3a66cdcd5db6884fc6134bf9d290f87db0cf3e338ab805d",
+      "key": "archive-category-uncategorized-page-2",
+      "cardKeys": [
+        "post-krakow-techno-clubs-2",
+        "post-krakow-live-music",
+        "post-irish-bars-krakow"
+      ]
+    },
+    {
+      "captureSha256": "c752f876ddb67763624e50eb1360c0e83a58a3211f48edb33ebfa3588d6197bb",
+      "key": "archive-category-uncategorized-page-3",
+      "cardKeys": [
+        "post-hostel-etiquette-tips",
+        "post-wheres-the-cheap-places-to-drink-in-krakow"
+      ]
+    },
+    {
+      "captureSha256": "bfee0edd8fe229842113769ac637f7e68f93395d86d293b6b576c9c80f492c02",
+      "key": "archive-category-uncategorized-page-4",
+      "cardKeys": [
+        "post-all-you-need-to-know-about-visiting-auschwitz",
+        "post-krakow-new-years-eve"
+      ]
+    },
+    {
+      "captureSha256": "9c829af0f22a00368d6bc3517eb590195a300ca99ef3bdd27755d1f33cb3550e",
+      "key": "archive-category-uncategorized-page-5",
+      "cardKeys": []
+    },
+    {
+      "captureSha256": "938e5e17b59d1d22ad375e9dd90f817dc42e32c1004a54bb2806961a87bb7576",
+      "key": "blog",
+      "cardKeys": [
+        "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+        "post-krakow-techno-clubs",
+        "post-all-you-need-to-know-about-visiting-auschwitz",
+        "post-krakow-new-years-eve",
+        "post-stag-do-costume",
+        "post-krakow-shot-bar",
+        "post-krakow-techno-clubs-2",
+        "post-hostel-etiquette-tips",
+        "post-2020-krakow-nightlife-guide",
+        "post-stages-of-drunkenness",
+        "post-stag-pranks",
+        "post-new-years-eve-in-krakow",
+        "post-krakow-bars-jewish-quarter",
+        "post-jazz-bars-in-krakow",
+        "post-krakow-live-music",
+        "post-irish-bars-krakow",
+        "post-wheres-the-cheap-places-to-drink-in-krakow",
+        "post-krakow-nightclubs",
+        "post-survive-pub-crawl"
+      ]
+    },
+    {
+      "captureSha256": "cd36a0839b1107aa9c5ebbbfa2de852cd9ac8d95560b7d09814dd7d4b02b0749",
+      "key": "archive-tag-drinking-games",
+      "cardKeys": []
+    },
+    {
+      "captureSha256": "8e80de83e5c3be84a0be5f9465ce828dda79fd306ba75660e7125ce3fa5ab5d0",
+      "key": "archive-tag-krakow-food",
+      "cardKeys": []
+    },
+    {
+      "captureSha256": "75d768c1fa8a02cef1fa6ff4ce9d78c964cec868076c82a9278b48ad154f1b0a",
+      "key": "archive-tag-krakow-nightlife",
+      "cardKeys": []
+    },
+    {
+      "captureSha256": "9d3d6f011c96d90c8b2f3cdbfac33b4892e78261d22277a93bae5ec000062824",
+      "key": "archive-tag-krakow-party",
+      "cardKeys": []
+    },
+    {
+      "captureSha256": "c5f795bd24fdd4b92de11351eeccd760bf14613be328af6ba0ec752a46904ea5",
+      "key": "archive-tag-krakow",
+      "cardKeys": []
+    },
+    {
+      "captureSha256": "a1478ff64c46ee8465e3c0c901d64e6d1a17d1063daeec08d9710708b414d705",
+      "key": "archive-tag-krawl-through-krakow",
+      "cardKeys": []
+    },
+    {
+      "captureSha256": "4d797d070ef408e86c09dc258c76774d77dd78f9a2ae2267e9bf5d32fe04ea55",
+      "key": "archive-tag-party-ideas",
+      "cardKeys": []
+    },
+    {
+      "captureSha256": "62a606c42d90f25f7aead30a7fd23fec2465a03b03a43905256c2397f6a76ad5",
+      "key": "archive-tag-pub-crawl",
+      "cardKeys": []
+    },
+    {
+      "captureSha256": "e25df966aacf8433c63e2f07ab01099ba595f42bccfeb34ed78e04301e02bf72",
+      "key": "archive-tag-tips",
+      "cardKeys": []
+    },
+    {
+      "captureSha256": "73b818b3dac80772e61d87ea017f2c419c8d0a489d76203b92393ccba7dbfb2e",
+      "key": "archive-tag-to-do-list",
+      "cardKeys": []
+    },
+    {
+      "captureSha256": "11cc133d07bb9ab7861b32dc0f4a6e965658fe7e920d404a57a3b0f75cdae587",
+      "key": "archive-tag-why-choose-us",
+      "cardKeys": []
+    }
+  ],
+  "photo": {
+    "key": "post-stages-of-drunkenness",
+    "captureSha256": "50a460acbc7a9ba69692f4a17c97397eb284834ad67b5883b0e1d0a06f3c6bc0",
+    "sha256": "046767d229a86b0776e15fd42a29bc847a8e9987dcfd11f87cca91736d19de29",
+    "sourceUrl": "https://krawlthroughkrakow.com/wp-content/uploads/2016/07/UDEIMHp.jpg",
+    "file": "media/1cd6452f2538-UDEIMHp.jpg",
+    "oldAlt": "A man is lying on the ground, possibly in one of the stages of drunkenness, in front of police officers.",
+    "alt": "Police officers near people on the ground on a city street at night."
+  }
+}

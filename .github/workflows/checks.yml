@@ -62,6 +62,8 @@ jobs:
         run: node --test tools/tests/test_practical_guides_editorial.mjs
       - name: Practical night-out source contracts
         run: node --test tools/tests/test_night_out_editorial.mjs
+      - name: Reviewed article presentation contracts
+        run: node --test tools/tests/test_reviewed_article_presentation.mjs
       - name: PHP syntax and isolated integration contracts
         run: |
           php --version

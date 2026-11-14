@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 35 |
-| In progress | 0 |
+| In progress | 1 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Consistent blog and archive summaries](article-summaries-2026-11-14/README.md) | C08, T06, T08, D03 | In progress (website) | Not yet | Required CI, guarded staging release and origin/normal/warmed-cache verification. Initial failed checks are retained. Nothing from this batch is deployed yet; this does not count as19 completed fact reviews. |
 | [Practical pub-crawl and intoxication guidance](night-out-guidance-2026-11-14/README.md) | C08, D03, D05, T08 | Verified on staging (website) | 2026-11-14 | Old blog/archive excerpts, a neutral featured-photo description, manual accessibility, owner review and separate production approval. The medical hold remains; no medical qualification or risk-free claim is implied. |
 | [Practical prank, hostel and nightlife-dating guidance](respectful-guides-2026-11-14/README.md) | C08, D03, D05, T08 | Verified on staging (website) | 2026-11-14 | Unverified prank products, medical hold, manual accessibility, owner review and production approval remain separate. No original whole-page pixel or safety guarantee; remaining articles still need review. |
 | [Honest group-activity inclusions and practical precautions](group-activities-2026-11-14/README.md) | C06, D03, D05 | Verified on staging (website) | 2026-11-14 | Remaining activity and advice-article facts, owner review, manual accessibility and separate production approval. Operational meeting confirmation and actual inbox assurance remain pending; no whole-page pixel or safety guarantee. |

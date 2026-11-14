@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-14T07:32:57.592Z",
+  "startedAt": "2026-11-14T08:45:55.464Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -3627,6 +3627,12 @@
           "nativeSections": 6
         },
         {
+          "type": "neutral-article-image-description",
+          "key": "post-stages-of-drunkenness",
+          "reviewedOn": "2026-11-14",
+          "file": "media/1cd6452f2538-UDEIMHp.jpg"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -4296,6 +4302,27 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-new-years-eve-in-krakow",
+          "postId": 7506,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+          "postId": 7492,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-bars-jewish-quarter",
+          "postId": 6394,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -4344,6 +4371,27 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-bars-jewish-quarter",
+          "postId": 6394,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-nightclubs",
+          "postId": 6126,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-techno-clubs",
+          "postId": 6123,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "floating-booking-landmark"
@@ -4396,6 +4444,20 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-nightclubs",
+          "postId": 6126,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-techno-clubs",
+          "postId": 6123,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -4440,6 +4502,20 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-stag-do-costume",
+          "postId": 6376,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-stag-pranks",
+          "postId": 6387,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "floating-booking-landmark"
@@ -4488,6 +4564,20 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-shot-bar",
+          "postId": 6166,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-jazz-bars-in-krakow",
+          "postId": 6169,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -4532,6 +4622,20 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-stag-do-costume",
+          "postId": 6376,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-stag-pranks",
+          "postId": 6387,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "floating-booking-landmark"
@@ -4584,6 +4688,13 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-bars-jewish-quarter",
+          "postId": 6394,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -4628,6 +4739,34 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-shot-bar",
+          "postId": 6166,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-jazz-bars-in-krakow",
+          "postId": 6169,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-techno-clubs-2",
+          "postId": 6253,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-live-music",
+          "postId": 6196,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "floating-booking-landmark"
@@ -4676,6 +4815,13 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-irish-bars-krakow",
+          "postId": 6181,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -4720,6 +4866,20 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-hostel-etiquette-tips",
+          "postId": 6186,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-wheres-the-cheap-places-to-drink-in-krakow",
+          "postId": 6189,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "floating-booking-landmark"
@@ -4814,6 +4974,20 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-nightclubs",
+          "postId": 6126,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-techno-clubs",
+          "postId": 6123,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -4906,6 +5080,13 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-2020-krakow-nightlife-guide",
+          "postId": 2968,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -4950,6 +5131,13 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-all-you-need-to-know-about-visiting-auschwitz",
+          "postId": 2681,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "floating-booking-landmark"
@@ -4998,6 +5186,27 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-new-years-eve-in-krakow",
+          "postId": 7506,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+          "postId": 7492,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-new-years-eve",
+          "postId": 1788,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -5044,6 +5253,13 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-survive-pub-crawl",
+          "postId": 1115,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -5088,6 +5304,13 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-stages-of-drunkenness",
+          "postId": 1276,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "floating-booking-landmark"
@@ -5182,6 +5405,20 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-2020-krakow-nightlife-guide",
+          "postId": 2968,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-survive-pub-crawl",
+          "postId": 1115,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -5226,6 +5463,27 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-2020-krakow-nightlife-guide",
+          "postId": 2968,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-stages-of-drunkenness",
+          "postId": 1276,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-survive-pub-crawl",
+          "postId": 1115,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "floating-booking-landmark"
@@ -5274,6 +5532,27 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-2020-krakow-nightlife-guide",
+          "postId": 2968,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-stages-of-drunkenness",
+          "postId": 1276,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-survive-pub-crawl",
+          "postId": 1115,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -5318,6 +5597,27 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-techno-clubs-2",
+          "postId": 6253,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-live-music",
+          "postId": 6196,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-irish-bars-krakow",
+          "postId": 6181,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "floating-booking-landmark"
@@ -5366,6 +5666,20 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-hostel-etiquette-tips",
+          "postId": 6186,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-wheres-the-cheap-places-to-drink-in-krakow",
+          "postId": 6189,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -5410,6 +5724,20 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-all-you-need-to-know-about-visiting-auschwitz",
+          "postId": 2681,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-new-years-eve",
+          "postId": 1788,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "floating-booking-landmark"
@@ -5707,6 +6035,139 @@
           "to": "h2",
           "text": "Contact us:",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+          "postId": 7492,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-techno-clubs",
+          "postId": 6123,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-all-you-need-to-know-about-visiting-auschwitz",
+          "postId": 2681,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-new-years-eve",
+          "postId": 1788,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-stag-do-costume",
+          "postId": 6376,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-shot-bar",
+          "postId": 6166,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-techno-clubs-2",
+          "postId": 6253,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-hostel-etiquette-tips",
+          "postId": 6186,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-2020-krakow-nightlife-guide",
+          "postId": 2968,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-stages-of-drunkenness",
+          "postId": 1276,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-stag-pranks",
+          "postId": 6387,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-new-years-eve-in-krakow",
+          "postId": 7506,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-bars-jewish-quarter",
+          "postId": 6394,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-jazz-bars-in-krakow",
+          "postId": 6169,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-live-music",
+          "postId": 6196,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-irish-bars-krakow",
+          "postId": 6181,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-wheres-the-cheap-places-to-drink-in-krakow",
+          "postId": 6189,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-nightclubs",
+          "postId": 6126,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-survive-pub-crawl",
+          "postId": 1115,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
         },
         {
           "type": "floating-booking-landmark"
@@ -9050,5 +9511,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-14T07:34:00.354Z"
+  "finishedAt": "2026-11-14T08:47:30.165Z"
 }
