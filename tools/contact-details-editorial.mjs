@@ -12,12 +12,12 @@ export async function loadContactDetails(){
   markup=markup.replaceAll('{{'+key+'}}',value.replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll("'",'&#039;'));
  }
  if(/[{}]/.test(markup))throw Error('Unresolved Contact facts');
- return {key:'contact',sourceSha256:identity,sourceHtml,markup,version:'2026-11-14.contact-1',reviewedOn:'2026-11-14'};
+ return {key:'contact',sourceSha256:identity,sourceHtml,markup,version:'2026-11-14.contact-2',reviewedOn:'2026-11-14'};
 }
 
 export function reviseContactDetails({key,revision}){
  if(key!=='contact')return [];
- if(!revision||revision.key!==key||revision.sourceSha256!=='c0f6e6e1025cff0ac10331bc3a81568e13822f082093d1af825ccde71b1c2903'||revision.version!=='2026-11-14.contact-1'||revision.reviewedOn!=='2026-11-14'||typeof revision.sourceHtml!=='string'||!revision.sourceHtml.includes('post-195')||typeof revision.markup!=='string')throw Error('Reviewed Contact source identity required');
+ if(!revision||revision.key!==key||revision.sourceSha256!=='c0f6e6e1025cff0ac10331bc3a81568e13822f082093d1af825ccde71b1c2903'||revision.version!=='2026-11-14.contact-2'||revision.reviewedOn!=='2026-11-14'||typeof revision.sourceHtml!=='string'||!revision.sourceHtml.includes('post-195')||typeof revision.markup!=='string')throw Error('Reviewed Contact source identity required');
  const clean=s=>(s||'').replace(/\s+/g,' ').trim(),original=new DOMParser().parseFromString(revision.sourceHtml,'text/html'),templates=new DOMParser().parseFromString(revision.markup,'text/html');
  const one=(doc,selector)=>{const found=[...doc.querySelectorAll('#main-content '+selector)];if(found.length!==1)throw Error('Missing or ambiguous Contact target: '+selector);return found[0];};
  const parts=[...templates.querySelectorAll('template')],seen=new Set(),html={};

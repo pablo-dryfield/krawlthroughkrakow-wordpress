@@ -6,10 +6,12 @@ import {tmpdir} from 'node:os';
 import {loadContactDetails,reviseContactDetails,buildContactDetailsStyles} from '../contact-details-editorial.mjs';
 
 test('Contact copy binds original capture and shared regular facts without promises or fixed price',async()=>{
- const r=await loadContactDetails();assert.equal(r.key,'contact');assert.equal(r.version,'2026-11-14.contact-1');
+ const r=await loadContactDetails();assert.equal(r.key,'contact');assert.equal(r.version,'2026-11-14.contact-2');
  assert.equal((r.markup.match(/<template /g)||[]).length,2);
  for(const value of ['9 PM','Adam Mickiewicz Monument','Krakow&#039;s Main Market Square','pink umbrella','your own booking confirmation','maps.app.goo.gl/S3kQZC5rdABdpA1G9'])assert.ok(r.markup.includes(value),value);
  assert.ok(!/120|guarantee|pro drunk|utm_|gclid|<iframe|<script|2027/.test(r.markup));
+ assert.ok(r.markup.includes('Our team replies by email after reviewing your enquiry.'));
+ assert.ok(!/24\/7|within \d+|\d+ hours|\d+ minutes/.test(r.markup));
 });
 test('other pages and medical hold are untouched before accessing DOM',()=>{
  for(const key of ['post-hostel-hangover-cure','about-us','toString','__proto__',''])assert.deepEqual(reviseContactDetails({key}),[]);

@@ -11,7 +11,7 @@ export async function loadGroupPlanningEditorial(){
   let markup=await readFile(new URL('./content/group-planning-'+file+'.html',import.meta.url),'utf8');
   markup=markup.replace(/\{\{([A-Za-z]+)\}\}/g,(_,name)=>{if(!['minimumAge','regularTime'].includes(name))throw Error('Unreviewed group offer fact');return values[name];});
   if(/[{}]/.test(markup))throw Error('Unresolved group offer facts');
-  result.push({key,sourceSha256,sourceHtml,markup,reviewedOn:'2026-11-14',version:'2026-11-14.group-planning-1'});
+  result.push({key,sourceSha256,sourceHtml,markup,reviewedOn:'2026-11-14',version:'2026-11-14.group-planning-2'});
  }
  return result;
 }
@@ -19,7 +19,7 @@ export async function loadGroupPlanningEditorial(){
 export function reviseGroupPlanningEditorial({key,revision}){
  const identities=new Map([['krakow-stag-do','c8c66dcbcefc50a3c0a0e2c6a381976624f1ab946055c3afcbc7eabf0b4c94c1'],['krakow-hen-do','d41c1552178ec5c628d41549d71ac03df468a3f990cd5d4bcfa8112705461297'],['student-trips-poland','cf7f98481f2a3e4acf16f3111ad49a468aafa92a83ccbb9c2a85911cb75ade89']]);
  if(!identities.has(key))return [];
- if(revision?.key!==key||revision.sourceSha256!==identities.get(key)||revision.reviewedOn!=='2026-11-14'||revision.version!=='2026-11-14.group-planning-1'||typeof revision.sourceHtml!=='string'||!revision.sourceHtml.includes('main-content')||typeof revision.markup!=='string')throw Error('Reviewed group planning identity required');
+ if(revision?.key!==key||revision.sourceSha256!==identities.get(key)||revision.reviewedOn!=='2026-11-14'||revision.version!=='2026-11-14.group-planning-2'||typeof revision.sourceHtml!=='string'||!revision.sourceHtml.includes('main-content')||typeof revision.markup!=='string')throw Error('Reviewed group planning identity required');
  const student=key==='student-trips-poland',intro='.et_pb_text_'+(student?'2':'0')+' .et_pb_text_inner',selectors=[intro];
  if(student)for(let i=0;i<4;i++)selectors.push('.et_pb_blurb_'+i+' .et_pb_module_header > span','.et_pb_blurb_'+i+' .et_pb_blurb_description');
  const fragment=student?'#et_pb_contact_form_0':key==='krakow-stag-do'?'#stag_trip_form':'#hen_do_form';
