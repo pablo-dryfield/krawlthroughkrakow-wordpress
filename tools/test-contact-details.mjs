@@ -54,22 +54,25 @@ try{
    await context.route('**/*',r=>{const q=r.request(),u=new URL(q.url());
     if(!['GET','HEAD'].includes(q.method())){requests.push({method:q.method(),url:u.origin+u.pathname});return r.abort();}
     if(u.origin!==new URL(base).origin){external.push({origin:u.origin,path:u.pathname});return r.abort();}
-    if(u.hostname!=='127.0.0.1'&&!u.pathname.startsWith('/staging/'))return r.abort();return r.continue();
+    if(u.hostname!=='127.0.0.1'&&!u.pathname.startsWith('/staging/')&&u.pathname!=='/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js')return r.abort();return r.continue();
    });
    const page=await context.newPage();page.on('pageerror',e=>errors.push({label,message:e.message}));const url=new URL('contact/',base);if(process.argv.includes('--cache-bust'))url.searchParams.set('ktk_contact_check',Date.now().toString());
    const response=await page.goto(url.href,{waitUntil:'load',timeout:60000});await page.evaluate(()=>document.fonts.ready);
    check(label+' HTTP200',response.status()===200);
    const state=await page.evaluate(()=>{
     const copy=document.querySelector('[data-ktk-contact-copy]'),fallback=document.querySelector('[data-ktk-contact-map-fallback]'),frame=document.querySelector('[data-ktk-contact-map] > iframe'),form=document.querySelector('form[data-ktk-form]');
+    const email=document.querySelector('#main-content a[href^="mailto:"],#main-content a[href^="/cdn-cgi/l/email-protection#"]'),emailHref=email?.getAttribute('href');
+    let address=emailHref;if(emailHref?.startsWith('/cdn-cgi/l/email-protection#')){const encoded=emailHref.split('#')[1],key=parseInt(encoded.slice(0,2),16);address='mailto:'+encoded.slice(2).match(/.{2}/g).map(v=>String.fromCharCode(parseInt(v,16)^key)).join('');}
     return {h1:[...document.querySelectorAll('h1')].map(n=>n.textContent),support:document.querySelector('.et_pb_heading_0 .et_pb_module_heading').tagName,
      copy:copy.innerText,map:fallback.innerText,visible:!!fallback.getBoundingClientRect().height,frameSrc:frame.getAttribute('src'),frameHidden:getComputedStyle(frame).display==='none',overflow:document.documentElement.scrollWidth>innerWidth+1,
-     address:document.querySelector('#main-content a[href^="mailto:"]').getAttribute('href'),links:[...document.querySelectorAll('[data-ktk-contact-copy] a,[data-ktk-contact-map-fallback] a')].map(a=>({text:a.textContent,href:a.href,target:a.target,rel:a.rel})),form:{action:form.getAttribute('action'),routing:form.querySelector('[name="action"]').value,property:typeof form.action}};
+     address,emailHref,links:[...document.querySelectorAll('[data-ktk-contact-copy] a,[data-ktk-contact-map-fallback] a')].map(a=>({text:a.textContent,href:a.href,target:a.target,rel:a.rel})),form:{action:form.getAttribute('action'),routing:form.querySelector('[name="action"]').value,property:typeof form.action}};
    });
    check(label+' one useful Contact heading and support subheading',state.h1.length===1&&state.h1[0]==='Contact Us'&&state.support==='H2');
    check(label+' confirmed shared facts and event caveat',state.copy.includes('9 PM')&&state.copy.includes('Adam Mickiewicz Monument')&&state.copy.includes('pink umbrella')&&state.copy.includes('your own booking confirmation')&&!/120|guarantee|pro drunk/.test(state.copy));
    check(label+' native directions visible and original map withheld',state.visible&&state.map.includes("Krakow's Main Market Square")&&state.frameSrc==='about:blank'&&state.frameHidden);
    check(label+' no map-provider request before grant',!external.some(r=>/google\.(com|[a-z]+)$/.test(new URL(r.origin).hostname)&&r.path.includes('/maps/')),external);
-   check(label+' clean email destination',state.address==='mailto:pubthroughkrakow@gmail.com');
+   check(label+' direct/Cloudflare-encoded email identity is clean',state.address==='mailto:pubthroughkrakow@gmail.com',state.emailHref);
+   if(javaScriptEnabled)check(label+' existing Cloudflare decoder restores actual mailto link',state.emailHref==='mailto:pubthroughkrakow@gmail.com',state.emailHref);
    check(label+' four native booking/meeting/Maps links without tracking',state.links.length===4&&state.links.every(l=>!/[?&](?:utm_|gclid|gbraid|wbraid)/.test(l.href))&&state.links.filter(l=>l.href==='https://maps.app.goo.gl/S3kQZC5rdABdpA1G9'&&l.target==='_blank'&&l.rel==='noopener noreferrer').length===1,state.links);
    check(label+' original form endpoint and hidden routing retained',state.form.action.endsWith('/wp-admin/admin-ajax.php')&&state.form.routing==='ktk_pages_contact'&&state.form.property==='object',state.form);
    check(label+' no horizontal overflow',!state.overflow);

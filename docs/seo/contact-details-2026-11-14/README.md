@@ -109,7 +109,69 @@ All diagnostics retained. The native fallback stays visible after grant too.
   every entry/policy, changing only this Contact definition binding. Content2073
   and discovery3 guarded dry runs pass. Offline roadmap317/317.
 
-No deployment or production change yet. Required CI and guarded staging/cache
-verification remain before this batch can be counted as delivered. These checks
-do not resolve the existing deferred Google cookie-consent race, actual mail
-delivery or the pending separate production form-hotfix decision.
+## Staging Publication
+
+Application `f5064e9f0a86304ad50cf56a48f5d9d7d227958c`, PR39, required
+CI43541482864: both jobs pass. GitHub runs checks only, never deploys.
+Content publisher completed14 November01:37:16.969215UTC with2073 independent
+matches and protected WordPress saved state/home/store unchanged; helper removed.
+Six-entry rollback ZIP `ktk-code-pages-staging-20261114-013655.zip`, SHA256
+`25d0b8b356208956491408dd6bc1e7dc405058523a244d6cf649edbfe223ed8f`.
+Discovery3 completed01:37:57.397376UTC, protected staging/production files and
+saved state unchanged, helpers removed. Four-entry ZIP
+`seo-discovery-staging-20261114-013745-775499.zip`, SHA256
+`16591ac85b2995a2365c2b5b09c4a92297c2ee5e4fce47bfd6b61c7621995804`.
+Both archives pass CRC checks; they are scoped rollback checkpoints, not full
+server/database backups. No storefront/homepage/OmniLodge publisher ran.
+
+Focused origin and normal browser190/190 each; refreshed local190 also passes.
+The original origin22/23 report stopped because this strict harness blocked the
+existing Cloudflare email decoder outside /staging/. Live HTML protects email
+via /cdn-cgi/l/email-protection, unrelated to this application change. The harness
+now permits only its observed same-origin decoder script and verifies raw or
+encoded address identity exactly. JS restores the actual clean mailto; no-JS
+Cloudflare protection remains an existing provider limitation, not newly certified
+as a functioning mail client link. No Cloudflare setting was changed.
+
+Keyboard navigation55/55:16 actual Enter activations at390/1440, JS on/off,
+all store/meeting/Maps destinations fulfilled inside the isolated browser before
+any real destination load. External tab has no opener. Initial30/55 returned the
+old page's already-complete load state before navigation committed; retained
+diagnostic, corrected to wait for the exact destination URL/load, not a relaxed
+destination assertion. No provider/commerce navigation or write was sent.
+
+Origin and normal form repair501/501 each, same114 intercepted payloads and
+14 error-state axe views0 violations/17 incomplete groups each. Origin/normal
+Contact axe four views each:0 violations/4 incomplete groups. Attribution143/143
+now also covers this new Contact booking anchor with isolated real-parameter
+handoff and consented product28 event;0 writes/navigation. Home10 assets, image
+hints21 and full icon font20 checks pass; discovery243 origin/216 normal pass.
+
+Authenticated MCP cache purge accepted01:39:57.241UTC after retrieving current
+spec and verifying exact zone/account; only krawlthroughkrakow.com/staging/.
+Full source/asset/device reports complete:
+
+| Report | Completion UTC14 November | Result | Cache / retries |
+| --- | --- | --- | --- |
+| `contact-details-origin-20261114.json` |01:46:02.330585|6193/6193|348 DYNAMIC,0 retries|
+| `contact-details-normal-20261114.json` |01:46:02.157420|6193/6193|322 MISS/26 HIT,0 retries|
+| `contact-details-repeat-20261114.json` |01:47:54.637314|6193/6193|348 HIT,0 retries|
+
+Reports live under docs/code-pages/full-migration. All116 content routes on
+desktop/Android/iPad and119 asset hashes/version tokens are current. Discovery
+repeat216/216 passes. Scoped original heading12 PNG pairs and all21 form pairs
+remain exactly matched; actual cached390px page screenshot inspected. This does
+not claim whole-page parity after deliberate new directions/copy changes.
+
+Both roadmaps now count28 verified website staging batches, one separately live
+OmniLodge reporting batch and zero website SEO production releases. All40 whole
+workstream states remain1 complete/31 partial/7 not started/1 deferred. Broader
+acceptance criteria and dependencies are not replaced by delivery counts.
+
+All finite tests/publishers/CI watches are closed; root previews remain for the
+ongoing plan. No application byte changed afterf5064e9; later QA/tool/docs commits
+do not require another deployment. Final QA CI/merge still follows.
+
+No production change. These checks do not resolve the existing deferred Google
+cookie-consent race, actual mail delivery or the pending separate production
+form-hotfix decision. Monthly/seasonal review policy is agreed, not automated.
