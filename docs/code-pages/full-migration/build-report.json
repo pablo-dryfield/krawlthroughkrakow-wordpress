@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-13T22:05:23.524Z",
+  "startedAt": "2026-11-13T23:41:56.420Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -182,6 +182,66 @@
     },
     "post-all-you-need-to-know-about-visiting-auschwitz": {
       "content": [
+        {
+          "type": "reviewed-Memorial-visitor-copy",
+          "module": 0,
+          "reviewedOn": "2026-11-14"
+        },
+        {
+          "type": "reviewed-Memorial-visitor-copy",
+          "module": 1,
+          "reviewedOn": "2026-11-14"
+        },
+        {
+          "type": "reviewed-Memorial-visitor-copy",
+          "module": 2,
+          "reviewedOn": "2026-11-14"
+        },
+        {
+          "type": "reviewed-Memorial-visitor-copy",
+          "module": 3,
+          "reviewedOn": "2026-11-14"
+        },
+        {
+          "type": "reviewed-Memorial-visitor-copy",
+          "module": 4,
+          "reviewedOn": "2026-11-14"
+        },
+        {
+          "type": "reviewed-Memorial-visitor-copy",
+          "module": 5,
+          "reviewedOn": "2026-11-14"
+        },
+        {
+          "type": "reviewed-Memorial-visitor-copy",
+          "module": 6,
+          "reviewedOn": "2026-11-14"
+        },
+        {
+          "type": "reviewed-Memorial-visitor-copy",
+          "module": 7,
+          "reviewedOn": "2026-11-14"
+        },
+        {
+          "type": "reviewed-Memorial-visitor-copy",
+          "module": 8,
+          "reviewedOn": "2026-11-14"
+        },
+        {
+          "type": "reviewed-Memorial-visitor-copy",
+          "module": 9,
+          "reviewedOn": "2026-11-14"
+        },
+        {
+          "type": "reviewed-Memorial-visitor-copy",
+          "module": 10,
+          "reviewedOn": "2026-11-14"
+        },
+        {
+          "type": "reviewed-Memorial-visitor-copy",
+          "module": 11,
+          "reviewedOn": "2026-11-14"
+        },
         {
           "type": "heading-level",
           "from": "h4",
@@ -8717,7 +8777,7 @@
     }
   },
   "seoMetadata": {
-    "reviewedOn": "2026-11-13",
+    "reviewedOn": "2026-11-14",
     "routes": [
       "/about-us/",
       "/about-us/how-to-join/",
@@ -8796,7 +8856,7 @@
       "/testimonials/",
       "/tour-service-disclaimer/"
     ],
-    "sourceSha256": "ba178881649f2dc054741a26e615dcb1e1c91abdeab0205c47e440ece1862fd0"
+    "sourceSha256": "c2364f07335ea5a01aba5301d133e06517b062ca30f2f277ed4839ed85c44b98"
   },
   "reviewedRedirects": [
     {
@@ -8812,5 +8872,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-13T22:06:13.902Z"
+  "finishedAt": "2026-11-13T23:42:50.955Z"
 }

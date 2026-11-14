@@ -1,3 +1,12 @@
+/* BEGIN Memorial visitor guide */
+@media (max-width: 600px) {
+  body.ktk-code-page[data-ktk-page="post-all-you-need-to-know-about-visiting-auschwitz"] #main-content [data-ktk-memorial-review],
+  body.ktk-code-page[data-ktk-page="post-all-you-need-to-know-about-visiting-auschwitz"] #main-content [data-ktk-memorial-directions] {
+    padding-right: 24px;
+  }
+}
+/* END Memorial visitor guide */
+
 /* Native interaction states, layered over the captured page cascade. */
 :where([data-ktk-heading-origin="p"]) { font-weight: inherit; }
 .ktk-archive-heading { margin: 0 0 32px; }
