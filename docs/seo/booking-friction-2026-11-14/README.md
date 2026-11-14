@@ -262,3 +262,10 @@ reports retain8 calendar/28 selection dependency errors separately, not fixed.
 Final QA-only follow-up passes shared JavaScript278, Python215, roadmap317 and
 source2371. Both roadmaps are regenerated; required final CI and exact-tree
 merge/branch cleanup follow without another application upload or cache purge.
+
+The first documentation CI43629117828 correctly rejected a stale generated
+dashboard plan-hash: the new progress-log row was added after roadmap generation.
+Its other job passed. Regenerate after the final plan edit and rerun the same
+exact dashboard/source assertion; no test, hash guard or application is changed
+to accept stale output. Local215 had passed before that later plan edit and
+must not be represented as proof of the stale generated commit.
