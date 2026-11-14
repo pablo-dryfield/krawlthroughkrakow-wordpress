@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-14T20:24:43.958Z",
+  "startedAt": "2026-11-14T21:38:02.832Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -797,6 +797,16 @@
           "key": "post-best-places-to-eat",
           "label": "Polish vodka",
           "productId": 44
+        },
+        {
+          "type": "food-guide-review",
+          "key": "post-best-places-to-eat",
+          "reviewedOn": "2026-11-14",
+          "textInteriors": 43,
+          "retainedInlinePhotos": 2,
+          "retainedUniqueFragments": 1,
+          "removedDuplicateIds": 0,
+          "nativeContentsTargets": 23
         }
       ],
       "bookings": [
@@ -1757,6 +1767,22 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "food-guide-review",
+          "key": "post-krakow-food-truck-parks",
+          "reviewedOn": "2026-11-14",
+          "textInteriors": 1,
+          "retainedInlinePhotos": 8,
+          "retainedUniqueFragments": 28,
+          "removedDuplicateIds": 3,
+          "nativeContentsTargets": 12
+        },
+        {
+          "type": "neutral-food-feature-description",
+          "key": "post-krakow-food-truck-parks",
+          "file": "d37116ff731d-as26awwvrvm1684922877-1080x675.jpg",
+          "alt": "Food trucks and picnic tables beneath autumn trees."
         }
       ],
       "bookings": [
@@ -2105,6 +2131,22 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "food-guide-review",
+          "key": "post-krakow-milkbars",
+          "reviewedOn": "2026-11-14",
+          "textInteriors": 1,
+          "retainedInlinePhotos": 4,
+          "retainedUniqueFragments": 32,
+          "removedDuplicateIds": 2,
+          "nativeContentsTargets": 14
+        },
+        {
+          "type": "neutral-food-feature-description",
+          "key": "post-krakow-milkbars",
+          "file": "b767777b3fa6-ysoxjhuwzp01683880218-1080x675.jpg",
+          "alt": "A tray holding dumplings, soup and bread."
         }
       ],
       "bookings": [
@@ -4740,6 +4782,13 @@
           "format": "text"
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-milkbars",
+          "postId": 6172,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -4925,6 +4974,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-krakow-milkbars",
+          "postId": 6172,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-krakow-techno-clubs-2",
           "postId": 6253,
           "reviewedOn": "2026-11-14",
@@ -5056,6 +5112,13 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-food-truck-parks",
+          "postId": 6192,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "reviewed-article-summary",
@@ -5255,6 +5318,13 @@
           "type": "reviewed-article-summary",
           "key": "post-weekend-in-krakow",
           "postId": 3122,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-best-places-to-eat",
+          "postId": 3097,
           "reviewedOn": "2026-11-14",
           "format": "text"
         },
@@ -5687,6 +5757,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-best-places-to-eat",
+          "postId": 3097,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-2020-krakow-nightlife-guide",
           "postId": 2968,
           "reviewedOn": "2026-11-14",
@@ -5992,6 +6069,13 @@
           "type": "reviewed-article-summary",
           "key": "post-is-krakow-safe-for-stag",
           "postId": 6198,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-food-truck-parks",
+          "postId": 6192,
           "reviewedOn": "2026-11-14",
           "format": "text"
         },
@@ -6396,8 +6480,22 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-krakow-milkbars",
+          "postId": 6172,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-krakow-safety-guide",
           "postId": 6178,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-food-truck-parks",
+          "postId": 6192,
           "reviewedOn": "2026-11-14",
           "format": "paragraph"
         },
@@ -6503,6 +6601,13 @@
           "type": "reviewed-article-summary",
           "key": "post-krakow-free-activities-2",
           "postId": 6120,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-best-places-to-eat",
+          "postId": 3097,
           "reviewedOn": "2026-11-14",
           "format": "paragraph"
         },
@@ -9424,6 +9529,13 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-best-places-to-eat",
+          "postId": 3097,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -9593,6 +9705,13 @@
           "type": "reviewed-article-summary",
           "key": "post-weekend-in-krakow",
           "postId": 3122,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-best-places-to-eat",
+          "postId": 3097,
           "reviewedOn": "2026-11-14",
           "format": "text"
         },
@@ -9833,6 +9952,13 @@
           "type": "reviewed-article-summary",
           "key": "post-weekend-in-krakow",
           "postId": 3122,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-best-places-to-eat",
+          "postId": 3097,
           "reviewedOn": "2026-11-14",
           "format": "text"
         },
@@ -10095,5 +10221,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-14T20:25:44.535Z"
+  "finishedAt": "2026-11-14T21:39:01.336Z"
 }

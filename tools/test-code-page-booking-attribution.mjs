@@ -31,6 +31,7 @@ if(!production)for(const [path,index] of [['/2020-krakow-nightlife-guide/',0],['
 if(!production)for(const slug of ['go-karting-krakow','krakow-go-karting'])for(const index of [0,1])cases.push({path:'/'+slug+'/',selector:'[data-ktk-karting-review] a[href*="/go-karting-30/"]',index,destination:'/staging/store2/go-karting-30/',product:30});
 if(!production)for(const slug of ['krakow-weather-guide','krakow-winter-activities'])cases.push({path:'/'+slug+'/',selector:'[data-ktk-weather-review] a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 if(!production)cases.push({path:'/krakow-winter-activities/',selector:'[data-ktk-weather-review] a[href*="/food-tour-krakow-48/"]',destination:'/staging/store2/food-tour-krakow-48/',product:48});
+if(!production)for(const slug of ['best-places-to-eat','krakow-food-truck-parks','krakow-milkbars'])for(const [product,destination] of [[48,'food-tour-krakow-48'],[28,'pub-crawl-28']])cases.push({path:'/'+slug+'/',selector:'[data-ktk-food-review] a[href*="/'+destination+'/"]',destination:'/staging/store2/'+destination+'/',product});
 if(production)for(const item of cases)item.destination=item.destination.replace(/^\/staging/,'');
 const params={utm_source:'readiness-validation',utm_medium:'controlled-browser',utm_campaign:production?'production-link-handoff':'staging-link-handoff',gclid:'isolated-validation-click'};
 const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});

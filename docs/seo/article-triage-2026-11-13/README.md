@@ -85,17 +85,18 @@ booking value still matter. No live attribution-token values are published.
 
 ## Prioritization And Completion
 
-Staging progress as of14 November:31 major article revisions,2 targeted
-corrections/notices,1 explicit specialist hold and22 articles still awaiting
-substantive review. The weather and winter guides are now cache-verified; their
-[release evidence](../weather-winter-guides-2026-11-14/README.md) separates climate
-normals from forecasts and records checked seasonal sources,16 preserved photo
-files/history,38 native contents targets and complete origin/normal/warmed
-checks. One neutral featured ALT and its two sharing descriptions correct an
-unsupported pub-crawl claim; both original URLs and all other metadata remain.
+Staging progress as of14 November:34 major article revisions,2 targeted
+corrections/notices,1 explicit specialist hold and19 articles still awaiting
+substantive review. Three food guides are now cache-verified; their
+[release evidence](../food-guide-clarity-2026-11-14/README.md) distinguishes
+operator facts from recommendations and unconfirmed openings, retaining17 photo
+files/history,49 native contents targets and complete origin/normal/warmed
+checks. Anny5 remains explicitly unconfirmed, not closed. Two neutral featured
+ALTs and four sharing descriptions change only two discovery source bindings;
+all original URLs, title/history and other metadata remain.
 Five vodka service hrefs on four other articles were separately corrected to
 our product44; those link-only repairs do not count as substantive reviews.
-The33-identity/128-card summary catalog likewise is not33 full fact audits.
+The36-identity/140-card summary catalog likewise is not36 full fact audits.
 The competition and entry form remain ACTIVE, as corrected by the owner.
 
 Safety-review and expired-campaign risks take priority alongside NYE readiness;
