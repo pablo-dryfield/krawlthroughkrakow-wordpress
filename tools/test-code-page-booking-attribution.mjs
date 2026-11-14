@@ -19,6 +19,7 @@ const cases=[
 if(!production)cases.push({path:'/krakow-stag-do/',selector:'a[data-ktk-booking-product="30"]',destination:'/staging/store2/go-karting-30/',product:30});
 if(!production)for(const selector of ['.et_pb_text_5 a[href*="store2"]','.et_pb_text_33 a[href*="store2"]'])cases.push({path:'/',selector,destination:'/staging/store2/pub-crawl-28/',homepage:true});
 if(!production)for(const path of ['/about-us/how-to-join/','/meeting-point/','/faqs/'])cases.push({path,selector:'[data-ktk-offer-copy] a[href*="store2/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
+if(!production)cases.push({path:'/contact/',selector:'[data-ktk-contact-copy] a[href*="store2/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 if(!production)cases.push({path:'/wheres-the-cheap-places-to-drink-in-krakow/',selector:'.et_pb_text_0 a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 if(!production)cases.push({path:'/jazz-bars-in-krakow/',selector:'.entry-content a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 if(!production)cases.push({path:'/krakow-live-music/',selector:'.entry-content a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});

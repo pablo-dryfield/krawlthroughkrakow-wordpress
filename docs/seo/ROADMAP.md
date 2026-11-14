@@ -6,7 +6,7 @@ Updated: 2026-11-14 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 ## Where We Are
 
-**Current work:** The Memorial guide and enquiry-form repair are verified on cached staging. Monthly KTK-team and seasonal checks are agreed. Continuing main-offer and meeting/directions copy review; the health article stays held and production is unchanged.
+**Current work:** Contact offer clarity and native directions are verified on cached staging, preserving the gated map and enquiry-form repair. Continuing query-to-page intent analysis and group-content review. Monthly KTK-team and seasonal checks are agreed; the health article stays held and production is unchanged.
 
 **Verified foundation milestones:** 7. **Website SEO production releases:** 0. The original website migration is a separate completed project, not counted as SEO implementation. Separately authorized OmniLodge reporting has its own release status.
 
@@ -16,12 +16,13 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 
 | Delivery Stage | Batches |
 | --- | ---: |
-| Verified on staging | 27 |
+| Verified on staging | 28 |
 | In progress | 0 |
 | Verified live | 1 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Contact offer clarity and usable directions](contact-details-2026-11-14/README.md) | C01, D05, T04 | Verified on staging (website) | 2026-11-14 | Owner review, wider meeting/overlay checks, manual accessibility and separate production approval. Existing no-JS Cloudflare-protected email limitation remains documented. |
 | [Reliable enquiry endpoints and recovery](contact-recovery-2026-11-14/README.md) | D06 | Verified on staging (website) | 2026-11-14 | Actual mail delivery assurance, inbox ownership/SLA, spam/manual checks and separate production decision. A client-side fix is not a mail-delivery certificate. |
 | [Current Memorial visitor information](memorial-guide-2026-11-14/RESEARCH.md) | C08 | Verified on staging (website) | 2026-11-14 | Owner review, remaining article fact/intent work and separate production approval. No current-price, ticket availability or ranking guarantee. |
 | [Lossless homepage icon-font delivery](staging-performance-2026-11-12/ICON-FONT-DELIVERY.md) | D02 | Verified on staging (website) | 2026-11-14 | Broader isolated multi-template/real-user performance work, owner review and production approval. Preserved live control raster differences are not hidden. |
