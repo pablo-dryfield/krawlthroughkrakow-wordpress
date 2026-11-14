@@ -1,6 +1,6 @@
 # Practical Party Advice And Offer Claims
 
-**Current status:** locally verified candidate; not published to staging yet.
+**Current status:** published to staging; origin/cache verification is underway.
 Earlier checkpoints and failures below are retained as the work sequence.
 
 ## Current Scope
@@ -228,3 +228,55 @@ CI, guarded staging publication, origin and normal/warmed cache verification
 remain. Both roadmaps retain37 verified staging deliveries and19 major/2 targeted/
 1 held/34 awaiting substantive article reviews. No production, commerce, consent,
 specialist-hold or OmniLodge change; no real messages or orders.
+
+## Staging Publication
+
+Application `b57db9181669038955f9dc5e92510d34b396af93`, PR51, required
+CI43591911802: both jobs pass. The guarded manual publisher completed2073 owned
+file checks on14 November2026 at11:53:00.401484UTC. Independent final hashes
+match; saved WordPress posts/options, protected homepage and storefront remain
+unchanged. The temporary helper was removed and independently verified.
+
+Rollback archive: `deploy-backups/ktk-code-pages-staging-20261114-115229.zip`,
+SHA256 `4af957dc0192720abe42fccd2ad2b15f9d270e9bafce1e82855b26d6ec39b0c0`.
+All19 entries, exact manifest set, every archived SHA and ZIP CRC pass. This is
+a changed-files application rollback, not a full database/hosting backup.
+
+Post-publication source2411 passes and application bytes still match b57db91.
+The following final origin, normal and warmed verification closes publication.
+
+## Final Cache Verification
+
+Full6,193 assertions pass independently at origin12:01:39.499440UTC,
+normal12:11:34.182357UTC and repeat12:13:33.293114UTC. Each covers116 routes
+and119 current assets, with0 transport retries. All348 responses are DYNAMIC
+at origin, MISS in the normal scan and HIT on the warmed repeat.
+
+The authenticated MCP purge was accepted12:06:22.368UTC after fresh endpoint,
+exact zone and account validation. Its sole scope was
+`krawlthroughkrakow.com/staging/`; no production/host-wide purge was sent.
+API acceptance is accompanied by the normal/HIT evidence above.
+
+Origin and normal each pass body268, full-card3455 across264 JS/no-JS views,
+safe-form501 and attribution143. Discovery243 origin/216 normal/216 repeat,
+unchanged homepage10 asset hashes/icons21/font20, final source2411 and shared
+JavaScript219/Python214 pass. The higher live-card count than local3387 consists
+of live-origin checks; no failed assertions are discarded. Eight normal axe views
+have0 automated violations and8 incomplete groups, not full conformance.
+
+All four actual normal390px screenshots have been inspected. Three PNGs exactly
+match the current inspected local views. Six Reasons details differs in50,601
+pixels within bounding rectangle(39,189)-(327,900), which includes its original
+photos; both retained views show matching copy/layout and visible images. Do not
+claim all-four byte identity, assign an unproved decoding cause, mask differences
+or call this original whole-page pixel parity. The native/source/type/media and
+CTA assertions pass independently; no application patch was made for this PNG.
+
+Exactly16 application files remain bound to b57db91. Original14 photos/full-size
+links, publication identities, contributor/caption fragments, previous71 summaries,
+all101 other bodies and held content remain protected. No real messages/orders
+were sent. Both roadmaps now record38 verified staging deliveries and21 major/
+2 targeted/1 held/32 remaining article reviews; not23 completed fact audits.
+Production, commerce, consent and OmniLodge remain unchanged. Final documentation
+CI, exact-tree merge and completed-branch cleanup remain; no re-upload or purge
+is required for those documentation-only changes.
