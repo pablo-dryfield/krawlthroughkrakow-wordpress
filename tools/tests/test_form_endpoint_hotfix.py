@@ -21,7 +21,7 @@ class EndpointHotfix(unittest.TestCase):
         self.original = b'unchanged before\n' + hotfix.OLD + b",body:new FormData(form)});\nunchanged after"
         self.patched = self.original.replace(hotfix.OLD, hotfix.NEW)
         self.state = {key: key for key in ('protected', 'additional_protected', 'wordpress_state_sha256',
-                                         'post_meta_sha256', 'production_enabled', 'home_url',
+                                         'post_meta_sha256', 'metadata_rows', 'production_enabled', 'home_url',
                                          'blog_public', 'project_id', 'policy_enabled')}
         self.before = {**self.state, 'owned': {hotfix.TARGET: hotfix.sha(self.original)}}
         self.after = {**self.state, 'owned': {hotfix.TARGET: hotfix.sha(self.patched)}, 'origin_cache_cleared': True}

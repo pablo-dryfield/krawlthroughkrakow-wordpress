@@ -77,6 +77,23 @@ new form endpoint ([Google setup](https://developers.google.com/tag-platform/tag
 [Cloudflare overview](https://developers.cloudflare.com/google-tag-gateway/)).
 No gateway/GTM account setting or production consent behavior was changed.
 
+## Concurrent State Guard
+
+The first publish preflight stopped before any application upload because only
+`post_meta_sha256` differed from preparation. All2,154 original protected hashes
+and4,478 additional production/staging hashes, original JS and raw post/option
+state still matched. The old aggregate cannot identify the exact changed row
+retrospectively; do not attribute it to a person or silently ignore it. Preserve
+`production-publish.json` as failed preflight. The next snapshot adds per-meta-row
+hashes, post IDs and key names (never values) for diagnosis. All original state
+guards remain, with row equality added; fresh preparation/review is required.
+No database rollback or production cache purge was made.
+
+The initial Windows PowerShell `-File` call failed argument binding before the
+wrapper body. Use explicit array binding, for example
+`& .\tools\publish-form-endpoint-hotfix.ps1 -PublisherArguments @('--publish', '--prepared', '...', '--verification', '...', '--report', '...')`.
+The DPAPI value is still passed only through the child environment and cleared.
+
 ## Prior Batch Closure
 
 Stag costume PR43 final860ab9ef93985f73d66098fa9c96d3eeb47cbc6d passed both

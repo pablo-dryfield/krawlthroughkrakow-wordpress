@@ -54,6 +54,10 @@ def snapshot(ftp, purge=False):
     extension = r'''
     $meta = $wpdb->get_results("SELECT m.post_id,m.meta_id,m.meta_key,m.meta_value FROM {$wpdb->postmeta} m JOIN {$wpdb->posts} p ON p.ID=m.post_id WHERE p.post_status='publish' OR p.post_type IN ('wpcf7_contact_form','wpcode') ORDER BY m.meta_id",ARRAY_A);
     $meta_hash = hash('sha256',wp_json_encode($meta));
+    $meta_rows = array();
+    foreach ($meta as $row) {
+        $meta_rows[(string)$row['meta_id']] = array('post_id'=>(int)$row['post_id'],'key'=>$row['meta_key'],'sha256'=>hash('sha256',wp_json_encode($row)));
+    }
     $additional = array();
     $walk = static function ($root,$label,$excluded) use (&$additional) {
         if (!is_dir($root) || is_link($root)) { throw new RuntimeException('Unsafe protected root'); }
@@ -74,7 +78,7 @@ def snapshot(ftp, purge=False):
     if (__PURGE__ && function_exists('rocket_clean_files')) {
         ob_start(); rocket_clean_files(array_map('home_url',json_decode('__ROUTES__',true))); ob_end_clean(); $cleared = true;
     }
-    $extension = array('post_meta_sha256'=>$meta_hash,'additional_protected'=>$additional,
+    $extension = array('post_meta_sha256'=>$meta_hash,'metadata_rows'=>$meta_rows,'additional_protected'=>$additional,
         'origin_cache_cleared'=>$cleared,'scoped_cache_available'=>function_exists('rocket_clean_files'),
         'production_enabled'=>function_exists('ktk_pages_is_production_enabled') && ktk_pages_is_production_enabled());
 '''.replace('__HELPER__', name).replace('__PURGE__', 'true' if purge else 'false').replace('__ROUTES__', routes)
@@ -95,7 +99,7 @@ def snapshot(ftp, purge=False):
             raise RuntimeError('Authenticated endpoint snapshot failed') from None
         if result.get('home_url') != URL or result.get('blog_public') != 1 or result.get('production_enabled') is not True:
             raise RuntimeError('Unexpected production identity, indexing or activation')
-        if not result.get('scoped_cache_available') or not result.get('additional_protected') or not result.get('post_meta_sha256'):
+        if not result.get('scoped_cache_available') or not result.get('additional_protected') or not result.get('post_meta_sha256') or not result.get('metadata_rows'):
             raise RuntimeError('Protected state or scoped cache capability missing')
         return result
     finally:
@@ -104,7 +108,7 @@ def snapshot(ftp, purge=False):
 
 def same_protected(before, after):
     return all(before[key] == after[key] for key in (
-        'protected', 'additional_protected', 'wordpress_state_sha256', 'post_meta_sha256',
+        'protected', 'additional_protected', 'wordpress_state_sha256', 'post_meta_sha256', 'metadata_rows',
         'production_enabled', 'home_url', 'blog_public', 'project_id', 'policy_enabled'))
 
 
