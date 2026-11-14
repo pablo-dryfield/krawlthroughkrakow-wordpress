@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 47 |
-| In progress | 1 |
+| In progress | 2 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Useful stag-organiser, activity and team-outing guides](group-choice-guides-2026-11-15/README.md) | C08, C06, T01, T06, T08, D03, D05, T10 | In progress (website) | Not yet | Required CI, guarded staging publication and origin/clean/warmed-cache verification remain.47 verified deliveries and C08 counts do not advance yet. Production, commerce, functional consent, active competition and specialist hold remain unchanged. |
 | [Practical sports-bar, wine and karaoke choices](nightlife-choice-guides-2026-11-14/README.md) | C08, C05, T01, T06, T08, D03, D05, T10 | Verified on staging (website) | 2026-11-15 | Remaining article and operator facts, manual accessibility, owner review and separate production approval. No whole-page pixel, screening, reservation, commerce or consent guarantee. The active competition and specialist hold remain unchanged. |
 | [Useful food, milk-bar and street-food guides](food-guide-clarity-2026-11-14/README.md) | C08, T01, T06, T08, D03, D05, T10 | Verified on staging (website) | 2026-11-14 | Remaining article and operator facts, manual accessibility, owner review and separate production approval. No whole-page pixel, price, commerce or consent guarantee. The active competition and specialist hold remain unchanged. |
 | [Source-backed weather and winter planning](weather-winter-guides-2026-11-14/README.md) | C08, C02, G01, T01, T06, T08, D03, D05, T10 | Verified on staging (website) | 2026-11-14 | Remaining article and operator facts, manual accessibility, owner review and separate production approval. One initial native-fragment test miss and its independent66-target diagnostic are retained; no application change or cause claim. No whole-page pixel, commerce or consent guarantee. The active competition and specialist hold remain unchanged. |

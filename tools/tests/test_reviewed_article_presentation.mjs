@@ -11,9 +11,9 @@ async function rejects(change){
  const directory=await mkdtemp(path.join(tmpdir(),'ktk-article-presentation-'));try{const data=structuredClone(catalog);change(data);const file=path.join(directory,'catalog.json');await writeFile(file,JSON.stringify(data));await assert.rejects(()=>loadReviewedArticlePresentation({catalogFile:file}));}finally{assert.ok(path.resolve(directory).startsWith(path.resolve(tmpdir())+path.sep+'ktk-article-presentation-'));await rm(directory,{recursive:true,force:true});}
 }
 test('all forty captures and the photo bind to exact source bytes and reviewed scope',async()=>{
- const rows=await loadReviewedArticlePresentation(),cards=rows.filter(r=>r.kind==='cards');assert.equal(rows.length,41);assert.equal(cards.length,40);assert.equal(cards.reduce((n,r)=>n+r.cardKeys.length,0),150);assert.equal(cards.filter(r=>r.cardKeys.length).length,37);assert.equal(cards.filter(r=>!r.cardKeys.length).length,3);
+ const rows=await loadReviewedArticlePresentation(),cards=rows.filter(r=>r.kind==='cards');assert.equal(rows.length,41);assert.equal(cards.length,40);assert.equal(cards.reduce((n,r)=>n+r.cardKeys.length,0),160);assert.equal(cards.filter(r=>r.cardKeys.length).length,38);assert.equal(cards.filter(r=>!r.cardKeys.length).length,2);
  for(const r of rows){assert.equal(createHash('sha256').update(r.sourceHtml).digest('hex'),r.sourceSha256);assert.match(r.catalogSha256,/^[a-f0-9]{64}$/);assert.equal(r.reviewedOn,'2026-11-14');}
- assert.ok(cards.every(r=>r.articles.length===39&&!r.cardKeys.includes('post-hostel-hangover-cure')));assert.equal(rows.find(r=>r.kind==='photo').photo.alt,'Police officers near people on the ground on a city street at night.');
+ assert.ok(cards.every(r=>r.articles.length===42&&!r.cardKeys.includes('post-hostel-hangover-cure')));assert.equal(rows.find(r=>r.kind==='photo').photo.alt,'Police officers near people on the ground on a city street at night.');
 });
 test('unknown schema, version, status, date, manifest and top-level fields reject',async()=>{
  for(const change of [d=>d.schemaVersion=2,d=>d.status='unreviewed',d=>d.version='other',d=>d.reviewedOn='2027-01-01',d=>d.assetManifestSha256='0'.repeat(64),d=>d.extra='unexpected'])await rejects(change);

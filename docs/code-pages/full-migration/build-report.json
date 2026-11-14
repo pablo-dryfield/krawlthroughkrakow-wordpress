@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-14T22:41:14.262Z",
+  "startedAt": "2026-11-14T23:39:18.395Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -362,6 +362,21 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "group-choice-review",
+          "key": "post-bachelor-party-organisers-krakow",
+          "reviewedOn": "2026-11-15",
+          "retainedInlinePhotos": 10,
+          "retainedUniqueFragments": 18,
+          "removedDuplicateIds": 0,
+          "nativeContentsTargets": 18
+        },
+        {
+          "type": "neutral-group-choice-feature",
+          "key": "post-bachelor-party-organisers-krakow",
+          "file": "2454091f3f0a-DSC04242_3_4_tonemapped-1024x675.jpg",
+          "alt": "A group in camouflage clothing posing in an outdoor activity field."
         }
       ],
       "bookings": [
@@ -2611,6 +2626,21 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "group-choice-review",
+          "key": "post-krakow-stag-activities",
+          "reviewedOn": "2026-11-15",
+          "retainedInlinePhotos": 5,
+          "retainedUniqueFragments": 34,
+          "removedDuplicateIds": 7,
+          "nativeContentsTargets": 15
+        },
+        {
+          "type": "neutral-group-choice-feature",
+          "key": "post-krakow-stag-activities",
+          "file": "d19b552be303-cld1i8hp0081685884239-1080x675.jpg",
+          "alt": "A group in suits raising beer bottles outdoors."
         }
       ],
       "bookings": [
@@ -2678,6 +2708,21 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "group-choice-review",
+          "key": "post-krakow-team-building-activities",
+          "reviewedOn": "2026-11-15",
+          "retainedInlinePhotos": 5,
+          "retainedUniqueFragments": 14,
+          "removedDuplicateIds": 0,
+          "nativeContentsTargets": 12
+        },
+        {
+          "type": "neutral-group-choice-feature",
+          "key": "post-krakow-team-building-activities",
+          "file": "e05b1a899d60-GP_Krakow-1080x675.jpg",
+          "alt": "People and cafe tables in a city square at dusk."
         }
       ],
       "bookings": [
@@ -4477,6 +4522,13 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-bachelor-party-organisers-krakow",
+          "postId": 6265,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -4521,6 +4573,13 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-team-building-activities",
+          "postId": 6396,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "reviewed-article-summary",
@@ -4767,6 +4826,13 @@
           "format": "text"
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-bachelor-party-organisers-krakow",
+          "postId": 6265,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -4885,6 +4951,13 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-team-building-activities",
+          "postId": 6396,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "reviewed-article-summary",
@@ -5264,6 +5337,20 @@
           "type": "reviewed-article-summary",
           "key": "post-krakow-go-karting",
           "postId": 6152,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-stag-activities",
+          "postId": 6259,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-bachelor-party-organisers-krakow",
+          "postId": 6265,
           "reviewedOn": "2026-11-14",
           "format": "text"
         },
@@ -6249,6 +6336,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-krakow-stag-activities",
+          "postId": 6259,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-all-you-need-to-know-about-visiting-auschwitz",
           "postId": 2681,
           "reviewedOn": "2026-11-14",
@@ -6567,6 +6661,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-krakow-team-building-activities",
+          "postId": 6396,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
           "postId": 7492,
           "reviewedOn": "2026-11-14",
@@ -6700,6 +6801,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-krakow-stag-activities",
+          "postId": 6259,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-krakow-free-activities-2",
           "postId": 6120,
           "reviewedOn": "2026-11-14",
@@ -6793,6 +6901,13 @@
           "type": "reviewed-article-summary",
           "key": "post-krakow-money-saving-tips",
           "postId": 6155,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-bachelor-party-organisers-krakow",
+          "postId": 6265,
           "reviewedOn": "2026-11-14",
           "format": "paragraph"
         },
@@ -10336,5 +10451,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-14T22:42:18.556Z"
+  "finishedAt": "2026-11-14T23:40:16.402Z"
 }

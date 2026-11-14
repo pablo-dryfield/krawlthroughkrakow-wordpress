@@ -238,6 +238,24 @@
       "postId": 6159,
       "route": "/karaoke-bars-in-krakow/",
       "summary": "Compare public singalongs and private karaoke rooms in Krakow, with clear operator checks and practical group planning. Confirm the actual session before building the rest of your night around it."
+    },
+    {
+      "key": "post-bachelor-party-organisers-krakow",
+      "postId": 6265,
+      "route": "/bachelor-party-organisers-krakow/",
+      "summary": "Plan a Krakow bachelor weekend around your group, budget and confirmed quote. Compare KTK offers with separate operator ideas, allowing time for food, travel and the actual booking conditions."
+    },
+    {
+      "key": "post-krakow-stag-activities",
+      "postId": 6259,
+      "route": "/krakow-stag-activities/",
+      "summary": "Compare Krakow stag-day activities with your evening plans. Check actual providers, costs and group terms, then use the current KTK offers without assuming a free groom place or bundled attractions."
+    },
+    {
+      "key": "post-krakow-team-building-activities",
+      "postId": 6396,
+      "route": "/krakow-team-building-activities/",
+      "summary": "Choose a Krakow team outing by its format, group needs and practical arrangements. Compare city hunts, laser tag, escape rooms and a KTK social evening without promising automatic business results."
     }
   ],
   "containers": [
@@ -249,12 +267,15 @@
     {
       "captureSha256": "a6e55947deb0e149824878041c74f4ace26ca7bf3acf3c06c5d54e51c3c01cd7",
       "key": "archive-category-hen-do",
-      "cardKeys": []
+      "cardKeys": [
+        "post-bachelor-party-organisers-krakow"
+      ]
     },
     {
       "captureSha256": "07830b7d56f65dc5ae98168956af9e0377755eadf08128c87658b3c43aff290a",
       "key": "archive-category-krakow-guides",
       "cardKeys": [
+        "post-krakow-team-building-activities",
         "post-new-years-eve-in-krakow",
         "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
         "post-krakow-bars-jewish-quarter"
@@ -286,7 +307,8 @@
       "key": "archive-category-stag-do",
       "cardKeys": [
         "post-stag-do-costume",
-        "post-stag-pranks"
+        "post-stag-pranks",
+        "post-bachelor-party-organisers-krakow"
       ]
     },
     {
@@ -303,6 +325,7 @@
       "captureSha256": "87fc67a682a18e3ba4286c3f76732e07a8c024c9c96059eb85733ee69ad1fe08",
       "key": "archive-author-dpbowman",
       "cardKeys": [
+        "post-krakow-team-building-activities",
         "post-stag-do-costume",
         "post-stag-pranks",
         "post-go-karting-krakow"
@@ -353,7 +376,9 @@
       "cardKeys": [
         "post-sports-bar-krakow",
         "post-krakow-money-saving-tips",
-        "post-krakow-go-karting"
+        "post-krakow-go-karting",
+        "post-krakow-stag-activities",
+        "post-bachelor-party-organisers-krakow"
       ]
     },
     {
@@ -486,6 +511,7 @@
       "key": "archive-category-uncategorized-page-4",
       "cardKeys": [
         "post-krakow-go-karting",
+        "post-krakow-stag-activities",
         "post-all-you-need-to-know-about-visiting-auschwitz",
         "post-krakow-weather-guide",
         "post-krakow-new-years-eve"
@@ -500,6 +526,7 @@
       "captureSha256": "938e5e17b59d1d22ad375e9dd90f817dc42e32c1004a54bb2806961a87bb7576",
       "key": "blog",
       "cardKeys": [
+        "post-krakow-team-building-activities",
         "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
         "post-krakow-milkbars",
         "post-krakow-safety-guide",
@@ -519,6 +546,7 @@
         "post-is-krakow-safe-for-stag",
         "post-hostel-etiquette-tips",
         "post-sports-bar-krakow",
+        "post-krakow-stag-activities",
         "post-krakow-free-activities-2",
         "post-best-places-to-eat",
         "post-2020-krakow-nightlife-guide",
@@ -533,6 +561,7 @@
         "post-karaoke-bars-in-krakow",
         "post-wheres-the-cheap-places-to-drink-in-krakow",
         "post-krakow-money-saving-tips",
+        "post-bachelor-party-organisers-krakow",
         "post-krakow-nightclubs",
         "post-krakow-wine-bars",
         "post-party-krakow",

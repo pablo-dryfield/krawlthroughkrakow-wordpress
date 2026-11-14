@@ -82,6 +82,8 @@ jobs:
         run: node --test tools/tests/test_food_guide_editorial.mjs
       - name: Sports, wine and karaoke source contracts
         run: node --test tools/tests/test_nightlife_choice_editorial.mjs
+      - name: Stag organiser, activities and team outing source contracts
+        run: node --test tools/tests/test_group_choice_editorial.mjs
       - name: Booking selection recovery contracts
         run: node --test tools/tests/test_booking_selection_recovery.mjs tools/tests/test_blocked_meta_pageview.mjs
       - name: Read-only booking measurement contracts (no provider events)
