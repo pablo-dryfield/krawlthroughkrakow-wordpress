@@ -285,3 +285,77 @@ new graph is142 pages/24 products/6293 edges, zero unknown paths and the same
 six deliberately held tags. No actual customer booking, provider measurement
 request or real form submission was made. Required CI and the guarded staging
 follow-up/origin/cache verification remain before marking this release verified.
+
+## Combined Staging Publication
+
+Follow-up application `de0035ea770779c179aa19d1aabc052a5540523d` passes both
+required jobs in CI43620607563 on PR56. Manual guarded staging publication
+started17:22:16.343632UTC and completed17:23:09.187893UTC. All2073 owned hashes
+match; saved WordPress state, homepage and storefront are unchanged, and the
+temporary helper was removed. Only the four service-link bodies and bounded
+runtime lookup differ from95; the publisher also retains its existing registry
+and activation-guard procedure.
+
+Rollback `deploy-backups/ktk-code-pages-staging-20261114-172240.zip` has8 exact
+entries: `release-manifest.json` plus7 original files, no new files. Independent
+entry-set/per-file SHA256/CRC/archive SHA checks pass. Archive SHA256 is
+`5090dfef03df8894e01b26578f8a148e930fa18dbb07a3aa29813c5e045877c4`.
+The first ad-hoc verifier wrongly requested `manifest.json`; its KeyError did
+not indicate a damaged archive. Reading the actual publisher's
+`release-manifest.json` verified the complete original archive without changes.
+
+Fresh origin attribution now passes220/220, including all six vodka anchors,
+UTM/click-ID handoff, no navigation/submission, withholding before consent and
+the existing consented product44 event. Protected homepage10/icon21/ET-font20/
+social-font15 checks pass. Full three-device source, focused guide/card/form
+checks and source-stability verification are in progress. No edge purge has
+been sent for this release;41 verified batches remains unchanged until normal
+and warmed-cache checks close successfully. Do not reupload for these notes.
+
+## Origin Closure And Scoped Cache Refresh
+
+The follow-up origin run closes6193/6193 at17:32:01.813348UTC: all116 routes,
+119 assets and348 DYNAMIC content responses, with zero transport retries.
+Focused guide216/four axe0viol4incompletes, affected-card1723/80views, forms501,
+attribution220, discovery243 and source-stability2396 pass. All app bytes still
+matchde0035e. No production or protected application change occurred.
+
+After those checks closed, Cloudflare's current API/permission and exact active
+zone/account were validated again. One purge was accepted17:32:19.266UTC,
+with only `{"prefixes":["krawlthroughkrakow.com/staging/"]}`. No host-wide,
+production or second purge was sent. Acceptance is not cache proof: full normal
+and warmed scans must close before the batch is counted as verified.
+
+Normal-URL focused guide216/cards1723/forms501/attribution220/discovery216 and
+protected homepage10/icon21/ET-font20/social-font15 already pass. Four of six
+normal390px guide screenshots exactly match the inspected current local ones.
+The two remaining weekend screenshots were visually inspected, and unmasked
+differences are confined to their original photo rectangles: header46,423 pixels
+at[39,174,351,382], booking46,875 at[39,468,351,676]. All other pixels match.
+The original photo bytes/elements remain source-bound; no cause is inferred,
+no masks/tolerance or application workaround was added, and this is not an
+all-six or old whole-page pixel pass. The shared header/shells contain no extra
+vodka destinations; the six service anchors cover the rendered-site matches.
+
+## Final Cache Verification
+
+Follow-up applicationde0035e is unchanged after publication. Full6193 origin
+17:32:01.813348UTC, normal17:38:38.393488UTC and repeat17:40:57.078435UTC all
+pass, with348 DYNAMIC,348 MISS and348 HIT content responses respectively,
+119 assets and zero HTTP retries in each run. Discovery243origin/216normal/
+216repeat, body216origin+normal, affected-card1723origin+normal over80views,
+forms501origin+normal, expanded attribution220origin+normal and protected
+homepage10/icon21/ET20/social15 pass. Source stability2396 is exact. All finite
+verification processes are closed; root5184/5185 previews are retained.
+
+Both roadmaps now record42 staging-verified batches, not42 completed
+workstreams or a production promotion. C08 is27 major staged revisions,
+2 targeted corrections/notices,1 held and26 still needing substantive review.
+The four vodka-link-only articles do not increase this count. The29-identity/
+114-summary catalog is not29 complete fact audits. Native42-target contents,
+all15 photos, original titles/publication/bylines/map and previous103 summaries
+remain preserved. The active competition/form and explicit medical hold remain
+unchanged. Remaining manual accessibility, owner review, account-side measurement
+and production approval are not certified. Final documentation/roadmap CI and
+exact-tree PR56 merge/branch cleanup remain; no further upload or purge is
+needed for documentation.
