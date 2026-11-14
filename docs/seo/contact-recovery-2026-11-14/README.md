@@ -149,10 +149,63 @@ pairs match exactly, visible geometry/typography unchanged, and the only compute
 initial-color differences are the12 explicitly checked empty captcha controls.
 Final116 build/2320 verification, source5, Python192, shared JavaScript123,
 PHP763/forms31, attribution136 and2073-file publisher dry run pass. Native and
-CF7 form screenshots were visually inspected at390px. No staging publisher has
-run yet; required CI and origin/normal cached verification still gate delivery.
+CF7 form screenshots were visually inspected at390px. This is the pre-release
+checkpoint; the subsequent guarded delivery is recorded below.
 
 The Contact page also retains old120zl/guaranteed-place promotional copy and an
 empty map gap. Those are separate C01/D05 review items, not changed incidentally
 by this form-endpoint repair. The health article remains held for specialist
 review, and the entire homepage/commerce payload is outside this change.
+
+## Staging Release And Cache Verification
+
+Application `6efd3235f79e38b5e237bba4060c865d6d7a51fe`, PR38, passed both required
+jobs in CI43536324284 before release. The guarded incremental content publisher
+completed14 November at00:47:52.764424UTC, independently verifying all2073 owned
+hashes, unchanged saved WordPress state/homepage/storefront and helper removal.
+Only the two scoped application assets differ from the pre-edit source. No
+homepage, discovery, storefront or OmniLodge publisher ran for this repair.
+
+Private scoped rollback archive `ktk-code-pages-staging-20261114-004730.zip`,
+five files, CRC clean, independently matching SHA-256
+`32aac33d6ad47f54f3ffc2137ea695425e8ba0c3bc5caab6adedf349fda1c970`.
+This is not a full database/server backup. Restore only the relevant owned
+assets for rollback, never restore global saved WordPress/customer state.
+
+Both actual origin asset bodies match local SHA-256:
+
+- `runtime.js`: `8475c666e8bd842a93dc93868c82aa600997cdcec9e581c8fdd525661a1deafb`.
+- `runtime.css`: `d9e1fe6dd1a21481f958f39a4da09b74fee270b1237566edb5bcfcb4fe9acb55`.
+
+Origin and normal cached suites each pass501/501:114 intercepted payloads have
+correct routing/token contracts,14 error-state accessibility views have0
+violations/17 incomplete groups, and source/harness stability checks pass. No
+submission reaches an inbox. Normal initial accessibility28 views has0
+violations/50 incomplete groups. These are automated samples, not complete
+conformance or mail-transport assurance. Mobile form/error screenshots inspected.
+
+After retrieving the current API specification and validating the exact zone
+and account, Cloudflare MCP accepted only the staging prefix purge at
+`2026-11-14T00:54:22.804Z`: body
+`{"prefixes":["krawlthroughkrakow.com/staging/"]}`, success true, result ID
+`4303f6a45f815c5570bb4bba5f86a423`. No host-wide/production purge or settings edit.
+
+Full normal source/cache verification passes6193/6193 at00:59:48.471575UTC:
+116 routes/119 current assets,309 MISS and39 already-warmed HIT content responses,
+zero retries. Repeat passes6193/6193 at01:02:06.005187UTC: all348 desktop/Android/
+iPad content responses HIT, current119 asset hashes/version tokens, zero retries.
+Reports: `docs/code-pages/full-migration/contact-recovery-{normal,repeat}-20261114.json`.
+Homepage10 active assets, image hints21, font20 and discovery216 normal/repeat
+pass unchanged. The separate read-only seven-page staging audit confirms the
+new runtime uses the literal attribute, never the shadowed property. The five
+native DOM properties remain shadowed by design: removing the hidden routing
+field would break the backend. It is access to that property that was fixed.
+
+Both roadmaps now show27 verified staging batches,1 separately live OmniLodge
+reporting batch and0 website SEO production releases. Whole-ticket states stay
+1 complete/31 partial/7 not started/1 deferred. D06 is partial because actual
+delivery, ownership/SLA, spam/manual review and production authorization remain.
+Owner answers about inbox handling and a separate form-only production hotfix
+are still pending. No production files, caches, settings or mail were changed.
+Final QA/docs CI/merge are tracked in PR38; application bytes remain6efd323, so
+documentation does not require another publication.
