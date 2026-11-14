@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "updatedOn": "2026-11-14",
   "websiteProductionReleases": 0,
-  "current": "Contact offer clarity and native directions are verified on cached staging, preserving the gated map and enquiry-form repair. Continuing query-to-page intent analysis and group-content review. Monthly KTK-team and seasonal checks are agreed; the health article stays held and production is unchanged",
+  "current": "Contact directions are cache-verified on staging. Four-window query-to-page reporting now matches on repeat and identifies the established NYE guide and group pages for further review. Monthly KTK-team and seasonal checks are agreed; the health article stays held and production is unchanged",
   "deliveries": [
     {"id":"contact-offer-directions","title":"Contact offer clarity and usable directions","workstreams":["C01","D05","T04"],"stage":"staging_verified","environment":"website","verifiedOn":"2026-11-14","summary":"Shared-fact copy, a literal Contact Us heading and native directions are cache-verified beside the unchanged consent-gated map. Source2375/browser190 twice/navigation55/form501 twice/full6193 origin, normal and repeat pass;348 warmed responses HIT. Forms and other115 bodies retained.","remaining":"Owner review, wider meeting/overlay checks, manual accessibility and separate production approval. Existing no-JS Cloudflare-protected email limitation remains documented.","evidence":"contact-details-2026-11-14/README.md"},
     {"id":"contact-form-recovery","title":"Reliable enquiry endpoints and recovery","workstreams":["D06"],"stage":"staging_verified","environment":"website","verifiedOn":"2026-11-14","summary":"Correct endpoint access, linked errors, keyboard checkboxes and entered-text contrast are cache-verified. Origin/normal501 each and full6193 normal/repeat pass;348 warmed responses HIT. All21 initial form PNG pairs match exactly; messages intercepted, backends unchanged.","remaining":"Actual mail delivery assurance, inbox ownership/SLA, spam/manual checks and separate production decision. A client-side fix is not a mail-delivery certificate.","evidence":"contact-recovery-2026-11-14/README.md"},
@@ -51,7 +51,7 @@
     "milestoneTitles": ["Source control & checks", "Page descriptions", "Discovery & indexing", "Public storefront content", "Headings & destinations", "Search Console reporting", "Schema & photo loading", "Finish staging improvements", "Review & production release"],
     "tickets": {
       "M01":{"title":"Reliable Search Console reporting","remaining":"Complete in OmniLodge; retain ongoing reporting checks."},
-      "M02":{"title":"A trustworthy SEO baseline","remaining":"Complete full-precision, prior-year and search-intent comparisons."},
+      "M02":{"title":"A trustworthy SEO baseline","remaining":"Four-window full-precision pair analysis and supported prior-year summaries are verified; finish deeper intent/time/device decisions and approved long-term/raw retention."},
       "M03":{"title":"Track the complete booking funnel","remaining":"Reconcile landing visits, booking clicks, payments and revenue."},
       "M04":{"title":"Google indexing & technical monitoring","remaining":"Follow up old sitemap errors and establish useful monitoring."},
       "T01":{"title":"Give every page a clear search purpose","remaining":"Check competing pages before changing canonicals or consolidating URLs."},

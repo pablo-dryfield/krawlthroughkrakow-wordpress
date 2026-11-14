@@ -6,7 +6,7 @@ Updated: 2026-11-14 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 ## Where We Are
 
-**Current work:** Contact offer clarity and native directions are verified on cached staging, preserving the gated map and enquiry-form repair. Continuing query-to-page intent analysis and group-content review. Monthly KTK-team and seasonal checks are agreed; the health article stays held and production is unchanged.
+**Current work:** Contact directions are cache-verified on staging. Four-window query-to-page reporting now matches on repeat and identifies the established NYE guide and group pages for further review. Monthly KTK-team and seasonal checks are agreed; the health article stays held and production is unchanged.
 
 **Verified foundation milestones:** 7. **Website SEO production releases:** 0. The original website migration is a separate completed project, not counted as SEO implementation. Separately authorized OmniLodge reporting has its own release status.
 
