@@ -31,6 +31,7 @@ import {loadReviewedArticlePresentation,reviseReviewedArticlePresentation,buildR
 import {loadSafetyGuidesEditorial,reviseSafetyGuidesEditorial,buildSafetyGuidesStyles} from './safety-guides-editorial.mjs';
 import {loadPartyGuideEditorial,revisePartyGuideEditorial,buildPartyGuideStyles} from './party-guide-editorial.mjs';
 import {loadGamesResourceEditorial,reviseGamesResourceEditorial,buildGamesResourceStyles} from './games-resource-editorial.mjs';
+import {loadBudgetTravelEditorial,reviseBudgetTravelEditorial,buildBudgetTravelStyles} from './budget-travel-editorial.mjs';
 import {codePageTitle,codePageHeadDescription,loadSharingImagePolicy,buildCodePageSharing} from './code-page-sharing.mjs';
 import {loadOfferPageRevisions,reviseOfferPages} from './offer-pages-editorial.mjs';
 import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
@@ -53,6 +54,7 @@ await buildReviewedArticlePresentationStyles(path.join(assets,'runtime.css'));
 await buildSafetyGuidesStyles(path.join(assets,'runtime.css'));
 await buildPartyGuideStyles(path.join(assets,'runtime.css'));
 await buildGamesResourceStyles(path.join(assets,'runtime.css'));
+await buildBudgetTravelStyles(path.join(assets,'runtime.css'));
 await buildEventPromotionRuntime(path.join(assets,'runtime.js'));
 await buildContentAccessibilityStyles(path.join(assets,'runtime.css'));
 await buildNyePromotionStyles(path.join(assets,'runtime.css'));
@@ -78,6 +80,7 @@ const articlePresentations=await loadReviewedArticlePresentation();
 const safetyGuides=await loadSafetyGuidesEditorial();
 const partyGuides=await loadPartyGuideEditorial();
 const gamesGuides=await loadGamesResourceEditorial();
+const budgetTravelGuides=await loadBudgetTravelEditorial();
 const campaignFacts=campaignTemplateValues(await loadOfferFacts());
 validateSeoRoutes(manifest.routes.map(row => row.route));
 const reviewCounts=JSON.parse(execFileSync('php',['-r',"define('ABSPATH', __DIR__); require $argv[1]; echo json_encode(array_column(ktk_homepage_review_sources(), 'count', 'name'));",path.join(root,'staging/wp-content/mu-plugins/ktk-homepage-assets/reviews.php')],{encoding:'utf8'}));
@@ -278,6 +281,7 @@ try {
       contentRevisions.push(...await page.evaluate(reviseSafetyGuidesEditorial,{key:route.key,revision:safetyGuides.find(row=>row.key===route.key)}));
       contentRevisions.push(...await page.evaluate(revisePartyGuideEditorial,{key:route.key,revision:partyGuides.find(row=>row.key===route.key)}));
       contentRevisions.push(...await page.evaluate(reviseGamesResourceEditorial,{key:route.key,revision:gamesGuides.find(row=>row.key===route.key)}));
+      contentRevisions.push(...await page.evaluate(reviseBudgetTravelEditorial,{key:route.key,revision:budgetTravelGuides.find(row=>row.key===route.key)}));
       contentRevisions.push(...await page.evaluate(reviseReviewedArticlePresentation,{key:route.key,revision:articlePresentations.find(row=>row.key===route.key)}));
       contentRevisions.push(...await page.evaluate(reviseAccessibilitySemantics,{key:route.key,imageDescriptions}));
       css=preserveHeadingCss(css);
@@ -345,6 +349,9 @@ try {
     }
     await writeFile(path.join(assets, 'registry.php'), `<?php\n/** Generated staging-only explicit route registry. */\nif (!defined('ABSPATH')) { exit; }\nreturn json_decode(${php(JSON.stringify({version:1, complete:report.built.length === manifest.routes.length, routes:entries, redirects}))}, true);\n`);
   }
+} catch (error) {
+  report.errors.push({ key: 'build-finalization', error: error.message });
+  throw error;
 } finally {
   await browser.close(); report.finishedAt = new Date().toISOString();
   await writeFile('docs/code-pages/full-migration/build-report.json', JSON.stringify(report,null,2));

@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-14T12:46:15.562Z",
+  "startedAt": "2026-11-14T14:54:52.399Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -1606,6 +1606,15 @@
           "id": ""
         },
         {
+          "type": "budget-travel-guide-review",
+          "key": "post-krakow-budget-activities",
+          "reviewedOn": "2026-11-14",
+          "retainedOriginalPhotos": 8,
+          "originalUniqueFragments": 55,
+          "removedDuplicateIds": 6,
+          "nativeContentsTargets": 26
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -1746,6 +1755,15 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "budget-travel-guide-review",
+          "key": "post-krakow-free-activities-2",
+          "reviewedOn": "2026-11-14",
+          "retainedOriginalPhotos": 6,
+          "originalUniqueFragments": 48,
+          "removedDuplicateIds": 6,
+          "nativeContentsTargets": 22
         },
         {
           "type": "floating-booking-landmark"
@@ -2070,6 +2088,15 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "budget-travel-guide-review",
+          "key": "post-krakow-money-saving-tips",
+          "reviewedOn": "2026-11-14",
+          "retainedOriginalPhotos": 7,
+          "originalUniqueFragments": 42,
+          "removedDuplicateIds": 3,
+          "nativeContentsTargets": 19
         },
         {
           "type": "floating-booking-landmark"
@@ -4941,6 +4968,13 @@
           "format": "text"
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-budget-activities",
+          "postId": 6333,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -4985,6 +5019,13 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-money-saving-tips",
+          "postId": 6155,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "floating-booking-landmark"
@@ -5043,6 +5084,13 @@
           "type": "reviewed-article-summary",
           "key": "post-krakow-techno-clubs",
           "postId": 6123,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-free-activities-2",
+          "postId": 6120,
           "reviewedOn": "2026-11-14",
           "format": "text"
         },
@@ -5439,6 +5487,20 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-budget-activities",
+          "postId": 6333,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-free-activities-2",
+          "postId": 6120,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -5784,6 +5846,13 @@
           "type": "reviewed-article-summary",
           "key": "post-wheres-the-cheap-places-to-drink-in-krakow",
           "postId": 6189,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-money-saving-tips",
+          "postId": 6155,
           "reviewedOn": "2026-11-14",
           "format": "text"
         },
@@ -6160,6 +6229,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-krakow-budget-activities",
+          "postId": 6333,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-krakow-techno-clubs",
           "postId": 6123,
           "reviewedOn": "2026-11-14",
@@ -6223,6 +6299,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-krakow-free-activities-2",
+          "postId": 6120,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-2020-krakow-nightlife-guide",
           "postId": 2968,
           "reviewedOn": "2026-11-14",
@@ -6281,6 +6364,13 @@
           "type": "reviewed-article-summary",
           "key": "post-wheres-the-cheap-places-to-drink-in-krakow",
           "postId": 6189,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-money-saving-tips",
+          "postId": 6155,
           "reviewedOn": "2026-11-14",
           "format": "paragraph"
         },
@@ -9754,5 +9844,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-14T12:47:16.173Z"
+  "finishedAt": "2026-11-14T14:55:55.825Z"
 }

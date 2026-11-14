@@ -148,6 +148,24 @@
       "postId": 3033,
       "route": "/best-drinking-games/",
       "summary": "Bring your group together with KTK Drunken Jenga, card rounds, quick challenges and conversation games. Explore the ideas and download our original KTK game rule sheets."
+    },
+    {
+      "key": "post-krakow-free-activities-2",
+      "postId": 6120,
+      "route": "/krakow-free-activities-2/",
+      "summary": "Explore Krakow's outdoor sights, Planty and the Main Market Square, and check limited museum free-admission rules. Keep ticketed interiors and a paid KTK night separate from your free day out."
+    },
+    {
+      "key": "post-krakow-budget-activities",
+      "postId": 6333,
+      "route": "/krakow-budget-activities/",
+      "summary": "Build an affordable Krakow day around nearby sights, a museum you want to visit and realistic food and evening choices. Compare current admission conditions rather than relying on old price promises."
+    },
+    {
+      "key": "post-krakow-money-saving-tips",
+      "postId": 6155,
+      "route": "/krakow-money-saving-tips/",
+      "summary": "Compare total accommodation costs, the right transport ticket, airport travel and attraction-pass conditions. Plan your own Krakow budget with current operator information instead of fixed daily-cost estimates."
     }
   ],
   "containers": [
@@ -244,20 +262,24 @@
       "key": "archive-author-dpbowman-page-5",
       "cardKeys": [
         "post-hostel-etiquette-tips",
-        "post-wheres-the-cheap-places-to-drink-in-krakow"
+        "post-wheres-the-cheap-places-to-drink-in-krakow",
+        "post-krakow-budget-activities"
       ]
     },
     {
       "captureSha256": "d6fe0d9912698f97c04022ef4c3db383678c11db6208c242e11b7422768e09ea",
       "key": "archive-author-dpbowman-page-6",
-      "cardKeys": []
+      "cardKeys": [
+        "post-krakow-money-saving-tips"
+      ]
     },
     {
       "captureSha256": "8b57d96793e50623d6a0f84a61a17240d05e12bdf1d43b7ddacee1e7e41397eb",
       "key": "archive-author-dpbowman-page-7",
       "cardKeys": [
         "post-krakow-nightclubs",
-        "post-krakow-techno-clubs"
+        "post-krakow-techno-clubs",
+        "post-krakow-free-activities-2"
       ]
     },
     {
@@ -309,7 +331,10 @@
     {
       "captureSha256": "26b4512b7b1bca1811c5746c2d1529f82b10766e12e74d357cb40d8a06d7456c",
       "key": "archive-category-krakow-guides-page-2",
-      "cardKeys": []
+      "cardKeys": [
+        "post-krakow-budget-activities",
+        "post-krakow-free-activities-2"
+      ]
     },
     {
       "captureSha256": "256dc6ac892184da4dc1d15003b0fbeeca5ae6679a020e6f8c69567d9649afb4",
@@ -355,7 +380,8 @@
       "cardKeys": [
         "post-is-krakow-safe-for-stag",
         "post-hostel-etiquette-tips",
-        "post-wheres-the-cheap-places-to-drink-in-krakow"
+        "post-wheres-the-cheap-places-to-drink-in-krakow",
+        "post-krakow-money-saving-tips"
       ]
     },
     {
@@ -377,6 +403,7 @@
       "cardKeys": [
         "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
         "post-krakow-safety-guide",
+        "post-krakow-budget-activities",
         "post-krakow-techno-clubs",
         "post-best-drinking-games",
         "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -386,6 +413,7 @@
         "post-krakow-techno-clubs-2",
         "post-is-krakow-safe-for-stag",
         "post-hostel-etiquette-tips",
+        "post-krakow-free-activities-2",
         "post-2020-krakow-nightlife-guide",
         "post-stages-of-drunkenness",
         "post-stag-pranks",
@@ -395,6 +423,7 @@
         "post-krakow-live-music",
         "post-irish-bars-krakow",
         "post-wheres-the-cheap-places-to-drink-in-krakow",
+        "post-krakow-money-saving-tips",
         "post-krakow-nightclubs",
         "post-party-krakow",
         "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",

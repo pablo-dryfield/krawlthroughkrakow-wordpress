@@ -6,7 +6,7 @@ Updated: 2026-11-14 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 ## Where We Are
 
-**Current work:** 40 website staging deliveries are cache-verified and unpromoted. The homepage now downloads a 932-byte exact-glyph social font instead of the 78 KB original for its current icons, while retaining the full fallback. Original artwork and layout are unchanged. Mobile speed, remaining article reviews and booking-measurement reconciliation still need work; this is not 40 completed workstreams. Production, commerce and consent are unchanged.
+**Current work:** 40 website staging deliveries are cache-verified and unpromoted. The free-activities, budget-activities and money-saving guides are now being revised locally: current visitor and transport references, distinct page purposes and nine matching summaries. This batch is not yet deployed. Mobile speed, remaining article reviews and booking-measurement reconciliation still need work; this is not 40 completed workstreams. Production, commerce and consent are unchanged.
 
 **Verified foundation milestones:** 7. **Website production releases in this plan:** 1. Read each delivery scope: an isolated functional hotfix does not promote the staged SEO batches. The original website migration is a separate completed project. Separately authorized OmniLodge reporting has its own release status.
 
@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 40 |
-| In progress | 1 |
+| In progress | 2 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Free activities and practical budget travel](budget-travel-guides-2026-11-14/README.md) | C08, T01, T06, T08, D03, D05, T10 | In progress (website) | Not yet | Required CI, guarded staging release and origin/normal/warmed verification. No new production, commerce or consent change; incomplete/manual accessibility checks remain. |
 | [Lighter social icons with the original appearance](homepage-loading-2026-11-14/README.md) | D01, D02, D03, T10 | Verified on staging (website) | 2026-11-14 | The original SVG remains the main mobile loading bottleneck. Other page templates, manual accessibility, owner review and separate production approval remain; lab observations are not field CWV or a guaranteed speed uplift. |
 | [Booking funnel: verified mappings and remaining gaps](booking-measurement-2026-11-14/README.md) | M03, D04, C09 | In progress (website) | Not yet | Approved aggregate paid-revenue reconciliation, provider receipt and a reviewed decision on missing article/GA4 coverage. This audit is not a deployment, completed funnel, consent fix or new OmniLodge authorization. |
 | [KTK games and preserved PDF resources](games-resource-guidance-2026-11-14/README.md) | C09, C08, D03, T07, T08 | Verified on staging (website) | 2026-11-14 | Owner review, PDF/search-to-booking contribution, remaining article facts, manual accessibility and separate production approval. No PDF overwrite, whole-page pixel, commerce or consent claim. |
