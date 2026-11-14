@@ -7,7 +7,10 @@ import {getProductContent} from '../staging/wp-content/plugins/ktk-storefront/fr
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const out='docs/seo/staging-public-html-2026-11-12';
-const input=JSON.parse(await readFile(out+'/public-inputs.json','utf8'));
+const inputFlag=process.argv.indexOf('--input');
+if(inputFlag!==-1&&(!process.argv[inputFlag+1]||process.argv[inputFlag+1].startsWith('--')))throw Error('Explicit public fixture input required');
+const inputFile=inputFlag===-1?out+'/public-inputs.json':process.argv[inputFlag+1];
+const input=JSON.parse(await readFile(inputFile,'utf8'));
 const base=process.argv[2]||'http://127.0.0.1:5182/store2/';
 const baseline=process.argv[3]||'http://127.0.0.1:5183/store2/';
 const label=process.argv[4]||'local';
@@ -15,7 +18,7 @@ const output=`${out}/${label}.json`;
 try{await readFile(output);throw new Error('Preserve earlier browser report; select another label');}catch(error){if(error.code!=='ENOENT')throw error;}
 await mkdir(out,{recursive:true});
 const payloadChecksums=JSON.parse(execFileSync('python',['tools/publish-storefront-staging.py','--manifest'],{encoding:'utf8'}));
-const report={checkedAt:new Date().toISOString(),base,baseline,payloadChecksums,checks:[],errors:[],realMutations:0,visuals:[]};
+const report={checkedAt:new Date().toISOString(),base,baseline,inputFile,payloadChecksums,checks:[],errors:[],realMutations:0,visuals:[]};
 const check=(name,pass,detail)=>report.checks.push({name,pass:!!pass,detail});
 const browser=await chromium.launch({channel:'chrome',headless:true});
 const tiny=Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+a3ioAAAAASUVORK5CYII=','base64');

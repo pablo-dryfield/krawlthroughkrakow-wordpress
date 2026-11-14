@@ -354,6 +354,8 @@ function QuantitySelect({
   onChange,
   label,
   field,
+  invalid = false,
+  describedBy,
 }) {
   const safeMin = Math.max(0, Math.trunc(numeric(min)));
   const safeMax = Math.max(safeMin, Math.trunc(numeric(max, safeMin)));
@@ -371,6 +373,8 @@ function QuantitySelect({
       onChange={(quantity) => onChange(numeric(quantity))}
       label={label}
       field={field}
+      invalid={invalid}
+      describedBy={describedBy}
     />
   );
 }
@@ -391,6 +395,7 @@ function DatePicker({
     return new Date(initial.getFullYear(), initial.getMonth(), 1);
   });
   const rootRef = useRef(null);
+  const triggerRef = useRef(null);
   const selectedDate = value ? dateFromKey(value) : null;
   const firstWeekday = (visibleMonth.getDay() + 6) % 7;
   const daysInMonth = new Date(
@@ -415,7 +420,10 @@ function DatePicker({
       if (!rootRef.current?.contains(event.target)) setOpen(false);
     };
     const closeOnEscape = (event) => {
-      if (event.key === 'Escape') setOpen(false);
+      if (event.key === 'Escape') {
+        setOpen(false);
+        triggerRef.current?.focus();
+      }
     };
     document.addEventListener('pointerdown', closeOnOutsidePress);
     document.addEventListener('keydown', closeOnEscape);
@@ -437,6 +445,7 @@ function DatePicker({
     <div className="ktk-date-picker" ref={rootRef}>
       <button
         className={`ktk-date-picker__trigger${open ? ' is-open' : ''}`}
+        ref={triggerRef}
         type="button"
         data-config-field="date"
         aria-haspopup="dialog"
@@ -509,10 +518,12 @@ function DatePicker({
                     if (unavailable) {
                       onUnavailableDate(availability);
                       setOpen(false);
+                      triggerRef.current?.focus();
                       return;
                     }
                     onChange(key);
                     setOpen(false);
+                    triggerRef.current?.focus();
                   }}
                 >
                   {day}
@@ -569,6 +580,7 @@ export default function ProductConfigurator({
   );
   const [addonVariantError, setAddonVariantError] = useState(null);
   const [availabilityMessage, setAvailabilityMessage] = useState('');
+  const [participantError, setParticipantError] = useState('');
   const [activeAddonInfo, setActiveAddonInfo] = useState(null);
   const configuratorRef = useRef(null);
   const addonInfoCloseRef = useRef(null);
@@ -577,6 +589,8 @@ export default function ProductConfigurator({
   const totalParticipants = config.participantMode === 'gender_split'
     ? men + women
     : participants;
+  const minimumParticipants = Math.max(1, numeric(config.minParticipants, 1));
+  const participantErrorId = `ktk-participants-error-${product.id}`;
   const resolvedExperienceTime = config.timeMode === 'fixed'
     ? config.defaultStartTime
     : time;
@@ -779,6 +793,7 @@ export default function ProductConfigurator({
   };
 
   const updateParticipants = (participantType, previousValue, nextValue, setter) => {
+    setParticipantError('');
     setter(nextValue);
     onJourneyEvent('participant_changed', {
       productId: product.id,
@@ -790,8 +805,8 @@ export default function ProductConfigurator({
   };
 
   const validate = () => {
-    if (totalParticipants < numeric(config.minParticipants, 1)) {
-      return { field: 'participants', message: `Choose at least ${numeric(config.minParticipants, 1)} participant(s).` };
+    if (totalParticipants < minimumParticipants) {
+      return { field: 'participants', message: `Choose at least ${minimumParticipants} participant(s).` };
     }
     if (totalParticipants > numeric(config.maxParticipants, 50)) {
       return { field: 'participants', message: `This booking supports up to ${numeric(config.maxParticipants, 50)} participants.` };
@@ -832,6 +847,7 @@ export default function ProductConfigurator({
 
   const submit = () => {
     const validationError = validate();
+    setParticipantError(validationError?.field === 'participants' ? validationError.message : '');
     if (validationError) {
       setAvailabilityMessage(validationError.field === 'date' ? validationError.message : '');
       setAddonVariantError(validationError.addonId ?? null);
@@ -901,6 +917,8 @@ export default function ProductConfigurator({
             onChange={(value) => updateParticipants('men', men, value, setMen)}
             label="Number of men"
             field="participants"
+            invalid={Boolean(participantError)}
+            describedBy={participantError ? participantErrorId : undefined}
           />
         </label>
         <label>
@@ -911,6 +929,8 @@ export default function ProductConfigurator({
             onChange={(value) => updateParticipants('women', women, value, setWomen)}
             label="Number of women"
             field="participants"
+            invalid={Boolean(participantError)}
+            describedBy={participantError ? participantErrorId : undefined}
           />
         </label>
       </div>
@@ -927,6 +947,8 @@ export default function ProductConfigurator({
           onChange={(value) => updateParticipants('participants', participants, value, setParticipants)}
           label="participants"
           field="participants"
+          invalid={Boolean(participantError)}
+          describedBy={participantError ? participantErrorId : undefined}
         />
       </div>
     )),
@@ -1197,6 +1219,11 @@ export default function ProductConfigurator({
       {sectionOrder.map((section) => (
         <React.Fragment key={section}>
           {sectionRenderers[section]?.()}
+          {section === 'group_size' && participantError && (
+            <small className="ktk-field-error" id={participantErrorId} role="alert">
+              {participantError}
+            </small>
+          )}
         </React.Fragment>
       ))}
 
