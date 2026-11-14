@@ -1,8 +1,8 @@
 # Reviewed Article Summaries
 
 Status: staging cache-verified. Application `f0a05d10b9c167a2134f2c03798b1f2837513f09`
-is unchanged after its one guarded upload. Final QA/documentation CI and PR49
-merge/cleanup remain; no further application upload or purge is needed.
+is unchanged after its one guarded upload. Required-check and exact-tree merge
+records are tracked in PR49; no further application upload or purge is needed.
 
 ## Scope And Backup
 
@@ -213,3 +213,7 @@ unchanged. All finite publishers/builders/verifiers/browser suites are closed;
 the two local root previews remain available for continuing work. Final Git/CI
 records may change, but the deployed application must remain byte-exact to the
 reviewed application commit. Do not reupload or repurge for documentation.
+
+The final QA source commit `28dfc7439064860b9949144087eeb3e03f7d11be` passed both
+required jobs in CI `43583536397`. Subsequent documentation-only checks and the
+exact-tree merge record are retained on PR49; they are not another deployment.
