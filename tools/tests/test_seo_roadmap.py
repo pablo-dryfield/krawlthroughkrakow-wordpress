@@ -19,7 +19,7 @@ class RoadmapTests(unittest.TestCase):
         result=module.render(self.data,self.plan)
         self.assertIn('| Total | 40 |',result)
         self.assertIn('not a time-based percentage',result)
-        self.assertIn('**Website SEO production releases:** '+str(self.data['websiteProductionReleases']),result)
+        self.assertIn('**Website production releases in this plan:** '+str(self.data['websiteProductionReleases']),result)
         self.assertIn('D08',result)
 
     def test_missing_unknown_ticket_or_status_fails(self):
@@ -74,7 +74,7 @@ class RoadmapTests(unittest.TestCase):
         result=module.build_model(data,self.plan)
         self.assertEqual(result['counts']['complete'],sum(row['status']=='live_verified' for row in data['tickets'].values()))
         self.assertEqual(result['websiteProductionReleases'],1)
-        self.assertIn('**Website SEO production releases:** 1',module.render(data,self.plan))
+        self.assertIn('**Website production releases in this plan:** 1',module.render(data,self.plan))
         for invalid in (-1,True,'1'):
             data['websiteProductionReleases']=invalid
             with self.assertRaises(ValueError): module.build_model(data,self.plan)
@@ -135,7 +135,7 @@ class RoadmapTests(unittest.TestCase):
             elif change=='future': row['verifiedOn']='2099-01-01'
             elif change=='unfinished_date': row['stage']='in_progress'
             elif change=='environment': row['environment']='omnilodge'
-            elif change=='live_website': row['stage']='live_verified'
+            elif change=='live_website': row['stage']='live_verified';data['websiteProductionReleases']=0
             else: row['complete']=True
             with self.subTest(change=change),self.assertRaises(ValueError): module.build_model(data,self.plan)
 

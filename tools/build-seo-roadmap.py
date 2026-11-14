@@ -90,7 +90,7 @@ def render(data, plan):
              '**Visual dashboard:** [Open ROADMAP.html](ROADMAP.html). The HTML and this Markdown view use the same maintained source.','',
              '## Where We Are','',
              '**Current work:** '+data['current']+'.','',
-             f'**Verified foundation milestones:** {completed}. **Website SEO production releases:** {releases}. The original website migration is a separate completed project, not counted as SEO implementation. Separately authorized OmniLodge reporting has its own release status.','',
+             f'**Verified foundation milestones:** {completed}. **Website production releases in this plan:** {releases}. Read each delivery scope: an isolated functional hotfix does not promote the staged SEO batches. The original website migration is a separate completed project. Separately authorized OmniLodge reporting has its own release status.','',
              '## Delivery Progress', '',
              'These are scoped batches, not completed whole workstreams. A verified staging batch can still need owner review and production approval. OmniLodge live delivery is separate from website production.', '',
              '| Delivery Stage | Batches |', '| --- | ---: |']
@@ -116,7 +116,7 @@ def render(data, plan):
     lines += ['', '## Evidence','',
               '- [Dated search baseline and query/device/market coverage](search-baseline-2026-11-12/README.md).','- [Stored Google indexing inspections and limitations](indexing-review-2026-11-13/README.md).','- [All 56 article triage decisions](article-triage-2026-11-13/README.md).',
               '- [Eight-page metadata pilot](staging-metadata-pilot-2026-11-12/README.md).','- [Expanded descriptions: 76 covered, one hold](staging-descriptions-2026-11-12/README.md).','- [Public storefront HTML and progressive handoff](staging-public-html-2026-11-12/README.md).','- [Discovery and staging indexing guard](staging-discovery-2026-11-12/README.md).','- [All 24 catalog decisions and preview expansion](staging-catalog-review-2026-11-12/README.md).','- [Heading hierarchy and reviewed links](staging-headings-links-2026-11-12/README.md).','- [Structured data and original-content guards](staging-schema-2026-11-12/README.md).','- [Performance measurements and photo loading](staging-performance-2026-11-12/README.md).','- [OmniLodge reporting delivery and real-account checks](omnilodge-reporting-2026-11-12/README.md).','',
-              ('The production website is unchanged by this staging SEO program. ' if releases == 0 else 'Website SEO production releases are recorded separately from OmniLodge reporting. ') + 'GitHub stores reviewed source and runs checks; website deployment remains manual.']
+              ('The production website is unchanged by this staging SEO program. ' if releases == 0 else 'Only separately approved website release scopes are live; this does not promote the remaining staged SEO batches. ') + 'GitHub stores reviewed source and runs checks; website deployment remains manual.']
     return '\n'.join(lines)+'\n'
 
 
