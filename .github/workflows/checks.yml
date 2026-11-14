@@ -58,6 +58,8 @@ jobs:
         run: node --test tools/tests/test_group_activities_editorial.mjs
       - name: Stag costume source contracts
         run: node --test tools/tests/test_stag_costume_editorial.mjs
+      - name: Practical party-guide source contracts
+        run: node --test tools/tests/test_practical_guides_editorial.mjs
       - name: PHP syntax and isolated integration contracts
         run: |
           php --version

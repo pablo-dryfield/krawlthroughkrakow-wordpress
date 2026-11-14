@@ -7,6 +7,21 @@
 }
 /* END Memorial visitor guide */
 
+/* BEGIN Practical party guides */
+body.ktk-code-page:is([data-ktk-page="post-stag-pranks"],[data-ktk-page="post-hostel-etiquette-tips"],[data-ktk-page="post-the-ultimate-guide-to-dating-in-nightlife-krakow"]) #main-content [data-ktk-practical-review] { font-size: 16px; line-height: 1.65; letter-spacing: 0; }
+body.ktk-code-page:is([data-ktk-page="post-stag-pranks"],[data-ktk-page="post-hostel-etiquette-tips"],[data-ktk-page="post-the-ultimate-guide-to-dating-in-nightlife-krakow"]) #main-content [data-ktk-practical-review] :is(h2,h3,h4) { font-family: inherit; font-weight: 700; line-height: 1.35; letter-spacing: 0; margin: 24px 0 12px; }
+body.ktk-code-page:is([data-ktk-page="post-stag-pranks"],[data-ktk-page="post-hostel-etiquette-tips"],[data-ktk-page="post-the-ultimate-guide-to-dating-in-nightlife-krakow"]) #main-content [data-ktk-practical-review] h2 { font-size: 22px; }
+body.ktk-code-page:is([data-ktk-page="post-stag-pranks"],[data-ktk-page="post-hostel-etiquette-tips"],[data-ktk-page="post-the-ultimate-guide-to-dating-in-nightlife-krakow"]) #main-content [data-ktk-practical-review] h3 { font-size: 18px; }
+body.ktk-code-page:is([data-ktk-page="post-stag-pranks"],[data-ktk-page="post-hostel-etiquette-tips"],[data-ktk-page="post-the-ultimate-guide-to-dating-in-nightlife-krakow"]) #main-content [data-ktk-practical-review] h4 { font-size: 16px; }
+body.ktk-code-page:is([data-ktk-page="post-stag-pranks"],[data-ktk-page="post-hostel-etiquette-tips"],[data-ktk-page="post-the-ultimate-guide-to-dating-in-nightlife-krakow"]) #main-content [data-ktk-practical-review] nav { margin: 1em 0; }
+body.ktk-code-page:is([data-ktk-page="post-stag-pranks"],[data-ktk-page="post-hostel-etiquette-tips"],[data-ktk-page="post-the-ultimate-guide-to-dating-in-nightlife-krakow"]) #main-content [data-ktk-practical-review] summary { cursor: pointer; min-height: 44px; padding: 8px 0; font-weight: 700; }
+body.ktk-code-page:is([data-ktk-page="post-stag-pranks"],[data-ktk-page="post-hostel-etiquette-tips"],[data-ktk-page="post-the-ultimate-guide-to-dating-in-nightlife-krakow"]) #main-content [data-ktk-practical-review] a { color: #c8006c; text-decoration: underline; text-underline-offset: .15em; }
+body.ktk-code-page:is([data-ktk-page="post-stag-pranks"],[data-ktk-page="post-hostel-etiquette-tips"],[data-ktk-page="post-the-ultimate-guide-to-dating-in-nightlife-krakow"]) #main-content [data-ktk-practical-review] :is(summary,a):focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+@media (max-width: 600px) {
+  body.ktk-code-page:is([data-ktk-page="post-stag-pranks"],[data-ktk-page="post-hostel-etiquette-tips"],[data-ktk-page="post-the-ultimate-guide-to-dating-in-nightlife-krakow"]) #main-content [data-ktk-practical-review] { padding-right: 24px; }
+}
+/* END Practical party guides */
+
 /* BEGIN Group activity clarity */
 body.ktk-code-page #main-content [data-ktk-group-activity-review] { text-align: left; }
 @media (max-width: 600px) {

@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-14T06:03:07.493Z",
+  "startedAt": "2026-11-14T06:50:45.872Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -1138,6 +1138,14 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "practical-guide-review",
+          "key": "post-hostel-etiquette-tips",
+          "reviewedOn": "2026-11-14",
+          "originalUniqueFragments": 19,
+          "removedDuplicateIds": 0,
+          "retainedOriginalPhotos": 5
         },
         {
           "type": "floating-booking-landmark"
@@ -3548,6 +3556,14 @@
           "id": ""
         },
         {
+          "type": "practical-guide-review",
+          "key": "post-stag-pranks",
+          "reviewedOn": "2026-11-14",
+          "originalUniqueFragments": 49,
+          "removedDuplicateIds": 6,
+          "retainedOriginalPhotos": 6
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -3673,6 +3689,14 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "practical-guide-review",
+          "key": "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+          "reviewedOn": "2026-11-14",
+          "originalUniqueFragments": 0,
+          "removedDuplicateIds": 0,
+          "retainedOriginalPhotos": 5
         },
         {
           "type": "floating-booking-landmark"
@@ -9012,5 +9036,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-14T06:04:03.782Z"
+  "finishedAt": "2026-11-14T06:51:44.067Z"
 }

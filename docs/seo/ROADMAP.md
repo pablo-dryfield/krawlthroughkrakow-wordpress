@@ -6,7 +6,7 @@ Updated: 2026-11-14 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 ## Where We Are
 
-**Current work:** 33 website staging deliveries are verified and unpromoted. Seven group-activity modules now have quote-specific inclusions and practical precautions, with mobile text clearance and the karting button repaired. Continuing the remaining activity and advice-article reviews; the separate production form repair and specialist/consent holds are unchanged.
+**Current work:** 33 website staging deliveries are verified and unpromoted. Reviewing the prank, hostel-etiquette and nightlife-dating guides together: practical choices, respectful boundaries and working contents links, while preserving original URLs, history and photographs. The separate production form repair and specialist/consent holds remain unchanged.
 
 **Verified foundation milestones:** 7. **Website production releases in this plan:** 1. Read each delivery scope: an isolated functional hotfix does not promote the staged SEO batches. The original website migration is a separate completed project. Separately authorized OmniLodge reporting has its own release status.
 
@@ -17,14 +17,15 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 33 |
-| In progress | 0 |
+| In progress | 1 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Practical prank, hostel and nightlife-dating guidance](respectful-guides-2026-11-14/README.md) | C08, D03, D05, T08 | In progress (website) | Not yet | CI, guarded staging publication and normal/warmed cached-device verification. Unverified prank products, the medical hold, manual accessibility, owner review and production approval remain separate. |
 | [Honest group-activity inclusions and practical precautions](group-activities-2026-11-14/README.md) | C06, D03, D05 | Verified on staging (website) | 2026-11-14 | Remaining activity and advice-article facts, owner review, manual accessibility and separate production approval. Operational meeting confirmation and actual inbox assurance remain pending; no whole-page pixel or safety guarantee. |
 | [Clear email replies and individual group quotes](enquiry-policy-2026-11-14/README.md) | C06, D06 | Verified on staging (website) | 2026-11-14 | Owner review and separate production approval, actual inbox assurance, manual accessibility and older activity claims. No fixed reply-time, group minimum or deposit amount is promised. |
-| [Production form endpoint-only repair](production-form-hotfix-2026-11-14/README.md) | D06 | Verified live (website) | 2026-11-14 | Owner inbox assurance, spam/manual checks and approval for the broader staged form UI. The32 SEO/site batches remain staging-only; no messages, orders or consent settings changed in testing. |
+| [Production form endpoint-only repair](production-form-hotfix-2026-11-14/README.md) | D06 | Verified live (website) | 2026-11-14 | Owner inbox assurance, spam/manual checks and approval for the broader staged form UI. All broader SEO/site changes remain staging-only; no messages, orders or consent settings changed in testing. |
 | [Practical stag costume guidance](stag-costume-2026-11-14/README.md) | C06, C08, D03, D05 | Verified on staging (website) | 2026-11-14 | Owner review, related advice/activity-package work and separate production approval. No admission, whole-page pixel-identity or full accessibility guarantee; incomplete/manual checks remain. |
 | [Stag, hen and student-trip planning](group-planning-2026-11-14/README.md) | C06, D05, D06 | Verified on staging (website) | 2026-11-14 | Individual-quote policy is now separately staging-verified. Review older activity packages and safety advice, assure actual mail delivery and obtain production approval; no fixed minima/deposits/reply-time promise. |
 | [Established NYE city-guide refresh](nye-content-review-2026-11-13/ESTABLISHED-GUIDE.md) | C02, C08, D05 | Verified on staging (website) | 2026-11-14 | Owner review, remaining campaign/article work and separate production approval. No new event, checkout availability or original whole-page pixel identity is promised. |
