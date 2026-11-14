@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 44 |
-| In progress | 1 |
+| In progress | 2 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Source-backed weather and winter planning](weather-winter-guides-2026-11-14/README.md) | C08, C02, G01, T01, T06, T08, D03, D05, T10 | In progress (website) | Not yet | Finish fresh shared suites, required CI, guarded content plus data-only discovery staging releases and origin/normal/warmed verification.44 verified batches and article counts do not increase for local work. Production, commerce, consent, active competition and specialist hold remain unchanged. |
 | [Distinct karting planning and first-visit guides](karting-guides-2026-11-14/README.md) | C08, C06, T01, T06, T08, D03, T10 | Verified on staging (website) | 2026-11-14 | Remaining article and operator facts, manual accessibility, owner review and separate production approval. No private-track, whole-page pixel, commerce or consent guarantee. The active competition and specialist hold are unchanged. |
 | [Booking selection and keyboard recovery](booking-friction-2026-11-14/README.md) | D04, D03, T10 | Verified on staging (website) | 2026-11-14 | Broader invalid-code, weekday-eligibility, payment/paid-state, manual accessibility and consented journey review remain separate; synthetic fixtures do not certify backend charges or provider receipt. Owner review and production approval remain. No monetary, availability, discount, cart/payment, backend or consent change. |
 | [Useful city logistics and a flexible Krakow weekend](city-trip-guides-2026-11-14/README.md) | C08, T01, T06, T08, D03, D05, T10 | Verified on staging (website) | 2026-11-14 | Remaining article facts, manual accessibility, owner review and separate production approval. Four link-only articles do not count as substantive fact reviews. M03 still lacks article-to-cart history/provider reconciliation. No production, commerce, consent, active-competition or specialist-hold change. |

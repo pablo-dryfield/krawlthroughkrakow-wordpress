@@ -44,6 +44,17 @@ test('product44 tracking follows consent transitions without changing the bookin
  f.window.KTK_ANALYTICS_CONSENT=false;f.click();assert.equal(f.events().length,1);assert.equal(new URL(f.anchor.href).pathname,'/staging/store2/polish-vodka-tasting-44/');
 });
 
+test('our Food Tour48 links preserve attribution, consent transitions and singular initialization',()=>{
+ for(const prefix of ['/staging','']){
+  const f=fixture(prefix+'/store2/food-tour-krakow-48/#book',{consent:false});
+  vm.runInContext(bootstrap,f.context);assert.equal(f.handlers.length,1);f.click();assert.deepEqual(f.events(),[]);
+  assert.equal(new URL(f.anchor.href).searchParams.get('utm_source'),'partner');assert.equal(new URL(f.anchor.href).hash,'#book');
+  f.window.KTK_ANALYTICS_CONSENT=true;f.click();
+  assert.deepEqual(f.events(),[{event:'ktk_page_booking_click',page:'krakow-stag-do',product_id:48,cta_position:'content'}]);
+  f.window.KTK_ANALYTICS_CONSENT=false;f.click();assert.equal(f.events().length,1);
+ }
+});
+
 test('inherited object properties cannot become public product events',()=>{
  for(const slug of ['constructor','toString','__proto__','hasOwnProperty','inherited-44']){
   const f=fixture('/staging/store2/'+slug+'/');

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "status": "source-checked",
+  "checkedOn": "2026-11-14",
+  "source": "https://klimat.imgw.pl/pl/climate-normals/",
+  "provider": "IMGW-PIB",
+  "station": {"name": "KRAKOW", "code": "12566"},
+  "period": "1991-2020",
+  "parameter": "TSR_AVE",
+  "meaning": "Mean daily air temperature averaged over each calendar month in the normal period; not a daytime maximum or a travel-date forecast",
+  "unit": "Celsius",
+  "monthlyMeans": {
+    "january": "-1.6",
+    "february": "-0.2",
+    "march": "3.5",
+    "april": "9.3",
+    "may": "14.0",
+    "june": "17.6",
+    "july": "19.3",
+    "august": "18.9",
+    "september": "13.9",
+    "october": "8.8",
+    "november": "3.8",
+    "december": "-0.5"
+  }
+}
