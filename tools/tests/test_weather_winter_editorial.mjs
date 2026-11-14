@@ -60,7 +60,7 @@ test('unreviewed weather/winter identities are rejected before DOM access', asyn
 });
 
 test('all previous31 identities and120 summaries remain frozen while eight new cards are explicit', async () => {
-  const raw = JSON.parse(await readFile(new URL('../reviewed-article-presentation.json', import.meta.url), 'utf8')), later = ['post-best-places-to-eat', 'post-krakow-food-truck-parks', 'post-krakow-milkbars'];
+  const raw = JSON.parse(await readFile(new URL('../reviewed-article-presentation.json', import.meta.url), 'utf8')), later = ['post-best-places-to-eat', 'post-krakow-food-truck-parks', 'post-krakow-milkbars','post-sports-bar-krakow','post-krakow-wine-bars','post-karaoke-bars-in-krakow'];
   const d = {...raw, articles: raw.articles.filter(a => !later.includes(a.key)), containers: raw.containers.map(c => ({...c, cardKeys: c.cardKeys.filter(k => !later.includes(k))}))}, keys = ['post-krakow-weather-guide', 'post-krakow-winter-activities'];
   const inverse = {...d, articles: d.articles.filter(a => !keys.includes(a.key)), containers: d.containers.map(c => ({...c, cardKeys: c.cardKeys.filter(k => !keys.includes(k))}))};
   assert.equal(inverse.articles.length, 31); assert.equal(inverse.containers.reduce((n, c) => n + c.cardKeys.length, 0), 120);
