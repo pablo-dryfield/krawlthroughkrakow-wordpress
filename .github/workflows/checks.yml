@@ -50,6 +50,8 @@ jobs:
         run: node --test tools/tests/test_contact_details.mjs
       - name: Read-only query and landing-page reporting contracts
         run: node --test tools/tests/test_search_query_landing_cohorts.mjs
+      - name: Established NYE guide source contracts
+        run: node --test tools/tests/test_established_nye_editorial.mjs
       - name: PHP syntax and isolated integration contracts
         run: |
           php --version
