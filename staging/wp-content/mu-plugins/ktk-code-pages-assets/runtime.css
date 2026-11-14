@@ -7,6 +7,13 @@
 }
 /* END Memorial visitor guide */
 
+/* BEGIN Established NYE guide */
+@media (max-width: 600px) {
+  body.ktk-code-page[data-ktk-page="post-krakow-new-years-eve"] #main-content [data-ktk-established-nye-review] { padding-right: 24px; }
+}
+body.ktk-code-page[data-ktk-page="post-krakow-new-years-eve"] #main-content [data-ktk-established-nye-review] a { color: #c8006c; text-decoration: underline; text-underline-offset: .15em; }
+/* END Established NYE guide */
+
 /* BEGIN Contact details */
 body.ktk-code-page[data-ktk-page="contact"] [data-ktk-contact-map] > iframe { width: 100%; max-width: 100%; height: auto; aspect-ratio: 4 / 3; }
 body.ktk-code-page[data-ktk-page="contact"] [data-ktk-contact-map] > iframe[src="about:blank"] { display: none; }

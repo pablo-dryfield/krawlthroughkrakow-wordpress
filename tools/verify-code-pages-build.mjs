@@ -17,6 +17,7 @@ import {loadMemorialEditorial,reviseMemorialEditorial} from './memorial-editoria
 import {codePageTitle,codePageHeadDescription,loadSharingImagePolicy,buildCodePageSharing} from './code-page-sharing.mjs';
 import {loadOfferPageRevisions,reviseOfferPages} from './offer-pages-editorial.mjs';
 import {loadContactDetails,reviseContactDetails} from './contact-details-editorial.mjs';
+import {loadEstablishedNyeEditorial,reviseEstablishedNyeEditorial} from './established-nye-editorial.mjs';
 import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
@@ -30,6 +31,7 @@ const venueRevisions=await loadVenueEditorial();
 const memorialRevision=await loadMemorialEditorial();
 const offerPageRevisions=await loadOfferPageRevisions();
 const contactDetails=await loadContactDetails();
+const establishedNye=await loadEstablishedNyeEditorial();
 const campaignFacts=campaignTemplateValues(await loadOfferFacts());
 const imageReview=JSON.parse(await readFile('tools/content-image-descriptions.json','utf8'));
 const sharingImage=await loadSharingImagePolicy({expectedManifestSha256:imageReview.assetManifestSha256});
@@ -44,6 +46,7 @@ async function facts(html,revision){
  await page.setContent(html);
  if(revision){
   await page.evaluate(reviseCodePageContent,{key:revision.key,reviewCounts,campaignFacts});
+  await page.evaluate(reviseEstablishedNyeEditorial,{key:revision.key,revision:establishedNye});
   await page.evaluate(reviseNightlifeEditorial,{key:revision.key,revision:nightlifeRevision});
   await page.evaluate(reviseBudgetEditorial,{key:revision.key,revision:budgetRevision});
   await page.evaluate(reviseJazzEditorial,{key:revision.key,revision:jazzRevision});
