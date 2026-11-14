@@ -7,6 +7,21 @@
 }
 /* END Memorial visitor guide */
 
+/* BEGIN Nightlife choice guides */
+body.ktk-code-page:is([data-ktk-page="post-sports-bar-krakow"],[data-ktk-page="post-krakow-wine-bars"],[data-ktk-page="post-karaoke-bars-in-krakow"]) #main-content .entry-content[data-ktk-nightlife-choice-review] { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
+body.ktk-code-page:is([data-ktk-page="post-sports-bar-krakow"],[data-ktk-page="post-krakow-wine-bars"],[data-ktk-page="post-karaoke-bars-in-krakow"]) #main-content .entry-content[data-ktk-nightlife-choice-review] p { font-size: 16px; line-height: 1.65; }
+body.ktk-code-page:is([data-ktk-page="post-sports-bar-krakow"],[data-ktk-page="post-krakow-wine-bars"],[data-ktk-page="post-karaoke-bars-in-krakow"]) #main-content .entry-content[data-ktk-nightlife-choice-review] :is(h2,h3) { font-family: inherit; font-weight: 700; line-height: 1.35; letter-spacing: 0; margin: 24px 0 12px; }
+body.ktk-code-page:is([data-ktk-page="post-sports-bar-krakow"],[data-ktk-page="post-krakow-wine-bars"],[data-ktk-page="post-karaoke-bars-in-krakow"]) #main-content .entry-content[data-ktk-nightlife-choice-review] h2 { font-size: 22px; }
+body.ktk-code-page:is([data-ktk-page="post-sports-bar-krakow"],[data-ktk-page="post-krakow-wine-bars"],[data-ktk-page="post-karaoke-bars-in-krakow"]) #main-content .entry-content[data-ktk-nightlife-choice-review] h3 { font-size: 18px; }
+body.ktk-code-page:is([data-ktk-page="post-sports-bar-krakow"],[data-ktk-page="post-krakow-wine-bars"],[data-ktk-page="post-karaoke-bars-in-krakow"]) #main-content .entry-content[data-ktk-nightlife-choice-review] nav { margin: 1em 0; }
+body.ktk-code-page:is([data-ktk-page="post-sports-bar-krakow"],[data-ktk-page="post-krakow-wine-bars"],[data-ktk-page="post-karaoke-bars-in-krakow"]) #main-content .entry-content[data-ktk-nightlife-choice-review] summary { cursor: pointer; min-height: 44px; padding: 8px 0; font-weight: 700; }
+body.ktk-code-page:is([data-ktk-page="post-sports-bar-krakow"],[data-ktk-page="post-krakow-wine-bars"],[data-ktk-page="post-karaoke-bars-in-krakow"]) #main-content .entry-content[data-ktk-nightlife-choice-review] a { color: #c8006c !important; text-decoration: underline; text-underline-offset: .15em; }
+body.ktk-code-page:is([data-ktk-page="post-sports-bar-krakow"],[data-ktk-page="post-krakow-wine-bars"],[data-ktk-page="post-karaoke-bars-in-krakow"]) #main-content .entry-content[data-ktk-nightlife-choice-review] :is(summary,a):focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+@media (max-width: 600px) {
+  body.ktk-code-page:is([data-ktk-page="post-sports-bar-krakow"],[data-ktk-page="post-krakow-wine-bars"],[data-ktk-page="post-karaoke-bars-in-krakow"]) #main-content .entry-content[data-ktk-nightlife-choice-review] { padding-right: 24px; }
+}
+/* END Nightlife choice guides */
+
 /* BEGIN Practical food guides */
 body.ktk-code-page:is([data-ktk-page="post-best-places-to-eat"],[data-ktk-page="post-krakow-food-truck-parks"],[data-ktk-page="post-krakow-milkbars"]) #main-content .entry-content[data-ktk-food-review], body.ktk-code-page:is([data-ktk-page="post-best-places-to-eat"],[data-ktk-page="post-krakow-food-truck-parks"],[data-ktk-page="post-krakow-milkbars"]) #main-content .entry-content[data-ktk-food-review] .et_pb_text_inner { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
 body.ktk-code-page:is([data-ktk-page="post-best-places-to-eat"],[data-ktk-page="post-krakow-food-truck-parks"],[data-ktk-page="post-krakow-milkbars"]) #main-content .entry-content[data-ktk-food-review] p { font-size: 16px; line-height: 1.65; }

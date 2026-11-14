@@ -220,6 +220,24 @@
       "postId": 6172,
       "route": "/krakow-milkbars/",
       "summary": "Compare Krakow milk-bar choices, Polish lunch options and practical ordering tips, with sourced history and branch information."
+    },
+    {
+      "key": "post-sports-bar-krakow",
+      "postId": 6331,
+      "route": "/sports-bar-krakow/",
+      "summary": "Compare Krakow sports-bar choices and confirm the match, commentary and seating with each operator. Plan the rest of your evening without treating an old venue list as a live screening schedule."
+    },
+    {
+      "key": "post-krakow-wine-bars",
+      "postId": 6110,
+      "route": "/krakow-wine-bars/",
+      "summary": "Choose a Krakow wine-bar, restaurant or tasting format using checked operator information. Compare current lists and booking arrangements, with cocktail alternatives kept distinct."
+    },
+    {
+      "key": "post-karaoke-bars-in-krakow",
+      "postId": 6159,
+      "route": "/karaoke-bars-in-krakow/",
+      "summary": "Compare public singalongs and private karaoke rooms in Krakow, with clear operator checks and practical group planning. Confirm the actual session before building the rest of your night around it."
     }
   ],
   "containers": [
@@ -247,6 +265,7 @@
       "key": "archive-category-krakow-nightlife",
       "cardKeys": [
         "post-krakow-bars-jewish-quarter",
+        "post-sports-bar-krakow",
         "post-krakow-nightclubs",
         "post-krakow-techno-clubs"
       ]
@@ -321,6 +340,7 @@
       "captureSha256": "33e25e5df750f5c669de5728b810e5729b75e3261ef292229223a8d0c9db00b3",
       "key": "archive-author-dpbowman-page-5",
       "cardKeys": [
+        "post-karaoke-bars-in-krakow",
         "post-krakow-food-truck-parks",
         "post-hostel-etiquette-tips",
         "post-wheres-the-cheap-places-to-drink-in-krakow",
@@ -331,6 +351,7 @@
       "captureSha256": "d6fe0d9912698f97c04022ef4c3db383678c11db6208c242e11b7422768e09ea",
       "key": "archive-author-dpbowman-page-6",
       "cardKeys": [
+        "post-sports-bar-krakow",
         "post-krakow-money-saving-tips",
         "post-krakow-go-karting"
       ]
@@ -348,6 +369,7 @@
       "captureSha256": "a3912dbcbcafb5eadae74d98f684f43b81ba94316d90a9160efdc894bad1805a",
       "key": "archive-author-dpbowman-page-8",
       "cardKeys": [
+        "post-krakow-wine-bars",
         "post-weekend-in-krakow",
         "post-best-places-to-eat",
         "post-party-krakow",
@@ -399,7 +421,9 @@
       "key": "archive-category-krakow-guides-page-2",
       "cardKeys": [
         "post-krakow-budget-activities",
+        "post-sports-bar-krakow",
         "post-krakow-free-activities-2",
+        "post-krakow-wine-bars",
         "post-weekend-in-krakow"
       ]
     },
@@ -450,6 +474,7 @@
       "key": "archive-category-uncategorized-page-3",
       "cardKeys": [
         "post-is-krakow-safe-for-stag",
+        "post-karaoke-bars-in-krakow",
         "post-krakow-food-truck-parks",
         "post-hostel-etiquette-tips",
         "post-wheres-the-cheap-places-to-drink-in-krakow",
@@ -493,6 +518,7 @@
         "post-krakow-winter-activities",
         "post-is-krakow-safe-for-stag",
         "post-hostel-etiquette-tips",
+        "post-sports-bar-krakow",
         "post-krakow-free-activities-2",
         "post-best-places-to-eat",
         "post-2020-krakow-nightlife-guide",
@@ -504,9 +530,11 @@
         "post-jazz-bars-in-krakow",
         "post-krakow-live-music",
         "post-irish-bars-krakow",
+        "post-karaoke-bars-in-krakow",
         "post-wheres-the-cheap-places-to-drink-in-krakow",
         "post-krakow-money-saving-tips",
         "post-krakow-nightclubs",
+        "post-krakow-wine-bars",
         "post-party-krakow",
         "post-krakow-weather-guide",
         "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
