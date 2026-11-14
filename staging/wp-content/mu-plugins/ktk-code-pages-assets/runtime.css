@@ -7,6 +7,22 @@
 }
 /* END Memorial visitor guide */
 
+/* BEGIN Weather and winter guides */
+body.ktk-code-page:is([data-ktk-page="post-krakow-weather-guide"],[data-ktk-page="post-krakow-winter-activities"]) #main-content .entry-content[data-ktk-weather-review], body.ktk-code-page:is([data-ktk-page="post-krakow-weather-guide"],[data-ktk-page="post-krakow-winter-activities"]) #main-content .entry-content[data-ktk-weather-review] .et_pb_text_inner { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
+body.ktk-code-page:is([data-ktk-page="post-krakow-weather-guide"],[data-ktk-page="post-krakow-winter-activities"]) #main-content .entry-content[data-ktk-weather-review] p { font-size: 16px; line-height: 1.65; }
+body.ktk-code-page:is([data-ktk-page="post-krakow-weather-guide"],[data-ktk-page="post-krakow-winter-activities"]) #main-content .entry-content[data-ktk-weather-review] :is(h2,h3) { font-family: inherit; font-weight: 700; line-height: 1.35; letter-spacing: 0; margin: 24px 0 12px; }
+body.ktk-code-page:is([data-ktk-page="post-krakow-weather-guide"],[data-ktk-page="post-krakow-winter-activities"]) #main-content .entry-content[data-ktk-weather-review] h2 { font-size: 22px; }
+body.ktk-code-page:is([data-ktk-page="post-krakow-weather-guide"],[data-ktk-page="post-krakow-winter-activities"]) #main-content .entry-content[data-ktk-weather-review] h3 { font-size: 18px; }
+body.ktk-code-page:is([data-ktk-page="post-krakow-weather-guide"],[data-ktk-page="post-krakow-winter-activities"]) #main-content .entry-content[data-ktk-weather-review] nav { margin: 1em 0; }
+body.ktk-code-page:is([data-ktk-page="post-krakow-weather-guide"],[data-ktk-page="post-krakow-winter-activities"]) #main-content .entry-content[data-ktk-weather-review] summary { cursor: pointer; min-height: 44px; padding: 8px 0; font-weight: 700; }
+body.ktk-code-page:is([data-ktk-page="post-krakow-weather-guide"],[data-ktk-page="post-krakow-winter-activities"]) #main-content .entry-content[data-ktk-weather-review] a { color: #c8006c !important; text-decoration: underline; text-underline-offset: .15em; }
+body.ktk-code-page:is([data-ktk-page="post-krakow-weather-guide"],[data-ktk-page="post-krakow-winter-activities"]) #main-content .entry-content[data-ktk-weather-review] :is(summary,a):focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+@media (max-width: 600px) {
+  body.ktk-code-page[data-ktk-page="post-krakow-weather-guide"] #main-content .entry-content[data-ktk-weather-review] .et_pb_text_inner { padding-right: 24px; }
+  body.ktk-code-page[data-ktk-page="post-krakow-winter-activities"] #main-content .entry-content[data-ktk-weather-review] { padding-right: 24px; }
+}
+/* END Weather and winter guides */
+
 /* BEGIN Practical karting guides */
 body.ktk-code-page:is([data-ktk-page="post-go-karting-krakow"],[data-ktk-page="post-krakow-go-karting"]) #main-content [data-ktk-karting-review] { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
 body.ktk-code-page:is([data-ktk-page="post-go-karting-krakow"],[data-ktk-page="post-krakow-go-karting"]) #main-content [data-ktk-karting-review] p { font-size: 16px; line-height: 1.65; }

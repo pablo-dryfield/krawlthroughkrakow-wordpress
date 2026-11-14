@@ -38,7 +38,8 @@ test('unknown karting identities fail before DOM access', async () => {
   for (const r of await loadKartingGuidesEditorial()) for (const revision of [null, {...r, key: 'other'}, {...r, version: 'unknown'}, {...r, sourceSha256: '0'.repeat(64)}, {...r, reviewedOn: '2027-01-01'}]) assert.throws(() => reviseKartingGuidesEditorial({key: r.key, revision}), /identity/);
 });
 test('original29 identities and114 summaries stay exactly frozen', async () => {
-  const data = JSON.parse(await readFile(new URL('../reviewed-article-presentation.json', import.meta.url), 'utf8')), keys = ['post-go-karting-krakow', 'post-krakow-go-karting'];
+  const raw = JSON.parse(await readFile(new URL('../reviewed-article-presentation.json', import.meta.url), 'utf8')), later = ['post-krakow-weather-guide', 'post-krakow-winter-activities'];
+  const data = {...raw, articles: raw.articles.filter(r => !later.includes(r.key)), containers: raw.containers.map(r => ({...r, cardKeys: r.cardKeys.filter(k => !later.includes(k))}))}, keys = ['post-go-karting-krakow', 'post-krakow-go-karting'];
   const inverse = {...data, articles: data.articles.filter(r => !keys.includes(r.key)), containers: data.containers.map(r => ({...r, cardKeys: r.cardKeys.filter(k => !keys.includes(k))}))};
   assert.equal(inverse.articles.length, 29); assert.equal(inverse.containers.reduce((n, c) => n + c.cardKeys.length, 0), 114);
   assert.equal(data.articles.length, 31); assert.equal(data.containers.reduce((n, c) => n + c.cardKeys.length, 0), 120);
