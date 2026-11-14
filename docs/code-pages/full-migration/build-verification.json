@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-13T23:43:42.919Z",
+  "checkedAt": "2026-11-14T00:42:09.076Z",
   "routes": 116,
   "passed": 2320,
   "total": 2320,
@@ -1643,8 +1643,8 @@
     "ktk-code-pages-assets/pages/testimonials.php": "3bb2519da704dd346b8e72c1fc77125a5a1799e135d3cdc9cdb0b885a9d43128",
     "ktk-code-pages-assets/pages/tour-service-disclaimer.php": "ef523d8002ee23246c47f83d07631eb2c8af28e48cb2dd350710bb03c0de5a50",
     "ktk-code-pages-assets/registry.php": "42b68c69de286f834e7fe4473e0ebd5df02cd279d310eab6e689e59441c25c5d",
-    "ktk-code-pages-assets/runtime.css": "2b7e052beedcb7186600a03dd174d31c6018b57e1b67c2c6822739c69a0e0040",
-    "ktk-code-pages-assets/runtime.js": "a592f35a02ac80f76c6db450ac39757225cf4621db715edc7877f4a6c80a7b07",
+    "ktk-code-pages-assets/runtime.css": "d9e1fe6dd1a21481f958f39a4da09b74fee270b1237566edb5bcfcb4fe9acb55",
+    "ktk-code-pages-assets/runtime.js": "8475c666e8bd842a93dc93868c82aa600997cdcec9e581c8fdd525661a1deafb",
     "ktk-code-pages-assets/shells/.htaccess": "b839261c1ee52349560b726218f0bc9cb1afee95e07e9d50f95919d5e8e6cdf2",
     "ktk-code-pages-assets/shells/00cb208f1a3e751e0e0e.html": "00cb208f1a3e751e0e0ec48852bfcecf159d44785dc0e90e135170f1824db35c",
     "ktk-code-pages-assets/shells/0c5706ee06ae7b293792.html": "0c5706ee06ae7b293792b330a2c7c20dc841fdd82ec8a6ed6f29d875147295d8",

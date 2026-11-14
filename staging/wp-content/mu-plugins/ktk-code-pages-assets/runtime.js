@@ -293,7 +293,7 @@
     update();const interval=setInterval(()=>{if(!timer.isConnected){clearInterval(interval);return;}update();},1000);
   });
 
-  document.querySelectorAll('form[data-ktk-form]').forEach(form=>{
+  document.querySelectorAll('form[data-ktk-form]').forEach((form,formIndex)=>{
     const cf7=form.dataset.ktkForm==='cf7',endpoint=document.body.dataset.ktkFormTokenUrl;
     let tokenReady=false,tokenTime=0,pendingToken=null;
     const refreshToken=()=>{
@@ -316,25 +316,51 @@
       if(cf7){form.classList.remove('init','resetting','submitting','sent','invalid','unaccepted','spam','aborted','failed');form.classList.add(state);}
       const output=message();if(output){output.textContent=text;output.setAttribute('aria-live','polite');output.setAttribute('aria-hidden','false');}form.dataset.status=state;
     };
+    const fieldErrors=errors=>{
+      form.querySelectorAll('.ktk-form-field-error').forEach(hint=>{
+        form.querySelectorAll('[aria-describedby]').forEach(control=>{
+          const ids=control.getAttribute('aria-describedby').split(/\s+/).filter(id=>id&&id!==hint.id);
+          if(ids.length)control.setAttribute('aria-describedby',ids.join(' '));else control.removeAttribute('aria-describedby');
+        });
+        hint.remove();
+      });
+      form.querySelectorAll('.wpcf7-not-valid-tip').forEach(hint=>hint.remove());
+      form.querySelectorAll('[data-ktk-field-invalid]').forEach(control=>{control.setAttribute('aria-invalid','false');control.removeAttribute('data-ktk-field-invalid');});
+      let firstInvalid=null;
+      for(const [index,error]of errors.entries()){
+        const field=[...form.elements].find(control=>control.name===error.field);
+        const wrap=cf7?form.querySelector(`[data-name="${CSS.escape(error.field)}"]`):field?.closest('.et_pb_contact_field')||field?.parentElement;
+        if(!wrap)continue;
+        const controls=cf7||field?.type==='hidden'?[...wrap.querySelectorAll('input:not([type="hidden"]),textarea,select')]:field?[field]:[];
+        if(!controls.length)continue;
+        const hint=create('span','ktk-form-field-error'+(cf7?' wpcf7-not-valid-tip':''),wrap);
+        hint.id=`ktk-field-error-${formIndex}-${index}`;hint.textContent=error.message;
+        for(const control of controls){
+          const ids=new Set((control.getAttribute('aria-describedby')||'').split(/\s+/).filter(Boolean));ids.add(hint.id);
+          control.setAttribute('aria-describedby',[...ids].join(' '));control.setAttribute('aria-invalid','true');control.setAttribute('data-ktk-field-invalid','');
+          if(!firstInvalid&&control.getClientRects().length)firstInvalid=control;
+        }
+      }
+      return firstInvalid;
+    };
     form.addEventListener('submit',async event=>{
       event.preventDefault();if(form.dataset.submitting==='true')return;
       form.querySelectorAll('.et_pb_checkbox_handle').forEach(hidden=>{hidden.value=[...hidden.closest('.et_pb_contact_field').querySelectorAll('input[type="checkbox"]:checked')].map(e=>e.value).join(', ');});
       if(!form.checkValidity()){form.reportValidity();return;}
       const requiredProxy=[...form.querySelectorAll('.et_pb_checkbox_handle[data-required_mark="required"]')].find(e=>!e.value);
-      if(requiredProxy){display('Please complete all required fields.',false);requiredProxy.closest('.et_pb_contact_field').querySelector('input[type="checkbox"]')?.focus();return;}
+      if(requiredProxy){const invalid=fieldErrors([{field:requiredProxy.name,message:'Please select at least one option.'}]);display('Please complete all required fields.',false);invalid?.focus();return;}
       if(!cf7&&(!tokenReady||Date.now()-tokenTime>20*60*1000)){try{await refreshToken();display('Please check the arithmetic answer and submit again.',false);}catch(error){display(error.message,false);}return;}
       const button=form.querySelector('[type="submit"]');form.dataset.submitting='true';form.setAttribute('aria-busy','true');if(button)button.disabled=true;
       if(cf7)form.classList.add('submitting');
       try{
-        const response=await fetch(cf7?form.dataset.feedbackEndpoint:form.action,{method:'POST',credentials:'same-origin',body:new FormData(form)});
+        const response=await fetch(cf7?form.dataset.feedbackEndpoint:form.getAttribute('action'),{method:'POST',credentials:'same-origin',body:new FormData(form)});
         if(!/application\/json/i.test(response.headers.get('content-type')||''))throw new Error('Unable to send right now. Please try again.');
         const result=await response.json();const success=cf7?result.status==='mail_sent':result.success===true;
-        form.querySelectorAll('.wpcf7-not-valid-tip').forEach(e=>e.remove());
-        if(cf7)form.querySelectorAll('[aria-invalid="true"]').forEach(e=>{e.setAttribute('aria-invalid','false');e.classList.remove('wpcf7-not-valid');});
-        if(cf7)for(const field of result.invalid_fields||[]){const wrap=form.querySelector(`[data-name="${CSS.escape(field.field)}"]`);if(wrap){const hint=create('span','wpcf7-not-valid-tip',wrap);hint.textContent=field.message;wrap.querySelector('input,textarea,select')?.setAttribute('aria-invalid','true');}}
+        const invalid=fieldErrors(cf7?(result.invalid_fields||[]):(!success&&result.data?.field?[{field:result.data.field,message:result.data.message}]:[]));
         display(cf7?result.message:result.data?.message||'Unable to send your message.',success,result.status);
+        invalid?.focus();
         if(success){form.reset();tokenReady=false;}else if(response.status===403){tokenReady=false;}
-      }catch(error){display(error.message,false);}finally{form.dataset.submitting='false';form.classList.remove('submitting');form.removeAttribute('aria-busy');if(button)button.disabled=false;}
+      }catch{display('Unable to confirm delivery. Please check your connection and try again.',false);}finally{form.dataset.submitting='false';form.classList.remove('submitting');form.removeAttribute('aria-busy');if(button)button.disabled=false;}
     });
   });
 })();
