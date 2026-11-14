@@ -6,7 +6,7 @@ Updated: 2026-11-14 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 ## Where We Are
 
-**Current work:** Reviewing the established NYE guide identified by repeat-verified search data. Five source-bound text blocks are in local development; original headings/photos/history remain. Contact is staging-verified; monthly/seasonal checks are agreed and the health article stays held. Production is unchanged.
+**Current work:** The established NYE guide is now fully cache-verified, bringing website staging deliveries to29. Query/landing-page evidence is repeat-checked. Continuing group-planning and remaining template/content review; monthly/seasonal checks are agreed, the health article stays held and production is unchanged.
 
 **Verified foundation milestones:** 7. **Website SEO production releases:** 0. The original website migration is a separate completed project, not counted as SEO implementation. Separately authorized OmniLodge reporting has its own release status.
 
@@ -16,13 +16,13 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 
 | Delivery Stage | Batches |
 | --- | ---: |
-| Verified on staging | 28 |
-| In progress | 1 |
+| Verified on staging | 29 |
+| In progress | 0 |
 | Verified live | 1 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
-| [Established NYE city-guide refresh](nye-content-review-2026-11-13/ESTABLISHED-GUIDE.md) | C02, C08, D05 | In progress (website) | Not yet | Complete source/atomic/browser/accessibility/attribution checks, CI, guarded staging deployment and cache verification. No new event or checkout availability is promised. |
+| [Established NYE city-guide refresh](nye-content-review-2026-11-13/ESTABLISHED-GUIDE.md) | C02, C08, D05 | Verified on staging (website) | 2026-11-14 | Owner review, remaining campaign/article work and separate production approval. No new event, checkout availability or original whole-page pixel identity is promised. |
 | [Contact offer clarity and usable directions](contact-details-2026-11-14/README.md) | C01, D05, T04 | Verified on staging (website) | 2026-11-14 | Owner review, wider meeting/overlay checks, manual accessibility and separate production approval. Existing no-JS Cloudflare-protected email limitation remains documented. |
 | [Reliable enquiry endpoints and recovery](contact-recovery-2026-11-14/README.md) | D06 | Verified on staging (website) | 2026-11-14 | Actual mail delivery assurance, inbox ownership/SLA, spam/manual checks and separate production decision. A client-side fix is not a mail-delivery certificate. |
 | [Current Memorial visitor information](memorial-guide-2026-11-14/RESEARCH.md) | C08 | Verified on staging (website) | 2026-11-14 | Owner review, remaining article fact/intent work and separate production approval. No current-price, ticket availability or ranking guarantee. |
