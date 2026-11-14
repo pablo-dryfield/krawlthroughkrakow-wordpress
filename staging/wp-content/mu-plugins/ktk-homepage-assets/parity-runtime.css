@@ -114,6 +114,18 @@ dialog.ktk-parity-lightbox button:focus-visible { outline: 2px solid #fff !impor
   .et_pb_image_3, .et_pb_image_4, .et_pb_image_5, .et_pb_image_6, .et_pb_image_7, .et_pb_image_8, .et_pb_column_27 { transition: none !important; }
 }
 
+/* BEGIN homepage social glyph delivery */
+@font-face {
+  font-family: "FontAwesome";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("social-icons-homepage.woff2") format("woff2"),
+    url("parity/114236a5fb48-fa-brands-400.woff2") format("woff2");
+  unicode-range: U+E07B, U+F262;
+}
+/* END homepage social glyph delivery */
+
 /* BEGIN homepage full icon font delivery */
 @font-face {
   font-family: "ETmodules";

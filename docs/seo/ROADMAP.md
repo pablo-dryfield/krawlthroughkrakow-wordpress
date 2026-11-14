@@ -6,7 +6,7 @@ Updated: 2026-11-14 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 ## Where We Are
 
-**Current work:** 39 website staging deliveries are cache-verified and unpromoted, including the owner-directed KTK games update. The booking-measurement audit now verifies the published Ads order/value/PLN mapping and documents missing full-funnel evidence. It changes no tracking or payment behavior. Article review stands at 22 major revisions, 2 targeted changes, 1 held and 31 remaining. Production, commerce and consent are unchanged.
+**Current work:** 39 website staging deliveries are cache-verified and unpromoted. The next mobile-loading candidate replaces one 78 KB social-font request with a 932-byte exact-glyph subset and preserves the original full fallback. Local verification is underway; original SVG artwork is unchanged. The booking-measurement audit remains partial, with no tracking changes. Production, commerce and consent are unchanged.
 
 **Verified foundation milestones:** 7. **Website production releases in this plan:** 1. Read each delivery scope: an isolated functional hotfix does not promote the staged SEO batches. The original website migration is a separate completed project. Separately authorized OmniLodge reporting has its own release status.
 
@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 39 |
-| In progress | 1 |
+| In progress | 2 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Lighter social icons with the original appearance](homepage-loading-2026-11-14/README.md) | D01, D02, D03, T10 | In progress (website) | Not yet | Finish independent fallback/keyboard checks, shared tests, guarded staging release and cache verification. This is a font-byte saving, not a demonstrated LCP or field-CWV gain. |
 | [Booking funnel: verified mappings and remaining gaps](booking-measurement-2026-11-14/README.md) | M03, D04, C09 | In progress (website) | Not yet | Approved aggregate paid-revenue reconciliation, provider receipt and a reviewed decision on missing article/GA4 coverage. This audit is not a deployment, completed funnel, consent fix or new OmniLodge authorization. |
 | [KTK games and preserved PDF resources](games-resource-guidance-2026-11-14/README.md) | C09, C08, D03, T07, T08 | Verified on staging (website) | 2026-11-14 | Owner review, PDF/search-to-booking contribution, remaining article facts, manual accessibility and separate production approval. No PDF overwrite, whole-page pixel, commerce or consent claim. |
 | [Practical party advice and current offer claims](party-guide-claims-2026-11-14/README.md) | C08, C01, D03, D05, T08 | Verified on staging (website) | 2026-11-14 | Remaining article facts, manual accessibility, owner review and separate production approval. No whole-page pixel, risk-free, commerce or consent claim; specialist hold unchanged. |
