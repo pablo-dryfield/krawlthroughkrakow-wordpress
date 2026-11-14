@@ -178,6 +178,14 @@ and future retained-history policy remain. No BigQuery/account storage
 configuration was created. Browser Pacific-day presets are delivered and verified;
 the default unfiltered28-day view is restored after exports.
 
+14-November follow-up: the [query/landing-page analysis](QUERY-LANDING-COHORTS.md)
+now validates complete **returned** query/page pagination for all four original
+windows, using full-precision native responses in memory. Independent summaries,
+exact response hashes and sanitized aggregates match on repeat. It records useful
+intent clues without exposing private URL parameters or inferring cannibalization.
+This supersedes the earlier pending-pairs note only: raw detail exports, deeper
+time/device intent and longer-term retention still remain; M02 is not complete.
+
 [Google's performance report](https://support.google.com/webmasters/answer/7576553?hl=en)
 and [Search Analytics API](https://developers.google.com/webmaster-tools/v1/searchanalytics/query)
 explain grouping and detail limitations.
