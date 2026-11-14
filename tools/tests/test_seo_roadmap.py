@@ -71,6 +71,10 @@ class RoadmapTests(unittest.TestCase):
         data=copy.deepcopy(self.data)
         data['tickets']['M03']['status']='live_verified'
         data['websiteProductionReleases']=1
+        if 'M03' in data['view']['focus']:
+            with self.assertRaisesRegex(ValueError,'Focus must reference existing active work'):
+                module.build_model(data,self.plan)
+            data['view']['focus'].remove('M03')
         result=module.build_model(data,self.plan)
         self.assertEqual(result['counts']['complete'],sum(row['status']=='live_verified' for row in data['tickets'].values()))
         self.assertEqual(result['websiteProductionReleases'],1)

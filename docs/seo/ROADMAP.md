@@ -6,7 +6,7 @@ Updated: 2026-11-14 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 ## Where We Are
 
-**Current work:** 39 website staging deliveries are cache-verified and unpromoted. The games pages now feature KTK Drunken Jenga in the owner's upbeat activity-guide tone, without regular-Jenga references or optional-participation wording. Original PDFs, photos and publication history are retained; both pages and all 272 archive views pass. Article review stands at 22 major revisions, 2 targeted changes, 1 held and 31 remaining. Production, commerce and consent are unchanged.
+**Current work:** 39 website staging deliveries are cache-verified and unpromoted, including the owner-directed KTK games update. The booking-measurement audit now verifies the published Ads order/value/PLN mapping and documents missing full-funnel evidence. It changes no tracking or payment behavior. Article review stands at 22 major revisions, 2 targeted changes, 1 held and 31 remaining. Production, commerce and consent are unchanged.
 
 **Verified foundation milestones:** 7. **Website production releases in this plan:** 1. Read each delivery scope: an isolated functional hotfix does not promote the staged SEO batches. The original website migration is a separate completed project. Separately authorized OmniLodge reporting has its own release status.
 
@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 39 |
-| In progress | 0 |
+| In progress | 1 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Booking funnel: verified mappings and remaining gaps](booking-measurement-2026-11-14/README.md) | M03, D04, C09 | In progress (website) | Not yet | Approved aggregate paid-revenue reconciliation, provider receipt and a reviewed decision on missing article/GA4 coverage. This audit is not a deployment, completed funnel, consent fix or new OmniLodge authorization. |
 | [KTK games and preserved PDF resources](games-resource-guidance-2026-11-14/README.md) | C09, C08, D03, T07, T08 | Verified on staging (website) | 2026-11-14 | Owner review, PDF/search-to-booking contribution, remaining article facts, manual accessibility and separate production approval. No PDF overwrite, whole-page pixel, commerce or consent claim. |
 | [Practical party advice and current offer claims](party-guide-claims-2026-11-14/README.md) | C08, C01, D03, D05, T08 | Verified on staging (website) | 2026-11-14 | Remaining article facts, manual accessibility, owner review and separate production approval. No whole-page pixel, risk-free, commerce or consent claim; specialist hold unchanged. |
 | [Practical Krakow and stag safety guides](safety-guides-2026-11-14/README.md) | C08, C06, D03, D05, T08 | Verified on staging (website) | 2026-11-14 | Remaining article and package facts, manual accessibility, owner review and separate production approval. Original titles/history/other110 bodies and prior65 summaries retained; no risk-free or whole-page pixel guarantee. |
@@ -68,8 +69,8 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 
 | Full-Plan Status | Workstreams |
 | --- | --- |
-| In progress / partial staging | 31 |
-| Not started | 7 |
+| In progress / partial staging | 32 |
+| Not started | 6 |
 | Deferred | 1 |
 | Verified live | 1 |
 | Total | 40 |
@@ -107,7 +108,7 @@ Acceptance criteria and research: [full improvement plan](SEO-AND-WEBSITE-IMPROV
 | --- | --- | --- | --- | --- |
 | M01 | P0 / M | Fix OmniLodge Search Console reporting: independent whole-property/date totals; paginated detailed rows with explicit coverage; exact-query vs substring groups; metrics aligned to the displayed page; separate query/page aggregation; filters by country/device/search type; no-data vs truncated flags. Label heuristic recommendations. | Verified live | Complete: independent totals, pagination/coverage, exact query/page/filter alignment, heuristic/no-data labels and date coverage. Latest Release43331452337/deploy43333310604/public exact3/3 pass; signed-in Pacific presets and native Google28-day totals agree. Full UI1279/browser49/all required CI pass; no commerce/account changes. |
 | M02 | P0 / S | Establish dated SEO baseline and annotate homepage/content releases separately. Export complete available 28/90/180/365-day data and comparable prior-year periods; split brand/nonbrand, UK/Poland/other markets, mobile/desktop, commercial/editorial/PDF/legacy pages. | In progress / partial staging | All returned pages/queries retained for28/90/180/365; native28-day totals agree. Tested brand/variant and exact-URL role cohorts classify1687 page rows without leaking tokens. Independent full-precision property summaries retained for4 windows plus supported prior-year28/90; mobile81-83% of clicks. Twelve exact-canonical NYE page/query responses now retain native byPage summaries and coverage across4 windows; overlap not proof of harmful cannibalization. No migration-causation claim. Broader full-precision detail, intent pairs and retention remain. |
-| M03 | P1 / M | Verify the full measurement funnel: landing -> named booking CTA -> product -> booking start -> payment completion -> revenue. Keep journey history and UTM handoff; distinguish direct/organic/paid/Google booking integrations. Avoid counting button clicks or failed payments as purchases. | Not started | Full funnel reconciliation and consent-aware measurement review remain. |
+| M03 | P1 / M | Verify the full measurement funnel: landing -> named booking CTA -> product -> booking start -> payment completion -> revenue. Keep journey history and UTM handoff; distinguish direct/organic/paid/Google booking integrations. Avoid counting button clicks or failed payments as purchases. | In progress / partial staging | Read-only ten-source audit and public GTM41 definition confirm conversion42 maps orderComplete/orderId/orderTotalValue/PLN; one frontend conversion call is inside the backend-confirmed paid-or-zero branch. Ten network-disabled synthetic contracts cover parser failure/invalid-reference behavior, duplicate guards/reload/blocked storage/invalid values and zero totals. Nineteen operational event types, separate homepage/limited article data-layer clicks, queue200/24h/30min visit limits and missing article-to-cart history are documented. Public definitions are not provider receipt or proof of a full GA4 funnel. Aggregate paid-revenue reconciliation, account-side visibility, scope decisions and consent work remain separate; no new events, customer rows, orders, deployment or OmniLodge authorization. |
 | M04 | P1 / S | Check native GSC Page Indexing, Crawl Stats, submitted sitemaps, Manual Actions and Security Issues; inspect representative page types after Google's next crawl. Configure meaningful failure alerts/weekly review, not a noisy total-keyword scoreboard. | In progress / partial staging | Native Manual Actions/Security Issues show none;9Nov indexing133/39 reviewed. Crawl Stats11Nov:8.12k/90 days,507ms, no host problems. Seven stored inspections indexed with crawl-date caveats. Submitted old sitemap404 and three old missing URLs need follow-up; no account/indexing requests. |
 | T01 | P0 / M | Write an intent-to-URL map: homepage = brand/main Krakow pub crawl; store2 product = details/booking; nightlife hub = advice; NYE sales page = current event; guides = informational. Review real overlaps before consolidation. Preserve clean canonicals for attribution/query variants and normal www/HTTPS redirects. | In progress / partial staging | Core URL roles/catalog decisions recorded. Exact4-window NYE query/page review supports distinct current-tour and city-planning roles; secondary-guide purpose needs further review, not automatic redirect/deletion. Broader intent/overlap investigation remains. |
 | T02 | P1 / L | Deliver useful storefront title, H1, description, inclusions, images and indexable product links in initial HTML, using the same public product source as hydration/metadata/schema. Start with pub crawl and NYE, then the active catalog. No crawler-only content. | In progress / partial staging | All 24 products/catalog have verified initial HTML and cached browser handoff on staging. Owner review, production approval and Google live inspection remain. |
