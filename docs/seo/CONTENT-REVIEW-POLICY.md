@@ -22,6 +22,18 @@ installed reminder, scheduled automation or external account change.
 Use roles rather than inventing a named staff member. KTK may nominate an
 individual later without changing ownership of this process.
 
+## Confirmed Enquiry Rules
+
+The owner confirmed on 14 November that the team responds after seeing an
+enquiry by email. Do not publish a fixed response-time guarantee or imply
+round-the-clock monitoring. This confirms the working process, not tested SMTP
+delivery or permission to send real test enquiries.
+
+Group minimums, private arrangements, booking lead times and deposit/cancellation
+terms are confirmed individually in each quote. Do not invent standard numbers
+or terms. These confirmations guide subsequent staging copy; they do not mean
+that every current page has already been updated.
+
 ## Review Checklist
 
 Complete at least one review each calendar month. Also check a campaign before

@@ -2,7 +2,7 @@
 
 ## Scope And Checkpoint
 
-C06/C08/D05 staging only: `/stag-do-costume/`, article body and one scoped CSS
+C06/C08/D03/D05 staging only: `/stag-do-costume/`, article body and one scoped CSS
 block. Preserve original URL, H1, title/metadata/schema, authorDPBowman and
 18 March2024 publication, all nine photo files/order/attributes and all49 unique
 legacy fragment IDs. Eight repeated generated-list IDs become unique. No
@@ -83,9 +83,56 @@ incomplete group. This is not full conformance or original pixel identity.
 Python192, sharedJavaScript165 including five new recipe contracts, PHP page
 integration763/forms31 mail-stubbed/NYE143 and roadmap317 pass. Final guarded
 2073-file local dry run passes. No new discovery, homepage, storefront or
-OmniLodge release required. No staging publication yet; require CI, guarded
-publication, origin, normal and warmed-cache evidence before advancing the
-delivery count. Whole workstreams remain partial.
+OmniLodge release required. Actual390px readable heading/body and original-photo
+view inspected, including the floating CTA. Whole workstreams remain partial.
+
+## Staging Publication
+
+Applicationa05f41cbc1428e7f2922ba64f5b076be666ad7ae, PR43, required
+CI43552999811: both jobs pass. Guarded manual content2073 publisher completed
+14 November03:44:58.768061UTC. All independent hashes match, saved WordPress
+state, homepage and storefront unchanged, temporary helper removed. Five-entry
+rollback ZIP `ktk-code-pages-staging-20261114-034436.zip`, all CRCs pass, SHA256
+`9f4be0c5624d036c9a7d6c7bb6393bb9304adcd666e43fe0d46424ef705b037f`.
+No homepage, discovery, storefront or OmniLodge publisher was used.
+
+Final local202/202, origin202/202 and normal202/202 pass with the same exact
+target-visibility condition and bounded scroll settling. The initial origin
+201/202 remains a failed diagnostic. Two extra1440px origin repetitions each
+reach all23 targets immediately, after two frames and within the bound. Each
+complete browser run retains six expanded axe views with zero violations/two
+incomplete groups; no JavaScript-disabled axe or full conformance claim.
+
+Cloudflare MCP checked the current specification and exact zone/account, then
+purged only `krawlthroughkrakow.com/staging/` at03:58:57.254UTC. No production or
+host-wide purge. Source/asset/device reports:
+
+| Report in docs/code-pages/full-migration | Completion UTC14 November | Result | Cache / retries |
+| --- | --- | --- | --- |
+|stag-costume-origin-20261114.json|03:56:42.158362|6193/6193|348 DYNAMIC/0 retries|
+|stag-costume-normal-20261114.json|04:05:23.530051|6193/6193|348 MISS/0 retries|
+|stag-costume-repeat-20261114.json|04:08:56.645892|6193/6193|348 HIT/0 retries|
+
+All116 routes/three device variants and119 current asset hashes/version tokens
+pass. Unchanged attribution143/home10/images21/font20/discovery243 origin and216
+normal pass. Cached390px viewport is byte-identical to the inspected current
+local counterpart, SHA256
+`f6bcfada302661ed42ed7574a47457d1243bfdf995dbdd39dec365cc564584ff`;
+this is one current-deployment viewport control, not pre-edit or full-page pixel
+identity. Warmed repeat confirms all348 device/page responses HIT; discovery
+repeat216/216 passes. All finite test/publisher/watch sessions are closed, with
+the intentional root previews retained for the active plan. No application byte
+changed aftera05f41c; QA/docs need no application republication or extra purge.
+
+Both roadmaps now31 verified website staging batches, one separately live
+OmniLodge reporting batch and zero website SEO production releases. All40 whole
+workstream states remain1 complete/31 partial/7 not started/1 deferred; delivery
+counts are not a percentage or closure of the entire plan. Related activity,
+prank/safety and remaining article reviews continue; do not blindly link the
+unreviewed articles. Medical specialist hold, monthly/seasonal policy without
+automation and pending group/inbox/separate production form-hotfix decisions
+remain. Final QA/docs CI, merge and completed-branch cleanup follow. No production,
+commerce, consent, account or OmniLodge change.
 
 ## Retained Diagnostics
 
@@ -123,6 +170,20 @@ delivery count. Whole workstreams remain partial.
   body/paragraph16px,26.4px leading and22/18/16px headings all match. The fixture
   accepts only the two zero-spacing representations, not negative tracking or
   a broader tolerance; the application/style declaration remains unchanged.
+- A repeated image preview appeared blank in the tool display, but the actual
+  two390x900 intro PNGs are byte-identical SHA256
+  d784fdb771d610d98b317ad0be24c3b259bf903d3a58a069f1ed037cb7a788cb,
+  with5,419 colors and293,458 white pixels, not a blank screenshot. The separate
+  viewport/full-page captures are also nonblank and inspected. No GPU flag,
+  screenshot mask, website CSS or application was changed for that preview.
+- Initial origin201/202 has one1440px-JS immediate-position miss:22 of23 native
+  Enter jumps visible at the instant the URL changed. Two isolated fresh origin
+  repetitions each reach all23 targets immediately, after two frames and within
+  a bounded wait; the miss was not reproduced. Do not erase or call that first
+  report passing. The harness now waits up to10 seconds for the exact same real
+  target-visibility condition and records fragment/rectangle/image state on a
+  miss. No application, scroll helper, visibility condition or tolerance changed;
+  rerun complete local/origin checks before any cache purge.
 
 ## Previous Batch Closure
 
