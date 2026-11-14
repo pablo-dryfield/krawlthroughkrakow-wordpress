@@ -85,14 +85,16 @@ booking value still matter. No live attribution-token values are published.
 
 ## Prioritization And Completion
 
-Staging progress as of14 November:27 major article revisions,2 targeted
-corrections/notices,1 explicit specialist hold and26 articles still awaiting
-substantive review. The city/weekend pair is now cache-verified; its
-[release evidence](../city-trip-guides-2026-11-14/README.md) records sources,
-preserved history/media, native contents and complete origin/cached checks.
+Staging progress as of14 November:29 major article revisions,2 targeted
+corrections/notices,1 explicit specialist hold and24 articles still awaiting
+substantive review. The two karting guides are now cache-verified; their
+[release evidence](../karting-guides-2026-11-14/README.md) records separate
+planning/first-visit intent, sources,13 preserved photos/history,26 native
+contents targets and complete origin/normal/warmed checks. Both original URLs
+remain; no consolidation or universal admission/private-track promise.
 Five vodka service hrefs on four other articles were separately corrected to
 our product44; those link-only repairs do not count as substantive reviews.
-The29-identity/114-card summary catalog likewise is not29 full fact audits.
+The31-identity/120-card summary catalog likewise is not31 full fact audits.
 The competition and entry form remain ACTIVE, as corrected by the owner.
 
 Safety-review and expired-campaign risks take priority alongside NYE readiness;
