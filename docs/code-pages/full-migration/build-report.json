@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-14T10:42:00.937Z",
+  "startedAt": "2026-11-14T11:43:09.946Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -3174,6 +3174,14 @@
           "id": ""
         },
         {
+          "type": "practical-party-claims-review",
+          "key": "post-party-krakow",
+          "reviewedOn": "2026-11-14",
+          "textInteriors": 32,
+          "retainedInlinePhotos": 6,
+          "retainedOriginalIds": 0
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -3200,10 +3208,6 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
-        },
-        {
-          "from": "__KTK_HOME_URL__how-to-join/",
-          "to": "__KTK_HOME_URL__about-us/how-to-join/"
         }
       ]
     },
@@ -3217,6 +3221,14 @@
           "id": ""
         },
         {
+          "type": "practical-party-claims-review",
+          "key": "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
+          "reviewedOn": "2026-11-14",
+          "textInteriors": 1,
+          "retainedInlinePhotos": 6,
+          "retainedOriginalIds": 2
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -3285,10 +3297,6 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
-        },
-        {
-          "from": "__KTK_HOME_URL__how-to-join/",
-          "to": "__KTK_HOME_URL__about-us/how-to-join/"
         }
       ]
     },
@@ -4476,6 +4484,13 @@
           "format": "text"
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-party-krakow",
+          "postId": 2979,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -5066,6 +5081,13 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-party-krakow",
+          "postId": 2979,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -5115,6 +5137,13 @@
           "type": "reviewed-article-summary",
           "key": "post-2020-krakow-nightlife-guide",
           "postId": 2968,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
+          "postId": 1941,
           "reviewedOn": "2026-11-14",
           "format": "text"
         },
@@ -5498,8 +5527,22 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-party-krakow",
+          "postId": 2979,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-2020-krakow-nightlife-guide",
           "postId": 2968,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
+          "postId": 1941,
           "reviewedOn": "2026-11-14",
           "format": "text"
         },
@@ -6219,6 +6262,20 @@
           "type": "reviewed-article-summary",
           "key": "post-krakow-nightclubs",
           "postId": 6126,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-party-krakow",
+          "postId": 2979,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
+          "postId": 1941,
           "reviewedOn": "2026-11-14",
           "format": "paragraph"
         },
@@ -9065,6 +9122,13 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-party-krakow",
+          "postId": 2979,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -9109,6 +9173,13 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-party-krakow",
+          "postId": 2979,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "floating-booking-landmark"
@@ -9157,6 +9228,13 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
+          "postId": 1941,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -9201,6 +9279,13 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-party-krakow",
+          "postId": 2979,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "floating-booking-landmark"
@@ -9249,6 +9334,13 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-party-krakow",
+          "postId": 2979,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -9295,6 +9387,13 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-party-krakow",
+          "postId": 2979,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -9339,6 +9438,13 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-party-krakow",
+          "postId": 2979,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "floating-booking-landmark"
@@ -9431,6 +9537,13 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
+          "postId": 1941,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "floating-booking-landmark"
@@ -9571,5 +9684,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-14T10:42:53.873Z"
+  "finishedAt": "2026-11-14T11:44:01.321Z"
 }
