@@ -25,6 +25,9 @@ if(!production)cases.push({path:'/jazz-bars-in-krakow/',selector:'.entry-content
 if(!production)cases.push({path:'/krakow-live-music/',selector:'.entry-content a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 if(!production)for(const slug of ['krakow-techno-clubs','krakow-techno-clubs-2','irish-bars-krakow','krakow-nightclubs','krakow-bars-jewish-quarter','krakow-shot-bar'])cases.push({path:'/'+slug+'/',selector:'.entry-content a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 if(!production)for(const slug of ['krakow-free-activities-2','krakow-budget-activities','krakow-money-saving-tips'])cases.push({path:'/'+slug+'/',selector:'[data-ktk-budget-travel-review] a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
+if(!production)for(const slug of ['travel-krakow-your-comprehensive-city-guide','weekend-in-krakow'])cases.push({path:'/'+slug+'/',selector:'[data-ktk-city-trip-review] a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
+if(!production)cases.push({path:'/weekend-in-krakow/',selector:'[data-ktk-city-trip-review] a[href*="/polish-vodka-tasting-44/"]',destination:'/staging/store2/polish-vodka-tasting-44/',product:44});
+if(!production)for(const [path,index] of [['/2020-krakow-nightlife-guide/',0],['/best-places-to-eat/',0],['/best-places-to-eat/',1],['/krakow-hen-party-reviews/',0],['/krakow-weather-guide/',0]])cases.push({path,selector:'#main-content a[href*="/polish-vodka-tasting-44/"]',index,destination:'/staging/store2/polish-vodka-tasting-44/',product:44});
 if(production)for(const item of cases)item.destination=item.destination.replace(/^\/staging/,'');
 const params={utm_source:'readiness-validation',utm_medium:'controlled-browser',utm_campaign:production?'production-link-handoff':'staging-link-handoff',gclid:'isolated-validation-click'};
 const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});
@@ -41,7 +44,7 @@ try{
   const target=new URL(base+item.path);for(const [key,value]of Object.entries(params))target.searchParams.set(key,value);if(process.argv.includes('--cache-bust'))target.searchParams.set('ktk_attribution_check',String(Date.now()));
   await page.goto(target.href,{waitUntil:'load'});
   await page.evaluate(()=>{window.KTK_ANALYTICS_CONSENT=false;document.addEventListener('click',event=>event.preventDefault());});
-  const anchor=page.locator(item.selector).first();
+  const anchor=page.locator(item.selector).nth(item.index||0);
   check(item.path+' expected booking control exists',await anchor.count()===1);
   await anchor.evaluate(a=>a.click());
   const href=new URL(await anchor.getAttribute('href'));

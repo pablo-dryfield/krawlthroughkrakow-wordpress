@@ -85,6 +85,16 @@ booking value still matter. No live attribution-token values are published.
 
 ## Prioritization And Completion
 
+Staging progress as of14 November:27 major article revisions,2 targeted
+corrections/notices,1 explicit specialist hold and26 articles still awaiting
+substantive review. The city/weekend pair is now cache-verified; its
+[release evidence](../city-trip-guides-2026-11-14/README.md) records sources,
+preserved history/media, native contents and complete origin/cached checks.
+Five vodka service hrefs on four other articles were separately corrected to
+our product44; those link-only repairs do not count as substantive reviews.
+The29-identity/114-card summary catalog likewise is not29 full fact audits.
+The competition and entry form remain ACTIVE, as corrected by the owner.
+
 Safety-review and expired-campaign risks take priority alongside NYE readiness;
 traffic is not the only criterion. Budget drinks, techno, jazz, Irish bars and
 the useful NYE guide have observed demand. Keep their established destinations.

@@ -7,6 +7,21 @@
 }
 /* END Memorial visitor guide */
 
+/* BEGIN Practical city trip guides */
+body.ktk-code-page:is([data-ktk-page="post-travel-krakow-your-comprehensive-city-guide"],[data-ktk-page="post-weekend-in-krakow"]) #main-content .entry-content[data-ktk-city-trip-review] .et_pb_text_inner { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
+body.ktk-code-page:is([data-ktk-page="post-travel-krakow-your-comprehensive-city-guide"],[data-ktk-page="post-weekend-in-krakow"]) #main-content .entry-content[data-ktk-city-trip-review] .et_pb_text_inner p { font-size: 16px; line-height: 1.65; }
+body.ktk-code-page:is([data-ktk-page="post-travel-krakow-your-comprehensive-city-guide"],[data-ktk-page="post-weekend-in-krakow"]) #main-content .entry-content[data-ktk-city-trip-review] :is(h2,h3) { font-family: inherit; font-weight: 700; line-height: 1.35; letter-spacing: 0; margin: 24px 0 12px; }
+body.ktk-code-page:is([data-ktk-page="post-travel-krakow-your-comprehensive-city-guide"],[data-ktk-page="post-weekend-in-krakow"]) #main-content .entry-content[data-ktk-city-trip-review] h2 { font-size: 22px; }
+body.ktk-code-page:is([data-ktk-page="post-travel-krakow-your-comprehensive-city-guide"],[data-ktk-page="post-weekend-in-krakow"]) #main-content .entry-content[data-ktk-city-trip-review] h3 { font-size: 18px; }
+body.ktk-code-page:is([data-ktk-page="post-travel-krakow-your-comprehensive-city-guide"],[data-ktk-page="post-weekend-in-krakow"]) #main-content .entry-content[data-ktk-city-trip-review] nav { margin: 1em 0; }
+body.ktk-code-page:is([data-ktk-page="post-travel-krakow-your-comprehensive-city-guide"],[data-ktk-page="post-weekend-in-krakow"]) #main-content .entry-content[data-ktk-city-trip-review] summary { cursor: pointer; min-height: 44px; padding: 8px 0; font-weight: 700; }
+body.ktk-code-page:is([data-ktk-page="post-travel-krakow-your-comprehensive-city-guide"],[data-ktk-page="post-weekend-in-krakow"]) #main-content .entry-content[data-ktk-city-trip-review] a { color: #c8006c !important; text-decoration: underline; text-underline-offset: .15em; }
+body.ktk-code-page:is([data-ktk-page="post-travel-krakow-your-comprehensive-city-guide"],[data-ktk-page="post-weekend-in-krakow"]) #main-content .entry-content[data-ktk-city-trip-review] :is(summary,a):focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+@media (max-width: 600px) {
+  body.ktk-code-page:is([data-ktk-page="post-travel-krakow-your-comprehensive-city-guide"],[data-ktk-page="post-weekend-in-krakow"]) #main-content .entry-content[data-ktk-city-trip-review] .et_pb_text_inner { padding-right: 24px; }
+}
+/* END Practical city trip guides */
+
 /* BEGIN Practical budget travel guides */
 body.ktk-code-page:is([data-ktk-page="post-krakow-free-activities-2"],[data-ktk-page="post-krakow-budget-activities"],[data-ktk-page="post-krakow-money-saving-tips"]) #main-content [data-ktk-budget-travel-review] { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
 body.ktk-code-page:is([data-ktk-page="post-krakow-free-activities-2"],[data-ktk-page="post-krakow-budget-activities"],[data-ktk-page="post-krakow-money-saving-tips"]) #main-content [data-ktk-budget-travel-review] :is(h2,h3) { font-family: inherit; font-weight: 700; line-height: 1.35; letter-spacing: 0; margin: 24px 0 12px; }

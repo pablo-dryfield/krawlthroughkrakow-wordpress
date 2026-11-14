@@ -28,6 +28,28 @@ test('matching Go-Karting link retains attribution and emits product30 after con
  assert.equal(new URL(f.anchor.href).searchParams.get('utm_source'),'partner');
  assert.equal(new URL(f.anchor.href).hash,'#book');
 });
+
+test('our Polish Vodka Tasting links emit product44 with attribution and no duplicate initialization',()=>{
+ for(const prefix of ['/staging','']){
+  const f=fixture(prefix+'/store2/polish-vodka-tasting-44/#book');
+  vm.runInContext(bootstrap,f.context);assert.equal(f.handlers.length,1);f.click();
+  assert.deepEqual(f.events(),[{event:'ktk_page_booking_click',page:'krakow-stag-do',product_id:44,cta_position:'content'}]);
+  assert.equal(new URL(f.anchor.href).searchParams.get('utm_source'),'partner');assert.equal(new URL(f.anchor.href).hash,'#book');
+ }
+});
+
+test('product44 tracking follows consent transitions without changing the booking destination',()=>{
+ const f=fixture('/staging/store2/polish-vodka-tasting-44/#book',{consent:false});f.click();assert.deepEqual(f.events(),[]);
+ f.window.KTK_ANALYTICS_CONSENT=true;f.click();assert.equal(f.events().length,1);assert.equal(f.events()[0].product_id,44);
+ f.window.KTK_ANALYTICS_CONSENT=false;f.click();assert.equal(f.events().length,1);assert.equal(new URL(f.anchor.href).pathname,'/staging/store2/polish-vodka-tasting-44/');
+});
+
+test('inherited object properties cannot become public product events',()=>{
+ for(const slug of ['constructor','toString','__proto__','hasOwnProperty','inherited-44']){
+  const f=fixture('/staging/store2/'+slug+'/');
+  vm.runInContext('Object.prototype["inherited-44"]=44;',f.context);f.click();assert.deepEqual(f.events(),[]);
+ }
+});
 test('rejection withholds the booking event without losing the existing attribution behavior',()=>{
  const f=fixture('/staging/store2/go-karting-30/#book',{consent:false});f.click();
  assert.deepEqual(f.events(),[]);assert.equal(new URL(f.anchor.href).searchParams.get('gclid'),'example-click');

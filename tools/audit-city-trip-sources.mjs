@@ -1,0 +1,30 @@
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {createRequire} from 'node:module';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {loadReviewedArticlePresentation} from './reviewed-article-presentation.mjs';
+
+const root=fileURLToPath(new URL('..',import.meta.url)),output=process.argv[2];
+if(!output)throw Error('Fresh city-trip inventory output required');
+try{await readFile(output);throw Error('Preserve earlier evidence');}catch(e){if(e.code!=='ENOENT')throw e;}
+const hash=b=>createHash('sha256').update(b).digest('hex'),manifest=JSON.parse(await readFile(path.join(root,'docs/code-pages/full-migration/manifest.json'),'utf8')),catalog=await loadReviewedArticlePresentation();
+const definitions=[['post-travel-krakow-your-comprehensive-city-guide','9b1e7264e4b192e025e77d65395465e21c0e552d6f671793af9f6f9da9c05c42',18,10],['post-weekend-in-krakow','f241f34293ba9c271bdb486ba705afe18fe728bef7a6fc9e4a0f6249477126ac',31,3]];
+const targets=definitions.map(([key,sha,modules,photos])=>{const r=manifest.routes.find(r=>r.key===key);if(!r||r.kind!=='blog post')throw Error('Original city-trip article required');return{key,sha,modules,photos,postId:r.postId,route:r.route,source:r.source};});
+const report={checkedAt:new Date().toISOString(),scope:'Read-only original/prepared two-module-guide and40-card-container inventory; all browser network aborted.',targets,articles:[],containers:[],errors:[]},require=createRequire(import.meta.url),{chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright')),browser=await chromium.launch({channel:'chrome',headless:true});
+try{
+ const page=await browser.newPage({javaScriptEnabled:false});await page.route('**/*',r=>r.abort());
+ for(const t of targets){
+  const raw=await readFile(path.join(root,t.source,'production-1920.html'),'utf8'),current=await readFile(path.join(root,'staging/wp-content/mu-plugins/ktk-code-pages-assets/content',t.key+'.html'),'utf8');if(hash(raw)!==t.sha)throw Error('Original city-trip capture changed');
+  const result=await page.evaluate(({t,raw,current})=>{
+   const clean=s=>(s||'').replace(/\s+/g,' ').trim(),inspect=html=>{const d=new DOMParser().parseFromString(html,'text/html'),main=d.querySelector('#main-content'),body=main?.querySelector('.entry-content');if(!body||main.querySelectorAll('.entry-content').length!==1)throw Error('One original city-trip body required');return{h1:main.querySelector('h1.entry-title')?.outerHTML,publication:main.querySelector('.post-meta')?.outerHTML,text:clean(body.textContent),ids:[...body.querySelectorAll('[id]')].map(n=>n.id),modules:[...body.querySelectorAll('.et_pb_text_inner')].map((n,index)=>({index,html:n.innerHTML,text:clean(n.textContent),ids:[...n.querySelectorAll('[id]')].map(n=>n.id),protected:n.querySelectorAll('img,form,iframe,video,script,style,input,button').length})),photos:[...body.querySelectorAll('img')].filter(n=>!n.closest('noscript')).map(n=>n.outerHTML),links:[...body.querySelectorAll('a[href]')].map(n=>({href:n.getAttribute('href'),text:clean(n.textContent)})),totalPhotos:main.querySelectorAll('img').length};};const source=inspect(raw),prepared=inspect(current);return{key:t.key,source,prepared,textExact:source.text===prepared.text,valid:source.modules.length===t.modules&&prepared.modules.length===t.modules&&source.photos.length===t.photos&&prepared.photos.length===t.photos&&source.ids.length===0&&prepared.ids.length===0&&prepared.modules.every(n=>n.protected===0)};
+  },{t,raw,current});report.articles.push(result);if(!result.textExact||!result.valid)throw Error('City-trip source/module inventory mismatch: '+t.key);
+ }
+ for(const row of catalog.filter(r=>r.kind==='cards')){
+  const current=await readFile(path.join(root,'staging/wp-content/mu-plugins/ktk-code-pages-assets/content',row.key+'.html'),'utf8');
+  report.containers.push(await page.evaluate(({row,current,targets,oldArticles})=>{const parse=h=>new DOMParser().parseFromString(h,'text/html'),s=parse(row.sourceHtml),c=parse(current),clean=s=>(s||'').replace(/\s+/g,' ').trim(),cards=d=>[...d.querySelectorAll('#main-content article.et_pb_post')].flatMap(n=>{const a=targets.find(a=>n.classList.contains('post-'+a.postId));if(!a)return[];const p=n.querySelector('.post-content-inner > p'),text=[...n.childNodes].filter(n=>n.nodeType===Node.TEXT_NODE&&clean(n.textContent));if(!p&&text.length!==1)throw Error('Exact city-trip excerpt required');return[{key:a.key,title:clean(n.querySelector('.entry-title')?.textContent),summary:clean((p||text[0]).textContent)}];}),before=cards(s),after=cards(c),all=[...oldArticles,...targets],nextCardKeys=[...s.querySelectorAll('#main-content article.et_pb_post')].map(n=>all.find(a=>n.classList.contains('post-'+a.postId))?.key).filter(Boolean);return{key:row.key,captureSha256:row.sourceSha256,newCards:before,currentCards:after,copyExact:JSON.stringify(before)===JSON.stringify(after),nextCardKeys};},{row,current,targets,oldArticles:catalog[0].articles}));
+ }
+ for(const c of report.containers)if(!c.copyExact)throw Error('Original city-trip card changed: '+c.key);
+}catch(e){report.errors.push(e.stack);}finally{await browser.close();}
+report.summary={articles:report.articles.length,containers:report.containers.length,modules:report.articles.reduce((n,a)=>n+a.prepared.modules.length,0),inlinePhotos:report.articles.reduce((n,a)=>n+a.prepared.photos.length,0),newCards:report.containers.reduce((n,c)=>n+c.newCards.length,0),affectedContainers:report.containers.filter(c=>c.newCards.length).length,nextCards:report.containers.reduce((n,c)=>n+c.nextCardKeys.length,0),nextActive:report.containers.filter(c=>c.nextCardKeys.length).length};
+await mkdir(path.dirname(output),{recursive:true});await writeFile(output,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({summary:report.summary,errors:report.errors},null,2));if(report.errors.length)process.exitCode=1;
