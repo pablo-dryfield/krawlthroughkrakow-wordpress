@@ -130,6 +130,18 @@
       "postId": 6178,
       "route": "/krakow-safety-guide/",
       "summary": "Prepare for Krakow with practical checks on transport, belongings, access needs and how to ask for help. Use current official sources without treating a city guide or tour as a safety guarantee."
+    },
+    {
+      "key": "post-party-krakow",
+      "postId": 2979,
+      "route": "/party-krakow/",
+      "summary": "Practical ideas for planning a Krakow night: compare venues, check prices, keep games optional and arrange a way home. Use current joining details rather than an old offer."
+    },
+    {
+      "key": "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
+      "postId": 1941,
+      "route": "/six-reasons-you-need-to-party-with-the-krawl-through-krakow/",
+      "summary": "Compare an organised KTK night with your own plans, check current inclusions and joining information, and decide whether the social setting suits you without guaranteed crowds or admission."
     }
   ],
   "containers": [
@@ -166,7 +178,8 @@
       "key": "archive-category-party-tips",
       "cardKeys": [
         "post-krakow-nightclubs",
-        "post-krakow-techno-clubs"
+        "post-krakow-techno-clubs",
+        "post-party-krakow"
       ]
     },
     {
@@ -243,13 +256,16 @@
     {
       "captureSha256": "a3912dbcbcafb5eadae74d98f684f43b81ba94316d90a9160efdc894bad1805a",
       "key": "archive-author-dpbowman-page-8",
-      "cardKeys": []
+      "cardKeys": [
+        "post-party-krakow"
+      ]
     },
     {
       "captureSha256": "ecdec7f67d6c1ca9b5bfa773c0ebd164df594e8e9c1d6973bff2d19ad859189e",
       "key": "archive-author-dpbowman-page-9",
       "cardKeys": [
-        "post-2020-krakow-nightlife-guide"
+        "post-2020-krakow-nightlife-guide",
+        "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow"
       ]
     },
     {
@@ -299,7 +315,9 @@
       "captureSha256": "0728421d25e2b49ce5f848fe25eb2e16b06171c12aa4206be1036ec13a58357d",
       "key": "archive-category-krakow-nightlife-page-2",
       "cardKeys": [
+        "post-party-krakow",
         "post-2020-krakow-nightlife-guide",
+        "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
         "post-stages-of-drunkenness",
         "post-survive-pub-crawl"
       ]
@@ -369,6 +387,8 @@
         "post-irish-bars-krakow",
         "post-wheres-the-cheap-places-to-drink-in-krakow",
         "post-krakow-nightclubs",
+        "post-party-krakow",
+        "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
         "post-survive-pub-crawl"
       ]
     },
@@ -385,37 +405,51 @@
     {
       "captureSha256": "75d768c1fa8a02cef1fa6ff4ce9d78c964cec868076c82a9278b48ad154f1b0a",
       "key": "archive-tag-krakow-nightlife",
-      "cardKeys": []
+      "cardKeys": [
+        "post-party-krakow"
+      ]
     },
     {
       "captureSha256": "9d3d6f011c96d90c8b2f3cdbfac33b4892e78261d22277a93bae5ec000062824",
       "key": "archive-tag-krakow-party",
-      "cardKeys": []
+      "cardKeys": [
+        "post-party-krakow"
+      ]
     },
     {
       "captureSha256": "c5f795bd24fdd4b92de11351eeccd760bf14613be328af6ba0ec752a46904ea5",
       "key": "archive-tag-krakow",
-      "cardKeys": []
+      "cardKeys": [
+        "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow"
+      ]
     },
     {
       "captureSha256": "a1478ff64c46ee8465e3c0c901d64e6d1a17d1063daeec08d9710708b414d705",
       "key": "archive-tag-krawl-through-krakow",
-      "cardKeys": []
+      "cardKeys": [
+        "post-party-krakow"
+      ]
     },
     {
       "captureSha256": "4d797d070ef408e86c09dc258c76774d77dd78f9a2ae2267e9bf5d32fe04ea55",
       "key": "archive-tag-party-ideas",
-      "cardKeys": []
+      "cardKeys": [
+        "post-party-krakow"
+      ]
     },
     {
       "captureSha256": "62a606c42d90f25f7aead30a7fd23fec2465a03b03a43905256c2397f6a76ad5",
       "key": "archive-tag-pub-crawl",
-      "cardKeys": []
+      "cardKeys": [
+        "post-party-krakow"
+      ]
     },
     {
       "captureSha256": "e25df966aacf8433c63e2f07ab01099ba595f42bccfeb34ed78e04301e02bf72",
       "key": "archive-tag-tips",
-      "cardKeys": []
+      "cardKeys": [
+        "post-party-krakow"
+      ]
     },
     {
       "captureSha256": "73b818b3dac80772e61d87ea017f2c419c8d0a489d76203b92393ccba7dbfb2e",
@@ -425,7 +459,9 @@
     {
       "captureSha256": "11cc133d07bb9ab7861b32dc0f4a6e965658fe7e920d404a57a3b0f75cdae587",
       "key": "archive-tag-why-choose-us",
-      "cardKeys": []
+      "cardKeys": [
+        "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow"
+      ]
     }
   ],
   "photo": {

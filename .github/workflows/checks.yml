@@ -66,6 +66,8 @@ jobs:
         run: node --test tools/tests/test_reviewed_article_presentation.mjs tools/tests/test_reviewed_article_audit_links.mjs
       - name: Practical safety-guide source contracts
         run: node --test tools/tests/test_safety_guides_editorial.mjs
+      - name: Party advice and offer source contracts
+        run: node --test tools/tests/test_party_guide_editorial.mjs
       - name: PHP syntax and isolated integration contracts
         run: |
           php --version
