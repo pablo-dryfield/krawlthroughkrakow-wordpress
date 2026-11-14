@@ -7,6 +7,13 @@
 }
 /* END Memorial visitor guide */
 
+/* BEGIN Reviewed article summary readability */
+body.ktk-code-page #main-content[data-ktk-reviewed-excerpts="2026-11-14.article-presentation-2"] p[data-ktk-reviewed-summary="2026-11-14.article-presentation-2"] { font-size: 16px; line-height: 1.65; text-align: left; letter-spacing: 0; margin: 0; padding: 0; }
+@media (max-width: 600px) {
+  body.ktk-code-page #main-content[data-ktk-reviewed-excerpts="2026-11-14.article-presentation-2"] p[data-ktk-reviewed-summary="2026-11-14.article-presentation-2"] { padding-right: 24px; }
+}
+/* END Reviewed article summary readability */
+
 /* BEGIN Practical night-out guidance */
 body.ktk-code-page:is([data-ktk-page="post-survive-pub-crawl"],[data-ktk-page="post-stages-of-drunkenness"]) #main-content [data-ktk-night-out-review] { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
 body.ktk-code-page:is([data-ktk-page="post-survive-pub-crawl"],[data-ktk-page="post-stages-of-drunkenness"]) #main-content [data-ktk-night-out-review] h2 { font-family: inherit; font-size: 22px; font-weight: 700; line-height: 1.35; letter-spacing: 0; margin: 24px 0 12px; }
