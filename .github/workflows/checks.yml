@@ -60,6 +60,8 @@ jobs:
         run: node --test tools/tests/test_stag_costume_editorial.mjs
       - name: Practical party-guide source contracts
         run: node --test tools/tests/test_practical_guides_editorial.mjs
+      - name: Practical night-out source contracts
+        run: node --test tools/tests/test_night_out_editorial.mjs
       - name: PHP syntax and isolated integration contracts
         run: |
           php --version

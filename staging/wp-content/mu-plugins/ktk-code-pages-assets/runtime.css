@@ -7,6 +7,18 @@
 }
 /* END Memorial visitor guide */
 
+/* BEGIN Practical night-out guidance */
+body.ktk-code-page:is([data-ktk-page="post-survive-pub-crawl"],[data-ktk-page="post-stages-of-drunkenness"]) #main-content [data-ktk-night-out-review] { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
+body.ktk-code-page:is([data-ktk-page="post-survive-pub-crawl"],[data-ktk-page="post-stages-of-drunkenness"]) #main-content [data-ktk-night-out-review] h2 { font-family: inherit; font-size: 22px; font-weight: 700; line-height: 1.35; letter-spacing: 0; margin: 24px 0 12px; }
+body.ktk-code-page:is([data-ktk-page="post-survive-pub-crawl"],[data-ktk-page="post-stages-of-drunkenness"]) #main-content [data-ktk-night-out-review] nav { margin: 1em 0; }
+body.ktk-code-page:is([data-ktk-page="post-survive-pub-crawl"],[data-ktk-page="post-stages-of-drunkenness"]) #main-content [data-ktk-night-out-review] summary { cursor: pointer; min-height: 44px; padding: 8px 0; font-weight: 700; }
+body.ktk-code-page:is([data-ktk-page="post-survive-pub-crawl"],[data-ktk-page="post-stages-of-drunkenness"]) #main-content [data-ktk-night-out-review] a { color: #c8006c; text-decoration: underline; text-underline-offset: .15em; }
+body.ktk-code-page:is([data-ktk-page="post-survive-pub-crawl"],[data-ktk-page="post-stages-of-drunkenness"]) #main-content [data-ktk-night-out-review] :is(summary,a):focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+@media (max-width: 600px) {
+  body.ktk-code-page:is([data-ktk-page="post-survive-pub-crawl"],[data-ktk-page="post-stages-of-drunkenness"]) #main-content [data-ktk-night-out-review] { padding-right: 24px; }
+}
+/* END Practical night-out guidance */
+
 /* BEGIN Practical party guides */
 body.ktk-code-page:is([data-ktk-page="post-stag-pranks"],[data-ktk-page="post-hostel-etiquette-tips"],[data-ktk-page="post-the-ultimate-guide-to-dating-in-nightlife-krakow"]) #main-content [data-ktk-practical-review] { font-size: 16px; line-height: 1.65; letter-spacing: 0; }
 body.ktk-code-page:is([data-ktk-page="post-stag-pranks"],[data-ktk-page="post-hostel-etiquette-tips"],[data-ktk-page="post-the-ultimate-guide-to-dating-in-nightlife-krakow"]) #main-content [data-ktk-practical-review] :is(h2,h3,h4) { font-family: inherit; font-weight: 700; line-height: 1.35; letter-spacing: 0; margin: 24px 0 12px; }
