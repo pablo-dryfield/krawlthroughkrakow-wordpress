@@ -75,7 +75,7 @@ jobs:
       - name: City and weekend trip source contracts
         run: node --test tools/tests/test_city_trip_editorial.mjs tools/tests/test_owned_vodka_links.mjs
       - name: Booking selection recovery contracts
-        run: node --test tools/tests/test_booking_selection_recovery.mjs
+        run: node --test tools/tests/test_booking_selection_recovery.mjs tools/tests/test_blocked_meta_pageview.mjs
       - name: Read-only booking measurement contracts (no provider events)
         run: node --test tools/tests/test_booking_measurement.mjs
       - name: PHP syntax and isolated integration contracts

@@ -138,7 +138,7 @@ byte is allowed to drift. The selection harness asserts14px/18.9px and bounds;
 earlier source2371/calendar53/selection96/public811 reports remain intermediate
 evidence until the final error-type build and asset-bound checks pass.
 
-## Final Local Candidate
+## Final Local Candidate Before Publication
 
 The error-type-final build is complete. Source2371 proves exactly four changed
 application files: configurator JSX, the four named CSS declarations and their
@@ -173,18 +173,92 @@ certify other days. Neither synthetic estimates nor isolated data-layer checks
 can certify real charges, paid-order protection or provider receipt. No new
 payment/OmniLodge deployment is authorized here.
 
-## Verification Still Required
+## Staging Release And Cached Verification
 
-- Source-bound before/after calendar tests, including unavailable dates and
-  pointer dismissal, narrow/desktop viewports and fixed NYE slots.
-- Guest/add-on limits and variants, single-code replacement, exact displayed
-  fixture totals, cart editing/Undo, stale-tab protections and pending-payment
-  recovery using existing isolated fixtures. No actual Stripe/payment requests.
-- Exact source inverse and unchanged non-focus application files, build/unit/
-  public-content regressions, snapshots and manual keyboard inspection.
-- Required CI, guarded staging-only12-file publication using its exact verified
-  previous-release baseline, protected state/production checks, rollback and
-  scoped cache verification. Do not weaken existing publication requirements.
-- Consented-recording/account-side evidence, live fee/revenue reconciliation,
-  real assistive-technology/manual checks and production approval remain
-  separate requirements; do not infer these from synthetic fixtures.
+Application `6e484b64d3faa799681fe9895b782834b6b6c886`, PR57, passed required
+CI43626880631 (both jobs) before manual staging publication. The guarded12-file
+publisher finished at18:32:09.359735UTC on14November. All12 final hashes match;
+2,315 protected staging files,2,158 production files and saved WordPress state
+are unchanged. Probes were removed and only the staging storefront origin
+cache was cleared. Only compiledJS/CSS differed from the previous remote
+payload; the four-file source guard still passes2,371 checks after publication.
+
+Remote rollback `deploy-backups/storefront-public-staging-20261114-183135-724081.zip`
+has exactly13 entries (manifest+12 originals), independent per-file SHA/entry-set
+and ZIP CRC verification, archive SHA256
+`52ce6742cd73ef005a1e02e15f38fc5df1ed68f9f9e3cee4bc1452e083bd5077`.
+The pre-edit3,315-blob Git backup above remains separate.
+
+After successful origin checks, the authenticated Cloudflare MCP accepted
+only these two staging prefixes at18:41:28.844UTC, with the exact active
+zone/account validated in the same call:
+
+```text
+krawlthroughkrakow.com/staging/store2/
+krawlthroughkrakow.com/staging/wp-content/plugins/ktk-storefront/
+```
+
+No domain, production or whole-staging purge was sent. API acceptance alone is
+not the cache proof; the following clean URL checks provide it:
+
+| Evidence | Origin | Normal URLs | Warm Repeat |
+| --- | --- | --- | --- |
+| HTTP/public HTML/current asset versions |692/692 at18:34:39.979010UTC;75 DYNAMIC |692/692 at18:43:02.747147UTC;75 MISS |692/692 at18:46:57.746103UTC;75 HIT |
+| Four-width calendar recovery |53/53 source-bound run |53/53 `calendar-normal-settled` |Covered by repeat asset/version proof, not a third browser claim |
+| Guests, extras and NYE selections |100/100 source-bound run |100/100 `selections-normal-settled` |As above |
+| Actual public rendering |240/240 |240/240 |No third browser run claimed |
+| General accessibility/short windows |176/176 and104/104 |176/176 and104/104 |No third browser run claimed |
+
+The final390px cached calendar and linked participant-error PNGs were inspected.
+The four focused axe views retain zero automated violations/eight incomplete
+groups, not full WCAG or assistive-technology certification. No real cart,
+quote, order, payment, email, consent change or provider event was transmitted.
+Both roadmaps now count43 staging-verified website deliveries. D04 remains
+partial; this is not approval to promote website SEO or payment logic.
+
+### Retained Live-Test Diagnostics
+
+The initial origin52/53 and99/100 reports failed only the strict page-error
+gate: the existing WordPress Meta Pixel call raised `fbq is not defined` while
+external provider scripts were blocked. A separate read-only production/staging
+comparison independently reproduces the same exact inline call and stack.
+The focused harness now classifies only that exact source/location; modified
+code, bundle exceptions, extra frames and unknown errors still fail.
+
+Cached WP Rocket pages transform those two Meta dependency calls to data URLs
+and defer/replay the first input. Initial normal6/11 and37/38 reports and the
+first readiness-only retries are retained, not relabelled. They read popup
+state before the optimizer finished replaying the event. The corrected harness
+waits at most5seconds for the same exact expected dialog state after native
+input, without forcing clicks, changing expected focus, loosening geometry or
+editing application/optimizer code. It also checks the existing public-content
+handoff before testing controls. Initial-load latency and provider behavior are
+not certified by these post-handoff controls.
+
+The normal source diagnostic confirms both exact Meta exceptions on production
+and staging with external/non-read requests blocked; neither is a new storefront
+exception. The classifier pins the two literal payloads, source occurrence and
+stack position; it never ignores an error by message alone. Four offline tests
+include altered-source/location/duplicate/bundle negative cases. The first
+normal diagnostic incorrectly inspected the transformed DOM after its inline
+scripts had moved to data URLs; its failed report remains. The follow-up parses
+the unchanged response HTML through DOMParser and passes. These are QA-only
+changes: tracking, consent and application assets are untouched. Normal focused
+reports retain8 calendar/28 selection dependency errors separately, not fixed.
+
+## Remaining D04 Verification
+
+- Invalid/expired-code recovery and add-on eligibility on every configured day;
+  the current isolated replacement tests and allowed-Monday fixture do not
+  certify either population.
+- Broader payment/cancel/retry and completed-order safeguards, with separate
+  scope/approval before any payment implementation or actual Stripe requests.
+- Consented journey/provider receipt and approved aggregate paid-revenue/fee
+  reconciliation; isolated estimates/events cannot establish these.
+- Physical-device, screen-reader and zoom checks, owner review and separate
+  production approval. The held medical article and active competition/form
+  remain untouched.
+
+Final QA-only follow-up passes shared JavaScript278, Python215, roadmap317 and
+source2371. Both roadmaps are regenerated; required final CI and exact-tree
+merge/branch cleanup follow without another application upload or cache purge.

@@ -2,6 +2,7 @@ import {readFile, writeFile, mkdir} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {createRequire} from 'node:module';
 import path from 'node:path';
+import {isBlockedMetaPageView} from './blocked-meta-pageview.mjs';
 
 const [base, output] = process.argv.slice(2), inputFile = 'docs/seo/booking-friction-2026-11-14/public-inputs.json';
 if (!base || !output) throw Error('Explicit isolated/staging base and fresh report required');
@@ -11,9 +12,9 @@ try { await readFile(path.join(output, 'report.json')); throw Error('Preserve pr
 await mkdir(output, {recursive: true});
 const input = JSON.parse(await readFile(inputFile, 'utf8')), regular = input.products.find(p => p.id === 28), nye = input.products.find(p => p.id === 32);
 if (!regular || !nye || regular.price.amount !== 120 || nye.price.amount !== 250 || regular.config.minParticipants !== 0 || nye.config.availability.fixedDate !== '2026-12-31') throw Error('Review changed public booking fixtures before testing');
-const files = [inputFile, 'tools/test-booking-selection-friction.mjs', 'staging/wp-content/plugins/ktk-storefront/frontend/src/ProductConfigurator.jsx', 'staging/wp-content/plugins/ktk-storefront/frontend/src/main.jsx', 'staging/wp-content/plugins/ktk-storefront/assets/storefront.js', 'staging/wp-content/plugins/ktk-storefront/assets/storefront.css'];
+const files = [inputFile, 'tools/test-booking-selection-friction.mjs', 'tools/blocked-meta-pageview.mjs', 'staging/wp-content/plugins/ktk-storefront/frontend/src/ProductConfigurator.jsx', 'staging/wp-content/plugins/ktk-storefront/frontend/src/main.jsx', 'staging/wp-content/plugins/ktk-storefront/assets/storefront.js', 'staging/wp-content/plugins/ktk-storefront/assets/storefront.css'];
 const hashes = async () => Object.fromEntries(await Promise.all(files.map(async f => [f, createHash('sha256').update(await readFile(f)).digest('hex')])));
-const initial = await hashes(), checks = [], errors = [], blocked = [], mutations = [], servedAssets = [], check = (name, pass, detail) => checks.push({name, pass: !!pass, detail});
+const initial = await hashes(), checks = [], errors = [], inheritedIntegrationErrors = [], blocked = [], mutations = [], servedAssets = [], check = (name, pass, detail) => checks.push({name, pass: !!pass, detail});
 const require = createRequire(import.meta.url), {chromium} = require(path.join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const frontendRequire = createRequire(path.resolve('staging/wp-content/plugins/ktk-storefront/frontend/package.json'));
 if (frontendRequire('axe-core/package.json').version !== '4.14.0') throw Error('Pinned axe version required');
@@ -53,11 +54,19 @@ async function fixture(width, slug, scenario, run, unavailable = false) {
     });
     context.on('requestfinished', r => { if (!['GET', 'HEAD'].includes(r.method())) mutations.push({view: name, method: r.method()}); });
     const page = await context.newPage();
-    page.on('pageerror', e => errors.push({view: name, message: e.message}));
+    const pageErrors = [];
+    const collectPageError = e => pageErrors.push({view: name, message: e.message, stack: e.stack});
+    page.on('pageerror', collectPageError);
     const script = page.waitForResponse(r => /\/storefront\.js(?:\?|$)/.test(r.url()));
     const url = new URL(slug + '/', base);
     if (process.argv.includes('--cache-bust')) url.searchParams.set('ktk_selection_check', Date.now().toString());
     const response = await page.goto(url.href, {waitUntil: 'load', timeout: 60000});
+    const html = await response.text();
+    await page.mouse.move(20, 20);
+    await page.waitForFunction(() => document.getElementById('ktk-storefront-root')?.hidden === false && !document.getElementById('ktk-storefront-public-content'), {}, {timeout: 30000});
+    for (const error of pageErrors.splice(0)) (isBlockedMetaPageView(error, response.url(), html) ? inheritedIntegrationErrors : errors).push(error);
+    page.off('pageerror', collectPageError);
+    page.on('pageerror', e => (isBlockedMetaPageView(e, response.url(), html) ? inheritedIntegrationErrors : errors).push({view: name, message: e.message, stack: e.stack}));
     const asset = await script;
     servedAssets.push({view: name, sha256: createHash('sha256').update(await asset.body()).digest('hex')});
     await page.locator('.ktk-configurator').waitFor();
@@ -76,6 +85,7 @@ async function dateLabel(page, offset = 2, monday = false) {
 }
 async function openDate(page, label) {
   await page.locator('.ktk-date-picker__trigger').click();
+  await page.getByRole('dialog', {name: 'Choose an activity date'}).waitFor({state: 'visible', timeout: 5000});
   const day = page.locator('.ktk-date-picker__days button').filter({hasText: /^\d+$/}).and(page.locator('[aria-label^="' + label + '"]'));
   for (let i = 0; !await day.count() && i < 2; i++) await page.getByRole('button', {name: 'Next month', exact: true}).click();
   if (await day.count() !== 1) throw Error('Exactly one intended calendar date required');
@@ -147,7 +157,7 @@ check('Source and fixture inputs unchanged during audit', JSON.stringify(initial
 check('One actual served bundle throughout', servedAssets.length > 0 && new Set(servedAssets.map(a => a.sha256)).size === 1, servedAssets);
 check('No non-read transmission', !mutations.length, mutations);
 check('No page or harness errors', !errors.length, errors);
-const report = {checkedAt: new Date().toISOString(), base, inputFile, sourceHashes: initial, servedAssets, scope: 'Public-config-bound isolated UI fixtures; all product GETs fulfilled from the capture, external and non-read requests aborted. No real carts, customer data, backend quotes, provider events or payments. Automated checks are not full accessibility certification.', passed: checks.filter(c => c.pass).length, total: checks.length, checks, errors, blocked, axeViews, realMutations: mutations.length};
+const report = {checkedAt: new Date().toISOString(), base, inputFile, sourceHashes: initial, servedAssets, scope: 'Public-config-bound isolated UI fixtures; all product GETs fulfilled from the capture, external and non-read requests aborted. No real carts, customer data, backend quotes, provider events or payments. Exact source/stack-bound inherited Meta errors are separately retained, not fixed. Automated checks are not full accessibility certification.', passed: checks.filter(c => c.pass).length, total: checks.length, checks, errors, inheritedIntegrationErrors, blocked, axeViews, realMutations: mutations.length};
 await writeFile(path.join(output, 'report.json'), JSON.stringify(report, null, 2) + '\n');
 console.log(JSON.stringify({passed: report.passed, total: report.total, failed: checks.filter(c => !c.pass), errors}, null, 2));
 if (report.passed !== report.total) process.exitCode = 1;
