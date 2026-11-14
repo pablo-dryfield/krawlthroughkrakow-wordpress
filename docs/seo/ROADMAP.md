@@ -6,7 +6,7 @@ Updated: 2026-11-14 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 ## Where We Are
 
-**Current work:** 30 website staging deliveries are verified. Stag, hen and student-trip planning is cache-verified, with useful checklists, working enquiry links and no invented package rules. Continuing the remaining group/article reviews; monthly/seasonal checks are agreed, the health article stays held and production is unchanged.
+**Current work:** 30 website staging deliveries are verified. The stag costume guide is now in local development: practical choices, respectful group planning and compact native contents, preserving its history/photos/fragments. Remaining group/article reviews continue; the health article stays held and production is unchanged.
 
 **Verified foundation milestones:** 7. **Website SEO production releases:** 0. The original website migration is a separate completed project, not counted as SEO implementation. Separately authorized OmniLodge reporting has its own release status.
 
@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 30 |
-| In progress | 0 |
+| In progress | 1 |
 | Verified live | 1 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Practical stag costume guidance](stag-costume-2026-11-14/README.md) | C06, C08, D05 | In progress (website) | Not yet | Build, source, native keyboard/contents, no-JS, accessibility, CI, staging and cache verification; owner review and separate production approval. No admission or activity-package guarantee. |
 | [Stag, hen and student-trip planning](group-planning-2026-11-14/README.md) | C06, D05, D06 | Verified on staging (website) | 2026-11-14 | Owner-confirmed operational rules, older activity-package and related safety-article review, actual mail assurance and separate production approval. No unconfirmed prices, group minima, private guarantees or response promises. |
 | [Established NYE city-guide refresh](nye-content-review-2026-11-13/ESTABLISHED-GUIDE.md) | C02, C08, D05 | Verified on staging (website) | 2026-11-14 | Owner review, remaining campaign/article work and separate production approval. No new event, checkout availability or original whole-page pixel identity is promised. |
 | [Contact offer clarity and usable directions](contact-details-2026-11-14/README.md) | C01, D05, T04 | Verified on staging (website) | 2026-11-14 | Owner review, wider meeting/overlay checks, manual accessibility and separate production approval. Existing no-JS Cloudflare-protected email limitation remains documented. |

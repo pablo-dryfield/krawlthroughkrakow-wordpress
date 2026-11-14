@@ -7,6 +7,21 @@
 }
 /* END Memorial visitor guide */
 
+/* BEGIN Stag costume guide */
+body.ktk-code-page[data-ktk-page="post-stag-do-costume"] #main-content [data-ktk-costume-review] { font-size: 16px; line-height: 1.65; letter-spacing: 0; }
+body.ktk-code-page[data-ktk-page="post-stag-do-costume"] #main-content [data-ktk-costume-review] :is(h2,h3,h4) { font-family: inherit; font-weight: 700; line-height: 1.35; letter-spacing: 0; margin: 24px 0 12px; }
+body.ktk-code-page[data-ktk-page="post-stag-do-costume"] #main-content [data-ktk-costume-review] h2 { font-size: 22px; }
+body.ktk-code-page[data-ktk-page="post-stag-do-costume"] #main-content [data-ktk-costume-review] h3 { font-size: 18px; }
+body.ktk-code-page[data-ktk-page="post-stag-do-costume"] #main-content [data-ktk-costume-review] h4 { font-size: 16px; }
+body.ktk-code-page[data-ktk-page="post-stag-do-costume"] #main-content [data-ktk-costume-review] nav { margin: 1em 0; }
+body.ktk-code-page[data-ktk-page="post-stag-do-costume"] #main-content [data-ktk-costume-review] summary { cursor: pointer; font-weight: 700; }
+body.ktk-code-page[data-ktk-page="post-stag-do-costume"] #main-content [data-ktk-costume-review] a { color: #c8006c; text-decoration: underline; text-underline-offset: .15em; }
+body.ktk-code-page[data-ktk-page="post-stag-do-costume"] #main-content [data-ktk-costume-review] :is(summary,a):focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+@media (max-width: 600px) {
+  body.ktk-code-page[data-ktk-page="post-stag-do-costume"] #main-content [data-ktk-costume-review] { padding-right: 24px; }
+}
+/* END Stag costume guide */
+
 /* BEGIN Group planning */
 body.ktk-code-page #main-content [data-ktk-group-planning-review] { text-align: left; }
 body.ktk-code-page #main-content [data-ktk-group-planning-review] h2 { font-family: inherit; font-size: 22px; font-weight: 700; line-height: 1.35; margin: 18px 0 12px; }
