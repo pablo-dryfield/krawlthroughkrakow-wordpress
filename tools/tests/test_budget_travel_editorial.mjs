@@ -1,0 +1,29 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile,writeFile,mkdtemp,rm} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {tmpdir} from 'node:os';
+import path from 'node:path';
+import {loadBudgetTravelEditorial,reviseBudgetTravelEditorial,buildBudgetTravelStyles} from '../budget-travel-editorial.mjs';
+
+test('three travel templates bind to exact immutable article sources',async()=>{
+ const rows=await loadBudgetTravelEditorial();assert.equal(rows.length,3);for(const [i,r]of rows.entries()){assert.equal(createHash('sha256').update(r.sourceHtml).digest('hex'),r.sourceSha256);assert.equal(r.version,'2026-11-14.budget-travel-1');assert.equal(r.reviewedOn,'2026-11-14');assert.equal((r.markup.match(/data-ktk-original-photo=/g)||[]).length,[6,8,7][i]);assert.equal((r.markup.match(/data-ktk-original-contents/g)||[]).length,1);assert.doesNotMatch(r.markup,/[{}]|<(?:img|iframe|script|style|form)\b/);}
+});
+test('paid KTK choices remain distinct from free admission and shared facts are resolved',async()=>{
+ for(const r of await loadBudgetTravelEditorial()){assert.match(r.markup,/paid/i);assert.match(r.markup,/aged 18 and over/);assert.match(r.markup,/__KTK_HOME_URL__store2\/pub-crawl-28\/#book/);assert.match(r.markup,/bringing valid ID is recommended/);assert.doesNotMatch(r.markup,/utm_|gclid|gbraid|wbraid|guaranteed adventure|\$40|\$60|150 stations/i);}
+ const rows=await loadBudgetTravelEditorial();assert.match(rows[0].markup,/Free November 2026/);assert.match(rows[0].markup,/not a promise for other months or future years/);assert.match(rows[2].markup,/PESEL/);assert.match(rows[2].markup,/previous booking confirmation/);assert.match(rows[2].markup,/cash return booking/);
+});
+test('unrelated/inherited/medical-held routes return without DOM access',()=>{for(const key of ['other','constructor','toString','__proto__','post-hostel-hangover-cure'])assert.deepEqual(reviseBudgetTravelEditorial({key}),[]);});
+test('useful route and dated ticket comparisons supplement operator links',async()=>{
+ const rows=await loadBudgetTravelEditorial();for(const r of rows.slice(0,2))assert.match(r.markup,/https:\/\/www\.krakow\.pl\/turystyka\/1218,artykul,droga-krolewska\.html/);assert.match(rows[0].markup,/Florian Gate, follow Florianska/);assert.match(rows[2].markup,/two 30-minute or single-journey tickets at 6 PLN each cost 12 PLN; four cost 24 PLN/);assert.equal(2*6,12);assert.equal(4*6,24);assert.match(rows[2].markup,/20 PLN, 24-hour Zone I/);assert.match(rows[2].markup,/all-zone ticket is 25 PLN/);assert.match(rows[2].markup,/At the review date, the airport lists 20 PLN/);
+});
+test('the original live-music photo belongs with music, not the KTK booking offer',async()=>{
+ const [r]=await loadBudgetTravelEditorial(),photo=r.markup.indexOf('<template data-ktk-original-photo="5"></template>'),music=r.markup.indexOf('id="catchfreelivemusiceventsatpopularvenues"'),booking=r.markup.indexOf('id="krawlthroughsomekrakowfreeactivitiestheultimatepubcrawlexperience"');assert.ok(music>=0&&photo>music&&booking>photo);
+});
+test('previous twenty-four identities and94 cards stay byte-for-byte frozen',async()=>{
+ const d=JSON.parse(await readFile(new URL('../reviewed-article-presentation.json',import.meta.url),'utf8')),keys=['post-krakow-free-activities-2','post-krakow-budget-activities','post-krakow-money-saving-tips'],old={articles:d.articles.filter(r=>!keys.includes(r.key)),containers:d.containers.map(r=>({...r,cardKeys:r.cardKeys.filter(k=>!keys.includes(k))})),photo:d.photo,assetManifestSha256:d.assetManifestSha256};assert.equal(old.articles.length,24);assert.equal(old.containers.reduce((n,c)=>n+c.cardKeys.length,0),94);assert.equal(createHash('sha256').update(JSON.stringify(old)).digest('hex'),'41cf4ea08007eed560d2f4ebf2ede459713352a1a7f68b54c5c496a256043d80');assert.equal(d.articles.length,27);assert.equal(d.containers.reduce((n,c)=>n+c.cardKeys.filter(k=>keys.includes(k)).length,0),9);
+});
+test('stale travel review identities reject before touching DOM',async()=>{for(const r of await loadBudgetTravelEditorial())for(const revision of [null,{...r,key:'other'},{...r,sourceSha256:'0'.repeat(64)},{...r,version:'unknown'},{...r,reviewedOn:'2027-01-01'}])assert.throws(()=>reviseBudgetTravelEditorial({key:r.key,revision}),/identity/);});
+test('travel styles are additive, narrow, exact and idempotent',async()=>{
+ const directory=await mkdtemp(path.join(tmpdir(),'ktk-travel-css-'));try{const file=path.join(directory,'runtime.css'),before='unchanged\n/* BEGIN Optional games resource guidance */\nrest\n';await writeFile(file,before);await buildBudgetTravelStyles(file);const css=await readFile(file,'utf8');assert.equal(css.replace(/\/\* BEGIN Practical budget travel guides \*\/[\s\S]*?\/\* END Practical budget travel guides \*\/\n\n/,''),before);assert.match(css,/font-size: 16px; line-height: 1\.65/);assert.match(css,/padding-right: 24px/);assert.match(css,/outline: 2px solid currentColor/);assert.doesNotMatch(css,/!important/);await buildBudgetTravelStyles(file);assert.equal(await readFile(file,'utf8'),css);for(const bad of [css.replace('16px','99px'),css+css,before.replace('Optional games','Unknown games')]){await writeFile(file,bad);await assert.rejects(()=>buildBudgetTravelStyles(file));assert.equal(await readFile(file,'utf8'),bad);}}finally{assert.ok(path.resolve(directory).startsWith(path.resolve(tmpdir())+path.sep+'ktk-travel-css-'));await rm(directory,{recursive:true,force:true});}
+});

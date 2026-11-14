@@ -1,7 +1,9 @@
 import importlib.util
 import unittest
 import copy
+import json
 from pathlib import Path
+from unittest.mock import patch
 
 FILE = Path(__file__).resolve().parents[1] / 'publish-code-pages.py'
 SPEC = importlib.util.spec_from_file_location('pages_publisher', FILE)
@@ -62,6 +64,24 @@ class PublisherTests(unittest.TestCase):
         self.assertNotIn('rocket_clean_domain', source)
         for forbidden in ['update_option', 'wp_update_post', 'wp_insert_post', 'rocket_clean_home']:
             self.assertNotIn(forbidden, source)
+
+    def test_full_publish_rejects_recorded_redirect_finalization_failure(self):
+        original_read = Path.read_text
+        build_path = publisher.ROOT / 'docs/code-pages/full-migration/build-report.json'
+        verification_path = publisher.ROOT / 'docs/code-pages/full-migration/build-verification.json'
+
+        def read_evidence(file, *args, **kwargs):
+            if file == build_path:
+                return json.dumps({'built': list(range(116)), 'missing': [], 'errors': [
+                    {'key': 'build-finalization', 'error': 'Expected observed redirect: 522'},
+                ]})
+            if file == verification_path:
+                return json.dumps({'passed': 1, 'total': 1})
+            return original_read(file, *args, **kwargs)
+
+        with patch.object(Path, 'read_text', new=read_evidence):
+            with self.assertRaisesRegex(RuntimeError, 'Successful full build and verification required'):
+                publisher.local_payload(full=True)
 
 
 if __name__ == '__main__':

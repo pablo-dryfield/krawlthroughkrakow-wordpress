@@ -24,6 +24,7 @@ if(!production)cases.push({path:'/wheres-the-cheap-places-to-drink-in-krakow/',s
 if(!production)cases.push({path:'/jazz-bars-in-krakow/',selector:'.entry-content a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 if(!production)cases.push({path:'/krakow-live-music/',selector:'.entry-content a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 if(!production)for(const slug of ['krakow-techno-clubs','krakow-techno-clubs-2','irish-bars-krakow','krakow-nightclubs','krakow-bars-jewish-quarter','krakow-shot-bar'])cases.push({path:'/'+slug+'/',selector:'.entry-content a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
+if(!production)for(const slug of ['krakow-free-activities-2','krakow-budget-activities','krakow-money-saving-tips'])cases.push({path:'/'+slug+'/',selector:'[data-ktk-budget-travel-review] a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 if(production)for(const item of cases)item.destination=item.destination.replace(/^\/staging/,'');
 const params={utm_source:'readiness-validation',utm_medium:'controlled-browser',utm_campaign:production?'production-link-handoff':'staging-link-handoff',gclid:'isolated-validation-click'};
 const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});
@@ -37,7 +38,8 @@ try{
    if(!['GET','HEAD','OPTIONS'].includes(request.method())){blockedWrites++;return route.abort();}
    return request.url().startsWith(base)||request.url().includes('/ktk-homepage-assets/')||request.url().includes('/ktk-code-pages-assets/')?route.continue():route.abort();
   });
-  await page.goto(base+item.path+'?'+new URLSearchParams(params),{waitUntil:'load'});
+  const target=new URL(base+item.path);for(const [key,value]of Object.entries(params))target.searchParams.set(key,value);if(process.argv.includes('--cache-bust'))target.searchParams.set('ktk_attribution_check',String(Date.now()));
+  await page.goto(target.href,{waitUntil:'load'});
   await page.evaluate(()=>{window.KTK_ANALYTICS_CONSENT=false;document.addEventListener('click',event=>event.preventDefault());});
   const anchor=page.locator(item.selector).first();
   check(item.path+' expected booking control exists',await anchor.count()===1);
@@ -45,7 +47,7 @@ try{
   const href=new URL(await anchor.getAttribute('href'));
   check(item.path+' correct own destination',href.origin==='https://krawlthroughkrakow.com'&&href.pathname===item.destination&&href.hash==='#book',href.pathname);
   check(item.path+' attribution preserved',Object.entries(params).every(([key,value])=>href.searchParams.get(key)===value));
-  check(item.path+' no legacy visitor parameters',['u','flow','full-items','back','from-ssl'].every(key=>!href.searchParams.has(key)));
+  check(item.path+' no legacy or QA-only visitor parameters',['u','flow','full-items','back','from-ssl','ktk_attribution_check'].every(key=>!href.searchParams.has(key)));
   check(item.path+' no navigation/submission',new URL(page.url()).pathname===prefix+item.path);
   if(item.product){
    check(item.path+' booking analytics withheld before consent',await page.evaluate(()=>!(window.dataLayer||[]).some(row=>row?.event==='ktk_page_booking_click')));
