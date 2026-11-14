@@ -6,7 +6,7 @@ Updated: 2026-11-14 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 ## Where We Are
 
-**Current work:** 41 website staging deliveries are cache-verified and unpromoted. Three budget-travel guides and nine matching summaries now pass origin, normal and warmed-cache checks. Of56 articles,25 have major staged revisions,2 narrower changes,28 need substantive review and1 is held. The competition and its entry form remain active. Mobile speed, remaining articles and booking-measurement reconciliation still need work; production, commerce and consent are unchanged.
+**Current work:** 41 website staging deliveries are cache-verified and unpromoted. The city logistics and weekend guides are implemented and checked locally:49 text modules, original photos/history, native contents and11 matching summaries. Their staging release and cache checks are next, so they are not counted as delivered. Of56 articles,25 have major staged revisions,2 narrower changes,28 need substantive review and1 is held. The competition and entry form remain active. Mobile speed, remaining articles and measurement reconciliation remain; production, commerce and consent are unchanged.
 
 **Verified foundation milestones:** 7. **Website production releases in this plan:** 1. Read each delivery scope: an isolated functional hotfix does not promote the staged SEO batches. The original website migration is a separate completed project. Separately authorized OmniLodge reporting has its own release status.
 
@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 41 |
-| In progress | 1 |
+| In progress | 2 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Useful city logistics and a flexible Krakow weekend](city-trip-guides-2026-11-14/README.md) | C08, T01, T06, T08, D03, D05, T10 | In progress (website) | Not yet | Required CI, guarded staging deployment, origin and cached-device verification. Local checks are not a completed delivery or production approval. Production, commerce, consent, active competition and specialist hold remain unchanged. |
 | [Free activities and practical budget travel](budget-travel-guides-2026-11-14/README.md) | C08, T01, T06, T08, D03, D05, T10 | Verified on staging (website) | 2026-11-14 | Remaining article facts, manual accessibility, owner review and separate production approval. No full pixel, ranking, commerce or consent claim. The active competition and entry form remain unchanged. |
 | [Lighter social icons with the original appearance](homepage-loading-2026-11-14/README.md) | D01, D02, D03, T10 | Verified on staging (website) | 2026-11-14 | The original SVG remains the main mobile loading bottleneck. Other page templates, manual accessibility, owner review and separate production approval remain; lab observations are not field CWV or a guaranteed speed uplift. |
 | [Booking funnel: verified mappings and remaining gaps](booking-measurement-2026-11-14/README.md) | M03, D04, C09 | In progress (website) | Not yet | Approved aggregate paid-revenue reconciliation, provider receipt and a reviewed decision on missing article/GA4 coverage. This audit is not a deployment, completed funnel, consent fix or new OmniLodge authorization. |

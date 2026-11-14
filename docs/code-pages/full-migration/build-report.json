@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-14T14:54:52.399Z",
+  "startedAt": "2026-11-14T16:29:30.541Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -4014,6 +4014,14 @@
           "id": ""
         },
         {
+          "type": "city-trip-guide-review",
+          "key": "post-travel-krakow-your-comprehensive-city-guide",
+          "reviewedOn": "2026-11-14",
+          "textInteriors": 18,
+          "retainedInlinePhotos": 10,
+          "nativeContentsTargets": 22
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -4098,6 +4106,14 @@
           "id": ""
         },
         {
+          "type": "city-trip-guide-review",
+          "key": "post-weekend-in-krakow",
+          "reviewedOn": "2026-11-14",
+          "textInteriors": 31,
+          "retainedInlinePhotos": 3,
+          "nativeContentsTargets": 20
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -4124,18 +4140,6 @@
         {
           "from": "__KTK_HOME_URL__store/Hen-Do-Activities-c165232789",
           "to": "__KTK_HOME_URL__store2/"
-        },
-        {
-          "from": "__KTK_HOME_URL__store/Polish-Vodka-Tasting-p637205219",
-          "to": "__KTK_HOME_URL__store2/polish-vodka-tasting-44/#book"
-        },
-        {
-          "from": "__KTK_HOME_URL__how-to-join/",
-          "to": "__KTK_HOME_URL__about-us/how-to-join/"
-        },
-        {
-          "from": "__KTK_HOME_URL__krakow-activities/",
-          "to": "__KTK_HOME_URL__other-tours/"
         }
       ]
     },
@@ -4512,6 +4516,13 @@
           "type": "reviewed-article-summary",
           "key": "post-krakow-techno-clubs",
           "postId": 6123,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-weekend-in-krakow",
+          "postId": 3122,
           "reviewedOn": "2026-11-14",
           "format": "text"
         },
@@ -5142,6 +5153,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-weekend-in-krakow",
+          "postId": 3122,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-party-krakow",
           "postId": 2979,
           "reviewedOn": "2026-11-14",
@@ -5264,6 +5282,13 @@
           "type": "reviewed-article-summary",
           "key": "post-all-you-need-to-know-about-visiting-auschwitz",
           "postId": 2681,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-travel-krakow-your-comprehensive-city-guide",
+          "postId": 2642,
           "reviewedOn": "2026-11-14",
           "format": "text"
         },
@@ -5501,6 +5526,13 @@
           "format": "text"
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-weekend-in-krakow",
+          "postId": 3122,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -5550,6 +5582,13 @@
           "type": "reviewed-article-summary",
           "key": "post-2020-krakow-nightlife-guide",
           "postId": 2968,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-travel-krakow-your-comprehensive-city-guide",
+          "postId": 2642,
           "reviewedOn": "2026-11-14",
           "format": "text"
         },
@@ -6243,6 +6282,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-weekend-in-krakow",
+          "postId": 3122,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-best-drinking-games",
           "postId": 3033,
           "reviewedOn": "2026-11-14",
@@ -6308,6 +6354,13 @@
           "type": "reviewed-article-summary",
           "key": "post-2020-krakow-nightlife-guide",
           "postId": 2968,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-travel-krakow-your-comprehensive-city-guide",
+          "postId": 2642,
           "reviewedOn": "2026-11-14",
           "format": "paragraph"
         },
@@ -9308,6 +9361,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-weekend-in-krakow",
+          "postId": 3122,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-party-krakow",
           "postId": 2979,
           "reviewedOn": "2026-11-14",
@@ -9365,6 +9425,13 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-weekend-in-krakow",
+          "postId": 3122,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "reviewed-article-summary",
@@ -9594,6 +9661,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-weekend-in-krakow",
+          "postId": 3122,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-party-krakow",
           "postId": 2979,
           "reviewedOn": "2026-11-14",
@@ -9651,6 +9725,13 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-weekend-in-krakow",
+          "postId": 3122,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "floating-booking-landmark"
@@ -9844,5 +9925,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-14T14:55:55.825Z"
+  "finishedAt": "2026-11-14T16:30:27.128Z"
 }

@@ -25,6 +25,8 @@ if(!production)cases.push({path:'/jazz-bars-in-krakow/',selector:'.entry-content
 if(!production)cases.push({path:'/krakow-live-music/',selector:'.entry-content a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 if(!production)for(const slug of ['krakow-techno-clubs','krakow-techno-clubs-2','irish-bars-krakow','krakow-nightclubs','krakow-bars-jewish-quarter','krakow-shot-bar'])cases.push({path:'/'+slug+'/',selector:'.entry-content a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 if(!production)for(const slug of ['krakow-free-activities-2','krakow-budget-activities','krakow-money-saving-tips'])cases.push({path:'/'+slug+'/',selector:'[data-ktk-budget-travel-review] a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
+if(!production)for(const slug of ['travel-krakow-your-comprehensive-city-guide','weekend-in-krakow'])cases.push({path:'/'+slug+'/',selector:'[data-ktk-city-trip-review] a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
+if(!production)cases.push({path:'/weekend-in-krakow/',selector:'[data-ktk-city-trip-review] a[href*="/polish-vodka-tasting-44/"]',destination:'/staging/store2/polish-vodka-tasting-44/',product:44});
 if(production)for(const item of cases)item.destination=item.destination.replace(/^\/staging/,'');
 const params={utm_source:'readiness-validation',utm_medium:'controlled-browser',utm_campaign:production?'production-link-handoff':'staging-link-handoff',gclid:'isolated-validation-click'};
 const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});

@@ -166,6 +166,18 @@
       "postId": 6155,
       "route": "/krakow-money-saving-tips/",
       "summary": "Compare total accommodation costs, the right transport ticket, airport travel and attraction-pass conditions. Plan your own Krakow budget with current operator information instead of fixed daily-cost estimates."
+    },
+    {
+      "key": "post-travel-krakow-your-comprehensive-city-guide",
+      "postId": 2642,
+      "route": "/travel-krakow-your-comprehensive-city-guide/",
+      "summary": "Plan your first Krakow trip with checked airport links, accommodation choices, budgeting, food and practical precautions. Use current operator information rather than old fares or fixed journey promises."
+    },
+    {
+      "key": "post-weekend-in-krakow",
+      "postId": 3122,
+      "route": "/weekend-in-krakow/",
+      "summary": "Build a flexible Krakow weekend with 15 daytime ideas and a night out. Group Old Town, Kazimierz and Podgorze stops with food and shopping, checking admissions and timings before fixing your route."
     }
   ],
   "containers": [
@@ -203,6 +215,7 @@
       "cardKeys": [
         "post-krakow-nightclubs",
         "post-krakow-techno-clubs",
+        "post-weekend-in-krakow",
         "post-party-krakow",
         "post-best-drinking-games"
       ]
@@ -286,6 +299,7 @@
       "captureSha256": "a3912dbcbcafb5eadae74d98f684f43b81ba94316d90a9160efdc894bad1805a",
       "key": "archive-author-dpbowman-page-8",
       "cardKeys": [
+        "post-weekend-in-krakow",
         "post-party-krakow",
         "post-best-drinking-games"
       ]
@@ -302,7 +316,8 @@
       "captureSha256": "93214811edd580d7e109bbeffcf8d4200f5cf8c51545900d543079fd6ac8232e",
       "key": "archive-author-jessie",
       "cardKeys": [
-        "post-all-you-need-to-know-about-visiting-auschwitz"
+        "post-all-you-need-to-know-about-visiting-auschwitz",
+        "post-travel-krakow-your-comprehensive-city-guide"
       ]
     },
     {
@@ -333,7 +348,8 @@
       "key": "archive-category-krakow-guides-page-2",
       "cardKeys": [
         "post-krakow-budget-activities",
-        "post-krakow-free-activities-2"
+        "post-krakow-free-activities-2",
+        "post-weekend-in-krakow"
       ]
     },
     {
@@ -341,6 +357,7 @@
       "key": "archive-category-krakow-guides-page-3",
       "cardKeys": [
         "post-2020-krakow-nightlife-guide",
+        "post-travel-krakow-your-comprehensive-city-guide",
         "post-survive-pub-crawl"
       ]
     },
@@ -405,6 +422,7 @@
         "post-krakow-safety-guide",
         "post-krakow-budget-activities",
         "post-krakow-techno-clubs",
+        "post-weekend-in-krakow",
         "post-best-drinking-games",
         "post-all-you-need-to-know-about-visiting-auschwitz",
         "post-krakow-new-years-eve",
@@ -415,6 +433,7 @@
         "post-hostel-etiquette-tips",
         "post-krakow-free-activities-2",
         "post-2020-krakow-nightlife-guide",
+        "post-travel-krakow-your-comprehensive-city-guide",
         "post-stages-of-drunkenness",
         "post-stag-pranks",
         "post-new-years-eve-in-krakow",
@@ -453,6 +472,7 @@
       "captureSha256": "9d3d6f011c96d90c8b2f3cdbfac33b4892e78261d22277a93bae5ec000062824",
       "key": "archive-tag-krakow-party",
       "cardKeys": [
+        "post-weekend-in-krakow",
         "post-party-krakow",
         "post-best-drinking-games"
       ]
@@ -461,6 +481,7 @@
       "captureSha256": "c5f795bd24fdd4b92de11351eeccd760bf14613be328af6ba0ec752a46904ea5",
       "key": "archive-tag-krakow",
       "cardKeys": [
+        "post-weekend-in-krakow",
         "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow"
       ]
     },
@@ -491,6 +512,7 @@
       "captureSha256": "e25df966aacf8433c63e2f07ab01099ba595f42bccfeb34ed78e04301e02bf72",
       "key": "archive-tag-tips",
       "cardKeys": [
+        "post-weekend-in-krakow",
         "post-party-krakow",
         "post-best-drinking-games"
       ]
@@ -498,7 +520,9 @@
     {
       "captureSha256": "73b818b3dac80772e61d87ea017f2c419c8d0a489d76203b92393ccba7dbfb2e",
       "key": "archive-tag-to-do-list",
-      "cardKeys": []
+      "cardKeys": [
+        "post-weekend-in-krakow"
+      ]
     },
     {
       "captureSha256": "11cc133d07bb9ab7861b32dc0f4a6e965658fe7e920d404a57a3b0f75cdae587",
