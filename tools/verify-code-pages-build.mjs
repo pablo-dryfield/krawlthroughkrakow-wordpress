@@ -22,6 +22,7 @@ import {loadGroupPlanningEditorial,reviseGroupPlanningEditorial} from './group-p
 import {loadGroupActivitiesEditorial,reviseGroupActivitiesEditorial} from './group-activities-editorial.mjs';
 import {loadStagCostumeEditorial,reviseStagCostumeEditorial} from './stag-costume-editorial.mjs';
 import {loadPracticalGuidesEditorial,revisePracticalGuidesEditorial} from './practical-guides-editorial.mjs';
+import {loadNightOutEditorial,reviseNightOutEditorial} from './night-out-editorial.mjs';
 import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
@@ -40,6 +41,7 @@ const groupPlanning=await loadGroupPlanningEditorial();
 const groupActivities=await loadGroupActivitiesEditorial();
 const stagCostume=await loadStagCostumeEditorial();
 const practicalGuides=await loadPracticalGuidesEditorial();
+const nightOutGuides=await loadNightOutEditorial();
 const campaignFacts=campaignTemplateValues(await loadOfferFacts());
 const imageReview=JSON.parse(await readFile('tools/content-image-descriptions.json','utf8'));
 const sharingImage=await loadSharingImagePolicy({expectedManifestSha256:imageReview.assetManifestSha256});
@@ -71,6 +73,7 @@ async function facts(html,revision){
   await page.evaluate(reviseGroupActivitiesEditorial,{key:revision.key,revision:groupActivities.find(row=>row.key===revision.key)});
   await page.evaluate(reviseStagCostumeEditorial,{key:revision.key,revision:stagCostume});
   await page.evaluate(revisePracticalGuidesEditorial,{key:revision.key,revision:practicalGuides.find(row=>row.key===revision.key)});
+  await page.evaluate(reviseNightOutEditorial,{key:revision.key,revision:nightOutGuides.find(row=>row.key===revision.key)});
  }
  return page.evaluate(()=>{const root=document.querySelector('#main-content');root.querySelectorAll('script,style,noscript,.mejs-controls,.mejs-layers,video a,[data-single-product-id],[data-ktk-booking-product]').forEach(e=>e.remove());return {text:root.textContent.replace(/\s+/g,' ').trim(),missingAlt:root.querySelectorAll('img:not([alt])').length,sections:root.querySelectorAll('.et_pb_section').length,headings:[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(e=>({tag:e.tagName,text:e.textContent.trim()})),primary:root.querySelectorAll('h1').length,forms:root.querySelectorAll('form.et_pb_contact_form,form.wpcf7-form').length,scripts:root.querySelectorAll('script').length,handlers:[...root.querySelectorAll('*')].flatMap(e=>[...e.attributes].filter(a=>/^on/i.test(a.name)).map(a=>a.name))};});
 }
