@@ -85,18 +85,19 @@ booking value still matter. No live attribution-token values are published.
 
 ## Prioritization And Completion
 
-Staging progress as of14 November:34 major article revisions,2 targeted
-corrections/notices,1 explicit specialist hold and19 articles still awaiting
-substantive review. Three food guides are now cache-verified; their
-[release evidence](../food-guide-clarity-2026-11-14/README.md) distinguishes
-operator facts from recommendations and unconfirmed openings, retaining17 photo
-files/history,49 native contents targets and complete origin/normal/warmed
-checks. Anny5 remains explicitly unconfirmed, not closed. Two neutral featured
-ALTs and four sharing descriptions change only two discovery source bindings;
-all original URLs, title/history and other metadata remain.
+Staging progress as of15 November:37 major article revisions,2 targeted
+corrections/notices,1 explicit specialist hold and16 articles still awaiting
+substantive review. Sports, wine and karaoke guides are now cache-verified;
+their [release evidence](../nightlife-choice-guides-2026-11-14/README.md)
+distinguishes recommendations from live programmes, stock and reservations.
+All18 photo files/history and41 native contents targets are retained, with
+complete origin/normal/warmed checks. Three neutral featured ALTs and six
+sharing descriptions change only three discovery source bindings; all original
+URLs, titles/history and other metadata remain. The previous food release
+keeps Anny5 explicitly unconfirmed, not closed.
 Five vodka service hrefs on four other articles were separately corrected to
 our product44; those link-only repairs do not count as substantive reviews.
-The36-identity/140-card summary catalog likewise is not36 full fact audits.
+The39-identity/150-card summary catalog likewise is not39 full fact audits.
 The competition and entry form remain ACTIVE, as corrected by the owner.
 
 Safety-review and expired-campaign risks take priority alongside NYE readiness;

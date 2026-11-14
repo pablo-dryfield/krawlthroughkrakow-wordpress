@@ -230,3 +230,71 @@ the new28/44 booking controls; their real live handoff check awaits deployment.
 All finite processes are closed; root5184/5185 previews retained. No commit,
 staging upload or edge purge yet for this batch. CI, guarded publication,
 origin/normal/warmed-cache verification and final roadmap/merge remain.
+
+## Guarded Staging Publication
+
+Application `11943083cfbb1417f74fbfcdaacf5729afeedfb3`, PR61, required
+CI43650029040: both jobs pass. Manual2073-file content publication completed
+14 November22:51:10.949341UTC. Every payload SHA independently matches local
+bytes, its exact reviewed Git blob and remote SHA. Saved WordPress posts/options,
+homepage and storefront remain unchanged; helper removed. Rollback:
+`deploy-backups/ktk-code-pages-staging-20261114-225039.zip`,17 entries,
+SHA256 `9163a028993d8d606cc8def3da9678914e65670e34ae986145cee53603e9fc3a`.
+It includes two unchanged renderer/registry files required by publisher policy.
+
+Discovery data-only3 publication completed22:52:23.021948UTC, with2324 protected
+staging/2158 production bindings and saved state exact, no origin cache paths
+cleared and helper removed. Rollback:
+`deploy-backups/seo-discovery-staging-20261114-225208-293230.zip`,four entries,
+SHA256 `81d16fa1108ae32cf5d69d2de3750af41ecdf00cc4b5c5963d70f2a3d4d651fd`.
+Both ZIPs pass independent exact file-set, per-file SHA, CRC and archive SHA.
+
+Postpublication source2391/origin body322/attribution339/discovery243/homepage10/
+icon21/ET20/social15 pass. Full content,56-view cards and501-form origin checks
+are still running. No edge purge or verified-delivery increase yet. Application
+is frozen at1194308; do not rebuild or republish while checks run.
+
+Origin cards closed1909/1909 over56 views and forms501/501 with no real email.
+Full3803 is finishing iPad/assets; do not purge before its successful exit.
+Independent discovery Git/local/remote3-file comparison also passes, including
+exact2324 staging/2158 production protected mappings. Roadmaps show deployed/
+verification-underway, not47 completed deliveries. No further application edit.
+
+## Final Cache Verification
+
+Application1194308 remains frozen and every finite verification process has
+closed successfully. Full release scans each cover116 routes/119 assets and
+pass6193 checks with zero transport retries, on14 NovemberUTC:
+
+- Origin22:59:42.797265:348 DYNAMIC responses.
+- Normal23:06:22.605518:344 MISS and4 HIT responses.
+- Warmed repeat23:08:14.473957:348 HIT responses.
+
+Fresh API-spec and exact active zone/account validation preceded the only
+Cloudflare purge: `krawlthroughkrakow.com/staging/`, accepted23:00:37.785UTC.
+No domain, host, production or settings purge was sent. The immutable source
+and all protected deployment bindings remain exact.
+
+Source2391/reference2320/body322 local+origin+normal/cards1891 local and1909
+origin+normal over56 views/forms501 local+origin+normal/attribution339 origin+
+normal/discovery243 origin+216 normal+216 repeat all pass. Homepage10/icon21/
+ET20/social15 checks pass without changing homepage/storefront/consent bytes.
+No real emails, carts, orders or provider events were sent by these checks.
+
+All nine cached390px header/intro/booking PNGs were visually inspected. Seven
+are exact RGBA matches to the reviewed local screenshots. Sports header has
+44,856 changed pixels bounded by `[39,174,351,401]`; wine header has41,441
+bounded by `[39,174,351,382]`. Both differences are confined to their original
+featured photographs. There are no masks, tolerances, cause assumptions or
+whole-page/original pixel-parity claims. Six cached axe views have zero
+automated violations and five incomplete contrast groups, not a conformance
+certificate.
+
+On15 November Warsaw time both roadmaps advance to47 verified staging batches.
+C08 remains partial:37 major revisions,2 targeted corrections/notices,1 held
+and16 awaiting substantive review. The39-identity/150-summary presentation
+catalog is not39 completed fact audits. Anny5 remains unconfirmed, competition
+and entry form remain active, and the medical hold remains intact. Final
+documentation/roadmap CI, exact-tree PR61 merge and completed-branch cleanup
+are next. No application rebuild/upload/purge is needed for these records,
+and no production approval is implied.
