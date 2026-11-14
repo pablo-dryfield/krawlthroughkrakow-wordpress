@@ -142,6 +142,12 @@
       "postId": 1941,
       "route": "/six-reasons-you-need-to-party-with-the-krawl-through-krakow/",
       "summary": "Compare an organised KTK night with your own plans, check current inclusions and joining information, and decide whether the social setting suits you without guaranteed crowds or admission."
+    },
+    {
+      "key": "post-best-drinking-games",
+      "postId": 3033,
+      "route": "/best-drinking-games/",
+      "summary": "Bring your group together with KTK Drunken Jenga, card rounds, quick challenges and conversation games. Explore the ideas and download our original KTK game rule sheets."
     }
   ],
   "containers": [
@@ -179,7 +185,8 @@
       "cardKeys": [
         "post-krakow-nightclubs",
         "post-krakow-techno-clubs",
-        "post-party-krakow"
+        "post-party-krakow",
+        "post-best-drinking-games"
       ]
     },
     {
@@ -257,7 +264,8 @@
       "captureSha256": "a3912dbcbcafb5eadae74d98f684f43b81ba94316d90a9160efdc894bad1805a",
       "key": "archive-author-dpbowman-page-8",
       "cardKeys": [
-        "post-party-krakow"
+        "post-party-krakow",
+        "post-best-drinking-games"
       ]
     },
     {
@@ -370,6 +378,7 @@
         "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
         "post-krakow-safety-guide",
         "post-krakow-techno-clubs",
+        "post-best-drinking-games",
         "post-all-you-need-to-know-about-visiting-auschwitz",
         "post-krakow-new-years-eve",
         "post-stag-do-costume",
@@ -395,7 +404,9 @@
     {
       "captureSha256": "cd36a0839b1107aa9c5ebbbfa2de852cd9ac8d95560b7d09814dd7d4b02b0749",
       "key": "archive-tag-drinking-games",
-      "cardKeys": []
+      "cardKeys": [
+        "post-best-drinking-games"
+      ]
     },
     {
       "captureSha256": "8e80de83e5c3be84a0be5f9465ce828dda79fd306ba75660e7125ce3fa5ab5d0",
@@ -413,7 +424,8 @@
       "captureSha256": "9d3d6f011c96d90c8b2f3cdbfac33b4892e78261d22277a93bae5ec000062824",
       "key": "archive-tag-krakow-party",
       "cardKeys": [
-        "post-party-krakow"
+        "post-party-krakow",
+        "post-best-drinking-games"
       ]
     },
     {
@@ -427,14 +439,16 @@
       "captureSha256": "a1478ff64c46ee8465e3c0c901d64e6d1a17d1063daeec08d9710708b414d705",
       "key": "archive-tag-krawl-through-krakow",
       "cardKeys": [
-        "post-party-krakow"
+        "post-party-krakow",
+        "post-best-drinking-games"
       ]
     },
     {
       "captureSha256": "4d797d070ef408e86c09dc258c76774d77dd78f9a2ae2267e9bf5d32fe04ea55",
       "key": "archive-tag-party-ideas",
       "cardKeys": [
-        "post-party-krakow"
+        "post-party-krakow",
+        "post-best-drinking-games"
       ]
     },
     {
@@ -448,7 +462,8 @@
       "captureSha256": "e25df966aacf8433c63e2f07ab01099ba595f42bccfeb34ed78e04301e02bf72",
       "key": "archive-tag-tips",
       "cardKeys": [
-        "post-party-krakow"
+        "post-party-krakow",
+        "post-best-drinking-games"
       ]
     },
     {

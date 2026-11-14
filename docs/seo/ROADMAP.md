@@ -6,7 +6,7 @@ Updated: 2026-11-14 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 ## Where We Are
 
-**Current work:** 38 website staging deliveries are cache-verified and unpromoted. The party-advice pair passes full-site origin, normal and warmed checks, with348 warmed HITs,264 archive views and501 safe-form checks. All14 photos/history/prior71 summaries and original topic destinations are retained. Articles now have21 major revisions,2 narrower changes,1 hold and32 awaiting substantive review. Production, commerce and consent are unchanged..
+**Current work:** 38 website staging deliveries are cache-verified and unpromoted. The games-resource batch is being rebuilt with the owner's upbeat KTK branding: no regular-Jenga reference or optional-participation wording. Original PDFs, photos, publication history and previous86 summaries remain protected. Articles remain21 major revisions,2 narrower changes,1 hold and32 awaiting substantive review until release verification. Production, commerce and consent are unchanged..
 
 **Verified foundation milestones:** 7. **Website production releases in this plan:** 1. Read each delivery scope: an isolated functional hotfix does not promote the staged SEO batches. The original website migration is a separate completed project. Separately authorized OmniLodge reporting has its own release status.
 
@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 38 |
-| In progress | 0 |
+| In progress | 1 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [KTK games and preserved PDF resources](games-resource-guidance-2026-11-14/README.md) | C09, C08, D03, T07, T08 | In progress (website) | Not yet | Finish the final source, browser,272-view card and form checks, CI and guarded staging/cache verification. Graph recovered with142 pages/24 products/0 unknown paths. No PDF overwrite, production, commerce or consent change. |
 | [Practical party advice and current offer claims](party-guide-claims-2026-11-14/README.md) | C08, C01, D03, D05, T08 | Verified on staging (website) | 2026-11-14 | Remaining article facts, manual accessibility, owner review and separate production approval. No whole-page pixel, risk-free, commerce or consent claim; specialist hold unchanged. |
 | [Practical Krakow and stag safety guides](safety-guides-2026-11-14/README.md) | C08, C06, D03, D05, T08 | Verified on staging (website) | 2026-11-14 | Remaining article and package facts, manual accessibility, owner review and separate production approval. Original titles/history/other110 bodies and prior65 summaries retained; no risk-free or whole-page pixel guarantee. |
 | [Consistent blog and archive summaries](article-summaries-2026-11-14/README.md) | C08, T06, T08, D03 | Verified on staging (website) | 2026-11-14 | Remaining article facts, unreviewed archive-card readability, manual accessibility, owner review and separate production approval. Retained DNS/QA diagnostics are not hidden; this consistency pass is not19 completed article fact reviews. |
