@@ -272,7 +272,7 @@
 
 .ktk-configurator .ktk-field-error {
   color: #ff76b9;
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: 0.02em;
   line-height: 1.35;
@@ -424,8 +424,8 @@
 }
 
 .ktk-date-picker__weekdays span {
-  color: rgba(243, 238, 228, 0.42);
-  font-size: 8px;
+  color: rgba(243, 238, 228, 0.72);
+  font-size: 12px;
   font-weight: 900;
   text-align: center;
 }
@@ -445,6 +445,10 @@
   font-size: 11px;
   font-weight: 800;
   cursor: pointer;
+}
+
+.ktk-date-picker .ktk-date-picker__days button {
+  font-size: 14px;
 }
 
 .ktk-date-picker__days button:hover:not(:disabled),
