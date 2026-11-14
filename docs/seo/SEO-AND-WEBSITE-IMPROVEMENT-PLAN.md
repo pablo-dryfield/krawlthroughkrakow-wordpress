@@ -50,6 +50,7 @@ Supporting evidence:
 
 | Observation | Evidence / confidence | Meaning |
 | --- | --- | --- |
+| 2026-11-14 | C06/D03/D05, older group-activity claims under review | Seven stag/hen text modules now have source-bound revisions for quote-specific private arrangements/inclusions, practical official safety advice and misplaced karting copy. Mobile clearance and the karting CTA hit area are corrected; source2377/browser172/form501/group354/build2320 pass locally. Original media/forms/metadata and other114 bodies are protected. [Evidence and retained failures](group-activities-2026-11-14/README.md). Not yet deployed or counted verified; all broader SEO work stays staging-only. |
 | Core booking demand already exists | Live GSC exact query rows; high confidence | Protect current pub-crawl visibility before experimenting. |
 | Nightlife/local-guide opportunity repeats over time | GSC four-window review plus Ahrefs competitor gap; high confidence in opportunity, not forecast uplift | Improve existing local content rather than unrelated traffic topics. |
 | Search Console dashboard understates/limits its own coverage | Source inspection: every request asks for 100 rows; UI sums those rows; confirmed | Its cards are not dependable sitewide totals. Fix before declaring growth, decline or missing demand. |

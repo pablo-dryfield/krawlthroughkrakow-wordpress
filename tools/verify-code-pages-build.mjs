@@ -19,6 +19,7 @@ import {loadOfferPageRevisions,reviseOfferPages} from './offer-pages-editorial.m
 import {loadContactDetails,reviseContactDetails} from './contact-details-editorial.mjs';
 import {loadEstablishedNyeEditorial,reviseEstablishedNyeEditorial} from './established-nye-editorial.mjs';
 import {loadGroupPlanningEditorial,reviseGroupPlanningEditorial} from './group-planning-editorial.mjs';
+import {loadGroupActivitiesEditorial,reviseGroupActivitiesEditorial} from './group-activities-editorial.mjs';
 import {loadStagCostumeEditorial,reviseStagCostumeEditorial} from './stag-costume-editorial.mjs';
 import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
 const require=createRequire(import.meta.url);
@@ -35,6 +36,7 @@ const offerPageRevisions=await loadOfferPageRevisions();
 const contactDetails=await loadContactDetails();
 const establishedNye=await loadEstablishedNyeEditorial();
 const groupPlanning=await loadGroupPlanningEditorial();
+const groupActivities=await loadGroupActivitiesEditorial();
 const stagCostume=await loadStagCostumeEditorial();
 const campaignFacts=campaignTemplateValues(await loadOfferFacts());
 const imageReview=JSON.parse(await readFile('tools/content-image-descriptions.json','utf8'));
@@ -64,6 +66,7 @@ async function facts(html,revision){
   if(revision.key==='contact')await page.evaluate(()=>document.querySelectorAll('#main-content .et_pb_code_0 noscript').forEach(n=>n.remove()));
   await page.evaluate(reviseContactDetails,{key:revision.key,revision:contactDetails});
   await page.evaluate(reviseGroupPlanningEditorial,{key:revision.key,revision:groupPlanning.find(row=>row.key===revision.key)});
+  await page.evaluate(reviseGroupActivitiesEditorial,{key:revision.key,revision:groupActivities.find(row=>row.key===revision.key)});
   await page.evaluate(reviseStagCostumeEditorial,{key:revision.key,revision:stagCostume});
  }
  return page.evaluate(()=>{const root=document.querySelector('#main-content');root.querySelectorAll('script,style,noscript,.mejs-controls,.mejs-layers,video a,[data-single-product-id],[data-ktk-booking-product]').forEach(e=>e.remove());return {text:root.textContent.replace(/\s+/g,' ').trim(),missingAlt:root.querySelectorAll('img:not([alt])').length,sections:root.querySelectorAll('.et_pb_section').length,headings:[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(e=>({tag:e.tagName,text:e.textContent.trim()})),primary:root.querySelectorAll('h1').length,forms:root.querySelectorAll('form.et_pb_contact_form,form.wpcf7-form').length,scripts:root.querySelectorAll('script').length,handlers:[...root.querySelectorAll('*')].flatMap(e=>[...e.attributes].filter(a=>/^on/i.test(a.name)).map(a=>a.name))};});
