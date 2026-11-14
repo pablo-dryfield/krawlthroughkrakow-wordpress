@@ -178,6 +178,18 @@
       "postId": 3122,
       "route": "/weekend-in-krakow/",
       "summary": "Build a flexible Krakow weekend with 15 daytime ideas and a night out. Group Old Town, Kazimierz and Podgorze stops with food and shopping, checking admissions and timings before fixing your route."
+    },
+    {
+      "key": "post-go-karting-krakow",
+      "postId": 6678,
+      "route": "/go-karting-krakow/",
+      "summary": "Plan a Krakow karting day for your group, compare individual sessions with the current KTK package and confirm private arrangements. Check travel, timing and driver requirements before booking."
+    },
+    {
+      "key": "post-krakow-go-karting",
+      "postId": 6152,
+      "route": "/krakow-go-karting/",
+      "summary": "Compare Krakow karting options and prepare for a first visit with operator information, equipment and driver requirements. Keep track rules separate from generic age, fleet and package promises."
     }
   ],
   "containers": [
@@ -232,6 +244,7 @@
       "captureSha256": "75a0c821b265659baeea0aa7c8cdee04aef198cb2b7e32705b53f114c8c5747b",
       "key": "archive-category-uncategorized",
       "cardKeys": [
+        "post-go-karting-krakow",
         "post-krakow-shot-bar",
         "post-jazz-bars-in-krakow"
       ]
@@ -241,7 +254,8 @@
       "key": "archive-author-dpbowman",
       "cardKeys": [
         "post-stag-do-costume",
-        "post-stag-pranks"
+        "post-stag-pranks",
+        "post-go-karting-krakow"
       ]
     },
     {
@@ -283,7 +297,8 @@
       "captureSha256": "d6fe0d9912698f97c04022ef4c3db383678c11db6208c242e11b7422768e09ea",
       "key": "archive-author-dpbowman-page-6",
       "cardKeys": [
-        "post-krakow-money-saving-tips"
+        "post-krakow-money-saving-tips",
+        "post-krakow-go-karting"
       ]
     },
     {
@@ -405,6 +420,7 @@
       "captureSha256": "bfee0edd8fe229842113769ac637f7e68f93395d86d293b6b576c9c80f492c02",
       "key": "archive-category-uncategorized-page-4",
       "cardKeys": [
+        "post-krakow-go-karting",
         "post-all-you-need-to-know-about-visiting-auschwitz",
         "post-krakow-new-years-eve"
       ]
@@ -421,12 +437,14 @@
         "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
         "post-krakow-safety-guide",
         "post-krakow-budget-activities",
+        "post-krakow-go-karting",
         "post-krakow-techno-clubs",
         "post-weekend-in-krakow",
         "post-best-drinking-games",
         "post-all-you-need-to-know-about-visiting-auschwitz",
         "post-krakow-new-years-eve",
         "post-stag-do-costume",
+        "post-go-karting-krakow",
         "post-krakow-shot-bar",
         "post-krakow-techno-clubs-2",
         "post-is-krakow-safe-for-stag",

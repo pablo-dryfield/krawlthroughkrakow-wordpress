@@ -29,6 +29,7 @@ import {loadPartyGuideEditorial,revisePartyGuideEditorial} from './party-guide-e
 import {loadGamesResourceEditorial,reviseGamesResourceEditorial} from './games-resource-editorial.mjs';
 import {loadBudgetTravelEditorial,reviseBudgetTravelEditorial} from './budget-travel-editorial.mjs';
 import {loadCityTripEditorial,reviseCityTripEditorial} from './city-trip-editorial.mjs';
+import {loadKartingGuidesEditorial,reviseKartingGuidesEditorial} from './karting-guides-editorial.mjs';
 import {loadOwnedVodkaLinks,reviseOwnedVodkaLinks} from './owned-vodka-links.mjs';
 import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
 const require=createRequire(import.meta.url);
@@ -55,6 +56,7 @@ const partyGuides=await loadPartyGuideEditorial();
 const gamesGuides=await loadGamesResourceEditorial();
 const budgetTravelGuides=await loadBudgetTravelEditorial();
 const cityTripGuides=await loadCityTripEditorial();
+const kartingGuides=await loadKartingGuidesEditorial();
 const ownedVodkaLinks=await loadOwnedVodkaLinks();
 const campaignFacts=campaignTemplateValues(await loadOfferFacts());
 const imageReview=JSON.parse(await readFile('tools/content-image-descriptions.json','utf8'));
@@ -93,6 +95,7 @@ async function facts(html,revision){
   await page.evaluate(reviseGamesResourceEditorial,{key:revision.key,revision:gamesGuides.find(row=>row.key===revision.key)});
   await page.evaluate(reviseBudgetTravelEditorial,{key:revision.key,revision:budgetTravelGuides.find(row=>row.key===revision.key)});
   await page.evaluate(reviseCityTripEditorial,{key:revision.key,revision:cityTripGuides.find(row=>row.key===revision.key)});
+  await page.evaluate(reviseKartingGuidesEditorial,{key:revision.key,revision:kartingGuides.find(row=>row.key===revision.key)});
   await page.evaluate(reviseReviewedArticlePresentation,{key:revision.key,revision:articlePresentations.find(row=>row.key===revision.key)});
   await page.evaluate(reviseOwnedVodkaLinks,{key:revision.key,revision:ownedVodkaLinks.find(row=>row.key===revision.key)});
  }
