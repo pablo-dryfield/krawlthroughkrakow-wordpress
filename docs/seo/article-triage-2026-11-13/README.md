@@ -80,7 +80,7 @@ booking value still matter. No live attribution-token values are published.
 |`/the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow/`|0|53|Compare|Compare the 2017/2018/2019 venue list with the 2020 guide/current hub; no cosmetic year update or automatic redirect.|
 |`/travel-krakow-your-comprehensive-city-guide/`|0|144|Refresh|Verify old airport fares, transport timetables, attraction logistics and accommodation recommendations using primary operators.|
 |`/weekend-in-krakow/`|Not observed|Not observed|Refresh|Keep the itinerary URL pending longer/query/link evidence; verify attraction access and realistic travel timings.|
-|`/welcome-to-alcohol/`|Not observed|Not observed|Historical|Confirm whether the prize competition expired; preserve history and do not collect new entries under unknown rules.|
+|`/welcome-to-alcohol/`|Not observed|Not observed|Refresh|Owner confirms the competition is ACTIVE on14 November2026: keep the page and entry form active. This latest correction overrides the earlier archive/remove-form answer. Review specific prize, rule and date claims without archiving/removing the page or inventing replacements.|
 |`/wheres-the-cheap-places-to-drink-in-krakow/`|71|2,594|Refresh|High-priority useful guide: locally verify named bars, happy hours, prices and student discounts before updating claims.|
 
 ## Prioritization And Completion

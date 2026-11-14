@@ -162,3 +162,119 @@ choices were used or changed.
 
 CI and guarded staging publication/origin/cache checks remain. Do not increment
 the40 verified-staging count or call this a production release yet.
+
+## Staging Publication And Verification
+
+Application981c2a205c63bd7c908298ed2305253d4ea571e5, PR55 and
+CI43607821203 pass both required jobs. The guarded manual2073-file incremental
+staging publication is complete; saved WordPress state and homepage unchanged,
+helper removed. Full origin, focused body/form and card checks are in progress;
+no edge purge or delivery-count advancement yet.
+
+Rollback `deploy-backups/ktk-code-pages-staging-20261114-150306.zip` has13 entries,
+12 original files and no new files. Exact manifest set, every per-file SHA256,
+ZIP CRC and recorded SHA256
+`d96d7011265efcdf4b564d7777ee731e57f09164fdf3e7c3ac3d7b0508e87966` pass.
+This is a bounded application rollback, not a whole hosting/database backup.
+
+The optional post-edit pre-edit-inventory tool rejected35 already-revised
+containers as designed; its `reviewed-card-inventory-final.json` is retained as
+that diagnostic, not a current-copy release gate or evidence of application
+drift. Final2397 source inverses and the canonical-summary browser checks verify
+the revised state instead; no inventory guard was relaxed.
+
+Origin body455 and the existing attribution143 pass. The attribution harness
+now also covers the three new native product28 controls. Its formerly ignored
+`--cache-bust` option now adds a separate QA-only parameter, which must not be
+forwarded into booking links. This is a QA change only, not an attribution,
+consent or application change. Fresh expanded checks are required; the old143
+report is not relabelled as the expanded result.
+
+## Owner Correction And Network Diagnostics
+
+The owner first selected the ended/archive competition option, then explicitly
+corrected it: The Big Prize Competition is still active. Keep
+`/welcome-to-alcohol/` and its entry form active; do not archive/remove it. The
+later instruction is authoritative. No competition page or form was changed.
+The triage ledger and root instructions now retain that correction.
+
+The first post-purge normal runs encountered DNS/name-resolution errors and a
+Windows unreachable-host socket error. Preserve the interrupted form223/224,
+card763/765 (59/288 views), attribution/discovery/home errors and the full normal
+run rather than relabelling them successful. The card stop was an image decode
+error during that network incident; do not infer its precise cause without
+diagnostics. No application, asset, DNS, firewall or hosting configuration was
+changed to bypass these checks.
+
+Windows DNS resolution and fresh ordinary GETs recovered at15:24:19UTC: staging
+homepage, author page3 and stag page each return200/HIT. Re-run interrupted
+checks with fresh evidence paths. The same successful purge is not a reason to
+purge again merely because the local verification connection was interrupted.
+
+## Final Staging Cache Verification
+
+The guarded publisher finished at15:03:49.592672UTC. All2,073 owned remote
+hashes match local source, saved WordPress state, homepage and storefront are
+unchanged, and the temporary helper was removed. Application source remains
+exactly981c2a205c63bd7c908298ed2305253d4ea571e5; subsequent changes are QA/docs only.
+
+Fresh Cloudflare API/schema and zone/account validation preceded the single
+successful purge at15:15:23.395UTC: only
+`krawlthroughkrakow.com/staging/`. No production/domain-wide purge, DNS,
+firewall, host, asset or timeout change was made. API acceptance alone is not
+treated as proof of current cached content.
+
+All three complete release checks pass6,193/6,193 for116 routes and119 assets,
+with zero HTTP retries:
+
+- Origin15:13:50.840548UTC:348 content responses DYNAMIC.
+- Recovered normal15:28:54.239136UTC:331 HIT and17 MISS.
+- Recovered repeat15:52:14.111012UTC:348 HIT.
+
+Reports are `budget-travel-origin-20261114.json`,
+`budget-travel-normal-recovered-20261114.json` and
+`budget-travel-repeat-recovered-20261114.json` under
+`docs/code-pages/full-migration/`. The initial interrupted normal report remains
+5666/5697 with31 failed route lookups; it is not silently replaced or called a
+pass. The separate390px no-JS author-page3 diagnostic decoded all five images,
+each200 with exact local SHA256; this does not prove the historical decode
+failure's precise cause.
+
+Focused normal body455, recovered full-card3989/3989 across288 JS/no-JS views,
+forms501, expanded attribution164, discovery216 and repeat216 pass. Origin
+cards1219, forms501, attribution164 and discovery243 pass separately. All booking
+tests use isolated storage and prevent navigation/submissions; no real emails,
+carts, orders or conversions were sent. Home10 protected assets, icons21,
+ET/font20 and social-font15 pass at origin and recovered normal URLs, with
+all three recovered homepage device variants HIT. Local source2397,
+reference2320 and the original immutable media manifest remain authoritative.
+
+All six actual cached390px guide screenshots were reviewed against the final
+local set. Five are byte-identical. The free-guide intro differs only inside
+the original photo rectangle `(39,0)-(351,205)`; its text, layout and controls
+outside that rectangle are exact, and both images were visually inspected.
+No image replacement, comparison mask or tolerance change was introduced. This
+is not an original whole-page pixel-identity claim. Six cached JS-only axe views
+have zero violations and six incomplete/manual-review groups, not accessibility
+certification.
+
+Both roadmaps now count41 verified staging deliveries. C08 has25 major staged
+revisions, two narrower changes/notices, one specialist hold and28 articles
+still needing substantive review. The27-identity/103-card summary catalog is
+not27 completed fact audits. Competition page/form remain active per the latest
+owner instruction. Owner/manual reviews, remaining articles, measurement,
+performance and separately approved production promotion remain open. Final
+QA/docs CI and exact-tree merge are still required; no further application
+upload or cache purge is needed for those records.
+
+The final215-test Python run initially rejected the triage table's new prose
+label as an invalid decision category. The competition row now keeps the
+existing `Refresh` category and states the authoritative ACTIVE/page-and-form
+instruction in its review column. The closed decision vocabulary and test remain
+unchanged; this is a documentation repair, not a competition or form change.
+
+Final local follow-up checks pass: source2397, reference2320, roadmap317,
+shared JavaScript251, Python215, PHP763/forms31/NYE143 and repository policy.
+The final390px roadmap screenshot was inspected. `git diff` against the deployed
+application commit has no `staging/` changes. Only QA, evidence timestamps and
+documentation are committed in the release follow-up.
