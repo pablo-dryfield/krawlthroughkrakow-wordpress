@@ -199,3 +199,52 @@ cross-links supplement them. No whole-page/original pixel claim, real email or
 order. The final full272-view card run has now closed3619/3619 with stable owned
 source hashes. All finite local checks are closed; task-owned previews remain.
 CI and guarded staging/origin/cache publication are next; no new upload yet.
+
+## Staging Publication
+
+Application739ea88fbde0b4519792d500e63c0864d8209a01, PR52 and required
+CI43596983192 (both jobs pass) were published with the guarded manual full
+incremental staging publisher. It completed12:55:34.320647UTC on14 November:
+2073 independently verified owned hashes match; saved WordPress posts/options,
+homepage and storefront remain unchanged; temporary helper removed and checked.
+
+Rollback `deploy-backups/ktk-code-pages-staging-20261114-125457.zip`, SHA256
+`af501e52f647585d5a13c7dd054db3fe8f97a733fcd38eccc207940f536f61cd`.
+All14 entries, exact manifest file set, every per-file SHA and ZIP CRC pass.
+An initial inspection tried the wrong manifest member name and stopped on a
+KeyError; the actual `release-manifest.json` was then used, not an inferred
+file set. This is an application rollback, not a full hosting/database backup.
+
+Post-publication source2391, origin body224/attribution143/discovery243 and
+unchanged homepage10/icons21/font20 pass. Full-site origin,272-view card and
+safe-form verification continue. No edge purge or delivery-count advancement
+yet. Application bytes remain exact739ea88; normal and warmed checks are still
+required. No production, commerce, consent, specialist or OmniLodge change.
+
+## Final Cached Verification
+
+Application bytes remain exactly739ea88. Full origin closed6193/6193 at
+13:03:43.745067UTC, normal at13:10:50.419970UTC and warmed repeat at
+13:13:25.125943UTC. All116 routes/119 assets pass, with348 DYNAMIC at origin,
+310 MISS/38 HIT on normal and348 HIT on repeat; all three have0 HTTP retries.
+The only Cloudflare purge was the validated staging prefix at13:06:14.926UTC.
+No production prefix or domain-wide cache purge was used.
+
+Final source2391, body224 local/origin/normal, full272-view cards3619 local/
+3689 origin/3689 normal, forms501 local/origin/normal and attribution143 pass.
+The live card count includes the harness's additional live-origin assertions;
+it is not a relaxed or reduced local contract. Discovery243 origin/216 normal/
+216 repeat and unchanged homepage10/icons21/font20 pass. Eight cached axe views
+have0 automated violations/8 incomplete groups, which are not full accessibility
+certification. Four actual cached390px PNGs were visually inspected and all four
+match the current inspected local owner-tone PNGs byte-for-byte; this is not a
+claim of old/original whole-page pixel identity.
+
+Every finite build, publisher and verification job is closed; only task-owned
+local previews are retained. No application re-upload or new purge is needed for
+these release records. Both generated roadmaps now record39 verified staging
+deliveries. C08 stands at22 major revisions/2 targeted changes/1 held/31 remaining;
+the24 summary identities/94 cards do not imply24 completed fact audits. C09 stays
+partial until informational/search-to-booking contribution, owner review and
+separate production approval are addressed. No PDF, production, commerce,
+consent, medical-hold or OmniLodge change.
