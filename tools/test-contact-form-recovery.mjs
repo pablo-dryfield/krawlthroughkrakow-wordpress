@@ -57,7 +57,7 @@ try{
     const url=new URL(route.route.slice(1),base);if(process.argv.includes('--cache-bust'))url.searchParams.set('ktk_form_check',Date.now().toString());
     const response=await page.goto(url.href,{waitUntil:'load',timeout:60000});
     if(response.status()!==200)throw Error('Unexpected document response');
-    await page.evaluate(()=>document.fonts.ready);
+    let fontDeadline;try{await Promise.race([page.evaluate(()=>document.fonts.ready),new Promise((_,reject)=>{fontDeadline=setTimeout(()=>reject(Error('Form-audit fonts did not finish within30s')),30000);})]);}finally{clearTimeout(fontDeadline);}
     const runtimeHref=await page.locator('script[src*="/ktk-code-pages-assets/runtime.js"]').getAttribute('src');
     if(new URL(runtimeHref,page.url()).searchParams.get('v')!==initialHash.slice(0,12)&&new URL(base).hostname!=='127.0.0.1')throw Error('Stale runtime reference');
     await form.evaluate(f=>{let closed;while((closed=f.closest('.et_pb_toggle_close')))closed.querySelector('.et_pb_toggle_title')?.click();});
@@ -66,6 +66,7 @@ try{
     firstName=await form.locator('input:not([type=hidden]):not([name^="_ktk_"])').first().getAttribute('name');
     expectsCaptcha=await form.locator('input[name="captcha"]').count()>0;
     report.scenarios.push({key,width,mode:next,type:cf7?'cf7':'native'});
+    await writeFile(output+'.progress.json',JSON.stringify({checkedAt:new Date().toISOString(),label,loadedScenario:next,scenarios:report.scenarios.length,passed:report.checks.filter(c=>c.pass).length,total:report.checks.length,runtimeSha256:initialHash,harnessSha256:initialHarnessHash},null,2)+'\n');console.log('Loaded '+label+': '+next);
    }
    async function fill(){
     await form.evaluate(f=>{for(const e of f.elements){

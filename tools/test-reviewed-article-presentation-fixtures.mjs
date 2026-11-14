@@ -38,5 +38,13 @@ try{
    const before=await page.locator('#main-content').innerHTML();let message='';try{await page.evaluate(reviseReviewedArticlePresentation,{key:r.key,revision});}catch(e){message=e.message;}check(r.key+' rejects '+kind+' atomically',!!message&&await page.locator('#main-content').innerHTML()===before,message);
   }
  }
+ for(const javaScriptEnabled of [true,false])for(const [file,label]of [['tools/test-reviewed-article-presentation.mjs','Article-audit'],['tools/test-contact-form-recovery.mjs','Form-audit']]){
+  // Execute only the literal deadline block proven present in the trusted audit source.
+  const block="let fontDeadline;try{await Promise.race([page.evaluate(()=>document.fonts.ready),new Promise((_,reject)=>{fontDeadline=setTimeout(()=>reject(Error('"+label+" fonts did not finish within30s')),30000);})]);}finally{clearTimeout(fontDeadline);}";
+  if(!(await readFile(file,'utf8')).includes(block))throw Error('Actual audit font deadline differs from the controlled fixture');
+  const context=await browser.newContext({javaScriptEnabled}),p=await context.newPage();await p.route('**/*',r=>r.abort());await p.setContent('<p>Controlled pending-font fixture</p>');await p.evaluate(()=>{Object.defineProperty(document,'fonts',{value:{ready:new Promise(()=>{})}});});
+  const start=Date.now();let message='';try{await new (Object.getPrototypeOf(async function(){}).constructor)('page',block)(p);}catch(e){message=e.message;}finally{await context.close();}
+  const elapsed=Date.now()-start;check(label+' font deadline rejects pending readiness with '+(javaScriptEnabled?'JS':'no-JS'),message===label+' fonts did not finish within30s'&&elapsed>=29500&&elapsed<45000,{elapsed,message});
+ }
 }catch(e){errors.push(e.stack);}finally{await browser.close();}
 check('No fixture/harness errors',!errors.length,errors);const report={checkedAt:new Date().toISOString(),scope:'All forty raw/prepared containers and exact photo, repeat and atomic negative fixtures. All network aborted; no messages/orders.',passed:checks.filter(c=>c.pass).length,total:checks.length,checks,errors};await mkdir(path.dirname(output),{recursive:true});await writeFile(output,JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:report.passed,total:report.total,failed:checks.filter(c=>!c.pass),errors},null,2));if(report.passed!==report.total)process.exitCode=1;
