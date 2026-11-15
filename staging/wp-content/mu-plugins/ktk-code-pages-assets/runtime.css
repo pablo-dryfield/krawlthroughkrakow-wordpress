@@ -7,6 +7,22 @@
 }
 /* END Memorial visitor guide */
 
+/* BEGIN Group choice guides */
+body.ktk-code-page:is([data-ktk-page="post-bachelor-party-organisers-krakow"],[data-ktk-page="post-krakow-stag-activities"],[data-ktk-page="post-krakow-team-building-activities"]) #main-content .entry-content[data-ktk-group-choice-review], body.ktk-code-page:is([data-ktk-page="post-bachelor-party-organisers-krakow"],[data-ktk-page="post-krakow-stag-activities"],[data-ktk-page="post-krakow-team-building-activities"]) #main-content .entry-content[data-ktk-group-choice-review] .et_pb_text_inner { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
+body.ktk-code-page:is([data-ktk-page="post-bachelor-party-organisers-krakow"],[data-ktk-page="post-krakow-stag-activities"],[data-ktk-page="post-krakow-team-building-activities"]) #main-content .entry-content[data-ktk-group-choice-review] p { font-size: 16px; line-height: 1.65; }
+body.ktk-code-page:is([data-ktk-page="post-bachelor-party-organisers-krakow"],[data-ktk-page="post-krakow-stag-activities"],[data-ktk-page="post-krakow-team-building-activities"]) #main-content .entry-content[data-ktk-group-choice-review] :is(h2,h3,h4) { font-family: inherit; font-weight: 700; line-height: 1.35; letter-spacing: 0; margin: 24px 0 12px; }
+body.ktk-code-page:is([data-ktk-page="post-bachelor-party-organisers-krakow"],[data-ktk-page="post-krakow-stag-activities"],[data-ktk-page="post-krakow-team-building-activities"]) #main-content .entry-content[data-ktk-group-choice-review] h2 { font-size: 22px; }
+body.ktk-code-page:is([data-ktk-page="post-bachelor-party-organisers-krakow"],[data-ktk-page="post-krakow-stag-activities"],[data-ktk-page="post-krakow-team-building-activities"]) #main-content .entry-content[data-ktk-group-choice-review] h3 { font-size: 18px; }
+body.ktk-code-page:is([data-ktk-page="post-bachelor-party-organisers-krakow"],[data-ktk-page="post-krakow-stag-activities"],[data-ktk-page="post-krakow-team-building-activities"]) #main-content .entry-content[data-ktk-group-choice-review] h4 { font-size: 16px; }
+body.ktk-code-page:is([data-ktk-page="post-bachelor-party-organisers-krakow"],[data-ktk-page="post-krakow-stag-activities"],[data-ktk-page="post-krakow-team-building-activities"]) #main-content .entry-content[data-ktk-group-choice-review] nav { margin: 1em 0; }
+body.ktk-code-page:is([data-ktk-page="post-bachelor-party-organisers-krakow"],[data-ktk-page="post-krakow-stag-activities"],[data-ktk-page="post-krakow-team-building-activities"]) #main-content .entry-content[data-ktk-group-choice-review] summary { cursor: pointer; min-height: 44px; padding: 8px 0; font-weight: 700; }
+body.ktk-code-page:is([data-ktk-page="post-bachelor-party-organisers-krakow"],[data-ktk-page="post-krakow-stag-activities"],[data-ktk-page="post-krakow-team-building-activities"]) #main-content .entry-content[data-ktk-group-choice-review] a { color: #c8006c !important; text-decoration: underline; text-underline-offset: .15em; }
+body.ktk-code-page:is([data-ktk-page="post-bachelor-party-organisers-krakow"],[data-ktk-page="post-krakow-stag-activities"],[data-ktk-page="post-krakow-team-building-activities"]) #main-content .entry-content[data-ktk-group-choice-review] :is(summary,a):focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+@media (max-width: 600px) {
+  body.ktk-code-page:is([data-ktk-page="post-bachelor-party-organisers-krakow"],[data-ktk-page="post-krakow-stag-activities"],[data-ktk-page="post-krakow-team-building-activities"]) #main-content .entry-content[data-ktk-group-choice-review] { padding-right: 24px; }
+}
+/* END Group choice guides */
+
 /* BEGIN Nightlife choice guides */
 body.ktk-code-page:is([data-ktk-page="post-sports-bar-krakow"],[data-ktk-page="post-krakow-wine-bars"],[data-ktk-page="post-karaoke-bars-in-krakow"]) #main-content .entry-content[data-ktk-nightlife-choice-review] { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
 body.ktk-code-page:is([data-ktk-page="post-sports-bar-krakow"],[data-ktk-page="post-krakow-wine-bars"],[data-ktk-page="post-karaoke-bars-in-krakow"]) #main-content .entry-content[data-ktk-nightlife-choice-review] p { font-size: 16px; line-height: 1.65; }
