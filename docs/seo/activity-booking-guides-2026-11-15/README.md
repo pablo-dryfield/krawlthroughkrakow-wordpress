@@ -1,5 +1,9 @@
 # Escape-Room And Shooting Booking Guides
 
+Current status: staging cache-verified. Application remains exactly5cf1cc4;
+final documentation CI/PR63 merge and completed-branch cleanup remain. No
+production promotion or further upload/purge is implied.
+
 ## Scope And Backup
 
 Staging-only review of the existing escape-room and shooting-range articles.
@@ -125,3 +129,102 @@ runtime inverse unit now uses the independently computed exact pre-edit SHA
 instead of requiring old Git objects in CI's shallow checkout. The local
 independent source audit still compares the complete Git blob. This changes
 only the test's baseline delivery, not its byte-level assertion or application.
+
+## Staging Publication
+
+Application5cf1cc4e8234d4629891da68c45d30e4c899f258 is unchanged in the
+QA-only7daed17ab1a7189971d4a3f906683760c5d154a4 release. PR63 required
+CI43659259573 passed both jobs. Prior CI43659142758 failed only that unavailable
+historical-object lookup in shallow CI; its log is retained. A separate ad-hoc
+Git-show comparison hit its20MB buffer on an unchanged video. The corrected
+independent Git-object hash comparison verifies all2371 application blobs,
+without reading large videos through child-process output buffers.
+
+Manual2073 publication finished15 November00:42:05.424302UTC. Every Git/local/
+remote SHA independently matches, raw saved posts/options/Ecwid page are exact,
+homepage/storefront unchanged and helper removed. The16-entry rollback archive
+`deploy-backups/ktk-code-pages-staging-20261115-004131.zip` passes exact file set,
+each saved SHA, ZIP CRC and SHA256:
+`d71c033bb94e430cc7962a78f193e51389cd39ed67135ee7b29488c22f8505b2`.
+
+Discovery3 publication finished00:43:11.539495UTC. All Git/local/remote hashes,
+2324 protected staging files,2158 production mappings and saved WordPress state
+are exact; both helpers removed, no origin paths cleared by this updater.
+The4-entry rollback archive
+`deploy-backups/seo-discovery-staging-20261115-004245-684171.zip` passes independent
+file set/per-SHA/CRC/archive SHA:
+`2257f226917f8796aaf578e6b9f9cd30e78eecb024dcb2bb68c7e692f5650c7e`.
+
+Origin body216/discovery243/homepage10/icons21/ET20/social15 pass. Full6193,
+cards/forms/attribution and clean/warmed-cache verification are still underway.
+No edge purge has been sent yet; do not advance48 verified deliveries until all
+required origin, clean and warmed checks close successfully. App is frozen.
+
+All focused origin checks are now closed and passing: body216, cards1777 over40
+views, group follow-up322 over24 views, forms501, attribution416, discovery243,
+source2386 and homepage10/icon21/ET20/social15. The full origin scan is still
+running on its final device, then assets; no purge or verification-count advance.
+
+Read-only next-batch review has now read all competition/newsletter text and
+the Halloween guide, including its previously truncated middle. Old Halloween
+copy reverses31 October/1 November chronology, repeats unconfirmed historical
+prices and promises ghost-story guiding/safety/venue counts. Its named review
+quotes lack source links; an owner question is pending. No next-batch application
+edit or backup yet. The active competition remains unchanged.
+
+## Clean Cache Verification In Progress
+
+Full origin6193 closed at00:53:09.408948UTC with348 DYNAMIC responses,
+116 routes/119 assets and zero retries. After the fresh purge-spec check and
+exact active zone/account validation, MCP accepted only the staging prefix at
+00:53:53.898UTC. Scope/result retained in `staging-purge.json`; no production,
+host/domain-wide purge or account/cache-setting change.
+
+Normal article216/discovery216/homepage10/icon21/ET20/social15 pass. All six
+actual cached390px article PNGs were inspected: five exactly match inspected
+local RGBA pixels;32,159 pixels in the shooting header differ only within its
+original featured-photo rectangle`[39,141,351,349]`. No masks, tolerance, cause
+assumption or original whole-page pixel claim. Four normal article axe views
+have0 automated violations/4 incomplete contrast groups.
+
+The first normal group follow-up retained13 passing assertions, then hit the
+unchanged30-second photo-decode deadline before finishing its first view.
+Failure remains in `group-followup-normal/report.json`; no application or test
+guard change. An unchanged full repeat is running. Normal full/cards/forms/
+attribution and warmed proof remain required; do not advance the roadmap yet.
+
+Full normal6193 and the unchanged group repeat322 are now closed and passing.
+The original13/15 timeout remains retained, not hidden, and no application or
+deadline change was needed. Normal body216/cards1777/forms501/attribution416/
+discovery216/homepage/font guards pass. Warmed full and discovery repeats are
+running. Both roadmaps must stay48 verified until those jobs close; no further
+upload/purge is needed. Every application byte still matches the reviewed app.
+
+## Final Cache Verification
+
+All release and browser jobs are now closed and passing:
+
+- Full6193 origin00:53:09.408948UTC:348 DYNAMIC responses.
+- Full6193 normal01:01:48.502217UTC:348 MISS responses.
+- Full6193 repeat01:05:31.785488UTC:348 HIT responses.
+- Every full scan covers116 routes/119 assets with zero transport retries.
+- Source2386/reference2320/body216 local+origin+normal; cards1763 local and1777
+  live over40 views; forms501 and group follow-up322 local+origin+normal.
+- Attribution416 origin+normal; discovery243 origin/216 normal/216 repeat;
+  homepage10/icon21/ET20/social15 origin+normal.
+- Final JavaScript328/Python215, repository policy3382 tracked files/358 required
+  inputs/no errors and clean whitespace checks pass. Final roadmap test remains.
+
+Both roadmaps now record49 verified staging deliveries. C08 remains partial:
+42 major revisions,2 targeted changes/notices,1 medical hold and11 articles
+awaiting substantive review. The44-identity/166-card catalog is not44 full fact
+audits. Two exact shooting-paragraph follow-ups are not extra article reviews.
+The first normal image-decode timeout and all earlier preflights are retained;
+the unchanged complete follow-up passes without new application bytes, masks
+or relaxed deadlines. All13 original article photo files/history/unique targets,
+prior160 summaries and consent/UTM/provider behavior remain preserved.
+
+Final generated roadmap317/317 passes at all six widths, with both views at49
+staging-verified deliveries. The application diff against7daed17 remains empty;
+only the seven final documentation/roadmap paths change. No rebuild, upload or
+extra purge is needed to close this release.
