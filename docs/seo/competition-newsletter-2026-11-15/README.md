@@ -149,3 +149,78 @@ body176 checks. QA now recognizes only that exact article/class/origin/text
 variant, retaining the standard selector for every other article. It adds
 explicit one-H1/count/text/identity evidence, not a generic fallback. No app
 change, timeout extension or cache assumption; the complete repeat is required.
+
+Origin full6193 closed01:57:06.939293UTC,348 DYNAMIC/119 assets/0 retries;
+corrected complete cards1423 passes. Only staging prefix purge accepted
+01:58:00.148UTC after fresh API spec and exact active zone/account validation;
+raw scope/result retained. Normal body176/discovery216/home10+21+20+15 pass.
+
+Six actual cached390px PNGs were inspected. Two closing views match local RGBA;
+four header/intro views differ inside the existing hero bands. For newsletter,
+this includes the title, not just its photo: direct computed-style diagnosis
+shows its unchanged `.et_pb_slide_description` has a0.9s-delay/0.7s fadeBottom
+animation and local snapshot caught parent opacity0, while the live page had
+almost finished. QA now explicitly awaits fully painted ancestors and finished
+heading animations within10 seconds before capture; no app/animation change,
+mask or screenshot tolerance. Fresh body runs are required. The pre-existing
+reduced-motion slider-animation gap is recorded for later D03 work, not silently
+fixed during this frozen text-only release.
+
+The fresh fully painted body audit passes192/192 local and normal; four axe
+views have0 automated violations/5 incomplete groups. Final local and cached
+newsletter header/intro PNGs were inspected with the title present. Two closing
+PNGs remain exact; four hero-band differences remain (35248/43903 newsletter,
+34411/54748 competition pixels), no masks or original whole-page parity claim.
+Source and application bytes remain exactly the reviewed944283d release.
+
+Normal cards1423/forms501 pass. The first normal attribution process exited on
+the existing30-second `page.goto` load deadline at `/krakow-free-activities-2/`
+with the audit's synthetic campaign parameters. It produced no final JSON;
+the error is retained here rather than being reported as a passing423 run.
+An unchanged full repeat is required. No application, deadline, consent or
+attribution guard change was made. Original origin attribution423 passed.
+Final summary fixtures767 and all336 JavaScript units pass.
+
+The unchanged normal attribution repeat now passes423/423. Fresh painted-body
+checks pass192/192 at local, origin and normal. Full normal6193 closed at
+02:04:42.666133UTC,348 MISS/119 assets/0 retries. Warmed full scan is running;
+discovery normal and repeat each216 pass. Roadmap remains49 until it closes.
+
+Read-only next-article review (no next-batch edits/backup): the full original
+`Life As A Professional Drunk` text has three interiors/no photos and combines
+old staff anecdotes with unsafe intoxication/cure claims and current-sounding
+staff guarantees. Keep historical identity rather than presenting those as
+current operating policy. `Hen do ideas abroad` has six photos/legacy topics;
+its pool-party, safety-ranking, generic price and package promises need review.
+`Best Pub Crawls in Europe` has four photos/one text module but only discusses
+one old Malta operator, including frozen timetable/package/age references.
+Do not repeat those as current facts or invent partner fulfilment. All three
+texts were read fully; no new canonical draft, source transform or app edit.
+
+## Final Cache Verification
+
+All release jobs are now closed and passing:
+
+- Full6193 origin01:57:06.939293UTC:348 DYNAMIC responses.
+- Full6193 normal02:04:42.666133UTC:348 MISS responses.
+- Full6193 repeat02:07:00.686618UTC:348 HIT responses.
+- Each full scan covers116 routes/119 assets with zero transport retries.
+- Source2384/reference2320/final painted body192 local+origin+normal;
+  cards1411 local and1423 live over32 views; forms501 local+origin+normal.
+- Attribution423 origin and unchanged normal repeat; discovery243/216/216;
+  homepage10/icon21/ET20/social15 origin+normal.
+- Body fixtures111/summary fixtures767/JavaScript336/Python215/PHP763+31+143.
+
+Both roadmaps now record50 verified staging deliveries, not a100% finished
+plan or a website SEO production release. C08 has44 major revisions,2 targeted
+changes/notices,1 medical hold and9 articles awaiting substantive review.
+Catalog46/172 is not46 full fact audits. Active competition terms review,
+manual accessibility/provider evidence and separate production approval remain.
+Final generated-roadmap test, documentation CI/exact-tree merge and completed
+branch cleanup remain; no additional application upload or purge is needed.
+
+Final generated roadmap317/317 passes at all six widths, with both views at50
+verified staging deliveries. Repository policy3391 tracked files/358 required
+inputs/no errors and whitespace checks pass. The application diff against
+944283d is empty; final follow-up touches only eight QA/documentation/roadmap
+paths. All finite verification jobs are closed; root5184/5185 previews remain.

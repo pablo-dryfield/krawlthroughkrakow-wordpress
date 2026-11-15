@@ -85,9 +85,19 @@ booking value still matter. No live attribution-token values are published.
 
 ## Prioritization And Completion
 
-Staging progress as of15 November:42 major article revisions,2 targeted
-corrections/notices,1 explicit specialist hold and11 articles still awaiting
-substantive review. Escape-room and shooting booking guides are now cache-verified;
+Staging progress as of15 November:44 major article revisions,2 targeted
+corrections/notices,1 explicit specialist hold and9 articles still awaiting
+substantive review. The active competition and contextualized old newsletter
+are now cache-verified with unchanged entry form, ten photos/history and prior
+166 summaries. [Release evidence](../competition-newsletter-2026-11-15/README.md)
+records source2384/body192/cards1423/forms501/attribution423/full6193 across
+origin, normal and warmed caches;348 warmed HITs/119 assets/0 retries. The
+competition's active/no-deadline description refreshes only one discovery SHA,
+not its title/history/indexing or123 URL policy. The46-identity/172-card catalog
+is not46 full fact audits. Existing newsletter slider-animation and QA/timeout
+diagnostics remain explicit, not hidden by screenshot tolerances.
+
+Earlier escape-room and shooting booking guides are cache-verified;
 their [release evidence](../activity-booking-guides-2026-11-15/README.md) preserves
 all13 photo files/history/unique fragments and19 native contents targets. Complete
 origin/normal/warmed checks pass. Two neutral featured ALTs and four sharing
@@ -98,7 +108,7 @@ Runtime only adds product34 to the existing consent-controlled lookup. Anny5
 remains explicitly unconfirmed, not closed.
 Five vodka service hrefs on four other articles were separately corrected to
 our product44; those link-only repairs do not count as substantive reviews.
-The44-identity/166-card summary catalog likewise is not44 full fact audits.
+Their earlier44-identity/166-card summary catalog was not44 full fact audits.
 The competition and entry form remain ACTIVE, as corrected by the owner.
 Its existing prizes/no entry deadline are owner-confirmed; no extra judging,
 eligibility, draw or legal terms were supplied. The shooting-range guide now
