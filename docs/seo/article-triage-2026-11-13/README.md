@@ -85,9 +85,21 @@ booking value still matter. No live attribution-token values are published.
 
 ## Prioritization And Completion
 
-Staging progress as of15 November:50 major article revisions,2 targeted
-corrections/notices,1 explicit specialist hold and3 articles still awaiting
-substantive review. Hen planning and the historical bars guide are now
+Staging progress as of15 November:52 major article revisions,2 targeted
+corrections/notices,1 explicit specialist hold and1 article still awaiting
+substantive review. The historical hotel shortlist and spa guide are now
+cache-verified: [release evidence](../hotel-guides-2026-11-15/README.md)
+records source2386/reference2320/body232/cards2155/forms501/attribution493 and
+full6193 origin/normal/repeat,348 warmed HITs/119 assets/0 retries. All83 photo
+files, publication history,41 native topics,23 unique old spa destinations and
+prior190 summaries remain. Neutral ALTs refresh two discovery SHA bindings only;
+hotel-only CSS repairs inherited hidden grids without changing runtime. Nine
+cached phone views inspected: eight exact local matches/one original-photo-only
+difference, no masks/tolerance/whole-page claim. The54-identity/197-card catalog
+is not54 complete fact audits. Halloween still awaits substantive review; the
+separate specialist hold has no rewrite/deletion/redirect/noindex approval.
+
+The previous hen planning and historical bars guide release remains
 cache-verified: [release evidence](../hen-reviews-bars-2026-11-15/README.md)
 records source2383/reference2320/body208/cards1945/forms501/attribution479 and
 full6193 origin/normal/repeat,348 warmed HITs/119 assets/0 retries. All17 photos,
@@ -95,9 +107,8 @@ publication history,16 old hen destinations,26 native topics and prior184 summar
 remain. Twelve neutral ALTs refresh one discovery SHA, not123 URL policy.
 Seven cached phone views were inspected: four exact local matches/three differences
 only within original photographs, without masks or a whole-page identity claim.
-The52-identity/190-card catalog is not52 complete fact audits. The three awaiting
-substantive review are hotels2019/2020, spa hotels and Halloween. The separate
-specialist hold remains, with no rewrite/deletion/redirect/noindex approval.
+The52-identity/190-card catalog was not52 complete fact audits. Those historical
+counts are retained as release context, not the current total.
 
 European crawl choices and the Budapest comparison also remain cache-verified:
 [release evidence](../nightlife-comparisons-2026-11-15/README.md)

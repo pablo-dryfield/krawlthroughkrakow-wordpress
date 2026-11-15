@@ -170,3 +170,87 @@ had been rendered, so its two generated-dashboard equality checks failed; after
 regeneration the unchanged215-test suite passes. This is a retained orchestration
 diagnostic, not an application fix or relaxed assertion. Discovery candidate
 SHA256 remains `e67f13188544e1bf8db8eb474ba12e62a5e7e240e0240f9372e0af98ff83c016`.
+
+## Staging Publication Under Verification
+
+Application `aff5a1da972714c7eed83d8e8e916ec0398dfdd2`, PR68, required CI
+`43684574708`: both jobs pass. Manual content publication closed at
+06:17:51.217389UTC on15 November. All2,073 local/Git/remote SHA bindings agree;
+saved WordPress state, homepage and storefront remain exact and the helper was
+removed. The14-entry rollback `ktk-code-pages-staging-20261115-061723.zip` passes
+CRC, exact manifest/entry set and every entry SHA; archive SHA256
+`71d83767e5b6fafd9cd3d1c7d59d72e7a64b9c5d24be08e71946dd8e2a7207c8`.
+
+Discovery's three-file publication closed at06:18:33.794730UTC, with2,324 protected
+staging and2,158 production hashes unchanged, helpers removed and no origin cache
+paths changed. Its four-entry rollback
+`seo-discovery-staging-20261115-061822-933285.zip` independently passes CRC,
+manifest/entry SHA and Git/local/remote checks; archive SHA256
+`81a7cc68bc882cec6f4ed06fdab45b0b05633febeaee5a90c6f98a4bc43dc202`.
+
+Release source2,386 and origin body232 checks pass; homepage10/icon21/ET20/social15
+also pass. The complete origin scan, cards, forms, attribution and discovery
+checks are still running. No edge purge yet. Do not advance verified counts or
+edit/rebuild the application until these close and clean/warmed verification is
+complete. The complete local graph is142 pages/24 products/6,393 edges, no unknown
+paths and the same six held tag routes.
+
+## Read-only Next Work
+
+The next D03 lead is the inherited reduced-motion slider gap already recorded
+in the competition/newsletter review. Current runtime autoplay correctly checks
+the motion preference, but saved slider styles still give descriptions a0.9s
+delay/0.7s fadeBottom and images a0.6s delay/0.7s fadeLeft. Some post-slider
+descriptions/images also have a separate opacity0 rule. Current runtime CSS
+only cancels `.et-waypoint` animation. Seven content bodies contain
+`.et_pb_slider`: blog, hen, stag, other tours, winter newsletter, jobs and
+stag/hen groups. This is a read-only lead, not an exhaustive animation audit or
+an implemented fix; normal-motion appearance and hidden slides must be preserved.
+
+Primary technical references read15 November:
+[MDN reduced-motion media feature](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/prefers-reduced-motion)
+and [W3C animation-from-interactions explanation](https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html).
+The latter describes an AAA criterion, not a claim that our automated AA scans
+certify it. A future scoped change needs its own verified backup, source boundary,
+initial-paint/dynamic-preference/keyboard/no-JS checks and staging release.
+No next-batch application change or backup yet; finish this release first.
+
+All origin jobs subsequently closed successfully: full6,193/6,193 over116 routes
+and119 assets, body232/cards2,155/forms501/attribution493/discovery243. Only the
+staging prefix was purged through the authenticated MCP at06:27:02.636UTC, after
+fresh POST-schema and exact active zone/account validation. API success is
+retained in `staging-purge.json`; normal/warmed verification is now running, not
+inferred from that acceptance. Application remains exactly `aff5a1d`.
+
+Normal full6,193 closed at06:33:19.004446UTC with348 MISS/119 assets/zero
+transport retries; origin closed at06:26:21.237075UTC with348 DYNAMIC and the
+same counts. Normal body232/cards2,155/forms501/attribution493/discovery216 and
+homepage10/icon21/ET20/social15 pass. Discovery's warmed216 repeat also passes.
+The full warmed content scan is running; do not advance verified counts yet.
+
+All nine normal390px screenshots were actually inspected. Eight are byte-exact
+current-local matches. The shortlist budget view differs by44,552 pixels inside
+`[39,710,351,900]`, entirely within the first original hotel photograph; its text
+and surrounding layout are exact. The photo file/non-ALT attributes remain
+source-bound and all83 photos decode. No mask, tolerance, cause inference or
+original/full-page pixel-parity claim is used. `screenshot-comparison.json`
+retains the strict comparison. All current local/origin/normal article/card
+report source hashes were rechecked against disk and remain exact.
+
+## Verified Staging Release
+
+Full warmed6,193 closed at06:35:28.080348UTC with348 HIT/119 assets/zero retries.
+All three full scans pass, as do source2,386/reference2,320/body232 at all three
+locations/cards2,139 local and2,155 live/forms501 at all three/attribution493
+origin and normal/discovery243+216+216/home10+icon21+ET20+social15. Fixtures168+767,
+JavaScript371/Python215/PHP763+31+143 and guarded dry runs pass. Final roadmap
+regeneration, checks and release-record CI follow; no application upload or cache
+purge is needed for documentation. Application remains exactly `aff5a1d`.
+
+Both roadmaps now count54 staging-verified deliveries, not promoted SEO work.
+C08 is still partial:52 major revisions,2 targeted changes/notices,1 Halloween
+article awaiting substantive review and1 separate specialist hold. The54-identity/
+197-card catalog is not54 complete fact audits. Pending Halloween testimonial
+evidence, medical/consent/commerce boundaries, active competition/form and all
+production approvals remain unchanged. Every finite verification process is
+closed; root previews5184/5185 remain available.
