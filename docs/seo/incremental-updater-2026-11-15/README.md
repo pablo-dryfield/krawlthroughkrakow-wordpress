@@ -148,3 +148,16 @@ All application files and old cutover/preparation tools are unchanged. Both
 roadmaps remain57 verified website staging deliveries; no upload or purge is
 needed for this source-only work. Final roadmap rendering/tests/CI/commit remain
 before this preparation phase can be merged.
+
+
+## Subsequent Component Verification
+
+PR72 merges as `7ad562f9f6c5de445228da3f34b1c9f29a5598f1`, exact tree
+`339d01cd324a14cd230eac803219681f8afe1ee7`; CI43705372544 and main43705705212
+both pass. The unchanged read-only planner remains incapable of publishing.
+The separate [offline transaction component](../active-updater-2026-11-15/README.md)
+subsequently passes31 Linux integration cases, full264 Python tests without
+skips and both full2,073-file apply/rollback and actual post-rename process-death
+recovery. Its authenticated WordPress/protected-file wrapper, actual private
+production backup, deployment rehearsals and approval remain unfinished. This
+updates the earlier preparation-phase status without implying a production run.
