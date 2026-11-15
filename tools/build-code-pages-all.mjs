@@ -25,6 +25,7 @@ import {loadContactDetails,reviseContactDetails,buildContactDetailsStyles} from 
 import {loadEstablishedNyeEditorial,reviseEstablishedNyeEditorial,buildEstablishedNyeStyles} from './established-nye-editorial.mjs';
 import {loadGroupPlanningEditorial,reviseGroupPlanningEditorial,buildGroupPlanningStyles} from './group-planning-editorial.mjs';
 import {loadGroupActivitiesEditorial,reviseGroupActivitiesEditorial,buildGroupActivityStyles} from './group-activities-editorial.mjs';
+import {loadStagActivityClarity,reviseStagActivityClarity} from './stag-activity-clarity.mjs';
 import {loadStagCostumeEditorial,reviseStagCostumeEditorial,buildStagCostumeStyles} from './stag-costume-editorial.mjs';
 import {loadPracticalGuidesEditorial,revisePracticalGuidesEditorial,buildPracticalGuideStyles} from './practical-guides-editorial.mjs';
 import {loadNightOutEditorial,reviseNightOutEditorial,buildNightOutStyles} from './night-out-editorial.mjs';
@@ -110,6 +111,7 @@ const contactDetails=await loadContactDetails();
 const establishedNye=await loadEstablishedNyeEditorial();
 const groupPlanning=await loadGroupPlanningEditorial();
 const groupActivities=await loadGroupActivitiesEditorial();
+const stagActivityClarity=await loadStagActivityClarity();
 const stagCostume=await loadStagCostumeEditorial();
 const practicalGuides=await loadPracticalGuidesEditorial();
 const nightOutGuides=await loadNightOutEditorial();
@@ -329,6 +331,7 @@ try {
       contentRevisions.push(...await page.evaluate(reviseContactDetails,{key:route.key,revision:contactDetails}));
       contentRevisions.push(...await page.evaluate(reviseGroupPlanningEditorial,{key:route.key,revision:groupPlanning.find(row=>row.key===route.key)}));
       contentRevisions.push(...await page.evaluate(reviseGroupActivitiesEditorial,{key:route.key,revision:groupActivities.find(row=>row.key===route.key)}));
+      contentRevisions.push(...await page.evaluate(reviseStagActivityClarity,{key:route.key,revision:stagActivityClarity}));
       contentRevisions.push(...await page.evaluate(reviseStagCostumeEditorial,{key:route.key,revision:stagCostume}));
       contentRevisions.push(...await page.evaluate(revisePracticalGuidesEditorial,{key:route.key,revision:practicalGuides.find(row=>row.key===route.key)}));
       contentRevisions.push(...await page.evaluate(reviseNightOutEditorial,{key:route.key,revision:nightOutGuides.find(row=>row.key===route.key)}));

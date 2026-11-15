@@ -63,6 +63,8 @@ jobs:
         run: node --test tools/tests/test_group_planning_editorial.mjs
       - name: Group activity source contracts
         run: node --test tools/tests/test_group_activities_editorial.mjs
+      - name: Stag activity copy clarity source contracts
+        run: node --test tools/tests/test_stag_activity_clarity.mjs
       - name: Stag costume source contracts
         run: node --test tools/tests/test_stag_costume_editorial.mjs
       - name: Practical party-guide source contracts
