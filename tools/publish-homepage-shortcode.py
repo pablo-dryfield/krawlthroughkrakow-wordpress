@@ -362,6 +362,10 @@ add_action( 'plugins_loaded', function () {{
     add_action( 'wp_loaded', function () {{
         nocache_headers();
 
+        if ( home_url( '/' ) !== 'https://krawlthroughkrakow.com/staging/' || site_url( '/' ) !== 'https://krawlthroughkrakow.com/staging/' ) {{
+            wp_send_json( array( 'error' => 'exact_staging_identity_required' ), 403 );
+        }}
+
         $front_page_id = (int) get_option( 'page_on_front' );
         $page = $front_page_id ? get_post( $front_page_id ) : null;
         if ( ! $page instanceof WP_Post || 'page' !== $page->post_type ) {{
@@ -397,26 +401,6 @@ add_action( 'plugins_loaded', function () {{
             $origin_cache_cleared = true;
         }}
 
-        $cloudflare_available = false;
-        $cloudflare_purged = false;
-        $error = null;
-        $container = apply_filters( 'rocket_container', null );
-        if ( is_object( $container ) && method_exists( $container, 'has' ) && $container->has( 'cloudflare' ) ) {{
-            $cloudflare_available = true;
-            $cloudflare = $container->get( 'cloudflare' );
-            $connection = $cloudflare->check_connection();
-            if ( is_wp_error( $connection ) ) {{
-                $error = $connection->get_error_message();
-            }} else {{
-                $result = $cloudflare->purge_by_url( $page, $urls, '' );
-                if ( is_wp_error( $result ) ) {{
-                    $error = $result->get_error_message();
-                }} else {{
-                    $cloudflare_purged = true;
-                }}
-            }}
-        }}
-
         status_header( 200 );
         wp_send_json( array(
             'page_id' => $page->ID,
@@ -424,9 +408,10 @@ add_action( 'plugins_loaded', function () {{
             'page_permalink' => $page_permalink,
             'urls' => $urls,
             'origin_cache_cleared' => $origin_cache_cleared,
-            'cloudflare_available' => $cloudflare_available,
-            'cloudflare_purged' => $cloudflare_purged,
-            'error' => $error,
+            'cloudflare_attempted' => false,
+            'cloudflare_purged' => false,
+            'edge_cache_strategy' => 'separate-authorized-mcp',
+            'error' => null,
         ) );
     }}, 999 );
 }}, 1 );

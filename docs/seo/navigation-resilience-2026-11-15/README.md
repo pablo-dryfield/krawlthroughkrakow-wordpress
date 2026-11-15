@@ -151,3 +151,25 @@ independent Git/local/recorded-server/old-archive checks, including each new
 helper's explicit rollback removal scope. No production helper, file, setting,
 publication or purge. All origin suites must close green before the one
 MCP-only staging-prefix purge, normal and warmed verification.
+
+
+## Origin-Only Homepage Release Safeguard
+
+Initial candidate319b018ddc57becc7512dab4d3bd850fd7613e4e and CI43759214216
+pass both jobs. Before publication, review finds the older homepage publisher
+can explicitly consult WP Rocket's Cloudflare integration and purge through it.
+The release runbook requires separately authorized MCP edge purging. The cache
+helper now refuses any non-exact staging home/site identity before origin
+invalidation and removes that explicit edge-integration branch. It records
+cloudflare_attempted:false, cloudflare_purged:false and the separate MCP strategy.
+All application and browser inputs remain byte-exact to319b018; no rebuild,
+upload or purge. WP Rocket origin invalidation remains the publisher's duty.
+
+A new executed-PHP fixture stubs the origin cache calls and throws if any edge
+integration is consulted. Exact staging succeeds and production refuses403
+before any cache call. Its first URL assertion incorrectly requires the trailing
+slash on the deliberately untrailed staging root URL; the fixture now accepts
+only that exact root or its exact slash-prefixed paths. All guards stay intact.
+The21 focused publisher tests and full340 Python tests pass, retaining10 Windows
+platform skips. Exact-head CI must pass again before publication. The original
+339-test log, earlier source receipt and CI remain historical evidence.
