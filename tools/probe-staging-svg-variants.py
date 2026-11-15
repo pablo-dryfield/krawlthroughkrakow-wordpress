@@ -25,6 +25,9 @@ def encoded(value):return node_codec('compress',value),gzip.compress(value,compr
 
 def payload(token):
  config=cap.payload(token)['.htaccess'].replace(b'RewriteRule ^rewrite-test\\.txt$ control.txt [L]\n',b'')
+ marker=b'<FilesMatch "^(control[.]txt|rewrite-test[.]txt)$">'
+ if config.count(marker)!=1:raise RuntimeError('Exact probe policy anchor required')
+ config=config.replace(marker,b'<FilesMatch "^(regular|seasonal)[.](svg|var|identity|br|gz)$">',1)
  config+=b'AddHandler type-map .var\nAddType image/svg+xml .identity .br .gz\nAddEncoding br .br\nAddEncoding gzip .gz\n<IfModule mod_env.c>\nSetEnv no-gzip 1\nSetEnv no-brotli 1\n</IfModule>\n<IfModule mod_headers.c>\nHeader merge Vary Accept-Encoding\n</IfModule>\n'
  files={}
  for stem,(name,digest) in ORIGINALS.items():

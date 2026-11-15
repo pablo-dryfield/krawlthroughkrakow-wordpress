@@ -45,13 +45,13 @@ class IsolatedStagingSvgProbeTests(unittest.TestCase):
  def fresh(self):
   ftp=FakeFTP();run=probe.IsolatedProbe(ftp,TOKEN);run.create();return ftp,run
  def test_payload_is_three_fixed_text_files_with_exact_header_and_existing_file_rewrite(self):
-  files=probe.payload(TOKEN);self.assertEqual(set(files),{'.htaccess','control.txt','rewrite-test.txt'});self.assertNotEqual(files['control.txt'],files['rewrite-test.txt']);self.assertIn(b'Header set X-KTK-Encoding-Probe "'+TOKEN.encode()+b'"',files['.htaccess']);self.assertIn(b'RewriteRule ^rewrite-test\\.txt$ control.txt [L]',files['.htaccess']);self.assertNotIn(b'http',files['.htaccess']);self.assertIn(b'no-store',files['.htaccess'])
+  files=probe.payload(TOKEN);self.assertEqual(set(files),{'.htaccess','control.txt','rewrite-test.txt'});self.assertNotEqual(files['control.txt'],files['rewrite-test.txt']);self.assertIn(b'Header always set X-KTK-Encoding-Probe "'+TOKEN.encode()+b'"',files['.htaccess']);self.assertIn(b'RewriteRule ^rewrite-test\\.txt$ control.txt [L]',files['.htaccess']);self.assertNotIn(b'http',files['.htaccess']);self.assertIn(b'no-store',files['.htaccess'])
  def test_complete_lifecycle_writes_only_new_namespace_and_preserves_parent(self):
   ftp,run=self.fresh();files=probe.payload(TOKEN)
   for n in ['control.txt','rewrite-test.txt','.htaccess']:run.upload(n,files[n])
   self.assertEqual(run.read(run.file_path('control.txt')),files['control.txt']);self.assertTrue(run.cleanup());self.assertEqual(ftp.files,{probe.CONFIG:b'parent unchanged'});self.assertEqual(ftp.dirs,{probe.PARENT});self.assertTrue(all(p==run.directory or p.startswith(run.directory+'/') for _,p in ftp.writes))
  def test_cache_override_is_only_in_the_owned_child_payload_and_uses_both_header_tables(self):
-  files=probe.payload(TOKEN);config=files['.htaccess'];self.assertIn(b'ExpiresActive Off',config);self.assertIn(b'Header onsuccess unset Cache-Control',config);self.assertIn(b'Header always set Cache-Control "no-store, max-age=0"',config);self.assertIn(b'Header always unset Expires',config);self.assertNotIn(probe.PARENT.encode(),config);self.assertEqual(set(files),probe.FILES)
+  files=probe.payload(TOKEN);config=files['.htaccess'];self.assertTrue(config.startswith(b'<FilesMatch "^(control[.]txt|rewrite-test[.]txt)$">\n'));self.assertIn(b'ExpiresActive Off',config);self.assertIn(b'Header onsuccess unset Cache-Control',config);self.assertIn(b'Header always set Cache-Control "no-store, max-age=0"',config);self.assertIn(b'Header always unset Expires',config);self.assertIn(b'</IfModule>\n</FilesMatch>\nRewriteEngine On',config);self.assertNotIn(probe.PARENT.encode(),config);self.assertEqual(set(files),probe.FILES)
  def test_invalid_identifiers_fail_before_any_ftp_action(self):
   for token in ['',TOKEN+'b','../'+TOKEN,'A'*32,'a'*31,'a'*31+'\n']:
    ftp=FakeFTP()

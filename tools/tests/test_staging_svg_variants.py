@@ -23,6 +23,9 @@ class StagingSvgVariantTests(unittest.TestCase):
   for stem,(name,digest) in probe.ORIGINALS.items():
    raw=(ROOT/'staging/wp-content/mu-plugins/ktk-homepage-assets'/name).read_bytes();self.assertEqual(hashlib.sha256(raw).hexdigest(),digest);self.assertEqual(self.files[stem+'.identity'],raw);self.assertEqual(probe.node_codec('decompress',self.files[stem+'.br']),raw);self.assertEqual(gzip.decompress(self.files[stem+'.gz']),raw);self.assertNotEqual(self.files[stem+'.svg'],raw);self.assertIn(('URI: '+stem+'.br').encode(),self.files[stem+'.var'])
   self.assertIn(b'AddHandler type-map .var',self.files['.htaccess']);self.assertIn(b'ExpiresActive Off',self.files['.htaccess']);self.assertNotIn(b'rewrite-test',self.files['.htaccess'])
+  self.assertTrue(self.files['.htaccess'].startswith(b'<FilesMatch "^(regular|seasonal)[.](svg|var|identity|br|gz)$">'))
+  with patch.object(probe.cap,'payload',return_value={'.htaccess':b'changed policy'}):
+   with self.assertRaises(RuntimeError):probe.payload(TOKEN)
  def test_only_eleven_declared_paths_upload_and_complete_cleanup_preserves_parent(self):
   ftp=FakeFTP();run=probe.VariantProbe(ftp,TOKEN);run.create()
   for name in sorted(probe.FILES-{'.htaccess'})+['.htaccess']:run.upload(name,self.files[name])
