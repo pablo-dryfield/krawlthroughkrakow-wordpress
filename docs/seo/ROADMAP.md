@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 58 |
-| In progress | 2 |
+| In progress | 3 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Jobs page headings and mobile readability](jobs-accessibility-2026-11-15/README.md) | D03, D05, T10 | In progress (website) | Not yet | Finish fresh discovery evidence, final CI, guarded staging publication and origin/normal/warmed cache verification. No candidate upload or extra verified delivery yet; recruitment terms and functional consent remain protected. |
 | [Clear alternatives for withheld embedded content](blocked-embed-census-2026-11-15/README.md) | D05, D03, T10 | Verified on staging (website) | 2026-11-15 | Actual provider content/access remains unverified after14 inaccessible/throttled source-derived URL reads. Manual accessibility, some existing old text/CTA overlaps and separate production approval remain. Original iframe geometry/attributes/media/forms/headings/links, functional consent runtime, commerce, medical hold and active competition stay exact; no real message/order, full conformance or full-page pixel claim. |
 | [Incremental release planning and isolated rollback](active-updater-2026-11-15/README.md) | G02, T10 | In progress (website) | Not yet | G02 remains partial. Implement the authenticated transaction wrapper and its actual staging transaction/transport-failure recovery, verified private rollback archives and temporary-helper lifecycle. Require a fresh production snapshot/backup, coordinated exclusive release window, separate owner approval and production/cache checks. The offline fixtures are not a real WordPress transaction or production authorization. |
 | [Clear operator identity and guest review links](operator-trust-2026-11-15/README.md) | C10, C01, G01, D03, D05, T10 | Verified on staging (website) | 2026-11-15 | Actual team expertise, substantive legal/privacy review, ongoing review snapshots, manual accessibility/provider checks and production approval remain. Other legal clauses/media/forms/Shapo-video consent/commerce/medical hold/active competition stay exact. No live ratings, full conformance or whole-page pixel claim. Companion review/link handoff is documented; actual account adoption/outreach and current native GSC checks remain open. |

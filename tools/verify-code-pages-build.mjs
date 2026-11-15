@@ -44,6 +44,7 @@ import {loadHotelGuidesEditorial,reviseHotelGuidesEditorial} from './hotel-guide
 import {loadBlogGroupEditorial,reviseBlogGroupEditorial} from './blog-group-editorial.mjs';
 import {loadOperatorTrustEditorial,reviseOperatorTrustEditorial} from './operator-trust-editorial.mjs';
 import {loadEmbedFallbacks,reviseEmbedFallbacks} from './embed-fallbacks.mjs';
+import {loadJobsPageAccessibility,reviseJobsPageAccessibility} from './jobs-page-accessibility.mjs';
 import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
@@ -84,6 +85,7 @@ const hotelGuides=await loadHotelGuidesEditorial();
 const blogGroup=await loadBlogGroupEditorial();
 const operatorTrust=await loadOperatorTrustEditorial();
 const embedFallbacks=await loadEmbedFallbacks();
+const jobsAccessibility=await loadJobsPageAccessibility();
 const campaignFacts=campaignTemplateValues(await loadOfferFacts());
 const imageReview=JSON.parse(await readFile('tools/content-image-descriptions.json','utf8'));
 const sharingImage=await loadSharingImagePolicy({expectedManifestSha256:imageReview.assetManifestSha256});
@@ -146,6 +148,7 @@ async function facts(html,revision){
   // Match the real builder's existing provider duplicate removal before the bounded embed recipe.
   await page.evaluate(()=>document.querySelectorAll('#main-content script,#main-content style,#main-content noscript').forEach(n=>n.remove()));
   await page.evaluate(reviseEmbedFallbacks,{key:revision.key,revision:embedFallbacks.find(row=>row.key===revision.key)});
+  await page.evaluate(reviseJobsPageAccessibility,{key:revision.key,revision:jobsAccessibility});
  }
  return page.evaluate(()=>{const root=document.querySelector('#main-content');root.querySelectorAll('script,style,noscript,.mejs-controls,.mejs-layers,video a,[data-single-product-id],[data-ktk-booking-product]').forEach(e=>e.remove());return {text:root.textContent.replace(/\s+/g,' ').trim(),missingAlt:root.querySelectorAll('img:not([alt])').length,sections:root.querySelectorAll('.et_pb_section').length,headings:[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(e=>({tag:e.tagName,text:e.textContent.trim()})),primary:root.querySelectorAll('h1').length,forms:root.querySelectorAll('form.et_pb_contact_form,form.wpcf7-form').length,scripts:root.querySelectorAll('script').length,handlers:[...root.querySelectorAll('*')].flatMap(e=>[...e.attributes].filter(a=>/^on/i.test(a.name)).map(a=>a.name))};});
 }
