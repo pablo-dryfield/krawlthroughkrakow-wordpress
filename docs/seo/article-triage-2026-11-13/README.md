@@ -85,9 +85,22 @@ booking value still matter. No live attribution-token values are published.
 
 ## Prioritization And Completion
 
-Staging progress as of15 November:46 major article revisions,2 targeted
-corrections/notices,1 explicit specialist hold and7 articles still awaiting
-substantive review. Guide-life and hen-trip planning are now cache-verified:
+Staging progress as of15 November:48 major article revisions,2 targeted
+corrections/notices,1 explicit specialist hold and5 articles still awaiting
+substantive review. European crawl choices and the Budapest comparison are now
+cache-verified: [release evidence](../nightlife-comparisons-2026-11-15/README.md)
+records source2383/reference2320/body232/cards1777/forms501/attribution458 and
+full6193 origin/normal/repeat,348 warmed HITs/119 assets/0 retries. All11 photos,
+47 unique old Budapest fragments, publication history and prior178 summaries
+remain. One neutral feature ALT refreshes one discovery SHA, not123 URL policy.
+Six cached phone images were inspected: four exact local matches/two original
+crowd-photo differences, without masks/tolerance or whole-page identity claims.
+The50-identity/184-card catalog is not50 full fact audits. Europe still retains
+its inherited duplicate outer header/byline/photo as a separate D03 follow-up.
+The five awaiting substantive review are hotels2019/2020, hen-party reviews,
+spa hotels, Halloween and the old best-bars/clubs guide. Specialist hold remains.
+
+The previous guide-life and hen-trip planning release remains cache-verified:
 [release evidence](../party-trip-planning-2026-11-15/README.md) records
 source2386/body232/cards1609/forms501/attribution444/full6193 across origin,
 normal and warmed caches,348 warmed HITs/119 assets/0 retries. Original history,

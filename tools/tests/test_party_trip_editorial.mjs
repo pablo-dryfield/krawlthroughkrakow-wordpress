@@ -35,7 +35,7 @@ test('hen guide distinguishes actual operators from old pool and bundle claims',
 });
 
 test('catalog adds exactly2 identities and6 bindings with prior46/172 frozen', async () => {
-  const d = JSON.parse(await readFile(new URL('../reviewed-article-presentation.json', import.meta.url), 'utf8')), keys = ['post-life-professional-drunk', 'post-hen-do-ideas-abroad'];
+  const full = JSON.parse(await readFile(new URL('../reviewed-article-presentation.json', import.meta.url), 'utf8')), later = ['post-best-pub-crawls-in-europe', 'post-budapest-or-krakow-nightlife'], d = {...full, articles: full.articles.filter(a => !later.includes(a.key)), containers: full.containers.map(c => ({...c, cardKeys: c.cardKeys.filter(k => !later.includes(k))}))}, keys = ['post-life-professional-drunk', 'post-hen-do-ideas-abroad'];
   const old = {...d, articles: d.articles.filter(a => !keys.includes(a.key)), containers: d.containers.map(c => ({...c, cardKeys: c.cardKeys.filter(k => !keys.includes(k))}))};
   assert.equal(old.articles.length, 46); assert.equal(old.containers.reduce((n, c) => n + c.cardKeys.length, 0), 172); assert.equal(createHash('sha256').update(JSON.stringify(old)).digest('hex'), '626244a64e756334a4f279e343b6360ed4c55d979df49aaf7b3570c90d5e4634');
   assert.equal(d.articles.length, 48); assert.equal(d.containers.reduce((n, c) => n + c.cardKeys.length, 0), 178); assert.equal(d.containers.filter(c => c.cardKeys.some(k => keys.includes(k))).length, 5);
