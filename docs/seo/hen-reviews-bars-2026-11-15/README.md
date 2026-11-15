@@ -151,3 +151,147 @@ live checks; no runtime or provider-receipt claim.
 No commit, application upload or edge purge for this batch yet. Required CI,
 guarded staging and origin/normal/warmed checks remain before delivery53 can
 be counted. Both roadmaps still show52 verified deliveries plus this batch.
+
+## Staging Publication
+
+Application `9f94fdc062ea7d6a8c0f563ca70df819464b6fb4`, PR67, passed both
+required GitHub checks in run43679165700. Manual content publication completed
+15 November05:03:11.744425UTC. All2073 Git/local/remote hashes were independently
+verified; saved WordPress, homepage and storefront state is unchanged and the
+temporary helper is removed. The12-entry rollback archive
+`ktk-code-pages-staging-20261115-050245.zip` has verified exact entries, CRC,
+per-file hashes and SHA256
+`0e6663250594ecc10cbbcda7360c69d00a3ab67aa19a09b140b1045b2767df6b`.
+
+Sequential discovery publication completed05:07:07.454773UTC. All three owned
+files match Git/local/remote; staging and production protected files remain exact,
+helpers are removed and no origin paths needed clearing. Its four-entry rollback
+`seo-discovery-staging-20261115-050654-616448.zip` is independently CRC/entry/hash
+verified, SHA256
+`7c36b1423195515fd8d83561ed57ecc6ad2e691b4a35e057fb4064062f0d4f49`.
+
+Origin release, article/card browser, intercepted forms, attribution and discovery
+checks are running. No edge purge yet. Application files are frozen; no further
+build/upload is needed for documentation. Delivery count remains52 until normal
+and warmed-cache verification closes successfully. Production is untouched.
+
+Origin verification closed with6193/6193 checks,116 routes,119 assets and348
+DYNAMIC responses at05:15:43.556529UTC, with zero retries. Focused body208,
+cards1945 across40 views, intercepted forms501, attribution479, discovery243
+and homepage10/icon21/ET20/social15 checks all pass. Fresh independent source2383
+also passes. One source-audit invocation omitted its required baseline argument
+and stopped before running; the corrected exact78d1 invocation passes unchanged.
+
+Only the approved staging prefix was purged through authenticated MCP at
+05:16:11.897UTC, after fresh POST-spec and exact active-zone/account validation.
+No production prefix, configuration or credentials changed. Cached body208,
+cards1945, forms501, attribution479, discovery216 and homepage/font checks pass.
+Seven actual cached390px screenshots were inspected: four are byte-exact with
+current local; the hen header differs by37446 pixels only in its original photo
+rectangle[39,174,351,382], bars intro46635 only in[39,589,351,900], and bars closing
+51437 only in[39,488,351,696]. Unmasked RGBA evidence is retained in
+`mobile-local-normal.json`; no mask/tolerance/cause or pre-edit whole-page pixel
+claim. Four cached axe views have zero violations/two incomplete groups.
+Full normal and warmed verification still remain before counting delivery53.
+
+## Final Verified Delivery
+
+The warmed repeat closed6193/6193 at05:24:55.752035UTC15 November, with all348
+content responses HIT,119 assets current and zero retries. Discovery repeat216
+also passes. Origin/normal/warmed checks are all complete; the two guarded uploads
+remain exactly application9f94fdc, with no later application edit or re-upload.
+Both roadmaps now count53 staging deliveries, not production promotions. C08 is
+50 major staged revisions/2 targeted changes/1 held/3 awaiting substantive review.
+The52-identity/190-card catalog is not52 complete fact audits. Two hotels and
+Halloween remain; the separate specialist hold is unchanged.
+
+Two documentation patch preflights stopped atomically: one treated the compact
+C08 JSON row as multiline, the next put two valid hunks out of source order.
+Neither wrote any file. Exact one-row selection plus source-ordered hunks then
+succeeded; no application, test guard or verification result changed.
+
+All finite publishers/browser/audit processes are closed; root5184/5185 previews
+are retained. Final roadmap rendering/tests, documentation CI and exact-tree PR67
+merge/cleanup remain. No further upload or cache purge is needed for these records.
+
+Full normal verification subsequently closed6193/6193 at05:22:35.643447UTC,
+with all348 content responses MISS,119 assets current and zero HTTP retries.
+The warmed full-release and discovery repeats are now running. Shared JavaScript361,
+Python215 and PHP763+31+143 checks pass, as does repository policy. No application
+file changed after the reviewed9f94fdc release; documentation only needs final CI.
+
+Additional primary hotel leads read after the initial list:
+[PURO Old Town](https://purohotels.com/en/cracow/cracow-old-town/) and
+[Kazimierz](https://purohotels.com/en/cracow/cracow-kazimierz/) are the actual
+redirect targets from purohotel.pl; do not guess their new paths. Kazimierz's
+operator identifies Halicka14a, separate from Old Town. [Andel's](https://www.wyndhamhotels.com/vienna-house/cracow-poland/vienna-house-andels-cracow)
+identifies Pawia3; [Hampton](https://www.hilton.com/en/hotels/krkhxhx-hampton-krakow/hotel-location/)
+Dabska5, [Radisson Blu](https://www.radissonhotels.com/en-us/hotels/radisson-blu-krakow)
+Straszewskiego17, [Grodek](https://www.donimirski.com/hotel-grodek) Na Grodku4,
+[Copernicus](https://copernicus.hotel.com.pl/hotel-copernicus) Kanonicza16 and
+[Santi's actual operator](https://www.larishotels.com/en/hotel-santi) Dominikanska1.
+These do not certify old room numbers, included parking/airport transfers, rates,
+ratings, medical claims or every detail in the original article. The guessed
+hotelsanti.pl and pergamin.pl did not load; Pergamin Old Town still requires
+operator confirmation, not a closure or a guessed replacement.
+
+A later primary-source lookup found [Aparthotel Old Town contact](https://aparthoteloldtown.pl/en/contact)
+at Gertrudy10. That verifies today's name/address, not a dated ownership/rebrand
+history or its internally conflicting walking distances. Nobilton remains an
+unconfirmed current-operator fact; failed pages are not closure evidence.
+
+An additional read-only, network-aborted DOM inspection confirms31 text-only
+interiors/79 main photos/no inner IDs or protected form/video nodes for the old
+hotel shortlist. Spa has no Divi text interiors, four main photos and25 ID-bearing
+nodes/23 unique identities, including two extra occurrences of one old TOC ID.
+These are inventory leads only; no next source recipe, draft, build or deployment.
+
+## Read-only Next Review Leads
+
+The two remaining hotel articles' complete original texts have been read, but
+their application bodies, photos and summaries have not been changed in this
+batch. Their actual DOM/media inventory and a fresh pre-edit backup are still
+required for the next batch. The following primary sources were read on15 November;
+this is not a claim that all26 hotels or every old service/rating is verified.
+
+- [Current Unicus Palace contact](https://www.hotelunicuspalace.pl/en/contact)
+  states Slawkowska13, not the old article's Florianska28. Its
+  [wellness page](https://www.hotelunicuspalace.pl/en/wellness) describes a small
+  relaxation area; do not transfer another hotel's pool or access terms.
+- [Wyndham Grand Krakow Old Town](https://www.wyndhamhotels.com/wyndham-grand/cracow-poland/wyndham-grand-krakow-old-town)
+  identifies Florianska28. The guessed wyndhamgrandkrakow.com domain did not load
+  and is not an approved source/link. Current-name/address distinction is verified;
+  exact rebranding history still needs a primary source before dating that claim.
+- [Bachleda wellness](https://bachledaluxuryhotel.pl/en/spa-page-186531)
+  specifies hotel guests only. Do not promise universal non-guest day access.
+- [Hotel Stary wellness](https://stary.hotel.com.pl/hotel-stary/wellness-i-spa)
+  lists two pools and paid non-guest entry. A later direct fetch timed out; this
+  is not closure evidence. Do not freeze mutable entry prices/hours.
+- [Chocholowskie Termy](https://www.chocholowskietermy.pl/en/) and its
+  [operator regulations](https://www.chocholowskietermy.pl/en/regulamin/)
+  identify Chocholow400, outside Krakow. Do not reprint marketing health/therapy
+  guarantees or imply a confirmed KTK operator, transport or bundled package.
+- [Art & Garden](https://artgardenresidence.pl/),
+  [Lwowska1](https://www.lwowska1.pl/en),
+  [Hotel Jan](https://jan-krakow.pl/public/en/about),
+  [Eden](https://www.hoteleden.pl/en/),
+  [Queen Boutique](https://www.queenhotel.pl/en),
+  [Metropolitan](https://metropolitanboutiquehotel.pl/) and
+  [Hotel Wawel location](https://www.hotelwawel.pl/en/location) provide current
+  identity/location starting points, not old Booking.com ratings or price bands.
+- [Leonardo Boutique Old Town](https://www.leonardo-hotels.com/krakow/leonardo-boutique-hotel-krakow-old-town)
+  identifies Swietej Gertrudy12, the old Legend address. Do not claim a dated
+  rebranding based only on a non-primary search result.
+- [Hotel Polski operator](https://www.donimirski.com/hotel-polski)
+  confirms Pijarska17; guessed hotel.com.pl and old podorlem domains were
+  inaccessible, not proof of closure. Nobilton's operator page was inaccessible;
+  its regional tourism listing is only a lead, not a current-service audit.
+- [Aparthotel Stare Miasto](https://www.ahsm-krakow.com/) identifies Golebia2;
+  [Balthazar contact](https://balthazarhotel.com/en/contact) identifies Grodzka63.
+  Pergamin Old Town is not the differently addressed Aparthotel Pergamin:
+  its Gertrudy10 identity/operator remains to verify.
+- [Vienna House Easy local area](https://www.wyndhamhotels.com/en-uk/vienna-house/cracow-poland/vienna-house-easy-cracow/local-area)
+  confirms Przy Rondzie2. [Mercure Stare Miasto](https://all.accor.com/hotel/9627/index.en.shtml)
+  confirms Pawia18B. PURO, Andel's and remaining luxury/business hotels still need
+  direct source review. No current rating, guaranteed breakfast/day pass,
+  parking/transfer inclusion or medical benefit is certified by this research.
