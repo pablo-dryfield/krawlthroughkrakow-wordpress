@@ -564,6 +564,61 @@ body.ktk-code-page[data-ktk-page="how-to-join"] #main-content .et_pb_promo [data
   body.ktk-code-page:is([data-ktk-page="how-to-join"],[data-ktk-page="meeting-point"],[data-ktk-page="faqs"]) #main-content [data-ktk-offer-copy] { padding-right: 24px; }
 }
 
+/* BEGIN No-JS quick links */
+body #main-content nav.ktk-nojs-navigation {
+  box-sizing: border-box;
+  width: 80%;
+  max-width: 1080px;
+  margin: 0 auto 24px;
+  padding: 16px 24px 0 0;
+  color: #111;
+  background: #fff;
+  text-align: left;
+  font-size: 16px;
+  line-height: 1.5;
+}
+body #main-content nav.ktk-nojs-navigation p {
+  margin: 0 0 12px;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+body #main-content nav.ktk-nojs-navigation ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body #main-content nav.ktk-nojs-navigation li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body #main-content nav.ktk-nojs-navigation a {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 10px;
+  border: 1px solid #c8006c;
+  color: #c8006c;
+  background: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1.5;
+}
+body #main-content nav.ktk-nojs-navigation a:hover,
+body #main-content nav.ktk-nojs-navigation a:focus-visible {
+  text-decoration: underline;
+}
+body #main-content nav.ktk-nojs-navigation a:focus-visible {
+  outline: 3px solid #111;
+  outline-offset: 2px;
+}
+/* END No-JS quick links */
+
 /* BEGIN NYE promotion state */
 body.ktk-code-page[data-ktk-page="new-years-eve"] .ktk-nye-expiry-notice {
   padding:32px 24px;

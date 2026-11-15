@@ -102,6 +102,7 @@ function ktk_pages_static_body() {
 }
 require_once __DIR__ . '/ktk-code-pages-assets/integrations.php';
 require_once __DIR__ . '/ktk-code-pages-assets/forms.php';
+require_once __DIR__ . '/ktk-code-pages-assets/nojs-navigation.php';
 
 function ktk_pages_staging_brunch_alias($request_uri) {
     if ('https://krawlthroughkrakow.com/staging/' !== home_url('/')
@@ -158,7 +159,7 @@ add_action('template_redirect', function () {
 <body class="<?php echo esc_attr($page['body_class']); ?> ktk-code-page" data-ktk-page="<?php echo esc_attr($page['key'] ?? 'how-to-join'); ?>" data-ktk-form-token-url="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">
     <a class="ktk-parity-skip-link" href="#main-content">Skip to content</a>
     <?php echo ktk_pages_required_body_open_html(); ?>
-    <?php echo ktk_pages_static_body(); ?>
+    <?php echo ktk_pages_nojs_navigation_body(ktk_pages_static_body(), home_url('/')); ?>
     <script src="<?php echo esc_url(ktk_pages_asset('runtime.js')); ?>" defer></script>
     <?php echo ktk_pages_captured_footer(); ?>
 </body>

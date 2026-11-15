@@ -16,6 +16,7 @@ function ktk_homepage_icon($name, $class = '') { return '<svg class="' . esc_att
 require ABSPATH . '/staging/wp-content/mu-plugins/ktk-homepage-assets/reviews.php';
 require ABSPATH . '/staging/wp-content/mu-plugins/ktk-homepage-assets/hero.php';
 require ABSPATH . '/staging/wp-content/mu-plugins/ktk-homepage-assets/parity-seasonal-content.php';
+require ABSPATH . '/staging/wp-content/mu-plugins/ktk-homepage-assets/nojs-navigation.php';
 $preview_epoch = isset($_GET['ktk_preview_epoch']) && is_string($_GET['ktk_preview_epoch']) && preg_match('/^\d{10}$/D', $_GET['ktk_preview_epoch']) ? (int) $_GET['ktk_preview_epoch'] : null;
 ?>
 <!doctype html>
@@ -27,7 +28,7 @@ $preview_epoch = isset($_GET['ktk_preview_epoch']) && is_string($_GET['ktk_previ
 <link rel="stylesheet" href="/ktk-homepage-assets/hero.css">
 </head><body class="<?php echo esc_attr(ktk_homepage_parity_body_class()); ?> ktk-homepage-standalone">
 <a class="ktk-parity-skip-link" href="#main-content">Skip to content</a>
-<?php echo str_replace('data-ktk-expired-href="' . esc_url(home_url('/new-years-eve/')) . '"', 'data-ktk-expired-href="/new-years-eve/"', ktk_homepage_static_body($preview_epoch)); ?>
+<?php echo str_replace('data-ktk-expired-href="' . esc_url(home_url('/new-years-eve/')) . '"', 'data-ktk-expired-href="/new-years-eve/"', ktk_homepage_nojs_navigation_body(ktk_homepage_static_body($preview_epoch), home_url('/'))); ?>
 <script src="/ktk-homepage-assets/parity.js" defer></script>
 <script src="/ktk-homepage-assets/journey.js" defer></script>
 </body></html>

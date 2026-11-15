@@ -53,6 +53,7 @@ import {loadEmbedFallbacks,reviseEmbedFallbacks,buildEmbedFallbackStyles} from '
 import {loadJobsPageAccessibility,reviseJobsPageAccessibility,buildJobsPageAccessibilityStyles} from './jobs-page-accessibility.mjs';
 import {buildStagNyeTextStyles} from './stag-nye-text-styles.mjs';
 import {buildStagReviewedTextStyles} from './stag-reviewed-text-styles.mjs';
+import {buildNoJsNavigation} from './nojs-navigation.mjs';
 import {codePageTitle,codePageHeadDescription,loadSharingImagePolicy,buildCodePageSharing} from './code-page-sharing.mjs';
 import {loadOfferPageRevisions,reviseOfferPages} from './offer-pages-editorial.mjs';
 import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
@@ -98,6 +99,7 @@ await buildHotelGuidesStyles(path.join(assets,'runtime.css'));
 await buildEventPromotionRuntime(path.join(assets,'runtime.js'));
 await buildContentAccessibilityStyles(path.join(assets,'runtime.css'));
 await buildNyePromotionStyles(path.join(assets,'runtime.css'));
+await buildNoJsNavigation(path.join(root,'staging/wp-content/mu-plugins/ktk-homepage-assets'),assets);
 const manifestPath = 'docs/code-pages/full-migration/manifest.json';
 const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
 const imageDescriptions=await loadReviewedImageDescriptions();

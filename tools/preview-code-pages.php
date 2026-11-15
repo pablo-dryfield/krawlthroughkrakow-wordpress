@@ -41,5 +41,5 @@ $css = $page['css'] ?? 'how-to-join.css';
 <link rel="stylesheet" href="/ktk-code-pages-assets/<?php echo esc_attr($css); ?>"><link rel="stylesheet" href="/ktk-code-pages-assets/font-resilience.css"><link rel="stylesheet" href="/ktk-code-pages-assets/runtime.css">
 </head><body class="<?php echo esc_attr($page['body_class']); ?> ktk-code-page" data-ktk-page="<?php echo esc_attr($page['key'] ?? 'how-to-join'); ?>" data-ktk-form-token-url="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">
 <a class="ktk-parity-skip-link" href="#main-content">Skip to content</a>
-<?php echo $html; ?><script src="/ktk-code-pages-assets/runtime.js" defer></script>
+<?php echo ktk_pages_nojs_navigation_body($html, home_url('/')); ?><script src="/ktk-code-pages-assets/runtime.js" defer></script>
 </body></html>

@@ -61,6 +61,7 @@ function ktk_homepage_photo( $name, $alt, $sizes = '(max-width: 767px) 100vw, 50
 require_once __DIR__ . '/ktk-homepage-assets/integrations.php';
 require_once __DIR__ . '/ktk-homepage-assets/hero.php';
 require_once __DIR__ . '/ktk-homepage-assets/parity-seasonal-content.php';
+require_once __DIR__ . '/ktk-homepage-assets/nojs-navigation.php';
 add_action( 'init', function () { add_shortcode( 'ktk_homepage', 'ktk_homepage_static_body' ); }, 20 );
 
 function ktk_homepage_metadata() {
@@ -117,7 +118,7 @@ add_action( 'template_redirect', function () {
     <body class="<?php echo esc_attr( ktk_homepage_parity_body_class() ); ?> ktk-homepage-standalone">
         <a class="ktk-parity-skip-link" href="#main-content">Skip to content</a>
         <?php echo ktk_homepage_required_body_open_html(); ?>
-        <?php echo ktk_homepage_static_body(); ?>
+        <?php echo ktk_homepage_nojs_navigation_body(ktk_homepage_static_body(), home_url('/')); ?>
         <script src="<?php echo esc_url( ktk_homepage_asset( 'parity.js' ) ); ?>" defer></script>
         <script src="<?php echo esc_url( ktk_homepage_asset( 'journey.js' ) ); ?>" defer></script>
         <?php echo ktk_homepage_captured_footer(); ?>
