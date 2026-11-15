@@ -316,6 +316,18 @@
       "postId": 2095,
       "route": "/the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow/",
       "summary": "A historical 2017-2018 bars and clubs shortlist with reviewed operator links, corrected venue-location context and current Krakow nightlife and pub-crawl booking guidance."
+    },
+    {
+      "key": "post-best-hotels-in-krakow-2019-2020",
+      "postId": 2707,
+      "route": "/best-hotels-in-krakow-2019-2020/",
+      "summary": "Compare the original 2019 hotel shortlist with current operator links, corrected property names and addresses, and practical room and booking checks. Historical photos remain; old scores and price bands are not current quotes."
+    },
+    {
+      "key": "post-spa-hotels-krakow",
+      "postId": 6534,
+      "route": "/spa-hotels-krakow/",
+      "summary": "Plan a Krakow spa visit with current hotel-guest and non-guest access information, separate out-of-town Chocholow travel and booking checks, without assuming a hotel stay or a pub crawl includes a spa package."
     }
   ],
   "containers": [
@@ -377,6 +389,7 @@
       "key": "archive-category-uncategorized",
       "cardKeys": [
         "post-go-karting-krakow",
+        "post-spa-hotels-krakow",
         "post-budapest-or-krakow-nightlife",
         "post-krakow-shot-bar",
         "post-jazz-bars-in-krakow",
@@ -398,6 +411,7 @@
       "key": "archive-author-dpbowman-page-2",
       "cardKeys": [
         "post-krakow-bars-jewish-quarter",
+        "post-spa-hotels-krakow",
         "post-hen-do-ideas-abroad",
         "post-budapest-or-krakow-nightlife"
       ]
@@ -481,6 +495,7 @@
       "captureSha256": "93214811edd580d7e109bbeffcf8d4200f5cf8c51545900d543079fd6ac8232e",
       "key": "archive-author-jessie",
       "cardKeys": [
+        "post-best-hotels-in-krakow-2019-2020",
         "post-all-you-need-to-know-about-visiting-auschwitz",
         "post-travel-krakow-your-comprehensive-city-guide",
         "post-krakow-weather-guide"
@@ -531,6 +546,7 @@
       "cardKeys": [
         "post-best-places-to-eat",
         "post-2020-krakow-nightlife-guide",
+        "post-best-hotels-in-krakow-2019-2020",
         "post-travel-krakow-your-comprehensive-city-guide",
         "post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow",
         "post-survive-pub-crawl"
@@ -609,6 +625,7 @@
       "cardKeys": [
         "post-krakow-team-building-activities",
         "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+        "post-spa-hotels-krakow",
         "post-budapest-or-krakow-nightlife",
         "post-krakow-milkbars",
         "post-krakow-shooting-range",
@@ -655,6 +672,7 @@
         "post-krakow-nightclubs",
         "post-krakow-wine-bars",
         "post-party-krakow",
+        "post-best-hotels-in-krakow-2019-2020",
         "post-krakow-weather-guide",
         "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
         "post-welcome-to-alcohol",
@@ -697,6 +715,7 @@
       "cardKeys": [
         "post-weekend-in-krakow",
         "post-best-places-to-eat",
+        "post-best-hotels-in-krakow-2019-2020",
         "post-krakow-weather-guide",
         "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow"
       ]

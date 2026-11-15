@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-15T04:53:06.083Z",
+  "startedAt": "2026-11-15T06:08:33.983Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -719,6 +719,15 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "hotel-guides-review",
+          "key": "post-best-hotels-in-krakow-2019-2020",
+          "reviewedOn": "2026-11-15",
+          "textInteriors": 31,
+          "retainedPhotos": 79,
+          "nativeContentsTargets": 31,
+          "reviewedImageDescriptions": 79
         }
       ],
       "bookings": [
@@ -3645,6 +3654,15 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "hotel-guides-review",
+          "key": "post-spa-hotels-krakow",
+          "reviewedOn": "2026-11-15",
+          "textInteriors": 0,
+          "retainedPhotos": 4,
+          "nativeContentsTargets": 10,
+          "reviewedImageDescriptions": 4
         }
       ],
       "bookings": [
@@ -5002,6 +5020,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-spa-hotels-krakow",
+          "postId": 6534,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-budapest-or-krakow-nightlife",
           "postId": 6599,
           "reviewedOn": "2026-11-14",
@@ -5156,6 +5181,13 @@
           "type": "reviewed-article-summary",
           "key": "post-krakow-bars-jewish-quarter",
           "postId": 6394,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-spa-hotels-krakow",
+          "postId": 6534,
           "reviewedOn": "2026-11-14",
           "format": "text"
         },
@@ -5774,6 +5806,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-best-hotels-in-krakow-2019-2020",
+          "postId": 2707,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-all-you-need-to-know-about-visiting-auschwitz",
           "postId": 2681,
           "reviewedOn": "2026-11-14",
@@ -6139,6 +6178,13 @@
           "type": "reviewed-article-summary",
           "key": "post-2020-krakow-nightlife-guide",
           "postId": 2968,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-best-hotels-in-krakow-2019-2020",
+          "postId": 2707,
           "reviewedOn": "2026-11-14",
           "format": "text"
         },
@@ -6923,6 +6969,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-spa-hotels-krakow",
+          "postId": 6534,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-budapest-or-krakow-nightlife",
           "postId": 6599,
           "reviewedOn": "2026-11-14",
@@ -7240,6 +7293,13 @@
           "type": "reviewed-article-summary",
           "key": "post-party-krakow",
           "postId": 2979,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-best-hotels-in-krakow-2019-2020",
+          "postId": 2707,
           "reviewedOn": "2026-11-14",
           "format": "paragraph"
         },
@@ -10265,6 +10325,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-best-hotels-in-krakow-2019-2020",
+          "postId": 2707,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-krakow-weather-guide",
           "postId": 2587,
           "reviewedOn": "2026-11-14",
@@ -10769,5 +10836,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-15T04:54:06.210Z"
+  "finishedAt": "2026-11-15T06:09:33.861Z"
 }
