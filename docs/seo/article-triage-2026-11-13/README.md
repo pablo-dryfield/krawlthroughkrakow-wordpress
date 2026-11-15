@@ -85,16 +85,27 @@ booking value still matter. No live attribution-token values are published.
 
 ## Prioritization And Completion
 
-Staging progress as of15 November:44 major article revisions,2 targeted
-corrections/notices,1 explicit specialist hold and9 articles still awaiting
-substantive review. The active competition and contextualized old newsletter
+Staging progress as of15 November:46 major article revisions,2 targeted
+corrections/notices,1 explicit specialist hold and7 articles still awaiting
+substantive review. Guide-life and hen-trip planning are now cache-verified:
+[release evidence](../party-trip-planning-2026-11-15/README.md) records
+source2386/body232/cards1609/forms501/attribution444/full6193 across origin,
+normal and warmed caches,348 warmed HITs/119 assets/0 retries. Original history,
+20 old destinations, four photos and prior172 summaries remain. One neutral ALT
+and accurate description refresh two discovery bindings, not123 URL policy.
+The48-identity/178-card catalog is not48 full fact audits. Six phone screenshots
+were inspected; two exact local matches and four original photo/hero-band
+differences remain explicit. Four axe views0 violations/4 incomplete groups.
+The information-only link's exact empty-hash QA correction changes no runtime.
+
+The earlier active competition and contextualized old newsletter
 are now cache-verified with unchanged entry form, ten photos/history and prior
 166 summaries. [Release evidence](../competition-newsletter-2026-11-15/README.md)
 records source2384/body192/cards1423/forms501/attribution423/full6193 across
 origin, normal and warmed caches;348 warmed HITs/119 assets/0 retries. The
 competition's active/no-deadline description refreshes only one discovery SHA,
 not its title/history/indexing or123 URL policy. The46-identity/172-card catalog
-is not46 full fact audits. Existing newsletter slider-animation and QA/timeout
+was not46 full fact audits. Existing newsletter slider-animation and QA/timeout
 diagnostics remain explicit, not hidden by screenshot tolerances.
 
 Earlier escape-room and shooting booking guides are cache-verified;

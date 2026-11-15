@@ -88,6 +88,8 @@ jobs:
         run: node --test tools/tests/test_activity_booking_editorial.mjs
       - name: Active competition and historical newsletter source contracts
         run: node --test tools/tests/test_competition_newsletter_editorial.mjs
+      - name: Guide-life and hen-trip planning source contracts
+        run: node --test tools/tests/test_party_trip_editorial.mjs
       - name: Booking selection recovery contracts
         run: node --test tools/tests/test_booking_selection_recovery.mjs tools/tests/test_blocked_meta_pageview.mjs
       - name: Read-only booking measurement contracts (no provider events)
