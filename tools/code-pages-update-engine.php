@@ -15,6 +15,7 @@ final class KTK_Active_Content_Transaction
     private string $private;
     private array $plan;
     private array $journal;
+    private array $receiptHashes;
     private $guard;
     private $observer;
     private $lock;
@@ -65,9 +66,11 @@ final class KTK_Active_Content_Transaction
         $this->private = self::root($directory);
         $binding = hash('sha256', json_encode(array($this->source, $this->target, $this->private, $plan), JSON_THROW_ON_ERROR));
         $journalPath = $this->private . '/journal.json';
-        if (is_link($journalPath)) { throw new RuntimeException('Unsafe journal'); }
+        $this->receiptHashes = array('plan.json' => self::digest($this->private . '/plan.json'), 'journal.json' => self::digest($journalPath));
         if (is_file($journalPath)) {
-            $this->journal = json_decode(file_get_contents($journalPath), true, 512, JSON_THROW_ON_ERROR);
+            $bytes = file_get_contents($journalPath);
+            if ($bytes === false || hash('sha256', $bytes) !== $this->receiptHashes['journal.json']) { throw new RuntimeException('Journal changed while loading'); }
+            $this->journal = json_decode($bytes, true, 512, JSON_THROW_ON_ERROR);
             if (($this->journal['binding'] ?? null) !== $binding || !is_array($this->journal['intents'] ?? null) ||
                 array_diff_key($this->journal['intents'], $plan['expected'])) { throw new RuntimeException('Transaction binding differs'); }
             foreach ($this->journal['intents'] as $name => $value) {
@@ -184,19 +187,65 @@ final class KTK_Active_Content_Transaction
 
     private function writePrivate(string $name, string $bytes): void
     {
+        if (!array_key_exists($name, $this->receiptHashes)) { throw new RuntimeException('Unknown private receipt'); }
         if (self::root($this->private) !== $this->private) { throw new RuntimeException('Private transaction root changed'); }
         $path = $this->private . '/' . $name;
-        if (is_link($path)) { throw new RuntimeException('Unsafe private file'); }
-        $temporary = tempnam($this->private, '.ktk-journal-');
-        if ($temporary === false) { throw new RuntimeException('Cannot create private temporary file'); }
+        if (self::digest($path) !== $this->receiptHashes[$name]) { throw new RuntimeException('Private receipt changed concurrently'); }
+        $area = $this->private . '/receipts';
+        if (is_link($area) || (file_exists($area) && !is_dir($area))) { throw new RuntimeException('Unsafe private receipt directory'); }
+        if (!is_dir($area) && !mkdir($area, 0700)) { throw new RuntimeException('Cannot create private receipt directory'); }
+        $this->receiptArtifacts();
+        $this->verifyReceiptArea($area);
+        $temporary = $area . '/.ktk-receipt-' . substr($name, 0, -5) . '-' . bin2hex(random_bytes(16));
+        $handle = fopen($temporary, 'x+b');
+        if (!$handle) { throw new RuntimeException('Cannot exclusively create private receipt temporary'); }
+        $hash = hash('sha256', $bytes);
         try {
-            $handle = fopen($temporary, 'wb');
-            if (!$handle) { throw new RuntimeException('Cannot open private temporary file'); }
             try {
+                if (!chmod($temporary, 0600)) { throw new RuntimeException('Cannot restrict private receipt temporary'); }
+                $this->observe('after-private-temporary-create', $name);
                 if (fwrite($handle, $bytes) !== strlen($bytes) || !fflush($handle) || (function_exists('fsync') && !fsync($handle))) { throw new RuntimeException('Private receipt write failed'); }
             } finally { fclose($handle); }
-            if (!chmod($temporary, 0600) || !rename($temporary, $path)) { throw new RuntimeException('Private receipt commit failed'); }
-        } finally { if (is_file($temporary)) { unlink($temporary); } }
+            $this->observe('before-private-receipt-rename', $name);
+            $this->verifyReceiptArea($area);
+            if (self::digest($path) !== $this->receiptHashes[$name] ||
+                self::digest($temporary) !== $hash) { throw new RuntimeException('Private receipt changed before commit'); }
+            if (!rename($temporary, $path)) { throw new RuntimeException('Private receipt commit failed'); }
+            $this->receiptHashes[$name] = $hash;
+            $this->observe('after-private-receipt-rename', $name);
+            if (self::digest($path) !== $hash) { throw new RuntimeException('Private receipt differs after commit'); }
+        } finally {
+            // Preserve unknown/partial evidence and never follow a swapped private root during cleanup.
+            try {
+                if (self::root($this->private) === $this->private && self::root($area) === $area && self::digest($temporary) === $hash) { unlink($temporary); }
+            } catch (Throwable $error) { /* Retain uncertain private bytes without masking the original failure. */ }
+        }
+    }
+
+    private function verifyReceiptArea(string $area): void
+    {
+        if (self::root($this->private) !== $this->private || self::root($area) !== $area) { throw new RuntimeException('Private receipt root changed'); }
+        clearstatcache(true, $area); clearstatcache(true, $this->private);
+        $a = stat($area); $b = stat($this->private);
+        if ($a === false || $b === false || !isset($a['dev'], $b['dev']) || $a['dev'] !== $b['dev']) {
+            throw new RuntimeException('Private receipts must share their destination filesystem');
+        }
+    }
+
+    private function receiptArtifacts(): array
+    {
+        if (self::root($this->private) !== $this->private) { throw new RuntimeException('Private transaction root changed'); }
+        $area = $this->private . '/receipts';
+        if (is_link($area) || (file_exists($area) && !is_dir($area))) { throw new RuntimeException('Unsafe private receipt directory'); }
+        if (!file_exists($area)) { return array(); }
+        $result = array();
+        foreach (new DirectoryIterator($area) as $file) {
+            if ($file->isDot()) { continue; }
+            if ($file->isLink() || !$file->isFile()) { throw new RuntimeException('Unsafe retained private receipt artifact'); }
+            $result[$file->getFilename()] = array('sha256' => self::digest($file->getPathname()), 'bytes' => $file->getSize());
+        }
+        ksort($result);
+        return $result;
     }
 
     private function save(string $phase, ?string $event = null): void
@@ -214,6 +263,7 @@ final class KTK_Active_Content_Transaction
     public function prepare(): array
     {
         if ($this->journal['phase'] !== 'unprepared') { throw new RuntimeException('Existing transaction must be inspected, not prepared again'); }
+        if ($this->receiptHashes['plan.json'] !== null) { throw new RuntimeException('Existing private plan requires inspection, not preparation'); }
         $this->preflight(false);
         $required = array(self::ACTIVATION => self::ACTIVATION_SHA, self::RENDERER => $this->plan['prior'][self::RENDERER], self::ASSETS . '/registry.php' => $this->plan['prior'][self::ASSETS . '/registry.php']);
         foreach ($this->plan['expected'] as $name => $hash) {
@@ -326,12 +376,29 @@ final class KTK_Active_Content_Transaction
         return $result;
     }
 
-    public function apply(): array
+    private static function stepLimit($limit): void
     {
+        if ($limit !== null && (!is_int($limit) || $limit < 1 || $limit > 100)) { throw new RuntimeException('Step limit must be an integer from 1 to 100, or null'); }
+    }
+
+    private function rollbackOrder(): array
+    {
+        $existing = array(); $introduced = array();
+        foreach (array_keys($this->journal['intents']) as $name) {
+            if (isset($this->plan['prior'][$name])) { $existing[] = $name; } else { $introduced[] = $name; }
+        }
+        // Restore prior definitions before removing dependencies introduced by the newer definitions.
+        return array_merge(self::order($existing), self::order($introduced));
+    }
+
+    public function apply($limit = null): array
+    {
+        self::stepLimit($limit);
         if (!in_array($this->journal['phase'], array('prepared', 'applying', 'uncertain', 'applied'), true)) { throw new RuntimeException('Prepared recoverable transaction required'); }
         $this->verifyBackup();
         $this->preflight(true);
         $this->save('applying');
+        $steps = 0; $boundedStop = false;
         try {
             foreach (self::order(array_keys($this->plan['expected'])) as $name) {
                 $hash = $this->plan['expected'][$name];
@@ -340,6 +407,7 @@ final class KTK_Active_Content_Transaction
                     if ($hash !== ($this->plan['prior'][$name] ?? null) && !isset($this->journal['intents'][$name])) { throw new RuntimeException('Unowned concurrent installation'); }
                     continue;
                 }
+                if ($limit !== null && $steps >= $limit) { $boundedStop = true; break; }
                 $this->protectedCheck();
                 if ($current !== ($this->plan['prior'][$name] ?? null)) { throw new RuntimeException('Concurrent target change before intent'); }
                 $this->journal['intents'][$name] = true;
@@ -355,11 +423,14 @@ final class KTK_Active_Content_Transaction
                     throw $error;
                 }
                 $this->save('applying', 'installed:' . $name);
+                $steps++;
             }
-            $this->protectedCheck();
+            $actual = $this->preflight(true);
             $expected = $this->plan['expected'] + array(self::ACTIVATION => self::ACTIVATION_SHA); ksort($expected);
-            if ($this->inventory($this->target, true) !== $expected || $this->inventory($this->source, false) !== $this->plan['expected']) { throw new RuntimeException('Final complete inventories differ'); }
-            $this->save('applied', 'complete-owned-hashes-and-protected-state-verified');
+            if (!$boundedStop) {
+                if ($actual !== $expected) { throw new RuntimeException('Final complete inventories differ'); }
+                $this->save('applied', 'complete-owned-hashes-and-protected-state-verified');
+            }
         } catch (Throwable $error) {
             $this->save('uncertain', 'interruption-inspect-before-recovery');
             throw $error;
@@ -367,10 +438,8 @@ final class KTK_Active_Content_Transaction
         return $this->inspect();
     }
 
-    public function rollback(): array
+    private function rollbackInventory(): array
     {
-        if (!in_array($this->journal['phase'], array('prepared', 'applying', 'uncertain', 'applied', 'rolling-back'), true)) { throw new RuntimeException('Recoverable transaction required'); }
-        $this->verifyBackup();
         $this->protectedCheck();
         // Rollback does not require staging to remain unchanged, but every target must be ours before the first restoration.
         $actual = $this->inventory($this->target, true);
@@ -379,12 +448,23 @@ final class KTK_Active_Content_Transaction
             $current = $actual[$name] ?? null; $prior = $this->plan['prior'][$name] ?? null;
             if ($current !== $prior && !(isset($this->journal['intents'][$name]) && $current === $hash)) { throw new RuntimeException('Concurrent target prevents rollback: ' . $name); }
         }
+        return $actual;
+    }
+
+    public function rollback($limit = null): array
+    {
+        self::stepLimit($limit);
+        if (!in_array($this->journal['phase'], array('prepared', 'applying', 'uncertain', 'applied', 'rolling-back'), true)) { throw new RuntimeException('Recoverable transaction required'); }
+        $this->verifyBackup();
+        $this->rollbackInventory();
         $this->save('rolling-back');
-        foreach (self::order(array_keys($this->journal['intents'])) as $name) {
+        $steps = 0; $boundedStop = false;
+        foreach ($this->rollbackOrder() as $name) {
             $this->protectedCheck();
             $prior = $this->plan['prior'][$name] ?? null;
             $current = self::digest(self::path($this->target, $name));
             if ($current === $prior) { continue; }
+            if ($limit !== null && $steps >= $limit) { $boundedStop = true; break; }
             if ($current !== $this->plan['expected'][$name]) { throw new RuntimeException('Concurrent target during rollback'); }
             if ($prior !== null) {
                 $this->atomicCopy(self::path($this->private . '/prior', $name), $name, $prior, $current);
@@ -395,10 +475,13 @@ final class KTK_Active_Content_Transaction
                 if (self::digest($path) !== $current || !unlink($path)) { throw new RuntimeException('New-file removal refused'); }
             }
             $this->save('rolling-back', 'restored:' . $name);
+            $steps++;
         }
-        $this->protectedCheck();
-        if ($this->inventory($this->target, true) !== $this->plan['prior']) { throw new RuntimeException('Restored inventory mismatch'); }
-        $this->save('rolled-back', 'exact-prior-inventory-and-retained-activation-verified');
+        $actual = $this->rollbackInventory();
+        if (!$boundedStop) {
+            if ($actual !== $this->plan['prior']) { throw new RuntimeException('Restored inventory mismatch'); }
+            $this->save('rolled-back', 'exact-prior-inventory-and-retained-activation-verified');
+        }
         return $this->inspect();
     }
 
@@ -410,13 +493,20 @@ final class KTK_Active_Content_Transaction
         try { $this->protectedCheck(); $protectedVerified = true; } catch (Throwable $error) { /* Actual file inventory still helps manual recovery. */ }
         $temporaryVerified = false; $temporaryArtifacts = null;
         try { $temporaryArtifacts = $this->temporaryArtifacts(); $temporaryVerified = true; } catch (Throwable $error) { /* Expose private uncertainty without speculative cleanup. */ }
+        $receiptVerified = false; $receiptArtifacts = null;
+        try { $receiptArtifacts = $this->receiptArtifacts(); $receiptVerified = true; } catch (Throwable $error) { /* Retain unsafe private evidence. */ }
         $actual = $this->inventory($this->target, true);
         $expected = $this->plan['expected'] + array(self::ACTIVATION => self::ACTIVATION_SHA); ksort($expected);
+        $pendingApply = array(); $pendingRollback = array();
+        foreach (self::order(array_keys($this->plan['expected'])) as $name) { if (($actual[$name] ?? null) !== $this->plan['expected'][$name]) { $pendingApply[] = $name; } }
+        foreach ($this->rollbackOrder() as $name) { if (($actual[$name] ?? null) !== ($this->plan['prior'][$name] ?? null)) { $pendingRollback[] = $name; } }
         return array('transactionId' => $this->plan['transactionId'], 'phase' => $this->journal['phase'], 'actual' => $actual,
             'currentExpectedInventoryVerified' => $actual === $expected, 'currentPriorInventoryVerified' => $actual === $this->plan['prior'],
             'intentFiles' => array_keys($this->journal['intents']), 'backupVerified' => $backupVerified, 'protectedStateVerified' => $protectedVerified,
             'verifiedBackupFiles' => $backupVerified ? count($this->journal['backups']) : 0,
             'privateTemporaryInspectionVerified' => $temporaryVerified, 'retainedPrivateTemporaryArtifacts' => $temporaryArtifacts,
+            'privateReceiptInspectionVerified' => $receiptVerified, 'retainedPrivateReceiptArtifacts' => $receiptArtifacts,
+            'pendingApplyFiles' => $pendingApply, 'pendingRollbackFiles' => $pendingRollback,
             'activationWrites' => 0, 'databaseWrites' => 0, 'cachePurges' => 0, 'events' => $this->journal['events']);
     }
 }
