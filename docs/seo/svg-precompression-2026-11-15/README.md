@@ -1,0 +1,35 @@
+# Original SVG delivery: isolated staging capability probe
+
+Status: source and offline checks ready; no live probe or asset change yet. This is D02 investigation, not a new verified website delivery. The website count remains63 and C08 is unchanged. Production, Ecwid, forms, functional consent, original artwork, medical hold and active competition remain protected.
+
+The previous native-navigation release is closed: PR84 final `e10279020c0ea06b0173f442c8df361dfd6aac1d`, final CI43766369270 and main CI43766651129 both pass. Merge `bcc973fa29c97b0632b0bf99ba0c8671819bf51b` has the exact tested tree `157deb03ebc4abbb622fa0e44a91680b22bc04a6`. Its completed local/remote branch was removed. Its [delivery evidence](../navigation-resilience-2026-11-15/README.md) and retained partial reports remain authoritative.
+
+## Backup and unchanged application
+
+Before this batch, `deploy-backups/seo-svg-precompression-before-20261115.zip` was created and independently verified at22:01:42.866604UTC15Nov:500206345 bytes,3773 ZIP entries,3527 tracked files with every Git/local/archive blob exact, CRC pass. SHA256 `5300c98bb7bbc9eb1a078e8b9ef2fe9b456dbdf008dc6210d39c117b09f52436`. This is a source archive, not a new hosting, database or production backup. Detailed receipt: ignored `source-backup.json` beside this document.
+
+No file below `staging/` changes in this capability-probe checkpoint. No original SVG, renderer, CSS, JavaScript, WordPress setting or content is modified. No build or purge is needed for a unique temporary URL.
+
+## Exact probe scope and lifecycle
+
+`tools/probe-staging-svg-delivery.py` defaults to offline validation. Only `--run-staging-probe` enables network work; the PowerShell wrapper uses the established Windows DPAPI secret solely in the child-process environment and clears it afterward. No password is copied to source, arguments, evidence or chat.
+
+The sole write target is a fresh `/public_html/staging/ktk-svg-encoding-probe-<32 lowercase hex>/` directory. It contains exactly `control.txt`, `rewrite-test.txt` and `.htaccess`. Dependencies upload before configuration. The latter sets a nonce response header, noindex/no-store, and rewrites the existing second text file to the first. An existing file avoids WordPress's parent missing-file catchall. This tests actual child override/header/rewrite support; it does not establish Brotli, type-map support, precompressed SVG delivery or any performance gain.
+
+Each new upload uses a unique temporary, verifies bytes before rename and verifies final bytes. Existing namespaces/files, path escapes, unknown members and changed bytes are refused. Cleanup validates all members before deleting any; only a recorded interrupted temporary may contain an exact prefix of its intended bytes. Unknown or changed members are preserved and reported. No recursive deletion occurs. Parent staging `.htaccess` is read before/after for an exact comparison and never written. GETs are restricted to the two nonce URLs, use identity encoding and reject redirects. The final receipt records response hashes/headers, scoped actions, cleanup and parent comparison. If cleanup is refused, no successful cleanup/state claim is made.
+
+## Local checks and release gate
+
+Twenty-two meaningful guard/lifecycle/HTTP tests pass. They cover absent-only creation, path escape, existing-file preservation, changed-file cleanup refusal before any deletion, interrupted upload, lost mkdir/rename replies, redirect rejection, offline isolation, complete success cleanup, HTTP-error cleanup and preservation on cleanup refusal. Full Python discovery passes362 tests in118.014s with10 Windows-only skips. `python-capability-final.log` and `offline-capability-final.json` are ignored local receipts, not live evidence. Application files remain byte-identical to the merge baseline.
+
+Exact-head repository CI must pass before the live capability probe. A live run is followed by independent scope/HTTP/parent/absence checks. Unsupported capability is recorded honestly; no automatic configuration fallback or widening of scope occurs.
+
+## Delivery investigation still open
+
+The [read-only follow-up](../svg-compression-followup-2026-11-15/README.md) establishes current real compression, not a missing-compression defect. Brotli11 round trips leave a40502-byte combined candidate gap; that is not deployed savings or an LCP improvement. Original regular/seasonal decoded bytes and artwork must remain exact.
+
+Apache documents [precompressed Brotli delivery](https://httpd.apache.org/docs/2.4/mod/mod_brotli.html), [gzip delivery](https://httpd.apache.org/docs/2.4/mod/mod_deflate.html) and [type-map negotiation](https://httpd.apache.org/docs/2.4/en/mod/mod_negotiation.html). These do not prove this host supports the modules or child overrides. Any later candidate needs real MIME, Vary, encoding, identity, quality-zero exclusion, fallback and decoded-original tests; substring matching for `br` is insufficient under [HTTP Accept-Encoding rules](https://www.rfc-editor.org/rfc/rfc9110.html#section-12.5.3). [Cloudflare compression behavior](https://developers.cloudflare.com/speed/optimization/content/compression/) also means public visitor encoding tests do not reveal the exact origin request header. No account compression setting is changed.
+
+Only a successfully delivered candidate with comparable isolated current browser traces can establish a measured result. Native DevTools availability was checked on an owned blank isolated page, then that page was closed; no new trace or speed gain is claimed. Other remaining plan work and owner/account/manual/real-world/production dependencies stay open.
+
+The original21-case/361-test checkpoint is retained. An added FTP listing case initially exposed a fake-server RMD implementation treating directory pseudo-entries as real files; the fake RMD was corrected and the actual probe guard remains strict. Exact dot/cdir and dot-dot/pdir pairs are ignored; symlinks, duplicate names and unexpected member types refuse cleanup before deletion. The revised22 focused cases and full362-test rerun pass. Roadmap13+317 checks pass and actual1440 overview/390 details captures were inspected. A slow process-per-file read-only Git auditor was stopped without a success claim; the replacement compared all3527 local tracked-file hashes to the independently verified Git/local/archive receipt, with only the five expected documentation sources changed. All staging/application bytes remain exact.
