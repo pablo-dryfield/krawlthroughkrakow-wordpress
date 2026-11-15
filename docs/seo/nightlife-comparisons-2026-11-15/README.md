@@ -164,3 +164,106 @@ No commit, application upload or edge purge has occurred at this checkpoint.
 Required CI and guarded origin/normal/warmed verification remain before this
 batch can be counted as delivery52. Attribution adds two blocked-provider
 handoff cases, expected458 live checks; it does not prove provider receipt.
+
+## Guarded Staging Publication
+
+Application`2c015c63412695fef563c320bb2074b403caa1c5`, PR66, passes both required
+CI jobs in43674436932. GitHub did not deploy. Manual content publication closed
+15 November2026 at03:56:38.212870UTC. Independent verification binds all2073
+Git/local/remote SHA values; saved WordPress content/settings, homepage and
+storefront are unchanged and the helper is removed.
+Rollback`deploy-backups/ktk-code-pages-staging-20261115-035611.zip` has12 exact
+entries/clean CRC/per-file hashes, archive SHA-256
+`cb4dd5505579110d105a1dfbccf9376027c5f2673ca1b2b559538efc0534fb7b`.
+
+Discovery's three-file guarded release closed03:57:32.768354UTC. Independent
+Git/local/remote checks pass,2324 protected staging/2158 production files are
+exact, helpers removed and cache paths cleared is empty. Its four-entry exact
+rollback`deploy-backups/seo-discovery-staging-20261115-035721-629472.zip` has
+clean CRC/per-file hashes and SHA-256
+`ef05af648847a5f1c5e953e143b56530b5026523af98d519199cd9380db4aa3d`.
+
+Origin route/browser/card/form/attribution/discovery checks are underway.
+Homepage10/icon21/ET20/social15 origin checks pass. No edge purge or delivery
+count advance has occurred. Application is frozen; no rebuild/reupload for
+these documentation updates. Production/commerce/consent/medical hold and
+active competition remain unchanged.
+
+## Origin And Normal-Cache Checks
+
+Full origin6193/6193 closed04:05:39.246495UTC:116 routes/119 assets,348
+DYNAMIC responses and zero HTTP retries. Source2383/body232/cards1777 over40
+views/forms501/attribution458/discovery243/home10/icon21/ET20/social15 pass.
+Authenticated Cloudflare MCP accepted ONLY`krawlthroughkrakow.com/staging/`
+at04:05:56.135UTC after fresh POST specification and exact active-zone/account
+validation. `staging-purge.json` retains scope/time/result without credentials.
+
+Normal body232/cards1777/forms501/attribution458/discovery216 and homepage/
+font checks pass. Four normal axe views have zero violations/four incomplete
+contrast groups requiring manual review. All six actual390px normal screenshots
+were inspected. Four are exact current-local RGBA matches. Europe header85063
+different pixels occupy only its two original crowd-photo rectangles; Budapest
+header39752 only its original featured crowd photo. The row-by-row unmasked
+difference check and `screenshot-comparison.json` retain exact regions, with no
+mask, tolerance, cause or old whole-page identity claim.
+
+Full normal route verification and its subsequent warmed repeat remain running/
+pending;51 verified deliveries and C08 counts have not advanced. No further
+application upload or purge is needed for documentation.
+
+## Read-Only Leads For The Next Review
+
+While release checks run, the complete captured text of hen-party reviews and
+the old2017/2019 bars/clubs guide was read. No next-batch draft or application
+change has been made. The hen article promises reserved tables, a fixed older
+drinks package, shooting/massage details and safety, and visibly leaks closing
+Divi shortcodes. Its vodka service link already targets our product44 and must
+remain owned. The bars guide contains obsolete location/programme claims,
+unverified personal accusations and intoxication/cure advice. Keep its URL,
+historical headline and photos rather than inventing current partner venues.
+
+Primary operator leads read15 November:
+
+- [Wezze Krafta operator](https://wezze-krafta.localo.site/) currently identifies
+  Dajwor16/Kazimierz, not the guide's old tobacco-factory location.
+- [Shine operator](https://krakow.shineclub.com.pl/o-klubie/) identifies
+  Starowislna16 and separate spaces. Its event URL was inaccessible through
+  the browsing tool; no fixed current lineup or dress/admission guarantee.
+- [Alternatywy operator page](https://klub-alternatywy.localo.site/) is available;
+  check its current contacts rather than repeating old Tuesday karaoke/deals.
+- [Klub RE](https://klubre.pl/) exposes its own programme;
+  [contact](https://klubre.pl/kontakt/) gives Sw. Krzyza4. It does not verify
+  the old personal story about the owner/family or a Friday serving ritual.
+- [Forum Przestrzenie](https://www.forumprzestrzenie.com/) again describes its
+  original project as2013-2023. Do not infer every Forum-complex venue closed.
+- [Pod Aniolami](https://www.podaniolami.pl/en/home-page/) and
+  [Morskie Oko](https://www.morskieoko.krakow.pl/en/home/) have operator menus/
+  booking information. No group table, meal price or availability is promised.
+- [House of Beer](https://houseofbeerkrakow.com/en/home-3/) publishes an operator
+  menu/booking path, but its150+/200+ bottle text varies; avoid freezing counts.
+- [Galeria Krakowska](https://www.galeriakrakowska.pl/en/shops,9) has a current
+  operator directory; do not repeat the old130-store or tenant-count snapshot.
+
+Banialuka's root returned403; this is not proof of closure. Hush searches did
+not establish a verified current operator domain; one guessed domain was parked
+and must not become a recommended link. Owner confirmation that venues remain
+recommended does not certify every old package, performance schedule or claim.
+Full source/photo/fragment inventory and a verified new backup remain necessary
+before implementing that next batch.
+
+## Verified Delivery
+
+Full normal6193 closed04:12:30.594250UTC with348 MISS responses; warmed
+repeat6193 closed04:14:43.768418UTC with all348 content responses HIT. Both
+cover116 routes/119 assets with zero HTTP retries. Discovery normal/repeat216
+pass. All finite verification jobs are closed; root5184/5185 previews remain.
+Application is still exactly2c015c6; no further upload/purge for final records.
+
+Both roadmaps now show52 verified staging deliveries. C08 remains partial:
+48 major revisions,2 narrower changes/notices,1 specialist hold and5 articles
+awaiting substantive review. The50-identity/184-card catalog does not mean50
+complete fact audits. The remaining five are hotels2019/2020, hen-party reviews,
+spa hotels, Halloween and the old best-bars/clubs guide. Medical hold and pending
+Halloween testimonial sources remain; no invented owner/source confirmation.
+Final roadmap tests/required CI, exact-tree PR66 merge and completed-branch
+cleanup remain before the next verified backup and scoped implementation.
