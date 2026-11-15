@@ -118,3 +118,10 @@ dry runs pass. The24-product read-only catalogue confirms product34's exact
 slug/200 responses but no detailed inclusions; none were invented. The same six
 thin-product holds remain. The final summary-fixture repeat is still running;
 wait for its exit and required CI before any guarded staging publication.
+
+Final summary fixtures closed757/757; all finite local jobs are closed. The
+runtime inverse unit now uses the independently computed exact pre-edit SHA
+`6f7ab8695c8b8c45835f7d80f51c8309192785fd4d37a1c0dd4177da2c033278`
+instead of requiring old Git objects in CI's shallow checkout. The local
+independent source audit still compares the complete Git blob. This changes
+only the test's baseline delivery, not its byte-level assertion or application.

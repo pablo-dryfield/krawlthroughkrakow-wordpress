@@ -2,7 +2,6 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile, writeFile, mkdtemp, rm} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
-import {execFileSync} from 'node:child_process';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
 import {loadActivityBookingEditorial, reviseActivityBookingEditorial, reviseActivityBookingFeatures, buildActivityBookingStyles} from '../activity-booking-editorial.mjs';
@@ -57,8 +56,9 @@ test('missing or stale activity identity rejects before DOM access', async () =>
 });
 
 test('runtime change is exactly one product lookup, preserving consent and attribution code', async () => {
-  const file = 'staging/wp-content/mu-plugins/ktk-code-pages-assets/runtime.js', old = execFileSync('git', ['show', '401ce91133069af0193114384965b759d5b7b0c7:' + file], {encoding: 'utf8'}), current = await readFile(file, 'utf8');
-  assert.equal(current.split("'shooting-range-34': 34").length, 2); assert.equal(current.replace(", 'shooting-range-34': 34", ''), old);
+  const current = await readFile('staging/wp-content/mu-plugins/ktk-code-pages-assets/runtime.js', 'utf8');
+  assert.equal(current.split("'shooting-range-34': 34").length, 2);
+  assert.equal(createHash('sha256').update(current.replace(", 'shooting-range-34': 34", '')).digest('hex'), '6f7ab8695c8b8c45835f7d80f51c8309192785fd4d37a1c0dd4177da2c033278');
 });
 
 test('activity CSS is bounded, additive, idempotent and rejects drift', async () => {
