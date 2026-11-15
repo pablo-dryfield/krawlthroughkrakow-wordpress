@@ -292,6 +292,18 @@
       "postId": 6392,
       "route": "/hen-do-ideas-abroad/",
       "summary": "Plan a Krakow hen trip around your group, budget, accommodation and verified venue information. Distinguish private enquiries from regular pub-crawl tickets and check current arrangements before booking."
+    },
+    {
+      "key": "post-best-pub-crawls-in-europe",
+      "postId": 2529,
+      "route": "/best-pub-crawls-in-europe/",
+      "summary": "Compare pub-crawl choices in Krakow and Malta, distinguish independent operators and check current dates, meeting details, inclusions and booking conditions before choosing a night out."
+    },
+    {
+      "key": "post-budapest-or-krakow-nightlife",
+      "postId": 6599,
+      "route": "/budapest-or-krakow-nightlife/",
+      "summary": "Choose between Budapest and Krakow using your preferred night out, current venue information, the right currencies and practical transport plans, without relying on a universal cheaper-city claim."
     }
   ],
   "containers": [
@@ -353,6 +365,7 @@
       "key": "archive-category-uncategorized",
       "cardKeys": [
         "post-go-karting-krakow",
+        "post-budapest-or-krakow-nightlife",
         "post-krakow-shot-bar",
         "post-jazz-bars-in-krakow",
         "post-krakow-milkbars"
@@ -373,7 +386,8 @@
       "key": "archive-author-dpbowman-page-2",
       "cardKeys": [
         "post-krakow-bars-jewish-quarter",
-        "post-hen-do-ideas-abroad"
+        "post-hen-do-ideas-abroad",
+        "post-budapest-or-krakow-nightlife"
       ]
     },
     {
@@ -446,6 +460,7 @@
       "key": "archive-author-dpbowman-page-9",
       "cardKeys": [
         "post-2020-krakow-nightlife-guide",
+        "post-best-pub-crawls-in-europe",
         "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow"
       ]
     },
@@ -523,6 +538,7 @@
       "key": "archive-category-party-tips-page-2",
       "cardKeys": [
         "post-2020-krakow-nightlife-guide",
+        "post-best-pub-crawls-in-europe",
         "post-stages-of-drunkenness",
         "post-survive-pub-crawl"
       ]
@@ -577,6 +593,7 @@
       "cardKeys": [
         "post-krakow-team-building-activities",
         "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+        "post-budapest-or-krakow-nightlife",
         "post-krakow-milkbars",
         "post-krakow-shooting-range",
         "post-krakow-safety-guide",
@@ -587,6 +604,7 @@
         "post-weekend-in-krakow",
         "post-best-drinking-games",
         "post-all-you-need-to-know-about-visiting-auschwitz",
+        "post-best-pub-crawls-in-europe",
         "post-krakow-new-years-eve",
         "post-life-professional-drunk",
         "post-stag-do-costume",
