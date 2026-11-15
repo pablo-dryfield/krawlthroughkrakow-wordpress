@@ -106,6 +106,11 @@ an editorial cutoff work.
 
 ## Starting Register
 
+The [review and link maintenance handoff](REVIEW-AND-LINK-MAINTENANCE.md) contains
+neutral request wording, existing referral checks and one unsent factual
+correction draft. Account adoption, actual messages and current GSC follow-up
+remain owner work; it does not authorize outreach or change consent settings.
+
 | Item | State on 14 November 2026 | Next action |
 | --- | --- | --- |
 | Monthly and seasonal cadence | Owner approved; responsibilities and checklist documented | Carry out the first recurring review and retain its evidence; no automation installed |

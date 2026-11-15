@@ -129,3 +129,68 @@ The local candidate is ready for required CI and guarded staging publication.
 Roadmap317/PHP763 integration/PHP31 stubbed forms/PHP65 discovery pass. The new
 staging-only disclaimer booking-attribution case leaves production cases exact;
 its live handoff still needs verification. No upload or purge yet.
+
+## Staging Publication Under Verification
+
+Application `adf735679c9d6c18fce411a6bbb56c351761e4fd`, PR71, required
+CI43700535902 passes both jobs. Guarded incremental2073 publication closes
+at09:44:20.537191UTC on15 November. All independent Git/local/remote hashes,
+saved WordPress/homepage/storefront state and helper removal pass. Ten-entry
+rollback `ktk-code-pages-staging-20261115-094357.zip` passes CRC, exact manifest
+and every file SHA/original Git baseline comparison. SHA256
+`8f0f76ab300b912ee328e433be91ba9c0f56f883d980c047cbd6ce3c692848b6`.
+Discovery bytes remain exact; no discovery publication. Application frozen: no
+rebuild/reupload while origin checks run; no external purge before all close.
+
+One homepage-check invocation incorrectly supplied named output flags to three
+positional-output tools. The icon check itself passed21 and its09:45 report was
+preserved at the correct evidence path; the font command stopped on its
+preserve-evidence guard before execution. Correct positional ET/social checks
+then close green. No test guard or application was changed.
+
+All origin jobs close green: full6193 at09:52:01.356596UTC (348DYNAMIC,119
+assets,zero retries), browser362/60 views, forms501, attribution500, discovery243,
+home10/icon21/ET20/social15 and unchanged-source2412. MCP validates the current
+purge schema and exact active zone/account, then accepts only staging-prefix
+purge at09:52:20.107UTC. Raw response retained locally; no production purge.
+
+Normal browser362/60 views, attribution500, discovery216 and homepage/font checks
+pass. All eleven actual cached390px captures are inspected. Eight are exactly
+the final local PNGs; three each differ by a single retained-footer pixel, with
+coordinates and strict unmasked RGBA comparisons retained. No cause, mask,
+tolerance or whole-page identity claim. Twelve cached axe views have0 violations
+and12 incomplete groups. Full normal/form closure and warmed repeat are pending.
+
+Read-only next leads are retained under `links-readonly`: bounded Ahrefs40+5
+samples (43 distinct source pages), three current relevant publisher contexts,
+two inaccessible useful pages and four inaccessible suspicious sources. Labels
+are not a disavow decision or proof of responsibility. Eight fresh GETs confirm
+the two old targets still404 on production and301 to equivalent200 destinations
+on staging. No next application edit/outreach/account change. The browser access
+host is unavailable for a fresh native GSC review. A fresh DevTools list call
+returns the same occupied-profile conflict; no process/tab is stopped and no new
+performance measurement is claimed. Owner campaign-history question is pending.
+
+## Verified Staging Delivery57
+
+Full normal6193 closes at09:57:56.265419UTC:347MISS/1HIT,119 assets,zero
+retries. Warmed repeat6193 closes at09:59:52.651167UTC:348HIT,119 assets,zero
+retries. Repeated discovery216 passes; all finite verification jobs are closed.
+The application remains exactly `adf735679c9d6c18fce411a6bbb56c351761e4fd`.
+No rebuild/reupload or second purge is needed for final documentation/CI.
+
+Both roadmaps now record57 verified website staging deliveries. C08 remains52
+major revisions/two targeted changes/one remaining Halloween article/one medical
+hold;54 identities and197 archive summaries are unchanged. C10 still requires
+actual team expertise, substantive legal/privacy review, dated snapshot upkeep,
+manual/provider checks and separate production approval. New primary company
+fields are public identity evidence, not legal-compliance certification.
+
+The companion `REVIEW-AND-LINK-MAINTENANCE.md` makes feasible L02-L04 handoff
+work concrete without claiming account/process adoption. It includes neutral
+request wording, native GetYourGuide follow-up guidance, the five useful source
+checks, a specific unsent KrakowBuzz correction and source/owner/GSC limits.
+Those workstreams become partial, not complete; no additional website delivery
+is counted. Manual Actions was checked13Nov;9Nov is the indexing-report update
+date, not the Manual Actions check date. Final roadmap rendering/tests/CI and
+exact-tree PR71 merge/branch cleanup remain. Production/OmniLodge unchanged.
