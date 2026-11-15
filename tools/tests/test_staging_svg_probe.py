@@ -1,4 +1,5 @@
 import contextlib,ftplib,importlib.util,io,json,tempfile,unittest,types
+from email.message import Message
 from pathlib import Path
 from unittest.mock import patch
 
@@ -110,6 +111,10 @@ class IsolatedStagingSvgProbeTests(unittest.TestCase):
  def test_http_mismatch_status_redirect_or_encoding_does_not_pass(self):
   url=probe.ORIGIN+'ktk-svg-encoding-probe-'+TOKEN+'/control.txt';body=b'known'
   for response in [Response(url,b'wrong'),Response(url,body,status=404),Response(probe.ORIGIN,body),Response(url,body,headers={'X-KTK-Encoding-Probe':'wrong'}),Response(url,body,headers={'Content-Encoding':'br'})]:self.assertFalse(probe.inspect_url(url,TOKEN,body,Opener(response))['passed'])
+ def test_repeated_cache_fields_are_retained_and_only_exact_no_store_directive_passes(self):
+  url=probe.ORIGIN+'ktk-svg-encoding-probe-'+TOKEN+'/control.txt'
+  for directive,expected in [('no-store, max-age=0',True),('x-no-store',False),('extension="no-store"',False),('extension="x,no-store,y"',False)]:
+   headers=Message();headers['Cache-Control']='max-age=86400';headers['Cache-Control']=directive;headers['X-KTK-Encoding-Probe']=TOKEN;headers['X-Robots-Tag']='noindex';result=probe.inspect_url(url,TOKEN,b'known',Opener(Response(url,b'known',headers=headers)));self.assertEqual(result['cacheControlHeaders'],['max-age=86400',directive]);self.assertEqual(result['noStore'],expected);self.assertEqual(result['passed'],expected)
  def test_non_probe_http_paths_and_tokens_fail_before_request(self):
   class Forbidden:
    def open(self,*args,**kwargs):raise AssertionError('Network forbidden')

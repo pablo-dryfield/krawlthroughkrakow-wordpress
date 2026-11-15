@@ -102,7 +102,9 @@ def inspect_url(url,token,expected,opener=None):
  request=urllib.request.Request(url,method='GET',headers={'User-Agent':'KTK isolated staging encoding capability/1.0','Accept-Encoding':'identity'})
  with (opener or urllib.request.build_opener(NoRedirect())).open(request,timeout=45) as response:
   body=response.read();headers=response.headers
-  result={'url':url,'status':response.status,'finalUrl':response.geturl(),'bodySha256':sha(body),'expectedBodyExact':body==expected,'probeHeaderExact':headers.get('X-KTK-Encoding-Probe')==token,'noindex':'noindex' in headers.get('X-Robots-Tag','').lower(),'noStore':'no-store' in headers.get('Cache-Control','').lower(),'encoding':headers.get('Content-Encoding'),'cache':headers.get('CF-Cache-Status'),'contentType':headers.get('Content-Type')}
+  cache_headers=headers.get_all('Cache-Control',[]) if hasattr(headers,'get_all') else [headers.get('Cache-Control','')]
+  no_store=any(part.strip().split('=',1)[0].lower()=='no-store' for value in cache_headers for part in urllib.request.parse_http_list(value))
+  result={'url':url,'status':response.status,'finalUrl':response.geturl(),'bodySha256':sha(body),'expectedBodyExact':body==expected,'probeHeaderExact':headers.get('X-KTK-Encoding-Probe')==token,'noindex':'noindex' in headers.get('X-Robots-Tag','').lower(),'noStore':no_store,'cacheControlHeaders':cache_headers,'expires':headers.get('Expires'),'pragma':headers.get('Pragma'),'encoding':headers.get('Content-Encoding'),'cache':headers.get('CF-Cache-Status'),'contentType':headers.get('Content-Type')}
   result['passed']=result['status']==200 and result['finalUrl']==url and result['expectedBodyExact'] and result['probeHeaderExact'] and result['noindex'] and result['noStore'] and result['encoding'] in (None,'identity')
   return result
 
