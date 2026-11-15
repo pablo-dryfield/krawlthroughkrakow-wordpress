@@ -47,6 +47,7 @@ import {loadNightlifeComparisonEditorial,reviseNightlifeComparisonEditorial,revi
 import {loadHenBarsEditorial,reviseHenBarsEditorial,buildHenBarsStyles} from './hen-bars-editorial.mjs';
 import {loadHotelGuidesEditorial,reviseHotelGuidesEditorial,buildHotelGuidesStyles} from './hotel-guides-editorial.mjs';
 import {loadBlogGroupEditorial,reviseBlogGroupEditorial,buildBlogGroupStyles} from './blog-group-editorial.mjs';
+import {loadOperatorTrustEditorial,reviseOperatorTrustEditorial,buildOperatorTrustStyles} from './operator-trust-editorial.mjs';
 import {codePageTitle,codePageHeadDescription,loadSharingImagePolicy,buildCodePageSharing} from './code-page-sharing.mjs';
 import {loadOfferPageRevisions,reviseOfferPages} from './offer-pages-editorial.mjs';
 import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
@@ -60,6 +61,7 @@ const assets = path.join(root, 'staging/wp-content/mu-plugins/ktk-code-pages-ass
 await buildMemorialStyles(path.join(assets,'runtime.css'));
 await buildSliderMotionStyles(path.join(assets,'runtime.css'));
 await buildBlogGroupStyles(path.join(assets,'runtime.css'));
+await buildOperatorTrustStyles(path.join(assets,'runtime.css'));
 await buildContactDetailsStyles(path.join(assets,'runtime.css'));
 await buildEstablishedNyeStyles(path.join(assets,'runtime.css'));
 await buildGroupPlanningStyles(path.join(assets,'runtime.css'));
@@ -124,6 +126,7 @@ const nightlifeComparisons=await loadNightlifeComparisonEditorial();
 const henBars=await loadHenBarsEditorial();
 const hotelGuides=await loadHotelGuidesEditorial();
 const blogGroup=await loadBlogGroupEditorial();
+const operatorTrust=await loadOperatorTrustEditorial();
 const campaignFacts=campaignTemplateValues(await loadOfferFacts());
 validateSeoRoutes(manifest.routes.map(row => row.route));
 const reviewCounts=JSON.parse(execFileSync('php',['-r',"define('ABSPATH', __DIR__); require $argv[1]; echo json_encode(array_column(ktk_homepage_review_sources(), 'count', 'name'));",path.join(root,'staging/wp-content/mu-plugins/ktk-homepage-assets/reviews.php')],{encoding:'utf8'}));
@@ -351,6 +354,7 @@ try {
       contentRevisions.push(...await page.evaluate(reviseHenBarsEditorial,{key:route.key,revision:henBars.find(row=>row.key===route.key)}));
       contentRevisions.push(...await page.evaluate(reviseHotelGuidesEditorial,{key:route.key,revision:hotelGuides.find(row=>row.key===route.key)}));
       contentRevisions.push(...await page.evaluate(reviseBlogGroupEditorial,{key:route.key,revision:blogGroup.find(row=>row.key===route.key)}));
+      contentRevisions.push(...await page.evaluate(reviseOperatorTrustEditorial,{key:route.key,revision:operatorTrust.find(row=>row.key===route.key)}));
       const eventPromotion=await page.evaluate(prepareNyePromotion,{key:route.key,campaignFacts});
       if(contentRevisions.length||bookingRevisions.length)report.revisions[route.key]={content:contentRevisions,bookings:bookingRevisions};
       const schemaFacts=await page.evaluate(codePageSchemaFacts);

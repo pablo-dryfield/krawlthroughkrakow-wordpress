@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-15T08:31:03.000Z",
+  "startedAt": "2026-11-15T09:27:29.707Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -6829,6 +6829,31 @@
         {
           "type": "instagram-post-link-name",
           "post": 2
+        },
+        {
+          "type": "public-operator-identity",
+          "selector": ".et_pb_text_2",
+          "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "reviewed-trust-copy",
+          "selector": ".et_pb_text_2 .et_pb_text_inner",
+          "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "reviewed-trust-copy",
+          "selector": ".et_pb_text_4 .et_pb_text_inner > :is(h3,h5)",
+          "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "reviewed-trust-copy",
+          "selector": ".et_pb_text_5 .et_pb_text_inner",
+          "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "reviewed-trust-copy",
+          "selector": ".et_pb_text_12 .et_pb_text_inner > p:nth-of-type(2)",
+          "reviewedOn": "2026-11-15"
         }
       ],
       "bookings": [
@@ -7484,6 +7509,11 @@
         },
         {
           "type": "captcha-question-label"
+        },
+        {
+          "type": "public-operator-identity",
+          "selector": ".et_pb_text_2",
+          "reviewedOn": "2026-11-15"
         }
       ],
       "bookings": [
@@ -9217,6 +9247,16 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "public-operator-identity",
+          "selector": ".et_pb_text_1",
+          "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "correct-owned-service-domain",
+          "selector": ".et_pb_text_1 .et_pb_text_inner SERVICE definition",
+          "reviewedOn": "2026-11-15"
         }
       ],
       "bookings": [
@@ -9967,6 +10007,11 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "public-operator-identity",
+          "selector": ".et_pb_text_1",
+          "reviewedOn": "2026-11-15"
         }
       ],
       "bookings": [
@@ -10021,6 +10066,10 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "native-review-platform-fallback",
+          "reviewedOn": "2026-11-15"
         }
       ],
       "bookings": [
@@ -10096,6 +10145,21 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "public-operator-identity",
+          "selector": ".et_pb_text_1",
+          "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "reviewed-trust-copy",
+          "selector": ".et_pb_text_4 .et_pb_text_inner",
+          "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "confirmed-participation-id-guidance",
+          "selector": "id-guidance",
+          "reviewedOn": "2026-11-15"
         }
       ],
       "bookings": [
@@ -10891,5 +10955,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-15T08:32:38.117Z"
+  "finishedAt": "2026-11-15T09:28:49.421Z"
 }

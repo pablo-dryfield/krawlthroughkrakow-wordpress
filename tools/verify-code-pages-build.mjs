@@ -42,6 +42,7 @@ import {loadNightlifeComparisonEditorial,reviseNightlifeComparisonEditorial,revi
 import {loadHenBarsEditorial,reviseHenBarsEditorial} from './hen-bars-editorial.mjs';
 import {loadHotelGuidesEditorial,reviseHotelGuidesEditorial} from './hotel-guides-editorial.mjs';
 import {loadBlogGroupEditorial,reviseBlogGroupEditorial} from './blog-group-editorial.mjs';
+import {loadOperatorTrustEditorial,reviseOperatorTrustEditorial} from './operator-trust-editorial.mjs';
 import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
@@ -80,6 +81,7 @@ const nightlifeComparisons=await loadNightlifeComparisonEditorial();
 const henBars=await loadHenBarsEditorial();
 const hotelGuides=await loadHotelGuidesEditorial();
 const blogGroup=await loadBlogGroupEditorial();
+const operatorTrust=await loadOperatorTrustEditorial();
 const campaignFacts=campaignTemplateValues(await loadOfferFacts());
 const imageReview=JSON.parse(await readFile('tools/content-image-descriptions.json','utf8'));
 const sharingImage=await loadSharingImagePolicy({expectedManifestSha256:imageReview.assetManifestSha256});
@@ -138,6 +140,7 @@ async function facts(html,revision){
   await page.evaluate(reviseHenBarsEditorial,{key:revision.key,revision:henBars.find(row=>row.key===revision.key)});
   await page.evaluate(reviseHotelGuidesEditorial,{key:revision.key,revision:hotelGuides.find(row=>row.key===revision.key)});
   await page.evaluate(reviseBlogGroupEditorial,{key:revision.key,revision:blogGroup.find(row=>row.key===revision.key)});
+  await page.evaluate(reviseOperatorTrustEditorial,{key:revision.key,revision:operatorTrust.find(row=>row.key===revision.key)});
  }
  return page.evaluate(()=>{const root=document.querySelector('#main-content');root.querySelectorAll('script,style,noscript,.mejs-controls,.mejs-layers,video a,[data-single-product-id],[data-ktk-booking-product]').forEach(e=>e.remove());return {text:root.textContent.replace(/\s+/g,' ').trim(),missingAlt:root.querySelectorAll('img:not([alt])').length,sections:root.querySelectorAll('.et_pb_section').length,headings:[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(e=>({tag:e.tagName,text:e.textContent.trim()})),primary:root.querySelectorAll('h1').length,forms:root.querySelectorAll('form.et_pb_contact_form,form.wpcf7-form').length,scripts:root.querySelectorAll('script').length,handlers:[...root.querySelectorAll('*')].flatMap(e=>[...e.attributes].filter(a=>/^on/i.test(a.name)).map(a=>a.name))};});
 }
