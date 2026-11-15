@@ -105,6 +105,8 @@ jobs:
         run: node --test tools/tests/test_blog_group_editorial.mjs
       - name: Operator identity and review fallback source contracts
         run: node --test tools/tests/test_operator_trust_editorial.mjs
+      - name: Withheld embed alternative source contracts
+        run: node --test tools/tests/test_embed_fallbacks.mjs
       - name: Booking selection recovery contracts
         run: node --test tools/tests/test_booking_selection_recovery.mjs tools/tests/test_blocked_meta_pageview.mjs
       - name: Read-only booking measurement contracts (no provider events)
