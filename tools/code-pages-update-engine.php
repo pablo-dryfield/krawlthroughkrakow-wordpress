@@ -262,21 +262,68 @@ final class KTK_Active_Content_Transaction
     {
         $target = self::path($this->target, $name, true);
         $directory = dirname($target);
-        $temporary = tempnam($directory, '.ktk-content-');
-        if ($temporary === false) { throw new RuntimeException('Cannot create dependency temporary file'); }
+        $pending = $this->temporaryArea($directory);
+        // Exclusive creation has no tempnam fallback to a different directory.
+        $temporary = $pending . '/.ktk-content-' . bin2hex(random_bytes(16));
+        $handle = @fopen($temporary, 'x+b');
+        if ($handle === false) { throw new RuntimeException('Cannot create private dependency temporary file'); }
         try {
+            if (!fclose($handle) || !chmod($temporary, 0600)) { throw new RuntimeException('Cannot secure private dependency temporary'); }
+            $this->observe('after-temporary-create', $name);
             if (!copy($from, $temporary) || self::digest($temporary) !== $hash || !chmod($temporary, 0644)) { throw new RuntimeException('Temporary copy verification failed'); }
             $this->observe('before-rename', $name);
             $this->protectedCheck();
+            $this->temporaryArea($directory);
             self::root(dirname($from));
-            if (self::digest(self::path($this->target, $name)) !== $current || self::digest($from) !== $hash) { throw new RuntimeException('Source or target changed during copying'); }
+            if (self::digest(self::path($this->target, $name)) !== $current || self::digest($from) !== $hash || self::digest($temporary) !== $hash) { throw new RuntimeException('Source, target or private temporary changed during copying'); }
             // Atomic replacement, with an immediate compare-before-write. External writers must be excluded by the release window.
             if (!rename($temporary, $target)) { throw new RuntimeException('Atomic dependency replacement failed'); }
             $this->replacementPerformed = true;
             if (str_ends_with($name, '.php') && function_exists('opcache_invalidate')) { @opcache_invalidate($target, true); }
             $this->observe('after-rename', $name);
             if (self::digest(self::path($this->target, $name)) !== $hash) { throw new RuntimeException('Final dependency mismatch'); }
-        } finally { if (is_file($temporary)) { unlink($temporary); } }
+        } finally {
+            if (is_resource($handle)) { fclose($handle); }
+            // An unclean exit can retain a private diagnostic artifact. Never
+            // leave an unknown temporary in the public owned-file inventory or
+            // follow a swapped private root to clean up somebody else's file.
+            try {
+                if (self::root($this->private) === $this->private && self::root($pending) === $pending && self::digest($temporary) === $hash) { unlink($temporary); }
+            } catch (Throwable $error) { /* Retain uncertain private bytes for inspection. */ }
+        }
+    }
+
+    private function temporaryArea(string $destination): string
+    {
+        if (self::root($this->private) !== $this->private) { throw new RuntimeException('Private transaction root changed'); }
+        $pending = $this->private . '/pending';
+        if (is_link($pending) || (file_exists($pending) && !is_dir($pending))) { throw new RuntimeException('Unsafe private temporary directory'); }
+        if (!is_dir($pending) && !mkdir($pending, 0700)) { throw new RuntimeException('Cannot create private temporary directory'); }
+        $pending = self::root($pending);
+        $this->temporaryArtifacts(); // Unknown/symlink entries must stop before a replacement.
+        clearstatcache(true, $pending); clearstatcache(true, $destination);
+        $a = stat($pending); $b = stat($destination);
+        if ($a === false || $b === false || !isset($a['dev'], $b['dev']) || $a['dev'] !== $b['dev'] ||
+            (preg_match('/^[A-Za-z]:\//', $pending) && strcasecmp(substr($pending, 0, 2), substr($destination, 0, 2)) !== 0)) {
+            throw new RuntimeException('Private temporary and destination must share one filesystem');
+        }
+        return $pending;
+    }
+
+    private function temporaryArtifacts(): array
+    {
+        if (self::root($this->private) !== $this->private) { throw new RuntimeException('Private root changed'); }
+        $pending = $this->private . '/pending';
+        if (!file_exists($pending) && !is_link($pending)) { return array(); }
+        if (self::root($pending) !== $pending) { throw new RuntimeException('Unsafe private temporary directory'); }
+        $result = array();
+        foreach (new DirectoryIterator($pending) as $file) {
+            if ($file->isDot()) { continue; }
+            if ($file->isLink() || !$file->isFile()) { throw new RuntimeException('Unknown private temporary entry'); }
+            $result[$file->getFilename()] = array('sha256' => self::digest($file->getPathname()), 'bytes' => $file->getSize());
+        }
+        ksort($result);
+        return $result;
     }
 
     public function apply(): array
@@ -361,12 +408,15 @@ final class KTK_Active_Content_Transaction
         try { if ($this->journal['phase'] !== 'unprepared') { $this->verifyBackup(); $backupVerified = true; } } catch (Throwable $error) { /* Expose uncertainty, never repair during inspection. */ }
         $protectedVerified = false;
         try { $this->protectedCheck(); $protectedVerified = true; } catch (Throwable $error) { /* Actual file inventory still helps manual recovery. */ }
+        $temporaryVerified = false; $temporaryArtifacts = null;
+        try { $temporaryArtifacts = $this->temporaryArtifacts(); $temporaryVerified = true; } catch (Throwable $error) { /* Expose private uncertainty without speculative cleanup. */ }
         $actual = $this->inventory($this->target, true);
         $expected = $this->plan['expected'] + array(self::ACTIVATION => self::ACTIVATION_SHA); ksort($expected);
         return array('transactionId' => $this->plan['transactionId'], 'phase' => $this->journal['phase'], 'actual' => $actual,
             'currentExpectedInventoryVerified' => $actual === $expected, 'currentPriorInventoryVerified' => $actual === $this->plan['prior'],
             'intentFiles' => array_keys($this->journal['intents']), 'backupVerified' => $backupVerified, 'protectedStateVerified' => $protectedVerified,
             'verifiedBackupFiles' => $backupVerified ? count($this->journal['backups']) : 0,
+            'privateTemporaryInspectionVerified' => $temporaryVerified, 'retainedPrivateTemporaryArtifacts' => $temporaryArtifacts,
             'activationWrites' => 0, 'databaseWrites' => 0, 'cachePurges' => 0, 'events' => $this->journal['events']);
     }
 }

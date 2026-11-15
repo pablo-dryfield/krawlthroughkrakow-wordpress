@@ -95,3 +95,20 @@ passes4320/4320 twice and schema3221/3221. Neither is a native Google live test.
 
 Primary references checked: [URL Inspection API](https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect)
 and [Google's URL Inspection explanation](https://support.google.com/webmasters/answer/9012289?hl=en).
+
+## 15 November Refresh Limitation
+
+A fresh read-only attempt still cannot produce current native Google evidence.
+The browser connector returns that its access host is unavailable. Native
+Windows app inventory works, but inspecting the existing OmniLodge Chrome
+window is stopped by Computer Use policy because its current browser URL cannot
+be established confidently. No further UI input or alternate browser-control
+workaround is attempted after that stop. No authentication dialog, indexing
+request, sitemap submission or account setting is changed.
+
+The Manual Actions/Security Issues results above remain the dated13Nov results;
+Page Indexing and Crawl Stats retain their explicit update dates. Current
+native account reports need working browser access or an owner-provided native
+review. The separate available DevTools lab browser does not establish access
+to this authenticated account. No fresh Google result or account completion is
+claimed from these tool-availability observations.
