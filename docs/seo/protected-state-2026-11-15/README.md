@@ -1,5 +1,8 @@
 # Authenticated Staging Protected-State Snapshot
 
+Status: authenticated staging snapshots and their local archive are verified.
+The complete transaction/release procedure remains incomplete.
+
 G02 continuation, not a website delivery or production authorization. The
 browser-only priority experiment is merged as PR75 /
 `e1d98a656fb2824ff02439faf20554690401d675`, exact tree
@@ -63,7 +66,7 @@ Cleanup runs after success or failure. A pre-existing colliding helper is never
 removed. A helper whose bytes changed is preserved for explicit review; removal
 failure is a failed operation with an exact remaining helper name. The new
 PowerShell launcher uses the existing DPAPI-to-process-environment pattern and
-clears/zeros the temporary secret. No credential value is put into arguments,
+clears/zeros the temporary secret. The FTPS credential value is never put into arguments,
 code, archives or reports.
 
 ## Local Verification Before Any Online Use
@@ -105,3 +108,60 @@ bootstrap effect. Separate SELECTs are not an atomic database snapshot; matching
 captures prove the named records/files at their sample points. They do not
 replace coordinated release control, a fresh production snapshot or final
 protected-state rereads during a future separately approved transaction.
+
+## Actual Staging Verification
+
+Frozen source `259e90ab9e0b6bad48490582b43b95c2fab53f32`, PR76 and
+CI43716191713 pass both jobs. The Linux job log records `Ran 284 tests` and
+`OK`, with no skips, including the symlink cases. The actual staging run starts
+12:55:49.596620UTC and closes12:56:13.112275UTC on15Nov. No application source,
+transaction engine, planner, legacy publisher or cache operation changes.
+
+Both authenticated uncached POST captures agree exactly on the scoped records:
+
+| Captured record set | Rows |
+| --- | ---: |
+|Posts/page/article/attachment/configuration|869|
+|Post metadata|7742|
+|Selected identity/theme/consent/Ecwid/form settings|118|
+|Terms|51|
+|Term taxonomy|51|
+|Term relationships|361|
+|Term metadata|0|
+
+The254 protected file hashes match across captures. All2,073 owned content
+files independently match immutable Git objects, current local bytes and both
+actual server maps. The saved/runtime URL is strictly staging, blog_public0,
+front page278 and filesystem roots match. The existing WordPress environment
+type string is `production`; that string is recorded unchanged and does not
+override the explicit staging URL/indexing/filesystem checks. No environment or
+consent configuration is changed.
+
+The local private backup is
+`deploy-backups/staging-protected-state-20261115-125611-316354.zip`,2,671,864
+bytes, three entries, SHA256
+`96fe1c80d35b88e7d6ada874a056be152770a1f3b8f9002858f419de2e8eecff`.
+An independent reader reopens it, checks CRC/entry set/every exact stored
+snapshot and manifest hash, compares all raw record/file sets, and binds current
+runner/template bytes to the reviewed Git commit. Raw records are not printed,
+committed or uploaded. The archive is staging evidence, not a production
+rollback or a full database/host backup.
+
+The reviewed runner verifies the exact installed helper bytes, removes it,
+checks the directory listing and verifies a final FTP retrieval is absent.
+Upload-temporary cleanup also completes. The independent receipt accurately
+attributes that online cleanup proof to the frozen runner; no separate second
+network probe is claimed. All finite jobs are closed; no helper is retained.
+
+Reports `staging-snapshots.json` and `staging-independent.json` are ignored
+local evidence. Both roadmaps retain58 website deliveries: this component is
+release-tooling progress. Its counters cover its own operations and captured
+scope. Actual payload transaction/recovery, private production rollback,
+coordinated release, manual checks and separate production approval remain.
+Final documentation CI/exact merge are required; no repeated helper or purge
+is needed for those documentation edits.
+
+Final post-evidence roadmap317/317 and local284 Python (5 Windows symlink
+skips) pass after the last plan edit; the actual1440px overview is inspected.
+All source/template/application bindings remain exact. Final docs CI/merge
+remain; no online snapshot rerun is needed.
