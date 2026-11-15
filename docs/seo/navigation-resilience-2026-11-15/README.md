@@ -1,6 +1,6 @@
 # Public Navigation And No-JS Resilience
 
-Status: both staging payloads and protected-state proof pass; origin verification running.
+Status: origin and current QA CI pass; one staging-prefix purge accepted; clean verification running.
 Website62/C08 unchanged. Full local/CI/publication/state gates pass; complete
 origin/normal/warmed release verification remains.
 The complete goal stays active.
@@ -294,4 +294,81 @@ platform skips. Exact-head CI must pass again before publication. The original
 +adapter and unit files. The origin transport matrix remains underway, and
 +current QA CI must pass before the MCP edge purge. Published appd13c35a,
 +both payload maps, rollback archives and protected-state proofs stay unchanged.
++
++
++## Origin Gate And Authorized Staging Purge
++
++QA commitc28a0fc630eb1de1f8e44fb1db0dc6cf885b5c4b/tree
++7193becfa0eb47bcde1f1ecdb2730b039b096f2a changes only QA/docs from the published
++appd13c35a. Exact31-file baseline proof passes; current commit contains11 QA/doc
++changes, including regenerated Markdown's changed remaining-work text. The
++preflight initially expects10 files; deriving the exact delta from the already
++verified31-file receipt confirms all11, with an empty application diff.
++CI43762671297 passes both jobs and340 Linux tests without skips; quality-log
++SHA256381e26246ca4603f5ded3037a11903db0c58415e617ba3166c0e36f2e2b75da2.
++
++The complete origin transport matrix closes21:20:52.729UTC:2834/2834,298 views,
++18 intercepted native Enter destinations, zero recovered navigation attempts,
++zero terminal errors/non-read attempts. All eight actual origin captures are
++byte-exact to the inspected local set and individually reopened. The six
++adapter recovery contracts are synthetic; no live recovery is claimed for this
++complete run. The two incomplete earlier reports remain separate.
++
++At21:22:30.286316UTC an independent gate verifies all origin suites, current CI,
++unchanged app/harness/payload hashes and all8 visual pairs. Current Cloudflare
++POST specification confirms Cache Purge permission and prefix syntax; a separate
++read21:22:53.992UTC verifies the exact active zone/account and purge permission.
++One MCP POST is accepted21:23:26.256UTC with only
++prefixes:[krawlthroughkrakow.com/staging/]. No host/whole-zone/production scope,
++configuration or authentication change. API acceptance alone is not cache proof.
++
++Full6193 clean URLs,298-view browser,forms501,attribution,discovery and home/font
++normal suites start afterward, without another build/upload/discovery publish.
++Discovery216 and home/font checks pass first; full normal/browser/form/attribution
++closure, warmed repeat and six actual clean HTML/current CSS HIT checks remain.
++Website62/C08 unchanged; the complete goal remains active.
++
++
++## Clean-URL Native Navigation Synchronization
++
++The first normal browser run is retained at273/298 views,2560/2564 checks:
++two same-URL Enter title checks fail, then a45-second Stag load timeout ends
++the run. There are17 recorded interceptions and one earlier recovered DNS
++navigation. A same-URL waitForURL can resolve on the old document before its
++new load, allowing the test to disarm its interceptor too early. This is a
++test synchronization defect, not a reason to edit the website.
++
++The native activation helper now requires the exact focused allowlisted anchor,
++registers a fresh main-document load listener before Enter, and keeps interception
++armed through the unchanged exact URL/title assertions. Two added contracts
++prove listener-before-key order and zero form/unexpected-link activation. All
++eight adapter contracts and full416 JavaScript cases pass. A byte inverse proves
++all page cases/assertions/captures, GET retry behavior and45-second load limit
++unchanged; application diff fromd13c35a remains empty. No timeout retry is added.
++Both clean and origin12-view smoke runs pass129 checks/18 interceptions after
++the fix. A new full local and normal matrix are running with this method.
++
++The accepted complete origin matrix remains pinned toc28a0fc and its original
++source hashes, with the new129-check origin smoke covering the changed native
++wait. It is not relabelled as a new full origin run. All shared application
++hashes must still match; only the explicitly documented harness/adapter versions
++differ for the new local/normal run. Current QA CI is required before final
++normal acceptance/warmed verification. No app build, upload or further purge.
++
++The separate read-only Stag1440 no-JS diagnostic returns200 in11,412ms, readyState
++complete/nine nav links/fonts loaded, with60 completed image requests and one
++favicon request still pending at observation. Completed requests are not a full
++image-content/fallback audit, and this does not establish the earlier timeout's
++cause. GTM is blocked as intended; writes/consent actions are zero. Full normal
++HTTP verification independently passes6193 at21:32:23.325976UTC:347 MISS/1 HIT,
++119 assets and one recovered TimeoutError on the author page2. Both failed and
++successful evidence remain, and delivery62/C08 counts stay unchanged.
++
++
++The synchronized full local matrix closes2834/2834 across298 views,18 intercepted
++native destinations and zero navigation retries. All eight captures match the
++previously inspected source-identical set exactly. Current source2377 and416
++JavaScript tests pass; clean and origin129-check smokes cover the new fresh-load
++wait. The current full normal run remains underway. No old partial report is
++overwritten, and the original full origin evidence stays pinned toc28a0fc.
 +
