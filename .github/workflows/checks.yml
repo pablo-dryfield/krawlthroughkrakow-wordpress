@@ -119,6 +119,10 @@ jobs:
         run: node --test tools/tests/test_stag_nye_text_styles.mjs
       - name: Preserved Stag mobile text contracts
         run: node --test tools/tests/test_stag_reviewed_text_styles.mjs
+      - name: No-JS navigation source contracts
+        run: |
+          node --test tools/tests/test_nojs_navigation.mjs tools/tests/test_read_only_browser_navigation.mjs
+          node tools/test-nojs-navigation-fixtures.mjs "$RUNNER_TEMP/nojs-navigation-fixtures.json"
       - name: Booking selection recovery contracts
         run: node --test tools/tests/test_booking_selection_recovery.mjs tools/tests/test_blocked_meta_pageview.mjs
       - name: Read-only booking measurement contracts (no provider events)

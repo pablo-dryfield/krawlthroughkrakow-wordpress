@@ -4,6 +4,7 @@ import importlib.util
 import io
 import json
 import posixpath
+import subprocess
 import tempfile
 import unittest
 import zipfile
@@ -71,6 +72,47 @@ class FakeFTP:
 
 
 class HomepagePublisherTests(unittest.TestCase):
+    def test_origin_cache_helper_refuses_production_and_never_calls_edge_integration(self):
+        source = publisher.cache_purge_helper('fixture-token')
+        self.assertNotIn(b'purge_by_url', source)
+        self.assertNotIn(b'check_connection', source)
+        for site in ['https://krawlthroughkrakow.com/staging/', 'https://krawlthroughkrakow.com/']:
+            with self.subTest(site=site):
+                stubs = '''<?php
+define('ABSPATH', '.'); $GLOBALS['calls'] = array();
+$_GET['_ktk_homepage_cache_purge'] = 'fixture-token';
+function add_action($hook, $callback, $priority = 10) { $callback(); }
+function nocache_headers() {}
+function home_url($path) { return SITE_ROOT . ltrim($path, '/'); }
+function site_url($path) { return home_url($path); }
+function get_option($name) { return 123; }
+class WP_Post { public $ID = 123; public $post_type = 'page'; }
+function get_post($id) { return new WP_Post(); }
+function get_page_by_path(...$args) { throw new Exception('Unexpected lookup'); }
+function get_permalink($page) { return SITE_ROOT; }
+function untrailingslashit($value) { return rtrim($value, '/'); }
+function rocket_clean_post($id) { $GLOBALS['calls'][] = 'post:' . $id; }
+function rocket_clean_home() { $GLOBALS['calls'][] = 'home'; }
+function apply_filters(...$args) { throw new Exception('Edge integration must not be consulted'); }
+function status_header($status) {}
+function wp_send_json($data, $status = 200) { echo json_encode(array('status'=>$status,'data'=>$data,'calls'=>$GLOBALS['calls'])); exit; }
+'''
+                program = stubs.replace("define('ABSPATH', '.');", "define('ABSPATH', '.'); define('SITE_ROOT', '" + site + "');") + source.decode().removeprefix('<?php')
+                result = subprocess.run(['php'], input=program, text=True, capture_output=True, check=True)
+                value = json.loads(result.stdout)
+                if '/staging/' in site:
+                    self.assertEqual(value['status'], 200)
+                    self.assertEqual(value['calls'], ['post:123', 'home'])
+                    self.assertTrue(value['data']['origin_cache_cleared'])
+                    self.assertFalse(value['data']['cloudflare_attempted'])
+                    self.assertFalse(value['data']['cloudflare_purged'])
+                    self.assertEqual(value['data']['edge_cache_strategy'], 'separate-authorized-mcp')
+                    self.assertTrue(all(url == site.rstrip('/') or url.startswith(site) for url in value['data']['urls']))
+                else:
+                    self.assertEqual(value['status'], 403)
+                    self.assertEqual(value['calls'], [])
+                    self.assertEqual(value['data']['error'], 'exact_staging_identity_required')
+
     def test_assets_only_never_rewrites_posts_or_exports_production(self):
         with tempfile.TemporaryDirectory() as directory:
             ftp = FakeFTP()
