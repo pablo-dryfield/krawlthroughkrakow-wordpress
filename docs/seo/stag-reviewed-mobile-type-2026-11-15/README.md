@@ -1,7 +1,9 @@
 # Readable Preserved Stag Text
 
-Status: source preparation, not a verified staging delivery. Website count61
-and C08 counts remain unchanged. The complete plan remains active.
+Status: appb285cb2 is published to staging, with independent backup/hash/
+protected-state checks complete. Origin full/forms and normal/warmed gates
+remain; this is not yet a verified staging delivery. Website61/C08 unchanged.
+The complete plan remains active.
 
 PR82 is merged as `8631ea6c18934a33e9c5738b4dcce54c45827713`, exact final tree
 `bd2782f1abbd97214fb65c836d9a8d3cc5a6d251`. Final CI43749463189 and main
@@ -124,3 +126,37 @@ to stdout without writing its optional report path. A fresh offline invocation
 is captured verbatim as `discovery-dry-run-stdout.json`, then checked against
 the actual three source hashes. No report, successful run or deployment is
 invented; no guard is weakened.
+
+## Staging Publication Checkpoint
+
+Source/application `b285cb29932f40bf394112e772a710f334c0361a`, tree
+`27efe47edf2cf80f66309ef8d72bf02e54462232`, PR83/CI43751175190 pass both
+jobs132925234903 and132925234611. The downloaded Linux quality log verifies339
+Python cases without skips, SHA256
+`6d7e6e4d8e855bc3443f3d9ab2bb50f33a936fda75794a287932fdd7321cf875`.
+Exact clean source/current15-file bindings and both CI jobs are checked again
+before guarded staging full/incremental publication, which finishes
+19:15:40.064129UTC15Nov. All2073 Git/local/recorded FTP/authenticated final
+server hashes match; saved WordPress/protected/homepage/storefront state stays
+exact and the temporary helper is removed. Exactly one CSS file changes.
+
+The independently reopened four-entry changed-files rollback is
+`deploy-backups/ktk-code-pages-staging-20261115-191517.zip`, SHA256
+`f621f471ed77e1a969725fb37b6a01647004fc048abac9399ed0bdf61d994109`.
+CRC and every prior Git/local/archive entry verify, including unchanged
+renderer/registry and manifest. This is not a whole-host/database or production
+backup. `release-independent.json` at19:16:12.857849UTC binds full maps and
+unchanged publisher transport checks; unchanged FTP entries reuse prior
+authenticated hashes, not a second fresh network read of every unchanged file.
+All three discovery files remain exact without build/publication.
+
+Origin browser335/335 completes16 contexts/14 captures; all14 PNGs are
+byte-identical to the individually inspected local captures. Attribution500,
+discovery243 and homepage10/icon21/full-icon-font20/social-font15 pass. Forms
+and the full6193 scan are still running at this checkpoint; one interrupted
+tag-route read has recovered so far and remains in the raw full-scan evidence.
+No zero-retry origin claim. All application/build/harness bytes remain frozen;
+no source rebuild, upload repeat, discovery publication or purge has occurred.
+All origin jobs must close green before the MCP-only staging-prefix purge,
+normal/warmed verification, final roadmaps/CI and exact PR83 merge. Count61/C08
+and production/commerce/forms/functional-consent boundaries stay unchanged.
