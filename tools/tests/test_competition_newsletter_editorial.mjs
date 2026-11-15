@@ -35,7 +35,7 @@ test('newsletter keeps historical context and clean owned information links', as
 });
 
 test('catalog adds exactly2 identities and6 bindings while prior44/166 stay exact', async () => {
-  const full = JSON.parse(await readFile(new URL('../reviewed-article-presentation.json', import.meta.url), 'utf8')), later = ['post-life-professional-drunk', 'post-hen-do-ideas-abroad','post-best-pub-crawls-in-europe','post-budapest-or-krakow-nightlife'], d = {...full, articles: full.articles.filter(a => !later.includes(a.key)), containers: full.containers.map(c => ({...c, cardKeys: c.cardKeys.filter(k => !later.includes(k))}))}, keys = ['post-welcome-to-alcohol', 'post-krawl-through-krakow-winter-newsletter'];
+  const full = JSON.parse(await readFile(new URL('../reviewed-article-presentation.json', import.meta.url), 'utf8')), later = ['post-life-professional-drunk', 'post-hen-do-ideas-abroad','post-best-pub-crawls-in-europe','post-budapest-or-krakow-nightlife','post-krakow-hen-party-reviews','post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow'], d = {...full, articles: full.articles.filter(a => !later.includes(a.key)), containers: full.containers.map(c => ({...c, cardKeys: c.cardKeys.filter(k => !later.includes(k))}))}, keys = ['post-welcome-to-alcohol', 'post-krawl-through-krakow-winter-newsletter'];
   const old = {...d, articles: d.articles.filter(a => !keys.includes(a.key)), containers: d.containers.map(c => ({...c, cardKeys: c.cardKeys.filter(k => !keys.includes(k))}))};
   assert.equal(old.articles.length, 44); assert.equal(old.containers.reduce((n, c) => n + c.cardKeys.length, 0), 166);
   assert.equal(createHash('sha256').update(JSON.stringify(old)).digest('hex'), 'f15db515e828abb689b47f22b7bcefaacbcc7744527609cc688d32094c8abfd0');

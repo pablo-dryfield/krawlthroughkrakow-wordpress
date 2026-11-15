@@ -304,6 +304,18 @@
       "postId": 6599,
       "route": "/budapest-or-krakow-nightlife/",
       "summary": "Choose between Budapest and Krakow using your preferred night out, current venue information, the right currencies and practical transport plans, without relying on a universal cheaper-city claim."
+    },
+    {
+      "key": "post-krakow-hen-party-reviews",
+      "postId": 6262,
+      "route": "/krakow-hen-party-reviews/",
+      "summary": "Plan a Krakow hen weekend with current pub-crawl, vodka and shooting booking links, practical dinner and activity choices, and group arrangements confirmed in an individual quote."
+    },
+    {
+      "key": "post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow",
+      "postId": 2095,
+      "route": "/the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow/",
+      "summary": "A historical 2017-2018 bars and clubs shortlist with reviewed operator links, corrected venue-location context and current Krakow nightlife and pub-crawl booking guidance."
     }
   ],
   "containers": [
@@ -438,6 +450,7 @@
       "captureSha256": "8b57d96793e50623d6a0f84a61a17240d05e12bdf1d43b7ddacee1e7e41397eb",
       "key": "archive-author-dpbowman-page-7",
       "cardKeys": [
+        "post-krakow-hen-party-reviews",
         "post-escape-rooms-for-a-stag-do-in-krakow",
         "post-krakow-nightclubs",
         "post-krakow-techno-clubs",
@@ -479,6 +492,7 @@
       "cardKeys": [
         "post-new-years-eve-in-krakow",
         "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
+        "post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow",
         "post-krakow-new-years-eve"
       ]
     },
@@ -518,6 +532,7 @@
         "post-best-places-to-eat",
         "post-2020-krakow-nightlife-guide",
         "post-travel-krakow-your-comprehensive-city-guide",
+        "post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow",
         "post-survive-pub-crawl"
       ]
     },
@@ -573,6 +588,7 @@
       "cardKeys": [
         "post-krakow-go-karting",
         "post-krakow-stag-activities",
+        "post-krakow-hen-party-reviews",
         "post-all-you-need-to-know-about-visiting-auschwitz",
         "post-krakow-weather-guide",
         "post-krakow-new-years-eve"
@@ -600,6 +616,7 @@
         "post-krakow-food-truck-parks",
         "post-krakow-budget-activities",
         "post-krakow-go-karting",
+        "post-krakow-hen-party-reviews",
         "post-krakow-techno-clubs",
         "post-weekend-in-krakow",
         "post-best-drinking-games",
@@ -621,6 +638,7 @@
         "post-best-places-to-eat",
         "post-2020-krakow-nightlife-guide",
         "post-travel-krakow-your-comprehensive-city-guide",
+        "post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow",
         "post-krawl-through-krakow-winter-newsletter",
         "post-stages-of-drunkenness",
         "post-stag-pranks",

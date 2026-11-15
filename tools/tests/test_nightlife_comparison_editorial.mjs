@@ -30,7 +30,7 @@ test('Budapest comparison corrects geography and currencies without unsupported 
 });
 
 test('comparison catalog adds exactly2 identities/6 bindings with prior48/178 frozen', async () => {
-  const d = JSON.parse(await readFile(new URL('../reviewed-article-presentation.json', import.meta.url), 'utf8')), keys = ['post-best-pub-crawls-in-europe', 'post-budapest-or-krakow-nightlife'], old = {...d, articles: d.articles.filter(a => !keys.includes(a.key)), containers: d.containers.map(c => ({...c, cardKeys: c.cardKeys.filter(k => !keys.includes(k))}))};
+  const full = JSON.parse(await readFile(new URL('../reviewed-article-presentation.json', import.meta.url), 'utf8')), later = ['post-krakow-hen-party-reviews', 'post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow'], d = {...full, articles: full.articles.filter(a => !later.includes(a.key)), containers: full.containers.map(c => ({...c, cardKeys: c.cardKeys.filter(k => !later.includes(k))}))}, keys = ['post-best-pub-crawls-in-europe', 'post-budapest-or-krakow-nightlife'], old = {...d, articles: d.articles.filter(a => !keys.includes(a.key)), containers: d.containers.map(c => ({...c, cardKeys: c.cardKeys.filter(k => !keys.includes(k))}))};
   assert.equal(old.articles.length, 48); assert.equal(old.containers.reduce((n, c) => n + c.cardKeys.length, 0), 178); assert.equal(createHash('sha256').update(JSON.stringify(old)).digest('hex'), 'e05a9ffc9521edeba19fb890255ce6ba228ecd4c61b4e3356d7f12f1cdd16f5c');
   assert.equal(d.articles.length, 50); assert.equal(d.containers.reduce((n, c) => n + c.cardKeys.length, 0), 184); assert.equal(d.containers.filter(c => c.cardKeys.some(k => keys.includes(k))).length, 5);
 });
