@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-15T07:01:55.245Z",
+  "startedAt": "2026-11-15T08:31:03.000Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -7344,6 +7344,46 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "reviewed-blog-teaser",
+          "postId": 6396,
+          "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "reviewed-blog-teaser",
+          "postId": 6376,
+          "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "reviewed-blog-teaser",
+          "postId": 6387,
+          "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "reviewed-blog-teaser",
+          "postId": 6678,
+          "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "reviewed-blog-teaser",
+          "postId": 7506,
+          "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "reviewed-blog-teaser",
+          "postId": 7492,
+          "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "reviewed-blog-teaser",
+          "postId": 6394,
+          "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "reviewed-blog-teaser",
+          "postId": 6534,
+          "reviewedOn": "2026-11-15"
         }
       ],
       "bookings": [
@@ -9563,6 +9603,21 @@
         {
           "type": "existing-enquiry-field-label",
           "name": "textarea-253"
+        },
+        {
+          "type": "reviewed-group-overview",
+          "selector": ".et_pb_text_1 .et_pb_text_inner",
+          "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "reviewed-group-overview",
+          "selector": ".et_pb_text_2 .et_pb_text_inner",
+          "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "reviewed-group-overview",
+          "selector": ".et_pb_text_3 .et_pb_text_inner",
+          "reviewedOn": "2026-11-15"
         }
       ],
       "bookings": [
@@ -10836,5 +10891,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-15T07:02:52.939Z"
+  "finishedAt": "2026-11-15T08:32:38.117Z"
 }

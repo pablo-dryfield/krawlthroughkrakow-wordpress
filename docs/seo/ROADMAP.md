@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 55 |
-| In progress | 1 |
+| In progress | 2 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Current Blog teasers and clearer group enquiries](blog-group-copy-2026-11-15/README.md) | T06, C06, D03, T10 | In progress (website) | Not yet | Not deployed or delivery56. Local verification, required CI, guarded staging, origin/normal/warmed and visual checks remain. No article-review count increase, new package promise, production, commerce, consent, medical or active competition change. |
 | [Respect reduced-motion preferences in slider content](reduced-motion-sliders-2026-11-15/README.md) | D03, T10 | Verified on staging (website) | 2026-11-15 | Manual assistive-technology, real-device and provider checks plus production approval remain. Earlier local Blog raster acceptance is superseded by recorded black-area diagnostics and fresh matching DOM/style/geometry checks; no whole-page pixel or photo-only difference claim. All content, photos, runtime, homepage, commerce, functional consent, active competition and medical hold remain unchanged. |
 | [Historical hotel shortlist and practical spa planning](hotel-guides-2026-11-15/README.md) | C08, T01, T06, T08, D03, D05, T10 | Verified on staging (website) | 2026-11-15 | Halloween facts, manual accessibility, owner review and separate production approval remain. No live hotel rate, medical benefit, KTK spa bundle or full-page pixel guarantee. Commerce, functional consent, medical hold and active competition stay unchanged;54/197 summary coverage is not54 full fact audits. |
 | [Hen planning and historical bars guide](hen-reviews-bars-2026-11-15/README.md) | C08, C06, T01, T06, T08, D03, D05, T10 | Verified on staging (website) | 2026-11-15 | Manual review, remaining hotel/Halloween facts and separate production approval remain. Commerce, functional consent, medical hold and active competition are unchanged; unverified testimonials are not invented. |
