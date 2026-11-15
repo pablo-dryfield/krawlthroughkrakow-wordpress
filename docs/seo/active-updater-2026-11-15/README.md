@@ -11,11 +11,13 @@ all3,459 tracked Git/local blobs, all3,688 ZIP entries and CRC. Its499,917,636
 bytes have SHA256
 `694c624e5e927dde72bd5741680166bf4933a7d91703ec076ecb7f673725eaec`.
 
-Current source:31 isolated cases run locally,27 pass and4 symlink cases skip
-under Windows restrictions. The first full payload rehearsal passes both
-complete and interrupted rollback scenarios. Three follow-up guard improvements
-are implemented and pass focused fixtures; a new full rehearsal is running
-against those final engine/runner hashes. No production readiness is claimed.
+Current source: commit `80cb685f002946b15430c54381fee05ab43ac82c` / PR73.
+Linux CI43707563843 passes both jobs and all264 Python cases without skips,
+including all31 transaction cases. Local264 cases run with260 pass/4 Windows
+symlink skips. The final full payload rehearsal passes both complete and
+interrupted rollback scenarios; engine/runner/report bindings independently
+match. This remains a component, not production readiness. Final documentation
+CI and merge are separate from website delivery; no upload or purge is required.
 
 ## Scope And Limits
 
@@ -47,13 +49,21 @@ writer between that check and rename/unlink. An exclusive coordinated release
 window remains required. No whole-release atomicity, power-loss durability or
 automatic database recovery is claimed.
 
+An unclean process exit before rename can also leave a temporary content file.
+Unknown files deliberately stop inventory checks; there is no recursive or
+speculative cleanup. The tested process-death scenario is specifically after a
+successful replacement. A future wrapper still needs a reviewed procedure for
+earlier process termination, temporary-helper cleanup failures, authenticated
+request expiry and actual WordPress/protected-file state. The local component
+and its tests do not certify those deployment concerns.
+
 ## Isolated Integration Fixtures
 
 The initial PHP component executes in28 Python integration cases. Locally25
 pass and3 symlink cases skip because this Windows account cannot create fixture
 symlinks. Initial full Python261 cases pass with those same3 skips. The reviewed
-source adds3 cases:31 locally,27 pass/4 symlink skips. Linux CI must execute
-the symlink cases before cross-platform coverage is claimed. CI explicitly
+source adds3 cases:31 locally,27 pass/4 symlink skips. Linux CI43707563843 subsequently executes all264 cases with no skips, including
+the four symlink cases. The job log records `Ran 264 tests` and `OK`. CI explicitly
 requires PHP and lints the component before running the suite.
 
 The cases exercise a complete install/exact rollback, dependency ordering,
@@ -103,5 +113,24 @@ report current expected/prior inventory matches during inspection, and cancel an
 intent when a known failure occurs before replacement.
 The last avoids treating an explicitly detected foreign same-byte installation
 as our file for rollback. All31 focused cases pass locally with4 declared
-symlink skips. `full-rehearsal-reviewed.json` is running against the final
-engine/runner hashes, with both sources frozen until its terminal result.
+symlink skips. `full-rehearsal-reviewed.json` completes11:16:30.337613UTC after starting
+11:07:57.113602UTC. Both sources remain frozen throughout. The complete run
+records395 intended replacements; the actual process-death case records one.
+Both verify238 prior-file copies, restore all1,916 old hashes and retain all2,073
+staged files, marker and protected fixture state. Both temporary trees are removed.
+
+Final engine SHA256:
+`940a27590887495021db129220274c751323edd0c3ff5c0dac767e94148d9abb`.
+Runner SHA256:
+`16f14adbf90b68862f78e05bb5f983367c82ae61d4ad5176bfde6104e9018447`.
+Raw report SHA256:
+`dab1f5f73aa746c3268a687f91c27aae201444087a99f323750321aecc57a942`.
+`full-rehearsal-independent.json` independently checks these bindings, the prior
+inventory input SHA, scenario receipt consistency and empty Git diff for all
+application/planner/legacy tools. It is a receipt consistency check, not an
+additional production snapshot or separate rehearsal execution.
+
+Both roadmaps remain57 staging deliveries and G02 partial. The preliminary
+roadmap component report passes317 assertions; actual1440px overview and390px
+detail images are inspected. Final regenerated-roadmap report `roadmap-final.json` passes317 assertions
+after the last plan edit; its actual1440px overview is also inspected. No application build, upload, production helper/write or purge occurs.
