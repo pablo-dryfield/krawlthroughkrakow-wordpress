@@ -51,6 +51,12 @@ test('missing or stale story identities reject before touching DOM', async () =>
   for (const r of await loadCompetitionNewsletterEditorial()) for (const revision of [null, {...r, key: 'unknown'}, {...r, version: 'other'}, {...r, sourceSha256: '0'.repeat(64)}, {...r, reviewedOn: '2027-01-01'}]) assert.throws(() => reviseCompetitionNewsletterEditorial({key: r.key, revision}), /identity/);
 });
 
+test('archive navigation recognizes only the exact newsletter primary-heading variant', async () => {
+  const s = await readFile(new URL('../test-reviewed-article-presentation.mjs', import.meta.url), 'utf8');
+  assert.ok(s.includes("a.key==='post-krawl-through-krakow-winter-newsletter'?'#main-content h1.et_pb_slide_title[data-ktk-heading-origin=\"h2\"]':'#main-content h1.entry-title'"));
+  for (const guard of ['state.key===a.key', 'state.h1===1', 'state.count===1', 'state.visible', 'state.contentLength>100', "state.text.trim()==='KTK Winter Newsletter'"]) assert.ok(s.includes(guard));
+});
+
 test('story CSS is additive, bounded, idempotent and drift guarded', async () => {
   const dir = await mkdtemp(path.join(tmpdir(), 'ktk-story-css-'));
   try {

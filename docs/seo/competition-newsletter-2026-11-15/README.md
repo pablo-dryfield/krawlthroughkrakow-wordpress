@@ -117,3 +117,35 @@ form/privacy/media byte and previous166 summary binding is retained.
 Discovery changes only the competition definition checksum, not123 URL policy.
 Required CI, manual staging publication, origin/clean/warmed verification and
 final roadmap advance are still pending. No upload or purge yet.
+
+## Staging Publication
+
+Application`944283d657fa12f4d4b042b2522b93d0dcd7b287` / PR64 / required
+CI43664611631 passed both jobs. Manual content2073 publication completed
+15 November01:48:10.419774UTC. All Git/local/remote content SHA checks pass
+independently; saved WordPress state, homepage and storefront remain exact and
+the temporary helper is removed. Changed-file rollback has11 entries, with
+exact set/per-file SHA/archive CRC checked:
+`deploy-backups/ktk-code-pages-staging-20261115-014745.zip`, SHA256
+`66e46d69e1238766a2a2a8a4dbba1df821519041a3b02138b307decbea82a839`.
+
+Guarded discovery3 publication completed01:49:03.497717UTC. All2324 protected
+staging files/2158 production mappings and saved state remain exact; helpers
+removed and no discovery-origin cache paths changed. Four-entry rollback CRC/
+per-file SHA/archive SHA pass:
+`deploy-backups/seo-discovery-staging-20261115-014852-236181.zip`, SHA256
+`b5097b569560fd130d3adce1a53c00276412369b7adf348a2dee3ca135a0ede7`.
+
+Origin body176/discovery243/homepage10/icon21/ET20/social15 pass. Four actual
+origin axe views have0 violations/5 incomplete contrast groups. Full6193,
+cards, forms and attribution are still running; no Cloudflare purge or verified
+roadmap advance until origin checks close successfully. Application is frozen.
+
+Initial origin cards1419/1423 is retained: its four failures were native article
+checks using `.entry-title` for the newsletter's original slider H1. The
+newsletter has exactly one visible `h1.et_pb_slide_title` with the existing
+`data-ktk-heading-origin="h2"` semantic repair, independently confirmed by the
+body176 checks. QA now recognizes only that exact article/class/origin/text
+variant, retaining the standard selector for every other article. It adds
+explicit one-H1/count/text/identity evidence, not a generic fallback. No app
+change, timeout extension or cache assumption; the complete repeat is required.
