@@ -50,6 +50,8 @@ class IsolatedStagingSvgProbeTests(unittest.TestCase):
   ftp,run=self.fresh();files=probe.payload(TOKEN)
   for n in ['control.txt','rewrite-test.txt','.htaccess']:run.upload(n,files[n])
   self.assertEqual(run.read(run.file_path('control.txt')),files['control.txt']);self.assertTrue(run.cleanup());self.assertEqual(ftp.files,{probe.CONFIG:b'parent unchanged'});self.assertEqual(ftp.dirs,{probe.PARENT});self.assertTrue(all(p==run.directory or p.startswith(run.directory+'/') for _,p in ftp.writes))
+ def test_cache_override_is_only_in_the_owned_child_payload_and_uses_both_header_tables(self):
+  files=probe.payload(TOKEN);config=files['.htaccess'];self.assertIn(b'ExpiresActive Off',config);self.assertIn(b'Header onsuccess unset Cache-Control',config);self.assertIn(b'Header always set Cache-Control "no-store, max-age=0"',config);self.assertIn(b'Header always unset Expires',config);self.assertNotIn(probe.PARENT.encode(),config);self.assertEqual(set(files),probe.FILES)
  def test_invalid_identifiers_fail_before_any_ftp_action(self):
   for token in ['',TOKEN+'b','../'+TOKEN,'A'*32,'a'*31,'a'*31+'\n']:
    ftp=FakeFTP()

@@ -14,10 +14,15 @@ def sha(value):return hashlib.sha256(value).hexdigest()
 
 def payload(token):
  if not re.fullmatch(r'[a-f0-9]{32}',token):raise ValueError('Fresh32-hex probe identifier required')
- return {'control.txt':b'KTK isolated staging override control\n','rewrite-test.txt':b'Unrewritten probe file; not the expected response\n','.htaccess':('''<IfModule mod_headers.c>
+ return {'control.txt':b'KTK isolated staging override control\n','rewrite-test.txt':b'Unrewritten probe file; not the expected response\n','.htaccess':('''<IfModule mod_expires.c>
+ExpiresActive Off
+</IfModule>
+<IfModule mod_headers.c>
 Header set X-KTK-Encoding-Probe "'''+token+'''"
 Header set X-Robots-Tag "noindex, nofollow"
-Header set Cache-Control "no-store, max-age=0"
+Header onsuccess unset Cache-Control
+Header always set Cache-Control "no-store, max-age=0"
+Header always unset Expires
 </IfModule>
 RewriteEngine On
 RewriteRule ^rewrite-test\\.txt$ control.txt [L]
