@@ -1,6 +1,7 @@
 """Execute the real PHP transaction component against isolated filesystem fixtures."""
 import hashlib
 import json
+import os
 from pathlib import Path
 import shutil
 import subprocess
@@ -27,6 +28,20 @@ $used = false;
 $guard = static function () use ($config) { return hash_file('sha256', $config['protected']); };
 $observer = static function ($event, $name) use ($config, $fault, &$used) {
     if ($used) { return; }
+    if ($event === 'after-temporary-create' && in_array($fault, array('crash-before-copy', 'crash-partial-temp'), true)) {
+        if ($fault === 'crash-partial-temp') {
+            foreach (new DirectoryIterator($config['private'].'/'.$config['plan']['transactionId'].'/pending') as $file) {
+                if ($file->isFile()) { file_put_contents($file->getPathname(), 'partial'); break; }
+            }
+        }
+        exit(73);
+    }
+    if ($event === 'before-rename' && $fault === 'crash-before-rename') { exit(73); }
+    if ($event === 'before-rename' && $fault === 'temporary-change') {
+        foreach (new DirectoryIterator($config['private'].'/'.$config['plan']['transactionId'].'/pending') as $file) {
+            if ($file->isFile()) { file_put_contents($file->getPathname(), 'unrelated private bytes'); break; }
+        }
+    }
     if ($event === 'before-rename' && in_array($fault, array('source-change', 'target-change', 'protected-change', 'marker-change', 'target-equal-change'), true)) {
         $used = true;
         $path = $fault === 'source-change' ? $config['source'].'/'.$name : ($fault === 'target-change' ? $config['target'].'/'.$name :
@@ -102,7 +117,7 @@ class ActiveContentTransactionTests(unittest.TestCase):
     def run_action(self, action, fault='', success=True):
         result = subprocess.run(['php', '-d', 'allow_url_fopen=0', str(self.driver), str(ENGINE), str(self.config), action, fault],
                                 capture_output=True, text=True, timeout=30)
-        if fault == 'crash':
+        if fault in ('crash', 'crash-before-copy', 'crash-partial-temp', 'crash-before-rename'):
             self.assertEqual(result.returncode, 73, result.stderr)
             return None
         self.assertEqual(result.returncode, 0 if success else 2, result.stdout + result.stderr)
@@ -159,6 +174,76 @@ class ActiveContentTransactionTests(unittest.TestCase):
         self.assertEqual(self.run_action('inspect')['phase'], 'applying')
         self.run_action('rollback')
         self.assertEqual(self.tree(), self.old)
+
+    def interrupted_private_temporary(self, fault, expected_bytes=None):
+        self.run_action('prepare')
+        self.run_action('apply', fault)
+        status=self.run_action('inspect')
+        self.assertEqual(status['phase'],'applying')
+        self.assertTrue(status['currentPriorInventoryVerified'])
+        self.assertTrue(status['privateTemporaryInspectionVerified'])
+        artifacts=status['retainedPrivateTemporaryArtifacts']
+        self.assertEqual(len(artifacts),1)
+        if expected_bytes is not None:self.assertEqual(next(iter(artifacts.values()))['bytes'],expected_bytes)
+        self.assertEqual(self.tree(),self.old)
+        self.assertFalse(list(self.target.rglob('.ktk-content-*')))
+        return artifacts
+
+    def test_actual_process_death_before_copy_keeps_private_empty_artifact_and_safe_rollback(self):
+        artifacts=self.interrupted_private_temporary('crash-before-copy',0)
+        restored=self.run_action('rollback')
+        self.assertEqual(self.tree(),self.old)
+        self.assertEqual(restored['retainedPrivateTemporaryArtifacts'],artifacts)
+
+    def test_partial_private_write_and_actual_process_death_do_not_block_target_rollback(self):
+        artifacts=self.interrupted_private_temporary('crash-partial-temp',7)
+        restored=self.run_action('rollback')
+        self.assertEqual(self.tree(),self.old)
+        self.assertEqual(restored['retainedPrivateTemporaryArtifacts'],artifacts)
+
+    def test_actual_process_death_before_rename_can_resume_and_restore_without_public_orphans(self):
+        artifacts=self.interrupted_private_temporary('crash-before-rename')
+        installed=self.run_action('apply')
+        self.assertTrue(installed['currentExpectedInventoryVerified'])
+        self.assertEqual(self.tree(),{**self.new,MARKER:ACTIVATION})
+        self.assertEqual(installed['retainedPrivateTemporaryArtifacts'],artifacts)
+        restored=self.run_action('rollback')
+        self.assertEqual(self.tree(),self.old)
+        self.assertEqual(restored['retainedPrivateTemporaryArtifacts'],artifacts)
+
+    def test_private_temporary_bytes_are_rechecked_and_unknown_bytes_are_preserved(self):
+        self.run_action('prepare')
+        error=self.run_action('apply','temporary-change',success=False)
+        self.assertIn('private temporary changed',error)
+        self.assertEqual(self.tree(),self.old)
+        status=self.run_action('inspect')
+        self.assertEqual(len(status['retainedPrivateTemporaryArtifacts']),1)
+        self.assertEqual(next(iter(status['retainedPrivateTemporaryArtifacts'].values()))['sha256'],sha(b'unrelated private bytes'))
+        self.run_action('rollback')
+        self.assertEqual(self.tree(),self.old)
+
+    def test_unexpected_private_pending_directory_blocks_before_application_write(self):
+        self.run_action('prepare')
+        pending=self.private/('a'*32)/'pending';pending.mkdir();(pending/'unknown-directory').mkdir()
+        self.run_action('apply',success=False)
+        self.assertEqual(self.tree(),self.old)
+        status=self.run_action('inspect')
+        self.assertFalse(status['privateTemporaryInspectionVerified'])
+        self.assertIsNone(status['retainedPrivateTemporaryArtifacts'])
+
+    def test_cross_filesystem_private_temporary_is_refused_without_changing_target(self):
+        other=Path('/dev/shm')
+        if not other.is_dir() or os.stat(other).st_dev==os.stat(self.root).st_dev:
+            self.skipTest('A separate writable filesystem is required; Linux CI provides /dev/shm')
+        try:temporary=tempfile.TemporaryDirectory(prefix='ktk-cross-filesystem-',dir=other)
+        except OSError:self.skipTest('Separate filesystem is not writable')
+        self.addCleanup(temporary.cleanup);self.private=Path(temporary.name);self.save_config()
+        self.run_action('prepare')
+        error=self.run_action('apply',success=False)
+        self.assertIn('share one filesystem',error)
+        self.assertEqual(self.tree(),self.old)
+        self.run_action('rollback')
+        self.assertEqual(self.tree(),self.old)
 
     def test_unknown_owned_file_blocks_before_any_application_write(self):
         self.write(self.target, ASSETS + 'unreviewed.php', b'unknown')

@@ -20,7 +20,18 @@ define('KTK_UPDATE_ENGINE_ALLOWED', true);
 require $argv[1];
 $c = json_decode(file_get_contents($argv[2]), true, 512, JSON_THROW_ON_ERROR);
 $guard = static fn() => hash_file('sha256', $c['protected']);
-$observer = static function ($event, $name) use ($argv) { if (($argv[4] ?? '') === 'crash' && $event === 'after-rename') { exit(73); } };
+$observer = static function ($event, $name) use ($argv, $c) {
+    $mode = $argv[4] ?? '';
+    if ($event === 'after-temporary-create' && in_array($mode, array('before-copy', 'partial-private-write'), true)) {
+        if ($mode === 'partial-private-write') {
+            foreach (new DirectoryIterator($c['private'].'/'.$c['plan']['transactionId'].'/pending') as $file) {
+                if ($file->isFile()) { file_put_contents($file->getPathname(), 'partial'); break; }
+            }
+        }
+        exit(73);
+    }
+    if (($mode === 'after-rename' && $event === 'after-rename') || ($mode === 'before-rename' && $event === 'before-rename')) { exit(73); }
+};
 $transaction = new KTK_Active_Content_Transaction($c['source'], $c['target'], $c['private'], $c['plan'], $guard, $observer);
 if (!in_array($argv[3], array('prepare', 'apply', 'rollback', 'inspect'), true)) { throw new RuntimeException('Fixture action required'); }
 $action = $argv[3]; echo json_encode($transaction->$action(), JSON_THROW_ON_ERROR);
@@ -120,17 +131,17 @@ def main():
         driver = root / 'fixture.php'
         driver.write_bytes(DRIVER.encode())
         config = root / 'config.json'
-        for identity, crash in (('a' * 32, False), ('b' * 32, True)):
+        for identity, scenario in (('a' * 32, ''), ('b' * 32, 'after-rename'), ('c' * 32, 'before-copy'), ('d' * 32, 'partial-private-write'), ('e' * 32, 'before-rename')):
             config.write_bytes(json.dumps({'source': str(source), 'target': str(target), 'private': str(private), 'protected': str(protected),
                                           'plan': {'transactionId': identity, 'applicationCommit': inventory['applicationCommit'],
                                                    'protectedStateSha256': sha(protected.read_bytes()), 'expected': expected, 'prior': prior}}).encode())
 
-            def call(action, die=False):
-                row = subprocess.run(['php', '-d', 'allow_url_fopen=0', str(driver), str(ENGINE), str(config), action, 'crash' if die else ''],
+            def call(action, die=''):
+                row = subprocess.run(['php', '-d', 'allow_url_fopen=0', str(driver), str(ENGINE), str(config), action, die],
                                      capture_output=True, text=True, timeout=300)
                 if die:
                     if row.returncode != 73:
-                        raise RuntimeError('Fixture did not stop after an actual replacement: ' + row.stderr)
+                        raise RuntimeError('Fixture did not stop at the selected private/rename boundary: ' + row.stderr)
                     return None
                 if row.returncode:
                     raise RuntimeError('Fixture ' + action + ' failed: ' + row.stderr)
@@ -139,18 +150,34 @@ def main():
             prepared = call('prepare')
             if prepared['verifiedBackupFiles'] != len(changes['requiredPriorFileBackups']) or tree(target) != prior:
                 raise ValueError('Fixture prior backup count or pre-write inventory differs')
-            applied = call('apply', crash)
-            if crash:
+            applied = call('apply', scenario)
+            if scenario:
                 applied = call('inspect')
-                if applied['phase'] != 'applying' or len(applied['intentFiles']) != 1 or tree(target) == prior:
-                    raise ValueError('Expected one actual interrupted replacement and retained intent')
+                if applied['phase'] != 'applying' or len(applied['intentFiles']) != 1:
+                    raise ValueError('Expected retained first-file intent after process death')
+                if (tree(target) == prior) != (scenario != 'after-rename'):
+                    raise ValueError('Actual target state differs from selected rename boundary')
+                if not applied['privateTemporaryInspectionVerified'] or len(applied['retainedPrivateTemporaryArtifacts']) != (0 if scenario == 'after-rename' else 1):
+                    raise ValueError('Expected exact retained private temporary inspection')
+                if scenario == 'before-copy' and next(iter(applied['retainedPrivateTemporaryArtifacts'].values()))['bytes'] != 0:
+                    raise ValueError('Expected empty private temporary before copy')
+                if scenario == 'partial-private-write' and next(iter(applied['retainedPrivateTemporaryArtifacts'].values()))['sha256'] != sha(b'partial'):
+                    raise ValueError('Injected partial private bytes differ')
+                if scenario == 'before-rename':
+                    resumed = call('apply')
+                    if resumed['phase'] != 'applied' or tree(target) != expected | {planner.ACTIVATION: sha(legacy.ACTIVATION_SOURCE)}:
+                        raise ValueError('Full resumed apply after pre-rename process death differs')
             elif tree(target) != expected | {planner.ACTIVATION: sha(legacy.ACTIVATION_SOURCE)} or applied['phase'] != 'applied':
                 raise ValueError('Complete installed fixture inventory differs')
             rolled = call('rollback')
             if rolled['phase'] != 'rolled-back' or tree(target) != prior or tree(source) != expected or not rolled['protectedStateVerified']:
                 raise ValueError('Exact fixture rollback/source/protected state mismatch')
-            result['runs'].append({'scenario': 'process-death-after-first-replacement' if crash else 'complete-apply-and-rollback',
+            if not rolled['privateTemporaryInspectionVerified'] or rolled['retainedPrivateTemporaryArtifacts'] != applied['retainedPrivateTemporaryArtifacts']:
+                raise ValueError('Uncertain private evidence was lost or not inspected')
+            result['runs'].append({'scenario': 'complete-apply-and-rollback' if not scenario else 'process-death-' + scenario,
                                    'preparedBackupFiles': prepared['verifiedBackupFiles'], 'recordedIntentFiles': len(applied['intentFiles']),
+                                   'retainedPrivateTemporaryArtifacts': len(rolled['retainedPrivateTemporaryArtifacts']),
+                                   'resumedFullApplyBeforeRollback': scenario == 'before-rename',
                                    'finalPhase': rolled['phase'], 'exactPriorInventory': True, 'exactStagingInventory': True,
                                    'retainedActivation': True, 'protectedFixtureStateVerified': True})
             print(json.dumps(result['runs'][-1]), flush=True)
