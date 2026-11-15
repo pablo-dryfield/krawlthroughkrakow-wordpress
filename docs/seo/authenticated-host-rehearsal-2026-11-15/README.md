@@ -1,7 +1,7 @@
 # Authenticated Staging-host Private Transaction Rehearsal
 
-Status: source implementation passes local verification; Linux CI/host proof pending. No new helper has been uploaded and no
-host transaction, private host archive or helper cleanup is yet certified.
+Status: authenticated staging-host private recovery, archive and helper lifecycle verified.
+Source1b635a4/PR81/CI43740782113 passes both jobs and339 Linux Python cases without skips.
 The website remains app8db2fd9 with60 verified staging deliveries. Production,
 public application, activation, commerce, forms and functional consent stay exact.
 
@@ -33,7 +33,7 @@ gating, exact authenticated/shared scope and hash equivalence, pre-query identit
 refusal and changed/unowned helper paths. PHP syntax and client compilation pass.
 No source guard is relaxed and no live helper is used for this diagnosis.
 
-## Implemented Source Scope; Host Proof Still Pending
+## Source Scope And Boundaries
 
 The real staging MU root lacks the offline engine's required active-production
 marker. The rehearsal therefore uses a clearly labeled small fixed active
@@ -57,8 +57,8 @@ the public web root after verified cleanup. They contain hashes/status, not raw
 WordPress rows, and prevent replay from recreating a completed transaction.
 This intentional retained state must be verified and recorded; no claim that the
 entire container is removed. Unknown/changed files or links are preserved and
-cleanup fails for inspection. The temporary public helper still needs exact own
-hash checks and independent absence proof.
+cleanup fails for inspection. The temporary public helper passes exact own-hash checks and separate
+new-connection absence proof in the actual host result below.
 
 The HTTP controller, client and PowerShell credential wrapper are wired. The
 packet embeds all components only after the staging authentication/schema guards.
@@ -71,8 +71,8 @@ rows/input and simulated FTP, including the client's archive-before-cleanup
 ordering, helper absence and collision/changed-helper refusal. They do not claim
 real HTTP or real WordPress evidence. The full339 Python suite passes locally with10 Windows filesystem skips; PHP
 syntax, Python compilation, repository policy, whitespace and exact app8db
-preservation pass. The local roadmap passes317 checks. Source review, Linux CI
-and actual staging-host transport/archive/helper evidence remain.
+preservation pass. The local roadmap passes317 checks. Source review and Linux CI pass;
+actual staging-host transport/archive/helper evidence is recorded below.
 
 The initial private lifecycle10-case run has5 failures/1 JSON error: reopening
 its own locked file on Windows is denied. Reading the lifecycle binding through
@@ -100,3 +100,98 @@ There is no production helper, production WordPress snapshot/rollback backup,
 global account/cache change, automatic database restoration or extra delivery.
 Production-capable source/release coordination, owner approval, remaining C05,
 full public/manual T08, measured D02 and other plan dependencies stay separate.
+
+
+## Actual Staging-host Result,15 November2026
+
+The exact clean tooling commit `1b635a479a65e5290451201993f9733a38ce50b9`
+and immutable application `8db2fd909b7ca43aef1bfed5be437ac62642036a` run from
+17:26:25.318040 to17:32:10.903484UTC. Source CI43740782113 passes both
+Offline Tests and Build132893245355 and Secret Scan132893245632; its Linux log
+reports all339 Python tests with `OK`, no skips. Local Windows10 skips remain
+explicit and do not become Linux skips.
+
+The actual private fixture has five changes and four required prior copies.
+After prepare, the controlled PHP process/response interruption occurs after
+one real private replacement, before journal commit. The next authenticated
+inspection observes one intent, four remaining changes and an actual seven-byte
+`partial` receipt, SHA256
+`9834a14ab9bcaa0f6a8da71073617eac8f004e596a3fa11d807b84631b825d9d`.
+Four separate one-file apply calls resume to the complete new inventory, then
+five separate one-file rollbacks restore the exact old private inventory. The
+partial artifact remains available in the downloaded archive. These are actual
+host/HTTP/WordPress checks, distinct from the mocked controller tests and the
+earlier complete2073-file local scenarios.
+
+All compared calls retain the actual2073 owned application hashes,254 protected
+files,869 posts,7742 metadata rows,118 selected settings,51 terms,51 taxonomy
+records,361 relationships and zero term metadata. Protected-state fingerprint
+is `37cd4a3723b547cf7696c98413cf7d8f3c63f0aaa4cf476bb26c98bad23e89d2`.
+The independent archive reader recomputes the seven selected database scopes,
+row counts, database/protected-state fingerprints and all2073 local application
+hashes against the captured map. It reads no user/customer/order/payment tables.
+
+The client verifies export/ZIP CRC/every member before requesting cleanup:
+
+- `deploy-backups/staging-private-fixture-20261115-173140-838589-a8813221.zip`
+- 1,345,562 bytes;26 ZIP members including24 private files.
+- SHA256 `0ffb5d5583a1fe0db81d8f085bac5c9a5390d0edf15822cf2fd5e0f2324410ca`.
+- Server export fingerprint
+  `7d2d5ce55ee215085708e109db7e65f793364f523c6c3ab037fbb9027604b7a9`.
+
+An independently reopened ZIP passes CRC, exact member set, every member's
+length/hash, original raw selected-state bindings, four prior copies and exact
+rolled-back inventory. Raw receipt `staging-private-rehearsal.json` has SHA256
+`9eab8649d1c1c3bcfef418d29ca934277c42afe3f8bb896511b382cfb6fa291c`;
+ignored `host-independent.json` binds that receipt and current source hashes.
+The archive contains private original settings/rows and stays ignored/local.
+
+Cleanup and a following authenticated inspection agree that only these files
+remain outside the complete public web root, under private root
+`.ktk-staging-rehearsal-a8813221a09fe5440296dd9815dbaa59`:
+
+- `closed.json`:4030 bytes, SHA256
+  `09b258c3ed82555cf6a699626f787e547f1937d12190cbf0392a01f5cc226e21`.
+- `lifecycle.lock`:64 bytes, SHA256
+  `3f774bf1305e4ad5bd8e73ac2880b79da9c9b934317aeb5e2bd4ab68b6ec9635`.
+
+These intentional audit/replay-prevention files retain hash/status bindings,
+not raw selected rows or fixture/source/prior payload. Do not claim the whole
+private root is absent. Both cleanup results verify removal of those payloads. A separate read-only FTPS
+connection at17:37:16UTC also lists exactly those two regular files outside
+`/public_html`, retrieves both and independently verifies their lengths/hashes
+and closure/export/archive bindings. No raw rows or source/prior/fixture payload
+remain in that root. The first listing assertion rejects FTP's `.`/`cdir` and
+`..`/`pdir` entries; the retained listing proves that exact cause. The corrected
+reader recognizes only those exact metadata pairs and still rejects every
+additional regular file/directory/link. This reader performs zero writes.
+The own helper is removed only after an exact-source hash check; the client
+confirms MLSD and RETR absence. A separate fresh FTPS connection independently
+confirms the exact helper and own upload temporary are absent at17:32:42UTC,
+with zero writes. A progress-only reader happened after completion and refused
+its one-present-helper precondition; it read no helper body/private journal and
+is not a failed transaction or the dedicated absence proof.
+
+There are15 requests,14 validated complete responses and the one intended
+interruption response failure. Observed request durations are6.955..33.999s;
+the interrupt call is16.190s. These observations apply to this small fixture
+and do not establish a deadline/throughput guarantee for a full site release.
+Public application/activation/database writes and cache purges by the component
+are zero. Production is not contacted by this run and has no new helper/backup,
+WordPress-state capture, activation change or release. No build, public payload
+upload, discovery publication or purge is required for these source/docs changes.
+
+G02 remains partial: production-capable source/release coordination and a private
+production WordPress/changed-file backup still need preparation, then separate
+owner approval and production verification. Staging lacks the engine's active
+production marker; it was never inserted or removed. This tiny private active
+fixture is not the real2073-file host transaction, whole-database snapshot/restore
+or whole-release atomicity. C05 substantive activity copy, full public/manual
+T08, measured D02, account/physical/provider/inbox dependencies and the complete
+plan remain active. Both roadmaps retain60 verified website staging deliveries
+and unchanged C08 counts. Post-host local339 Python cases pass with10 Windows
+skips; repository/whitespace/app checks and all packet hashes remain exact. The
+updated roadmap passes317 browser checks, zero script errors/HTTP requests and
+zero automated accessibility violations with4 incomplete groups. Actual
+overview1440/details390 captures are inspected. Final source CI/exact PR merge
+and main CI remain; no host rerun/build/upload/purge is needed for documentation.
