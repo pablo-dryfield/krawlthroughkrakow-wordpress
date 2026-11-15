@@ -190,3 +190,46 @@ final body audit, and its attribution/consented product event already passed.
 The one case now explicitly expects an empty hash; every other case retains
 the exact `#book` default. No link, runtime, consent, timeout or application
 bytes changed. A fresh full attribution repeat is required before cache purge.
+
+## Origin And Cached Verification
+
+Full origin6193/6193 closed at02:59:39.019006UTC with348 DYNAMIC responses,
+119 assets and zero HTTP retries. Origin body232/cards1609 over40 views/
+forms501/corrected attribution444/discovery243/home10/icon21/ET20/social15 pass.
+Only `krawlthroughkrakow.com/staging/` was purged through the authenticated MCP
+at02:59:58.122UTC, after fresh API and exact active-zone/account validation.
+API acceptance and scope are retained in `staging-purge.json`.
+
+Normal body232/cards1609 over40 views/forms501/attribution444/discovery216/
+home10/icon21/ET20/social15 pass. Four normal axe views have zero violations
+and four incomplete groups requiring manual review. All six actual390px cached
+screenshots were visually inspected. Hen intro and guide-life closing match
+current local pixels exactly. Hen header39788/closing44682 and guide-life
+header35417/intro48112 differing pixels are confined to original photo/hero
+bands; no masks, tolerance, cause or old whole-page pixel-parity claim.
+Full normal route scan and subsequent warmed repeat remain pending. Both
+roadmaps still show50 verified deliveries; no count advance from focused tests.
+
+QA follow-up `5abc82b027ef8f72e0a1c3ffdf8c4f155334afcc` passes both required
+CI jobs in43670292465. A new offline unit pins the information-only empty-hash
+case and unchanged default; all345 shared JavaScript and215 Python tests pass.
+Application remains exactly `28b3f7d`; no second upload or purge is required
+for these QA/documentation changes.
+
+## Verified Delivery
+
+Full normal6193 closed at03:06:24.265651UTC with348 MISS responses; warmed
+repeat6193 closed03:08:19.627374UTC with all348 responses HIT. Each covers116
+routes and119 assets with zero HTTP retries. Discovery normal/repeat216 pass.
+All focused finite jobs are closed; root5184/5185 previews remain available.
+Application scope remains exactly11 files and source2386 passes after release.
+No further upload or purge is needed for final documentation.
+
+Both roadmaps now show51 verified staging deliveries. C08 remains partial:
+46 major revisions,2 targeted corrections/notices,1 held and7 awaiting
+substantive review. Catalog48/178 does not mean48 complete fact audits.
+The remaining seven are hotels2019/2020, European pub crawls, Budapest comparison,
+hen-party reviews, spa hotels, Halloween and the old best-bars/clubs guide.
+The alcohol-health article remains a separate explicit specialist hold.
+Final roadmap checks, required CI, exact-tree PR65 merge and completed-branch
+cleanup remain; website SEO is not promoted to production.
