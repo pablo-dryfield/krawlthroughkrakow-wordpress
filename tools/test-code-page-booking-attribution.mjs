@@ -47,6 +47,7 @@ if(!production)for(const slug of ['life-professional-drunk','hen-do-ideas-abroad
 if(!production)cases.push({path:'/hen-do-ideas-abroad/',selector:'[data-ktk-party-trip-review] a[href*="/food-tour-krakow-48/"]',destination:'/staging/store2/food-tour-krakow-48/',hash:'',product:48});
 if(!production)for(const slug of ['best-pub-crawls-in-europe','budapest-or-krakow-nightlife'])cases.push({path:'/'+slug+'/',selector:'[data-ktk-comparison-review] a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 if(!production)for(const slug of ['best-hotels-in-krakow-2019-2020','spa-hotels-krakow'])cases.push({path:'/'+slug+'/',selector:'[data-ktk-hotel-guides-review] a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
+if(!production)cases.push({path:'/tour-service-disclaimer/',selector:'[data-ktk-operator-copy] a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 let blockedWrites=0;
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{

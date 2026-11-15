@@ -24,6 +24,21 @@ body.ktk-code-page[data-ktk-page="stagshens"] #main-content [data-ktk-group-over
   body.ktk-code-page[data-ktk-page="stagshens"] #main-content [data-ktk-group-overview-review="2026-11-15.blog-group-1"] { padding-right: 24px; }
 }
 /* END Group enquiry overview */
+/* BEGIN Operator identity and trust */
+body.ktk-code-page #main-content :is([data-ktk-operator-details="2026-11-15.operator-trust-1"],[data-ktk-review-platform-links="2026-11-15.operator-trust-1"]) { font-size: 16px; line-height: 1.65; text-align: left; margin: 24px 0; }
+body.ktk-code-page #main-content :is([data-ktk-operator-details="2026-11-15.operator-trust-1"],[data-ktk-review-platform-links="2026-11-15.operator-trust-1"]) h2 { font-family: inherit; font-size: 22px; font-weight: 700; line-height: 1.35; margin: 0 0 12px; }
+body.ktk-code-page #main-content :is([data-ktk-operator-details="2026-11-15.operator-trust-1"],[data-ktk-review-platform-links="2026-11-15.operator-trust-1"]) p { font-size: 16px; line-height: 1.65; }
+body.ktk-code-page #main-content :is([data-ktk-operator-details="2026-11-15.operator-trust-1"],[data-ktk-review-platform-links="2026-11-15.operator-trust-1"]) dl { margin: 12px 0; }
+body.ktk-code-page #main-content :is([data-ktk-operator-details="2026-11-15.operator-trust-1"],[data-ktk-review-platform-links="2026-11-15.operator-trust-1"]) dt { font-weight: 700; }
+body.ktk-code-page #main-content :is([data-ktk-operator-details="2026-11-15.operator-trust-1"],[data-ktk-review-platform-links="2026-11-15.operator-trust-1"]) dd { margin: 0 0 10px; overflow-wrap: anywhere; }
+body.ktk-code-page #main-content :is([data-ktk-operator-details="2026-11-15.operator-trust-1"],[data-ktk-review-platform-links="2026-11-15.operator-trust-1"]) a { color: inherit; text-decoration: underline; text-underline-offset: .15em; }
+body.ktk-code-page #main-content :is([data-ktk-operator-details="2026-11-15.operator-trust-1"],[data-ktk-review-platform-links="2026-11-15.operator-trust-1"]) a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+body.ktk-code-page #main-content [data-ktk-review-platform-links="2026-11-15.operator-trust-1"] li a { display: inline-block; min-height: 44px; padding: 8px 0; box-sizing: border-box; }
+body.ktk-code-page #main-content [data-ktk-operator-copy="2026-11-15.operator-trust-1"]:not(h3):not(h5), body.ktk-code-page #main-content [data-ktk-operator-copy="2026-11-15.operator-trust-1"]:not(h3):not(h5) p { font-size: 16px; line-height: 1.65; text-align: left !important; }
+@media (max-width: 600px) {
+  body.ktk-code-page #main-content :is([data-ktk-operator-details="2026-11-15.operator-trust-1"],[data-ktk-review-platform-links="2026-11-15.operator-trust-1"]), body.ktk-code-page #main-content [data-ktk-operator-copy="2026-11-15.operator-trust-1"]:not(h3):not(h5) { padding-right: 24px; box-sizing: border-box; }
+}
+/* END Operator identity and trust */
 /* BEGIN Hotel guide planning */
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) p { font-size: 16px; line-height: 1.65; }

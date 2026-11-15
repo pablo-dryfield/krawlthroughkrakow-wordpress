@@ -22,6 +22,19 @@ installed reminder, scheduled automation or external account change.
 Use roles rather than inventing a named staff member. KTK may nominate an
 individual later without changing ownership of this process.
 
+## Confirmed Operator Identity
+
+On15 November the owner supplied
+[Kraktivity's registration](https://rejestr.io/krs/1084157/kraktivity) for the
+operator-identity review. The official public KRS extract confirms the legal
+name, KRS0001084157, NIP6762661275 and registered office. Maintained business
+fields and evidence are in `tools/site-operator-facts.json`; scope and release
+state are in [the operator/trust review](operator-trust-2026-11-15/README.md).
+The company's2024 registration is distinct from KTK's since2008 brand history.
+Do not infer guide credentials, copy personal officer/registry email details,
+change enquiry recipients or use the registered office as a crawl meeting point.
+Production approval and substantive legal/privacy review remain separate gates.
+
 ## Confirmed Enquiry Rules
 
 The owner confirmed on 14 November that the team responds after seeing an
@@ -92,6 +105,11 @@ an editorial cutoff work.
    actual release date; do not claim an unpublished staging change is live.
 
 ## Starting Register
+
+The [review and link maintenance handoff](REVIEW-AND-LINK-MAINTENANCE.md) contains
+neutral request wording, existing referral checks and one unsent factual
+correction draft. Account adoption, actual messages and current GSC follow-up
+remain owner work; it does not authorize outreach or change consent settings.
 
 | Item | State on 14 November 2026 | Next action |
 | --- | --- | --- |

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-11-15",
+  "legalName": "KRAKTIVITY SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ",
+  "krs": "0001084157",
+  "nip": "6762661275",
+  "regonFromKrs": "52758053500000",
+  "registeredOn": "2024-01-26",
+  "registeredOffice": {
+    "street": "ul. Cegielniana 4A/27",
+    "postalCode": "30-404",
+    "city": "Kraków",
+    "country": "Poland"
+  },
+  "publicRegisterUrl": "https://rejestr.io/krs/1084157/kraktivity",
+  "evidence": {
+    "ownerConfirmation": "Owner supplied this company's registry entry for the KTK operator-identity review on 15 November 2026.",
+    "officialUrl": "https://api-krs.ms.gov.pl/api/krs/OdpisAktualny/0001084157?rejestr=P&format=json",
+    "checkedAt": "2026-11-15T08:59:51.108318+00:00",
+    "httpStatus": 200,
+    "responseSha256": "22a0e6b738a1b7a3e44cafc45f7cc541c6b879d637f028d63dc2a3286ef697c6",
+    "recordStateOn": "2025-12-03",
+    "lastEntryOn": "2025-05-12"
+  }
+}
