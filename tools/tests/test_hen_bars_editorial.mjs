@@ -24,7 +24,7 @@ test('bars guide differentiates historical venues and current operator informati
 });
 
 test('hen/bars catalog adds exactly2 identities/6 cards with prior50/184 frozen', async () => {
-  const d = JSON.parse(await readFile(new URL('../reviewed-article-presentation.json', import.meta.url), 'utf8')), keys = ['post-krakow-hen-party-reviews', 'post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow'], old = {...d, articles: d.articles.filter(a => !keys.includes(a.key)), containers: d.containers.map(c => ({...c, cardKeys: c.cardKeys.filter(k => !keys.includes(k))}))};
+  const full = JSON.parse(await readFile(new URL('../reviewed-article-presentation.json', import.meta.url), 'utf8')), later = ['post-best-hotels-in-krakow-2019-2020', 'post-spa-hotels-krakow'], d = {...full, articles: full.articles.filter(a => !later.includes(a.key)), containers: full.containers.map(c => ({...c, cardKeys: c.cardKeys.filter(k => !later.includes(k))}))}, keys = ['post-krakow-hen-party-reviews', 'post-the-ultimate-guide-to-the-best-bars-and-clubs-in-krakow'], old = {...d, articles: d.articles.filter(a => !keys.includes(a.key)), containers: d.containers.map(c => ({...c, cardKeys: c.cardKeys.filter(k => !keys.includes(k))}))};
   assert.equal(old.articles.length, 50); assert.equal(old.containers.reduce((n, c) => n + c.cardKeys.length, 0), 184); assert.equal(createHash('sha256').update(JSON.stringify(old)).digest('hex'), '4df04f886bdc07ed8cc1a8d1453d4eb312c91fab8de1cf8223f7998bd03eb81b'); assert.equal(d.articles.length, 52); assert.equal(d.containers.reduce((n, c) => n + c.cardKeys.length, 0), 190); assert.equal(d.containers.filter(c => c.cardKeys.some(k => keys.includes(k))).length, 5);
 });
 
