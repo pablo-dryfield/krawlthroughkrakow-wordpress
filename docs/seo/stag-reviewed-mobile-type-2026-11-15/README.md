@@ -1,9 +1,9 @@
 # Readable Preserved Stag Text
 
-Status: appb285cb2 is published to staging, with independent backup/hash/
-protected-state checks complete. Origin full/forms and normal/warmed gates
-remain; this is not yet a verified staging delivery. Website61/C08 unchanged.
-The complete plan remains active.
+Status: verified staging delivery62. Appb285cb2 passes source CI, guarded
+publication, independent backup/hash/protected-state proof and all origin/normal/
+warmed gates. Both roadmaps advance to62; C08 stays unchanged. Production and
+manual/account/real-world dependencies remain; the complete goal stays active.
 
 PR82 is merged as `8631ea6c18934a33e9c5738b4dcce54c45827713`, exact final tree
 `bd2782f1abbd97214fb65c836d9a8d3cc5a6d251`. Final CI43749463189 and main
@@ -160,3 +160,69 @@ no source rebuild, upload repeat, discovery publication or purge has occurred.
 All origin jobs must close green before the MCP-only staging-prefix purge,
 normal/warmed verification, final roadmaps/CI and exact PR83 merge. Count61/C08
 and production/commerce/forms/functional-consent boundaries stay unchanged.
+
+
+## Verified Staging Delivery 62
+
+All origin jobs close green before the single MCP-only staging-prefix purge at
+19:27:37.753UTC15Nov, after the19:27:11 origin gate, fresh API specification and
+exact active zone/account checks. The only body is
+`{"prefixes":["krawlthroughkrakow.com/staging/"]}`; no production/domain-wide
+purge, account setting or further application publication occurs.
+
+Full6193/6193 checks finish19:25:33.566542 origin,19:34:00.145376 normal and
+19:36:22.152835UTC warmed repeat. All119 assets are current. The348 page
+responses are DYNAMIC/MISS/HIT respectively. Origin retains one recovered
+TimeoutError for the Krawl Through Krakow tag route; normal and repeat have
+zero retries. Discovery243/216/216 and homepage10 each phase, icons21/full-icon-
+font20/social-font15 origin and normal, forms501 and attribution500 origin and
+normal all pass. Source CI43751175190 and docs-only43752012988 both pass;
+the only12b1deb changes are AGENTS and this README, with app/build/harness exact
+to deployedb285cb2. No discovery build/publication is needed.
+
+Responsive local/origin/normal each pass335/335 across16 contexts. All14 normal
+and all14 origin PNGs are byte-identical to the individually inspected local
+captures. Normal brewery390/planning320 frames are separately reopened. No
+mask/tolerance, cause attribution or original whole-page pixel claim. Three
+normal automated accessibility views have zero violations/two incomplete
+groups each; physical-device/manual/assistive-technology checks remain open.
+
+All16 normal browser responses are DYNAMIC. Separate public desktop/Android/
+iPad HTTP checks at19:34:38..39 show three actual HTML HITs, exact current copy,
+seven preserved modules, unique form/noindex and current `v=00b896cf395d` CSS
+links. All CSS bytes match the local SHA, but the Android/iPad CSS responses
+are MISSes, so that first strict warmed proof passes only1/3. It remains intact.
+The19:35:18..19 warm repeat passes3/3: every HTML and CSS response is HIT and
+all CSS decoded SHA256 values match. Only its fresh output filename changes;
+all assertions and URLs are byte-inverse verified unchanged. No cache-key or
+transport cause is inferred, and no app edit/reupload/purge is made for this
+normal cache-warming observation. HIT proof and browser rendering are separate.
+
+`final-independent.json` at19:36:54.625297UTC verifies the phase order,
+current2073 Git/local/recorded server payload maps, unchanged publisher and
+four-entry rollback bindings, exact source/QA inputs, all counters, original
+timeout/two CSS MISSes, unchanged-assertion warm proof and every PNG hash.
+The rollback SHA remains
+`f621f471ed77e1a969725fb37b6a01647004fc048abac9399ed0bdf61d994109`.
+Both roadmaps record62 website staging deliveries, with C08 unchanged.
+
+An additional ignored read-only public menu lead runs eight homepage/contact
+1440/390 JS/no-JS contexts with zero page errors/non-read attempts and unchanged
+source. The first exploration follows viewport assumptions; a second fresh run
+selects controls by actual visibility and confirms the homepage compact toggle
+also exists at1440, matching its source1599px boundary. Enter/ArrowDown/Escape
+expose About Us/Gallery and restore focus in sampled JS menu modes. Those links
+are not visible in the sampled phone no-JS menus. Both raw runs remain. This
+is a navigation lead, not a full public/manual crawl, screenshot/real-device
+certification or an extra delivery. Next feasible work includes this no-JS/
+public navigation review, original-SVG delivery and production-capable release
+preparation. Actual operational terms, provider/inbox/manual/account needs and
+separate production approval remain. Final documentation checks/CI/exact PR83
+merge/main checks and branch cleanup are next; no rebuild/upload/purge needed.
+
+Final documentation validation passes13 source/model contracts,317 roadmap
+browser checks, repository policy and whitespace. The regenerated overview1440
+and details390 captures are inspected. Application/build/harness bytes stay
+exact to deployedb285cb2; final source CI, exact PR83 merge/main checks and
+completed-branch cleanup remain. These documentation gates require no further
+application generation, publication or purge.
