@@ -52,6 +52,7 @@ import {loadOperatorTrustEditorial,reviseOperatorTrustEditorial,buildOperatorTru
 import {loadEmbedFallbacks,reviseEmbedFallbacks,buildEmbedFallbackStyles} from './embed-fallbacks.mjs';
 import {loadJobsPageAccessibility,reviseJobsPageAccessibility,buildJobsPageAccessibilityStyles} from './jobs-page-accessibility.mjs';
 import {buildStagNyeTextStyles} from './stag-nye-text-styles.mjs';
+import {buildStagReviewedTextStyles} from './stag-reviewed-text-styles.mjs';
 import {codePageTitle,codePageHeadDescription,loadSharingImagePolicy,buildCodePageSharing} from './code-page-sharing.mjs';
 import {loadOfferPageRevisions,reviseOfferPages} from './offer-pages-editorial.mjs';
 import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
@@ -69,6 +70,7 @@ await buildOperatorTrustStyles(path.join(assets,'runtime.css'));
 await buildEmbedFallbackStyles(path.join(assets,'runtime.css'));
 await buildJobsPageAccessibilityStyles(path.join(assets,'runtime.css'));
 await buildStagNyeTextStyles(path.join(assets,'runtime.css'));
+await buildStagReviewedTextStyles(path.join(assets,'runtime.css'));
 await buildContactDetailsStyles(path.join(assets,'runtime.css'));
 await buildEstablishedNyeStyles(path.join(assets,'runtime.css'));
 await buildGroupPlanningStyles(path.join(assets,'runtime.css'));
