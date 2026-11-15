@@ -41,6 +41,14 @@ test('catalog adds exactly2 identities and6 bindings with prior46/172 frozen', a
   assert.equal(d.articles.length, 48); assert.equal(d.containers.reduce((n, c) => n + c.cardKeys.length, 0), 178); assert.equal(d.containers.filter(c => c.cardKeys.some(k => keys.includes(k))).length, 5);
 });
 
+test('hen food information link has an explicit empty-hash attribution case only', async () => {
+  const [, row] = await loadPartyTripEditorial(), harness = await readFile(new URL('../test-code-page-booking-attribution.mjs', import.meta.url), 'utf8');
+  assert.ok(row.markup.includes('href="__KTK_HOME_URL__store2/food-tour-krakow-48/"'));
+  assert.ok(harness.includes("destination:'/staging/store2/food-tour-krakow-48/',hash:'',product:48"));
+  assert.equal((harness.match(/hash:''/g) || []).length, 1);
+  assert.ok(harness.includes("href.hash===(item.hash??'#book')"));
+});
+
 test('held, active competition and prototype routes return before DOM access', () => {
   for (const key of ['other', 'constructor', '__proto__', 'toString', 'post-hostel-hangover-cure', 'post-welcome-to-alcohol', 'post-krawl-through-krakow-winter-newsletter']) {assert.deepEqual(revisePartyTripEditorial({key}), []); assert.deepEqual(revisePartyTripFeature({key}), []);}
 });

@@ -158,3 +158,35 @@ policy. Runtime/consent/commerce/form/privacy bytes remain exact. No staff
 contract, wage, housing, vacancy, clinical or fulfilment claim was invented.
 Required CI/manual staging/origin/normal/warmed/final roadmaps remain pending.
 No app commit, upload or purge yet. All finite local jobs are closed.
+
+## Manual Staging Release
+
+Application `28b3f7d99d56db31c95433dfcb06a58e541da501`, PR65, passed both
+required CI jobs in43669262826. GitHub did not deploy. Manual content release
+finished15 November2026 at02:50:08.995118UTC: all2073 owned files match Git,
+local bytes and remote SHA-256 independently. Saved WordPress content/settings,
+homepage and storefront are unchanged; the temporary helper was removed.
+Rollback `deploy-backups/ktk-code-pages-staging-20261115-024937.zip` has13
+entries, verified exact set, CRC and per-file SHA; archive SHA-256
+`1abda0bb2b6a74f1f416210bb5e8fdb08d179f60bfe63e0b319be28e95a7b521`.
+
+Discovery's three-file release finished02:51:18.022642UTC. All three Git/local/
+remote SHA values match;2324 protected staging and2158 production files are
+unchanged, helpers removed and no origin paths cleared by this publisher.
+Rollback `deploy-backups/seo-discovery-staging-20261115-025105-772918.zip`
+has4 verified entries, SHA-256
+`382ee27386dc02540f24ed31c920c9dc3181c104a46b2179653cfe417830da9d`.
+
+Post-publication source2386 and origin body232 pass. Full-route, card, form,
+attribution and discovery checks are still underway. Homepage10/icon21/ET20/
+social15 origin checks pass. No edge purge or delivery-count advance yet;
+origin completion, normal/warmed cache checks and final records remain.
+Production, commerce, consent, active competition and medical hold unchanged.
+
+Initial origin attribution443/444 is retained. Its universal `#book` expectation
+incorrectly treated the new hen Food Tour information link as a booking-anchor
+link. This link is intentionally information-only in the reviewed source and
+final body audit, and its attribution/consented product event already passed.
+The one case now explicitly expects an empty hash; every other case retains
+the exact `#book` default. No link, runtime, consent, timeout or application
+bytes changed. A fresh full attribution repeat is required before cache purge.

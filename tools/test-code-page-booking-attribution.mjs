@@ -43,7 +43,7 @@ const params={utm_source:'readiness-validation',utm_medium:'controlled-browser',
 if(!production)cases.push({path:'/krawl-through-krakow-winter-newsletter/',selector:'[data-ktk-story-review] a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});
 if(!production)for(const slug of ['life-professional-drunk','hen-do-ideas-abroad'])cases.push({path:'/'+slug+'/',selector:'[data-ktk-party-trip-review] a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
-if(!production)cases.push({path:'/hen-do-ideas-abroad/',selector:'[data-ktk-party-trip-review] a[href*="/food-tour-krakow-48/"]',destination:'/staging/store2/food-tour-krakow-48/',product:48});
+if(!production)cases.push({path:'/hen-do-ideas-abroad/',selector:'[data-ktk-party-trip-review] a[href*="/food-tour-krakow-48/"]',destination:'/staging/store2/food-tour-krakow-48/',hash:'',product:48});
 let blockedWrites=0;
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
@@ -61,7 +61,7 @@ try{
   check(item.path+' expected booking control exists',await anchor.count()===1);
   await anchor.evaluate(a=>a.click());
   const href=new URL(await anchor.getAttribute('href'));
-  check(item.path+' correct own destination',href.origin==='https://krawlthroughkrakow.com'&&href.pathname===item.destination&&href.hash==='#book',href.pathname);
+  check(item.path+' correct own destination',href.origin==='https://krawlthroughkrakow.com'&&href.pathname===item.destination&&href.hash===(item.hash??'#book'),href.pathname+href.hash);
   check(item.path+' attribution preserved',Object.entries(params).every(([key,value])=>href.searchParams.get(key)===value));
   check(item.path+' no legacy or QA-only visitor parameters',['u','flow','full-items','back','from-ssl','ktk_attribution_check'].every(key=>!href.searchParams.has(key)));
   check(item.path+' no navigation/submission',new URL(page.url()).pathname===prefix+item.path);
