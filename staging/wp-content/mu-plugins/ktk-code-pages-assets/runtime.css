@@ -50,6 +50,13 @@ body.ktk-code-page #main-content [data-ktk-embed-alternative] a:focus-visible { 
   body.ktk-code-page #main-content :is([data-ktk-embed-notice],[data-ktk-embed-alternative]) { padding-right: 24px; }
 }
 /* END Withheld embed alternatives */
+/* BEGIN Jobs page accessibility */
+body.ktk-code-page[data-ktk-page="pub-crawl-jobs"] #main-content [data-ktk-jobs-section] { line-height: 1.25; padding-bottom: 0; }
+@media (max-width: 600px) {
+  body.ktk-code-page[data-ktk-page="pub-crawl-jobs"] #main-content [data-ktk-jobs-copy] { box-sizing: border-box; padding-right: 24px; }
+  body.ktk-code-page[data-ktk-page="pub-crawl-jobs"] #main-content [data-ktk-jobs-section] { font-size: clamp(22px, 7vw, 30px); letter-spacing: .04em; }
+}
+/* END Jobs page accessibility */
 /* BEGIN Hotel guide planning */
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) p { font-size: 16px; line-height: 1.65; }

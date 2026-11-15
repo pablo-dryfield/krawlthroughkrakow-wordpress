@@ -5,7 +5,7 @@ No application, typography, heading, form, provider, consent or metadata change
 is made in this census. No new website delivery is counted.
 
 The current local preview is inspected at320/390/768/1440px. Source HTML,
-generated page data (which contains the captured styles), runtime CSS/JS and
+generated page data (which references the captured stylesheet), runtime CSS/JS and
 per-view responses are hash-bound; the source remains exact after inspection.
 Only local GET/HEAD requests are allowed. There are no real form messages,
 orders, native-provider navigation or account actions.
