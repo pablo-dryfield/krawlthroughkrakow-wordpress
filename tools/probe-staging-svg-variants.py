@@ -9,10 +9,25 @@ ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('ktk_svg_capability',ROOT/'tools/probe-staging-svg-delivery.py')
 cap=importlib.util.module_from_spec(spec);spec.loader.exec_module(cap)
 ORIGINALS={'regular':('hero-statue-regular.svg','95ae7ee6a4c5fc951a20493c159427598d3f28b810a95191ca846f72548e4c7c'),'seasonal':('hero-statue-seasonal.svg','a6071047938e6dc52afd0fadb026d85496f7d3d744b602b9a27a798567e07aa7')}
-FILES={'.htaccess'}|{stem+suffix for stem in ORIGINALS for suffix in ('.svg','.var','.identity','.br','.gz')}
+FILES={'.htaccess'}|{stem+suffix for stem in ORIGINALS for suffix in ('.svg','.identity','.br','.gz')}
 CASES=[('br',{'br'}),('gzip',{'gzip'}),('identity',{'identity'}),('br;q=0, gzip;q=1, identity;q=0',{'gzip'}),('gzip;q=0, br;q=1, identity;q=0',{'br'}),('br;q=0, gzip;q=0, identity;q=1',{'identity'}),('*;q=0, identity;q=1',{'identity'}),('br;q=0, gzip;q=0, identity;q=0',set())]
 
 def sha(value):return hashlib.sha256(value).hexdigest()
+
+def coding_pattern(coding,positive=True):
+ if coding not in ('br','gzip','identity','*'):raise ValueError('Fixed encoding token required')
+ quality=r'(1(\.0{0,3})?|0\.([1-9][0-9]{0,2}|0[1-9][0-9]?|00[1-9]))' if positive else r'0(\.0{0,3})?'
+ parameter=r'([ \t]*;[ \t]*q='+quality+')'+('?' if positive else '')
+ return r'(^|,)[ \t]*'+re.escape(coding)+parameter+r'[ \t]*(,|$)'
+
+def rewrite_policy():
+ # Server preference among acceptable codings is br, gzip, then identity.
+ # Positive fractional weights are accepted; this is not a max-weight sorter.
+ lines=[]
+ for coding,suffix in [('br','br'),('gzip','gz')]:
+  lines += [f'RewriteCond %{{HTTP:Accept-Encoding}} "{coding_pattern(coding)}" [NC,OR]',f'RewriteCond %{{HTTP:Accept-Encoding}} "{coding_pattern("*")}" [NC]',f'RewriteCond %{{HTTP:Accept-Encoding}} "!{coding_pattern(coding,False)}" [NC]',f'RewriteRule ^(regular|seasonal)\\.svg$ $1.{suffix} [L]']
+ lines += [f'RewriteCond %{{HTTP:Accept-Encoding}} "{coding_pattern("identity")}" [NC]',f'RewriteCond %{{HTTP:Accept-Encoding}} "!{coding_pattern("identity",False)}" [NC]','RewriteRule ^(regular|seasonal)\\.svg$ $1.identity [L]',f'RewriteCond %{{HTTP:Accept-Encoding}} "!{coding_pattern("identity",False)}" [NC]',f'RewriteCond %{{HTTP:Accept-Encoding}} "!{coding_pattern("*",False)}" [NC]','RewriteRule ^(regular|seasonal)\\.svg$ $1.identity [L]','RewriteRule ^(regular|seasonal)\\.svg$ - [R=406,L]']
+ return ('\n'.join(lines)+'\n').encode()
 
 def node_codec(mode,value):
  if mode not in ('compress','decompress'):raise ValueError('Fixed codec mode required')
@@ -27,8 +42,8 @@ def payload(token):
  config=cap.payload(token)['.htaccess'].replace(b'RewriteRule ^rewrite-test\\.txt$ control.txt [L]\n',b'')
  marker=b'<FilesMatch "^(control[.]txt|rewrite-test[.]txt)$">'
  if config.count(marker)!=1:raise RuntimeError('Exact probe policy anchor required')
- config=config.replace(marker,b'<FilesMatch "^(regular|seasonal)[.](svg|var|identity|br|gz)$">',1)
- config+=b'AddHandler type-map .var\nAddType image/svg+xml .identity .br .gz\nAddEncoding br .br\nAddEncoding gzip .gz\n<IfModule mod_env.c>\nSetEnv no-gzip 1\nSetEnv no-brotli 1\n</IfModule>\n<IfModule mod_headers.c>\nHeader merge Vary Accept-Encoding\n</IfModule>\n'
+ config=config.replace(marker,b'<FilesMatch "^(regular|seasonal)[.](svg|identity|br|gz)$">',1)
+ config+=b'AddType image/svg+xml .identity .br .gz\nAddEncoding br .br\nAddEncoding gzip .gz\n<IfModule mod_env.c>\nSetEnv no-gzip 1\nSetEnv no-brotli 1\n</IfModule>\n<IfModule mod_headers.c>\nHeader merge Vary Accept-Encoding\n</IfModule>\n'
  files={}
  for stem,(name,digest) in ORIGINALS.items():
   raw=(ROOT/'staging/wp-content/mu-plugins/ktk-homepage-assets'/name).read_bytes()
@@ -36,10 +51,9 @@ def payload(token):
   br,gz=encoded(raw);assert node_codec('decompress',br)==raw and gzip.decompress(gz)==raw
   files[stem+'.identity']=raw;files[stem+'.br']=br;files[stem+'.gz']=gz
   files[stem+'.svg']=b'<svg xmlns="http://www.w3.org/2000/svg"><desc>Unrewritten probe; not the expected original</desc></svg>\n'
-  files[stem+'.var']=(f'URI: {stem}.identity\nContent-Type: image/svg+xml\n\nURI: {stem}.br\nContent-Type: image/svg+xml\nContent-Encoding: br\n\nURI: {stem}.gz\nContent-Type: image/svg+xml\nContent-Encoding: gzip\n\n').encode()
-  config+=f'RewriteRule ^{stem}\\.svg$ {stem}.var [L]\n'.encode()
+ config+=rewrite_policy()
  files['.htaccess']=config
- if set(files)!=FILES:raise RuntimeError('Exact eleven-file probe required')
+ if set(files)!=FILES:raise RuntimeError('Exact nine-file probe required')
  return files
 
 class VariantProbe(cap.IsolatedProbe):
