@@ -256,6 +256,18 @@
       "postId": 6396,
       "route": "/krakow-team-building-activities/",
       "summary": "Choose a Krakow team outing by its format, group needs and practical arrangements. Compare city hunts, laser tag, escape rooms and a KTK social evening without promising automatic business results."
+    },
+    {
+      "key": "post-escape-rooms-for-a-stag-do-in-krakow",
+      "postId": 6132,
+      "route": "/escape-rooms-for-a-stag-do-in-krakow/",
+      "summary": "Choose an escape room for your Krakow stag do by comparing themes, team sizes, language and booking conditions. Plan the puzzle session and your KTK night out as separate arrangements."
+    },
+    {
+      "key": "post-krakow-shooting-range",
+      "postId": 6163,
+      "route": "/krakow-shooting-range/",
+      "summary": "Plan a Krakow shooting-range booking through KTK: compare the current product and confirm participation conditions, timings and inclusions for your group before paying."
     }
   ],
   "containers": [
@@ -353,6 +365,7 @@
       "captureSha256": "d444065b28e1ff74d4571f44e9873fea2316ef8481c80fe38d3f66c2a0967982",
       "key": "archive-author-dpbowman-page-4",
       "cardKeys": [
+        "post-krakow-shooting-range",
         "post-krakow-winter-activities",
         "post-irish-bars-krakow",
         "post-krakow-safety-guide",
@@ -385,6 +398,7 @@
       "captureSha256": "8b57d96793e50623d6a0f84a61a17240d05e12bdf1d43b7ddacee1e7e41397eb",
       "key": "archive-author-dpbowman-page-7",
       "cardKeys": [
+        "post-escape-rooms-for-a-stag-do-in-krakow",
         "post-krakow-nightclubs",
         "post-krakow-techno-clubs",
         "post-krakow-free-activities-2"
@@ -447,6 +461,7 @@
       "cardKeys": [
         "post-krakow-budget-activities",
         "post-sports-bar-krakow",
+        "post-escape-rooms-for-a-stag-do-in-krakow",
         "post-krakow-free-activities-2",
         "post-krakow-wine-bars",
         "post-weekend-in-krakow"
@@ -489,6 +504,7 @@
       "cardKeys": [
         "post-krakow-techno-clubs-2",
         "post-krakow-live-music",
+        "post-krakow-shooting-range",
         "post-krakow-winter-activities",
         "post-irish-bars-krakow",
         "post-krakow-safety-guide"
@@ -529,6 +545,7 @@
         "post-krakow-team-building-activities",
         "post-the-ultimate-guide-to-dating-in-nightlife-krakow",
         "post-krakow-milkbars",
+        "post-krakow-shooting-range",
         "post-krakow-safety-guide",
         "post-krakow-food-truck-parks",
         "post-krakow-budget-activities",
@@ -547,6 +564,7 @@
         "post-hostel-etiquette-tips",
         "post-sports-bar-krakow",
         "post-krakow-stag-activities",
+        "post-escape-rooms-for-a-stag-do-in-krakow",
         "post-krakow-free-activities-2",
         "post-best-places-to-eat",
         "post-2020-krakow-nightlife-guide",

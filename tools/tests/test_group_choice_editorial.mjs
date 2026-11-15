@@ -19,7 +19,8 @@ test('three group drafts bind original captures,45 topics and20 ordered photo sl
 test('organiser guidance distinguishes real quotes from blanket inclusion claims', async () => {
   const [r] = await loadGroupChoiceEditorial();
   assert.match(r.markup, /confirmed individually in each quote/); assert.match(r.markup, /Do not assume accommodation, transport or a free place/);
-  assert.match(r.markup, /does not establish today's KTK operator/); assert.match(r.markup, /no-intoxicants policy/);
+  assert.match(r.markup, /store2\/shooting-range-34\/#book/); assert.match(r.markup, /sobriety requirements/);
+  assert.doesNotMatch(r.markup, /shootingcracow|Cracow Shooting Academy/);
   for (const url of ['https://axenation.com.pl/en/faq-en/', 'https://fearfactory.com.pl/pl/', 'store2/pub-crawl-28/#book']) assert.ok(r.markup.includes(url));
   assert.doesNotMatch(r.markup, /Barrett|M4A1|Glock|Beretta|unlimited samples of our|take care of all logistical/);
 });
@@ -52,7 +53,7 @@ test('missing or stale group identities reject before DOM access', async () => {
 });
 
 test('previous39 identities and150 summaries retain their exact normalized source binding', async () => {
-  const raw = JSON.parse(await readFile(new URL('../reviewed-article-presentation.json', import.meta.url), 'utf8')), keys = ['post-bachelor-party-organisers-krakow', 'post-krakow-stag-activities', 'post-krakow-team-building-activities'];
+  const full = JSON.parse(await readFile(new URL('../reviewed-article-presentation.json', import.meta.url), 'utf8')), later = ['post-escape-rooms-for-a-stag-do-in-krakow','post-krakow-shooting-range'], raw = {...full, articles: full.articles.filter(a => !later.includes(a.key)), containers: full.containers.map(c => ({...c, cardKeys: c.cardKeys.filter(k => !later.includes(k))}))}, keys = ['post-bachelor-party-organisers-krakow', 'post-krakow-stag-activities', 'post-krakow-team-building-activities'];
   const inverse = {...raw, articles: raw.articles.filter(a => !keys.includes(a.key)), containers: raw.containers.map(c => ({...c, cardKeys: c.cardKeys.filter(k => !keys.includes(k))}))};
   assert.equal(inverse.articles.length, 39); assert.equal(inverse.containers.reduce((n, c) => n + c.cardKeys.length, 0), 150);
   assert.equal(createHash('sha256').update(JSON.stringify(inverse)).digest('hex'), 'a0ade523186dbab3efcf5e04560083eb5c483612decaf42ec00c74b1df456eb6');
