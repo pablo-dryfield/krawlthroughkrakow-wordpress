@@ -88,3 +88,83 @@ path precision, asset URL, response encoding or application file is modified.
 Next work must preserve the exact artwork and establish a controlled current
 before/after comparison for any delivery/priority/font candidate. No new source
 edit, backup or implementation is started during this read-only baseline.
+
+## Browser-Only Priority Experiment: No Application Change
+
+The prior embed batch is merged as PR74 / `467d49e0f4515d33dba392d9cfdef5d7b16581a4`,
+exact tree `42b5f50331634e2b82f8705e53c77abb354ed037`. Final PR CI43714260072
+and main43714382387 pass both jobs. The completed branch is removed. The next
+source-only branch is `codex/staging-homepage-priority`.
+
+Before adding the probe, the complete tracked-source archive verifies3,470
+Git/local/ZIP blobs,3,702 ZIP entries and CRC. Archive
+`deploy-backups/seo-homepage-priority-before-20261115.zip` is499,974,532 bytes,
+SHA256 `d34a9b8780e5f9b300efe94e00ec23febe5c92f9550c9aa35f96e1807c4dfd00`.
+This preserves tracked code; it is not a database or whole-host backup.
+
+[Current primary Fetch Priority guidance](https://web.dev/articles/fetch-priority)
+describes browser hints rather than guaranteed scheduling. A measured prototype
+therefore precedes any proposed application change. The maintained read-only
+`tools/probe-homepage-hero-priority.mjs` intercepts only the normal staging main
+document in a fresh browser context. Both arms fetch/fulfil that document in
+the same way. The candidate changes one seasonal image hint from high to low;
+an exact inverse must reproduce the original HTML SHA. It never modifies a
+server, source SVG, consent preference, application file or account setting.
+
+The six-run order is control/low/low/control/control/low. Chrome157 headless,
+390x844/DPR3/mobile-touch, CPU4x and explicit CDP1.6Mbps down/750Kbps up/150ms
+latency are applied to both arms. Browser HTTP cache is disabled. Main-document
+fetch/fulfilment bypasses browser throttling in both arms, so these observations
+must **not** be compared numerically with the earlier native DevTools baseline.
+Live GET providers remain variable. All30 non-read attempts are intercepted;
+there is no form, order, account action or consent click. Query strings are
+omitted from non-asset request records in the reviewed probe.
+
+The first control stops8/9 because the probe calls an unavailable consent-reading
+method and gets null. Its report and initial script are retained under
+`priority-prototype-1`; no application is changed. The current preferences API
+is inspected directly and the read corrected to
+`getPreferences().purposes[3]`. A separate new evidence directory preserves the
+reviewed six-run result; purpose3 is actually false in every run. A failed
+patch-context check and a quoting syntax error also stop before source writes.
+
+The reviewed probe closes12:37:45.969UTC on15Nov with61/61 checks and frozen
+probe SHA256 `044c1400e17bd88631803204ef36ae3d7270ad651bc31717d0ccebdae785606d`.
+Raw reports, document captures and request priority events are retained under
+`priority-prototype-reviewed`. The browser observes initial High/High for every
+control and High/Low for every candidate, without subsequent priority changes.
+Both SVGs decode, retain their original resource sizes and have identical DOM
+geometry across the six contexts.
+
+| Observation | High/high control | High/low prototype |
+| --- | --- | --- |
+|LCP ms, three runs|8524 /8128 /8692|8632 /8212 /8436|
+|Median LCP ms|8524|8436|
+|Median regular-SVG load ms|7422.4|7433.1|
+|Median seasonal-SVG load ms|4539.4|6373.8|
+|CLS, every run|0.0021608|0.0021608|
+
+The88ms median LCP difference is small relative to observed variation, and the
+regular resource load is effectively unchanged. The visible seasonal resource
+finishes about1,834ms later. **Do not implement this candidate:** the experiment
+does not establish a useful speed improvement and worsens seasonal delivery.
+All application bytes, original vector files and high/high hints remain exact.
+No build, upload, purge or extra staging delivery occurs; both roadmaps stay58.
+
+Both captured phone PNGs are actually inspected. The control shows the native
+consent overlay; the low-arm PNG omits much text and artwork despite the decoded
+DOM measurements. Its paint/capture cause is unestablished. That PNG is rejected
+as visual-parity evidence. The61 checks certify only their named document,
+source, resource, priority and preference observations, not complete visual or
+functional equivalence. No accessibility conformance or field-CWV claim follows.
+
+D02 remains open. Other delivery/font candidates need separate controlled
+measurements and exact artwork/glyph checks. The authenticated protected-state
+release wrapper and its staging rehearsal also remain feasible G02 work; no
+production update or owner approval is implied by this source-only experiment.
+
+Final source-only checks pass: roadmap317/317 after the last plan update,
+Python264 with4 local Windows-symlink skips, probe syntax, repository policy
+and diff whitespace. The actual1440px task-details render is inspected.
+Independent receipt rechecks the frozen probe, every document inverse, both
+exact original SVG Git/local bytes and empty application diff. CI/merge remain.
