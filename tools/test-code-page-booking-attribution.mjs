@@ -42,6 +42,8 @@ if(!production)for(const [slug,index,marker] of [['krakow-shooting-range',0,'act
 const params={utm_source:'readiness-validation',utm_medium:'controlled-browser',utm_campaign:production?'production-link-handoff':'staging-link-handoff',gclid:'isolated-validation-click'};
 if(!production)cases.push({path:'/krawl-through-krakow-winter-newsletter/',selector:'[data-ktk-story-review] a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});
+if(!production)for(const slug of ['life-professional-drunk','hen-do-ideas-abroad'])cases.push({path:'/'+slug+'/',selector:'[data-ktk-party-trip-review] a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
+if(!production)cases.push({path:'/hen-do-ideas-abroad/',selector:'[data-ktk-party-trip-review] a[href*="/food-tour-krakow-48/"]',destination:'/staging/store2/food-tour-krakow-48/',product:48});
 let blockedWrites=0;
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{

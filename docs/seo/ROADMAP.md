@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 50 |
-| In progress | 1 |
+| In progress | 2 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Practical guide-life and hen-trip planning](party-trip-planning-2026-11-15/README.md) | C08, C06, T01, T06, T08, D03, D05, T10 | In progress (website) | Not yet | Required CI, manual staging/origin/normal/warmed verification and final roadmap update remain.50 verified deliveries/C08 counts do not advance for local checks. Manual review and separate production approval remain; commerce, consent, active competition, medical hold and Halloween are unchanged. |
 | [Active competition and clearer newsletter context](competition-newsletter-2026-11-15/README.md) | C08, T01, T06, T08, D03, D05, D06, T10 | Verified on staging (website) | 2026-11-15 | Remaining article facts, competition terms review, manual accessibility, owner review and separate production approval. Existing reduced-motion slider animation is a recorded D03 follow-up. No rules, provider receipt, whole-page pixel, commerce or consent guarantees. Medical hold and active competition remain protected. |
 | [Useful escape-room and shooting booking guides](activity-booking-guides-2026-11-15/README.md) | C08, C06, T01, T06, T08, D03, D05, T10 | Verified on staging (website) | 2026-11-15 | Remaining article and package facts, manual accessibility, owner review and separate production approval. No firearms lesson, fulfilment assignment, inclusion, whole-page pixel, commerce or consent guarantee. The active competition and specialist hold remain unchanged. |
 | [Useful stag-organiser, activity and team-outing guides](group-choice-guides-2026-11-15/README.md) | C08, C06, T01, T06, T08, D03, D05, T10 | Verified on staging (website) | 2026-11-15 | Remaining article and package facts, manual accessibility, owner review and separate production approval. No bundled-attraction, free-groom, business-outcome, whole-page pixel, commerce or consent guarantee. The active competition and specialist hold remain unchanged. |

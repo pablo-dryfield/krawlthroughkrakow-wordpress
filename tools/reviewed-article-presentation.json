@@ -280,6 +280,18 @@
       "postId": 1515,
       "route": "/krawl-through-krakow-winter-newsletter/",
       "summary": "An earlier KTK winter newsletter with its original photos, clear historical context and current links for NYE, Halloween, student trips, jobs and the still-active Big Prize Competition."
+    },
+    {
+      "key": "post-life-professional-drunk",
+      "postId": 1305,
+      "route": "/life-professional-drunk/",
+      "summary": "The stories behind an old KTK nickname, with current joining and jobs links, practical guest questions and a focus on meeting people rather than drinking competitions."
+    },
+    {
+      "key": "post-hen-do-ideas-abroad",
+      "postId": 6392,
+      "route": "/hen-do-ideas-abroad/",
+      "summary": "Plan a Krakow hen trip around your group, budget, accommodation and verified venue information. Distinguish private enquiries from regular pub-crawl tickets and check current arrangements before booking."
     }
   ],
   "containers": [
@@ -292,6 +304,7 @@
       "captureSha256": "a6e55947deb0e149824878041c74f4ace26ca7bf3acf3c06c5d54e51c3c01cd7",
       "key": "archive-category-hen-do",
       "cardKeys": [
+        "post-hen-do-ideas-abroad",
         "post-bachelor-party-organisers-krakow"
       ]
     },
@@ -359,7 +372,8 @@
       "captureSha256": "1748cd0c66c3e66b17c6eff6b3642ba99ccc48f726f93c1cb01915af0be2f2ab",
       "key": "archive-author-dpbowman-page-2",
       "cardKeys": [
-        "post-krakow-bars-jewish-quarter"
+        "post-krakow-bars-jewish-quarter",
+        "post-hen-do-ideas-abroad"
       ]
     },
     {
@@ -466,6 +480,7 @@
       "key": "archive-author-thirsty",
       "cardKeys": [
         "post-welcome-to-alcohol",
+        "post-life-professional-drunk",
         "post-stages-of-drunkenness"
       ]
     },
@@ -552,7 +567,8 @@
       "key": "archive-category-uncategorized-page-5",
       "cardKeys": [
         "post-krawl-through-krakow-winter-newsletter",
-        "post-welcome-to-alcohol"
+        "post-welcome-to-alcohol",
+        "post-life-professional-drunk"
       ]
     },
     {
@@ -572,6 +588,7 @@
         "post-best-drinking-games",
         "post-all-you-need-to-know-about-visiting-auschwitz",
         "post-krakow-new-years-eve",
+        "post-life-professional-drunk",
         "post-stag-do-costume",
         "post-go-karting-krakow",
         "post-krakow-shot-bar",
@@ -591,6 +608,7 @@
         "post-stag-pranks",
         "post-new-years-eve-in-krakow",
         "post-krakow-bars-jewish-quarter",
+        "post-hen-do-ideas-abroad",
         "post-jazz-bars-in-krakow",
         "post-krakow-live-music",
         "post-irish-bars-krakow",
