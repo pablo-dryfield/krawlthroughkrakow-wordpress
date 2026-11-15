@@ -40,6 +40,7 @@ if(production)for(const item of cases)item.destination=item.destination.replace(
 if(!production)for(const slug of ['escape-rooms-for-a-stag-do-in-krakow','krakow-shooting-range'])cases.push({path:'/'+slug+'/',selector:'[data-ktk-activity-booking-review] a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 if(!production)for(const [slug,index,marker] of [['krakow-shooting-range',0,'activity-booking'],['krakow-shooting-range',1,'activity-booking'],['bachelor-party-organisers-krakow',0,'group-choice'],['krakow-stag-activities',0,'group-choice']])cases.push({path:'/'+slug+'/',selector:'[data-ktk-'+marker+'-review] a[href*="/shooting-range-34/"]',index,destination:'/staging/store2/shooting-range-34/',product:34});
 const params={utm_source:'readiness-validation',utm_medium:'controlled-browser',utm_campaign:production?'production-link-handoff':'staging-link-handoff',gclid:'isolated-validation-click'};
+if(!production)cases.push({path:'/krawl-through-krakow-winter-newsletter/',selector:'[data-ktk-story-review] a[href*="/pub-crawl-28/"]',destination:'/staging/store2/pub-crawl-28/',product:28});
 const checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail});
 let blockedWrites=0;
 const browser=await chromium.launch({channel:'chrome',headless:true});

@@ -268,6 +268,18 @@
       "postId": 6163,
       "route": "/krakow-shooting-range/",
       "summary": "Plan a Krakow shooting-range booking through KTK: compare the current product and confirm participation conditions, timings and inclusions for your group before paying."
+    },
+    {
+      "key": "post-welcome-to-alcohol",
+      "postId": 1271,
+      "route": "/welcome-to-alcohol/",
+      "summary": "Send your best night-out story to Krawl Through Krakow's active Big Prize Competition. See the confirmed prizes and entry form; there is no entry deadline currently set."
+    },
+    {
+      "key": "post-krawl-through-krakow-winter-newsletter",
+      "postId": 1515,
+      "route": "/krawl-through-krakow-winter-newsletter/",
+      "summary": "An earlier KTK winter newsletter with its original photos, clear historical context and current links for NYE, Halloween, student trips, jobs and the still-active Big Prize Competition."
     }
   ],
   "containers": [
@@ -445,6 +457,7 @@
       "captureSha256": "2b759cf71d58e6341753500055f60727f0428c8a440acf16973047f33ba13cb2",
       "key": "archive-author-pubthroughkrakow-page-2",
       "cardKeys": [
+        "post-krawl-through-krakow-winter-newsletter",
         "post-survive-pub-crawl"
       ]
     },
@@ -452,6 +465,7 @@
       "captureSha256": "5145f38b1b2eaa71313c6277038373a476d14e3ca34027b0762abdcdf0b22a6b",
       "key": "archive-author-thirsty",
       "cardKeys": [
+        "post-welcome-to-alcohol",
         "post-stages-of-drunkenness"
       ]
     },
@@ -536,7 +550,10 @@
     {
       "captureSha256": "9c829af0f22a00368d6bc3517eb590195a300ca99ef3bdd27755d1f33cb3550e",
       "key": "archive-category-uncategorized-page-5",
-      "cardKeys": []
+      "cardKeys": [
+        "post-krawl-through-krakow-winter-newsletter",
+        "post-welcome-to-alcohol"
+      ]
     },
     {
       "captureSha256": "938e5e17b59d1d22ad375e9dd90f817dc42e32c1004a54bb2806961a87bb7576",
@@ -569,6 +586,7 @@
         "post-best-places-to-eat",
         "post-2020-krakow-nightlife-guide",
         "post-travel-krakow-your-comprehensive-city-guide",
+        "post-krawl-through-krakow-winter-newsletter",
         "post-stages-of-drunkenness",
         "post-stag-pranks",
         "post-new-years-eve-in-krakow",
@@ -585,6 +603,7 @@
         "post-party-krakow",
         "post-krakow-weather-guide",
         "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
+        "post-welcome-to-alcohol",
         "post-survive-pub-crawl"
       ]
     },

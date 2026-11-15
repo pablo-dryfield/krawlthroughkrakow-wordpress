@@ -7,6 +7,21 @@
 }
 /* END Memorial visitor guide */
 
+/* BEGIN Competition newsletter guidance */
+body.ktk-code-page:is([data-ktk-page="post-welcome-to-alcohol"],[data-ktk-page="post-krawl-through-krakow-winter-newsletter"]) #main-content .entry-content[data-ktk-story-review] .et_pb_text_inner { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
+body.ktk-code-page:is([data-ktk-page="post-welcome-to-alcohol"],[data-ktk-page="post-krawl-through-krakow-winter-newsletter"]) #main-content .entry-content[data-ktk-story-review] .et_pb_text_inner p { font-size: 16px; line-height: 1.65; }
+body.ktk-code-page:is([data-ktk-page="post-welcome-to-alcohol"],[data-ktk-page="post-krawl-through-krakow-winter-newsletter"]) #main-content .entry-content[data-ktk-story-review] .et_pb_text_inner :is(h2,h3) { font-family: inherit; font-weight: 700; line-height: 1.35; letter-spacing: 0; margin: 24px 0 12px; }
+body.ktk-code-page:is([data-ktk-page="post-welcome-to-alcohol"],[data-ktk-page="post-krawl-through-krakow-winter-newsletter"]) #main-content .entry-content[data-ktk-story-review] .et_pb_text_inner h2 { font-size: 22px; }
+body.ktk-code-page:is([data-ktk-page="post-welcome-to-alcohol"],[data-ktk-page="post-krawl-through-krakow-winter-newsletter"]) #main-content .entry-content[data-ktk-story-review] .et_pb_text_inner h3 { font-size: 18px; }
+body.ktk-code-page:is([data-ktk-page="post-welcome-to-alcohol"],[data-ktk-page="post-krawl-through-krakow-winter-newsletter"]) #main-content .entry-content[data-ktk-story-review] .et_pb_text_inner nav { margin: 1em 0; }
+body.ktk-code-page:is([data-ktk-page="post-welcome-to-alcohol"],[data-ktk-page="post-krawl-through-krakow-winter-newsletter"]) #main-content .entry-content[data-ktk-story-review] .et_pb_text_inner summary { cursor: pointer; min-height: 44px; padding: 8px 0; font-weight: 700; }
+body.ktk-code-page:is([data-ktk-page="post-welcome-to-alcohol"],[data-ktk-page="post-krawl-through-krakow-winter-newsletter"]) #main-content .entry-content[data-ktk-story-review] .et_pb_text_inner a { color: #c8006c !important; text-decoration: underline; text-underline-offset: .15em; }
+body.ktk-code-page:is([data-ktk-page="post-welcome-to-alcohol"],[data-ktk-page="post-krawl-through-krakow-winter-newsletter"]) #main-content .entry-content[data-ktk-story-review] .et_pb_text_inner :is(summary,a):focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+@media (max-width: 600px) {
+  body.ktk-code-page:is([data-ktk-page="post-welcome-to-alcohol"],[data-ktk-page="post-krawl-through-krakow-winter-newsletter"]) #main-content .entry-content[data-ktk-story-review] .et_pb_text_inner { padding-right: 24px; }
+}
+/* END Competition newsletter guidance */
+
 /* BEGIN Activity booking guides */
 body.ktk-code-page:is([data-ktk-page="post-escape-rooms-for-a-stag-do-in-krakow"],[data-ktk-page="post-krakow-shooting-range"]) #main-content .entry-content[data-ktk-activity-booking-review] { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
 body.ktk-code-page:is([data-ktk-page="post-escape-rooms-for-a-stag-do-in-krakow"],[data-ktk-page="post-krakow-shooting-range"]) #main-content .entry-content[data-ktk-activity-booking-review] p { font-size: 16px; line-height: 1.65; }

@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-15T00:29:38.725Z",
+  "startedAt": "2026-11-15T01:39:14.763Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -3175,6 +3175,15 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "competition-newsletter-review",
+          "key": "post-krawl-through-krakow-winter-newsletter",
+          "reviewedOn": "2026-11-15",
+          "textInteriors": 12,
+          "retainedPhotos": 10,
+          "retainedForms": 0,
+          "nativeContentsTargets": 5
         }
       ],
       "bookings": [
@@ -4397,6 +4406,15 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "competition-newsletter-review",
+          "key": "post-welcome-to-alcohol",
+          "reviewedOn": "2026-11-15",
+          "textInteriors": 3,
+          "retainedPhotos": 0,
+          "retainedForms": 1,
+          "nativeContentsTargets": 0
         }
       ],
       "bookings": [
@@ -5786,6 +5804,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-krawl-through-krakow-winter-newsletter",
+          "postId": 1515,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-survive-pub-crawl",
           "postId": 1115,
           "reviewedOn": "2026-11-14",
@@ -5836,6 +5861,13 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-welcome-to-alcohol",
+          "postId": 1271,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "reviewed-article-summary",
@@ -6465,6 +6497,20 @@
           "id": ""
         },
         {
+          "type": "reviewed-article-summary",
+          "key": "post-krawl-through-krakow-winter-newsletter",
+          "postId": 1515,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-welcome-to-alcohol",
+          "postId": 1271,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
           "type": "floating-booking-landmark"
         },
         {
@@ -6906,6 +6952,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-krawl-through-krakow-winter-newsletter",
+          "postId": 1515,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-stages-of-drunkenness",
           "postId": 1276,
           "reviewedOn": "2026-11-14",
@@ -7013,6 +7066,13 @@
           "type": "reviewed-article-summary",
           "key": "post-six-reasons-you-need-to-party-with-the-krawl-through-krakow",
           "postId": 1941,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-welcome-to-alcohol",
+          "postId": 1271,
           "reviewedOn": "2026-11-14",
           "format": "paragraph"
         },
@@ -10505,7 +10565,7 @@
       "/testimonials/",
       "/tour-service-disclaimer/"
     ],
-    "sourceSha256": "c2364f07335ea5a01aba5301d133e06517b062ca30f2f277ed4839ed85c44b98"
+    "sourceSha256": "b93003ac289e00ab4e0e30001b9e52f624c054fcce8881d076e54e56f0535834"
   },
   "reviewedRedirects": [
     {
@@ -10521,5 +10581,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-15T00:30:38.590Z"
+  "finishedAt": "2026-11-15T01:40:16.907Z"
 }

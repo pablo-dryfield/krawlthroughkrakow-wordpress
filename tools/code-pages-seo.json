@@ -247,8 +247,8 @@
       "description": "Explore our weekend-in-Krakow guide for sightseeing, activity and nightlife ideas to consider when planning a city break."
     },
     "/welcome-to-alcohol/": {
-      "role": "Historical competition announcement; no active prize or entry invitation",
-      "description": "From the archive: Krawl Through Krakow's night-out story competition and the party tales it invited guests to share."
+      "role": "Active night-out story competition; owner-confirmed prizes and no entry deadline",
+      "description": "Share your best night-out story in Krawl Through Krakow's Big Prize Competition. View the prizes and enter online; no entry deadline is currently set."
     },
     "/blog/": {
       "role": "Editorial discovery page for existing articles, not a booking landing page",
