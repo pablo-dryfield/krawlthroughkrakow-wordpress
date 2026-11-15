@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 54 |
-| In progress | 1 |
+| In progress | 2 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Respect reduced-motion preferences in slider content](reduced-motion-sliders-2026-11-15/README.md) | D03, T10 | In progress (website) | Not yet | Required CI and guarded staging publication, origin/normal/warmed verification remain; no deployment/purge yet. All content, photos, runtime, homepage styles, commerce, functional consent, active competition, medical hold and production remain unchanged. No whole-page pixel or complete manual-accessibility claim. |
 | [Historical hotel shortlist and practical spa planning](hotel-guides-2026-11-15/README.md) | C08, T01, T06, T08, D03, D05, T10 | Verified on staging (website) | 2026-11-15 | Halloween facts, manual accessibility, owner review and separate production approval remain. No live hotel rate, medical benefit, KTK spa bundle or full-page pixel guarantee. Commerce, functional consent, medical hold and active competition stay unchanged;54/197 summary coverage is not54 full fact audits. |
 | [Hen planning and historical bars guide](hen-reviews-bars-2026-11-15/README.md) | C08, C06, T01, T06, T08, D03, D05, T10 | Verified on staging (website) | 2026-11-15 | Manual review, remaining hotel/Halloween facts and separate production approval remain. Commerce, functional consent, medical hold and active competition are unchanged; unverified testimonials are not invented. |
 | [European pub-crawl choices and Budapest comparison](nightlife-comparisons-2026-11-15/README.md) | C08, T01, T06, T08, D03, D05, T10 | Verified on staging (website) | 2026-11-15 | Europe duplicate outer title/byline/photo remains a separate presentation follow-up. Manual review and production approval remain; commerce, consent, medical hold and active competition unchanged. |

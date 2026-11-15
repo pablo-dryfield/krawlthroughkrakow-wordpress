@@ -12,6 +12,7 @@ import {canonicalLinkPolicy,rewriteCanonicalLinks} from './canonical-links.mjs';
 import {buildCodePageSchema,codePageSchemaFacts} from './code-pages-schema.mjs';
 import {reviseAccessibilitySemantics} from './accessibility-semantics.mjs';
 import {buildContentAccessibilityStyles} from './content-accessibility-styles.mjs';
+import {buildSliderMotionStyles} from './slider-motion-styles.mjs';
 import {loadReviewedImageDescriptions} from './content-image-descriptions.mjs';
 import {reviseContextualLinks} from './contextual-links.mjs';
 import {loadNightlifeEditorial,reviseNightlifeEditorial} from './nightlife-editorial.mjs';
@@ -56,6 +57,7 @@ const { chromium } = require(path.join(process.env.USERPROFILE, '.cache/codex-ru
 const root = path.resolve('.');
 const assets = path.join(root, 'staging/wp-content/mu-plugins/ktk-code-pages-assets');
 await buildMemorialStyles(path.join(assets,'runtime.css'));
+await buildSliderMotionStyles(path.join(assets,'runtime.css'));
 await buildContactDetailsStyles(path.join(assets,'runtime.css'));
 await buildEstablishedNyeStyles(path.join(assets,'runtime.css'));
 await buildGroupPlanningStyles(path.join(assets,'runtime.css'));

@@ -7,6 +7,14 @@
 }
 /* END Memorial visitor guide */
 
+/* BEGIN reduced-motion slide content */
+@media (prefers-reduced-motion: reduce) {
+  body.ktk-code-page #main-content .et_pb_slider .et_pb_slide :is(.et_pb_slide_description,.et_pb_slide_image,.et_pb_slide_image img,.et_pb_slide_video) {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+/* END reduced-motion slide content */
 /* BEGIN Hotel guide planning */
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) p { font-size: 16px; line-height: 1.65; }
