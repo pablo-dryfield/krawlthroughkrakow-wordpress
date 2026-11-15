@@ -233,3 +233,10 @@ hen-party reviews, spa hotels, Halloween and the old best-bars/clubs guide.
 The alcohol-health article remains a separate explicit specialist hold.
 Final roadmap checks, required CI, exact-tree PR65 merge and completed-branch
 cleanup remain; website SEO is not promoted to production.
+
+Final documentation CI43671206090 correctly failed214/215 Python checks because
+the progress-log row was inserted after rendering the roadmap, making the HTML's
+plan checksum stale. Earlier local215 and browser317 ran before that final row.
+Retain this failed CI; regenerate both roadmaps from the final plan/source and
+repeat the unchanged tests. No application, assertion, publisher, deployment or
+cache change is involved.
