@@ -66,6 +66,12 @@ body.ktk-code-page[data-ktk-page="pub-crawl-jobs"] #main-content [data-ktk-jobs-
   body.ktk-code-page[data-ktk-page="new-years-eve"] #main-content .et_pb_row_12 { padding-bottom: 72px; }
 }
 /* END Stag and NYE mobile text */
+/* BEGIN Reviewed Stag mobile text */
+@media (max-width: 600px) {
+  body.ktk-code-page[data-ktk-page="krakow-stag-do"] #main-content :is([data-ktk-group-planning-review],[data-ktk-group-activity-review]) { font-size: 16px; line-height: 1.65; }
+  body.ktk-code-page[data-ktk-page="krakow-stag-do"] #main-content :is([data-ktk-group-planning-review],[data-ktk-group-activity-review]) :is(p,li) { font-size: 16px; line-height: 1.65; }
+}
+/* END Reviewed Stag mobile text */
 /* BEGIN Hotel guide planning */
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) p { font-size: 16px; line-height: 1.65; }

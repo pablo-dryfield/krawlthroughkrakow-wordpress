@@ -117,6 +117,8 @@ jobs:
         run: node --test tools/tests/test_jobs_page_accessibility.mjs
       - name: Stag and NYE mobile text contracts
         run: node --test tools/tests/test_stag_nye_text_styles.mjs
+      - name: Preserved Stag mobile text contracts
+        run: node --test tools/tests/test_stag_reviewed_text_styles.mjs
       - name: Booking selection recovery contracts
         run: node --test tools/tests/test_booking_selection_recovery.mjs tools/tests/test_blocked_meta_pageview.mjs
       - name: Read-only booking measurement contracts (no provider events)
