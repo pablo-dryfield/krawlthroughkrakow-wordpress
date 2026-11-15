@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 59 |
-| In progress | 2 |
+| In progress | 3 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Readable mobile text on Stag and NYE pages](stag-nye-readable-text-2026-11-15/README.md) | D03, D05, T10 | In progress (website) | Not yet | Finish final roadmap/publisher dry-run/CI, guarded staging and origin/normal/warmed checks before counting a verified delivery. No upload/purge yet. Original claims, recruitment/provider/inbox/manual/account/G02 and production dependencies remain separately open. |
 | [Jobs page headings and mobile readability](jobs-accessibility-2026-11-15/README.md) | D03, D05, T10 | Verified on staging (website) | 2026-11-15 | Current recruitment terms/openings require owner confirmation. Real inbox receipt, provider playback, manual accessibility and separate production approval remain. The next Stag/NYE layout census confirms older text/tab overlaps and nested modules; those are not resolved by this Jobs delivery. |
 | [Clear alternatives for withheld embedded content](blocked-embed-census-2026-11-15/README.md) | D05, D03, T10 | Verified on staging (website) | 2026-11-15 | Actual provider content/access remains unverified after14 inaccessible/throttled source-derived URL reads. Manual accessibility, some existing old text/CTA overlaps and separate production approval remain. Original iframe geometry/attributes/media/forms/headings/links, functional consent runtime, commerce, medical hold and active competition stay exact; no real message/order, full conformance or full-page pixel claim. |
 | [Incremental release planning and isolated rollback](active-updater-2026-11-15/README.md) | G02, T10 | In progress (website) | Not yet | G02 remains partial. Implement the authenticated transaction wrapper and its actual staging transaction/transport-failure recovery, verified private rollback archives and temporary-helper lifecycle. Require a fresh production snapshot/backup, coordinated exclusive release window, separate owner approval and production/cache checks. The offline fixtures are not a real WordPress transaction or production authorization. |
