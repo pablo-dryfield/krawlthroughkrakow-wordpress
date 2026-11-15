@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-14T23:39:18.395Z",
+  "startedAt": "2026-11-15T00:29:38.725Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -1025,6 +1025,20 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "activity-booking-review",
+          "key": "post-escape-rooms-for-a-stag-do-in-krakow",
+          "reviewedOn": "2026-11-15",
+          "retainedInlinePhotos": 6,
+          "nativeContentsTargets": 12,
+          "removedDuplicateIds": 7
+        },
+        {
+          "type": "neutral-activity-feature",
+          "key": "post-escape-rooms-for-a-stag-do-in-krakow",
+          "file": "5d8abd5fd6d8-ec0rsipny9q1682507217-1080x675.jpg",
+          "alt": "The underside of an illuminated bridge reflected in a river at night."
         }
       ],
       "bookings": [
@@ -2504,6 +2518,20 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "activity-booking-review",
+          "key": "post-krakow-shooting-range",
+          "reviewedOn": "2026-11-15",
+          "retainedInlinePhotos": 5,
+          "nativeContentsTargets": 7,
+          "removedDuplicateIds": 3
+        },
+        {
+          "type": "neutral-activity-feature",
+          "key": "post-krakow-shooting-range",
+          "file": "74997ed92e01-iuf2yvrqqtm1683823261-1080x675.jpg",
+          "alt": "A paper shooting target with numbered rings and holes."
         }
       ],
       "bookings": [
@@ -5166,6 +5194,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-krakow-shooting-range",
+          "postId": 6163,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-krakow-winter-activities",
           "postId": 6200,
           "reviewedOn": "2026-11-14",
@@ -5399,6 +5434,13 @@
           "to": "h2",
           "text": "Legal",
           "id": ""
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-escape-rooms-for-a-stag-do-in-krakow",
+          "postId": 6132,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
         },
         {
           "type": "reviewed-article-summary",
@@ -5864,6 +5906,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-escape-rooms-for-a-stag-do-in-krakow",
+          "postId": 6132,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-krakow-free-activities-2",
           "postId": 6120,
           "reviewedOn": "2026-11-14",
@@ -6169,6 +6218,13 @@
           "type": "reviewed-article-summary",
           "key": "post-krakow-live-music",
           "postId": 6196,
+          "reviewedOn": "2026-11-14",
+          "format": "text"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-krakow-shooting-range",
+          "postId": 6163,
           "reviewedOn": "2026-11-14",
           "format": "text"
         },
@@ -6682,6 +6738,13 @@
         },
         {
           "type": "reviewed-article-summary",
+          "key": "post-krakow-shooting-range",
+          "postId": 6163,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
           "key": "post-krakow-safety-guide",
           "postId": 6178,
           "reviewedOn": "2026-11-14",
@@ -6803,6 +6866,13 @@
           "type": "reviewed-article-summary",
           "key": "post-krakow-stag-activities",
           "postId": 6259,
+          "reviewedOn": "2026-11-14",
+          "format": "paragraph"
+        },
+        {
+          "type": "reviewed-article-summary",
+          "key": "post-escape-rooms-for-a-stag-do-in-krakow",
+          "postId": 6132,
           "reviewedOn": "2026-11-14",
           "format": "paragraph"
         },
@@ -10451,5 +10521,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-14T23:40:16.402Z"
+  "finishedAt": "2026-11-15T00:30:38.590Z"
 }

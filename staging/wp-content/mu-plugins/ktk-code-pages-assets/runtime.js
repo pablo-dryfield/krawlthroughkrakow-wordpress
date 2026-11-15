@@ -38,7 +38,7 @@
     anchor.href = attributedHref(anchor.href);
     if (window.KTK_ANALYTICS_CONSENT !== true) return;
     const url = new URL(anchor.href, location.href);
-    const products = { 'pub-crawl-28': 28, 'nye-pub-crawl-32': 32, 'halloween-pub-crawl-51': 51, 'go-karting-30': 30, 'polish-vodka-tasting-44': 44, 'food-tour-krakow-48': 48 };
+    const products = { 'pub-crawl-28': 28, 'nye-pub-crawl-32': 32, 'halloween-pub-crawl-51': 51, 'go-karting-30': 30, 'polish-vodka-tasting-44': 44, 'food-tour-krakow-48': 48, 'shooting-range-34': 34 };
     const slug = url.pathname.replace(/^\/(?:staging\/)?store2\//, '').replace(/\/$/, '');
     const productId = Object.prototype.hasOwnProperty.call(products, slug) ? products[slug] : null;
     if (url.origin !== location.origin || !productId) return;

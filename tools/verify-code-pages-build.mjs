@@ -35,6 +35,7 @@ import {loadWeatherWinterEditorial,reviseWeatherWinterEditorial,reviseWeatherFea
 import {loadFoodGuideEditorial,reviseFoodGuideEditorial,reviseFoodFeaturedDescriptions} from './food-guide-editorial.mjs';
 import {loadNightlifeChoiceEditorial,reviseNightlifeChoiceEditorial,reviseNightlifeChoiceFeatures} from './nightlife-choice-editorial.mjs';
 import {loadGroupChoiceEditorial,reviseGroupChoiceEditorial,reviseGroupChoiceFeatures} from './group-choice-editorial.mjs';
+import {loadActivityBookingEditorial,reviseActivityBookingEditorial,reviseActivityBookingFeatures} from './activity-booking-editorial.mjs';
 import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
@@ -66,6 +67,7 @@ const weatherWinterGuides=await loadWeatherWinterEditorial();
 const foodGuides=await loadFoodGuideEditorial();
 const nightlifeChoices=await loadNightlifeChoiceEditorial();
 const groupChoices=await loadGroupChoiceEditorial();
+const activityBookings=await loadActivityBookingEditorial();
 const campaignFacts=campaignTemplateValues(await loadOfferFacts());
 const imageReview=JSON.parse(await readFile('tools/content-image-descriptions.json','utf8'));
 const sharingImage=await loadSharingImagePolicy({expectedManifestSha256:imageReview.assetManifestSha256});
@@ -114,6 +116,8 @@ async function facts(html,revision){
   await page.evaluate(reviseNightlifeChoiceFeatures,{key:revision.key,revision:nightlifeChoices.find(row=>row.key===revision.key)});
   await page.evaluate(reviseGroupChoiceEditorial,{key:revision.key,revision:groupChoices.find(row=>row.key===revision.key)});
   await page.evaluate(reviseGroupChoiceFeatures,{key:revision.key,revision:groupChoices.find(row=>row.key===revision.key)});
+  await page.evaluate(reviseActivityBookingEditorial,{key:revision.key,revision:activityBookings.find(row=>row.key===revision.key)});
+  await page.evaluate(reviseActivityBookingFeatures,{key:revision.key,revision:activityBookings.find(row=>row.key===revision.key)});
  }
  return page.evaluate(()=>{const root=document.querySelector('#main-content');root.querySelectorAll('script,style,noscript,.mejs-controls,.mejs-layers,video a,[data-single-product-id],[data-ktk-booking-product]').forEach(e=>e.remove());return {text:root.textContent.replace(/\s+/g,' ').trim(),missingAlt:root.querySelectorAll('img:not([alt])').length,sections:root.querySelectorAll('.et_pb_section').length,headings:[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(e=>({tag:e.tagName,text:e.textContent.trim()})),primary:root.querySelectorAll('h1').length,forms:root.querySelectorAll('form.et_pb_contact_form,form.wpcf7-form').length,scripts:root.querySelectorAll('script').length,handlers:[...root.querySelectorAll('*')].flatMap(e=>[...e.attributes].filter(a=>/^on/i.test(a.name)).map(a=>a.name))};});
 }
