@@ -232,7 +232,7 @@ def main():
                                    'retainedPrivateTemporaryArtifacts': len(rolled['retainedPrivateTemporaryArtifacts']),
                                    'retainedPrivateReceiptArtifacts': len(rolled['retainedPrivateReceiptArtifacts']),
                                    'interruptedRecordedIntents': len(interrupted['intentFiles']) if interrupted else None, 'steps': steps,
-                                   'resumedFullApplyBeforeRollback': scenario == 'before-rename',
+                                   'resumedFullApplyBeforeRollback': scenario == 'before-rename' or (args.bounded and interrupted is not None),
                                    'finalPhase': rolled['phase'], 'exactPriorInventory': True, 'exactStagingInventory': True,
                                    'retainedActivation': True, 'protectedFixtureStateVerified': True})
             print(json.dumps(result['runs'][-1]), flush=True)

@@ -14,6 +14,18 @@ Other associations require broader control/context inspection; the search does
 not prove that a section lacks all links, is an orphan or describes a closed
 service. No destination is remapped by guessing from a partial row.
 
+A subsequent all-control source census (`control-census.json`) records native
+`Book Tour` anchors to `#stag_trip_form` in twelve of these thirteen original
+rows; Brewery Tour has its native product40 anchor. Airsoft also retains the
+existing row-level `data-parity-href` to that enquiry form. Image/gallery and
+withheld-video alternatives are recorded separately. The first compact output
+filtered only store destinations and must not be read as an absence-of-links
+result. These existing enquiry controls support useful enquiry-led revisions;
+they do not confirm old package inclusions or justify generic product remaps.
+The separate [284-view navigation census](../rendered-navigation-census-2026-11-15/README.md)
+retains all24 products' native graph reachability, with explicit mixed-source,
+provider-blocking, timeout and interactive-navigation limitations.
+
 Public details live under `config.content`, not top-level description fields.
 The existing catalog auditor explicitly normalizes missing/PHP empty-list config
 representations to empty. `public-content-review.json` uses that unchanged reader
