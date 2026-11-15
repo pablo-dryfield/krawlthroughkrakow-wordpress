@@ -15,6 +15,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 TEMPLATE = ROOT / 'tools/staging-protected-state-template.php'
+CORE = ROOT / 'tools/staging-protected-state-core.php'
 REMOTE = '/public_html/staging/wp-content/mu-plugins'
 URL = 'https://krawlthroughkrakow.com/staging/'
 
@@ -32,6 +33,11 @@ def helper_source(name, token, expires):
     if not re.fullmatch(r'ktk-state-snapshot-[a-f0-9]{32}\.php', name) or not re.fullmatch(r'[A-Za-z0-9_-]{43}', token) or not isinstance(expires, int) or not int(time.time()) < expires <= int(time.time()) + 900:
         raise ValueError('Exact short-lived staging helper required')
     source = TEMPLATE.read_bytes()
+    core = CORE.read_bytes()
+    marker = b'/* __KTK_STAGING_STATE_CORE__ */'
+    if not core.startswith(b'<?php\n') or source.count(marker) != 1:
+        raise ValueError('Exact protected-state component embedding required')
+    source = source.replace(marker, core[len(b'<?php\n'):])
     values = {b'__KTK_SNAPSHOT_EXPIRES__': str(expires).encode(), b'__KTK_SNAPSHOT_TOKEN_SHA__': sha(token.encode()).encode(), b'__KTK_SNAPSHOT_HELPER__': name.encode()}
     if any(source.count(key) != 1 for key in values):
         raise ValueError('Snapshot template markers require review')
@@ -165,7 +171,7 @@ def main():
     if not destination.is_relative_to(ROOT / 'docs/seo') or destination.exists():
         raise ValueError('New local SEO evidence path required')
     destination.parent.mkdir(parents=True, exist_ok=True)
-    report = {'startedAt': datetime.now(timezone.utc).isoformat(), 'mode': 'staging-original-state-snapshot', 'phase': 'offline-validated', 'applicationWrites': 0, 'databaseWrites': 0, 'cachePurges': 0, 'productionBackupCreated': False, 'templateSha256': sha(TEMPLATE.read_bytes()), 'runnerSha256': sha(Path(__file__).read_bytes())}
+    report = {'startedAt': datetime.now(timezone.utc).isoformat(), 'mode': 'staging-original-state-snapshot', 'phase': 'offline-validated', 'applicationWrites': 0, 'databaseWrites': 0, 'cachePurges': 0, 'productionBackupCreated': False, 'templateSha256': sha(TEMPLATE.read_bytes()), 'coreSha256': sha(CORE.read_bytes()), 'runnerSha256': sha(Path(__file__).read_bytes())}
     name = 'ktk-state-snapshot-' + secrets.token_hex(16) + '.php'
     token = secrets.token_urlsafe(32)
     source = helper_source(name, token, int(time.time()) + 900)
@@ -190,7 +196,7 @@ def main():
             raise RuntimeError('Staging/local content differs from the verified immutable build')
         if not same_state(before, after):
             raise RuntimeError('Protected staging state changed between snapshots')
-        if report['templateSha256'] != sha(TEMPLATE.read_bytes()) or report['runnerSha256'] != sha(Path(__file__).read_bytes()):
+        if report['templateSha256'] != sha(TEMPLATE.read_bytes()) or report['coreSha256'] != sha(CORE.read_bytes()) or report['runnerSha256'] != sha(Path(__file__).read_bytes()):
             raise RuntimeError('Snapshot source changed during execution')
         report['privateBackup'] = write_private_backup(ROOT / 'deploy-backups', before, after, sha(source))
         report.update({'phase': 'snapshots-verified', 'identity': before['identity'], 'rowCounts': before['rowCounts'], 'protectedFileCount': len(before['protectedFiles']), 'ownedContentFileCount': len(before['ownedContentFiles']), 'databaseSha256': before['databaseSha256'], 'protectedStateSha256': before['protectedStateSha256'], 'allComparedStateExact': True})
