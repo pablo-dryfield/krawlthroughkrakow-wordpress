@@ -42,6 +42,11 @@ class FixtureDB {
  }
 }
 $GLOBALS['c']=$c;$wpdb=new FixtureDB();if($c['unsafeTable']){$wpdb->posts='bad; DELETE';}
+if (!empty($c['directCore'])) {
+ define('KTK_STAGING_STATE_ALLOWED', true); require $c['coreFile'];
+ try { wp_send_json(ktk_capture_staging_original_state($c['helper'])); }
+ catch (Throwable $error) { wp_send_json(array('error'=>'shared_state_failed'),409); }
+}
 require $c['helper'];($GLOBALS['snapshot_callback'])();echo json_encode(array('noSnapshot'=>true,'queries'=>$wpdb->queries));
 '''
 
@@ -65,6 +70,7 @@ class SnapshotPHPTests(unittest.TestCase):
             helper = mu / NAME; helper.write_bytes(source)
             config = {'stage': str(stage), 'helper': str(helper), 'token': TOKEN, 'host': 'krawlthroughkrakow.com', 'method': 'POST',
                       'home': module.URL, 'siteurl': module.URL, 'public': 0, 'dbError': False, 'unsafeTable': False,
+                      'directCore': False, 'coreFile': str(module.CORE),
                       'rows': {'posts': [{'ID': '278', 'post_content': 'Kraków   unchanged', 'post_type': 'page'}],
                                'postmeta': [{'meta_id': '1', 'post_id': '278', 'meta_key': '_source', 'meta_value': 'saved'}],
                                'options': [{'option_name': 'home', 'option_value': module.URL.rstrip('/')}, {'option_name': 'siteurl', 'option_value': module.URL.rstrip('/')}, {'option_name': 'blog_public', 'option_value': '0'}],
@@ -89,6 +95,42 @@ class SnapshotPHPTests(unittest.TestCase):
         self.assertEqual(output['body']['rowCounts']['posts'], 1)
         self.assertEqual(len(output['body']['ownedContentFiles']), 2)
         self.assertTrue(all(not any(word in q for word in ('users', 'comments', 'orders', 'payments')) for q in output['queries']))
+
+    def test_shared_core_requires_an_explicit_caller(self):
+        result = subprocess.run([PHP, str(module.CORE)], capture_output=True)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn(b'Explicit staging state caller required', result.stdout + result.stderr)
+
+    def test_shared_capture_matches_authenticated_capture_scope_and_hashes(self):
+        normal, _ = self.fixture()
+        direct, _ = self.fixture(lambda c, mu, store: c.update(directCore=True))
+        self.assertEqual(direct['status'], 200)
+        self.assertEqual(direct['queries'], normal['queries'])
+        for name in ('database', 'databaseSha256', 'protectedFiles', 'ownedContentFiles', 'protectedStateSha256', 'rowCounts', 'identity'):
+            self.assertEqual(direct['body'][name], normal['body'][name], name)
+
+    def test_shared_capture_rejects_nonstaging_identity_before_queries(self):
+        for changes in ({'home': 'https://krawlthroughkrakow.com/'}, {'siteurl': 'https://krawlthroughkrakow.com/'}, {'public': 1}):
+            output, _ = self.fixture(lambda c, mu, store: c.update(directCore=True, **changes))
+            self.assertEqual(output['status'], 409)
+            self.assertEqual(output['queries'], [])
+            self.assertEqual(output['body'], {'error': 'shared_state_failed'})
+
+    def test_controller_rejects_changed_helper_filename_before_queries(self):
+        def mutation(c, mu, store):
+            old = Path(c['helper']); target = mu / 'not-the-owned-helper.php'
+            old.rename(target); c['helper'] = str(target)
+        output, _ = self.fixture(mutation)
+        self.assertEqual(output['status'], 409)
+        self.assertEqual(output['queries'], [])
+
+    def test_shared_capture_rejects_unowned_helper_path_before_queries(self):
+        def mutation(c, mu, store):
+            other = mu / 'unrelated.php'; other.write_bytes(b'unchanged unrelated file')
+            c.update(directCore=True, helper=str(other))
+        output, _ = self.fixture(mutation)
+        self.assertEqual(output['status'], 409)
+        self.assertEqual(output['queries'], [])
 
     def test_missing_or_wrong_authentication_reads_no_database(self):
         for token in ('', 'x' * 43):
