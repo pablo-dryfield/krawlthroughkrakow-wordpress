@@ -1,8 +1,8 @@
 # Withheld Embed Census And Next Staging Scope
 
-D05/D03 continuation. The bounded13-file application candidate is generated
-and locally verified; no staging upload or purge yet. Consent behavior, forms, production and provider
-accounts remain untouched. Both roadmaps remain57 staging deliveries.
+D05/D03 delivery is staging cache-verified. Exactly13 application files add18
+clear alternatives while retaining original frames and functional consent. Consent behavior, forms, production and provider
+accounts remain untouched. Both roadmaps now show58 staging deliveries.
 
 ## Baseline And Backup
 
@@ -206,3 +206,62 @@ The local candidate is ready for final roadmap/tests/CI, guarded staging,
 independent rollback/protected-state proof and complete origin/normal/warmed
 verification. Both roadmaps remain57; C08 catalog/fact-review counts unchanged.
 No production helper, upload, deletion, purge or deployment occurs.
+
+
+## Guarded Staging Delivery And Cache Verification
+
+Application commit `8f836f95914e110cb25bbd9449326f2f9fd5afda` / PR74 /
+CI43711696002 both jobs pass. The application is frozen after this commit;
+final documentation/merge do not require a rebuild, upload or purge.
+
+The guarded2073-file incremental staging publisher completes
+12:03:35.428411UTC on15Nov. `content-publish.json` and the independent
+`publication-independent.json` compare every Git/local/FTP/server checksum,
+exact saved WordPress state and protected homepage/storefront flags. Exactly13
+prior remote files differ from the candidate. The helper is removed and verified
+by the frozen publisher. No production helper or payload write occurs.
+
+Rollback `deploy-backups/ktk-code-pages-staging-20261115-120306.zip` has16
+entries:15 prior payload files (13 changed plus retained registry/renderer) and
+its manifest. ZIP CRC, full SHA256 and every file's prior baseline Git blob/hash
+are independently verified. SHA256:
+`9028fd74ed93c587b337e84f303be0d433fa47b1b5b3603692db936383ae77e7`.
+There are no new application files or automatic deletion entries.
+
+All origin jobs close green before the one Cloudflare purge. Fresh endpoint
+schema, accepted Cache Purge permission and exact active zone/account are read;
+MCP POST succeeds12:13:06.119UTC with only
+`{"prefixes":["krawlthroughkrakow.com/staging/"]}`. Raw response is retained in
+ignored `staging-purge.json` and the session's `embedFallbacksPurge` store.
+No host/global/production purge is sent. Origin invalidation is separately
+performed by the existing staging publisher.
+
+| Full116-route phase | Completed UTC15Nov | Checks | Device responses | Assets | Retries |
+| --- | --- | --- | --- | --- | --- |
+|Origin|12:12:08.511744|6193/6193|348 DYNAMIC|119|0|
+|Normal URLs|12:19:08.783747|6193/6193|344 MISS/4 HIT|119|0|
+|Warmed repeat|12:22:14.830938|6193/6193|348 HIT|119|0|
+
+Reports are `docs/code-pages/full-migration/embed-fallbacks-{origin,normal,repeat}-20261115.json`.
+Browser1432/1432 across128 contexts passes local/origin/normal, with identical
+source/harness hashes throughout. Forms501/501 pass all three; booking
+attribution500/500 passes origin/normal. Discovery243/216/216 and homepage10 /
+icon21 / full-font20 / social15 HTTP/device/asset checks pass. Those homepage
+checks do not constitute a performance uplift or full consent certification.
+
+`cached-visual-comparison.json` compares all18 actual390x900 cached captures
+against the individually inspected local PNGs. Every file and pixel matches
+exactly: no masks, tolerance, photo-difference waiver or full-page claim. Twelve
+normal full-main axe views have0 violations and13 incomplete groups. Native
+provider content/playback, manual accessibility, original older text/CTA issues,
+real inbox receipt and separate production approval remain explicitly open.
+
+Both roadmaps now show58 verified website staging deliveries. C08 article/catalog
+counts do not change from this UI work. All other application bytes and the
+original vector artwork stay exact. The companion fresh homepage performance
+baseline is read-only, separately documented, and not another delivery.
+
+Final roadmap source/render checks pass317/317 after the delivery58 update;
+264 Python tests pass locally with4 Windows-symlink skips. The actual1440px
+overview is inspected. Repository policy and diff whitespace checks pass.
+Final documentation CI/exact-head merge are still required.
