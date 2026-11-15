@@ -1,0 +1,8 @@
+/* BEGIN reduced-motion slide content */
+@media (prefers-reduced-motion: reduce) {
+  body.ktk-code-page #main-content .et_pb_slider .et_pb_slide :is(.et_pb_slide_description,.et_pb_slide_image,.et_pb_slide_image img,.et_pb_slide_video) {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+}
+/* END reduced-motion slide content */
