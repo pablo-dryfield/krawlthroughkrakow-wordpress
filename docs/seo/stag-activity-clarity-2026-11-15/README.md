@@ -1,9 +1,9 @@
 # Stag Activity Copy Clarity
 
-Status: app818055f is published to staging and its backup/Git-local-remote/
-protected-state proof passes. Origin full/corrected responsive checks, QA-only
-source CI and normal/warmed verification remain. Website delivery count stays60
-until those gates close; C08 counts are unchanged.
+Status: verified staging delivery61. App818055f and QA-only ca74e38f pass
+source CI, guarded2073-file publication, independent rollback/protected-state
+checks and origin/normal/warmed verification. Both roadmaps advance to61; C08
+counts are unchanged. Production and owner/account/manual dependencies remain.
 
 PR81 is merged as `e8a1cd2ee663f05456d0fe13c6f939643a1982a2`, exact final tree
 `264f4311b5d3e9d424595978a9f11d943e6687c3`. Final PR CI43742367858 and
@@ -152,9 +152,11 @@ zero violations/two incomplete groups each, not manual conformance.
 
 All17 fresh candidate captures are individually inspected, including the now
 clear Airsoft section and separate complete headline captures at320/390. An
-earlier/newer headline wrap difference prompts an additional post-scroll
-`document.fonts.ready`/loaded wait before decoded-image/two-paint-frame capture;
-no application change is made or cause asserted. That complete paint-ready
+apparent headline-wrap lead prompts an additional post-scroll
+`document.fonts.ready`/loaded wait before decoded-image/two-paint-frame capture.
+Subsequent byte comparison finds all four headline PNGs also identical to the
+held first candidate; no font/wrap defect or cause is established and no
+application change is made. That complete paint-ready
 rerun also passes1277 checks. Every one of its17 PNGs is byte-identical to the17
 individually inspected corrected captures; loaded target font metrics are
 retained. These viewport captures do not certify every preceding heading or
@@ -242,3 +244,61 @@ no actual message/order/provider/account action. Full6193 and corrected
 responsive origin jobs must close green, alongside QA source CI, before the
 single approved staging-prefix purge and normal/warmed checks. No purge has
 occurred and neither the website count60 nor C08 is advanced yet.
+
+
+## Verified Staging Delivery 61
+
+QA commit `ca74e38f6328b96e3377324723725edbcc10c2c3`, CI43747674264,
+passes both jobs and339 Linux Python cases without skips. Its only code change
+is the exact same-document URL assertion; application bytes remain identical
+to deployed818055f. Corrected local/origin/normal browser runs each pass1277
+across16 contexts/17 captures, with no script errors or non-read requests.
+
+All origin jobs close before the single MCP-only staging-prefix purge at
+18:39:05.210UTC15Nov, after fresh API specification and exact active zone/account
+checks. The only purge body is `{"prefixes":["krawlthroughkrakow.com/staging/"]}`.
+No production/domain-wide purge or account setting changes occur.
+
+Full6193/6193 checks finish at18:36:24.470772 origin,18:46:31.737503 normal and
+18:50:20.294619UTC warmed repeat. All119 assets are current; all phases have
+zero retries. The348 page responses are DYNAMIC at origin,347 MISS/1 HIT on
+normal and348 HIT on repeat. Discovery243/216/216 and homepage10 each phase,
+icons21/full-icon-font20/social-font15 origin and normal, forms501 and
+attribution500 origin and normal all pass. Discovery source and all three
+deployable files remain exact; no discovery publication is performed.
+
+The normal responsive browser's16 responses are DYNAMIC. Its17 PNGs are all
+byte-identical to the17 individually inspected final local captures and the
+paint-ready rerun; normal Airsoft390/Hummer390/Shooting320 frames are separately
+reopened. No mask, tolerance, font cause or original whole-page pixel claim.
+Three normal automated accessibility views have zero violations/two incomplete
+groups each; manual/physical-device accessibility remains open.
+
+Separate normal-URL HTTP GETs at18:46:57..58UTC use desktop/Android/iPad agents.
+All three are actual HITs and contain the exact13 interiors/two headline labels,
+cleared tail, unchanged native controls/unique form and staging noindex. This
+provides cached-copy proof independently of DYNAMIC browser rendering. Seven
+read-only public form endpoint checks also pass: actual token GETs and CF7
+OPTIONS method checks, with no submitted messages or logged token values.
+Real inbox receipt/provider operation is not established.
+
+`final-independent.json` at18:52:03UTC verifies the phase order, current2073
+payload/Git/local/recorded server maps, unchanged publisher/rollback bindings,
+source/QA inputs, all phase counters, exact PNG hashes, real HTTP cache proof
+and no extra publication/purge. The four-entry rollback SHA remains
+`b49bb843dbe6495ad9b0d8751b864552ffdb95924825908c814a025b60e5c160`.
+Both roadmaps record61 website staging deliveries. C05 remains partial:
+current availability/final terms, source maintenance, preserved-module font
+census, provider/inbox/manual/account dependencies and separate production
+release work remain. C08/medical hold/active competition, production, commerce,
+functional consent and form boundaries are preserved. Final documentation CI,
+exact PR82 merge/main checks and completed-branch cleanup are next; they need
+no application rebuild, upload or further purge.
+
+Final documentation validation passes339 Python cases/10 documented Windows
+filesystem skips, repository policy/whitespace and317 roadmap browser checks.
+The regenerated overview1440 and details390 captures are inspected. The first
+roadmap command omitted its required `--output` option and refused before
+creating evidence; the correctly invoked fresh-path run passes without any
+source change. Application bytes remain exact to818055f. Exact final source CI,
+PR82 merge/main checks and branch cleanup remain the release bookkeeping gates.
