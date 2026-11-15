@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 52 |
-| In progress | 1 |
+| In progress | 2 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Hen planning and historical bars guide](hen-reviews-bars-2026-11-15/README.md) | C08, C06, T01, T06, T08, D03, D05, T10 | In progress (website) | Not yet | Required CI, guarded staging publication and origin/normal/warmed checks before counting this delivery. Manual review and production approval remain; commerce, consent, medical hold and active competition stay protected. |
 | [European pub-crawl choices and Budapest comparison](nightlife-comparisons-2026-11-15/README.md) | C08, T01, T06, T08, D03, D05, T10 | Verified on staging (website) | 2026-11-15 | Europe duplicate outer title/byline/photo remains a separate presentation follow-up. Manual review and production approval remain; commerce, consent, medical hold and active competition unchanged. |
 | [Practical guide-life and hen-trip planning](party-trip-planning-2026-11-15/README.md) | C08, C06, T01, T06, T08, D03, D05, T10 | Verified on staging (website) | 2026-11-15 | Remaining article facts, manual accessibility, owner review and separate production approval. No staff contract, hiring/housing, pool-party, fulfilment, whole-page pixel, commerce or consent guarantee. Active competition, medical hold and Halloween remain unchanged. |
 | [Active competition and clearer newsletter context](competition-newsletter-2026-11-15/README.md) | C08, T01, T06, T08, D03, D05, D06, T10 | Verified on staging (website) | 2026-11-15 | Remaining article facts, competition terms review, manual accessibility, owner review and separate production approval. Existing reduced-motion slider animation is a recorded D03 follow-up. No rules, provider receipt, whole-page pixel, commerce or consent guarantees. Medical hold and active competition remain protected. |

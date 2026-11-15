@@ -92,6 +92,8 @@ jobs:
         run: node --test tools/tests/test_party_trip_editorial.mjs
       - name: European pub crawl and Budapest comparison source contracts
         run: node --test tools/tests/test_nightlife_comparison_editorial.mjs
+      - name: Hen planning and historical bars source contracts
+        run: node --test tools/tests/test_hen_bars_editorial.mjs
       - name: Booking selection recovery contracts
         run: node --test tools/tests/test_booking_selection_recovery.mjs tools/tests/test_blocked_meta_pageview.mjs
       - name: Read-only booking measurement contracts (no provider events)
