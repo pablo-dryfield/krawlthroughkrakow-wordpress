@@ -184,3 +184,112 @@ staging batches/C08 counts remain unchanged until guarded publication and
 origin/normal/warmed verification. CI and that release are next. The owner was
 separately asked to confirm the active competition's existing prize/rule facts;
 its page and entry form remain unchanged while that answer is pending.
+
+Application `c508650046be35cf8d5b9fc5a1b93044ce519200`, PR62, required
+CI43654811115: both jobs pass. Guarded2073 staging-only publication has started.
+No later application edit is permitted while publishing/origin/cache checks run.
+An exploratory read of the previous release used a nonexistent discovery-report
+filename and failed read-only; the real `discovery-staging-publish.json` was
+located without any deployment or rollback change.
+
+## Guarded Staging Publication
+
+Manual2073-file content publication finished14 November23:47:53.651072UTC.
+Every payload independently matches its exactc508650 Git blob, local SHA256,
+reported upload SHA and final remote SHA. Saved WordPress state, homepage and
+storefront remain exact; helper removed. Rollback17-entry ZIP:
+`deploy-backups/ktk-code-pages-staging-20261114-234722.zip`, SHA256
+`ee06b400aa81da04c254b8712e6c8b56e0096b5cd30db4de168e11413a20c42e`.
+Exact file set/per-file SHA/CRC/archive SHA independently pass, including
+the two unchanged renderer/registry files required by publisher policy.
+
+Discovery data-only3 publication finished23:49:24.358374UTC. All three Git/
+local/remote bindings,2324 protected staging files,2158 production mappings,
+saved state and removed helpers independently pass. No origin cache paths
+were cleared by this data-only update. Rollback4-entry ZIP:
+`deploy-backups/seo-discovery-staging-20261114-234913-248706.zip`, SHA256
+`7441ed0e10b363a309312635c34f00896e4256603e4f5c5802252c4e5e58342e`.
+Its exact file set/per-file SHA/CRC/archive SHA independently pass.
+
+Postpublication source2391/origin body322/discovery243/homepage10/icon21/ET20/
+social15 checks pass. Full116-route origin,56-view cards,501 forms and374
+attribution checks are running. No edge purge or verified-delivery increase
+yet. Appc508650 is frozen; no rebuild/reupload for these records. Both roadmaps
+still show47 verified batches and this release under verification.
+
+Origin cards1837/1837 over56 views, intercepted forms501/501 and attribution
+374/374 have now closed successfully. All five new28/30/44 article controls
+retain attribution, withhold analytics before consent and report the matching
+product after the existing consent signal. No navigation, order or real-email
+submission occurred. Full37721 is still running iPad routes/assets; all other
+origin checks are closed. Do not purge before the successful full exit.
+
+## Owner Confirmations For Remaining Work
+
+Owner confirms the competition remains active with the same EUR50 flight
+voucher/three hostel nights/free pub-crawl access for winner plus guest/T-shirts.
+There is no entry deadline; no additional rules were supplied. Do not invent
+eligibility, a judging timetable, draw method, legal terms or new conditions.
+Its existing entry form remains active. For the remaining shooting-range guide,
+refer to KTK's current product without publishing which venue fulfils it.
+No new page, provider assignment, package inclusion or application edit has been
+made for these confirmations while the current release is frozen.
+
+## Cache Verification In Progress
+
+Full origin closed6193/6193 at23:58:27.467048UTC14 November, with348 DYNAMIC
+responses/119 assets/zero retries. A separate ad-hoc summary reader expected a
+nonexistent `failed` field and raised KeyError; the full verifier had already
+exited successfully. Its actual6193 `checks[].passed` values and zero retries
+were independently confirmed. This was a reader-schema error, not a failed
+origin check, application fix or relaxed release guard.
+
+After fresh API-spec and exact active zone/account validation, MCP accepted
+only `krawlthroughkrakow.com/staging/` at23:59:12.711UTC. Scope/result retained
+in `staging-purge.json`; no host, domain, production or settings purge.
+
+Normal body322/cards1837 over56 views/forms501/attribution374/discovery216 and
+homepage10/icon21/ET20/social15 pass. All nine cached390px PNGs were inspected.
+Five exactly match the reviewed final local RGBA pixels. Four differences are
+confined to original photo rectangles, with no masks, tolerances, cause
+assumptions or whole-page/original pixel-parity claim:
+
+| View | Changed Pixels | Bounding Rectangle |
+| --- | ---: | --- |
+| Organiser booking |35,183|`[39,97,327,289]`|
+| Organiser header |48,737|`[39,207,351,413]`|
+| Stag header |41,170|`[39,174,351,382]`|
+| Stag intro, visible photo edge |7,788|`[39,867,327,900]`|
+
+Six normal axe views have zero automated violations and six incomplete
+contrast groups, not a whole-site conformance certificate. The full normal
+scan is still running; warmed-cache proof and final roadmap advancement remain.
+
+## Final Cache Verification
+
+The application is still exactlyc508650, with all finite jobs now closed:
+
+- Full6193 origin14 November23:58:27.467048UTC:348 DYNAMIC responses.
+- Full6193 normal15 November00:04:59.002922UTC:348 MISS responses.
+- Full6193 repeat15 November00:07:37.539065UTC:348 HIT responses.
+- Every full scan covers116 routes/119 assets with zero transport retries.
+- Source2391/reference2320/body322 local+origin+normal; cards1819 local and1837
+  origin+normal over56 views; forms501 local+origin+normal; attribution374
+  origin+normal; discovery243 origin/216 normal/216 repeat.
+- Homepage10/icon21/ET20/social15 origin+normal pass. Only one scoped staging
+  purge was sent; no new application upload or purge is needed for these notes.
+
+Both roadmaps now record48 verified staging deliveries. C08 remains partial:
+40 major revisions,2 targeted corrections/notices,1 specialist hold and13
+awaiting substantive review. The42-identity/160-summary catalog is not42 full
+fact audits. All23 original photo files/history/unique fragments/prior150
+summaries and runtime/UTM/consent bytes remain exact. The competition remains
+active with the owner's confirmed prizes/no entry deadline. Future shooting
+copy will use our product without publishing its fulfilment venue.
+Final documentation/roadmap CI, exact-tree PR62 merge and completed-branch
+cleanup remain. No production approval, commerce or consent change is implied.
+
+Final records checks pass: roadmap317, source2391, JavaScript319, Python215,
+repository policy3373 tracked files/358 required inputs/no errors, and clean
+whitespace validation. Application paths still exactly matchc508650; this is
+documentation-only closure, with no rebuild, upload or extra purge.

@@ -85,20 +85,23 @@ booking value still matter. No live attribution-token values are published.
 
 ## Prioritization And Completion
 
-Staging progress as of15 November:37 major article revisions,2 targeted
-corrections/notices,1 explicit specialist hold and16 articles still awaiting
-substantive review. Sports, wine and karaoke guides are now cache-verified;
-their [release evidence](../nightlife-choice-guides-2026-11-14/README.md)
-distinguishes recommendations from live programmes, stock and reservations.
-All18 photo files/history and41 native contents targets are retained, with
-complete origin/normal/warmed checks. Three neutral featured ALTs and six
-sharing descriptions change only three discovery source bindings; all original
-URLs, titles/history and other metadata remain. The previous food release
-keeps Anny5 explicitly unconfirmed, not closed.
+Staging progress as of15 November:40 major article revisions,2 targeted
+corrections/notices,1 explicit specialist hold and13 articles still awaiting
+substantive review. Three organiser/stag/team guides are now cache-verified;
+their [release evidence](../group-choice-guides-2026-11-15/README.md) separates
+actual offers and individual quotes from unconfirmed package promises. All23
+photo files/history and45 native contents targets are retained, with complete
+origin/normal/warmed checks. Three neutral featured ALTs and six sharing
+descriptions change only three discovery source bindings; all original URLs,
+titles/history and other metadata remain. The previous food release keeps
+Anny5 explicitly unconfirmed, not closed.
 Five vodka service hrefs on four other articles were separately corrected to
 our product44; those link-only repairs do not count as substantive reviews.
-The39-identity/150-card summary catalog likewise is not39 full fact audits.
+The42-identity/160-card summary catalog likewise is not42 full fact audits.
 The competition and entry form remain ACTIVE, as corrected by the owner.
+Its existing prizes/no entry deadline are owner-confirmed; no extra judging,
+eligibility, draw or legal terms were supplied. Future shooting-range copy must
+refer to our product without publishing its fulfilment venue.
 
 Safety-review and expired-campaign risks take priority alongside NYE readiness;
 traffic is not the only criterion. Budget drinks, techno, jazz, Irish bars and
