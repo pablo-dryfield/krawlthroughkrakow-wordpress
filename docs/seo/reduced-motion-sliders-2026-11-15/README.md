@@ -151,3 +151,78 @@ application Git blobs, shared homepage source/generator, runtime.js,116 bodies,
 publication/metadata/photo files, discovery, commerce, consent, active competition
 and medical hold remain exact. No deployment/purge/commit yet. CI and guarded
 staging/origin/normal/warmed proof remain; roadmaps stay at54 verified deliveries.
+
+Required CI43688578203 passes both jobs for application
+`2cb1dd5463061a5340ec248143d10c51f701fcce`, PR69. Guarded incremental staging
+publication is now running; do not edit/rebuild the application or purge until
+the publisher and all origin checks close successfully. No discovery publication
+is required: its data/definition bindings remain exact.
+
+The read-only Blog teaser inventory has exactly ten slides, with two original
+title/Read More links each, no inline image elements and unchanged background
+style bindings. Eight destinations already have canonical reviewed summaries:
+team building, costumes, pranks, first karting guide, established NYE guide,
+nightlife dating, Jewish Quarter bars and spa hotels. The other two are the
+homepage and pending Halloween article. A later source-bound excerpt pass can
+reuse only those eight reviewed identities while preserving original titles,
+links/backgrounds and both other slides. No teaser/body edit has been made.
+
+## Staging Publication Under Verification
+
+Guarded2,073-file publication closes at07:10:31.687993UTC on15 November, application
+`2cb1dd5463061a5340ec248143d10c51f701fcce` unchanged. Every local/Git/remote SHA
+matches; saved WordPress state, homepage and storefront stay exact, helper removed.
+The four-entry rollback `ktk-code-pages-staging-20261115-071013.zip` independently
+passes CRC, exact manifest/entry set and all per-entry SHA values. Archive SHA256
+`cbfc35816f98b98d653af94913c03cd4a988968ed2fa3bc9b266ca1858d27b48`.
+
+Release source2,378 and origin homepage10/icon21/ET20/social15 pass. Complete
+origin,84-view motion, forms, attribution and discovery verification are running;
+no edge purge yet. Only after every origin process closes green may the approved
+staging-prefix purge and normal/warmed checks proceed. No discovery upload,
+application rebuild or production/OmniLodge/commerce/consent change is needed.
+
+The separate read-only stag/hen inventory finds12 text interiors. Interior0 is
+the original two headings;1-3 contain the old group experience, guaranteed
+entry/queue and broad arrangement claims. Interior4 contains the active enquiry
+form, and5-11 are the social/contact/legal/booking footer. None of1-3 contains a
+form or image element. A later review can stay within those three text-only
+interiors, with original headings, media, enquiry form/options/recipients and
+footer exact. No next-batch draft or body edit is included here.
+
+All origin jobs then closed green: full6,193 at07:18:55.965227UTC with348 DYNAMIC/
+119 assets/zero retries, browser1,184/forms501/attribution493/discovery243/source
+2,378 and homepage10/icon21/ET20/social15. Only the staging prefix was purged
+through MCP at07:19:44.889UTC after a fresh POST schema and exact active zone/
+account validation. `staging-purge.json` retains acceptance; normal/warmed proof
+is separate and still running. No host/domain/production purge was submitted.
+
+## Verified Staging Delivery 55
+
+All remaining processes are terminal and their reports pass. Full normal6,193
+closes at07:26:12.685960UTC (336 MISS/12 HIT); warmed6,193 closes at
+07:28:24.462603UTC with348 HIT. Each covers116 routes/119 assets/zero retries.
+Normal browser1,184 over84 views, forms501, attribution493, discovery216 plus
+repeat216 and homepage10/icon21/ET20/social15 pass. Application remains
+`2cb1dd5463061a5340ec248143d10c51f701fcce`; no rebuild/reupload/second purge.
+
+All14 actual cached390px normal/reduced captures were inspected in four
+unmasked contact sheets. Five match the previous local captures exactly; other
+strict differences remain in `normal-screenshot-comparison.json`, including
+Blog97,795/97,857 and jobs169,242 pixels. These are not all photo-only differences:
+the earlier local Blog captures contain a black teaser area and missing fixed
+button lettering, so their earlier visual acceptance cannot prove this region.
+Fresh four-view read-only Blog diagnostics capture visible text and original
+magenta styling locally and on staging; reduced-mode DOM text/computed styles/
+geometry are exactly equal. Raster differences still exist, and their cause is
+not established. Earlier captures/reports remain unchanged. This supersedes any
+earlier claim that those local Blog rasters were a complete visual control.
+All cached staging views show the expected content, controls and original photos;
+no masks, tolerance or whole-page pixel-equivalence claim is used.
+
+Seven cached axe views retain zero violations/ten incomplete groups. Real-device,
+assistive-technology and provider checks remain open. Both roadmaps now count55
+verified staging deliveries; article-review and197-summary counts do not change.
+Production, all116 bodies, runtime JavaScript, homepage styles, commerce,
+functional consent, active competition and specialist hold remain exact. Final
+documentation CI/merge and completed-branch cleanup are next.
