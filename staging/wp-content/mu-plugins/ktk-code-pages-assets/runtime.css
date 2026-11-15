@@ -39,6 +39,17 @@ body.ktk-code-page #main-content [data-ktk-operator-copy="2026-11-15.operator-tr
   body.ktk-code-page #main-content :is([data-ktk-operator-details="2026-11-15.operator-trust-1"],[data-ktk-review-platform-links="2026-11-15.operator-trust-1"]), body.ktk-code-page #main-content [data-ktk-operator-copy="2026-11-15.operator-trust-1"]:not(h3):not(h5) { padding-right: 24px; box-sizing: border-box; }
 }
 /* END Operator identity and trust */
+/* BEGIN Withheld embed alternatives */
+body.ktk-code-page #main-content [data-ktk-embed-fallback] { position: relative; }
+body.ktk-code-page #main-content [data-ktk-embed-notice] { position: absolute; inset: 0; margin: 0; padding: 12px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; color: #222; background: #f5f5f5; border: 1px solid #767676; font-family: inherit; font-size: 16px; line-height: 1.5; text-align: center; pointer-events: none; }
+body.ktk-code-page #main-content iframe:not([src="about:blank"]) + [data-ktk-embed-notice] { display: none; }
+body.ktk-code-page #main-content [data-ktk-embed-alternative] { margin: 0 0 20px; padding: 0 12px; color: #222; background: #fff; box-sizing: border-box; font-family: inherit; font-size: 16px; line-height: 1.5; text-align: left; }
+body.ktk-code-page #main-content [data-ktk-embed-alternative] a { display: inline-block; box-sizing: border-box; min-height: 44px; padding: 10px 0; color: inherit; text-decoration: underline; text-underline-offset: .15em; overflow-wrap: anywhere; }
+body.ktk-code-page #main-content [data-ktk-embed-alternative] a:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+@media (max-width: 600px) {
+  body.ktk-code-page #main-content :is([data-ktk-embed-notice],[data-ktk-embed-alternative]) { padding-right: 24px; }
+}
+/* END Withheld embed alternatives */
 /* BEGIN Hotel guide planning */
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) p { font-size: 16px; line-height: 1.65; }

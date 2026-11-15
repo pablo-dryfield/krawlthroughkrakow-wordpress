@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 57 |
-| In progress | 2 |
+| In progress | 3 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Clear alternatives for withheld embedded content](blocked-embed-census-2026-11-15/README.md) | D05, D03, T10 | In progress (website) | Not yet | Not yet staged or cache-verified. Final CI, guarded2073-file staging publication/independent rollback and protected-state proof, full origin/normal/warmed checks remain. Manual provider access is unverified:14 source-derived URLs were inaccessible/throttled to the reader. Full manual accessibility, remaining old text/CTA overlap and separate production approval remain; consent runtime stays byte-identical. No new verified delivery yet. |
 | [Incremental release planning and isolated rollback](active-updater-2026-11-15/README.md) | G02, T10 | In progress (website) | Not yet | G02 remains partial. Implement the authenticated WordPress/protected-file deployment wrapper, private production rollback ZIP and staging rehearsal, including temporary-helper and pre-rename termination recovery. Coordinate an exclusive release window, obtain separate owner approval and verify production/cache behavior. Application, planner and legacy cutover bytes remain exact; website staging deliveries stay57. |
 | [Clear operator identity and guest review links](operator-trust-2026-11-15/README.md) | C10, C01, G01, D03, D05, T10 | Verified on staging (website) | 2026-11-15 | Actual team expertise, substantive legal/privacy review, ongoing review snapshots, manual accessibility/provider checks and production approval remain. Other legal clauses/media/forms/Shapo-video consent/commerce/medical hold/active competition stay exact. No live ratings, full conformance or whole-page pixel claim. Companion review/link handoff is documented; actual account adoption/outreach and current native GSC checks remain open. |
 | [Current Blog teasers and clearer group enquiries](blog-group-copy-2026-11-15/README.md) | T06, C06, D03, T10 | Verified on staging (website) | 2026-11-15 | Manual/real-device/provider checks, remaining owner facts and production approval remain.197 archive summaries and54 article identities are unchanged;8 separate teaser replacements do not increase those counts. Commerce, functional consent, active competition and medical hold stay exact. No whole-page pixel-equivalence or fresh rating claim. |
