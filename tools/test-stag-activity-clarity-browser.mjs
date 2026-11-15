@@ -37,7 +37,7 @@ try{for(const test of cases){const {width,js,motion}=test,name=width+' '+(js?'JS
   if(js&&motion==='reduce'&&[320,390].includes(width))for(let i=0;i<2;i++)await capture(p,p.locator('#main-content [data-ktk-stag-activity-headline]').nth(i),'headline-'+i+'-'+width+'.png',name+' headline '+i);
   for(const row of [1,2,3,4,5,7,9,10,11,12,13,17]){
    const anchor=p.locator('#main-content .et_pb_row_'+row+' a[href$="#stag_trip_form"]');check(name+' row '+row+' one native enquiry link',await anchor.count()===1);
-   check(name+' row '+row+' exact same-page enquiry destination',await anchor.evaluate(n=>{const u=new URL(n.getAttribute('href'),location.href);return u.origin===location.origin&&u.pathname===location.pathname&&u.search===''&&u.hash==='#stag_trip_form';}));
+   check(name+' row '+row+' exact same-page enquiry destination',await anchor.evaluate(n=>new URL(n.getAttribute('href'),location.href).href===new URL('#stag_trip_form',location.href).href));
    await anchor.focus();check(name+' row '+row+' native keyboard focus',await anchor.evaluate(n=>document.activeElement===n));await anchor.press('Enter');await p.waitForFunction(()=>{const f=document.querySelector('#stag_trip_form'),r=f.getBoundingClientRect();return location.hash==='#stag_trip_form'&&r.top<innerHeight&&r.bottom>0;},null,{timeout:10000});check(name+' row '+row+' Enter reaches existing enquiry',true);
   }
   const brewery=p.locator('#main-content .et_pb_row_8 a[data-ktk-booking-product="40"]');await brewery.focus();check(name+' existing Brewery Tour native control preserved without navigation',await brewery.evaluate(n=>document.activeElement===n&&n.getAttribute('href').endsWith('/store2/brewery-tour-40/#book')));

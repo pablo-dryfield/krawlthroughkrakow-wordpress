@@ -1,9 +1,9 @@
 # Stag Activity Copy Clarity
 
-Status: corrected one-body candidate passes final local generation/source/reference,
-responsive/form and visual verification. CI, guarded staging and origin/normal/
-warmed checks remain. No staging publication yet. Website delivery count remains60
-and C08 counts are unchanged.
+Status: app818055f is published to staging and its backup/Git-local-remote/
+protected-state proof passes. Origin full/corrected responsive checks, QA-only
+source CI and normal/warmed verification remain. Website delivery count stays60
+until those gates close; C08 counts are unchanged.
 
 PR81 is merged as `e8a1cd2ee663f05456d0fe13c6f939643a1982a2`, exact final tree
 `264f4311b5d3e9d424595978a9f11d943e6687c3`. Final PR CI43742367858 and
@@ -197,3 +197,48 @@ captures are inspected. The independent source review verifies the18 exact
 changed files, all other3,502-baseline Git blobs, all2073 current payload hashes,
 source/browser/form inputs and retained source archive. Source CI and all actual
 staging/hash/backup/origin/cache gates still remain; the website count stays60.
+
+
+## Staging Publication And Query-aware QA Correction
+
+App `818055f068d2bb518450413f8f723bf26650daf7`, tree
+`3730ca5b0f09fd067762f42e875135a74b4784d4`, source CI43746472328 passes both
+Offline Tests and Build132910763863 and Secret Scan132910764117. Its Linux log
+passes339 Python cases without skips. The exact clean head is checked again
+before the guarded staging-only full/incremental publisher runs. Publication
+finishes18:27:10.369536UTC15Nov: all2073 local/recorded FTP/authenticated server
+hashes match, WordPress/protected/homepage/storefront state remains exact, all
+smoke checks pass and the temporary helper is removed.
+
+The independently reopened changed-files-only rollback is
+`deploy-backups/ktk-code-pages-staging-20261115-182650.zip`, SHA256
+`b49bb843dbe6495ad9b0d8751b864552ffdb95924825908c814a025b60e5c160`.
+All four entries/CRC/prior Git-local-archive bytes verify: prior Stag body,
+unchanged renderer/registry and manifest. This is not a whole-host/database or
+production backup. `release-independent.json` binds the full Git/local/server
+maps and unchanged publisher transport checks; it does not claim a second
+independent network read of every unchanged file. All three discovery files
+are exact without publication. The public application remains this one body;
+no production, storefront, functional consent or form-backend update occurs.
+
+The first origin responsive run completes all16 views/17 captures, and all
+native keyboard handoffs work, but only1085/1277 checks pass: exactly192
+same-page URL assertions (12 per view) fail. The preserved read-only diagnostic
+proves both staging and loopback expand the fragment into the current complete
+document URL including the request's cache-busting query. The prior checker
+incorrectly requires an empty query. This is an assertion error, not evidence
+that a request link leaves the page or that the application needs alteration.
+
+The QA-only correction requires exact equality to
+`new URL('#stag_trip_form', location.href)`, preserving origin/path/query/fragment
+identity and rejecting unrelated destinations or query changes. The corrected
+local cache-busted run completes1277/1277 across16 contexts; the corrected
+origin run is still pending at this checkpoint. All original failed reports
+remain. No application bytes, build, upload or purge changes for this fix.
+
+Origin forms501/attribution500/discovery243/home10/icon21/full-icon-font20/
+social-font15 have passed. All form/token responses are intercepted; there is
+no actual message/order/provider/account action. Full6193 and corrected
+responsive origin jobs must close green, alongside QA source CI, before the
+single approved staging-prefix purge and normal/warmed checks. No purge has
+occurred and neither the website count60 nor C08 is advanced yet.
