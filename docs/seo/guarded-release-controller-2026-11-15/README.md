@@ -1,0 +1,43 @@
+# Guarded release-controller source
+
+Started15 November2026; work continues16 November in Europe/Warsaw. Evidence times are UTC. Status: production-only capture/fingerprint source and simulated fixtures are implemented locally; the controller, release coordination and actual private staging rehearsal remain to be implemented and verified. No production helper, WordPress capture, backup or update has been performed. No application, forms, functional consent, Ecwid, medical hold, active competition or OmniLodge change. Website deliveries remain63/C08 unchanged; this is not an extra website delivery or a completed G02 workstream.
+
+## Verified baseline and source archive
+
+PR85 is merged as `20d2892f71d3bf8439f183832db407327e0e6024`, exact tested tree `d741f7d07baf9f097c2d81b0cfc9d7ae27ac5ac3`. Final `b26e82a2b58bf18d16afa3cc9e605b31b1218491`/CI43771643814 and main CI43771820729 pass both jobs. Completed local/remote branches were removed; only the project-root worktree remains. Current branch: `codex/staging-guarded-release-controller`.
+
+At22:56:57.663237UTC15Nov the pre-edit archive `deploy-backups/seo-guarded-release-controller-before-20261115.zip` passes CRC and all3534 Git/local/archive comparisons:500235774 bytes,3781 ZIP entries, SHA256 `50a70f592f68d4f427aa0bbfbfb20ce206562bfc34340a62f17ef3b6f61b4bd2`. Ignored `source-backup.json` records every file. This is source preservation, not a hosting or database backup.
+
+The prior [SVG investigation](../svg-precompression-2026-11-15/README.md) remains honestly partial14/16. All six probe namespaces are independently absent; real originals and parent config remain exact. Temporary Brotli responses were40502 bytes smaller in total, with no real-URL delivery, LCP gain or extra website delivery. Its failed all-zero encoding cases match the separately measured unchanged-URL baseline; strict results were not relabeled.
+
+## Existing release boundary
+
+The existing read-only planner covers only the code-page payload and immutable active-production marker. It explicitly excludes homepage/discovery/storefront/Ecwid/WordPress writes. The [authenticated host rehearsal](../authenticated-host-rehearsal-2026-11-15/README.md) verified a small private five-change fixture, not a real2074-file host update, whole-database recovery or whole-release atomicity. The one-time production-cutover publishers must not be blindly rerun or have their activation guards relaxed.
+
+This batch prepares production-capable source and an audited caller/coordination path. Actual production helper installation, private production capture/backup, updates, cache purges and verification require separate owner authorization. The current goal preserves production. Local fixtures and private staging rehearsals must remain clearly labeled and must not insert/remove the real staging activation marker.
+
+## Read-only production capture foundation
+
+`tools/build-production-state-core.py` derives `production-protected-state-core.php` from the unchanged reviewed staging component SHA256 `223b28dab84918a42a23e750a77dcf85a90ac49bcfb0ee2ec9bc7ceea60844fb`. Generation requires that exact input and a complete byte inverse. Only declared production identity, naming, filesystem and scope substitutions plus two explicit guards differ; the seven selected SELECT scopes, encoding, file classification and full-capture behavior are retained. There are no hooks, HTTP entry points, network clients, database writes or restoration commands.
+
+The production component requires an explicit caller flag both at include time and inside the function, including after a rejected include is caught. Before any selected query it verifies production home/site URLs, public indexing, the exact canonical own-helper path, physical public_html/MU/storefront roots and the exact already-active marker SHA256 `b8a99198a1d910ea2c7266bf5ad1cafc9bc89844f0313b0aeb80a1e1c520d833`. Saved database identity must agree after the selected reads. Staging identities, unowned/aliased paths, symlinks and changed markers refuse. Selected page/article/form/configuration/taxonomy rows exclude customer/order/payment/user tables; the output is sensitive private state, never a public response or whole-database backup.
+
+The initial generator preflight failed an ambiguous inverse count for overlapping slash/non-slash URL substrings before writing output. Using exact quoted URL literals resolves that ambiguity without changing runtime acceptance. Complete source/inverse and PHP syntax checks pass. Default generator mode verifies existing outputs without writing; explicit `--write` regenerates only the two tool components.
+
+## Separate protected fingerprint
+
+The transaction engine checks protected state repeatedly around replacements. A full snapshot also hashes the owned payload; repeated use would duplicate the engine's own complete owned-inventory verification. No measured production latency claim is made.
+
+`production-protected-fingerprint.php` is separately generated with six declared, fully invertible changes from the full component. It skips code-owned file hashing before the hash call, retains the original selected-database and protected-file calculation, preserves production/caller/marker guards, and explicitly returns fingerprint scope with `ownedInventoryIncluded=false` and an empty owned map. It is **not** an original-state backup. A future controller must use the full component for the private original snapshot and independently retain the engine's complete owned inventory/activation checks; the fingerprint is only a runtime protected-state guard. Neither new component is yet wired to a hosting helper or release controller.
+
+Twenty-nine focused tests pass with two unavailable Windows symlink fixtures. Simulated WordPress fixtures cover positive active identity, seven SELECT-only scopes, full/fingerprint hash equality, stable repeated capture, other-helper/external-change protection, missing/false/re-entered flags, runtime/saved identity disagreement, physical/path escapes, missing/changed active markers, unsafe table names, generic query failure and symlink refusal where supported. The positive production context exists only under a temporary local fixture; it is not actual production evidence. Local PHP syntax and both byte inverses pass. Full capture-foundation discovery passes407 tests in114.988s with12 Windows filesystem skips. CI runs generator verification plus PHP syntax before auto-discovered tests; no deployment is configured.
+
+## Work remaining in this batch
+
+Implement and review the authenticated controller, bounded canonical requests, immutable plan/private backup/export/closure bindings, interrupted-call inspection/resume/rollback and a strict production-authorization boundary. Verify locally, then use only a clearly isolated private staging fixture after exact-head CI; keep real public staging code and selected WordPress/protected state unchanged. Scope code pages explicitly and prepare homepage/discovery coordination without claiming whole-release atomicity. Actual production backup, approval and release remain separate dependencies; all other feasible plan work continues.
+
+## Canonical request gate foundation
+
+`content-update-request.php` is a separate validation-only component with no hook, filesystem/database write or release authorization. It requires an explicit caller flag at include and call time, POST to the exact host, a matching43-character secret token, a current at-most-two-hour packet lifetime and an exact server-provided transaction/application/plan binding. Canonical JSON, fixed key order, size/depth limits, named actions and action-specific hash receipts are required. Duplicate keys, whitespace/numeric variants, arbitrary paths, limit parameters and client-declared owner approval are rejected. Token values never enter responses. Receipt shape alone does not verify a backup or grant permission to apply; durable comparison and server-side owner approval belong to the still-pending controller.
+
+Eleven real-PHP parser tests pass, covering all named actions and the refusal cases, with private sentinel files unchanged. Together with the29 capture/fingerprint cases,40 focused checks pass (two Windows symlink skips). Full current discovery passes418 tests in123.628s with12 Windows filesystem skips. Generator/default verification, PHP syntax and unchanged staging-core/engine/application checks pass locally. No CI, live controller, new helper, FTP operation, actual production snapshot or production backup is claimed for this branch yet. Request and capture source is ready for a draft CI checkpoint; lifecycle/coordination work continues in the same branch.

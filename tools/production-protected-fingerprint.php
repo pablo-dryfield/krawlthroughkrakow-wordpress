@@ -1,0 +1,100 @@
+<?php
+/** Generated production-only protected fingerprint; not an owned-payload backup; see build-production-state-core.py. No HTTP entry point, hooks, writes or network client. */
+if (!defined('KTK_PRODUCTION_STATE_ALLOWED') || KTK_PRODUCTION_STATE_ALLOWED !== true) {
+    throw new RuntimeException('Explicit production state caller required');
+}
+
+function ktk_capture_production_protected_fingerprint(string $helperPath): array
+{
+    if (!defined('KTK_PRODUCTION_STATE_ALLOWED') || KTK_PRODUCTION_STATE_ALLOWED !== true) {
+        throw new RuntimeException('Explicit production state caller required');
+    }
+    if (!defined('ABSPATH') || !defined('WP_CONTENT_DIR') || home_url('/') !== 'https://krawlthroughkrakow.com/' ||
+        site_url('/') !== 'https://krawlthroughkrakow.com/' || (int)get_option('blog_public') !== 1) {
+        throw new RuntimeException('Exact production identity required before state capture');
+    }
+    $helperPath = str_replace('\\', '/', $helperPath);
+    $resolvedHelper = realpath($helperPath);
+    if (!preg_match('/^ktk-production-(?:state-snapshot|transaction-update)-[a-f0-9]{32}\.php$/D', basename($helperPath)) ||
+        is_link($helperPath) || !is_file($helperPath) || $resolvedHelper === false || str_replace('\\', '/', $resolvedHelper) !== $helperPath) {
+        throw new RuntimeException('Exact existing production helper path required');
+    }
+    $root = static function (string $path): string {
+        $real = realpath($path);
+        if ($real === false || !is_dir($real)) { throw new RuntimeException('Missing protected directory'); }
+        foreach (array($path, $real) as $candidate) {
+            for ($p = $candidate; ; $p = dirname($p)) {
+                if (is_link($p)) { throw new RuntimeException('Symlink protected ancestor'); }
+                if (dirname($p) === $p) { break; }
+            }
+        }
+        return str_replace('\\', '/', $real);
+    };
+    $mu = $root(dirname($helperPath));
+    $site = $root(ABSPATH);
+    if (basename($site) !== 'public_html' || $mu !== $site . '/wp-content/mu-plugins' || $root(WP_CONTENT_DIR) !== $site . '/wp-content') {
+        throw new RuntimeException('Exact production filesystem required');
+    }
+    $activation = $mu . '/ktk-code-pages-production.php';
+    if (is_link($activation) || !is_file($activation) || hash_file('sha256', $activation) !== 'b8a99198a1d910ea2c7266bf5ad1cafc9bc89844f0313b0aeb80a1e1c520d833') {
+        throw new RuntimeException('Exact existing active-production marker required before state capture');
+    }
+    $encode = static fn($value) => json_encode($value, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+    global $wpdb;
+    $read = static function (string $table, string $suffix) use ($wpdb): array {
+        if (!preg_match('/^[A-Za-z0-9_]+$/D', $table)) { throw new RuntimeException('Unexpected WordPress table'); }
+        $rows = $wpdb->get_results('SELECT * FROM ' . $table . ' ' . $suffix, ARRAY_A);
+        if (!is_array($rows) || !empty($wpdb->last_error)) { throw new RuntimeException('Protected query failed'); }
+        return $rows;
+    };
+    // Page/article/configuration records only. No users, comments, customer,
+    // order or payment tables, writes, automatic restoration or purge.
+    $types = "('page','post','attachment','wpcf7_contact_form','wpcode','et_pb_layout','nav_menu_item','wp_global_styles','wp_template','wp_template_part','custom_css')";
+    foreach (array('posts','postmeta','options','terms','term_taxonomy','term_relationships','termmeta') as $key) {
+        if (!is_string($wpdb->$key) || !preg_match('/^[A-Za-z0-9_]+$/D', $wpdb->$key)) { throw new RuntimeException('Unexpected WordPress table'); }
+    }
+    $database = array(
+        'posts' => $read($wpdb->posts, 'WHERE post_type IN ' . $types . ' ORDER BY ID'),
+        'postmeta' => $read($wpdb->postmeta, 'WHERE post_id IN (SELECT ID FROM ' . $wpdb->posts . ' WHERE post_type IN ' . $types . ') ORDER BY meta_id'),
+        'options' => $read($wpdb->options, "WHERE option_name IN ('home','siteurl','blog_public','show_on_front','page_on_front','page_for_posts','template','stylesheet','active_plugins','permalink_structure','ecwid_store_id') OR LEFT(option_name,3)='et_' OR option_name LIKE 'theme_mods_%' OR option_name LIKE 'wpcode%' OR option_name LIKE 'iubenda%' OR option_name LIKE 'ecwid%' OR option_name LIKE 'wpcf7%' ORDER BY option_name"),
+        'terms' => $read($wpdb->terms, 'ORDER BY term_id'),
+        'term_taxonomy' => $read($wpdb->term_taxonomy, 'ORDER BY term_taxonomy_id'),
+        'term_relationships' => $read($wpdb->term_relationships, 'ORDER BY object_id,term_taxonomy_id'),
+        'termmeta' => $read($wpdb->termmeta, 'ORDER BY meta_id'),
+    );
+    $saved = array();
+    foreach ($database['options'] as $option) { $saved[$option['option_name']] = $option['option_value']; }
+    if (rtrim((string)($saved['home'] ?? ''), '/') !== 'https://krawlthroughkrakow.com' || rtrim((string)($saved['siteurl'] ?? ''), '/') !== 'https://krawlthroughkrakow.com' ||
+        (string)($saved['blog_public'] ?? '') !== '1') { throw new RuntimeException('Saved production identity differs'); }
+    $owned = array(); $protected = array();
+    $walk = static function (string $directory, string $label) use ($root, $helperPath, &$owned, &$protected): void {
+        $directory = $root($directory);
+        $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory, FilesystemIterator::SKIP_DOTS), RecursiveIteratorIterator::SELF_FIRST);
+        foreach ($iterator as $file) {
+            if ($file->isLink()) { throw new RuntimeException('Symlink protected tree'); }
+            if (!$file->isFile()) { continue; }
+            $name = str_replace('\\', '/', substr($file->getPathname(), strlen($directory) + 1));
+            if ($label === 'mu' && $name === basename($helperPath)) { continue; }
+            if ($label === 'storefront' && str_starts_with($name, 'frontend/')) { continue; }
+            if ($label === 'mu' && ($name === 'ktk-code-pages.php' || str_starts_with($name, 'ktk-code-pages-assets/'))) { continue; }
+            $hash = hash_file('sha256', $file->getPathname());
+            if ($hash === false) { throw new RuntimeException('Unreadable protected file'); }
+            $protected[$label . '/' . $name] = $hash;
+        }
+    };
+    $walk($mu, 'mu');
+    $walk($site . '/wp-content/plugins/ktk-storefront', 'storefront');
+    ksort($owned); ksort($protected);
+    if (!is_file($mu . '/ktk-code-pages.php') || !is_file($mu . '/ktk-code-pages-assets/registry.php') || !isset($protected['mu/ktk-homepage-shortcode.php']) || count($protected) < 3) {
+        throw new RuntimeException('Complete existing site roots required');
+    }
+    $identity = array('home' => home_url('/'), 'siteurl' => site_url('/'), 'blogPublic' => (int)get_option('blog_public'),
+        'frontPageId' => (int)get_option('page_on_front'), 'wordpressEnvironment' => function_exists('wp_get_environment_type') ? wp_get_environment_type() : null);
+    $databaseHash = hash('sha256', $encode($database));
+    $protectedHash = hash('sha256', $encode(array('identity' => $identity, 'databaseSha256' => $databaseHash, 'files' => $protected)));
+    return array('schemaVersion' => 1, 'scope' => 'production-protected-fingerprint', 'ownedInventoryIncluded' => false, 'identity' => $identity,
+        'capturedAt' => gmdate('c'), 'helperSha256' => hash_file('sha256', $helperPath), 'database' => $database,
+        'databaseSha256' => $databaseHash, 'protectedFiles' => $protected, 'ownedContentFiles' => $owned,
+        'protectedStateSha256' => $protectedHash, 'rowCounts' => array_map('count', $database),
+        'databaseWrites' => 0, 'applicationWrites' => 0, 'cachePurges' => 0);
+}
