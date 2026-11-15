@@ -1,8 +1,8 @@
 # Public Navigation And No-JS Resilience
 
-Status: local candidate ready for CI and guarded staging, not a new verified delivery.
-Website62/C08 unchanged. Full builds/source/reference/contracts, the298-view
-browser matrix and501 intercepted form-recovery checks pass; release gates remain.
+Status: both staging payloads and protected-state proof pass; origin verification running.
+Website62/C08 unchanged. Full local/CI/publication/state gates pass; complete
+origin/normal/warmed release verification remains.
 The complete goal stays active.
 
 PR83 is merged as `a77046f34ebb51a8cd0cc9795b8164a454cd7449`, exact final tree
@@ -173,3 +173,125 @@ only that exact root or its exact slash-prefixed paths. All guards stay intact.
 The21 focused publisher tests and full340 Python tests pass, retaining10 Windows
 platform skips. Exact-head CI must pass again before publication. The original
 339-test log, earlier source receipt and CI remain historical evidence.
+
++
++## Staging Publication Underway
++
++Current source/headd13c35a377c3a4ab1a959a0b2bb1dd07b930873c, tree
++0f0a49e21830fce9a5783fd6c426e2edca010d74, PR84. CI43759632045 passes both
++jobs; the quality log confirms340 Linux tests without skips, SHA256
++263299d55cef8f1086e1bfc1d3019ccef4e59ae35ff440fad79f9637ae9d400d.
++The29-file source receipt verifies every other baseline Git blob, current2074
++code/235 home maps and unchanged complete browser/form proof. A commit preflight
++initially expects ROADMAP.md to change with the summary update; regenerated
++Markdown is byte-identical, while HTML carries the summary/checksum update.
++The corrected exact seven-file guard commit passes; no application edit follows.
++
++Code-page publication closes20:45:56.000313UTC15Nov. Independent Git/local/
++recorded-FTP/authenticated final2074 hashes agree; prior2073 map matches the
++source archive. Selected WordPress posts/options/home/storefront checks pass
++and the temporary probe is removed. Four-entry changed-file rollback
++deploy-backups/ktk-code-pages-staging-20261115-204531.zip, SHA256
++f277c12285aa59fc8b508399cae5ac2af1afeffd96fe1b8652e13707116efbb7, passes
++CRC/every old Git blob. Its manifest explicitly records the newly added
++ktk-code-pages-assets/nojs-navigation.php for rollback removal.
++
++The fresh pre-homepage snapshot closes with2074 owned code files,254 protected
++files and selected rows from seven WordPress tables:869 posts/7742 postmeta/
++118 options/51 terms/51 taxonomies/361 relationships/0 termmeta. Two captures
++have exact identity/database/owned/protected state. Three-entry private ZIP
++staging-protected-state-20261115-204710-402919.zip is2,672,003 bytes, SHA256
++98188dd55514d152ed4e7b323aaf15f1c1c0fda6bb010605f5a14cc00fe762e4;
++CRC/every snapshot byte verify and its helper is removed. This is selected
++staging page/configuration preservation, not users/orders/payments or a full
++database restore/production backup.
++
++The first independent reader stops before homepage publication because it
++compares whole captures including their different capturedAt timestamps. The
++unchanged snapshot reader's same_state comparison and an explicit bound on
++both capture times verify all state and permit only that metadata difference.
++All234 existing homepage files match the prior Git/archive exactly and the new
++home helper is absent. The homepage local-source/assets-only publisher is now
++running; its rollback,235 final hashes and fresh post-home snapshot remain.
++No MCP edge purge, production change or delivery63 claim yet. The complete
++goal remains active.
++
++
++Both publishers close successfully before any origin suite starts. The homepage
++235-file Git/local/recorded-FTP map agrees, posts/settings are not rewritten,
++origin cache clears and explicit Cloudflare attempts remain false. The homepage
++rollback deploy-backups/ktk-homepage-shortcode-staging-20261115-204949.zip is
++6,759,283 bytes/235 entries, SHA256
++5b776c0b605972bfb43913495a31e33106191f735dd56b29afbf0cd368b2b295;
++CRC/all234 prior Git/source-archive files verify. Rollback must remove only the
++new ktk-homepage-assets/nojs-navigation.php in addition to restoring old files,
++with the old renderer restored last. No rollback has been performed.
++
++The post-homepage snapshot closes with2074 owned/255 protected files and the
++same selected WordPress rows. Its three-entry private ZIP is2,672,117 bytes,
++SHA256 a42dc91f637a6eca091810916766cf3b6401d157c5442f2d7b43ec65d9a95728,
++CRC/every snapshot byte exact/helper removed. At20:52:48.590528UTC the combined
++independent reader verifies both payload maps/archives/Git sources and exact
++database/identity/code maps across the homepage update. The protected delta is
++precisely the homepage renderer/CSS/new helper; all other protected files stay
++exact. No production backup/write or whole-release atomicity claim.
++
++Full origin6193, complete298-view browser matrix, forms501, attribution,
++discovery and homepage/font suites start only after that green combined proof.
++All must close successfully before the one authorized MCP staging-prefix purge
++and clean/warmed repeats. No further build/upload/discovery publication.
++Website delivery count remains62; C08 and owner/account/manual boundaries remain.
++
++
++Origin forms501/501, attribution500/500, discovery243/243 and home10/icon21/
++icon-font20/social15 pass. The first origin browser run stops102/298 views,
++878/880 checks, on page.goto net::ERR_NETWORK_CHANGED for the dating guide.
++Every completed functional check passes; the two failures are incomplete-matrix
++and harness-error gates. That report is retained, not accepted as a complete
++matrix. The identical application/harness starts a full fresh-output repeat;
++no retry code, skip, guard relaxation, build or upload is introduced. The full
++HTTP release run independently records recovered verification reads; their
++relationship/cause is not inferred. No MCP edge purge before every origin gate.
++A separate read-only clean-URL method is prepared to require six actual HTML
++HITs with the exact generated nine-link block plus six current CSS HITs after
++the clean/warmed suites. It is not yet executed and makes no cache claim now.
++
++
++## Bounded Browser Transport Recovery Under Verification
++
++The unchanged origin repeat reaches239/298 views,2086/2088 checks, then stops
++on page.goto net::ERR_NAME_NOT_RESOLVED for the homepage. Its two failing gates
++again record incomplete coverage and the terminal navigation error; completed
++functional assertions pass. Both partial reports remain distinct evidence.
++
++A new read-only navigation adapter permits only explicitly allowlisted local
++preview/staging document URLs and rejects production/providers/commerce/account/
++credentials/fragments before any request. Only the two observed Chromium network
++codes can retry, twice at most, with1s/3s Node waits and every attempt recorded.
++HTTP statuses, navigation timeouts, app assertions and other browser failures
++are not retried. Six focused contracts verify successful GET options, recovery,
++terminal bounds, exact unreviewed-error propagation/zero retry waits, HTTP status
++preservation and zero prohibited navigation calls. Full414 JavaScript cases pass.
++
++At21:09:36.427151UTC an independent byte comparison proves every original case,
++page assertion, safety route and capture step unchanged. Only the transport
++import/source binding/retry recorder and two goto call sites differ. Application
++Git diff from published d13c35a is empty. Source2377 passes with adapter/test
++bindings. The new full298-view local and origin matrices are running; exact-head
++QA CI must pass before any MCP edge purge. No application change/build/reupload.
++The full origin HTTP suite already passes6193/6193 at21:04:35.079452UTC with
++348 responses/119 assets and three recovered TimeoutErrors, retained by path.
++No relationship between those HTTP retries and Chromium errors is asserted.
++
++
++The updated local matrix closes2834/2834 across298 views,18 intercepted Enter
++destinations and zero transport retries. All eight new captures are byte-exact
++to the earlier accepted local set and individually reopened. Final JavaScript
++contracts pass414/414; the six retry fixtures additionally witness exact original
++error identity/zero retry-waits and zero prohibited navigation calls. The first
++combined patch preflight refuses a partial-line context before any file write;
++the complete guarded edit is applied afterward. Source2377 binds the final
++adapter and unit files. The origin transport matrix remains underway, and
++current QA CI must pass before the MCP edge purge. Published appd13c35a,
++both payload maps, rollback archives and protected-state proofs stay unchanged.
++
