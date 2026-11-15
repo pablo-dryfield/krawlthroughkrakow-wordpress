@@ -20,6 +20,7 @@ import {loadContactDetails,reviseContactDetails} from './contact-details-editori
 import {loadEstablishedNyeEditorial,reviseEstablishedNyeEditorial} from './established-nye-editorial.mjs';
 import {loadGroupPlanningEditorial,reviseGroupPlanningEditorial} from './group-planning-editorial.mjs';
 import {loadGroupActivitiesEditorial,reviseGroupActivitiesEditorial} from './group-activities-editorial.mjs';
+import {loadStagActivityClarity,reviseStagActivityClarity} from './stag-activity-clarity.mjs';
 import {loadStagCostumeEditorial,reviseStagCostumeEditorial} from './stag-costume-editorial.mjs';
 import {loadPracticalGuidesEditorial,revisePracticalGuidesEditorial} from './practical-guides-editorial.mjs';
 import {loadNightOutEditorial,reviseNightOutEditorial} from './night-out-editorial.mjs';
@@ -61,6 +62,7 @@ const contactDetails=await loadContactDetails();
 const establishedNye=await loadEstablishedNyeEditorial();
 const groupPlanning=await loadGroupPlanningEditorial();
 const groupActivities=await loadGroupActivitiesEditorial();
+const stagActivityClarity=await loadStagActivityClarity();
 const stagCostume=await loadStagCostumeEditorial();
 const practicalGuides=await loadPracticalGuidesEditorial();
 const nightOutGuides=await loadNightOutEditorial();
@@ -115,6 +117,7 @@ async function facts(html,revision){
   await page.evaluate(reviseContactDetails,{key:revision.key,revision:contactDetails});
   await page.evaluate(reviseGroupPlanningEditorial,{key:revision.key,revision:groupPlanning.find(row=>row.key===revision.key)});
   await page.evaluate(reviseGroupActivitiesEditorial,{key:revision.key,revision:groupActivities.find(row=>row.key===revision.key)});
+  await page.evaluate(reviseStagActivityClarity,{key:revision.key,revision:stagActivityClarity});
   await page.evaluate(reviseStagCostumeEditorial,{key:revision.key,revision:stagCostume});
   await page.evaluate(revisePracticalGuidesEditorial,{key:revision.key,revision:practicalGuides.find(row=>row.key===revision.key)});
   await page.evaluate(reviseNightOutEditorial,{key:revision.key,revision:nightOutGuides.find(row=>row.key===revision.key)});
