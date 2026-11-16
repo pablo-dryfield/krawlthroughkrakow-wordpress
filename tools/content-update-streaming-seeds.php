@@ -25,6 +25,7 @@ final class KTK_Content_Update_Streaming_Seeds
     private int $stepFiles;
     private ?string $pendingClosure=null;
     private ?array $validatedControl=null;
+    private $disposalGuard=null;
 
     private static function encode($value): string
     {
@@ -108,7 +109,8 @@ final class KTK_Content_Update_Streaming_Seeds
         if ($original===null || $raw===null) { throw new RuntimeException('Signed original state and exact plan required before private streaming'); }
         $control=json_decode($raw,true,64,JSON_THROW_ON_ERROR);
         $snapshot=json_decode($original,true,64,JSON_THROW_ON_ERROR);
-        if (!is_array($snapshot) || ($snapshot['protectedStateSha256']??null)!==$this->plan['protectedStateSha256'] || !is_array($control) || ($control['mode']??null)!=='private-staging-rehearsal' || ($control['transactionId']??null)!==$this->plan['transactionId'] || ($control['applicationCommit']??null)!==$this->plan['applicationCommit'] || ($control['originalStateSha256']??null)!==hash('sha256',$original) || self::encode($control['enginePlan']??null)!==self::encode($this->plan) || ($protected && ($this->guard)()!==$this->plan['protectedStateSha256'])) { throw new RuntimeException('Private streaming plan or protected state differs; preserve without database restoration'); }
+        if (!is_array($snapshot) || ($snapshot['protectedStateSha256']??null)!==$this->plan['protectedStateSha256'] || !is_array($control) || ($control['mode']??null)!=='private-staging-rehearsal' || ($control['transactionId']??null)!==$this->plan['transactionId'] || ($control['applicationCommit']??null)!==$this->plan['applicationCommit'] || ($control['originalStateSha256']??null)!==hash('sha256',$original) || self::encode($control['enginePlan']??null)!==self::encode($this->plan) || ($protected && $this->disposalGuard===null && ($this->guard)()!==$this->plan['protectedStateSha256'])) { throw new RuntimeException('Private streaming plan or protected state differs; preserve without database restoration'); }
+        if ($protected && $this->disposalGuard!==null) { ($this->disposalGuard)(); }
         if ($this->profile==='full-private-host') { $this->validatedControl=$inventory; }
         return $store->privateRoot();
     }
@@ -188,14 +190,22 @@ final class KTK_Content_Update_Streaming_Seeds
         $this->pendingClosure=$bytes;
         try { return $this->inspect($store); } finally { $this->pendingClosure=null; }
     }
+    public function inspectForDisposal(KTK_Content_Update_Private_Store $store,callable $freshGuard,?string $closure=null): array
+    {
+        if ($this->profile!=='full-private-host' || !defined('KTK_PRIVATE_SEED_DISPOSAL_ALLOWED') || KTK_PRIVATE_SEED_DISPOSAL_ALLOWED!==true || $this->disposalGuard!==null || $this->pendingClosure!==null) { throw new RuntimeException('Explicit read-only private disposal census required'); }
+        $this->disposalGuard=$freshGuard;$this->pendingClosure=$closure;
+        try { return $this->inspect($store); } finally { $this->disposalGuard=null;$this->pendingClosure=null;$this->validatedControl=null; }
+    }
     public function advance(KTK_Content_Update_Private_Store $store,string $stateSha256): array
     {
+        if ($this->disposalGuard!==null) { throw new RuntimeException('Private disposal census cannot authorize copying'); }
         $state=$this->inspect($store);
         if (!self::digest($stateSha256) || !hash_equals($state['stateSha256'],$stateSha256)) { throw new RuntimeException('Stale streaming state; inspect before advancing'); }
         return $this->copyInspected($store,$state);
     }
     public function advanceWithControllerFence(KTK_Content_Update_Private_Store $store,callable $beforeWrite): array
     {
+        if ($this->disposalGuard!==null) { throw new RuntimeException('Private disposal census cannot authorize copying'); }
         if ($this->profile!=='full-private-host') { throw new RuntimeException('Explicit full private host controller fence required'); }
         $state=$this->inspect($store);
         // Server callback validates the complete controller fence and archive under

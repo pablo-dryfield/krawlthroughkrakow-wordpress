@@ -6,7 +6,7 @@ from tools.tests import test_content_update_private_store as store
 
 ROOT=store.ROOT; ID=store.ID; KEY=store.KEY
 DRIVER=r'''<?php
-$c=json_decode(file_get_contents($argv[1]),true,64,JSON_THROW_ON_ERROR);define('KTK_CONTENT_UPDATE_STORE_ALLOWED',true);if($c['allowed']){define('KTK_CONTENT_UPDATE_STREAMING_SEEDS_ALLOWED',true);}if(!empty($c['hostAllowed'])){define('KTK_CONTENT_UPDATE_FULL_HOST_STREAMING_ALLOWED',true);}
+$c=json_decode(file_get_contents($argv[1]),true,64,JSON_THROW_ON_ERROR);define('KTK_CONTENT_UPDATE_STORE_ALLOWED',true);if($c['allowed']){define('KTK_CONTENT_UPDATE_STREAMING_SEEDS_ALLOWED',true);}if(!empty($c['hostAllowed'])){define('KTK_CONTENT_UPDATE_FULL_HOST_STREAMING_ALLOWED',true);}if(!empty($c['disposalAllowed'])){define('KTK_PRIVATE_SEED_DISPOSAL_ALLOWED',true);}
 try{require $c['store'];require $c['component'];$s=$c['create']?KTK_Content_Update_Private_Store::create($c['root'],$c['public'],$c['id'],$c['key']):new KTK_Content_Update_Private_Store($c['root'],$c['public'],$c['id'],$c['key']);
 if($c['create']){$original=json_encode(array('protectedStateSha256'=>$c['plan']['protectedStateSha256']));$s->writeOnce('original-state.json',$original);$s->writeOnce('controller-plan.json',json_encode(array('mode'=>$c['mode'],'transactionId'=>$c['id'],'applicationCommit'=>$c['plan']['applicationCommit'],'originalStateSha256'=>hash('sha256',$original),'enginePlan'=>$c['plan'])));}
 $guard=$c['guard'];$calls=0;$observer=static function($event,$name,$path)use($c,&$guard,$s){
@@ -21,7 +21,8 @@ if(in_array($c['fault'],array('tamper-control','resign-control','unknown-control
  else{$body=str_replace('private-staging-rehearsal','changed-staging-rehearsal',$s->read('controller-plan.json'));$m=new ReflectionMethod($s,'blob');file_put_contents($p,$m->invoke($s,'controller-plan.json',$body));}
 }
 };$seed=new KTK_Content_Update_Streaming_Seeds($c['public'],$c['plan'],$c['sizes'],$c['overrides'],static function()use(&$guard,&$calls){$calls++;return $guard;},$observer,$c['profile']??'default');
-if($c['action']==='controller-advance'){$v=$seed->advanceWithControllerFence($s,static function($state)use($c){if($state['stateSha256']!==$c['fence']){throw new RuntimeException('Controller fixture fence differs');}});}
+if($c['action']==='disposal-inspect'){$v=$seed->inspectForDisposal($s,static function()use($c,&$guard,$seed,$s){if(!empty($c['recursiveCopy'])){$seed->advance($s,$c['fence']);}if($guard!==$c['freshGuard']){throw new RuntimeException('Fresh disposal fixture guard differs');}});if(!empty($c['restoreProbe'])){$v=$seed->advance($s,$v['stateSha256']);}}
+elseif($c['action']==='controller-advance'){$v=$seed->advanceWithControllerFence($s,static function($state)use($c){if($state['stateSha256']!==$c['fence']){throw new RuntimeException('Controller fixture fence differs');}});}
 else{$v=$c['action']==='inspect'?$seed->inspect($s):$seed->advance($s,$c['fence']);}echo json_encode(array('ok'=>true,'value'=>$v,'peak'=>memory_get_peak_usage(true),'guardCalls'=>$calls),JSON_THROW_ON_ERROR);
 }catch(Throwable $e){echo json_encode(array('ok'=>false,'error'=>$e->getMessage()),JSON_THROW_ON_ERROR);}
 '''
@@ -145,5 +146,12 @@ class StreamingPreparationSeedTests(unittest.TestCase):
      payload=[p for p in (case.private/'source').rglob('*') if p.is_file()];self.assertEqual(len(payload),1);self.assertEqual(payload[0].stat().st_size,0)
      self.assertTrue((case.private/'control/owner-note').exists() if fault=='unknown-control' else (case.private/'control/controller-plan.json').exists())
     finally:case.doCleanups()
+ def test_separate_disposal_census_requires_explicit_gate_and_never_changes_original_copy_guard(self):
+  before=self.snapshot();options={'profile':'full-private-host','hostAllowed':True,'guard':'e'*64,'freshGuard':'e'*64}
+  self.call('disposal-inspect',success=False,**options);self.assertEqual(self.snapshot(),before)
+  state=self.call('disposal-inspect',disposalAllowed=True,**options);self.assertFalse(state['sourceComplete']);self.assertEqual(self.snapshot(),before)
+  self.call('disposal-inspect',success=False,disposalAllowed=True,restoreProbe=True,**options);self.assertEqual(self.snapshot(),before);self.assertFalse((self.private/'source').exists())
+ def test_disposal_guard_callback_cannot_reenter_copying(self):
+  before=self.snapshot();self.call('disposal-inspect',success=False,profile='full-private-host',hostAllowed=True,disposalAllowed=True,guard='e'*64,freshGuard='e'*64,recursiveCopy=True,fence=self.initial['stateSha256']);self.assertEqual(self.snapshot(),before)
 
 if __name__=='__main__':unittest.main()
