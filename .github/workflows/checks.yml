@@ -43,6 +43,7 @@ jobs:
           php --version
           php -l tools/code-pages-update-engine.php
           php -l tools/staging-protected-state-template.php
+          php -l tools/staging-full-inventory-capacity-template.php
           php -l tools/staging-protected-state-core.php
           python tools/build-production-state-core.py
           php -l tools/production-protected-state-core.php
