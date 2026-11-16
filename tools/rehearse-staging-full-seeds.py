@@ -9,11 +9,12 @@ if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from tools import content_update_backup as backup
 from tools import full_private_seed_packet as full
 from tools import full_private_seed_recovery as recovery
+from tools import early_private_entry as early_entry
 from tools.full_private_seed_transport import FullSeedTransport,OriginalCapsuleReader,UncertainFullSeedRequest,verify_retained_metadata
 from tools.content_update_staging_connection import BoundedStagingFTPS
 
 spec=importlib.util.spec_from_file_location('ktk_full_seed_shared_runner',ROOT/'tools/rehearse-staging-content-controller.py');shared=importlib.util.module_from_spec(spec);spec.loader.exec_module(shared)
-FILES=('rehearse-staging-full-seeds.py','rehearse-staging-full-seeds.ps1','full_private_seed_packet.py','full_private_seed_recovery.py','full_private_seed_transport.py','full-private-seed-staging-template.php','full-private-seed-rehearsal.php','content-update-streaming-seeds.php','full_inventory_capacity.py')
+FILES=('rehearse-staging-full-seeds.py','rehearse-staging-full-seeds.ps1','full_private_seed_packet.py','full_private_seed_recovery.py','full_private_seed_transport.py','full-private-seed-staging-template.php','full-private-seed-rehearsal.php','content-update-streaming-seeds.php','full_inventory_capacity.py','early_private_entry.py')
 
 def fingerprints():
     result=shared.source_hashes()
@@ -37,7 +38,7 @@ def archive_original(path,plan,key,helper_sha):
     return m,original
 
 def main(argv=None):
-    parser=argparse.ArgumentParser(description=__doc__);mode=parser.add_mutually_exclusive_group();mode.add_argument('--rehearse-staging',action='store_true');mode.add_argument('--resume');parser.add_argument('--abandon',action='store_true');parser.add_argument('--abandoned-state');parser.add_argument('--interrupt-original',action='store_true');parser.add_argument('--application-commit',required=True);parser.add_argument('--tooling-commit',required=True);parser.add_argument('--report',required=True);args=parser.parse_args(argv)
+    parser=argparse.ArgumentParser(description=__doc__);mode=parser.add_mutually_exclusive_group();mode.add_argument('--rehearse-staging',action='store_true');mode.add_argument('--resume');parser.add_argument('--abandon',action='store_true');parser.add_argument('--abandoned-state');parser.add_argument('--interrupt-original',action='store_true');parser.add_argument('--entry-profile',choices=('late','early'),default='late');parser.add_argument('--application-commit',required=True);parser.add_argument('--tooling-commit',required=True);parser.add_argument('--report',required=True);args=parser.parse_args(argv)
     if args.abandon and not args.resume or args.resume and not backup.identifier(args.resume,32) or args.resume and args.interrupt_original or args.abandoned_state is not None and (not args.resume or not args.abandon or not backup.digest(args.abandoned_state)):raise ValueError('Exact resume/abandon request required')
     destination=Path(args.report).resolve()
     if not destination.is_relative_to(ROOT/'docs/seo') or destination.suffix!='.json' or destination.exists() or destination.is_symlink():raise ValueError('Fresh local SEO report required')
@@ -45,21 +46,26 @@ def main(argv=None):
     report={'startedAt':datetime.now(timezone.utc).isoformat(),'scope':'full-private-seed-copy-prefix-recovery-and-cleanup; no engine/public transaction','phase':'offline-validated','applicationCommit':args.application_commit,'toolingCommit':args.tooling_commit,'sourceHashes':hashes,'publicOwnedFiles':len(owned),'publicOwnedBytes':sum(sizes.values()),'publicOwnedMapSha256':backup.sha(backup.encode(owned,sort=True)),'publicApplicationWrites':0,'databaseWrites':0,'cachePurges':0,'productionOperations':0,'fullHostTransactionAcceptance':False,'quotaVerified':False,'steps':[],'uncertainRequests':[]}
     def checkpoint(phase):
         report['phase']=phase;report['updatedAt']=datetime.now(timezone.utc).isoformat();destination.parent.mkdir(parents=True,exist_ok=True);destination.write_bytes((json.dumps(report,indent=2)+'\n').encode())
-    checkpoint('offline-validated')
+    report['entryProfile']=args.entry_profile;checkpoint('offline-validated')
     if not args.rehearse_staging and not args.resume:
         print(json.dumps({'phase':report['phase'],'publicOwnedFiles':len(owned),'publicOwnedBytes':sum(sizes.values())}));return
     common=shared.snapshot.load_common();connection=None;lease=None;value=None;before=None;client=None
+    compile_extra={'entry_profile':'early'} if args.entry_profile=='early' else {}
+    capture_extra={'source_compiler':early_entry.snapshot_source} if args.entry_profile=='early' else {}
     try:
         connection=BoundedStagingFTPS(common.common.store2.connect)
         if args.resume:
             value=recovery.FullSeedPacketVault().load(args.resume)
+            if recovery.profile(value)!=args.entry_profile:raise ValueError('Explicit entry profile differs from encrypted recovery context')
             if value['applicationCommit']!=args.application_commit or value['sourceHashes']!=hashes or value['publicOwned']!=owned or value['publicSizes']!=sizes:raise ValueError('Encrypted full seed packet differs from current reviewed source')
             report['resumedTransaction']=args.resume;report['originalToolingCommit']=value['toolingCommit']
         else:
-            report['before']={};checkpoint('snapshot-before');unchanged(owned,hashes);before=shared.capture(common,connection,owned,shared.source_hashes(),report['before'],lambda:checkpoint('snapshot-before'));unchanged(owned,hashes)
-            tx,token,key=secrets.token_hex(16),secrets.token_urlsafe(32),secrets.token_hex(32);expires=int(time.time())+3600;plan,_,_=full.plan(tx,args.application_commit,owned,sizes,before['protectedStateSha256']);name='ktk-transaction-rehearsal-'+tx+'.php';source=full.helper_source(name,token,expires,args.application_commit,owned,sizes,before['protectedStateSha256'],key,args.interrupt_original)
-            value={'schemaVersion':1,'scope':'full-private-seed-caller-recovery','transactionId':tx,'applicationCommit':args.application_commit,'toolingCommit':args.tooling_commit,'helperSha256':backup.sha(source),'sourceHashes':hashes,'expires':expires,'token':token,'ownershipKey':key,'plan':plan,'publicOwned':owned,'publicSizes':sizes,'interruptOriginal':args.interrupt_original};report['encryptedRecoveryPacket']=recovery.FullSeedPacketVault().save(value);checkpoint('encrypted-packet-persisted')
-        tx=value['transactionId'];name='ktk-transaction-rehearsal-'+tx+'.php';plan=value['plan'];_,_,overrides=full.plan(tx,args.application_commit,owned,sizes,plan['protectedStateSha256']);source=full.helper_source(name,value['token'],value['expires'],args.application_commit,owned,sizes,plan['protectedStateSha256'],value['ownershipKey'],value['interruptOriginal'])
+            report['before']={};checkpoint('snapshot-before');unchanged(owned,hashes);before=shared.capture(common,connection,owned,shared.source_hashes(),report['before'],lambda:checkpoint('snapshot-before'),**capture_extra);unchanged(owned,hashes)
+            tx,token,key=secrets.token_hex(16),secrets.token_urlsafe(32),secrets.token_hex(32);expires=int(time.time())+3600;plan,_,_=full.plan(tx,args.application_commit,owned,sizes,before['protectedStateSha256']);name='ktk-transaction-rehearsal-'+tx+'.php';source=full.helper_source(name,token,expires,args.application_commit,owned,sizes,before['protectedStateSha256'],key,args.interrupt_original,**compile_extra)
+            value={'schemaVersion':1,'scope':'full-private-seed-caller-recovery','transactionId':tx,'applicationCommit':args.application_commit,'toolingCommit':args.tooling_commit,'helperSha256':backup.sha(source),'sourceHashes':hashes,'expires':expires,'token':token,'ownershipKey':key,'plan':plan,'publicOwned':owned,'publicSizes':sizes,'interruptOriginal':args.interrupt_original}
+            if args.entry_profile=='early':value.update(entryProfile='early',scope='full-private-seed-early-caller-recovery')
+            report['encryptedRecoveryPacket']=recovery.FullSeedPacketVault().save(value);checkpoint('encrypted-packet-persisted')
+        tx=value['transactionId'];name='ktk-transaction-rehearsal-'+tx+'.php';plan=value['plan'];_,_,overrides=full.plan(tx,args.application_commit,owned,sizes,plan['protectedStateSha256']);source=full.helper_source(name,value['token'],value['expires'],args.application_commit,owned,sizes,plan['protectedStateSha256'],value['ownershipKey'],value['interruptOriginal'],**compile_extra)
         if backup.sha(source)!=value['helperSha256']:raise ValueError('Exact original full seed helper compilation required')
         report.update(transactionId=tx,helper=name,helperSha256=value['helperSha256'],expires=value['expires']);scope=shared.legacy.TemporaryHelperFTP(connection,name);lease=shared.HelperLease(common,connection,scope,source);unchanged(owned,hashes)
         if args.resume:
@@ -114,7 +120,7 @@ def main(argv=None):
             previous=state;state=request(cleanup,stateSha256=state['stateSha256'],**archive)
             if state['phase']!=terminal and (len(state['seed']['files']),len(state['seed']['directories']))>=(len(previous['seed']['files']),len(previous['seed']['directories'])):raise ValueError('Full seed cleanup made no verified progress')
         else:raise ValueError('Full seed cleanup exceeded its deterministic step budget')
-        report['privatePayloadsAbsent']=not state['seed']['files'] and not state['seed']['directories'];lease.remove();report['helperRemoved']=lease.removed;unchanged(owned,hashes);report['after']={};after=shared.capture(common,connection,owned,shared.source_hashes(),report['after'],lambda:checkpoint('snapshot-after'))
+        report['privatePayloadsAbsent']=not state['seed']['files'] and not state['seed']['directories'];lease.remove();report['helperRemoved']=lease.removed;unchanged(owned,hashes);report['after']={};after=shared.capture(common,connection,owned,shared.source_hashes(),report['after'],lambda:checkpoint('snapshot-after'),**capture_extra)
         if any(original[k]!=after[k] for k in shared.STATE_KEYS):raise ValueError('Selected protected/public state differs; no database restoration permitted')
         report['allSelectedProtectedAndPublicStateExact']=True;fresh=BoundedStagingFTPS(common.common.store2.connect)
         try:report['independentRetainedMetadataAudit']=verify_retained_metadata(fresh,archive_path,plan,sizes,overrides,value['ownershipKey'],value['helperSha256'],report.get('abandonedSeedStateSha256'))

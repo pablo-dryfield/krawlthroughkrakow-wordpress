@@ -6,10 +6,18 @@ from tools import content_update_recovery as legacy
 from tools import full_private_seed_packet as full
 
 MAGIC=b'KTK-DPAPI-FULL-SEEDS-1\n'
+EARLY_MAGIC=b'KTK-DPAPI-EARLY-FULL-SEEDS-1\n'
 FIELDS={'schemaVersion','scope','transactionId','applicationCommit','toolingCommit','helperSha256','sourceHashes','expires','token','ownershipKey','plan','publicOwned','publicSizes','interruptOriginal'}
 
+def profile(value):
+    early=isinstance(value,dict) and value.get('entryProfile')=='early'
+    if not isinstance(value,dict) or set(value)!=(FIELDS|{'entryProfile'} if early else FIELDS) or value.get('scope')!=('full-private-seed-early-caller-recovery' if early else 'full-private-seed-caller-recovery'):
+        raise ValueError('Exact legacy or explicit early private recovery profile required')
+    return 'early' if early else 'late'
+
 def validate_packet(value,now=None):
-    if not isinstance(value,dict) or set(value)!=FIELDS or type(value['schemaVersion']) is not int or value['schemaVersion']!=1 or value['scope']!='full-private-seed-caller-recovery' or not backup.identifier(value['transactionId'],32) or not backup.identifier(value['applicationCommit'],40) or not backup.identifier(value['toolingCommit'],40) or not backup.digest(value['helperSha256']) or not backup.digest(value['ownershipKey']) or not isinstance(value['token'],str) or re.fullmatch(r'[A-Za-z0-9_-]{43}',value['token']) is None or type(value['expires']) is not int or value['expires']<=0 or type(value['interruptOriginal']) is not bool:
+    profile(value)
+    if type(value['schemaVersion']) is not int or value['schemaVersion']!=1 or not backup.identifier(value['transactionId'],32) or not backup.identifier(value['applicationCommit'],40) or not backup.identifier(value['toolingCommit'],40) or not backup.digest(value['helperSha256']) or not backup.digest(value['ownershipKey']) or not isinstance(value['token'],str) or re.fullmatch(r'[A-Za-z0-9_-]{43}',value['token']) is None or type(value['expires']) is not int or value['expires']<=0 or type(value['interruptOriginal']) is not bool:
         raise ValueError('Exact full private seed recovery packet required; no production or arbitrary fields')
     if now is not None and not now<value['expires']<=now+3600:raise ValueError('Current bounded full seed packet lifetime required')
     hashes=value['sourceHashes']
@@ -21,17 +29,18 @@ def validate_packet(value,now=None):
     return value
 
 def seal(value):
-    validate_packet(value);raw=backup.encode(value);inner=backup.encode({'scope':'full-private-seed-caller-recovery','transactionId':value['transactionId'],'payloadSha256':backup.sha(raw),'packet':value});cipher=legacy._dpapi(inner,value['transactionId'],True)
-    return MAGIC+value['transactionId'].encode()+b'\n'+backup.sha(cipher).encode()+b'\n'+cipher
+    validate_packet(value);raw=backup.encode(value);inner=backup.encode({'scope':value['scope'],'transactionId':value['transactionId'],'payloadSha256':backup.sha(raw),'packet':value});cipher=legacy._dpapi(inner,value['transactionId'],True)
+    return (EARLY_MAGIC if profile(value)=='early' else MAGIC)+value['transactionId'].encode()+b'\n'+backup.sha(cipher).encode()+b'\n'+cipher
 
 def unseal(blob,transaction):
     if not backup.identifier(transaction,32) or not isinstance(blob,bytes) or len(blob)>legacy.LIMIT+16384:raise ValueError('Exact bounded encrypted full seed packet required')
     parts=blob.split(b'\n',3)
-    if len(parts)!=4 or parts[0]+b'\n'!=MAGIC or parts[1]!=transaction.encode() or parts[2]!=backup.sha(parts[3]).encode():raise ValueError('Full seed ciphertext identity/checksum differs')
+    if len(parts)!=4 or parts[0]+b'\n' not in (MAGIC,EARLY_MAGIC) or parts[1]!=transaction.encode() or parts[2]!=backup.sha(parts[3]).encode():raise ValueError('Full seed ciphertext identity/checksum differs')
     raw=legacy._dpapi(parts[3],transaction,False);inner=backup.decode(raw)
-    if not isinstance(inner,dict) or set(inner)!={'scope','transactionId','payloadSha256','packet'} or inner['scope']!='full-private-seed-caller-recovery' or inner['transactionId']!=transaction or backup.encode(inner)!=raw or inner['payloadSha256']!=backup.sha(backup.encode(inner['packet'])):raise ValueError('Full seed decrypted context differs')
+    expected_scope='full-private-seed-early-caller-recovery' if parts[0]+b'\n'==EARLY_MAGIC else 'full-private-seed-caller-recovery'
+    if not isinstance(inner,dict) or set(inner)!={'scope','transactionId','payloadSha256','packet'} or inner['scope']!=expected_scope or inner['transactionId']!=transaction or backup.encode(inner)!=raw or inner['payloadSha256']!=backup.sha(backup.encode(inner['packet'])):raise ValueError('Full seed decrypted context differs')
     value=validate_packet(inner['packet'])
-    if value['transactionId']!=transaction:raise ValueError('Full seed recovered transaction differs')
+    if value['transactionId']!=transaction or value['scope']!=expected_scope:raise ValueError('Full seed recovered transaction or profile differs')
     return value
 
 class FullSeedPacketVault(legacy.RecoveryPacketVault):

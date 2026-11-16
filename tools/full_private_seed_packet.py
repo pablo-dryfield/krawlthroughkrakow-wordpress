@@ -24,7 +24,8 @@ def plan(transaction,commit,owned,sizes,protected_sha):
     value={'transactionId':transaction,'applicationCommit':commit,'protectedStateSha256':protected_sha,'expected':owned,'prior':prior}
     return value,sizes,{n:base64.b64encode(b).decode() for n,b in overrides.items()}
 
-def helper_source(name,token,expires,commit,owned,sizes,protected_sha,key,interrupt_original=False):
+def helper_source(name,token,expires,commit,owned,sizes,protected_sha,key,interrupt_original=False,entry_profile='late'):
+    if entry_profile not in ('late','early'):raise ValueError('Explicit private entry profile required')
     match=re.fullmatch(r'ktk-transaction-rehearsal-([a-f0-9]{32})\.php',name) if isinstance(name,str) else None
     if match is None or not isinstance(token,str) or not re.fullmatch(r'[A-Za-z0-9_-]{43}',token) or type(expires) is not int or not int(time.time())<expires<=int(time.time())+3600 or not backup.digest(key) or type(interrupt_original) is not bool:
         raise ValueError('Exact expiring private-only full seed helper required')
@@ -43,6 +44,9 @@ def helper_source(name,token,expires,commit,owned,sizes,protected_sha,key,interr
             raise ValueError('Exact reviewed full seed component required')
         source=source.replace(marker,body[len(b'<?php\n'):])
     if b'__KTK_FULL_SEED_' in source:raise ValueError('Unresolved full seed compiler marker')
+    if entry_profile=='early':
+        from tools.early_private_entry import rebind
+        source=rebind(source)
     return source
 
 def binding(value):
