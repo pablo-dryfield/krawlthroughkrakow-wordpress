@@ -581,6 +581,14 @@ body.ktk-code-page[data-ktk-page="how-to-join"] #main-content .et_pb_promo [data
   body.ktk-code-page:is([data-ktk-page="how-to-join"],[data-ktk-page="meeting-point"],[data-ktk-page="faqs"]) #main-content [data-ktk-offer-copy] { padding-right: 24px; }
 }
 
+/* BEGIN compact menu keyboard focus */
+#et_mobile_nav_menu #mobile_menu a:focus-visible,
+#et_mobile_nav_menu #mobile_menu button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -4px;
+}
+/* END compact menu keyboard focus */
+
 /* BEGIN No-JS quick links */
 body #main-content nav.ktk-nojs-navigation {
   box-sizing: border-box;

@@ -12,6 +12,7 @@ import {reviseAccessibilitySemantics} from './accessibility-semantics.mjs';
 import {buildContentAccessibilityStyles} from './content-accessibility-styles.mjs';
 import {buildHomepageIconFontStyles} from './homepage-icon-font.mjs';
 import {buildHomepageSocialFontStyles} from './homepage-social-font.mjs';
+import {buildCompactMenuFocusStyles} from './compact-menu-focus-styles.mjs';
 import {loadHomepageOfferRevision,reviseHomepageOffer,buildHomepageOfferStyles} from './homepage-offer-editorial.mjs';
 
 // Build a local, code-owned snapshot from the read-only production capture.
@@ -29,6 +30,7 @@ await buildHomepageIconFontStyles(assets);
 await buildHomepageSocialFontStyles(assets);
 await buildContentAccessibilityStyles(path.join(assets,'parity-runtime.css'));
 await buildHomepageOfferStyles(path.join(assets,'parity-runtime.css'));
+await buildCompactMenuFocusStyles(assets,path.join(root,'staging/wp-content/mu-plugins/ktk-code-pages-assets'));
 const origin = 'https://krawlthroughkrakow.com/';
 const html = await readFile(path.join(sourceDir, 'production-source-rendered-1920.html'), 'utf8');
 const offerRevision=await loadHomepageOfferRevision();
