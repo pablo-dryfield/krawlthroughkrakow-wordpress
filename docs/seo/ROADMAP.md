@@ -17,11 +17,12 @@ These are scoped batches, not completed whole workstreams. A verified staging ba
 | Delivery Stage | Batches |
 | --- | ---: |
 | Verified on staging | 63 |
-| In progress | 2 |
+| In progress | 3 |
 | Verified live | 2 |
 
 | Batch | Related Work | Stage | Verified | What Remains |
 | --- | --- | --- | --- | --- |
+| [Readable phone text in the Memorial visitor guide](memorial-mobile-type-2026-11-16/README.md) | D03, D05, T10 | In progress (website) | Not yet | Exact source policy/roadmap/CI, guarded2074-file staging backup/hash/protected-state publication, all origin gates, MCP-only staging-prefix purge, normal/warmed verification and final roadmap reconciliation remain before delivery64. Earlier selector/native-edge failures are retained. Discovery unchanged without publication;63 verified website deliveries/C08 unchanged. Manual/real-world/account and separate production work remain. |
 | [Native quick links when JavaScript is unavailable](navigation-resilience-2026-11-15/README.md) | T08, D03, D05, T10 | Verified on staging (website) | 2026-11-15 | Full manual/assistive-technology/physical-device/provider/inbox/account/operational review and separately approved production work remain. Medical hold/active competition/C08 counts stay unchanged. Earlier incomplete browser reports, same-URL synchronization defect, HTTP retries and the initial two current-byte CSS MISSes are retained; no whole-page pixel or conformance claim. |
 | [Readable phone text in preserved Stag modules](stag-reviewed-mobile-type-2026-11-15/README.md) | D03, D05, T10 | Verified on staging (website) | 2026-11-15 | Tablet text and no-JS phone menu visibility need broader review. Full public/manual navigation, physical-device/assistive-technology/provider/inbox/account checks, actual operational terms and separate production work remain. No original whole-page pixel or conformance claim. C08/medical hold/active competition remain unchanged; the complete goal stays active. |
 | [Clearer Stag activity enquiries and package wording](stag-activity-clarity-2026-11-15/README.md) | C05, T10 | Verified on staging (website) | 2026-11-15 | Actual availability/final terms, source maintenance, preserved-module font census, manual accessibility/provider/inbox/account checks and separate production approval remain. Media/forms/controls/seven prior reviewed interiors/metadata/runtime/CSS, medical hold, active competition and other115 bodies stay exact. C08 counts are unchanged; this is not a full public/manual crawl or whole-page pixel/conformance claim. |

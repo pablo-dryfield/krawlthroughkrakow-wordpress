@@ -72,6 +72,13 @@ body.ktk-code-page[data-ktk-page="pub-crawl-jobs"] #main-content [data-ktk-jobs-
   body.ktk-code-page[data-ktk-page="krakow-stag-do"] #main-content :is([data-ktk-group-planning-review],[data-ktk-group-activity-review]) :is(p,li) { font-size: 16px; line-height: 1.65; }
 }
 /* END Reviewed Stag mobile text */
+/* BEGIN Memorial mobile text */
+@media (max-width: 600px) {
+  body.ktk-code-page[data-ktk-page="post-all-you-need-to-know-about-visiting-auschwitz"] #main-content :is([data-ktk-memorial-review],[data-ktk-memorial-directions]) { font-size: 16px; line-height: 1.65; }
+  body.ktk-code-page[data-ktk-page="post-all-you-need-to-know-about-visiting-auschwitz"] #main-content [data-ktk-memorial-review] :is(p,li) { font-size: 16px; line-height: 1.65; }
+  body.ktk-code-page[data-ktk-page="post-all-you-need-to-know-about-visiting-auschwitz"] #main-content [data-ktk-memorial-review] h2[id^="memorial-"] { scroll-margin-top: 24px; }
+}
+/* END Memorial mobile text */
 /* BEGIN Hotel guide planning */
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) p { font-size: 16px; line-height: 1.65; }
