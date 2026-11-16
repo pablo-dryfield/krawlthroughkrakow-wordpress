@@ -110,11 +110,11 @@ class HelperLease:
             raise ValueError('Exact helper absence not verified')
 
 
-def capture(common, connection, owned, hashes, receipt, checkpoint):
+def capture(common, connection, owned, hashes, receipt, checkpoint, source_compiler=None):
     unchanged(owned, hashes)
     name = 'ktk-state-snapshot-' + secrets.token_hex(16) + '.php'
     token = secrets.token_urlsafe(32)
-    source = snapshot.helper_source(name, token, int(time.time()) + 900)
+    source = (snapshot.helper_source if source_compiler is None else source_compiler)(name, token, int(time.time()) + 900)
     lease = HelperLease(common, connection, snapshot.TemporaryHelperFTP(connection, name), source)
     receipt.update({'helper': name, 'helperSha256': backup.sha(source), 'helperRemoved': False})
     checkpoint()
