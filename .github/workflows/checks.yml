@@ -52,6 +52,8 @@ jobs:
           php -l tools/content-update-private-store.php
           php -l tools/content-update-preparation-seeds.php
           php -l tools/content-update-streaming-seeds.php
+          php -l tools/full-private-seed-rehearsal.php
+          php -l tools/full-private-seed-staging-template.php
           php -l tools/content-update-backup-manifest.php
           php -l tools/content-update-controller.php
           php -l tools/content-update-staging-template.php
@@ -169,7 +171,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Current-user encrypted recovery contracts (no hosting credentials or deployment)
-        run: python -m unittest tools.tests.test_content_update_recovery
+        run: python -m unittest tools.tests.test_content_update_recovery tools.tests.test_full_private_seed_recovery
 
   secrets:
     name: Secret Scan

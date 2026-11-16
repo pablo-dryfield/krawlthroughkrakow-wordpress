@@ -6,7 +6,7 @@ from tools.tests import test_content_update_private_store as store
 
 ROOT=store.ROOT; ID=store.ID; KEY=store.KEY
 DRIVER=r'''<?php
-$c=json_decode(file_get_contents($argv[1]),true,64,JSON_THROW_ON_ERROR);define('KTK_CONTENT_UPDATE_STORE_ALLOWED',true);if($c['allowed']){define('KTK_CONTENT_UPDATE_STREAMING_SEEDS_ALLOWED',true);}
+$c=json_decode(file_get_contents($argv[1]),true,64,JSON_THROW_ON_ERROR);define('KTK_CONTENT_UPDATE_STORE_ALLOWED',true);if($c['allowed']){define('KTK_CONTENT_UPDATE_STREAMING_SEEDS_ALLOWED',true);}if(!empty($c['hostAllowed'])){define('KTK_CONTENT_UPDATE_FULL_HOST_STREAMING_ALLOWED',true);}
 try{require $c['store'];require $c['component'];$s=$c['create']?KTK_Content_Update_Private_Store::create($c['root'],$c['public'],$c['id'],$c['key']):new KTK_Content_Update_Private_Store($c['root'],$c['public'],$c['id'],$c['key']);
 if($c['create']){$original=json_encode(array('protectedStateSha256'=>$c['plan']['protectedStateSha256']));$s->writeOnce('original-state.json',$original);$s->writeOnce('controller-plan.json',json_encode(array('mode'=>$c['mode'],'transactionId'=>$c['id'],'applicationCommit'=>$c['plan']['applicationCommit'],'originalStateSha256'=>hash('sha256',$original),'enginePlan'=>$c['plan'])));}
 $guard=$c['guard'];$calls=0;$observer=static function($event,$name,$path)use($c,&$guard){
@@ -14,7 +14,7 @@ if($c['fault']==='exit-open'&&$event==='after-stream-open'){exit(73);}if($c['fau
 if($c['fault']==='change-open'&&$event==='after-stream-open'){file_put_contents($path,'external owner bytes');}
 if($c['fault']==='replace-open'&&$event==='after-stream-open'){rename($path,$path.'.original');file_put_contents($path,'');}
 if($c['fault']==='drift-chunk'&&$event==='after-stream-chunk'){$guard='e'.str_repeat('f',63);}
-};$seed=new KTK_Content_Update_Streaming_Seeds($c['public'],$c['plan'],$c['sizes'],$c['overrides'],static function()use(&$guard,&$calls){$calls++;return $guard;},$observer);
+};$seed=new KTK_Content_Update_Streaming_Seeds($c['public'],$c['plan'],$c['sizes'],$c['overrides'],static function()use(&$guard,&$calls){$calls++;return $guard;},$observer,$c['profile']??'default');
 $v=$c['action']==='inspect'?$seed->inspect($s):$seed->advance($s,$c['fence']);echo json_encode(array('ok'=>true,'value'=>$v,'peak'=>memory_get_peak_usage(true),'guardCalls'=>$calls),JSON_THROW_ON_ERROR);
 }catch(Throwable $e){echo json_encode(array('ok'=>false,'error'=>$e->getMessage()),JSON_THROW_ON_ERROR);}
 '''
@@ -113,5 +113,16 @@ class StreamingPreparationSeedTests(unittest.TestCase):
   try:os.link(p,outside)
   except OSError as e:self.skipTest('Host disallows isolated hardlink: '+type(e).__name__)
   before=outside.read_bytes();self.call(success=False);self.assertFalse((self.private/'source').exists());self.assertEqual(outside.read_bytes(),before)
+
+ def test_host_profile_requires_explicit_separate_caller_and_binds_a_different_fence(self):
+  self.call(success=False,profile='full-private-host');self.call(success=False,profile='production',hostAllowed=True);state=self.call(profile='full-private-host',hostAllowed=True);self.assertNotEqual(state['stateSha256'],self.initial['stateSha256'])
+ def test_host_profile_opens_at_most_256_files_while_default_keeps_32(self):
+  for i in range(270):n=f'ktk-code-pages-assets/content/host-{i:03}.html';self.source[n]=self.prior[n]=b'p';self.write_public(n,b'p')
+  self.refresh();self.rebuild_records();state=self.call(profile='full-private-host',hostAllowed=True);r=self.call('advance',fence=state['stateSha256'],profile='full-private-host',hostAllowed=True);self.assertEqual(r['stepFilesOpened'],256);self.assertFalse(r['sourceComplete'])
+ def test_host_profile_streams_no_more_than_64MiB_with_bounded_memory(self):
+  data=b'0123456789abcdef'*(33*65536)
+  for suffix in ['a','b']:
+   name='ktk-code-pages-assets/media/host-'+suffix+'.mp4';self.source[name]=self.prior[name]=data;self.write_public(name,data)
+  self.refresh();self.rebuild_records();state=self.call(profile='full-private-host',hostAllowed=True);r=self.call('advance',fence=state['stateSha256'],profile='full-private-host',hostAllowed=True);self.assertEqual(r['stepBytesWritten'],67108864);self.assertFalse(r['sourceComplete'])
 
 if __name__=='__main__':unittest.main()
