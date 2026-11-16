@@ -1,6 +1,7 @@
 """Explicit staging full-engine HTTP transport. No retries, production mode or credential storage."""
 from __future__ import annotations
-import re,secrets,time,urllib.request,urllib.error
+import hashlib,hmac,json,re,secrets,time,urllib.request,urllib.error
+from pathlib import PurePosixPath
 from tools import content_update_backup as backup
 from tools import full_private_seed_packet as full
 from tools.full_private_seed_transport import failure_headers
@@ -33,6 +34,17 @@ class FullPrivateEngineTransport:
         response=self.send({'schemaVersion':1,'action':'original',**self.binding},None)
         if set(response)!={'privateProfile','helperSha256','originalCapsule'}:raise UncertainRequest('Original capsule response differs; inspect without retry')
         return full.validate_manifest(response['originalCapsule'],self.plan)
+    def private_roots(self,key,expected_binding):
+        if not backup.digest(key) or not backup.digest(expected_binding):raise ValueError('Verified archive root binding and ownership key required')
+        result=self.send({'schemaVersion':1,'action':'private-roots',**self.binding},None)
+        if set(result)!={'privateProfile','helperSha256','privateRoots'}:raise ValueError('Exact terminal private root-context response required')
+        roots=result['privateRoots']
+        if not isinstance(roots,dict) or set(roots)!={'publicRoot','privateRoot','rootBinding'} or roots['rootBinding']!=expected_binding:raise ValueError('Exact independently archived private root binding required')
+        public=roots['publicRoot'];private=roots['privateRoot']
+        if not isinstance(public,str) or not 1<=len(public)<=4096 or any(ord(c)<32 or ord(c)==127 for c in public) or '\\' in public or not(public.startswith('/') or re.fullmatch('[A-Za-z]:/.*',public)) or str(PurePosixPath(public))!=public or PurePosixPath(public).name!='public_html' or any(p in ('.','..') for p in public.split('/')) or private!=str(PurePosixPath(public).parent/('.ktk-content-update-'+self.plan['transactionId'])):raise ValueError('Exact canonical private-only server root context required')
+        owner=hmac.new(key.encode(),json.dumps({'publicRoot':public,'transactionId':self.plan['transactionId'],'privateRoot':private},ensure_ascii=True,separators=(',',':')).encode(),hashlib.sha256).hexdigest()
+        if not hmac.compare_digest(owner,expected_binding):raise ValueError('Private server context differs from independently archived owner binding')
+        return roots
     def send(self,request,original_ack):
         self.last_failure=None;self.last_request_seconds=None;self.last_runtime=None;self.last_observation=None
         if self.clock()>=self.expires:raise ValueError('Expired full private engine transport cannot query or mutate')

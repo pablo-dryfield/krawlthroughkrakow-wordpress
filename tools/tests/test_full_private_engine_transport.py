@@ -1,4 +1,4 @@
-import io,json,unittest,urllib.error
+import hashlib,hmac,io,json,unittest,urllib.error
 from email.message import Message
 from unittest import mock
 from tools import content_update_backup as backup
@@ -50,5 +50,12 @@ class FullPrivateEngineTransportTests(unittest.TestCase):
    client(self.raw);self.assertIsNone(json.loads(opener.calls[-1][0].data)['originalArchive']);verify.return_value={**receipt,'sha256':'f'*64};count=len(opener.calls)
    with self.assertRaises(ValueError):client(raw)
    self.assertEqual(len(opener.calls),count)
+ def test_terminal_server_roots_must_match_the_independently_archived_ownership_mac(self):
+  public='/home/fixture/public_html';private='/home/fixture/.ktk-content-update-'+self.plan['transactionId'];key='d'*64;owner=hmac.new(key.encode(),backup.encode({'publicRoot':public,'transactionId':self.plan['transactionId'],'privateRoot':private}),hashlib.sha256).hexdigest();roots={'publicRoot':public,'privateRoot':private,'rootBinding':owner};reply={'privateProfile':wire.PROFILE,'helperSha256':'e'*64,'privateRoots':roots};opener=Opener(reply);client=self.client(opener);self.assertEqual(client.private_roots(key,owner),roots);self.assertEqual(json.loads(opener.calls[0][0].data)['request']['action'],'private-roots');self.assertNotIn(public,repr(client.last_runtime));self.assertIsNone(client.last_failure)
+  for changed in ({**roots,'publicRoot':public+'/../public_html'},{**roots,'publicRoot':public+'\n'},{**roots,'privateRoot':'/other/private'},{**roots,'rootBinding':'f'*64}):
+   opener=Opener({**reply,'privateRoots':changed})
+   with self.assertRaises(ValueError):self.client(opener).private_roots(key,owner)
+   self.assertEqual(len(opener.calls),1)
+  with self.assertRaises(ValueError):client.private_roots('bad',owner)
 
 if __name__=='__main__':unittest.main()

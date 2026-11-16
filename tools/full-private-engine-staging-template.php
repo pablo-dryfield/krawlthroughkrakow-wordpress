@@ -34,7 +34,14 @@ add_action('wp_loaded',static function () {
         $initialize=static fn($private,$store)=>$preparation->initialize($private,$store);$inspect=static fn($store)=>$preparation->inspect($store);$complete=static fn($store,$fence)=>$preparation->advance($store,$fence,$outer['originalArchive']);
         $controller=new KTK_Full_Private_Engine_Controller($packet,$capture,$capture,$initialize,$engineObserver,$inspect,$complete);
         $request=$outer['request'];$inner=json_encode($request,JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_THROW_ON_ERROR);
-        if(($request['action']??null)==='original'){
+        if(($request['action']??null)==='private-roots'){
+            $plan=$packet['plan'];$canonical=$plan;foreach(array('expected','prior') as $kind){ksort($canonical[$kind]);}ksort($canonical);$planSha=hash('sha256',json_encode($canonical,JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_THROW_ON_ERROR));
+            $expected=array('schemaVersion'=>1,'action'=>'private-roots','transactionId'=>$plan['transactionId'],'applicationCommit'=>$plan['applicationCommit'],'planSha256'=>$planSha);
+            if($request!==$expected||$outer['originalArchive']!==null){throw new RuntimeException('Exact archived terminal root-context request required');}
+            $store=new KTK_Content_Update_Private_Store(dirname($packet['publicRoot']).'/.ktk-content-update-'.$plan['transactionId'],$packet['publicRoot'],$plan['transactionId'],$packet['ownershipKey']);$closed=json_decode($store->read('closed.json')??'null',true,32,JSON_THROW_ON_ERROR);
+            if(!is_array($closed)||($closed['schemaVersion']??null)!==1||($closed['mode']??null)!=='private-staging-rehearsal'||($closed['transactionId']??null)!==$plan['transactionId']||($closed['applicationCommit']??null)!==$plan['applicationCommit']||($closed['planSha256']??null)!==$planSha||($closed['terminalPhase']??null)!=='rolled-back'||($closed['payloadRetained']??null)!==true){throw new RuntimeException('Signed rolled-back closure required before private root exchange');}
+            $guard();$response=array('privateProfile'=>'full-private-engine-v1','helperSha256'=>$packet['helperSha256'],'privateRoots'=>array('publicRoot'=>$packet['publicRoot'],'privateRoot'=>$store->privateRoot(),'rootBinding'=>$store->rootBinding()));
+        }elseif(($request['action']??null)==='original'){
             $plan=$packet['plan'];$canonical=$plan;foreach(array('expected','prior') as $kind){ksort($canonical[$kind]);}ksort($canonical);
             $expected=array('schemaVersion'=>1,'action'=>'original','transactionId'=>$plan['transactionId'],'applicationCommit'=>$plan['applicationCommit'],'planSha256'=>hash('sha256',json_encode($canonical,JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_THROW_ON_ERROR)));
             if($request!==$expected||$outer['originalArchive']!==null){throw new RuntimeException('Exact read-only original capsule request required');}
