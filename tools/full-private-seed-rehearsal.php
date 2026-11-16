@@ -61,11 +61,11 @@ final class KTK_Full_Private_Seed_Rehearsal
         $abandoned=isset($request['abandonedSeedStateSha256']);
         return self::json(array('schemaVersion'=>1,'scope'=>$abandoned?'full-private-seeds-abandoned':'full-private-seeds-closed','transactionId'=>$this->binding['transactionId'],'applicationCommit'=>$this->binding['applicationCommit'],'planSha256'=>$this->binding['planSha256'],'rootBinding'=>$store->rootBinding(),'originalManifestSha256'=>$capsule['manifestSha256'],'originalArchiveSha256'=>$request['originalArchiveSha256'],'terminalSeedStateSha256'=>$abandoned?$request['abandonedSeedStateSha256']:$this->seeds->expectedStateSha256($store),'applicationWrites'=>0,'databaseWrites'=>0,'cachePurges'=>0));
     }
-    private function inspect(array $request): array
+    private function inspect(array $request,?KTK_Content_Update_Private_Store $heldStore=null,?array $inspectedSeed=null): array
     {
         $snapshot=$this->snapshot();$store=null;$records=null;$seed=null;$capsule=null;$inventory=array();$members=array();$closed=false;$closing=null;$phase='absent';
         if (file_exists($this->root)||is_link($this->root)) {
-            $store=new KTK_Content_Update_Private_Store($this->root,$this->config['publicRoot'],$this->binding['transactionId'],$this->config['ownershipKey'],$this->observer);
+            $store=$heldStore??new KTK_Content_Update_Private_Store($this->root,$this->config['publicRoot'],$this->binding['transactionId'],$this->config['ownershipKey'],$this->observer);
             $time=$store->preparationTimestamp();if ($time!==null) { $snapshot['capturedAt']=$time; }$records=$this->records($snapshot);
             foreach (new DirectoryIterator($store->privateRoot()) as $entry) {
                 if ($entry->isDot()) { continue; }$name=$entry->getFilename();
@@ -81,7 +81,7 @@ final class KTK_Full_Private_Seed_Rehearsal
                 foreach ($inventory as $name=>$_) { if (!in_array($name,array('original-state.json','controller-plan.json','closed.json'),true)&&!str_starts_with($name,'.ktk-control-closed.json-')) { throw new RuntimeException('Unexpected full seed control record preserved'); } }
                 $raw=$store->read('closed.json');$closed=$raw!==null;
                 if ($closed&&($closing===null||$raw!==$closing)) { throw new RuntimeException('Matching archived original required for closed seed inspection'); }
-                $seed=$closing===null?$this->seeds->inspect($store):$this->seeds->inspectPendingClosure($store,$closing);
+                $seed=$inspectedSeed??($closing===null?$this->seeds->inspect($store):$this->seeds->inspectPendingClosure($store,$closing));
                 $pending=false;foreach (array_keys($inventory) as $name) { if (str_starts_with($name,'.ktk-control-closed.json-')) { $pending=true; } }
                 $abandoned=isset($request['abandonedSeedStateSha256']);
                 if ($pending&&($abandoned?$seed['stateSha256']!==$request['abandonedSeedStateSha256']:(!$seed['sourceComplete']||!$seed['targetComplete']))) { throw new RuntimeException('Interrupted closure requires its unchanged inspected private inventory'); }
@@ -113,22 +113,32 @@ final class KTK_Full_Private_Seed_Rehearsal
         }
         return array('payloadFilesDeleted'=>$deleted,'payloadDirectoriesRemoved'=>$removed);
     }
+    private function advance(array $request): array
+    {
+        $store=new KTK_Content_Update_Private_Store($this->root,$this->config['publicRoot'],$this->binding['transactionId'],$this->config['ownershipKey'],$this->observer);
+        $seed=$this->seeds->advanceWithControllerFence($store,function(array $seed)use($request,$store): void {
+            [$state]=$this->inspect($request,$store,$seed);
+            if (!hash_equals($state['stateSha256'],$request['stateSha256'])) { throw new RuntimeException('Stale full seed state; inspect before mutation'); }
+            if ($state['closed']||in_array($state['phase'],array('closing-interrupted','abandoning-interrupted'),true)||$state['capsule']===null) { throw new RuntimeException('Open archived full seed preparation required'); }
+        });
+        $operation=array('payloadBytesWritten'=>$seed['stepBytesWritten'],'payloadFilesOpened'=>$seed['stepFilesOpened']);
+        unset($seed['stepBytesWritten'],$seed['stepFilesOpened']);
+        $result=$this->inspect($request,$store,$seed)[0];$result['operation']=$operation;return $result;
+    }
     public function run(string $raw,string $method,string $host,string $token,int $now): array
     {
         if ($method!=='POST'||strtolower($host)!=='krawlthroughkrakow.com'||$now>=$this->config['expires']||!hash_equals($this->config['tokenSha256'],hash('sha256',$token))||strlen($raw)>2048) { throw new RuntimeException('Authenticated current staging-only full seed request required'); }
         $r=json_decode($raw,true,16,JSON_THROW_ON_ERROR);$actions=array('inspect'=>array(),'begin'=>array('stateSha256'),'recover-begin'=>array('stateSha256'),'inspect-archived'=>array('originalManifestSha256','originalArchiveSha256'),'advance'=>array('stateSha256','originalManifestSha256','originalArchiveSha256'),'close'=>array('stateSha256','originalManifestSha256','originalArchiveSha256'),'cleanup'=>array('stateSha256','originalManifestSha256','originalArchiveSha256'),'inspect-abandoned'=>array('originalManifestSha256','originalArchiveSha256','abandonedSeedStateSha256'),'abandon'=>array('stateSha256','originalManifestSha256','originalArchiveSha256','abandonedSeedStateSha256'),'cleanup-abandoned'=>array('stateSha256','originalManifestSha256','originalArchiveSha256','abandonedSeedStateSha256'));
         if (!is_array($r)||!isset($actions[$r['action']??''])||array_keys($r)!==array_merge(array('schemaVersion','action','transactionId','applicationCommit','planSha256'),$actions[$r['action']])||($r['schemaVersion']??null)!==1||self::json($r)!==$raw) { throw new RuntimeException('Exact canonical full seed request required'); }
         foreach ($this->binding as $k=>$v) { if (($r[$k]??null)!==$v) { throw new RuntimeException('Full seed request binding differs'); } }foreach ($actions[$r['action']] as $k) { if (!self::digest($r[$k])) { throw new RuntimeException('Full seed request digests required'); } }
-        [$state,$store,$records,$closing]=$this->inspect($r);$action=$r['action'];if (in_array($action,array('inspect','inspect-archived','inspect-abandoned'),true)) { return $state; }
+        $action=$r['action'];if ($action==='advance') { return $this->advance($r); }
+        [$state,$store,$records,$closing]=$this->inspect($r);if (in_array($action,array('inspect','inspect-archived','inspect-abandoned'),true)) { return $state; }
         if (!hash_equals($state['stateSha256'],$r['stateSha256'])) { throw new RuntimeException('Stale full seed state; inspect before mutation'); }
         $operation=null;
         if ($action==='begin'||$action==='recover-begin') {
             if (($action==='begin'&&$store!==null)||!in_array($state['phase'],array('absent','preparing-original'),true)) { throw new RuntimeException('Original seed initialization state differs'); }
             if ($store===null) { $snapshot=$this->snapshot();$records=$this->records($snapshot);$store=KTK_Content_Update_Private_Store::create($this->root,$this->config['publicRoot'],$this->binding['transactionId'],$this->config['ownershipKey'],$this->observer); }
             foreach ($records as $name=>$bytes) { $store->writeOnce($name,$bytes); }
-        } elseif ($action==='advance') {
-            if ($store===null||$state['closed']||in_array($state['phase'],array('closing-interrupted','abandoning-interrupted'),true)||$state['capsule']===null) { throw new RuntimeException('Open archived full seed preparation required'); }
-            $v=$this->seeds->advance($store,$state['seed']['stateSha256']);$operation=array('payloadBytesWritten'=>$v['stepBytesWritten'],'payloadFilesOpened'=>$v['stepFilesOpened']);
         } elseif ($action==='close') {
             if ($store===null||$closing===null||!$state['seed']['sourceComplete']||!$state['seed']['targetComplete']) { throw new RuntimeException('Complete exact private inventories required before closure'); }
             $store->writeOnce('closed.json',$closing);

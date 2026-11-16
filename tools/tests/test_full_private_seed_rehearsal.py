@@ -79,6 +79,11 @@ class FullPrivateSeedRehearsalTests(unittest.TestCase):
    self.call(success=False,changes={'raw':raw});self.assertEqual(self.captures,0);self.assertFalse(self.private.exists())
  def test_closed_archive_binding_cannot_be_replaced(self):
   s=self.closed();before=self.private_bytes();self.call('inspect-archived',success=False,originalManifestSha256=self.archive['originalManifestSha256'],originalArchiveSha256='e'*64);self.assertEqual(self.private_bytes(),before)
+ def test_advance_reuses_same_lock_censuses_with_full_protected_guards_and_identical_fresh_fence(self):
+  s=self.begin();s=self.advance(s);self.assertEqual(self.captures,6)
+  fresh=self.call('inspect-archived',**self.archive);self.assertEqual(s['stateSha256'],fresh['stateSha256']);self.assertEqual(s['seed'],fresh['seed'])
+ def test_closed_controller_cannot_advance_or_replace_original_archive(self):
+  s=self.closed();before=self.private_bytes();self.call('advance',success=False,stateSha256=s['stateSha256'],**self.archive);self.assertEqual(self.private_bytes(),before)
  def test_known_incomplete_prefix_can_be_explicitly_abandoned_and_disposed_without_completion_claim(self):
   s=self.begin();self.call('advance',stateSha256=s['stateSha256'],**self.archive,changes={'fault':'stream-prefix'},exit_code=75);s=self.call('inspect-archived',**self.archive);args={**self.archive,'abandonedSeedStateSha256':s['seed']['stateSha256']};s=self.call('abandon',stateSha256=s['stateSha256'],**args);self.assertEqual(s['phase'],'abandoned');self.assertFalse(s['seed']['sourceComplete']);s=self.call('cleanup-abandoned',stateSha256=s['stateSha256'],**args);self.assertEqual(s['phase'],'disposed-abandoned');self.assertFalse(s['fullHostTransactionAcceptance']);self.assertEqual(len(self.private_bytes()),5)
  def test_stale_abandonment_and_completed_inventory_abandonment_never_write_closure(self):
