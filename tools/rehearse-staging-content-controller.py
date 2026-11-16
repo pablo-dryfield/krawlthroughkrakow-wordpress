@@ -20,6 +20,7 @@ from tools import content_update_staging_packet as staging
 from tools.content_update_client import ContentUpdateClient, UncertainRequest
 from tools.content_update_staging_transport import StagingControllerTransport, PrivateBackupReader
 from tools.content_update_staging_disposal import PrivateStagingDisposer
+from tools.content_update_staging_connection import BoundedStagingFTPS
 
 
 def load(name, file):
@@ -37,7 +38,7 @@ SOURCE_FILES = sorted({
     'staging-protected-state-template.php', 'staging-protected-state-core.php',
     'content-update-staging-template.php', 'content_update_staging_packet.py',
     'content_update_client.py', 'content_update_recovery.py', 'content_update_backup.py',
-    'content_update_staging_transport.py', 'content_update_staging_disposal.py',
+    'content_update_staging_transport.py', 'content_update_staging_disposal.py', 'content_update_staging_connection.py',
     'promote-code-pages-production.py', 'publish-clarity.py', 'publish-homepage-shortcode.py',
     'invoke-ktk-native.ps1', 'publish-store2.py', *staging.COMPONENTS.values(),
 })
@@ -199,8 +200,8 @@ def main():
     lease = None
     try:
         checkpoint('snapshot-before')
-        # Raw FTPS deliberately avoids the older transfer wrapper's automatic mutation retries.
-        connection = common.common.store2.connect()
+        # Rotate bounded sessions before a command, without the older wrapper's automatic mutation retries.
+        connection = BoundedStagingFTPS(common.common.store2.connect)
         report['before'] = {}
         before = capture(common, connection, owned, hashes, report['before'], lambda: checkpoint('snapshot-before'))
         tx, token, key = secrets.token_hex(16), secrets.token_urlsafe(32), secrets.token_hex(32)
@@ -259,7 +260,7 @@ def main():
         raise RuntimeError('Private staging rehearsal stopped; inspect the sanitized report and encrypted recovery packet; no automatic retry') from None
     finally:
         try:
-            if lease is not None:
+            if lease is not None and not lease.removed:
                 lease.remove()
                 report['controllerHelperRemoved'] = lease.removed
         except Exception:
@@ -268,6 +269,7 @@ def main():
         finally:
             try:
                 if connection is not None:
+                    report['ftpsSessionStatistics'] = connection.statistics()
                     connection.close()
             finally:
                 report['finishedAt'] = datetime.now(timezone.utc).isoformat()

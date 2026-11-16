@@ -1,9 +1,11 @@
 """Actual compiled PHP protocol through the new host runner, plus exact-helper cleanup fault contracts."""
 import importlib.util
 import contextlib
+import json
 from pathlib import Path
 import subprocess
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 from tools import content_update_backup as backup
@@ -107,6 +109,26 @@ class ReviewedSourceTests(unittest.TestCase):
             (root / '.git/info/exclude').write_bytes(b'extra.html\n')
             owned[extra] = backup.sha((mu / extra).read_bytes())
             with self.assertRaises(ValueError):runner.reviewed_source(app, head)
+
+
+class RunnerFailureReportingTests(unittest.TestCase):
+    def test_disposal_failure_does_not_recheck_failed_socket_or_mask_confirmed_helper_removal(self):
+        with tempfile.TemporaryDirectory(prefix='ktk-report-') as directory:
+            root=Path(directory);destination=root/'docs/seo/failed.json';events=[]
+            class Lease:
+                def __init__(self,*args):self.removed=False
+                def install(self):events.append('install')
+                def remove(self):events.append('remove');self.removed=True
+            connection=SimpleNamespace(statistics=lambda:{'automaticRetries':0},close=lambda:events.append('close'))
+            common=SimpleNamespace(common=SimpleNamespace(store2=SimpleNamespace(connect=lambda:None)))
+            def exercise(client,archive,checkpoint):checkpoint('private-fixture-closed');return {'closed':True}
+            def fail():raise OSError('disposal transport failed')
+            owned={'ktk-code-pages.php':'a'*64,'ktk-code-pages-assets/registry.php':'b'*64}
+            argv=['runner','--rehearse-staging','--application-commit','c'*40,'--tooling-commit','d'*40,'--report',str(destination)]
+            with patch.object(runner,'ROOT',root),patch.object(runner.sys,'argv',argv),patch.object(runner,'reviewed_source',return_value=(owned,{'tools/test.py':'e'*64})),patch.object(runner.snapshot,'load_common',return_value=common),patch.object(runner,'BoundedStagingFTPS',return_value=connection),patch.object(runner,'capture',return_value={'protectedStateSha256':'f'*64}),patch.object(runner,'HelperLease',Lease),patch.object(runner.recovery,'RecoveryPacketVault') as vault,patch.object(runner,'unchanged'),patch.object(runner,'exercise',side_effect=exercise),patch.object(runner,'PrivateStagingDisposer',return_value=SimpleNamespace(dispose=fail)):
+                vault.return_value.save.return_value={'durableDecryptReadbackVerified':True}
+                with self.assertRaisesRegex(RuntimeError,'Private staging rehearsal stopped'):runner.main()
+            receipt=json.loads(destination.read_bytes());self.assertEqual(receipt['phase'],'failed-preserve-packet-archive-and-private-state');self.assertEqual(receipt['failedAtPhase'],'private-fixture-closed');self.assertTrue(receipt['controllerHelperRemoved']);self.assertEqual(events,['install','remove','close'])
 
 
 @unittest.skipUnless(fixtures.PHP, 'PHP required for the actual compiled rehearsal protocol')
