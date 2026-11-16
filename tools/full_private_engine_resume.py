@@ -50,14 +50,14 @@ def attach_verified_original(client, original_path, rollback_path):
 
 
 def continue_preparation(client, transport, original_path, rollback_path, observe=lambda *args: None):
-    """Explicit bounded resume of complete-record, engine-absent preparation; never retries."""
+    """Explicit resume of complete records and no completed engine; never retries."""
     manifest, receipt, _ = attach_verified_original(client, original_path, rollback_path)
     state = client.inspect_preparation()
     preparation = state['preparation']
     if (not preparation['rootExists'] or not preparation['recordsComplete']
-            or preparation['enginePhase'] is not None or preparation['fullSeed'] is None
+            or preparation['enginePhase'] not in (None, 'unprepared') or preparation['fullSeed'] is None
             or preparation['rootBinding'] != manifest['rootBinding']):
-        raise ValueError('Only archived complete-record preparation without an engine may continue')
+        raise ValueError('Only archived complete-record preparation without a completed engine may continue')
     observe('resume-preparation-inspected', state)
     transport.acknowledge_original(original_path, client.key, manifest)
     expected, _ = full.expected_seed_files(client.plan, client.sizes, client.overrides)

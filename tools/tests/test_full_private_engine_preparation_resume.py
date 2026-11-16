@@ -26,15 +26,15 @@ action_file=root/('preparation-second-actions.json' if resuming else 'preparatio
 def remember():action_file.write_text(json.dumps(actions))
 def call():
  config.write_text(json.dumps(c));p=subprocess.run([old.PHP,str(driver),str(config)],capture_output=True,text=True,timeout=180)
- if p.returncode==74 and mode=='prefix-cut':
-  actions.append({'nativeExit':74});remember();raise TimeoutError('Controlled native original prefix cut')
+ if p.returncode in (74,79) and mode in ('prefix-cut','engine-preparation-cut'):
+  actions.append({'nativeExit':p.returncode});remember();raise TimeoutError('Controlled native private preparation cut')
  if p.returncode or p.stderr:raise RuntimeError('Native preparation child failed')
  out=json.loads(p.stdout)
  if not out['ok']:raise RuntimeError(out['message'])
  return out
 def transport(raw):
  action=backup.decode(raw)['action'];actions.append(action);remember()
- c.update(operation='controller',request=raw.decode(),fault='',seedFault='prefix' if mode=='prefix-cut' else '')
+ c.update(operation='controller',request=raw.decode(),fault='pristine-plan-cut' if mode=='engine-preparation-cut' else '',seedFault='prefix' if mode=='prefix-cut' else '')
  if mode=='fail-resume' and action=='recover-preparation':raise TimeoutError('Synthetic unverified transport; must not retry')
  return {'privateProfile':'full-private-engine-v1','helperSha256':c['packet']['helperSha256'],'controller':call()['value']}
 client=FullPrivateEngineClient(plan,c['sizes'],c['overrides'],mu,c['packet']['helperSha256'],old.KEY,transport,lambda n:(private/n).read_bytes())
@@ -56,7 +56,7 @@ with mock.patch.object(backup,'ROOT',root),mock.patch.object(full,'ROOT',root):
  if not resuming:
   try:exercise.prepare(client,Original(),original,lambda n:(private/n).read_bytes(),full.build_archive,observe=observe)
   except UncertainRequest:
-   if mode=='prefix-cut':os._exit(76)
+   if mode in ('prefix-cut','engine-preparation-cut'):os._exit(76 if mode=='prefix-cut' else 78)
    raise
   assert mode=='prepared';print('Prepared engine without rollback archive');sys.exit(0)
  manifest,receipt,prepared=resume.continue_preparation(client,Original(),original,rollback)
@@ -101,6 +101,10 @@ class FullPrivatePreparationResumeArchiveGates(unittest.TestCase):
 class FullPrivatePreparationSeparateProcessTests(unittest.TestCase):
     def fixture(self):
         case = bridge.FullPrivatePreparationIntegrationTests('runTest'); case.setUp(); self.addCleanup(case.doCleanups)
+        text=case.driver.read_text();anchor=' $streamObserver=';self.assertEqual(text.count(anchor),1)
+        observer=r""" $priorObserver=$observer;$observer=static function($event,$name)use($c,$priorObserver){if($c['fault']==='pristine-plan-cut'&&$event==='after-private-temporary-create'&&$name==='plan.json'){exit(79);}if($priorObserver!==null){$priorObserver($event,$name);}};
+"""
+        case.driver.write_text(text.replace(anchor,observer+anchor,1),encoding='utf-8')
         case.cfg.update(fixtureMu=str(case.mu),fixturePrivate=str(case.private),fixtureDriver=str(case.driver))
         config = case.root/'preparation-process-config.json'; config.write_text(json.dumps(case.cfg))
         driver = case.root/'preparation-python-caller.py'; driver.write_text(CHILD)
@@ -115,7 +119,7 @@ class FullPrivatePreparationSeparateProcessTests(unittest.TestCase):
     def successful_resume(self,first_mode,expected_exit):
         case,config,driver = self.fixture(); before=case.public(); selected_before=self.selected(case)
         first=self.child(driver,config,first_mode);self.assertEqual(first.returncode,expected_exit,first.stderr)
-        self.assertFalse(case.engine.exists())
+        self.assertEqual(case.engine.exists(),first_mode=='engine-preparation-cut')
         second=self.child(driver,config,'resume');self.assertEqual(second.returncode,0,second.stderr)
         result=json.loads(second.stdout)
         self.assertTrue(result['preparation']['separateCallerPreparationContinuationVerified'])
@@ -142,10 +146,15 @@ class FullPrivatePreparationSeparateProcessTests(unittest.TestCase):
         result,_=self.successful_resume('complete-seed-cut',77)
         self.assertEqual(result['preparation']['recoverPreparationCallsThisProcess'],1)
 
+    def test_interrupted_pristine_plan_write_resumes_in_different_process_with_same_archived_original(self):
+        result,case=self.successful_resume('engine-preparation-cut',78)
+        self.assertEqual(result['preparation']['recoverPreparationCallsThisProcess'],1)
+        self.assertEqual(json.loads((case.root/'preparation-first-actions.json').read_text())[-2:],['recover-preparation',{'nativeExit':79}])
+
     def test_prepared_engine_without_rollback_archive_refuses_before_copy_or_ack(self):
         case,config,driver=self.fixture();first=self.child(driver,config,'prepared');self.assertEqual(first.returncode,0,first.stderr)
         before=case.public();second=self.child(driver,config,'resume');self.assertNotEqual(second.returncode,0)
-        self.assertIn('Only archived complete-record preparation without an engine may continue',second.stderr)
+        self.assertIn('Only archived complete-record preparation without a completed engine may continue',second.stderr)
         self.assertEqual(json.loads((case.root/'preparation-second-actions.json').read_text()),['inspect-preparation'])
         self.assertEqual(case.public(),before)
 

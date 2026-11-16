@@ -100,5 +100,58 @@ class FullPrivatePreparationIntegrationTests(unittest.TestCase):
   rolled=0
   while self.client.state['engine']['phase']!='rolled-back':self.client.step('rollback');rolled+=1;self.assertLess(rolled,10)
   state=self.client.close();self.assertTrue(state['closed']);self.assertEqual((applied,rolled),(5,5));self.assertEqual(len(self.client.manifest['members']),8);self.assertTrue(receipt['allMemberChecksumsAndCRCVerified']);self.assertEqual(self.public(),self.before)
+ def instrument_engine_methods(self):
+  path=self.root/'engine-method-calls.txt';self.cfg['engineCallsPath']=path.as_posix()
+  raw=(old.ROOT/'tools/code-pages-update-engine.php').read_bytes();source=raw.decode()
+  for signature,name in [('public function prepare(): array','prepare'),('public function resumePreparation(string $stateSha256): array','resumePreparation')]:
+   anchor='    '+signature+'\n    {';self.assertEqual(source.count(anchor),1)
+   source=source.replace(anchor,anchor+"\n        file_put_contents($GLOBALS['ktk_engine_calls_path'],'"+name+"'.PHP_EOL,FILE_APPEND|LOCK_EX);",1)
+  engine=self.root/'traced-engine.php';engine.write_text(source,encoding='utf-8')
+  matches=[i for i,p in enumerate(self.cfg['components']) if Path(p).name=='code-pages-update-engine.php'];self.assertEqual(len(matches),1);self.cfg['components'][matches[0]]=engine.as_posix()
+  text=self.driver.read_text();anchor=" foreach($c['components'] as $component){require $component;}";self.assertEqual(text.count(anchor),1)
+  text=text.replace(anchor," $GLOBALS['ktk_engine_calls_path']=$c['engineCallsPath'];\n"+anchor,1)
+  anchor=' $streamObserver=';self.assertEqual(text.count(anchor),1)
+  observer=r""" $originalObserver=$observer;
+ $observer=static function($event,$name)use($c,$originalObserver){
+  if($event==='after-private-temporary-create'&&$name==='plan.json'){
+   if($c['fault']==='pristine-plan-cut'){exit(79);}
+   if($c['fault']==='pristine-unknown-prior'){$p=dirname($c['packet']['publicRoot']).'/.ktk-content-update-'.$c['packet']['plan']['transactionId'].'/engine/'.$c['packet']['plan']['transactionId'].'/prior/unknown.txt';file_put_contents($p,'unknown private evidence');}
+  }
+  if($originalObserver!==null){$originalObserver($event,$name);}
+ };
+"""
+  self.driver.write_text(text.replace(anchor,observer+anchor,1),encoding='utf-8')
+  return path
+ def complete_seeds_without_engine(self):
+  state=self.client.prepare();self.original()
+  for _ in range(10):
+   state=self.client.recover_preparation();self.assertIn('preparation',state)
+   if state['preparation']['seedsComplete']:break
+  else:self.fail('Complete seeds required before engine API dispatch')
+  self.assertIsNone(state['preparation']['enginePhase']);self.assertFalse(self.engine.exists());return state
+ def test_pristine_full_profile_uses_guarded_prepare_and_finishes_private_inspection(self):
+  trace=self.instrument_engine_methods();self.complete_seeds_without_engine();state=self.client.recover_preparation()
+  self.assertEqual(trace.read_text().splitlines(),['prepare']);self.assertEqual(state['engine']['phase'],'prepared');self.assertTrue(state['engine']['currentPriorInventoryVerified'])
+  inspection=self.client.inspect_preparation();self.assertEqual(inspection['preparation']['enginePhase'],'prepared');self.assertEqual(self.public(),self.before)
+ def test_interrupted_pristine_plan_receipt_uses_existing_recovery_without_repreparing(self):
+  trace=self.instrument_engine_methods();self.complete_seeds_without_engine();self.cfg['fault']='pristine-plan-cut';self.expected_exit=79
+  with self.assertRaises(UncertainRequest):self.client.recover_preparation()
+  self.expected_exit=0;self.cfg['fault']='';fresh=client_module.FullPrivateEngineClient(self.plan,self.sizes,self.overrides,self.mu,self.cfg['packet']['helperSha256'],old.KEY,self.transport,lambda n:(self.private/n).read_bytes())
+  inspection=fresh.inspect_preparation();self.assertEqual(inspection['preparation']['enginePhase'],'unprepared')
+  state=fresh.recover_preparation();self.assertEqual(state['engine']['phase'],'prepared');self.assertEqual(trace.read_text().splitlines(),['prepare','resumePreparation']);self.assertEqual(self.public(),self.before)
+ def test_final_full_preparation_inspection_rejects_and_preserves_unknown_private_prior(self):
+  trace=self.instrument_engine_methods();self.complete_seeds_without_engine();self.cfg['fault']='pristine-unknown-prior'
+  refusals=[];original_call=self.case.call
+  def capture_refusal(*args,**kwargs):
+   result=original_call(*args,**kwargs)
+   if isinstance(result,dict) and result.get('ok') is False:refusals.append(result.get('message'))
+   return result
+  self.case.call=capture_refusal
+  with self.assertRaises(UncertainRequest):self.client.recover_preparation()
+  unknown=self.engine/'prior/unknown.txt';self.assertEqual(unknown.read_bytes(),b'unknown private evidence');self.assertEqual(trace.read_text().splitlines(),['prepare']);self.assertEqual(self.public(),self.before)
+  self.assertEqual(json.loads((self.engine/'journal.json').read_bytes())['phase'],'prepared');self.assertEqual(refusals,['Unknown private preparation file preserved'])
+  self.cfg['fault']=''
+  with self.assertRaises(UncertainRequest):self.client.inspect_preparation()
+  self.assertEqual(unknown.read_bytes(),b'unknown private evidence')
 
 if __name__=='__main__':unittest.main()

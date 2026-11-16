@@ -22,6 +22,13 @@ RECOVER=b'''            if($seed!==null){
                 if(!$completeBefore||!$nextSeed['sourceComplete']||!$nextSeed['targetComplete']){return $this->preparation($store,$nextSeed)[0];}
             }
 '''
+ENGINE_PREPARATION=b'''            $engine=$this->engine();$inspection=$engine->inspectPreparation();
+            if($inspection['phase']==='unprepared'&&$inspection['files']===array()&&$inspection['directories']===array()&&$inspection['pendingReceipts']===array()){$engine->prepare();}
+            else{$engine->resumePreparation($inspection['stateSha256']);}
+            $completed=$engine->inspectPreparation();
+            if($completed['phase']!=='prepared'||$completed['currentPriorInventoryVerified']!==true||$completed['protectedStateVerified']!==true||$completed['pendingReceipts']!==array()){throw new RuntimeException('Complete freshly inspected private engine preparation required');}
+            KTK_Content_Update_Backup_Manifest::build($store,$this->packet['plan']);return $this->result($store,$engine);
+'''
 
 def controller_source(source=None):
     raw=LEGACY.read_bytes() if source is None else source
@@ -35,6 +42,7 @@ def controller_source(source=None):
         (b'                $seed=($this->inspectPrivateFixture)($store);\n',b'                $seed=$inspectedSeed??($this->inspectPrivateFixture)($store);\n'),
         (b"'seedFiles'=>$seed['files']??array(),'engineFiles'",b"'seedFiles'=>$seed['files']??array(),'fullSeed'=>$seed,'rootBinding'=>$store===null?null:$store->rootBinding(),'engineFiles'"),
         (b"            if($seed!==null){($this->completePrivateFixture)($store,$seed['stateSha256']);}\n",RECOVER),
+        (b"            $engine=$this->engine();$inspection=$engine->inspectPreparation();$engine->resumePreparation($inspection['stateSha256']);KTK_Content_Update_Backup_Manifest::build($store,$this->packet['plan']);return $this->result($store,$engine);\n",ENGINE_PREPARATION),
         (b"            if($this->initialize!==null){($this->initialize)($this->root);}\n            $engine=$this->engine();$engine->prepare();KTK_Content_Update_Backup_Manifest::build($store,$this->packet['plan']);return $this->result($store,$engine);\n",b"            if($this->initialize!==null){($this->initialize)($this->root,$store);}\n            $seed=($this->inspectPrivateFixture)($store);return $this->preparation($store,$seed)[0];\n"),
     ]
     if any(raw.count(old)!=1 for old,_ in changes):raise ValueError('Exact deferred controller anchors required before compilation')
