@@ -1,0 +1,18 @@
+[CmdletBinding()]
+param([Parameter(ValueFromRemainingArguments = $true)][string[]] $AuditArguments)
+$ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot 'invoke-ktk-native.ps1')
+if ($AuditArguments -notcontains '--audit-staging') {
+    Invoke-KtkNativeCommand -Command 'python' -Arguments (@((Join-Path $PSScriptRoot 'audit-staging-full-inventory-capacity.py')) + $AuditArguments)
+    exit $KtkNativeExitCode
+}
+$securePassword = Import-Clixml -LiteralPath (Join-Path $env:USERPROFILE '.ktk\storefront-ftps-password.xml')
+$passwordPointer = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($securePassword)
+try {
+    $env:KTK_FTP_PASSWORD = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($passwordPointer)
+    Invoke-KtkNativeCommand -Command 'python' -Arguments (@((Join-Path $PSScriptRoot 'audit-staging-full-inventory-capacity.py')) + $AuditArguments)
+    exit $KtkNativeExitCode
+} finally {
+    Remove-Item Env:KTK_FTP_PASSWORD -ErrorAction SilentlyContinue
+    [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($passwordPointer)
+}
