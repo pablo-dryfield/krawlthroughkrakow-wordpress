@@ -51,6 +51,7 @@ jobs:
           php -l tools/content-update-request.php
           php -l tools/content-update-private-store.php
           php -l tools/content-update-preparation-seeds.php
+          php -l tools/content-update-streaming-seeds.php
           php -l tools/content-update-backup-manifest.php
           php -l tools/content-update-controller.php
           php -l tools/content-update-staging-template.php

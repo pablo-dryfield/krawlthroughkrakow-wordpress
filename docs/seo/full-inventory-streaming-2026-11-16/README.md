@@ -1,0 +1,9 @@
+# Full inventory streaming preparation
+
+G02 remains in progress. This batch follows PR90 merge `ca2d18f62cc5eb54b5cd0980797822c72c46ecab`, exact tested tree `622c346f949a2b49569c89e1850aeba29f949481`. Main CI43831546539 passes all three jobs: 636 Linux cases in 80.423s with one native-Windows skip, 11 Windows cases in 0.258s without skips, secret scanning and the isolated build. The previous folder's closing checkpoint verifies all 3589 Git/local files, unchanged application and hosted source hashes, exact merged tree and completed-branch cleanup.
+
+Before this batch, all 3589 source blobs and every reconstructed composite byte are verified. Both archives are required: parent `deploy-backups/seo-guarded-release-controller-before-20261115.zip`, SHA256 `50a70f592f68d4f427aa0bbfbfb20ce206562bfc34340a62f17ef3b6f61b4bd2`; and 67-file/1050834-byte overlay `deploy-backups/seo-full-inventory-streaming-before-20261116.zip`, SHA256 `f7c0065076384bb0c8581ffa1451184fdc7ce2c9321fea493f73915433343023`. Fresh SHA, CRC, membership and complete reconstruction checks pass. These are source archives, not hosting or database backups.
+
+The measured public inventory is 2074 files/550629558 bytes, with a 35437747-byte original video. The existing embedded fixture limits remain unchanged. Work here adds a separate private streaming component, followed by integrity, interruption and bounded-memory verification. No new hosted copy, controller integration or full transaction is claimed. Account quota, copy/runtime proof, scalable cleanup, resume orchestration, coordination/retention and separate owner/account/manual/production gates remain open. Both roadmaps retain 65 website deliveries and unchanged C08 counts.
+
+Production, application files, commerce/Ecwid, forms, functional consent, medical hold, active competition and OmniLodge remain untouched. The goal remains active.
