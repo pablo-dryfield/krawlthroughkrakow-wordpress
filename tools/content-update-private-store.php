@@ -143,6 +143,11 @@ final class KTK_Content_Update_Private_Store
         ksort($result);return $result;
     }
     public function inventory(): array { return $this->scan(); }
+    public function inventoryForWrite(string $name,string $bytes): array
+    {
+        $blob=$this->blob($name,$bytes);$hash=hash('sha256',$blob);
+        return $this->scan($this->temporaryName($name,$bytes,$hash),$blob);
+    }
     public function privateRoot(): string { $this->verifyRoot();return $this->root; }
     public function transactionId(): string { $this->verifyRoot();return $this->id; }
     public function rootBinding(): string { $this->verifyRoot();return $this->owner; }

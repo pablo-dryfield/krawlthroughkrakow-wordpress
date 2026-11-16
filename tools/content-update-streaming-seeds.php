@@ -20,6 +20,12 @@ final class KTK_Content_Update_Streaming_Seeds
     private array $overrides = array();
     private $guard;
     private $observer;
+    private string $profile;
+    private int $stepBytes;
+    private int $stepFiles;
+    private ?string $pendingClosure=null;
+    private ?array $validatedControl=null;
+    private $disposalGuard=null;
 
     private static function encode($value): string
     {
@@ -52,9 +58,11 @@ final class KTK_Content_Update_Streaming_Seeds
         $s=self::file($path,$size); $h=fstat($handle);
         if ($h===false || $s['size']!==$size || $h['size']!==$size || $h['dev']!==$s['dev'] || $h['ino']!==$s['ino'] || ($h['nlink']??0)!==1) { throw new RuntimeException('Streaming seed open file identity changed'); }
     }
-    public function __construct(string $publicRoot,array $plan,array $sizes,array $priorOverrides,callable $guard,?callable $observer=null)
+    public function __construct(string $publicRoot,array $plan,array $sizes,array $priorOverrides,callable $guard,?callable $observer=null,string $profile='default')
     {
         if (!defined('KTK_CONTENT_UPDATE_STREAMING_SEEDS_ALLOWED') || KTK_CONTENT_UPDATE_STREAMING_SEEDS_ALLOWED!==true) { throw new RuntimeException('Explicit private streaming seed caller required'); }
+        if (!in_array($profile,array('default','full-private-host'),true) || ($profile==='full-private-host' && (!defined('KTK_CONTENT_UPDATE_FULL_HOST_STREAMING_ALLOWED') || KTK_CONTENT_UPDATE_FULL_HOST_STREAMING_ALLOWED!==true))) { throw new RuntimeException('Explicit server-side private host streaming profile required'); }
+        $this->profile=$profile; $this->stepBytes=$profile==='default'?self::STEP_BYTES:67108864; $this->stepFiles=$profile==='default'?self::STEP_FILES:256;
         self::directory($publicRoot); $keys=array_keys($plan); sort($keys);
         if (basename($publicRoot)!=='public_html' || $keys!==array('applicationCommit','expected','prior','protectedStateSha256','transactionId') || !is_string($plan['transactionId']) || !preg_match('/^[a-f0-9]{32}$/D',$plan['transactionId']) || !is_string($plan['applicationCommit']) || !preg_match('/^[a-f0-9]{40}$/D',$plan['applicationCommit']) || !self::digest($plan['protectedStateSha256']) || !is_array($plan['expected']) || !is_array($plan['prior']) || count($plan['expected'])<4 || count($plan['expected'])>10000 || array_diff_key($sizes,$plan['expected']) || array_diff_key($plan['expected'],$sizes) || array_diff_key($plan['prior'],$plan['expected'],array(self::MARKER=>true)) || array_diff_key($priorOverrides,$plan['prior'])) { throw new RuntimeException('Exact complete streaming seed plan required'); }
         $this->public=$publicRoot; $this->source=$publicRoot.'/staging/wp-content/mu-plugins'; self::directory($this->source);
@@ -90,11 +98,20 @@ final class KTK_Content_Update_Streaming_Seeds
     private function check(KTK_Content_Update_Private_Store $store,bool $protected=true): string
     {
         if ($store->transactionId()!==$this->plan['transactionId'] || $store->privateRoot()!==dirname($this->public).'/.ktk-content-update-'.$this->plan['transactionId']) { throw new RuntimeException('Private streaming seed root differs'); }
-        $store->inventory(); $original=$store->read('original-state.json'); $raw=$store->read('controller-plan.json');
+        $inventory=$this->pendingClosure===null?$store->inventory():$store->inventoryForWrite('closed.json',$this->pendingClosure);
+        // Every inventory rereads and authenticates all record bytes. Equal digests permit
+        // reuse of the decoded plan within this held-lock call, never stat-only trust.
+        if ($this->profile==='full-private-host' && !$protected && $this->validatedControl!==null) {
+            if ($inventory!==$this->validatedControl) { throw new RuntimeException('Validated private streaming control bytes changed'); }
+            return $store->privateRoot();
+        }
+        $original=$store->read('original-state.json'); $raw=$store->read('controller-plan.json');
         if ($original===null || $raw===null) { throw new RuntimeException('Signed original state and exact plan required before private streaming'); }
         $control=json_decode($raw,true,64,JSON_THROW_ON_ERROR);
         $snapshot=json_decode($original,true,64,JSON_THROW_ON_ERROR);
-        if (!is_array($snapshot) || ($snapshot['protectedStateSha256']??null)!==$this->plan['protectedStateSha256'] || !is_array($control) || ($control['mode']??null)!=='private-staging-rehearsal' || ($control['transactionId']??null)!==$this->plan['transactionId'] || ($control['applicationCommit']??null)!==$this->plan['applicationCommit'] || ($control['originalStateSha256']??null)!==hash('sha256',$original) || self::encode($control['enginePlan']??null)!==self::encode($this->plan) || ($protected && ($this->guard)()!==$this->plan['protectedStateSha256'])) { throw new RuntimeException('Private streaming plan or protected state differs; preserve without database restoration'); }
+        if (!is_array($snapshot) || ($snapshot['protectedStateSha256']??null)!==$this->plan['protectedStateSha256'] || !is_array($control) || ($control['mode']??null)!=='private-staging-rehearsal' || ($control['transactionId']??null)!==$this->plan['transactionId'] || ($control['applicationCommit']??null)!==$this->plan['applicationCommit'] || ($control['originalStateSha256']??null)!==hash('sha256',$original) || self::encode($control['enginePlan']??null)!==self::encode($this->plan) || ($protected && $this->disposalGuard===null && ($this->guard)()!==$this->plan['protectedStateSha256'])) { throw new RuntimeException('Private streaming plan or protected state differs; preserve without database restoration'); }
+        if ($protected && $this->disposalGuard!==null) { ($this->disposalGuard)(); }
+        if ($this->profile==='full-private-host') { $this->validatedControl=$inventory; }
         return $store->privateRoot();
     }
     private function sourceInventory(): void
@@ -158,17 +175,50 @@ final class KTK_Content_Update_Streaming_Seeds
         foreach ($this->files as $name=>$spec) { if (($files[$name]??null)!==$spec) { $complete[explode('/',$name,2)[0]]=false; } }
         if (isset($dirs['target']) && !$complete['source']) { throw new RuntimeException('Private target cannot precede the complete candidate'); }
         ksort($files); ksort($dirs); $this->check($store);
-        $state=array('rootBinding'=>$store->rootBinding(),'planSha256'=>hash('sha256',self::encode($this->plan)),'files'=>$files,'directories'=>array_keys($dirs));
+        $state=array('rootBinding'=>$store->rootBinding(),'planSha256'=>hash('sha256',self::encode($this->plan)),'profile'=>$this->profile,'files'=>$files,'directories'=>array_keys($dirs));
         return array('stateSha256'=>hash('sha256',self::encode($state)),'files'=>$files,'directories'=>array_keys($dirs),'sourceComplete'=>$complete['source'],'targetComplete'=>$complete['target'],'copiedBytes'=>array_sum(array_column($files,'bytes')),'applicationWrites'=>0,'databaseWrites'=>0,'cachePurges'=>0);
+    }
+    public function expectedStateSha256(KTK_Content_Update_Private_Store $store): string
+    {
+        if ($store->transactionId()!==$this->plan['transactionId']) { throw new RuntimeException('Streaming expected-state transaction differs'); }
+        $files=$this->files;$dirs=array_keys($this->directories);ksort($files);sort($dirs);
+        return hash('sha256',self::encode(array('rootBinding'=>$store->rootBinding(),'planSha256'=>hash('sha256',self::encode($this->plan)),'profile'=>$this->profile,'files'=>$files,'directories'=>$dirs)));
+    }
+    public function inspectPendingClosure(KTK_Content_Update_Private_Store $store,string $bytes): array
+    {
+        if ($this->profile!=='full-private-host') { throw new RuntimeException('Explicit private host closure inspection required'); }
+        $this->pendingClosure=$bytes;
+        try { return $this->inspect($store); } finally { $this->pendingClosure=null; }
+    }
+    public function inspectForDisposal(KTK_Content_Update_Private_Store $store,callable $freshGuard,?string $closure=null): array
+    {
+        if ($this->profile!=='full-private-host' || !defined('KTK_PRIVATE_SEED_DISPOSAL_ALLOWED') || KTK_PRIVATE_SEED_DISPOSAL_ALLOWED!==true || $this->disposalGuard!==null || $this->pendingClosure!==null) { throw new RuntimeException('Explicit read-only private disposal census required'); }
+        $this->disposalGuard=$freshGuard;$this->pendingClosure=$closure;
+        try { return $this->inspect($store); } finally { $this->disposalGuard=null;$this->pendingClosure=null;$this->validatedControl=null; }
     }
     public function advance(KTK_Content_Update_Private_Store $store,string $stateSha256): array
     {
+        if ($this->disposalGuard!==null) { throw new RuntimeException('Private disposal census cannot authorize copying'); }
         $state=$this->inspect($store);
         if (!self::digest($stateSha256) || !hash_equals($state['stateSha256'],$stateSha256)) { throw new RuntimeException('Stale streaming state; inspect before advancing'); }
+        return $this->copyInspected($store,$state);
+    }
+    public function advanceWithControllerFence(KTK_Content_Update_Private_Store $store,callable $beforeWrite): array
+    {
+        if ($this->disposalGuard!==null) { throw new RuntimeException('Private disposal census cannot authorize copying'); }
+        if ($this->profile!=='full-private-host') { throw new RuntimeException('Explicit full private host controller fence required'); }
+        $state=$this->inspect($store);
+        // Server callback validates the complete controller fence and archive under
+        // this same store lock, before any payload directory or file is created.
+        $beforeWrite($state);
+        return $this->copyInspected($store,$state);
+    }
+    private function copyInspected(KTK_Content_Update_Private_Store $store,array $state): array
+    {
         $written=0; $opened=0;
         foreach ($this->files as $name=>$spec) {
             if (($state['files'][$name]??null)===$spec) { continue; }
-            if ($written>=self::STEP_BYTES || $opened>=self::STEP_FILES) { break; }
+            if ($written>=$this->stepBytes || $opened>=$this->stepFiles) { break; }
             if (str_starts_with($name,'target/') && !$state['sourceComplete']) { break; }
             $root=$this->check($store,false); $parent=$root;
             foreach (array_slice(explode('/',$name),0,-1) as $part) {
@@ -184,8 +234,8 @@ final class KTK_Content_Update_Streaming_Seeds
                 $this->check($store,false); self::held($h,$path,$before['bytes']);
                 if ($this->prefix($path,$name)!==$before || !chmod($path,0600) || fseek($h,$before['bytes'])!==0) { throw new RuntimeException('Private streaming seed changed before append'); }
                 $offset=$before['bytes']; $reader=$this->openExpected($name);
-                while ($offset<$spec['bytes'] && $written<self::STEP_BYTES) {
-                    $chunk=$this->expected($name,$offset,min(self::CHUNK,$spec['bytes']-$offset,self::STEP_BYTES-$written),$reader); $position=0;
+                while ($offset<$spec['bytes'] && $written<$this->stepBytes) {
+                    $chunk=$this->expected($name,$offset,min(self::CHUNK,$spec['bytes']-$offset,$this->stepBytes-$written),$reader); $position=0;
                     while ($position<strlen($chunk)) { $n=fwrite($h,substr($chunk,$position)); if ($n===false || $n===0) { throw new RuntimeException('Private streaming append interrupted'); } $position+=$n; $offset+=$n; $written+=$n; }
                     if (!fflush($h) || (function_exists('fsync')&&!fsync($h))) { throw new RuntimeException('Private streaming flush failed'); }
                     self::held($h,$path,$offset);

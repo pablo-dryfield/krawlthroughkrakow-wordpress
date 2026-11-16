@@ -6,16 +6,24 @@ from tools.tests import test_content_update_private_store as store
 
 ROOT=store.ROOT; ID=store.ID; KEY=store.KEY
 DRIVER=r'''<?php
-$c=json_decode(file_get_contents($argv[1]),true,64,JSON_THROW_ON_ERROR);define('KTK_CONTENT_UPDATE_STORE_ALLOWED',true);if($c['allowed']){define('KTK_CONTENT_UPDATE_STREAMING_SEEDS_ALLOWED',true);}
+$c=json_decode(file_get_contents($argv[1]),true,64,JSON_THROW_ON_ERROR);define('KTK_CONTENT_UPDATE_STORE_ALLOWED',true);if($c['allowed']){define('KTK_CONTENT_UPDATE_STREAMING_SEEDS_ALLOWED',true);}if(!empty($c['hostAllowed'])){define('KTK_CONTENT_UPDATE_FULL_HOST_STREAMING_ALLOWED',true);}if(!empty($c['disposalAllowed'])){define('KTK_PRIVATE_SEED_DISPOSAL_ALLOWED',true);}
 try{require $c['store'];require $c['component'];$s=$c['create']?KTK_Content_Update_Private_Store::create($c['root'],$c['public'],$c['id'],$c['key']):new KTK_Content_Update_Private_Store($c['root'],$c['public'],$c['id'],$c['key']);
 if($c['create']){$original=json_encode(array('protectedStateSha256'=>$c['plan']['protectedStateSha256']));$s->writeOnce('original-state.json',$original);$s->writeOnce('controller-plan.json',json_encode(array('mode'=>$c['mode'],'transactionId'=>$c['id'],'applicationCommit'=>$c['plan']['applicationCommit'],'originalStateSha256'=>hash('sha256',$original),'enginePlan'=>$c['plan'])));}
-$guard=$c['guard'];$calls=0;$observer=static function($event,$name,$path)use($c,&$guard){
+$guard=$c['guard'];$calls=0;$observer=static function($event,$name,$path)use($c,&$guard,$s){
 if($c['fault']==='exit-open'&&$event==='after-stream-open'){exit(73);}if($c['fault']==='exit-chunk'&&$event==='after-stream-chunk'){exit(74);}if($c['fault']==='exit-file'&&$event==='after-stream-file'){exit(75);}
 if($c['fault']==='change-open'&&$event==='after-stream-open'){file_put_contents($path,'external owner bytes');}
 if($c['fault']==='replace-open'&&$event==='after-stream-open'){rename($path,$path.'.original');file_put_contents($path,'');}
 if($c['fault']==='drift-chunk'&&$event==='after-stream-chunk'){$guard='e'.str_repeat('f',63);}
-};$seed=new KTK_Content_Update_Streaming_Seeds($c['public'],$c['plan'],$c['sizes'],$c['overrides'],static function()use(&$guard,&$calls){$calls++;return $guard;},$observer);
-$v=$c['action']==='inspect'?$seed->inspect($s):$seed->advance($s,$c['fence']);echo json_encode(array('ok'=>true,'value'=>$v,'peak'=>memory_get_peak_usage(true),'guardCalls'=>$calls),JSON_THROW_ON_ERROR);
+if(in_array($c['fault'],array('tamper-control','resign-control','unknown-control'),true)&&$event==='after-stream-open'){
+ $p=$s->privateRoot().'/control/controller-plan.json';
+ if($c['fault']==='tamper-control'){file_put_contents($p,'changed signed record');}
+ elseif($c['fault']==='unknown-control'){file_put_contents($s->privateRoot().'/control/owner-note','preserve');}
+ else{$body=str_replace('private-staging-rehearsal','changed-staging-rehearsal',$s->read('controller-plan.json'));$m=new ReflectionMethod($s,'blob');file_put_contents($p,$m->invoke($s,'controller-plan.json',$body));}
+}
+};$seed=new KTK_Content_Update_Streaming_Seeds($c['public'],$c['plan'],$c['sizes'],$c['overrides'],static function()use(&$guard,&$calls){$calls++;return $guard;},$observer,$c['profile']??'default');
+if($c['action']==='disposal-inspect'){$v=$seed->inspectForDisposal($s,static function()use($c,&$guard,$seed,$s){if(!empty($c['recursiveCopy'])){$seed->advance($s,$c['fence']);}if($guard!==$c['freshGuard']){throw new RuntimeException('Fresh disposal fixture guard differs');}});if(!empty($c['restoreProbe'])){$v=$seed->advance($s,$v['stateSha256']);}}
+elseif($c['action']==='controller-advance'){$v=$seed->advanceWithControllerFence($s,static function($state)use($c){if($state['stateSha256']!==$c['fence']){throw new RuntimeException('Controller fixture fence differs');}});}
+else{$v=$c['action']==='inspect'?$seed->inspect($s):$seed->advance($s,$c['fence']);}echo json_encode(array('ok'=>true,'value'=>$v,'peak'=>memory_get_peak_usage(true),'guardCalls'=>$calls),JSON_THROW_ON_ERROR);
 }catch(Throwable $e){echo json_encode(array('ok'=>false,'error'=>$e->getMessage()),JSON_THROW_ON_ERROR);}
 '''
 
@@ -113,5 +121,37 @@ class StreamingPreparationSeedTests(unittest.TestCase):
   try:os.link(p,outside)
   except OSError as e:self.skipTest('Host disallows isolated hardlink: '+type(e).__name__)
   before=outside.read_bytes();self.call(success=False);self.assertFalse((self.private/'source').exists());self.assertEqual(outside.read_bytes(),before)
+
+ def test_host_profile_requires_explicit_separate_caller_and_binds_a_different_fence(self):
+  self.call(success=False,profile='full-private-host');self.call(success=False,profile='production',hostAllowed=True);state=self.call(profile='full-private-host',hostAllowed=True);self.assertNotEqual(state['stateSha256'],self.initial['stateSha256'])
+ def test_host_profile_opens_at_most_256_files_while_default_keeps_32(self):
+  for i in range(270):n=f'ktk-code-pages-assets/content/host-{i:03}.html';self.source[n]=self.prior[n]=b'p';self.write_public(n,b'p')
+  self.refresh();self.rebuild_records();state=self.call(profile='full-private-host',hostAllowed=True);r=self.call('advance',fence=state['stateSha256'],profile='full-private-host',hostAllowed=True);self.assertEqual(r['stepFilesOpened'],256);self.assertFalse(r['sourceComplete'])
+ def test_host_profile_streams_no_more_than_64MiB_with_bounded_memory(self):
+  data=b'0123456789abcdef'*(33*65536)
+  for suffix in ['a','b']:
+   name='ktk-code-pages-assets/media/host-'+suffix+'.mp4';self.source[name]=self.prior[name]=data;self.write_public(name,data)
+  self.refresh();self.rebuild_records();state=self.call(profile='full-private-host',hostAllowed=True);r=self.call('advance',fence=state['stateSha256'],profile='full-private-host',hostAllowed=True);self.assertEqual(r['stepBytesWritten'],67108864);self.assertFalse(r['sourceComplete'])
+ def test_controller_fence_is_host_only_and_rejects_stale_state_before_payload_allocation(self):
+  before=self.snapshot();self.call('controller-advance',success=False,fence=self.initial['stateSha256']);self.assertEqual(self.snapshot(),before)
+  self.call('controller-advance',success=False,profile='full-private-host',hostAllowed=True,fence='0'*64);self.assertEqual(self.snapshot(),before);self.assertFalse((self.private/'source').exists())
+  state=self.call(profile='full-private-host',hostAllowed=True);r=self.call('controller-advance',profile='full-private-host',hostAllowed=True,fence=state['stateSha256']);self.assertGreater(r['stepBytesWritten'],0)
+ def test_host_decoded_record_cache_still_authenticates_every_byte_and_refuses_resigned_changes_before_append(self):
+  for fault in ['tamper-control','resign-control','unknown-control']:
+   with self.subTest(fault=fault):
+    # Each fault gets a distinct owned fixture; preserve the changed control bytes.
+    case=StreamingPreparationSeedTests('runTest');case.setUp()
+    try:
+     state=case.call(profile='full-private-host',hostAllowed=True);case.call('controller-advance',success=False,profile='full-private-host',hostAllowed=True,fence=state['stateSha256'],fault=fault)
+     payload=[p for p in (case.private/'source').rglob('*') if p.is_file()];self.assertEqual(len(payload),1);self.assertEqual(payload[0].stat().st_size,0)
+     self.assertTrue((case.private/'control/owner-note').exists() if fault=='unknown-control' else (case.private/'control/controller-plan.json').exists())
+    finally:case.doCleanups()
+ def test_separate_disposal_census_requires_explicit_gate_and_never_changes_original_copy_guard(self):
+  before=self.snapshot();options={'profile':'full-private-host','hostAllowed':True,'guard':'e'*64,'freshGuard':'e'*64}
+  self.call('disposal-inspect',success=False,**options);self.assertEqual(self.snapshot(),before)
+  state=self.call('disposal-inspect',disposalAllowed=True,**options);self.assertFalse(state['sourceComplete']);self.assertEqual(self.snapshot(),before)
+  self.call('disposal-inspect',success=False,disposalAllowed=True,restoreProbe=True,**options);self.assertEqual(self.snapshot(),before);self.assertFalse((self.private/'source').exists())
+ def test_disposal_guard_callback_cannot_reenter_copying(self):
+  before=self.snapshot();self.call('disposal-inspect',success=False,profile='full-private-host',hostAllowed=True,disposalAllowed=True,guard='e'*64,freshGuard='e'*64,recursiveCopy=True,fence=self.initial['stateSha256']);self.assertEqual(self.snapshot(),before)
 
 if __name__=='__main__':unittest.main()
