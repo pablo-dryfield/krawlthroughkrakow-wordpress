@@ -57,6 +57,10 @@ jobs:
           php -l tools/private-seed-disposal.php
           php -l tools/private-seed-disposal-template.php
           php -l tools/staging-private-entry-probe-template.php
+          php -l tools/full-private-engine-preparation.php
+          php -l tools/full-private-engine-staging-template.php
+          php -l tools/full-private-engine-disposal.php
+          php -l tools/full-private-engine-disposal-template.php
           php -l tools/content-update-backup-manifest.php
           php -l tools/content-update-controller.php
           php -l tools/content-update-staging-template.php
@@ -174,7 +178,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Current-user encrypted recovery contracts (no hosting credentials or deployment)
-        run: python -m unittest tools.tests.test_content_update_recovery tools.tests.test_full_private_seed_recovery tools.tests.test_private_seed_disposal_support.DisposalNativeTests tools.tests.test_early_private_recovery.EarlyPrivateNativeTests
+        run: python -m unittest tools.tests.test_content_update_recovery tools.tests.test_full_private_seed_recovery tools.tests.test_private_seed_disposal_support.DisposalNativeTests tools.tests.test_early_private_recovery.EarlyPrivateNativeTests tools.tests.test_full_private_engine_recovery.FullPrivateEngineNativeTests tools.tests.test_full_private_engine_disposal_support.FullEngineDisposalNativeTests
 
   secrets:
     name: Secret Scan
