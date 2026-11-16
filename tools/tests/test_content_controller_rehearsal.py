@@ -38,8 +38,12 @@ class HelperCommon:
 
 class HelperLeaseTests(unittest.TestCase):
     def lease(self, common):
-        scope = type('Scope', (), {'path': '/public_html/staging/wp-content/mu-plugins/ktk-transaction-rehearsal-' + 'a' * 32 + '.php'})()
+        scope = type('Scope', (), {'path': '/public_html/staging/wp-content/mu-plugins/ktk-transaction-rehearsal-' + 'a' * 32 + '.php','mlsd':lambda self,path:[]})()
         return runner.HelperLease(common, None, scope, b'known helper')
+    def test_existing_unreadable_namespace_is_preserved_before_any_read_or_upload(self):
+        common = HelperCommon();lease = self.lease(common);name=lease.scope.path.rsplit('/',1)[1];lease.scope.mlsd=lambda directory:[(name,{'type':'file'})]
+        with self.assertRaises(ValueError):lease.install()
+        lease.remove();self.assertEqual(common.calls,[]);self.assertFalse(lease.attempted)
     def test_existing_helper_is_preserved_without_upload_or_cleanup(self):
         common = HelperCommon(b'unknown');lease = self.lease(common)
         with self.assertRaises(ValueError):lease.install()

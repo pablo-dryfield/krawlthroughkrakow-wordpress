@@ -1,5 +1,5 @@
 """Deterministic session rotation is separate from retrying a command with an unknown result."""
-import io,unittest
+import ftplib,io,unittest
 from tools.content_update_staging_connection import BoundedStagingFTPS
 
 
@@ -63,6 +63,28 @@ class BoundedConnectionTests(unittest.TestCase):
         with self.assertRaises(EOFError):ftp.retrbinary('RETR known',chunks.append)
         self.assertEqual(chunks,[b'partial'])
         with self.assertRaises(RuntimeError):ftp.retrbinary('RETR known',chunks.append)
+    def test_definite_missing_file_before_any_bytes_does_not_poison_next_operation(self):
+        ftp,calls,connections,now=self.fixture();ftp.sendcmd('MLST known')
+        def missing(command,callback):calls.append((0,'missing-read'));raise ftplib.error_perm('550 No such file')
+        connections[0].retrbinary=missing
+        with self.assertRaises(ftplib.error_perm):ftp.retrbinary('RETR absent',lambda data:self.fail('No data expected'))
+        ftp.sendcmd('MLST known');self.assertFalse(ftp.statistics()['uncertainOperation']);self.assertEqual(sum(c[1]=='missing-read' for c in calls),1)
+    def test_permission_reply_after_partial_read_remains_uncertain(self):
+        ftp,calls,connections,now=self.fixture();ftp.sendcmd('MLST known');chunks=[]
+        def partial(command,callback):callback(b'partial');raise ftplib.error_perm('550 Transfer failed')
+        connections[0].retrbinary=partial
+        with self.assertRaises(ftplib.error_perm):ftp.retrbinary('RETR known',chunks.append)
+        with self.assertRaises(RuntimeError):ftp.sendcmd('MLST known')
+        self.assertEqual(chunks,[b'partial'])
+    def test_other_read_or_mutation_failures_are_not_reclassified_as_absence(self):
+        for method,reply in [('retrbinary','553 Not allowed'),('storbinary','550 Rejected')]:
+            with self.subTest(method=method):
+                ftp,calls,connections,now=self.fixture();ftp.sendcmd('MLST known')
+                def denied(*args):raise ftplib.error_perm(reply)
+                setattr(connections[0],method,denied)
+                args=('RETR known',lambda data:None) if method=='retrbinary' else ('STOR known',io.BytesIO(b'known'))
+                with self.assertRaises(ftplib.error_perm):getattr(ftp,method)(*args)
+                with self.assertRaises(RuntimeError):ftp.sendcmd('MLST known')
     def test_connection_factory_failure_has_no_automatic_retry(self):
         count=[]
         def fail():count.append(1);raise OSError('connect failed')

@@ -82,6 +82,9 @@ class HelperLease:
         self.removed = False
 
     def install(self):
+        directory, name = self.scope.path.rsplit('/', 1)
+        if any(entry == name for entry, facts in self.scope.mlsd(directory)):
+            raise ValueError('Existing helper namespace preserved, including unreadable files')
         if self.common.common.retrieve_file(self.scope, self.scope.path) is not None:
             raise ValueError('Fresh helper path required; existing data preserved')
         self.attempted = True

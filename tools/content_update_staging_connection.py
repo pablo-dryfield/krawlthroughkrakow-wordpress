@@ -1,6 +1,6 @@
 """Bound injected FTPS sessions before operations; never retry an uncertain command. No login or authorization."""
 from __future__ import annotations
-import time
+import ftplib,re,time
 
 
 class BoundedStagingFTPS:
@@ -14,9 +14,10 @@ class BoundedStagingFTPS:
         self.last_operation = None
         self.failed = self.closed = False
 
-    def invoke(self, method, args, transfer=False):
+    def invoke(self, method, args, transfer=False, missing_read=None):
         if self.closed or self.failed:
             raise RuntimeError('FTPS session is closed or uncertain; explicit new caller inspection required')
+        started = False
         try:
             now = self.clock()
             if self.connection is not None and (self.transfers >= self.transfer_limit or self.commands >= self.command_limit or now - self.last_operation >= self.idle_limit):
@@ -32,17 +33,28 @@ class BoundedStagingFTPS:
                 self.transfers += 1
                 self.total_transfers += 1
             # Evaluate lazy MLSD within this same operation so a partial directory read cannot escape uncertainty.
+            started = True
             result = getattr(self.connection, method)(*args)
             if method == 'mlsd':
                 result = list(result)
             self.last_operation = self.clock()
             return result
-        except Exception:
-            self.failed = True
+        except Exception as error:
+            # A definite RETR absence before any data is the existing caller's normal missing-file result.
+            # A partial read or any failed mutation remains uncertain and is never retried here.
+            if started and method == 'retrbinary' and missing_read is not None and isinstance(error, ftplib.error_perm) and re.match(r'^550(?:[ -]|$)', str(error)) and missing_read():
+                self.last_operation = self.clock()
+            else:
+                self.failed = True
             raise
 
     def retrbinary(self, command, callback):
-        return self.invoke('retrbinary', (command, callback), transfer=True)
+        delivered = False
+        def receive(data):
+            nonlocal delivered
+            delivered = True
+            callback(data)
+        return self.invoke('retrbinary', (command, receive), transfer=True, missing_read=lambda: not delivered)
 
     def storbinary(self, command, stream):
         return self.invoke('storbinary', (command, stream), transfer=True)
