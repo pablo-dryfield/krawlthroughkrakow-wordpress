@@ -11,10 +11,11 @@ add_action('wp_loaded',static function(){
         if(basename(__FILE__)!=='__KTK_CONTROLLER_HELPER__'||function_exists('ktk_capture_staging_original_state')||class_exists('KTK_Content_Update_Controller',false)||class_exists('KTK_Active_Content_Transaction',false)){throw new RuntimeException('Exact fresh staging controller required');}
         $raw=file_get_contents('php://input',false,null,0,2049);if(!is_string($raw)||strlen($raw)>2048){throw new RuntimeException('Bounded canonical request required');}
         define('KTK_STAGING_STATE_ALLOWED',true);define('KTK_UPDATE_ENGINE_ALLOWED',true);
-        foreach(array('REQUEST','STORE','BACKUP','CONTROLLER') as $component){define('KTK_CONTENT_UPDATE_'.$component.'_ALLOWED',true);}
+        foreach(array('REQUEST','STORE','BACKUP','CONTROLLER','SEEDS') as $component){define('KTK_CONTENT_UPDATE_'.$component.'_ALLOWED',true);}
         /* __KTK_CONTROLLER_STATE__ */
         /* __KTK_CONTROLLER_REQUEST__ */
         /* __KTK_CONTROLLER_STORE__ */
+        /* __KTK_CONTROLLER_SEED_RECOVERY__ */
         /* __KTK_CONTROLLER_BACKUP__ */
         /* __KTK_CONTROLLER_ENGINE__ */
         /* __KTK_CONTROLLER_LIFECYCLE__ */
@@ -29,6 +30,7 @@ add_action('wp_loaded',static function(){
             };
             foreach(array('source','target') as $folder){
                 $directory($private);if(!mkdir($private.'/'.$folder,0700)){throw new RuntimeException('Fresh private fixture directory required');}$directory($private.'/'.$folder);
+                if($folder==='source'&&__KTK_CONTROLLER_PREPARATION_FAULT__){exit;}
                 foreach($seeds[$folder] as $name=>$encoded){
                     if(!preg_match('/^[A-Za-z0-9._\/-]+$/D',$name)||array_intersect(explode('/',$name),array('','.','..'))){throw new RuntimeException('Exact private fixture name required');}
                     $path=$private.'/'.$folder.'/'.$name;$bytes=base64_decode($encoded,true);if(!is_string($bytes)){throw new RuntimeException('Exact private fixture bytes required');}
@@ -41,7 +43,8 @@ add_action('wp_loaded',static function(){
             }
         };
         $capture=static fn()=>ktk_capture_staging_original_state(__FILE__);
-        $controller=new KTK_Content_Update_Controller($packet,$capture,$capture,$initialize);
+        $seedRecovery=new KTK_Content_Update_Preparation_Seeds($seeds,$packet['plan']);
+        $controller=new KTK_Content_Update_Controller($packet,$capture,$capture,$initialize,null,static fn($store)=>$seedRecovery->inspect($store),static fn($store,$fence)=>$seedRecovery->complete($store,$fence));
         $result=$controller->run($raw,$_SERVER['REQUEST_METHOD'],$_SERVER['HTTP_HOST'],$token,time());
         $response=array('helperSha256'=>$packet['helperSha256'],'controller'=>$result);
     }catch(Throwable $error){restore_error_handler();wp_send_json(array('error'=>'private_staging_controller_failed'),409);}

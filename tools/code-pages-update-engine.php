@@ -285,6 +285,131 @@ final class KTK_Active_Content_Transaction
         return $this->inspect();
     }
 
+    /** Explicit recovery is limited to private preparation; ordinary prepare/apply/rollback guards are unchanged. */
+    private function preparationBlueprint(): array
+    {
+        $required = array(self::ACTIVATION => self::ACTIVATION_SHA, self::RENDERER => $this->plan['prior'][self::RENDERER], self::ASSETS . '/registry.php' => $this->plan['prior'][self::ASSETS . '/registry.php']);
+        foreach ($this->plan['expected'] as $name => $hash) {
+            if (isset($this->plan['prior'][$name]) && $this->plan['prior'][$name] !== $hash) { $required[$name] = $this->plan['prior'][$name]; }
+        }
+        ksort($required);
+        $pristine = array('binding' => $this->journal['binding'], 'phase' => 'unprepared', 'intents' => array(), 'backups' => array(), 'events' => array());
+        $prepared = $pristine; $prepared['phase'] = 'prepared'; $prepared['backups'] = $required; $prepared['events'][] = 'verified-prior-files-before-first-application-write';
+        if ($this->journal !== $pristine && $this->journal !== $prepared) { throw new RuntimeException('Only pristine or completed private preparation can be recovered'); }
+        return array($required, $prepared, array('plan.json' => json_encode($this->plan, JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR) . "\n", 'journal.json' => json_encode($prepared, JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR) . "\n"));
+    }
+
+    private function preparationBytes(string $path, int $limit): string
+    {
+        $path = str_replace('\\', '/', $path);
+        if (self::root($this->private) !== $this->private || self::root(dirname($path)) !== dirname($path)) { throw new RuntimeException('Private preparation root changed'); }
+        clearstatcache(true, $path); $stat = lstat($path);
+        if (is_link($path) || !is_file($path) || $stat === false || ($stat['nlink'] ?? 0) !== 1 || $stat['size'] > $limit) { throw new RuntimeException('Unsafe private preparation file preserved'); }
+        $bytes = file_get_contents($path, false, null, 0, $limit + 1);
+        if ($bytes === false || strlen($bytes) > $limit || self::digest($path) !== hash('sha256', $bytes)) { throw new RuntimeException('Private preparation file changed while reading'); }
+        return $bytes;
+    }
+
+    public function inspectPreparation(): array
+    {
+        $this->preflight(false); [$required, $prepared, $records] = $this->preparationBlueprint();
+        foreach (array('plan.json', 'journal.json') as $name) {
+            if (self::digest($this->private . '/' . $name) !== $this->receiptHashes[$name]) { throw new RuntimeException('Active preparation receipt changed'); }
+        }
+        $allowedDirectories = array('prior' => true, 'receipts' => true);
+        foreach (array_keys($required) as $name) {
+            for ($directory = dirname('prior/' . $name); $directory !== '.'; $directory = dirname($directory)) { $allowedDirectories[$directory] = true; }
+        }
+        $files = array(); $directories = array(); $pending = array(); $bytesTotal = 0; $visited = 0;
+        $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($this->private, FilesystemIterator::SKIP_DOTS), RecursiveIteratorIterator::SELF_FIRST);
+        foreach ($iterator as $entry) {
+            if (++$visited > 20000 || $entry->isLink()) { throw new RuntimeException('Unsafe or oversized private preparation tree preserved'); }
+            $name = str_replace('\\', '/', substr($entry->getPathname(), strlen($this->private) + 1));
+            if ($entry->isDir()) {
+                if (!isset($allowedDirectories[$name]) || self::root($entry->getPathname()) !== str_replace('\\', '/', $entry->getPathname())) { throw new RuntimeException('Unknown private preparation directory preserved'); }
+                $directories[$name] = true; continue;
+            }
+            if (!$entry->isFile()) { throw new RuntimeException('Unknown private preparation member preserved'); }
+            $prefixAllowed = false;
+            if (isset($records[$name])) { $expected = $records[$name]; }
+            elseif (str_starts_with($name, 'prior/') && isset($required[substr($name, 6)])) {
+                $logical = substr($name, 6); $source = self::path($this->target, $logical);
+                if (filesize($source) > 16777216 || self::digest($source) !== $required[$logical]) { throw new RuntimeException('Original preparation source differs or exceeds budget'); }
+                $expected = file_get_contents($source); if ($expected === false || hash('sha256', $expected) !== $required[$logical]) { throw new RuntimeException('Original preparation source changed'); }
+                $prefixAllowed = $this->journal['phase'] === 'unprepared';
+            } elseif (preg_match('/^receipts\/\.ktk-receipt-(plan|journal)-[a-f0-9]{32}$/D', $name, $match)) {
+                $logical = $match[1] . '.json';
+                if (isset($pending[$logical]) || $this->receiptHashes[$logical] !== null || $this->journal['phase'] !== 'unprepared') { throw new RuntimeException('Ambiguous private preparation receipt preserved'); }
+                $pending[$logical] = $name; $expected = $records[$logical]; $prefixAllowed = true;
+            } else { throw new RuntimeException('Unknown private preparation file preserved'); }
+            $bytes = $this->preparationBytes($entry->getPathname(), strlen($expected));
+            if ($bytes !== $expected && (!$prefixAllowed || !str_starts_with($expected, $bytes))) { throw new RuntimeException('Changed private preparation bytes preserved'); }
+            $bytesTotal += strlen($bytes); if ($bytesTotal > 134217728) { throw new RuntimeException('Private preparation budget exceeded'); }
+            $files[$name] = array('sha256' => hash('sha256', $bytes), 'bytes' => strlen($bytes));
+        }
+        ksort($files); ksort($directories); ksort($pending);
+        if ($pending || $this->receiptHashes['plan.json'] !== null || $this->receiptHashes['journal.json'] !== null) {
+            foreach ($required as $name => $hash) {
+                if (($files['prior/' . $name]['sha256'] ?? null) !== $hash) { throw new RuntimeException('Private backup changed after preparation receipts started'); }
+            }
+        }
+        if ($this->journal['phase'] === 'prepared') { $this->verifyBackup(); }
+        $binding = array('binding' => $this->journal['binding'], 'files' => $files, 'directories' => array_keys($directories), 'phase' => $this->journal['phase']);
+        return array('scope' => 'private-preparation-inspection', 'transactionId' => $this->plan['transactionId'], 'phase' => $this->journal['phase'], 'stateSha256' => hash('sha256', json_encode($binding, JSON_THROW_ON_ERROR)), 'files' => $files, 'directories' => array_keys($directories), 'pendingReceipts' => $pending, 'currentPriorInventoryVerified' => true, 'protectedStateVerified' => true, 'applicationWrites' => 0, 'activationWrites' => 0, 'databaseWrites' => 0, 'cachePurges' => 0);
+    }
+
+    private function completePreparationFile(string $path, string $expected, string $logical): void
+    {
+        $exists = file_exists($path) || is_link($path);
+        $before = $exists ? $this->preparationBytes($path, strlen($expected)) : '';
+        if (!str_starts_with($expected, $before)) { throw new RuntimeException('Changed private preparation prefix preserved'); }
+        if ($exists && $before === $expected) { return; }
+        if (self::root($this->private) !== $this->private || self::root(dirname($path)) !== dirname($path)) { throw new RuntimeException('Private preparation path changed'); }
+        $handle = fopen($path, file_exists($path) ? 'r+b' : 'x+b');
+        if (!$handle) { throw new RuntimeException('Cannot open known private preparation file'); }
+        try {
+            $this->observe('after-preparation-file-open', $logical); clearstatcache(true, $path); $held = fstat($handle); $current = lstat($path);
+            if (self::root($this->private) !== $this->private || self::root(dirname($path)) !== dirname($path) || is_link($path) || $held === false || $current === false || $held['dev'] !== $current['dev'] || $held['ino'] !== $current['ino'] || ($held['nlink'] ?? 0) !== 1 || $this->preparationBytes($path, strlen($expected)) !== $before || !chmod($path, 0600) || fseek($handle, strlen($before)) !== 0) { throw new RuntimeException('Private preparation file identity changed'); }
+            $offset = strlen($before);
+            while ($offset < strlen($expected)) { $count = fwrite($handle, substr($expected, $offset)); if ($count === false || $count === 0) { throw new RuntimeException('Private preparation write interrupted'); } $offset += $count; }
+            if (!fflush($handle) || (function_exists('fsync') && !fsync($handle))) { throw new RuntimeException('Private preparation flush failed'); }
+        } finally { fclose($handle); }
+        if ($this->preparationBytes($path, strlen($expected)) !== $expected) { throw new RuntimeException('Completed private preparation differs'); }
+        $this->observe('after-preparation-file-complete', $logical);
+    }
+
+    private function completePreparationReceipt(string $name, string $expected, ?string $pending): void
+    {
+        if ($this->receiptHashes[$name] !== null) { if ($this->preparationBytes($this->private . '/' . $name, strlen($expected)) !== $expected) { throw new RuntimeException('Existing preparation receipt differs'); } return; }
+        if ($pending === null) { $this->writePrivate($name, $expected); return; }
+        $path = $this->private . '/' . $pending; $this->completePreparationFile($path, $expected, $pending);
+        $this->observe('before-preparation-receipt-rename', $name);
+        if (self::root($this->private) !== $this->private || self::root(dirname($path)) !== dirname($path) || self::digest($this->private . '/' . $name) !== null || $this->preparationBytes($path, strlen($expected)) !== $expected || !rename($path, $this->private . '/' . $name)) { throw new RuntimeException('Preparation receipt changed before commit'); }
+        $this->receiptHashes[$name] = hash('sha256', $expected);
+        $this->observe('after-preparation-receipt-rename', $name);
+    }
+
+    public function resumePreparation(string $stateSha256): array
+    {
+        $inspection = $this->inspectPreparation();
+        if (!self::hashString($stateSha256) || !hash_equals($inspection['stateSha256'], $stateSha256)) { throw new RuntimeException('Stale preparation state; inspect before recovery'); }
+        if ($inspection['phase'] === 'prepared') { return $this->inspect(); }
+        [$required, $prepared, $records] = $this->preparationBlueprint();
+        $backupRoot = $this->private . '/prior';
+        if (!file_exists($backupRoot) && !mkdir($backupRoot, 0700)) { throw new RuntimeException('Cannot create known preparation backup root'); }
+        if (self::root($backupRoot) !== $backupRoot) { throw new RuntimeException('Preparation backup root changed'); }
+        foreach ($required as $name => $hash) {
+            $this->inspectPreparation(); $source = self::path($this->target, $name);
+            if (filesize($source) > 16777216 || self::digest($source) !== $hash) { throw new RuntimeException('Preparation prior source changed or exceeds budget'); }
+            $bytes = file_get_contents($source); if ($bytes === false || hash('sha256', $bytes) !== $hash) { throw new RuntimeException('Preparation prior read differs'); }
+            $this->completePreparationFile(self::path($backupRoot, $name, true), $bytes, 'prior/' . $name);
+        }
+        $inspection = $this->inspectPreparation(); $this->completePreparationReceipt('plan.json', $records['plan.json'], $inspection['pendingReceipts']['plan.json'] ?? null);
+        $this->preflight(false); $this->journal['backups'] = $required; $this->verifyBackup();
+        $this->completePreparationReceipt('journal.json', $records['journal.json'], $inspection['pendingReceipts']['journal.json'] ?? null);
+        $this->journal = $prepared; $this->preflight(false); $this->verifyBackup(); return $this->inspect();
+    }
+
     private function verifyBackup(): void
     {
         if (self::root($this->private) !== $this->private) { throw new RuntimeException('Private transaction root changed'); }
