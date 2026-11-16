@@ -32,6 +32,19 @@ def require(condition, message):
         raise ValueError(message)
 
 
+def instrument_driver(source, largest):
+    replacements = [
+        ('source/ktk-code-pages-assets/media/large.bin', 'source/' + largest),
+        ("array('ok'=>true,'value'=>$value)",
+         "array('ok'=>true,'value'=>$value,'phpEnvelopeBytes'=>strlen(json_encode(array('privateProfile'=>'full-private-engine-v1','helperSha256'=>$c['packet']['helperSha256'],'controller'=>$value),JSON_THROW_ON_ERROR)),'peakAllocatedBytes'=>memory_get_peak_usage(true))"),
+    ]
+    for old, new in replacements:
+        require(source.count(old) == 1, 'Exact local fixture driver anchor required')
+        source = source.replace(old, new, 1)
+    require(source.startswith('<?php'), 'Exact local PHP driver required')
+    return source.replace('<?php', "<?php ini_set('memory_limit','256M');", 1)
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--application-commit', required=True, choices=[APPLICATION])
@@ -117,17 +130,7 @@ def main(argv=None):
         case.cfg['packet'].update(plan=plan, publicOwnedSha256=backup.sha(backup.encode(owned, sort=True)))
         case.cfg.update(binding=case.binding, sizes=sizes, overrides=overrides,
                         operation='controller', seedFault='prefix')
-        driver = case.driver.read_text(encoding='utf-8')
-        for old, new in [
-            ('source/ktk-code-pages-assets/media/large.bin', 'source/' + largest),
-            ("array('ok'=>true,'value'=>$value)",
-             "array('ok'=>true,'value'=>$value,'peakAllocatedBytes'=>memory_get_peak_usage(true))"),
-        ]:
-            require(driver.count(old) == 1, 'Exact local fixture driver anchor required')
-            driver = driver.replace(old, new, 1)
-        require(driver.startswith('<?php'), 'Exact local PHP driver required')
-        case.driver.write_text(driver.replace('<?php', "<?php ini_set('memory_limit','256M');", 1),
-                               encoding='utf-8')
+        case.driver.write_text(instrument_driver(case.driver.read_text(encoding='utf-8'), largest), encoding='utf-8')
         before_public = case.public()
         cuts = {'original': False, 'engine': False}
 
@@ -184,18 +187,37 @@ def main(argv=None):
             controller = value['value']
             envelope = {'privateProfile': client_module.PROFILE,
                         'helperSha256': case.cfg['packet']['helperSha256'], 'controller': controller}
-            response_bytes = len(backup.encode(envelope))
-            require(response_bytes <= 2097152, 'Full fixture exceeds the unchanged HTTP response cap')
+            canonical_bytes = len(backup.encode(envelope))
+            response_bytes = value.get('phpEnvelopeBytes')
+            require(type(response_bytes) is int and 0 < response_bytes <= 2097152
+                    and canonical_bytes <= 2097152, 'Full fixture exceeds the unchanged response cap')
             item = {'action': action, 'seconds': seconds, 'peakAllocatedBytes': value['peakAllocatedBytes'],
-                    'responseBytes': response_bytes}
+                    'responseBytes': response_bytes, 'canonicalEnvelopeBytes': canonical_bytes}
             if 'preparation' in controller:
                 seed = controller['preparation']['fullSeed']
                 item.update(phase='preparation', privateFiles=len(seed['files']) if seed else 0,
                             privateBytes=seed['copiedBytes'] if seed else 0)
+                item['seedsComplete'] = controller['preparation']['seedsComplete']
+                if seed and seed['sourceComplete'] and seed['targetComplete']:
+                    require(controller['preparation']['enginePhase'] is None and not case.engine.exists(),
+                            'Complete seed response must precede any engine preparation')
+                    require(len(seed['files']) == 4149 and seed['copiedBytes'] == 1101087955,
+                            'Exact full complete seed boundary required')
+                    if action == 'recover-preparation':
+                        report['fullSeedCompletionReturnedBeforeEngine'] = True
+                        report['completeSeedBoundary'] = {**item, 'stateSha256': controller['stateSha256']}
             else:
                 item.update(phase=controller['engine']['phase'],
                             pendingApply=len(controller['engine']['pendingApplyFiles']),
                             pendingRollback=len(controller['engine']['pendingRollbackFiles']))
+                if not report.get('enginePreparationSeparateRequestVerified'):
+                    previous = report['steps'][-1] if report['steps'] else {}
+                    require(action == 'recover-preparation' and item['phase'] == 'prepared'
+                            and report.get('fullSeedCompletionReturnedBeforeEngine') is True
+                            and previous.get('action') == 'inspect-preparation'
+                            and previous.get('seedsComplete') is True,
+                            'Engine preparation must use a fresh request after complete-seed inspection')
+                    report['enginePreparationSeparateRequestVerified'] = True
             report['steps'].append(item)
             checkpoint('local-' + item['phase'])
             print(json.dumps({'fixtureProgress': item}), flush=True)
@@ -277,6 +299,9 @@ def main(argv=None):
                 'protectedStateSha256', 'rowCounts')
         require(all(before_state[k] == after[k] for k in keys), 'Fixture selected/protected state changed')
         require(snapshot.local_owned_checksums() == owned, 'Repository application source changed')
+        require(report.get('fullSeedCompletionReturnedBeforeEngine') is True
+                and report.get('enginePreparationSeparateRequestVerified') is True,
+                'Both separated complete preparation boundaries required')
         report.update(transaction, fullPrivateEngineLocalVerified=True, archivesReopenedAfterClosure=True,
                       allActualLocalSourceFilesRetained=True, allFixtureSelectedPublicProtectedStateExact=True,
                       maxPeakAllocatedBytes=max(x['peakAllocatedBytes'] for x in report['steps']),

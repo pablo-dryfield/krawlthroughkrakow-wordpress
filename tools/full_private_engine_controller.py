@@ -15,10 +15,11 @@ STREAM_SHA='6eda331b618a42f9ae6d7c14e75eecc557461f6c9ae62492877155e1a3615fad'
 PRIVATE_GUARD=b'''        if(($packet['mode']??null)!=='private-staging-rehearsal'||$initializePrivateFixture===null||$inspectPrivateFixture===null||$completePrivateFixture===null){throw new RuntimeException('Explicit private deferred preparation and paired callbacks required');}
 '''
 RECOVER=b'''            if($seed!==null){
+                $completeBefore=($seed['sourceComplete']??null)===true&&($seed['targetComplete']??null)===true;
                 ($this->completePrivateFixture)($store,$seed['stateSha256']);
                 $nextSeed=($this->inspectPrivateFixture)($store);
                 if(!is_array($nextSeed)||!self::digest($nextSeed['stateSha256']??null)||!is_bool($nextSeed['sourceComplete']??null)||!is_bool($nextSeed['targetComplete']??null)){throw new RuntimeException('Verified bounded private seed result required');}
-                if(!$nextSeed['sourceComplete']||!$nextSeed['targetComplete']){return $this->preparation($store,$nextSeed)[0];}
+                if(!$completeBefore||!$nextSeed['sourceComplete']||!$nextSeed['targetComplete']){return $this->preparation($store,$nextSeed)[0];}
             }
 '''
 

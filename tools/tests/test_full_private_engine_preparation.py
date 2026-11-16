@@ -1,4 +1,4 @@
-import base64,copy,hashlib,json,subprocess,unittest
+import base64,copy,hashlib,importlib.util,json,subprocess,unittest
 from pathlib import Path
 from unittest import mock
 from tools import content_update_backup as backup
@@ -70,6 +70,25 @@ class FullPrivatePreparationIntegrationTests(unittest.TestCase):
   self.client.prepare();self.original();original=(self.private/'control/original-state.json').read_bytes();self.cfg['originalArchive']['originalManifestSha256']='f'*64
   with self.assertRaises(UncertainRequest):self.client.recover_preparation()
   self.assertFalse((self.private/'source').exists());self.assertEqual((self.private/'control/original-state.json').read_bytes(),original);self.assertFalse(self.engine.exists())
+ def test_last_copy_returns_complete_seed_boundary_and_engine_only_request_rechecks_archive_and_fence(self):
+  spec=importlib.util.spec_from_file_location('ktk_full_fixture_instrumentation',old.ROOT/'tools/verify-full-private-engine-fixture.py');harness=importlib.util.module_from_spec(spec);spec.loader.exec_module(harness)
+  self.driver.write_text(harness.instrument_driver(self.driver.read_text(encoding='utf-8'),'ktk-code-pages-assets/media/large.bin'),encoding='utf-8')
+  state=self.client.prepare();self.original()
+  for _ in range(10):
+   state=self.client.recover_preparation();self.assertIn('preparation',state);self.assertFalse(self.engine.exists())
+   if state['preparation']['seedsComplete']:break
+  else:self.fail('Complete seeds did not return before engine preparation')
+  self.assertIsNone(state['preparation']['enginePhase']);self.assertTrue(state['preparation']['fullSeed']['sourceComplete']);self.assertTrue(state['preparation']['fullSeed']['targetComplete'])
+  self.cfg.update(operation='controller',request=backup.encode({'schemaVersion':1,'action':'inspect-preparation',**self.binding}).decode());out=self.case.call(self.root,self.driver,self.cfg)
+  envelope={'privateProfile':client_module.PROFILE,'helperSha256':self.cfg['packet']['helperSha256'],'controller':out['value']}
+  encoded=json.dumps(envelope,ensure_ascii=True,separators=(',',':')).replace('/','\\/').encode()
+  self.assertEqual(out['phpEnvelopeBytes'],len(encoded));self.assertGreater(out['phpEnvelopeBytes'],len(backup.encode(envelope)));self.assertLessEqual(out['phpEnvelopeBytes'],2097152)
+  saved=self.cfg['originalArchive'];self.cfg['originalArchive']=None
+  with self.assertRaises(UncertainRequest):self.client.recover_preparation()
+  self.assertFalse(self.engine.exists());self.cfg['originalArchive']=saved
+  with self.assertRaises(UncertainRequest):self.client.call('recover-preparation',stateSha256='f'*64)
+  self.assertFalse(self.engine.exists());fresh=self.client.inspect_preparation();self.assertEqual(fresh['stateSha256'],state['stateSha256'])
+  prepared=self.client.recover_preparation();self.assertEqual(prepared['engine']['phase'],'prepared');self.assertTrue(prepared['engine']['currentPriorInventoryVerified']);self.assertEqual(self.public(),self.before)
  def test_real_original_prefix_inspection_resume_and_complete_engine_preparation(self):
   self.ready(prefix=True);self.assertTrue(self.engine.exists());self.assertEqual(self.public(),self.before);self.assertEqual((self.private/'source/ktk-code-pages-assets/media/large.bin').stat().st_size,18*1024*1024)
  def test_original_and_rollback_archives_then_apply_exact_rollback_and_close(self):
