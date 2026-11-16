@@ -1,6 +1,6 @@
 """Default offline. Dispose incomplete private engine seeds with an exactly empty engine and a separate fresh witness."""
 from __future__ import annotations
-import argparse,importlib.util,json,math,secrets,subprocess,sys,time
+import argparse,importlib.util,json,math,secrets,subprocess,sys,time,types
 from datetime import datetime,timezone
 from pathlib import Path
 
@@ -12,7 +12,7 @@ from tools import unprepared_engine_seed_disposal as disposal
 from tools.content_update_staging_connection import BoundedStagingFTPS
 spec=importlib.util.spec_from_file_location('ktk_disposal_full_runner',ROOT/'tools/rehearse-staging-full-seeds.py');full_runner=importlib.util.module_from_spec(spec);spec.loader.exec_module(full_runner);shared=full_runner.shared
 spec=importlib.util.spec_from_file_location('ktk_unprepared_disposal_engine_runner',ROOT/'tools/rehearse-staging-full-private-engine.py');engine_runner=importlib.util.module_from_spec(spec);spec.loader.exec_module(engine_runner)
-FILES=('dispose-staging-unprepared-engine-seeds.py','dispose-staging-unprepared-engine-seeds.ps1','unprepared_engine_seed_disposal.py','private_seed_disposal.py','private-seed-disposal.php','private-seed-disposal-template.php')
+FILES=('dispose-staging-unprepared-engine-seeds.py','dispose-staging-unprepared-engine-seeds.ps1','unprepared_engine_seed_disposal.py','private_seed_disposal.py','private-seed-disposal.php','private-seed-disposal-template.php','abandoned_engine_seed_continuation.py')
 
 def fingerprints():
     result=engine_runner.fingerprints()
@@ -26,8 +26,8 @@ def unchanged(owned,hashes):
     if shared.snapshot.local_owned_checksums()!=owned or fingerprints()!=hashes:raise ValueError('Reviewed private disposal source or public build changed')
 
 def main(argv=None):
-    parser=argparse.ArgumentParser(description=__doc__);mode=parser.add_mutually_exclusive_group();mode.add_argument('--dispose-staging',action='store_true');mode.add_argument('--resume-disposal');parser.add_argument('--transaction',required=True);parser.add_argument('--abandoned-state');parser.add_argument('--application-commit',required=True);parser.add_argument('--tooling-commit',required=True);parser.add_argument('--report',required=True);args=parser.parse_args(argv)
-    if not backup.identifier(args.transaction,32) or args.resume_disposal and not backup.identifier(args.resume_disposal,32) or args.abandoned_state is not None and (not args.resume_disposal or not backup.digest(args.abandoned_state)):raise ValueError('Exact separate disposal transaction/resume request required')
+    parser=argparse.ArgumentParser(description=__doc__);mode=parser.add_mutually_exclusive_group();mode.add_argument('--dispose-staging',action='store_true');mode.add_argument('--resume-disposal');mode.add_argument('--continue-abandoned');parser.add_argument('--transaction',required=True);parser.add_argument('--abandoned-state');parser.add_argument('--application-commit',required=True);parser.add_argument('--tooling-commit',required=True);parser.add_argument('--report',required=True);args=parser.parse_args(argv)
+    if not backup.identifier(args.transaction,32) or args.resume_disposal and not backup.identifier(args.resume_disposal,32) or args.continue_abandoned and (not backup.identifier(args.continue_abandoned,32) or not backup.digest(args.abandoned_state)) or args.abandoned_state is not None and (not (args.resume_disposal or args.continue_abandoned) or not backup.digest(args.abandoned_state)):raise ValueError('Exact separate disposal transaction/resume request required')
     candidate=Path(args.report);destination=candidate.resolve()
     if candidate.is_symlink():raise ValueError('Fresh non-aliased local report required')
     if not destination.is_relative_to(ROOT/'docs/seo') or destination.suffix!='.json' or destination.exists() or destination.is_symlink():raise ValueError('Fresh private disposal report required')
@@ -36,6 +36,9 @@ def main(argv=None):
         if phase is not None:report['phase']=phase
         report['updatedAt']=datetime.now(timezone.utc).isoformat();destination.parent.mkdir(parents=True,exist_ok=True);destination.write_bytes((json.dumps(report,indent=2)+'\n').encode())
     checkpoint()
+    if args.continue_abandoned:
+        from tools import abandoned_engine_seed_continuation as continuation
+        return continuation.run(args,owned,sizes,hashes,report,checkpoint,types.SimpleNamespace(**globals()))
     if not args.dispose_staging and not args.resume_disposal:print(json.dumps({'phase':report['phase'],'publicOwnedFiles':len(owned),'publicOwnedBytes':sum(sizes.values())}));return
     connection=None;lease=None;client=None
     try:

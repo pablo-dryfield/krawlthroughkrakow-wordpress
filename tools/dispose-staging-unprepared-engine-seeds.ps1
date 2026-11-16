@@ -2,7 +2,7 @@
 param([Parameter(ValueFromRemainingArguments = $true)][string[]] $DisposalArguments)
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'invoke-ktk-native.ps1')
-if (($DisposalArguments -notcontains '--dispose-staging') -and ($DisposalArguments -notcontains '--resume-disposal')) {
+if (($DisposalArguments -notcontains '--dispose-staging') -and ($DisposalArguments -notcontains '--resume-disposal') -and ($DisposalArguments -notcontains '--continue-abandoned')) {
     Invoke-KtkNativeCommand -Command 'python' -Arguments (@((Join-Path $PSScriptRoot 'dispose-staging-unprepared-engine-seeds.py')) + $DisposalArguments)
     exit $KtkNativeExitCode
 }
