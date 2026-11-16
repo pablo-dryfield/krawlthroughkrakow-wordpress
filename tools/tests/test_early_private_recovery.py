@@ -1,4 +1,4 @@
-import copy,os,tempfile,time,unittest
+import copy,os,shutil,tempfile,time,unittest
 from pathlib import Path
 from unittest import mock
 from tools import full_private_seed_recovery as recovery
@@ -13,6 +13,13 @@ def fake_crypto(raw,transaction,encrypt):
  return raw[len(b'SYNTHETIC-ENCRYPTED:'):]
 
 class EarlyPrivateRecoveryTests(unittest.TestCase):
+ @unittest.skipUnless(shutil.which('php'),'Real PHP required for fresh-witness disposal compiler fixture')
+ def test_fresh_witness_disposal_compiler_preserves_original_early_helper_binding(self):
+  from tools.tests import test_private_seed_disposal_support as support
+  case=support.DisposalSupportTests('runTest');case.setUp();self.addCleanup(case.doCleanups)
+  value={**case.v,'expires':int(time.time())+600};original={**case.old,'entryProfile':'early','scope':'full-private-seed-early-caller-recovery'}
+  legacy_source=support.d.helper_source(value,case.old,case.manifest);early_source=support.d.helper_source(value,original,case.manifest)
+  self.assertEqual(early_source,legacy_source);self.assertEqual(original['helperSha256'],case.old['helperSha256']);self.assertNotIn(b'new KTK_Active_Content_Transaction',early_source)
  def test_legacy_and_explicit_early_profiles_validate_with_distinct_exact_fields(self):
   a=fixture();b=early_packet();self.assertEqual(recovery.profile(a),'late');self.assertEqual(recovery.profile(b),'early');self.assertEqual(recovery.validate_packet(a),a);self.assertEqual(recovery.validate_packet(b),b);self.assertNotIn('entryProfile',a)
  def test_missing_mismatched_implicit_or_unknown_profile_context_is_refused(self):
