@@ -44,6 +44,14 @@ jobs:
           php -l tools/code-pages-update-engine.php
           php -l tools/staging-protected-state-template.php
           php -l tools/staging-protected-state-core.php
+          python tools/build-production-state-core.py
+          php -l tools/production-protected-state-core.php
+          php -l tools/production-protected-fingerprint.php
+          php -l tools/content-update-request.php
+          php -l tools/content-update-private-store.php
+          php -l tools/content-update-backup-manifest.php
+          php -l tools/content-update-controller.php
+          php -l tools/content-update-staging-template.php
           php -l tools/staging-private-fixture.php
           php -l tools/staging-private-rehearsal-template.php
           python -m unittest discover -s tools/tests -p 'test_*.py'
@@ -141,6 +149,20 @@ jobs:
           php tools/tests/test_storefront_public_content.php
       - name: Build storefront (never uploads or deploys)
         run: npm run build --prefix staging/wp-content/plugins/ktk-storefront/frontend
+
+  windows_recovery:
+    name: Windows Recovery Contracts
+    runs-on: windows-2025
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Current-user encrypted recovery contracts (no hosting credentials or deployment)
+        run: python -m unittest tools.tests.test_content_update_recovery
 
   secrets:
     name: Secret Scan

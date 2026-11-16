@@ -43,10 +43,65 @@ Suggested request text, ready for owner review:
 > links below. All feedback is welcome.
 
 Insert the existing Google/Tripadvisor listing URLs from the shared source;
-verify the recipient, channel permissions and platform rules before use. The
-attempted Tripadvisor business-policy page was inaccessible in this review;
-that policy check and actual account adoption remain open. This draft does not
-authorize sending messages or imply that a real review request was delivered.
+verify the recipient and channel permissions before use. On16 November2026,
+[Tripadvisor's public review guidelines](https://www.tripadvisor.com/Trust-lvBd3L1aU38Y.html)
+were retrieved normally. Guests write their own firsthand accounts. Do not
+write for them, suggest review wording, watch submission or exchange drinks,
+discounts or contest entry for reviews of any rating. Do not reward employees
+for review volume or name mentions, pressure reviews/removals or route negative
+feedback away from the public review path. The neutral invitation above does
+not prescribe what a guest should write.
+
+This closes the previous public-guidelines access gap. The reader labels its
+copy crawled three months ago; it is retrieved policy text, not a current
+account-side permission check. The separate incentivized-review business
+article still could not be opened directly. Operator nomination, approved
+channel/account adoption and first real requests/responses remain open. Nothing
+has been sent, scheduled or automated; no real request delivery is claimed.
+
+## Business Profile: Website Facts And Account Review Still Needed
+
+Prepared16 November2026 from the maintained website sources below. This is a
+bounded comparison baseline for L01, not a native Google Business Profile
+audit. Its owner-account work remains not started. The public Maps reader was
+inaccessible; no current profile name, category, address, hours or verification
+status is asserted. The company registry answer is already implemented in the
+staging legal pages; no further registry answer is needed.
+
+| Detail | Maintained website baseline | What remains to verify |
+| --- | --- | --- |
+| Brand | Krawl Through Krakow, established2008 | Compare the actual profile with the real customer-facing brand; company registration in2024 does not replace brand history. |
+| Registered operator | KRAKTIVITY sp. z o.o.; KRS0001084157; NIP6762661275 | Legal identity is recorded separately from tour branding. |
+| Registered office | ul. Cegielniana4A/27,30-404 Krak?w | Registration does not establish a staffed customer location, signage or the crawl meeting point. |
+| Public contact | +48791847981; pubthroughkrakow@gmail.com | Compare native account fields and business control; no call or message was placed. |
+| Regular crawl |21:00, Adam Mickiewicz Monument on Main Market Square; look for the pink umbrella | Preserve the owner-confirmed meeting instructions and existing directions link. |
+| NYE |31December2026;17:00/19:30; meeting point to be announced | Do not fill the seasonal meeting point from the regular crawl or office. |
+| Hours | The regular crawl start is21:00 | Actual customer-facing profile hours and special hours remain unverified. A nightly tour does not establish24-hour operation. |
+| Existing Google destination | The shared reviews source retains its current native listing URL | Verify the same business/listing in the owner account; an existing link does not prove current account fields. |
+| Booking destination | Regular ticket `/store2/pub-crawl-28/` | Inspect the account's actual booking link and source of Google/Booking/Search attribution; preserve legitimate tracking when checking the destination. |
+
+Sources: `tools/site-operator-facts.json` (owner registry selection and official
+KRS retrieval15Nov), `tools/site-offer-facts.json` (owner-confirmed offer facts),
+`staging/wp-content/mu-plugins/ktk-homepage-shortcode.php` (public contact and
+directions) and `staging/wp-content/mu-plugins/ktk-homepage-assets/reviews.php`
+(existing Google listing URL). This compares maintained source, not newly
+verified operating arrangements or all third-party listings. Unverified public
+directory snippets are leads only and do not override these owner facts.
+
+Use [Google's Business Profile guidelines](https://support.google.com/business/answer/3038177)
+when reviewing the account. They require real-world identity, accurate location,
+appropriate categories and customer-facing hours. A displayed address needs
+permanent signage. Eligibility for an alcohol-related business and any
+service-area arrangement requires the actual premises facts: age-restricted
+businesses cannot use a service-area profile without a storefront. Do not turn
+the registered office or monument into a business address by inference.
+
+The owner review can now compare each row against the actual native account,
+record dated discrepancies, verify premises/operating facts and identify the
+booking-attribution source before proposing precise account changes. No profile
+edit, duplicate listing, address/category decision, photograph upload or account
+setting change was made. L01 is still open; this written baseline is not a
+completed native audit or permission to publish account changes.
 
 ## Existing Useful Referrals To Preserve
 
