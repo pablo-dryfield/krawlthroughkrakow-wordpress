@@ -28,6 +28,20 @@ class FullPrivateEngineRunnerTests(unittest.TestCase):
    with self.assertRaises(RuntimeError):runner.main(argv+['--inspect-recovery',v['transactionId']])
    connection.assert_not_called();lease.assert_not_called();self.assertEqual(json.loads(path.read_text())['failureType'],'ValueError')
  def test_wrapper_keeps_offline_before_secret_access_and_clears_native_secret(self):
-  text=(ROOT/'tools/rehearse-staging-full-private-engine.ps1').read_text();self.assertLess(text.index("-notcontains '--rehearse-staging'"),text.index('Import-Clixml'));self.assertIn('ZeroFreeBSTR($fullEnginePasswordPointer)',text);self.assertIn('Remove-Item Env:KTK_FTP_PASSWORD',text);self.assertIn('finally {',text)
+  text=(ROOT/'tools/rehearse-staging-full-private-engine.ps1').read_text();self.assertLess(text.index("-notcontains '--rehearse-staging'"),text.index('Import-Clixml'));self.assertLess(text.index("-notcontains '--resume-engine-recovery'"),text.index('Import-Clixml'));self.assertIn('ZeroFreeBSTR($fullEnginePasswordPointer)',text);self.assertIn('Remove-Item Env:KTK_FTP_PASSWORD',text);self.assertIn('finally {',text)
+ def test_resume_archive_verification_precedes_connection_or_any_helper_installation(self):
+  with self.case() as (v,path,argv),mock.patch.object(runner.shared.snapshot,'load_common',return_value=mock.Mock()),mock.patch.object(runner.recovery.FullPrivateEngineVault,'load',return_value=v),mock.patch.object(runner.recovery_resume,'attach_verified_archives',side_effect=ValueError('Synthetic corrupt saved archive')) as archive,mock.patch.object(runner,'BoundedStagingFTPS') as connection,mock.patch.object(runner.shared,'HelperLease') as lease:
+   with self.assertRaises(RuntimeError):runner.main(argv+['--resume-engine-recovery',v['transactionId']])
+   archive.assert_called_once();connection.assert_not_called();lease.assert_not_called();self.assertEqual(json.loads(path.read_text())['failureType'],'ValueError')
+ def test_resume_wrong_tooling_or_expiry_refuses_before_archive_verification_or_connection(self):
+  for change in ({'toolingCommit':'f'*40},{'expires':1}):
+   with self.subTest(change=change),self.case() as (v,path,argv),mock.patch.object(runner.shared.snapshot,'load_common',return_value=mock.Mock()),mock.patch.object(runner.recovery.FullPrivateEngineVault,'load',return_value={**v,**change}),mock.patch.object(runner.recovery_resume,'attach_verified_archives') as archive,mock.patch.object(runner,'BoundedStagingFTPS') as connection,mock.patch.object(runner.shared,'HelperLease') as lease:
+    with self.assertRaises(RuntimeError):runner.main(argv+['--resume-engine-recovery',v['transactionId']])
+    archive.assert_not_called();connection.assert_not_called();lease.assert_not_called()
+ def test_controlled_stop_cannot_enable_offline_inspection_or_resume_operations(self):
+  for extra in (['--stop-after-engine-cut'],['--rehearse-staging','--stop-after-engine-cut'],['--resume-engine-recovery','a'*32,'--stop-after-engine-cut']):
+   with self.subTest(extra=extra),self.case() as (_,path,argv),mock.patch.object(runner.shared.snapshot,'load_common') as common:
+    with self.assertRaises(ValueError):runner.main(argv+extra)
+    common.assert_not_called();self.assertFalse(path.exists())
 
 if __name__=='__main__':unittest.main()
