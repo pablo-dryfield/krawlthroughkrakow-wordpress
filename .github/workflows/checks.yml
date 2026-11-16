@@ -202,7 +202,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Current-user encrypted recovery contracts (no hosting credentials or deployment)
-        run: python -m unittest tools.tests.test_content_update_recovery tools.tests.test_full_private_seed_recovery tools.tests.test_private_seed_disposal_support.DisposalNativeTests tools.tests.test_early_private_recovery.EarlyPrivateNativeTests tools.tests.test_full_private_engine_recovery.FullPrivateEngineNativeTests tools.tests.test_full_private_engine_disposal_support.FullEngineDisposalNativeTests
+        run: python -m unittest tools.tests.test_content_update_recovery tools.tests.test_full_private_seed_recovery tools.tests.test_private_seed_disposal_support.DisposalNativeTests tools.tests.test_early_private_recovery.EarlyPrivateNativeTests tools.tests.test_full_private_engine_recovery.FullPrivateEngineNativeTests tools.tests.test_full_private_engine_disposal_support.FullEngineDisposalNativeTests tools.tests.test_unprepared_engine_seed_disposal.UnpreparedEngineDisposalNativeTests
 
   secrets:
     name: Secret Scan
