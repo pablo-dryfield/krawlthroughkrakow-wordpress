@@ -51,6 +51,7 @@ jobs:
           php -l tools/content-update-private-store.php
           php -l tools/content-update-backup-manifest.php
           php -l tools/content-update-controller.php
+          php -l tools/content-update-staging-template.php
           php -l tools/staging-private-fixture.php
           php -l tools/staging-private-rehearsal-template.php
           python -m unittest discover -s tools/tests -p 'test_*.py'
