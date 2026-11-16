@@ -2,7 +2,7 @@
 param([Parameter(ValueFromRemainingArguments = $true)][string[]] $FullEngineArguments)
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'invoke-ktk-native.ps1')
-if (($FullEngineArguments -notcontains '--rehearse-staging') -and ($FullEngineArguments -notcontains '--inspect-recovery') -and ($FullEngineArguments -notcontains '--resume-engine-recovery')) {
+if (($FullEngineArguments -notcontains '--rehearse-staging') -and ($FullEngineArguments -notcontains '--inspect-recovery') -and ($FullEngineArguments -notcontains '--resume-engine-recovery') -and ($FullEngineArguments -notcontains '--resume-preparation-recovery')) {
     Invoke-KtkNativeCommand -Command 'python' -Arguments (@((Join-Path $PSScriptRoot 'rehearse-staging-full-private-engine.py')) + $FullEngineArguments)
     exit $KtkNativeExitCode
 }

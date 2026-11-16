@@ -1,13 +1,90 @@
-"""Explicit continuation of one archived, freshly verified private first-replacement cut.
+"""Explicit, separately inspected private preparation and first-replacement continuation.
 
-No connection, helper installation, preparation/copy, new acknowledgment or retry.
+No connection/helper installation, implicit phase choice or uncertain-request retry.
+Preparation reopens the original and reuses its local copy acknowledgement;
+first-replacement continuation requires both archives and never copies or re-acknowledges.
 The caller must separately enforce unexpired encrypted context and pinned source.
 """
 from __future__ import annotations
 from pathlib import Path
+import math
 import zipfile
 from tools import content_update_backup as backup
 from tools import full_private_seed_packet as full
+
+
+def inspect_complete_seed_boundary(client, previous):
+    """Read-only proof for a controlled caller stop before engine preparation."""
+    state = client.inspect_preparation()
+    p = state['preparation']
+    seed = p['fullSeed']
+    if (state['stateSha256'] != previous['stateSha256'] or not p['recordsComplete']
+            or p['enginePhase'] is not None or seed is None
+            or not seed['sourceComplete'] or not seed['targetComplete']):
+        raise ValueError('Fresh unchanged complete seeds without an engine required before caller stop')
+    return {'privateFiles':len(seed['files']),'privateBytes':seed['copiedBytes'],
+            'seedStateSha256':seed['stateSha256'],'engineAbsent':True}
+
+
+def attach_verified_original(client, original_path, rollback_path):
+    """Reopen the original before any connection; a rollback archive must not yet exist."""
+    directory = backup.ROOT / 'deploy-backups'
+    transaction = client.plan['transactionId']
+    original_path, rollback_path = Path(original_path), Path(rollback_path)
+    if (original_path != directory / ('staging-full-engine-original-' + transaction + '.zip')
+            or rollback_path != directory / ('staging-full-engine-rollback-' + transaction + '.zip')
+            or original_path.parent.resolve() != directory.absolute()
+            or original_path.is_symlink() or not original_path.is_file()
+            or not 0 < original_path.stat().st_size <= 33554432
+            or rollback_path.is_symlink() or rollback_path.exists()):
+        raise ValueError('Exact existing original and absent rollback archives required before preparation recovery')
+    with zipfile.ZipFile(original_path) as archive:
+        if archive.getinfo('manifest.json').file_size > 65536:
+            raise ValueError('Bounded original archive manifest required')
+        manifest = full.validate_manifest(backup.decode(archive.read('manifest.json')), client.plan)
+    receipt = full.verify_archive(original_path, client.plan, client.key, client.helper_sha256, manifest)
+    with zipfile.ZipFile(original_path) as archive:
+        original = full.validate_records({n:archive.read(n) for n in manifest['members']},
+                                         manifest, client.plan, client.key, client.helper_sha256)
+    return manifest, receipt, original
+
+
+def continue_preparation(client, transport, original_path, rollback_path, observe=lambda *args: None):
+    """Explicit bounded resume of complete-record, engine-absent preparation; never retries."""
+    manifest, receipt, _ = attach_verified_original(client, original_path, rollback_path)
+    state = client.inspect_preparation()
+    preparation = state['preparation']
+    if (not preparation['rootExists'] or not preparation['recordsComplete']
+            or preparation['enginePhase'] is not None or preparation['fullSeed'] is None
+            or preparation['rootBinding'] != manifest['rootBinding']):
+        raise ValueError('Only archived complete-record preparation without an engine may continue')
+    observe('resume-preparation-inspected', state)
+    transport.acknowledge_original(original_path, client.key, manifest)
+    expected, _ = full.expected_seed_files(client.plan, client.sizes, client.overrides)
+    limit = math.ceil(sum(r['bytes'] for r in expected.values()) / 33554432) + math.ceil(len(expected) / 128) + 16
+    calls, complete_boundary = 0, False
+    for _ in range(limit):
+        seed = state['preparation']['fullSeed']
+        before = (seed['copiedBytes'], len(seed['files']))
+        complete_boundary = complete_boundary or (seed['sourceComplete'] and seed['targetComplete'])
+        state = client.recover_preparation()
+        calls += 1
+        observe('resumed-preparation-progress', state)
+        if 'preparation' not in state:
+            break
+        next_seed = state['preparation']['fullSeed']
+        if (next_seed['copiedBytes'], len(next_seed['files'])) <= before:
+            raise ValueError('Recovered preparation made no independently verified progress')
+    else:
+        raise ValueError('Recovered preparation exceeded the deterministic full-profile bound')
+    if (not complete_boundary or state['engine']['phase'] != 'prepared' or state['closed']
+            or state['archiveAcknowledged'] or not state['engine']['currentPriorInventoryVerified']):
+        raise ValueError('Separately prepared, complete, unacknowledged private engine required')
+    if full.verify_archive(original_path, client.plan, client.key, client.helper_sha256, manifest) != receipt:
+        raise ValueError('Recovered original archive changed')
+    return manifest, receipt, {'prepared':True, 'freshPreparationInspected':True,
+        'separateCallerPreparationContinuationVerified':True, 'enginePreparationSeparateRequestVerified':True,
+        'recoverPreparationCallsThisProcess':calls}
 
 
 def attach_verified_archives(client, original_path, rollback_path):

@@ -28,7 +28,7 @@ class FullPrivateEngineRunnerTests(unittest.TestCase):
    with self.assertRaises(RuntimeError):runner.main(argv+['--inspect-recovery',v['transactionId']])
    connection.assert_not_called();lease.assert_not_called();self.assertEqual(json.loads(path.read_text())['failureType'],'ValueError')
  def test_wrapper_keeps_offline_before_secret_access_and_clears_native_secret(self):
-  text=(ROOT/'tools/rehearse-staging-full-private-engine.ps1').read_text();self.assertLess(text.index("-notcontains '--rehearse-staging'"),text.index('Import-Clixml'));self.assertLess(text.index("-notcontains '--resume-engine-recovery'"),text.index('Import-Clixml'));self.assertIn('ZeroFreeBSTR($fullEnginePasswordPointer)',text);self.assertIn('Remove-Item Env:KTK_FTP_PASSWORD',text);self.assertIn('finally {',text)
+  text=(ROOT/'tools/rehearse-staging-full-private-engine.ps1').read_text();self.assertLess(text.index("-notcontains '--rehearse-staging'"),text.index('Import-Clixml'));self.assertLess(text.index("-notcontains '--resume-engine-recovery'"),text.index('Import-Clixml'));self.assertLess(text.index("-notcontains '--resume-preparation-recovery'"),text.index('Import-Clixml'));self.assertIn('ZeroFreeBSTR($fullEnginePasswordPointer)',text);self.assertIn('Remove-Item Env:KTK_FTP_PASSWORD',text);self.assertIn('finally {',text)
  def test_resume_archive_verification_precedes_connection_or_any_helper_installation(self):
   with self.case() as (v,path,argv),mock.patch.object(runner.shared.snapshot,'load_common',return_value=mock.Mock()),mock.patch.object(runner.recovery.FullPrivateEngineVault,'load',return_value=v),mock.patch.object(runner.recovery_resume,'attach_verified_archives',side_effect=ValueError('Synthetic corrupt saved archive')) as archive,mock.patch.object(runner,'BoundedStagingFTPS') as connection,mock.patch.object(runner.shared,'HelperLease') as lease:
    with self.assertRaises(RuntimeError):runner.main(argv+['--resume-engine-recovery',v['transactionId']])
@@ -40,6 +40,19 @@ class FullPrivateEngineRunnerTests(unittest.TestCase):
     archive.assert_not_called();connection.assert_not_called();lease.assert_not_called()
  def test_controlled_stop_cannot_enable_offline_inspection_or_resume_operations(self):
   for extra in (['--stop-after-engine-cut'],['--rehearse-staging','--stop-after-engine-cut'],['--resume-engine-recovery','a'*32,'--stop-after-engine-cut']):
+   with self.subTest(extra=extra),self.case() as (_,path,argv),mock.patch.object(runner.shared.snapshot,'load_common') as common:
+    with self.assertRaises(ValueError):runner.main(argv+extra)
+    common.assert_not_called();self.assertFalse(path.exists())
+ def test_preparation_resume_original_archive_preflight_precedes_connection_or_helper_install(self):
+  with self.case() as (v,path,argv),mock.patch.object(runner.shared.snapshot,'load_common',return_value=mock.Mock()),mock.patch.object(runner.recovery.FullPrivateEngineVault,'load',return_value=v),mock.patch.object(runner.recovery_resume,'attach_verified_original',side_effect=ValueError('Synthetic invalid original')) as archive,mock.patch.object(runner,'BoundedStagingFTPS') as connection,mock.patch.object(runner.shared,'HelperLease') as lease:
+   with self.assertRaises(RuntimeError):runner.main(argv+['--resume-preparation-recovery',v['transactionId']])
+   archive.assert_called_once();connection.assert_not_called();lease.assert_not_called()
+ def test_preparation_engine_stop_requires_original_saved_engine_interruption_before_connection(self):
+  with self.case() as (v,path,argv),mock.patch.object(runner.shared.snapshot,'load_common',return_value=mock.Mock()),mock.patch.object(runner.recovery.FullPrivateEngineVault,'load',return_value={**v,'interruptEngine':False}),mock.patch.object(runner.recovery_resume,'attach_verified_original',return_value=({}, {}, {})),mock.patch.object(runner,'BoundedStagingFTPS') as connection,mock.patch.object(runner.shared,'HelperLease') as lease:
+   with self.assertRaises(RuntimeError):runner.main(argv+['--resume-preparation-recovery',v['transactionId'],'--stop-after-engine-cut'])
+   connection.assert_not_called();lease.assert_not_called()
+ def test_preparation_stop_cannot_enable_recovery_or_conflict_with_engine_stop(self):
+  for extra in (['--stop-after-preparation'],['--resume-preparation-recovery','a'*32,'--stop-after-preparation'],['--rehearse-staging','--interrupt-engine','--stop-after-preparation','--stop-after-engine-cut']):
    with self.subTest(extra=extra),self.case() as (_,path,argv),mock.patch.object(runner.shared.snapshot,'load_common') as common:
     with self.assertRaises(ValueError):runner.main(argv+extra)
     common.assert_not_called();self.assertFalse(path.exists())
