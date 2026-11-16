@@ -28,7 +28,8 @@ final class KTK_Content_Update_Request
             throw new RuntimeException('Canonical content-update request required');
         }
         $extra = match ($value['action']) {
-            'prepare', 'inspect', 'export' => array(),
+            'prepare', 'inspect', 'export', 'inspect-preparation' => array(),
+            'recover-preparation' => array('stateSha256'),
             'acknowledge', 'close' => array('stateSha256', 'exportSha256', 'archiveSha256'),
             'apply', 'rollback' => array('stateSha256', 'archiveSha256'),
             default => throw new RuntimeException('Unsupported content-update action'),

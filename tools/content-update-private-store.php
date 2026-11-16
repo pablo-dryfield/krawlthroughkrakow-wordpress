@@ -99,8 +99,33 @@ final class KTK_Content_Update_Private_Store
     }
     private function readBlob(string $path,int $limit): string
     {
-        if (is_link($path) || !is_file($path) || filesize($path)>$limit) { throw new RuntimeException('Unsafe or oversized private record'); }
+        clearstatcache(true,$path);$stat=@lstat($path);
+        if (is_link($path) || !is_file($path) || $stat===false || ($stat['nlink']??0)!==1 || filesize($path)>$limit) { throw new RuntimeException('Unsafe or oversized private record'); }
         $bytes=file_get_contents($path,false,null,0,$limit+1);if ($bytes===false || strlen($bytes)>$limit) { throw new RuntimeException('Private record read failed'); }return $bytes;
+    }
+    private static function snapshotTimestamp(string $bytes): ?string
+    {
+        try{$value=json_decode($bytes,true,64,JSON_THROW_ON_ERROR);}catch(Throwable $error){return null;}
+        $raw=is_array($value)?($value['capturedAt']??null):null;
+        if(!is_string($raw)||!preg_match('/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+00:00$/D',$raw)){return null;}
+        $time=DateTimeImmutable::createFromFormat('!Y-m-d\TH:i:sP',$raw,new DateTimeZone('UTC'));
+        return $time!==false&&$time->format('c')===$raw?$raw:null;
+    }
+    private function temporaryName(string $name,string $bytes,string $hash): string
+    {
+        $time=$name==='original-state.json'?self::snapshotTimestamp($bytes):null;
+        $stamp=$time===null?'':str_replace(array('-','T',':'),'',substr($time,0,19)).'-';
+        $signed=$name.'|'.($stamp===''?'':substr($stamp,0,-1).'|').$hash;
+        return '.ktk-control-'.$name.'-'.$stamp.$hash.'-'.substr(hash_hmac('sha256',$signed,$this->key),0,16).'.tmp';
+    }
+    private function temporaryIdentity(string $name): array
+    {
+        if(!preg_match('/^\.ktk-control-(original-state|controller-plan|backup-ack|closed)\.json-(?:(\d{14})-)?([a-f0-9]{64})-([a-f0-9]{16})\.tmp$/D',$name,$m)){throw new RuntimeException('Unknown private control member preserved');}
+        $logical=$m[1].'.json';$stamp=$m[2]??'';
+        if($stamp!==''&&$logical!=='original-state.json'){throw new RuntimeException('Timestamp binding is only valid for original snapshots');}
+        $signed=$logical.'|'.($stamp===''?'':$stamp.'|').$m[3];
+        if(!hash_equals(substr(hash_hmac('sha256',$signed,$this->key),0,16),$m[4])){throw new RuntimeException('Unowned private temporary preserved');}
+        return array($logical,$m[3],$stamp);
     }
     private function scan(?string $recoveryName=null,?string $recoveryBlob=null): array
     {
@@ -109,11 +134,9 @@ final class KTK_Content_Update_Private_Store
             if ($entry->isDot()) { continue; }$name=$entry->getFilename();
             if ($entry->isLink() || !$entry->isFile()) { throw new RuntimeException('Unknown private control member preserved'); }
             if (in_array($name,self::NAMES,true)) { $blob=$this->readBlob($entry->getPathname(),self::limit($name)+2048);$this->decode($name,$blob);$result[$name]=hash('sha256',$blob);continue; }
-            if (!preg_match('/^\.ktk-control-(original-state|controller-plan|backup-ack|closed)\.json-([a-f0-9]{64})-([a-f0-9]{16})\.tmp$/D',$name,$match)) { throw new RuntimeException('Unknown private control member preserved'); }
-            $logical=$match[1].'.json';$mac=substr(hash_hmac('sha256',$logical.'|'.$match[2],$this->key),0,16);
-            if (!hash_equals($mac,$match[3])) { throw new RuntimeException('Unowned private temporary preserved'); }
+            [$logical,$hash,$stamp]=$this->temporaryIdentity($name);
             $bytes=$this->readBlob($entry->getPathname(),self::limit($logical)+2048);
-            if (hash('sha256',$bytes)===$match[2]) { $this->decode($logical,$bytes);$result[$name]=$match[2];continue; }
+            if (hash('sha256',$bytes)===$hash) { $this->decode($logical,$bytes);$result[$name]=$hash;continue; }
             if ($name!==$recoveryName || $recoveryBlob===null || strlen($bytes)>=strlen($recoveryBlob) || !str_starts_with($recoveryBlob,$bytes)) { throw new RuntimeException('Changed or partial private temporary preserved; matching write must recover it'); }
             $result[$name]=hash('sha256',$bytes);
         }
@@ -123,6 +146,49 @@ final class KTK_Content_Update_Private_Store
     public function privateRoot(): string { $this->verifyRoot();return $this->root; }
     public function transactionId(): string { $this->verifyRoot();return $this->id; }
     public function rootBinding(): string { $this->verifyRoot();return $this->owner; }
+    public function preparationTimestamp(): ?string
+    {
+        $this->verifyRoot();$original=$this->read('original-state.json');$found=null;
+        foreach(new DirectoryIterator($this->root.'/control') as $entry){
+            if($entry->isDot()||!str_starts_with($entry->getFilename(),'.ktk-control-original-state.json-')){continue;}
+            [$logical,$hash,$stamp]=$this->temporaryIdentity($entry->getFilename());
+            if($found!==null||$original!==null){throw new RuntimeException('Ambiguous original snapshot temporary preserved');}
+            $bytes=$this->readBlob($entry->getPathname(),self::limit($logical)+2048);
+            if($stamp===''){
+                if(hash('sha256',$bytes)!==$hash){throw new RuntimeException('Legacy partial original snapshot has no authenticated timestamp');}
+                $found=self::snapshotTimestamp($this->decode($logical,$bytes));
+            }else{
+                $found=substr($stamp,0,4).'-'.substr($stamp,4,2).'-'.substr($stamp,6,2).'T'.substr($stamp,8,2).':'.substr($stamp,10,2).':'.substr($stamp,12,2).'+00:00';
+                if(self::snapshotTimestamp(json_encode(array('capturedAt'=>$found),JSON_THROW_ON_ERROR))!==$found){throw new RuntimeException('Invalid authenticated snapshot timestamp');}
+            }
+            if($found===null){throw new RuntimeException('Valid authenticated original snapshot timestamp required');}
+        }
+        if($original!==null){$found=self::snapshotTimestamp($original);if($found===null){throw new RuntimeException('Valid original snapshot timestamp required');}}
+        return $found;
+    }
+    public function inspectPreparationRecords(array $records): array
+    {
+        if(array_keys($records)!==array('original-state.json','controller-plan.json')||!is_string($records['original-state.json'])||!is_string($records['controller-plan.json'])){throw new RuntimeException('Exact preparation record pair required');}
+        $this->verifyRoot();$expected=array();$temporaries=array();$members=array();$finals=array();$pending=array();
+        foreach($records as $name=>$raw){
+            $blob=$this->blob($name,$raw);$hash=hash('sha256',$blob);$expected[$name]=$blob;$temporary=$this->temporaryName($name,$raw,$hash);$temporaries[$temporary]=array($name,$blob,true);
+            $legacy='.ktk-control-'.$name.'-'.$hash.'-'.substr(hash_hmac('sha256',$name.'|'.$hash,$this->key),0,16).'.tmp';
+            if($legacy!==$temporary){$temporaries[$legacy]=array($name,$blob,false);}
+        }
+        foreach(new DirectoryIterator($this->root.'/control') as $entry){
+            if($entry->isDot()){continue;}$name=$entry->getFilename();
+            if($entry->isLink()||!$entry->isFile()){throw new RuntimeException('Unknown preparation control member preserved');}
+            if(isset($expected[$name])){
+                $blob=$this->readBlob($entry->getPathname(),strlen($expected[$name]));if($blob!==$expected[$name]){throw new RuntimeException('Changed immutable preparation record preserved');}$finals[$name]=true;
+            }elseif(isset($temporaries[$name])){
+                [$logical,$whole,$prefix]=$temporaries[$name];$blob=$this->readBlob($entry->getPathname(),strlen($whole));if(($prefix?!str_starts_with($whole,$blob):$blob!==$whole)||isset($pending[$logical])){throw new RuntimeException('Changed or ambiguous preparation record prefix preserved');}$pending[$logical]=$name;
+            }else{throw new RuntimeException('Unknown or later-lifecycle preparation record preserved');}
+            $members[$name]=array('sha256'=>hash('sha256',$blob),'bytes'=>strlen($blob));
+        }
+        foreach($pending as $logical=>$name){if(isset($finals[$logical])){throw new RuntimeException('Redundant preparation temporary preserved');}}
+        if(!isset($finals['original-state.json'])&&(isset($finals['controller-plan.json'])||isset($pending['controller-plan.json']))){throw new RuntimeException('Preparation plan cannot precede the original snapshot');}
+        ksort($members);return array('files'=>$members,'originalComplete'=>isset($finals['original-state.json']),'planComplete'=>isset($finals['controller-plan.json']),'stateSha256'=>hash('sha256',self::encode($members)));
+    }
     public function recordDescriptor(string $name): array
     {
         $this->scan();$bytes=$this->read($name);if ($bytes===null) { throw new RuntimeException('Required private record missing'); }
@@ -137,7 +203,9 @@ final class KTK_Content_Update_Private_Store
     }
     public function writeOnce(string $name,string $bytes): string
     {
-        $blob=$this->blob($name,$bytes);$hash=hash('sha256',$blob);$temporary='.ktk-control-'.$name.'-'.$hash.'-'.substr(hash_hmac('sha256',$name.'|'.$hash,$this->key),0,16).'.tmp';$members=$this->scan($temporary,$blob);$path=$this->root.'/control/'.$name;
+        $blob=$this->blob($name,$bytes);$hash=hash('sha256',$blob);$temporary=$this->temporaryName($name,$bytes,$hash);$members=$this->scan($temporary,$blob);$path=$this->root.'/control/'.$name;
+        $legacy='.ktk-control-'.$name.'-'.$hash.'-'.substr(hash_hmac('sha256',$name.'|'.$hash,$this->key),0,16).'.tmp';
+        if($legacy!==$temporary&&isset($members[$legacy])&&!isset($members[$temporary])&&$members[$legacy]===$hash&&$this->readBlob($this->root.'/control/'.$legacy,self::limit($name)+2048)===$blob){$temporary=$legacy;}
         foreach (array_keys($members) as $member) { if (str_starts_with($member,'.ktk-control-'.$name.'-') && $member!==$temporary) { throw new RuntimeException('Different pending immutable private record preserved'); } }
         $existing=$this->read($name);if ($existing!==null) { if ($existing!==$bytes) { throw new RuntimeException('Existing immutable private record preserved'); }return hash('sha256',$bytes); }
         $pending=$this->root.'/control/'.$temporary;$offset=0;
@@ -148,7 +216,8 @@ final class KTK_Content_Update_Private_Store
             if (!chmod($pending,0600) || fseek($handle,$offset)!==0) { throw new RuntimeException('Cannot secure owned private temporary'); }
             if ($this->observer!==null) { ($this->observer)('after-temporary-open',$pending,$blob); }
             $this->verifyRoot();
-            if ($this->readBlob($pending,self::limit($name)+2048)!==substr($blob,0,$offset)) { throw new RuntimeException('Private temporary changed before writing'); }
+            clearstatcache(true,$pending);$held=fstat($handle);$current=lstat($pending);
+            if($held===false||$current===false||$held['dev']!==$current['dev']||$held['ino']!==$current['ino']||($held['nlink']??0)!==1||$this->readBlob($pending,self::limit($name)+2048)!==substr($blob,0,$offset)){throw new RuntimeException('Private temporary changed before writing');}
             while ($offset<strlen($blob)) { $count=fwrite($handle,substr($blob,$offset));if ($count===false || $count===0) { throw new RuntimeException('Private temporary write failed'); }$offset+=$count; }
             if (!fflush($handle) || (function_exists('fsync') && !fsync($handle))) { throw new RuntimeException('Private temporary flush failed'); }
         } finally { fclose($handle); }

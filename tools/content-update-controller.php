@@ -15,6 +15,8 @@ final class KTK_Content_Update_Controller
     private $fingerprint;
     private $initialize;
     private $observer;
+    private $inspectPrivateFixture;
+    private $completePrivateFixture;
     private $targetLock=null;
     private ?string $targetLockPath=null;
     private ?string $targetLockBytes=null;
@@ -42,7 +44,7 @@ final class KTK_Content_Update_Controller
         if(($plan['prior'][self::MARKER]??null)!==self::MARKER_SHA||isset($plan['expected'][self::MARKER])||array_diff_key($plan['prior'],$plan['expected'],array(self::MARKER=>true))){throw new RuntimeException('Immutable active controller plan required');}
         foreach(array('ktk-code-pages.php','ktk-code-pages-assets/registry.php','ktk-code-pages-assets/runtime.css','ktk-code-pages-assets/runtime.js') as $name){if(!isset($plan['expected'][$name],$plan['prior'][$name])){throw new RuntimeException('Complete active controller inventory required');}}
     }
-    public function __construct(array $packet,callable $capture,callable $fingerprint,?callable $initializePrivateFixture=null,?callable $observer=null)
+    public function __construct(array $packet,callable $capture,callable $fingerprint,?callable $initializePrivateFixture=null,?callable $observer=null,?callable $inspectPrivateFixture=null,?callable $completePrivateFixture=null)
     {
         self::caller();$keys=array_keys($packet);sort($keys);
         if($keys!==array('expires','helperPath','helperSha256','mode','ownershipKey','plan','productionAuthorizationSha256','publicOwnedSha256','publicRoot','stepLimit','tokenSha256')||!in_array($packet['mode'],array('production','private-staging-rehearsal'),true)||!is_array($packet['plan'])||!self::digest($packet['ownershipKey'])||!self::digest($packet['helperSha256'])||!self::digest($packet['tokenSha256'])||!is_int($packet['expires'])||!is_int($packet['stepLimit'])||$packet['stepLimit']<1||$packet['stepLimit']>100||!is_string($packet['publicRoot'])||!is_string($packet['helperPath'])){throw new RuntimeException('Exact server-side controller packet required');}
@@ -52,14 +54,15 @@ final class KTK_Content_Update_Controller
         $this->binding=array('transactionId'=>$plan['transactionId'],'applicationCommit'=>$plan['applicationCommit'],'planSha256'=>$planSha);
         if($packet['mode']==='production'){
             $approval=array('transactionId'=>$plan['transactionId'],'planSha256'=>$planSha,'approvalSha256'=>$packet['productionAuthorizationSha256']);
-            if(!self::digest($packet['productionAuthorizationSha256'])||$packet['publicOwnedSha256']!==null||$initializePrivateFixture!==null||!defined('KTK_CONTENT_UPDATE_PRODUCTION_AUTHORIZATION')||KTK_CONTENT_UPDATE_PRODUCTION_AUTHORIZATION!==$approval){throw new RuntimeException('Separate exact server-side production authorization required');}
+            if(!self::digest($packet['productionAuthorizationSha256'])||$packet['publicOwnedSha256']!==null||$initializePrivateFixture!==null||$inspectPrivateFixture!==null||$completePrivateFixture!==null||!defined('KTK_CONTENT_UPDATE_PRODUCTION_AUTHORIZATION')||KTK_CONTENT_UPDATE_PRODUCTION_AUTHORIZATION!==$approval){throw new RuntimeException('Separate exact server-side production authorization required');}
             $expectedHelper=$public.'/wp-content/mu-plugins/ktk-production-transaction-update-'.$plan['transactionId'].'.php';$this->source=$public.'/staging/wp-content/mu-plugins';$this->target=$public.'/wp-content/mu-plugins';
         }else{
             if($packet['productionAuthorizationSha256']!==null||!self::digest($packet['publicOwnedSha256'])||$initializePrivateFixture===null){throw new RuntimeException('Explicit private staging fixture packet required');}
             $expectedHelper=$public.'/staging/wp-content/mu-plugins/ktk-transaction-rehearsal-'.$plan['transactionId'].'.php';$this->source=$this->root.'/source';$this->target=$this->root.'/target';
         }
         if($packet['helperPath']!==$expectedHelper){throw new RuntimeException('Exact controller helper required');}
-        $this->packet=$packet;$this->capture=$capture;$this->fingerprint=$fingerprint;$this->initialize=$initializePrivateFixture;$this->observer=$observer;$this->helperCheck();
+        if(($inspectPrivateFixture===null)!==($completePrivateFixture===null)){throw new RuntimeException('Paired explicit private preparation callbacks required');}
+        $this->packet=$packet;$this->capture=$capture;$this->fingerprint=$fingerprint;$this->initialize=$initializePrivateFixture;$this->observer=$observer;$this->inspectPrivateFixture=$inspectPrivateFixture;$this->completePrivateFixture=$completePrivateFixture;$this->helperCheck();
     }
     private function helperCheck(): void
     {
@@ -129,12 +132,60 @@ final class KTK_Content_Update_Controller
         $raw=$store->read('backup-ack.json');if($raw===null){throw new RuntimeException('Independently verified private archive acknowledgment required before application writes');}$ack=json_decode($raw,true,16,JSON_THROW_ON_ERROR);
         if(!is_array($ack)||($ack['schemaVersion']??null)!==1||($ack['transactionId']??null)!==$this->binding['transactionId']||($ack['applicationCommit']??null)!==$this->binding['applicationCommit']||($ack['planSha256']??null)!==$this->binding['planSha256']||($ack['exportSha256']??null)!==$manifest['manifestSha256']||($ack['archiveSha256']??null)!==$request['archiveSha256']||!self::digest($ack['acknowledgedStateSha256']??null)){throw new RuntimeException('Durable private archive acknowledgment differs');}return $ack;
     }
+    private function preparation(): array
+    {
+        $current=($this->capture)();$this->stateCheck($current,true);$stable=$current;unset($stable['capturedAt']);
+        $rootExists=file_exists($this->root)||is_link($this->root);$store=null;$records=null;$control=null;$seed=null;$engine=null;$rootMembers=array();$engineMembers=array();$time=null;
+        if($rootExists){
+            $store=new KTK_Content_Update_Private_Store($this->root,$this->packet['publicRoot'],$this->binding['transactionId'],$this->packet['ownershipKey']);$time=$store->preparationTimestamp();
+            if($time!==null){$current['capturedAt']=$time;}
+            $original=self::encode($current);$records=array('original-state.json'=>$original,'controller-plan.json'=>self::encode($this->control()+array('originalStateSha256'=>hash('sha256',$original),'enginePlan'=>$this->packet['plan'])));
+            $control=$store->inspectPreparationRecords($records);
+            $allowed=$this->packet['mode']==='production'?array('owner.marker','controller.lock','control','engine'):array('owner.marker','controller.lock','control','engine','source','target');
+            foreach(new DirectoryIterator($store->privateRoot()) as $entry){
+                if($entry->isDot()){continue;}$name=$entry->getFilename();
+                if(!in_array($name,$allowed,true)||$entry->isLink()||(($name==='owner.marker'||$name==='controller.lock')?!$entry->isFile():!$entry->isDir())){throw new RuntimeException('Unknown preparation namespace member preserved');}$rootMembers[]=$name;
+            }sort($rootMembers);
+            if(!$control['planComplete']&&(in_array('engine',$rootMembers,true)||in_array('source',$rootMembers,true)||in_array('target',$rootMembers,true))){throw new RuntimeException('Private initialization cannot precede complete immutable records');}
+            if($this->packet['mode']!=='production'){
+                if($this->inspectPrivateFixture===null||$this->completePrivateFixture===null){throw new RuntimeException('Explicit private preparation recovery callbacks required');}
+                $seed=($this->inspectPrivateFixture)($store);
+                if(!is_array($seed)||!self::digest($seed['stateSha256']??null)||!is_bool($seed['sourceComplete']??null)||!is_bool($seed['targetComplete']??null)){throw new RuntimeException('Verified private seed inspection required');}
+            }
+            if(in_array('engine',$rootMembers,true)){
+                self::directory($this->root.'/engine');$lock='target-'.hash('sha256',$this->target).'.lock';$id=$this->binding['transactionId'];
+                foreach(new DirectoryIterator($this->root.'/engine') as $entry){
+                    if($entry->isDot()){continue;}$name=$entry->getFilename();$path=str_replace('\\','/',$entry->getPathname());
+                    if($entry->isLink()){throw new RuntimeException('Unsafe preparation engine member preserved');}
+                    if($name===$lock&&$entry->isFile()){$stat=lstat($path);if($entry->getSize()!==0||$stat===false||($stat['nlink']??0)!==1){throw new RuntimeException('Changed preparation engine lock preserved');}$engineMembers[$name]='empty-lock';}
+                    elseif($name===$id&&$entry->isDir()){self::directory($path);$engineMembers[$name]='transaction-directory';}
+                    else{throw new RuntimeException('Unknown preparation engine member preserved');}
+                }ksort($engineMembers);
+                if(isset($engineMembers[$id])){
+                    if(!isset($engineMembers[$lock])||($seed!==null&&(!$seed['sourceComplete']||!$seed['targetComplete']))){throw new RuntimeException('Engine preparation cannot precede complete seeds and its lock');}
+                    $engine=$this->engine()->inspectPreparation();
+                }
+            }
+        }
+        $proof=array('binding'=>$this->binding,'helperSha256'=>$this->packet['helperSha256'],'currentSnapshotSha256'=>hash('sha256',self::encode($stable)),'rootExists'=>$rootExists,'originalCaptureTime'=>$time,'rootMembers'=>$rootMembers,'control'=>$control,'seed'=>$seed,'engineMembers'=>$engineMembers,'engine'=>$engine);
+        $public=$this->control()+array('planSha256'=>$this->binding['planSha256'],'stateSha256'=>hash('sha256',self::encode(self::canonical($proof))),'preparation'=>array('rootExists'=>$rootExists,'originalCaptureTime'=>$time,'recordsComplete'=>$control!==null&&$control['originalComplete']&&$control['planComplete'],'seedsComplete'=>$seed===null?$this->packet['mode']==='production':$seed['sourceComplete']&&$seed['targetComplete'],'enginePhase'=>$engine['phase']??null,'controlFiles'=>$control['files']??array(),'seedFiles'=>$seed['files']??array(),'engineFiles'=>$engine['files']??array()),'productionAuthorizationProvided'=>$this->packet['mode']==='production','applicationWrites'=>0,'databaseWrites'=>0,'activationWrites'=>0,'cachePurges'=>0);
+        return array($public,$records,$store,$seed);
+    }
     public function run(string $raw,string $method,string $host,string $token,int $now): array
     {
         self::caller();$request=KTK_Content_Update_Request::parse($raw,$method,$host,$token,$this->packet['tokenSha256'],$this->packet['expires'],$now,$this->binding);$this->helperCheck();
         // Even creation of the private shared lock follows authenticated production identity/protected-state verification.
         if($this->packet['mode']==='production'){$current=($this->fingerprint)();$this->stateCheck($current,false,$request['action']!=='inspect');}
         $this->lockTarget();$action=$request['action'];
+        if($action==='inspect-preparation'||$action==='recover-preparation'){
+            [$state,$records,$store,$seed]=$this->preparation();if($action==='inspect-preparation'){return $state;}
+            if(!hash_equals($state['stateSha256'],$request['stateSha256'])){throw new RuntimeException('Stale controller preparation state; inspect before recovery');}
+            if($store===null){return $this->run(self::encode(array('schemaVersion'=>1,'action'=>'prepare')+$this->binding),$method,$host,$token,$now);}
+            foreach($records as $name=>$bytes){if($store->read($name)===null){$store->writeOnce($name,$bytes);}}
+            if(!file_exists($this->root.'/engine')&&!mkdir($this->root.'/engine',0700)){throw new RuntimeException('Cannot create known private preparation engine root');}self::directory($this->root.'/engine');
+            if($seed!==null){($this->completePrivateFixture)($store,$seed['stateSha256']);}
+            $engine=$this->engine();$inspection=$engine->inspectPreparation();$engine->resumePreparation($inspection['stateSha256']);KTK_Content_Update_Backup_Manifest::build($store,$this->packet['plan']);return $this->result($store,$engine);
+        }
         if($action==='prepare'){
             if(file_exists($this->root)||is_link($this->root)){throw new RuntimeException('Existing controller transaction must be inspected; initialization is not blindly retried');}
             $state=($this->capture)();$this->stateCheck($state,true);$original=self::encode($state);
