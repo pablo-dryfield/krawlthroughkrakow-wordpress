@@ -42,13 +42,13 @@ def main(argv=None):
     destination=Path(args.report).resolve()
     if not destination.is_relative_to(ROOT/'docs/seo') or destination.suffix!='.json' or destination.exists() or destination.is_symlink():raise ValueError('Fresh local SEO report required')
     owned,sizes,hashes=reviewed_source(args.application_commit,args.tooling_commit)
-    report={'startedAt':datetime.now(timezone.utc).isoformat(),'scope':'full-private-seed-copy-prefix-recovery-and-cleanup; no engine/public transaction','phase':'offline-validated','applicationCommit':args.application_commit,'toolingCommit':args.tooling_commit,'sourceHashes':hashes,'publicOwnedFiles':len(owned),'publicOwnedBytes':sum(sizes.values()),'publicOwnedMapSha256':backup.sha(backup.encode(owned,sort=True)),'publicApplicationWrites':0,'databaseWrites':0,'cachePurges':0,'productionOperations':0,'fullHostTransactionAcceptance':False,'quotaVerified':False,'steps':[]}
+    report={'startedAt':datetime.now(timezone.utc).isoformat(),'scope':'full-private-seed-copy-prefix-recovery-and-cleanup; no engine/public transaction','phase':'offline-validated','applicationCommit':args.application_commit,'toolingCommit':args.tooling_commit,'sourceHashes':hashes,'publicOwnedFiles':len(owned),'publicOwnedBytes':sum(sizes.values()),'publicOwnedMapSha256':backup.sha(backup.encode(owned,sort=True)),'publicApplicationWrites':0,'databaseWrites':0,'cachePurges':0,'productionOperations':0,'fullHostTransactionAcceptance':False,'quotaVerified':False,'steps':[],'uncertainRequests':[]}
     def checkpoint(phase):
         report['phase']=phase;report['updatedAt']=datetime.now(timezone.utc).isoformat();destination.parent.mkdir(parents=True,exist_ok=True);destination.write_bytes((json.dumps(report,indent=2)+'\n').encode())
     checkpoint('offline-validated')
     if not args.rehearse_staging and not args.resume:
         print(json.dumps({'phase':report['phase'],'publicOwnedFiles':len(owned),'publicOwnedBytes':sum(sizes.values())}));return
-    common=shared.snapshot.load_common();connection=None;lease=None;value=None;before=None
+    common=shared.snapshot.load_common();connection=None;lease=None;value=None;before=None;client=None
     try:
         connection=BoundedStagingFTPS(common.common.store2.connect)
         if args.resume:
@@ -71,7 +71,11 @@ def main(argv=None):
         else:lease.install()
         checkpoint('full-seed-helper-installed');client=FullSeedTransport(plan,sizes,overrides,ROOT/'staging/wp-content/mu-plugins',value['helperSha256'],value['token'],value['expires'])
         def request(action,**fields):
-            unchanged(owned,hashes);envelope=client.request(action,**fields);state=envelope['controller'];seed=state['seed'];report['steps'].append({'action':action,'phase':state['phase'],'seconds':client.last_request_seconds,'runtime':envelope['runtime'],'privateFiles':len(seed['files']) if seed is not None else 0,'privateBytes':seed['copiedBytes'] if seed is not None else 0,'seedStateSha256':seed['stateSha256'] if seed is not None else None,'operation':state['operation']});checkpoint('full-seed-'+state['phase']);return state
+            unchanged(owned,hashes)
+            try:envelope=client.request(action,**fields)
+            except UncertainFullSeedRequest:
+                report['uncertainRequests'].append({'action':action,'seconds':client.last_request_seconds,'failure':client.last_failure});checkpoint(report['phase']);raise
+            state=envelope['controller'];seed=state['seed'];report['steps'].append({'action':action,'phase':state['phase'],'seconds':client.last_request_seconds,'runtime':envelope['runtime'],'privateFiles':len(seed['files']) if seed is not None else 0,'privateBytes':seed['copiedBytes'] if seed is not None else 0,'seedStateSha256':seed['stateSha256'] if seed is not None else None,'operation':state['operation']});checkpoint('full-seed-'+state['phase']);return state
         archive_path=ROOT/'deploy-backups'/('staging-full-seeds-original-'+tx+'.zip')
         if args.resume and archive_path.exists():
             receipt=full.verify_archive(archive_path,plan,value['ownershipKey'],value['helperSha256']);manifest,original=archive_original(archive_path,plan,value['ownershipKey'],value['helperSha256']);report['originalCapsuleArchive']=receipt
@@ -116,8 +120,10 @@ def main(argv=None):
         try:report['independentRetainedMetadataAudit']=verify_retained_metadata(fresh,archive_path,plan,sizes,overrides,value['ownershipKey'],value['helperSha256'],report.get('abandonedSeedStateSha256'))
         finally:report['independentRetainedFTPSStatistics']=fresh.statistics();fresh.close()
         unchanged(owned,hashes);report['fullPrivateSeedCopyAndCleanupVerified']=not abandoned;checkpoint('abandoned-private-copy-disposed' if abandoned else 'complete')
-    except Exception:
-        report['failedAtPhase']=report['phase'];checkpoint('failed-preserve-packet-archive-and-private-state');raise RuntimeError('Full private seed rehearsal stopped; inspect the sanitized report and encrypted recovery packet; no automatic retry') from None
+    except Exception as error:
+        report['failedAtPhase']=report['phase'];report['failureType']=type(error).__name__
+        if client is not None:report['lastRequestFailure']=client.last_failure;report['lastRequestSeconds']=client.last_request_seconds
+        checkpoint('failed-preserve-packet-archive-and-private-state');raise RuntimeError('Full private seed rehearsal stopped; inspect the sanitized report and encrypted recovery packet; no automatic retry') from None
     finally:
         try:
             if lease is not None and not lease.removed:

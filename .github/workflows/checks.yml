@@ -56,6 +56,7 @@ jobs:
           php -l tools/full-private-seed-staging-template.php
           php -l tools/private-seed-disposal.php
           php -l tools/private-seed-disposal-template.php
+          php -l tools/staging-private-entry-probe-template.php
           php -l tools/content-update-backup-manifest.php
           php -l tools/content-update-controller.php
           php -l tools/content-update-staging-template.php

@@ -1,6 +1,6 @@
 """Strict injected full-seed HTTP/FTPS transports. No login, credentials, automatic retries or production path."""
 from __future__ import annotations
-import base64,hashlib,hmac,re,secrets,time,urllib.request,zipfile
+import base64,hashlib,hmac,re,secrets,time,urllib.request,urllib.error,zipfile
 from pathlib import Path,PurePosixPath
 from tools import content_update_backup as backup
 from tools import full_private_seed_packet as packet
@@ -11,6 +11,17 @@ MAX_RESPONSE=2097152
 ACTIONS={'inspect':(), 'begin':('stateSha256',), 'recover-begin':('stateSha256',), 'inspect-archived':('originalManifestSha256','originalArchiveSha256'), 'advance':('stateSha256','originalManifestSha256','originalArchiveSha256'), 'close':('stateSha256','originalManifestSha256','originalArchiveSha256'), 'cleanup':('stateSha256','originalManifestSha256','originalArchiveSha256'), 'inspect-abandoned':('originalManifestSha256','originalArchiveSha256','abandonedSeedStateSha256'), 'abandon':('stateSha256','originalManifestSha256','originalArchiveSha256','abandonedSeedStateSha256'), 'cleanup-abandoned':('stateSha256','originalManifestSha256','originalArchiveSha256','abandonedSeedStateSha256')}
 
 class UncertainFullSeedRequest(RuntimeError):pass
+
+def failure_headers(headers,token):
+    """Explicit diagnostic headers only; never request headers, URLs or response bodies."""
+    result={}
+    for name in ('Server','CF-Cache-Status','CF-Ray','CF-Mitigated','Content-Type','Retry-After','X-Mitmproxy-Blocked-Reason'):
+        value=headers.get(name) if headers is not None else None
+        if value is not None:
+            value=value if isinstance(value,str) else '[invalid header value]'
+            value=value.replace(token,'[redacted]')
+            result[name]=''.join(c if 32<=ord(c)<127 else '?' for c in value)[:160]
+    return result
 
 def prefix_digest(name,length,source_root,overrides):
     folder,relative=name.split('/',1)
@@ -65,23 +76,31 @@ def validate_state(v,plan,sizes,overrides,source_root,action):
 class FullSeedTransport:
     def __init__(self,plan,sizes,overrides,source_root,helper_sha,token,expires,opener=None,clock=time.time):
         if not backup.digest(helper_sha) or not isinstance(token,str) or not re.fullmatch(r'[A-Za-z0-9_-]{43}',token) or type(expires) is not int or not clock()<expires<=clock()+3600:raise ValueError('Exact current full seed transport context required')
-        self.plan=plan;self.sizes=sizes;self.overrides=overrides;self.source_root=Path(source_root);self.helper_sha=helper_sha;self.token=token;self.expires=expires;self.clock=clock;self.opener=opener or urllib.request.build_opener(urllib.request.ProxyHandler({}),NoRedirect());self.last_request_seconds=None
+        self.plan=plan;self.sizes=sizes;self.overrides=overrides;self.source_root=Path(source_root);self.helper_sha=helper_sha;self.token=token;self.expires=expires;self.clock=clock;self.opener=opener or urllib.request.build_opener(urllib.request.ProxyHandler({}),NoRedirect());self.last_request_seconds=None;self.last_failure=None
     def request(self,action,**fields):
+        self.last_failure=None;self.last_request_seconds=None
         if action not in ACTIONS or set(fields)!=set(ACTIONS[action]) or any(not backup.digest(v) for v in fields.values()) or self.clock()>=self.expires:raise ValueError('Exact current full seed request fields required')
         raw=backup.encode({'schemaVersion':1,'action':action,**packet.binding(self.plan),**{k:fields[k] for k in ACTIONS[action]}})
         target=URL+'?ktk_full_private_seeds='+self.plan['transactionId']+'&request='+secrets.token_hex(16);request=urllib.request.Request(target,data=raw,method='POST',headers={'X-KTK-Full-Seed-Token':self.token,'Content-Type':'application/json','Cache-Control':'no-cache','User-Agent':'KTK full private seed rehearsal/1.0'});start=time.perf_counter()
+        observed={'action':action,'status':None,'headers':{},'responseBytes':None}
         try:
             with self.opener.open(request,timeout=180) as response:
+                observed.update(status=response.status,headers=failure_headers(response.headers,self.token))
                 controls=response.headers.get_all('Cache-Control') if hasattr(response.headers,'get_all') else [response.headers.get('Cache-Control','')]
                 if response.status!=200 or response.geturl()!=target or response.headers.get('CF-Cache-Status','').upper() not in ('DYNAMIC','BYPASS') or not has_no_store(controls) or response.headers.get('Content-Type','').split(';',1)[0].strip().lower()!='application/json':raise ValueError('Exact uncached full seed JSON response required')
                 raw=response.read(MAX_RESPONSE+1)
+                observed['responseBytes']=len(raw)
                 if len(raw)>MAX_RESPONSE:raise ValueError('Full seed response exceeds budget')
                 envelope=backup.decode(raw)
             if not isinstance(envelope,dict) or set(envelope)!={'helperSha256','controller','runtime'} or envelope['helperSha256']!=self.helper_sha:raise ValueError('Exact full seed helper response required')
             validate_state(envelope['controller'],self.plan,self.sizes,self.overrides,self.source_root,action);runtime=envelope['runtime']
             if not isinstance(runtime,dict) or set(runtime)!={'phpVersionId','peakAllocatedBytes','memoryLimit','maxExecutionTime'} or type(runtime['phpVersionId']) is not int or runtime['phpVersionId']<80100 or type(runtime['peakAllocatedBytes']) is not int or runtime['peakAllocatedBytes']<=0 or any(not isinstance(runtime[k],str) or not 1<=len(runtime[k])<=64 or any(not 32<=ord(c)<127 for c in runtime[k]) for k in ('memoryLimit','maxExecutionTime')):raise ValueError('Exact observed full seed PHP runtime metadata required')
-            self.last_request_seconds=time.perf_counter()-start;return envelope
-        except Exception:raise UncertainFullSeedRequest('Full private seed response failed verification; inspect before further mutation, no automatic retry') from None
+            return envelope
+        except Exception as error:
+            if isinstance(error,urllib.error.HTTPError):observed.update(status=error.code,headers=failure_headers(error.headers,self.token))
+            self.last_failure={'type':type(error).__name__,**observed}
+            raise UncertainFullSeedRequest('Full private seed response failed verification; inspect before further mutation, no automatic retry') from None
+        finally:self.last_request_seconds=time.perf_counter()-start
 
 class OriginalCapsuleReader:
     def __init__(self,connection,manifest,plan):

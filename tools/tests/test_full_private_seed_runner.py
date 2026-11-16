@@ -36,5 +36,12 @@ class FullSeedRunnerTests(unittest.TestCase):
    with mock.patch.object(runner,'reviewed_source',side_effect=AssertionError('invalid arguments must stop early')):
     with self.assertRaises(ValueError):self.run_main(self.args+extra)
   self.assertFalse(self.report.exists())
+ def test_uncertain_attempt_is_saved_before_stop_and_exact_helper_removal_without_retry(self):
+  connection=mock.Mock();connection.statistics.return_value={'connectionsOpened':0,'automaticRetries':0};common=mock.Mock();lease=mock.Mock();lease.removed=False;vault=mock.Mock();vault.save.return_value={'scope':'synthetic encrypted packet receipt'}
+  def remove():lease.removed=True
+  lease.remove.side_effect=remove;client=mock.Mock();client.last_request_seconds=125.2;client.last_failure={'type':'HTTPError','action':'inspect','status':524,'headers':{'Server':'cloudflare'},'responseBytes':None};client.request.side_effect=runner.UncertainFullSeedRequest('Sensitive exception text must not be logged')
+  with mock.patch.object(runner,'reviewed_source',return_value=(self.owned,self.sizes,self.hashes)),mock.patch.object(runner.shared.snapshot,'load_common',return_value=common),mock.patch.object(runner,'BoundedStagingFTPS',return_value=connection),mock.patch.object(runner,'unchanged'),mock.patch.object(runner.shared,'capture',return_value={'protectedStateSha256':'f'*64}),mock.patch.object(runner.full,'helper_source',return_value=b'compiled private helper'),mock.patch.object(runner.recovery,'FullSeedPacketVault',return_value=vault),mock.patch.object(runner.shared.legacy,'TemporaryHelperFTP'),mock.patch.object(runner.shared,'HelperLease',return_value=lease),mock.patch.object(runner,'FullSeedTransport',return_value=client):
+   with self.assertRaises(RuntimeError):self.run_main(self.args+['--rehearse-staging'])
+  r=json.loads(self.report.read_bytes());self.assertEqual(len(r['uncertainRequests']),1);self.assertEqual(r['uncertainRequests'][0]['failure']['status'],524);self.assertEqual(r['uncertainRequests'][0]['seconds'],125.2);self.assertEqual(r['lastRequestFailure'],client.last_failure);self.assertEqual(r['failureType'],'UncertainFullSeedRequest');self.assertTrue(r['helperRemoved']);self.assertFalse(r['steps']);self.assertNotIn('Sensitive exception',self.report.read_text());client.request.assert_called_once_with('inspect');lease.remove.assert_called_once()
 
 if __name__=='__main__':unittest.main()

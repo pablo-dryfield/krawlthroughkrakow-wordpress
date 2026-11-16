@@ -1,4 +1,5 @@
-import copy,io,json,unittest
+import copy,io,json,unittest,urllib.error
+from email.message import Message
 from tools import content_update_backup as backup
 from tools import full_private_seed_packet as packet
 from tools import full_private_seed_transport as transport
@@ -51,6 +52,26 @@ class FullSeedTransportTests(unittest.TestCase):
    opener=Opener(self.envelope,**changes);client=self.client(opener)
    with self.assertRaises(transport.UncertainFullSeedRequest):client.request('inspect-archived',**self.f.archive)
    self.assertEqual(len(opener.calls),1)
+ def test_http_failure_retains_status_and_elapsed_time_but_never_reads_body_or_logs_token(self):
+  class UnreadBody(io.BytesIO):
+   def read(self,*args):raise AssertionError('Failure body must never be read or logged')
+  class HTTPFailure:
+   def __init__(self):self.calls=[]
+   def open(self,request,timeout):
+    self.calls.append((request,timeout));headers=Message();headers['Server']='cloudflare';headers['CF-Ray']=protocol.TOKEN+'-WAW';headers['X-KTK-Full-Seed-Token']=protocol.TOKEN;headers['Content-Type']='text/plain';raise urllib.error.HTTPError(request.full_url,524,'secret exception message '+protocol.TOKEN,headers,UnreadBody(b'raw selected rows and '+protocol.TOKEN.encode()))
+  opener=HTTPFailure();client=self.client(opener)
+  with self.assertRaises(transport.UncertainFullSeedRequest):client.request('inspect-archived',**self.f.archive)
+  self.assertEqual(len(opener.calls),1);self.assertEqual(client.last_failure['status'],524);self.assertEqual(client.last_failure['type'],'HTTPError');self.assertGreater(client.last_request_seconds,0);raw=json.dumps(client.last_failure);self.assertNotIn(protocol.TOKEN,raw);self.assertNotIn('raw selected',raw);self.assertNotIn('X-KTK-Full-Seed-Token',raw);self.assertNotIn('secret exception',raw);self.assertEqual(client.last_failure['headers']['CF-Ray'],'[redacted]-WAW')
+ def test_empty_200_json_and_network_failure_are_distinguished_and_success_resets_failure(self):
+  opener=Opener(self.envelope,raw=b'');client=self.client(opener)
+  with self.assertRaises(transport.UncertainFullSeedRequest):client.request('inspect-archived',**self.f.archive)
+  self.assertEqual(client.last_failure['status'],200);self.assertEqual(client.last_failure['responseBytes'],0);self.assertGreater(client.last_request_seconds,0)
+  opener.changes={'error':True}
+  with self.assertRaises(transport.UncertainFullSeedRequest):client.request('inspect-archived',**self.f.archive)
+  self.assertIsNone(client.last_failure['status']);self.assertEqual(client.last_failure['type'],'OSError');self.assertEqual(len(opener.calls),2)
+  opener.changes={};self.assertEqual(client.request('inspect-archived',**self.f.archive),self.envelope);self.assertIsNone(client.last_failure);self.assertEqual(len(opener.calls),3)
+ def test_diagnostic_headers_are_bounded_and_control_characters_are_not_logged(self):
+  observed=transport.failure_headers({'Server':'a\n'+'x'*300,'Authorization':'Bearer '+protocol.TOKEN,'X-Unknown':'raw rows','CF-Mitigated':protocol.TOKEN},protocol.TOKEN);self.assertEqual(set(observed),{'Server','CF-Mitigated'});self.assertEqual(len(observed['Server']),160);self.assertNotIn('\n',observed['Server']);self.assertEqual(observed['CF-Mitigated'],'[redacted]')
  def test_wrong_helper_runtime_shape_unknown_metadata_bool_counter_and_false_full_acceptance_are_refused(self):
   cases=[]
   v=copy.deepcopy(self.envelope);v['helperSha256']='e'*64;cases.append(v);v=copy.deepcopy(self.envelope);v['runtime']['peakAllocatedBytes']=True;cases.append(v);v=copy.deepcopy(self.envelope);v['controller']['quotaVerified']=True;cases.append(v);v=copy.deepcopy(self.envelope);v['controller']['applicationWrites']=False;cases.append(v);v=copy.deepcopy(self.envelope);v['controller']['rawRows']=[];cases.append(v)
