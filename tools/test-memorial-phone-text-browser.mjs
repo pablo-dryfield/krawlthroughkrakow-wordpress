@@ -10,6 +10,21 @@ const root='staging/wp-content/mu-plugins/ktk-code-pages-assets/',files=['runtim
 const hashes=async()=>{const result={};for(const file of files)result[file]=createHash('sha256').update(await readFile(file)).digest('hex');return result;},initial=await hashes(),selector='#main-content :is([data-ktk-memorial-review],[data-ktk-memorial-directions])';
 const require=createRequire(import.meta.url),{chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright')),axe=await readFile('staging/wp-content/plugins/ktk-storefront/frontend/node_modules/axe-core/axe.min.js','utf8');
 const report={startedAt:new Date().toISOString(),base,scope:'16 responsive JS/no-JS normal/reduced views;13 existing text containers,63 non-heading text nodes,six native contents links,glyph/container/CTA bounds,unchanged headings/outside type and tablet/desktop CSSOM inverse. External/non-read requests blocked; no forms,orders,messages or consent selection.',checks:[],views:[],captures:[],accessibility:[],errors:[],writes:[]},check=(name,pass,detail)=>report.checks.push({name,pass:!!pass,detail});
+async function settleGuideImages(page,name,phase,js){
+ const images=page.locator('#main-content img'),expected=['e8063d1c3832-alexey-soucho-EcEFnQ2FLSo-unsplash-1080x675.jpg','62bc36cf41a3-unknown-150x150.png','a440a3c4abe5-Train-Icon-150x150.png','2b424635f8ba-Route-free-vector-icons-designed-by-Smashicons-150x150.png'];
+ const roles=await images.evaluateAll(ns=>ns.map(n=>new URL(n.getAttribute('src'),document.baseURI).pathname.split('/').pop()));
+ check(name+' '+phase+' exact four original image roles',JSON.stringify(roles)===JSON.stringify(expected),roles);if(JSON.stringify(roles)!==JSON.stringify(expected))throw Error('Unknown guide image inventory; no readiness exception');
+ for(let index=0;index<4;index++){
+  const image=images.nth(index),deadline=Date.now()+30000;await image.evaluate(n=>n.scrollIntoView({block:'center'}));
+  while(!await image.evaluate(n=>n.complete&&n.naturalWidth>0)){if(Date.now()>=deadline)throw Error('Original guide image readiness deadline exceeded');await page.waitForTimeout(50);}
+  let timer;try{await Promise.race([image.evaluate(n=>n.decode()),new Promise((resolve,reject)=>{timer=setTimeout(()=>reject(Error('Original guide image decode deadline exceeded')),30000);})]);}finally{clearTimeout(timer);}
+ }
+ await page.evaluate(()=>{for(const animation of document.getAnimations())if(Number.isFinite(animation.effect?.getComputedTiming().endTime))try{animation.finish();}catch{}scrollTo(0,0);});
+ if(js)await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));else await page.waitForTimeout(50);
+ const ready=await images.evaluateAll(ns=>ns.map(n=>({src:n.currentSrc,complete:n.complete,naturalWidth:n.naturalWidth,width:n.getBoundingClientRect().width,height:n.getBoundingClientRect().height})));
+ check(name+' '+phase+' every original image decoded with nonzero geometry',ready.length===4&&ready.every(n=>n.src&&n.complete&&n.naturalWidth>0&&n.width>0&&n.height>0),ready);
+ (report.imageReadiness??=[]).push({name,phase,images:ready,paintWait:js?'two browser animation frames':'runner-managed50ms;no frame-count claim'});
+}
 const browser=await chromium.launch({channel:'chrome',headless:true});
 try{
  for(const js of [true,false])for(const [motion,widths] of [['reduce',[320,390,600,601,768,1440]],['no-preference',[390,1440]]])for(const width of widths){
@@ -18,7 +33,7 @@ try{
    await context.route('**/*',r=>{const req=r.request(),u=new URL(req.url());if(!['GET','HEAD'].includes(req.method())){report.writes.push({name,method:req.method(),path:u.pathname});return r.abort();}if(u.origin!==new URL(base).origin||base.startsWith('https:')&&!u.pathname.startsWith('/staging/'))return r.abort();if(/\/(?:store2?|wp-admin|wp-json|wp-login\.php|collect|checkout|orders|carts)(?:\/|$)/.test(u.pathname))return r.abort();return r.continue();});
    const page=await context.newPage();page.on('pageerror',e=>report.errors.push({name,message:e.message}));
    const url=new URL('all-you-need-to-know-about-visiting-auschwitz/',base);if(process.argv.includes('--origin'))url.searchParams.set('ktk_memorial_type',Date.now()+'-'+name);
-   const response=await page.goto(url.href,{waitUntil:'load',timeout:60000});await page.evaluate(()=>document.fonts.ready);
+   const response=await page.goto(url.href,{waitUntil:'load',timeout:60000});await page.evaluate(()=>document.fonts.ready);await settleGuideImages(page,name,'inverse',js);
    await page.evaluate(()=>{for(const animation of document.getAnimations())if(Number.isFinite(animation.effect?.getComputedTiming().endTime))try{animation.finish();}catch{}});
    const facts=await page.evaluate(selector=>{const roots=[...document.querySelectorAll(selector)];return{count:roots.length,reviewed:roots.filter(n=>n.hasAttribute('data-ktk-memorial-review')).length,directions:roots.filter(n=>n.hasAttribute('data-ktk-memorial-directions')).length,unsafe:roots.reduce((n,e)=>n+e.querySelectorAll('form,input,select,textarea,button,img,svg,video,iframe').length,0),paragraphs:roots.reduce((n,e)=>n+e.querySelectorAll('p').length,0),topics:roots.reduce((n,e)=>n+e.querySelectorAll('li').length,0),headings:roots.reduce((n,e)=>n+e.querySelectorAll('h2').length,0),primary:document.querySelectorAll('#main-content h1').length,scroll:document.documentElement.scrollWidth};},selector);
    check(name+' exact original text-container structure and no overflow',response.status()===200&&facts.count===13&&facts.reviewed===12&&facts.directions===1&&facts.unsafe===0&&facts.paragraphs===24&&facts.topics===6&&facts.headings===11&&facts.primary===1&&facts.scroll<=width,facts);
@@ -30,7 +45,7 @@ try{
    },selector);
    check(name+' all text,heading metrics and outside styles exact',inverse.textExact&&inverse.headingsExact&&inverse.outsideStylesExact,inverse);if(width>600)check(name+' all tablet/desktop main geometry and type exact',inverse.allGeometryAndTypeExact,inverse);
    // Measure the actual clean document after the inverse experiment.
-   await page.reload({waitUntil:'load',timeout:60000});await page.evaluate(()=>document.fonts.ready);
+   await page.reload({waitUntil:'load',timeout:60000});await page.evaluate(()=>document.fonts.ready);await settleGuideImages(page,name,'measurement',js);
    await page.evaluate(()=>{for(const animation of document.getAnimations())if(Number.isFinite(animation.effect?.getComputedTiming().endTime))try{animation.finish();}catch{}});
    const targets=page.locator(selector),modules=[];
    for(let index=0;index<13;index++){
