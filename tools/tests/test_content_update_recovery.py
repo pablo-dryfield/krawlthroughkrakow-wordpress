@@ -33,35 +33,35 @@ class RecoveryPacketContractTests(unittest.TestCase):
    with self.assertRaises(ValueError):recovery.unseal(changed,ID)
  def test_immutable_file_roundtrip_and_failed_overwrite_preserve_cipher_bytes(self):
   with tempfile.TemporaryDirectory(prefix='ktk-recovery-file-') as directory,patch.object(recovery,'_dpapi',fake_dpapi):
-   home=Path(directory);vault=recovery.RecoveryPacketVault(home);receipt=vault.save(packet(),1000);path=home/'.ktk/content-update-packets'/ (ID+'.dpapi');before=path.read_bytes();self.assertTrue(receipt['durableDecryptReadbackVerified']);self.assertFalse(receipt['productionAuthorized']);self.assertEqual(vault.load(ID),packet())
+   home=Path(directory).resolve();vault=recovery.RecoveryPacketVault(home);receipt=vault.save(packet(),1000);path=home/'.ktk/content-update-packets'/ (ID+'.dpapi');before=path.read_bytes();self.assertTrue(receipt['durableDecryptReadbackVerified']);self.assertFalse(receipt['productionAuthorized']);self.assertEqual(vault.load(ID),packet())
    with self.assertRaises(ValueError):vault.save(packet(),1000)
    self.assertEqual(path.read_bytes(),before)
  def test_partial_existing_file_and_unknown_packet_namespace_are_preserved(self):
   with tempfile.TemporaryDirectory(prefix='ktk-recovery-partial-') as directory,patch.object(recovery,'_dpapi',fake_dpapi):
-   home=Path(directory);vault=recovery.RecoveryPacketVault(home);path=vault.path(ID,True);path.write_bytes(b'partial encrypted fragment')
+   home=Path(directory).resolve();vault=recovery.RecoveryPacketVault(home);path=vault.path(ID,True);path.write_bytes(b'partial encrypted fragment')
    with self.assertRaises(ValueError):vault.load(ID)
    with self.assertRaises(ValueError):vault.save(packet(),1000)
    self.assertEqual(path.read_bytes(),b'partial encrypted fragment')
   with tempfile.TemporaryDirectory(prefix='ktk-recovery-collision-') as directory,patch.object(recovery,'_dpapi',fake_dpapi):
-   home=Path(directory);(home/'.ktk').write_bytes(b'external owner file');vault=recovery.RecoveryPacketVault(home)
+   home=Path(directory).resolve();(home/'.ktk').write_bytes(b'external owner file');vault=recovery.RecoveryPacketVault(home)
    with self.assertRaises(ValueError):vault.save(packet(),1000)
    self.assertEqual((home/'.ktk').read_bytes(),b'external owner file')
  def test_decrypt_failure_never_falls_back_to_plaintext_or_creates_replacement(self):
   with tempfile.TemporaryDirectory(prefix='ktk-recovery-decrypt-') as directory,patch.object(recovery,'_dpapi',fake_dpapi):
-   home=Path(directory);vault=recovery.RecoveryPacketVault(home);vault.save(packet(),1000);path=vault.path(ID);before=path.read_bytes()
+   home=Path(directory).resolve();vault=recovery.RecoveryPacketVault(home);vault.save(packet(),1000);path=vault.path(ID);before=path.read_bytes()
    with patch.object(recovery,'_dpapi',side_effect=ValueError('Unsupported private backend')):
     with self.assertRaises(ValueError):vault.load(ID)
    self.assertEqual(path.read_bytes(),before);self.assertEqual(len(list(path.parent.iterdir())),1)
  def test_validation_or_encryption_failure_does_not_create_packet_directories(self):
   with tempfile.TemporaryDirectory(prefix='ktk-recovery-refusal-') as directory:
-   home=Path(directory);vault=recovery.RecoveryPacketVault(home)
+   home=Path(directory).resolve();vault=recovery.RecoveryPacketVault(home)
    with self.assertRaises(ValueError):vault.save({**packet(),'mode':'production'},1000)
    with patch.object(recovery,'_dpapi',side_effect=RuntimeError('DPAPI required')):
     with self.assertRaises(RuntimeError):vault.save(packet(),1000)
    self.assertFalse((home/'.ktk').exists())
  def test_symlinked_packet_directory_is_not_followed(self):
   with tempfile.TemporaryDirectory(prefix='ktk-recovery-link-') as directory,patch.object(recovery,'_dpapi',fake_dpapi):
-   home=Path(directory);outside=home/'external';outside.mkdir()
+   home=Path(directory).resolve();outside=home/'external';outside.mkdir()
    try:(home/'.ktk').symlink_to(outside,target_is_directory=True)
    except OSError:self.skipTest('This Windows host cannot create the packet-directory symlink fixture')
    with self.assertRaises(ValueError):recovery.RecoveryPacketVault(home).save(packet(),1000)
@@ -69,10 +69,15 @@ class RecoveryPacketContractTests(unittest.TestCase):
  def test_unsupported_platform_has_no_plaintext_crypto_fallback(self):
   with patch.object(recovery.os,'name','posix'):
    with self.assertRaises(RuntimeError):recovery._dpapi(b'secret fixture',ID,True)
+ def test_aliased_user_home_is_refused_instead_of_relaxing_canonical_path_guard(self):
+  with tempfile.TemporaryDirectory(prefix='ktk-recovery-alias-') as directory,patch.object(recovery,'_dpapi',fake_dpapi):
+   home=Path(directory).resolve();(home/'child').mkdir();alias=home/'child/..'
+   with self.assertRaises(ValueError):recovery.RecoveryPacketVault(alias).save(packet(),1000)
+   self.assertFalse((home/'.ktk').exists());self.assertTrue((home/'child').is_dir())
  @unittest.skipUnless(os.name=='nt','Real current-user DPAPI is a Windows-only platform contract')
  def test_actual_current_user_dpapi_roundtrip_durable_file_entropy_and_corruption(self):
   with tempfile.TemporaryDirectory(prefix='ktk-recovery-real-dpapi-') as directory:
-   value=packet(int(time.time())+600);home=Path(directory);vault=recovery.RecoveryPacketVault(home);receipt=vault.save(value);self.assertTrue(receipt['durableDecryptReadbackVerified']);self.assertEqual(vault.load(ID),value);blob=vault.path(ID).read_bytes();self.assertNotIn(value['token'].encode(),blob);self.assertNotIn(value['ownershipKey'].encode(),blob)
+   value=packet(int(time.time())+600);home=Path(directory).resolve();vault=recovery.RecoveryPacketVault(home);receipt=vault.save(value);self.assertTrue(receipt['durableDecryptReadbackVerified']);self.assertEqual(vault.load(ID),value);blob=vault.path(ID).read_bytes();self.assertNotIn(value['token'].encode(),blob);self.assertNotIn(value['ownershipKey'].encode(),blob)
    parts=blob.split(b'\n',3)
    with self.assertRaises(ValueError):recovery._dpapi(parts[3],'d'*32,False)
    cipher=bytearray(parts[3]);cipher[len(cipher)//2]^=1;changed=parts[0]+b'\n'+parts[1]+b'\n'+backup.sha(cipher).encode()+b'\n'+bytes(cipher)
