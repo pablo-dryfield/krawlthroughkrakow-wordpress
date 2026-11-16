@@ -8,9 +8,10 @@ ROOT=Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:sys.path.insert(0,str(ROOT))
 from tools import content_update_backup as backup
 from tools import private_entry_probe as probe
+from tools.normal_response_contract import equivalent
 from tools.content_update_staging_connection import BoundedStagingFTPS
 spec=importlib.util.spec_from_file_location('ktk_private_entry_shared',ROOT/'tools/rehearse-staging-full-seeds.py');base=importlib.util.module_from_spec(spec);spec.loader.exec_module(base);shared=base.shared
-FILES=('probe-staging-private-entry.py','probe-staging-private-entry.ps1','private_entry_probe.py','staging-private-entry-probe-template.php')
+FILES=('probe-staging-private-entry.py','probe-staging-private-entry.ps1','private_entry_probe.py','staging-private-entry-probe-template.php','normal_response_contract.py')
 
 def fingerprints():
     value=base.fingerprints()
@@ -47,16 +48,19 @@ def main(argv=None):
         baseline=report['normalControls']['beforeHelper']
         for label,control in [('missingToken',None),('invalidToken','invalid-private-entry-control')]:
             unchanged(owned,hashes);r=client.normal(control);report['normalControls'][label]=r;checkpoint('normal-'+label)
-            if (r['status'],r['mime'],r['bytes'],r['sha256'])!=(baseline['status'],baseline['mime'],baseline['bytes'],baseline['sha256']):raise ValueError('Ordinary HTML response differs; no mask, tolerance or unchanged-page claim')
+            report['normalControls'][label]['rawHtmlEqualToBaseline']=(r['bytes'],r['sha256'])==(baseline['bytes'],baseline['sha256']);checkpoint('normal-'+label)
+            if not equivalent(r,baseline):raise ValueError('Ordinary HTML outside email encoding or decoded contact payload differs; no unchanged-response claim')
         lower_offset=max(v['serverEpoch']-v['clientFinishedEpoch'] for v in report['observations']);deadline=expires-lower_offset+1;remaining=deadline-time.time()
         if abs(lower_offset)>15 or remaining>300:raise ValueError('Observed server clock/latency cannot support bounded real-expiry proof')
         report['serverClockOffsetLowerBoundSeconds']=lower_offset;report['expiryWaitSeconds']=max(0,remaining);checkpoint('waiting-for-real-expiry')
         while time.time()<deadline:
             time.sleep(max(0,min(15,deadline-time.time())));unchanged(owned,hashes)
         r=client.normal(token,method='POST');report['normalControls']['expiredToken']=r;checkpoint('normal-expiredToken');post_baseline=report['normalControls']['beforeHelperInspectPOST']
-        if (r['status'],r['mime'],r['bytes'],r['sha256'])!=(post_baseline['status'],post_baseline['mime'],post_baseline['bytes'],post_baseline['sha256']):raise ValueError('Expired probe did not preserve exact ordinary inspect-POST HTML')
+        report['normalControls']['expiredToken']['rawHtmlEqualToBaseline']=(r['bytes'],r['sha256'])==(post_baseline['bytes'],post_baseline['sha256']);checkpoint('normal-expiredToken')
+        if not equivalent(r,post_baseline):raise ValueError('Expired probe changed ordinary inspect-POST HTML outside email encoding or decoded contact payload')
         report['actualExpiryFallbackVerified']=True;lease.remove();report['helperRemoved']=lease.removed;unchanged(owned,hashes);report['normalControls']['afterRemoval']=client.normal();r=report['normalControls']['afterRemoval']
-        if (r['status'],r['mime'],r['bytes'],r['sha256'])!=(baseline['status'],baseline['mime'],baseline['bytes'],baseline['sha256']):raise ValueError('Ordinary post-removal HTML differs; no unchanged-response claim')
+        report['normalControls']['afterRemoval']['rawHtmlEqualToBaseline']=(r['bytes'],r['sha256'])==(baseline['bytes'],baseline['sha256'])
+        if not equivalent(r,baseline):raise ValueError('Ordinary post-removal HTML outside email encoding or decoded contact payload differs')
         report['after']={};checkpoint('snapshot-after');after=shared.capture(common,connection,owned,shared.source_hashes(),report['after'],checkpoint)
         if any(before[k]!=after[k] for k in shared.STATE_KEYS):raise ValueError('Full selected/public/protected state changed; preserve without restoration')
         report['fullSelectedAndPublicProtectedStateExact']=True

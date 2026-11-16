@@ -5,6 +5,7 @@ from pathlib import Path
 from tools import content_update_backup as backup
 from tools import full_inventory_capacity as capacity
 from tools.full_private_seed_transport import failure_headers
+from tools.normal_response_contract import projection
 from tools.content_update_staging_transport import NoRedirect,has_no_store
 
 ROOT=Path(__file__).resolve().parents[1];TEMPLATE=ROOT/'tools/staging-private-entry-probe-template.php';CORE=ROOT/'tools/staging-protected-state-core.php';URL='https://krawlthroughkrakow.com/staging/'
@@ -102,7 +103,7 @@ class EntryProbeClient:
                 if method=='POST' and response.headers.get('CF-Cache-Status','').upper() not in ('DYNAMIC','BYPASS'):raise RuntimeError('Ordinary inspect-POST control must be uncached')
                 raw=response.read(4194305);observed['responseBytes']=len(raw)
                 if len(raw)>4194304:raise RuntimeError('Normal request exceeds bounded HTML response budget')
-                return {'status':response.status,'method':method,'mime':'text/html','bytes':len(raw),'sha256':backup.sha(raw),'cache':response.headers.get('CF-Cache-Status'),'seconds':time.perf_counter()-start}
+                return {'status':response.status,'method':method,'mime':'text/html','bytes':len(raw),'sha256':backup.sha(raw),'projection':projection(raw),'cache':response.headers.get('CF-Cache-Status'),'seconds':time.perf_counter()-start}
         except Exception as error:
             if isinstance(error,urllib.error.HTTPError):observed.update(status=error.code,headers=failure_headers(error.headers,self.token))
             if token:
