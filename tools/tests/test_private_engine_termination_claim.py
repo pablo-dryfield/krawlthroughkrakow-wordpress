@@ -56,7 +56,7 @@ class PrivateEngineTerminationClaimTests(unittest.TestCase):
         before=self.files(path);self.assertIn('already consumed',self.call(False)['message']);self.assertEqual(self.files(path),before)
 
     def test_authentication_scope_expiry_and_old_identity_fail_before_guard_or_claim(self):
-        for changes in ({'method':'GET'},{'host':'www.krawlthroughkrakow.com'},{'token':'wrong'},{'now':2000},{'now':-2000},{'allowed':False},{'packet':{**self.packet,'operation':'inspect'}},{'packet':{**self.packet,'operationId':store.ID}}):
+        for changes in ({'method':'GET'},{'host':'www.krawlthroughkrakow.com'},{'token':'wrong'},{'now':2000},{'now':-2000},{'allowed':False},{'packet':{**self.packet,'operation':'inspect'}},{'packet':{**self.packet,'operation':'inspect-fenced'}},{'packet':{**self.packet,'operationId':store.ID}}):
             with self.subTest(changes=changes):
                 result=self.call(False,**changes);self.assertEqual(result['captures'],0);self.assertFalse(self.marker().exists())
 

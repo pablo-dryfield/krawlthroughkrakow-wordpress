@@ -66,6 +66,22 @@ class TerminationAuthorityValidationTests(unittest.TestCase):
             with mock.patch.object(crypto,'_dpapi',side_effect=AssertionError('Unverified ciphertext must not be decrypted')):
                 with self.assertRaises(ValueError):authority.unseal(blob,identifier,'inspect')
 
+    def test_distinct_fenced_readonly_context_preserves_initial_fence_under_new_complete_state(self):
+        old,inspection,fence,cleanup=fixtures()
+        view={**cleanup,'operation':'inspect-fenced','operationId':'4'*32,'token':'v'*43,'witnessArchiveSha256':'4'*64,'witnessArchiveName':'staging-protected-state-20261117-100004.zip','predecessorOperationId':cleanup['operationId'],'freshProtectedStateSha256':'8'*64,'freshPublicOwnedSha256':'6'*64}
+        authority.validate_packet(view,time.time());authority.validate_predecessor(view,cleanup,old)
+        later={**view,'operation':'cleanup','operationId':'5'*32,'token':'n'*43,'witnessArchiveSha256':'5'*64,'witnessArchiveName':'staging-protected-state-20261117-100005.zip','predecessorOperationId':view['operationId']}
+        authority.validate_predecessor(later,view,old)
+        self.assertEqual(later['fenceOperationId'],fence['operationId'])
+        for changes in ({'closureSha256':'8'*64},{'fenceOperationId':'9'*32},{'metadataArchiveSha256':'8'*64},{'witnessArchiveSha256':cleanup['witnessArchiveSha256']}):
+            with self.subTest(changes=changes),self.assertRaises(ValueError):authority.validate_predecessor({**view,**changes},cleanup,old)
+
+    def test_initial_inspection_cannot_implicitly_become_fenced_inspection_or_serve_as_fence_provenance(self):
+        old,inspection,fence,cleanup=fixtures()
+        with self.assertRaises(ValueError):authority.validate_packet({**inspection,'operation':'inspect-fenced'})
+        view={**cleanup,'operation':'inspect-fenced','operationId':'4'*32,'token':'v'*43,'witnessArchiveSha256':'4'*64,'witnessArchiveName':'staging-protected-state-20261117-100004.zip','predecessorOperationId':cleanup['operationId']}
+        with self.assertRaises(ValueError):authority.validate_predecessor({**fence,'predecessorOperationId':view['operationId']},view,old)
+
     def test_encryption_failure_never_creates_a_plaintext_fallback(self):
         _,inspection,_,_=fixtures()
         with tempfile.TemporaryDirectory(prefix='ktk-termination-no-fallback-') as directory:
@@ -76,6 +92,14 @@ class TerminationAuthorityValidationTests(unittest.TestCase):
 
 @unittest.skipUnless(os.name=='nt','Native current-user typed termination DPAPI contract')
 class TerminationAuthorityNativeTests(unittest.TestCase):
+    def test_native_fenced_readonly_context_cannot_be_loaded_as_cleanup_or_fence_authority(self):
+        _,_,_,cleanup=fixtures();view={**cleanup,'operation':'inspect-fenced','operationId':'4'*32,'token':'v'*43,'witnessArchiveSha256':'4'*64,'witnessArchiveName':'staging-protected-state-20261117-100004.zip','predecessorOperationId':cleanup['operationId']}
+        with tempfile.TemporaryDirectory(prefix='ktk-termination-readonly-native-') as directory:
+            vault=authority.TerminationVault(Path(directory).resolve());vault.save(view)
+            self.assertEqual(vault.load(view['operationId'],'inspect-fenced'),view)
+            for operation in ('cleanup','fence','inspect'):
+                with self.subTest(operation=operation),self.assertRaises(ValueError):vault.load(view['operationId'],operation)
+
     def test_native_three_typed_durable_contexts_reject_cross_operation_and_legacy_loads(self):
         old,inspection,fence,cleanup=fixtures()
         with tempfile.TemporaryDirectory(prefix='ktk-termination-native-') as directory:

@@ -81,6 +81,12 @@ class PrivateEngineTerminationBindingTests(unittest.TestCase):
         self.case.client.close();closed=(self.case.private/'control/closed.json').read_bytes();self.fence();result=self.validate()
         self.assertEqual(result['closureBlob'],closed);self.assertEqual((self.case.private/'control/closed.json').read_bytes(),closed)
 
+    def test_explicit_fenced_readonly_role_binds_actual_new_pair_without_claiming_a_server_fence(self):
+        self.base.prepared();self.fence();self.base.change_cache_row();state,witness=self.witness()
+        view={**self.fence_packet,'operation':'inspect-fenced','operationId':'4'*32,'token':'v'*43,'freshProtectedStateSha256':state['protectedStateSha256'],'witnessArchiveSha256':witness['sha256'],'witnessArchiveName':Path(witness['path']).name,'predecessorOperationId':self.fence_packet['operationId']}
+        before=self.base.files(self.case.private);result=self.validate(view,witness_path=Path(witness['path']),predecessor=self.fence_packet,fence_packet=self.fence_packet)
+        self.assertEqual(result['receipt']['operation'],'inspect-fenced');self.assertFalse(result['receipt']['executionAuthorityGranted']);self.assertFalse(result['receipt']['freshWitnessIsInitialFenceWitness']);self.assertEqual(self.base.files(self.case.private),before);self.assertFalse((self.case.private/'control/closed.json').exists())
+
     def test_rehashed_paired_raw_drift_is_refused_without_filtering_cache_rows(self):
         self.initial();path=self.inspection_witness
         def change(blobs):

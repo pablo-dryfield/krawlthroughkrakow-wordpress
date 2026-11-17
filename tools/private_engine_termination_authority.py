@@ -14,7 +14,7 @@ from tools import full_private_engine_recovery as original
 
 SCOPE = 'fresh-witness-private-engine-termination'
 MAGIC = b'KTK-DPAPI-PRIVATE-ENGINE-TERMINATION-1\n'
-OPERATIONS = {'inspect','fence','cleanup'}
+OPERATIONS = {'inspect','inspect-fenced','fence','cleanup'}
 FIELDS = {'schemaVersion','scope','operationId','operation','transactionId','applicationCommit','toolingCommit','originalToolingCommit','sourceHashes','expires','token','helperSha256','freshProtectedStateSha256','freshPublicOwnedSha256','witnessArchiveSha256','witnessArchiveName','originalArchiveSha256','originalManifestSha256','metadataArchiveSha256','metadataArchiveName','inspectionStateSha256','closureSha256','predecessorOperationId','fenceOperationId'}
 
 
@@ -50,7 +50,7 @@ def validate_packet(value, now=None):
 def validate_original_binding(value, old):
     validate_packet(value);original.validate_packet(old)
     require(value['transactionId']==old['transactionId'] and value['applicationCommit']==old['applicationCommit'] and value['originalToolingCommit']==old['toolingCommit'] and value['token']!=old['token'],'Exact original provenance and a new token required')
-    if value['operation']!='cleanup':require(value['freshPublicOwnedSha256']==backup.sha(backup.encode(old['publicOwned'],sort=True)),'Initial inspection/fence still requires the original public inventory')
+    if value['operation'] in ('inspect','fence'):require(value['freshPublicOwnedSha256']==backup.sha(backup.encode(old['publicOwned'],sort=True)),'Initial inspection/fence still requires the original public inventory')
     return value
 
 
@@ -63,7 +63,7 @@ def validate_predecessor(value, predecessor, old):
     if value['operation']=='fence':
         require(predecessor['operation']=='inspect' and value['freshProtectedStateSha256']==predecessor['freshProtectedStateSha256'] and value['freshPublicOwnedSha256']==predecessor['freshPublicOwnedSha256'] and value['metadataArchiveName']=='ktk-private-engine-termination-metadata-'+predecessor['operationId']+'.zip','Fence requires the exact inspection state and its metadata archive')
     else:
-        require(predecessor['operation'] in ('fence','cleanup'),'Cleanup requires a signed-fence predecessor')
+        require(predecessor['operation'] in ('fence','cleanup','inspect-fenced'),'Fenced inspection/cleanup requires immutable initial fence provenance')
         for key in ('metadataArchiveSha256','metadataArchiveName','inspectionStateSha256','closureSha256','fenceOperationId'):
             require(value[key]==predecessor[key],'Initial fenced archive/closure must remain immutable')
     return value
