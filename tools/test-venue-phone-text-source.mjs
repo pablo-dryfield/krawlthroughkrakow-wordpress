@@ -2,7 +2,7 @@ import {readFile,writeFile} from 'node:fs/promises';import {execFileSync} from '
 import {createHash} from 'node:crypto';import {createRequire} from 'node:module';import path from 'node:path';
 import {venuePhonePageKeys,venuePhoneScope,venuePhoneSelector,venuePhoneStyles} from './venue-phone-text-styles.mjs';
 const [baseline,output]=process.argv.slice(2);
-if(baseline!=='ef8e8f1be82b16a29846dd47bd88426dfbbfb19c'||!output)throw Error('Exact reviewed focus baseline and fresh output required');
+if(baseline!=='aa16b0278d43c43847f9538f91c8a3a2f2136d09'||!output)throw Error('Exact reviewed focus baseline and fresh output required');
 try{await readFile(output);throw Error('Preserve earlier evidence');}catch(e){if(e.code!=='ENOENT')throw e;}
 const file='staging/wp-content/mu-plugins/ktk-code-pages-assets/runtime.css',checks=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail}),sha=b=>createHash('sha256').update(b).digest('hex'),changed=[];
 for(const row of execFileSync('git',['ls-tree','-r',baseline,'--','staging'],{encoding:'utf8'}).trim().split('\n')){const [meta,name]=row.split('\t'),b=await readFile(name),same=createHash('sha1').update('blob '+b.length+'\0').update(b).digest('hex')===meta.split(' ')[2];if(same)check(name+' Git blob exact',true);else changed.push(name);}
