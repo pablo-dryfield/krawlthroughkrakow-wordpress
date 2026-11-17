@@ -2,7 +2,7 @@ import {readFile,writeFile} from 'node:fs/promises';import {execFileSync} from '
 import {createHash} from 'node:crypto';import {createRequire} from 'node:module';import path from 'node:path';
 import {legalMobilePageKeys,legalMobileScope,legalMobileStyles} from './legal-mobile-text-styles.mjs';
 const [baseline,output]=process.argv.slice(2);
-if(baseline!=='81729ee34c74c523ff377c682f5c15c8a208cbda'||!output)throw Error('Exact reviewed venue parent and fresh report required');
+if(baseline!=='cef4784a43d74c8218c1473fb422d09d1cecca0a'||!output)throw Error('Exact reviewed venue parent and fresh report required');
 try{await readFile(output);throw Error('Preserve earlier evidence');}catch(e){if(e.code!=='ENOENT')throw e;}
 const file='staging/wp-content/mu-plugins/ktk-code-pages-assets/runtime.css',checks=[],changed=[],check=(name,pass,detail)=>checks.push({name,pass:!!pass,detail}),sha=b=>createHash('sha256').update(b).digest('hex');
 for(const row of execFileSync('git',['ls-tree','-r',baseline,'--','staging'],{encoding:'utf8'}).trim().split('\n')){const [meta,name]=row.split('\t'),b=await readFile(name),same=createHash('sha1').update('blob '+b.length+'\0').update(b).digest('hex')===meta.split(' ')[2];if(same)check(name+' exact prior application blob',true);else changed.push(name);}
