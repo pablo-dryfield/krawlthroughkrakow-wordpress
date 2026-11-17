@@ -9,6 +9,7 @@ final class KTK_Private_Engine_Abandonment_Inspection
     private array $config;
     private $freshCapture;
     private KTK_Full_Private_Engine_Preparation $preparation;
+    private ?KTK_Read_Only_Private_Engine $heldEngine=null;
     private static function canonical($v) { if(is_array($v)){if(!array_is_list($v)){ksort($v);}foreach($v as $k=>$x){$v[$k]=self::canonical($x);}}return $v; }
     private static function json($v): string { return json_encode($v,JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_THROW_ON_ERROR); }
     private static function sha($v): string { return hash('sha256',self::json(self::canonical($v))); }
@@ -17,6 +18,8 @@ final class KTK_Private_Engine_Abandonment_Inspection
     {
         if(is_link($path)||!is_dir($path)||str_replace('\\','/',(string)realpath($path))!==$path){throw new RuntimeException('Canonical existing private directory required');}
     }
+    public function releaseEngineLock(): void { $this->heldEngine=null; }
+    public function __destruct() { $this->releaseEngineLock(); }
     public function __construct(array $config,callable $freshCapture)
     {
         $keys=array_keys($config);sort($keys);
@@ -115,6 +118,7 @@ final class KTK_Private_Engine_Abandonment_Inspection
     }
     public function inspect(KTK_Content_Update_Private_Store $store): array
     {
+        if($this->heldEngine!==null){throw new RuntimeException('Retain the existing census until its caller releases the engine lock');}
         $fresh=$this->fresh();$plan=$this->config['plan'];$root=dirname($this->config['publicRoot']).'/.ktk-content-update-'.$plan['transactionId'];
         if($store->privateRoot()!==$root||$store->transactionId()!==$plan['transactionId']){throw new RuntimeException('Exact owned private fixture required');}
         $capsule=$this->preparation->capsule($store);if($capsule['manifestSha256']!==$this->config['originalManifestSha256']){throw new RuntimeException('Original archived capsule differs');}
@@ -143,6 +147,7 @@ final class KTK_Private_Engine_Abandonment_Inspection
             // The separately compiled reader cannot create a missing lock or
             // transaction directory, even if either disappears after census.
             $transaction=new KTK_Read_Only_Private_Engine($root.'/source',$root.'/target',$root.'/engine',$originalPlan,fn()=>$this->privatePlanGuard());
+            $this->heldEngine=$transaction;
             try{
                 if($phase==='unprepared'){
                     $view=$transaction->inspectPreparation();

@@ -21,7 +21,15 @@ BRANCH = r'''
   $config=array('publicRoot'=>$c['packet']['publicRoot'],'plan'=>$c['packet']['plan'],'sizes'=>$c['sizes'],'overrides'=>$c['overrides'],'ownershipKey'=>$c['packet']['ownershipKey'],'originalHelperSha256'=>$c['packet']['helperSha256'],'originalManifestSha256'=>$c['inspectionManifest'],'freshProtectedStateSha256'=>$c['inspectionWitness']);
   $inspector=new KTK_Private_Engine_Abandonment_Inspection($config,$fresh);
   $store=new KTK_Content_Update_Private_Store(dirname($c['packet']['publicRoot']).'/.ktk-content-update-'.$c['packet']['plan']['transactionId'],$c['packet']['publicRoot'],$c['packet']['plan']['transactionId'],$c['packet']['ownershipKey']);
-  $result=$inspector->inspect($store);echo json_encode(array('ok'=>true,'inspection'=>$result),JSON_THROW_ON_ERROR);exit;
+  $result=$inspector->inspect($store);$lifetime=false;
+  if(!empty($c['inspectionVerifyHeldEngineLock'])){
+   $root=$store->privateRoot();$original=json_decode($store->read('controller-plan.json'),true,64,JSON_THROW_ON_ERROR)['enginePlan'];
+   try{$other=new KTK_Read_Only_Private_Engine($root.'/source',$root.'/target',$root.'/engine',$original,static fn()=>$original['protectedStateSha256']);unset($other);throw new RuntimeException('Inspector released its lock before its caller completed');}
+   catch(RuntimeException $e){if($e->getMessage()!=='Existing read-only engine lock cannot be held'){throw $e;}}
+   $inspector->releaseEngineLock();unset($inspector);
+   $other=new KTK_Read_Only_Private_Engine($root.'/source',$root.'/target',$root.'/engine',$original,static fn()=>$original['protectedStateSha256']);unset($other);$lifetime=true;
+  }
+  echo json_encode(array('ok'=>true,'inspection'=>$result,'engineLockLifetimeVerified'=>$lifetime),JSON_THROW_ON_ERROR);exit;
  }
 '''
 
@@ -102,6 +110,7 @@ class PrivateEngineAbandonmentInspectionTests(unittest.TestCase):
         before_public = self.files(self.case.root/'public_html')
         result = self.case.case.call(self.case.root,self.case.driver,self.case.cfg)
         self.assertIs(result['ok'], success, result)
+        if changes.get('inspectionVerifyHeldEngineLock'):self.assertTrue(result['engineLockLifetimeVerified'])
         self.assertEqual(self.files(self.case.private), before_private)
         self.assertEqual(self.files(self.case.root/'public_html'), before_public)
         if success:
@@ -160,6 +169,10 @@ class PrivateEngineAbandonmentInspectionTests(unittest.TestCase):
         self.assertFalse(view['originalProtectedStateStillExact'])
         self.assertFalse(view['originalRollbackAcknowledged'])
         self.assertEqual(self.case.cfg['rows']['options'][-1]['option_value'], 'new-preserved-value')
+
+    def test_engine_lock_is_retained_through_caller_until_explicit_release(self):
+        self.prepared()
+        self.assertEqual(self.inspect(inspectionVerifyHeldEngineLock=True)['phase'],'prepared')
 
     def test_partly_applied_engine_is_read_only_under_fresh_witness(self):
         self.prepared()
