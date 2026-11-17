@@ -19,6 +19,7 @@ final class KTK_Private_Engine_Abandonment_Inspection
         if(is_link($path)||!is_dir($path)||str_replace('\\','/',(string)realpath($path))!==$path){throw new RuntimeException('Canonical existing private directory required');}
     }
     public function releaseEngineLock(): void { $this->heldEngine=null; }
+    public function borrowEngineLock() { return $this->heldEngine===null?null:$this->heldEngine->borrowReadOnlyEngineLock(); }
     public function __destruct() { $this->releaseEngineLock(); }
     public function __construct(array $config,callable $freshCapture)
     {

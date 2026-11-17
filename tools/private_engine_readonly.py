@@ -25,7 +25,14 @@ def read_only_source(source=None):
     directory_before = b"        if (!is_dir($directory) && !mkdir($directory, 0700)) { throw new RuntimeException('Cannot create private transaction directory'); }"
     directory_after = b"        if (!is_dir($directory)) { throw new RuntimeException('Existing private transaction directory required for read-only inspection'); }"
     changes = [
-        (b'final class KTK_Active_Content_Transaction\n', b'final class KTK_Read_Only_Private_Engine\n'),
+        (b'final class KTK_Active_Content_Transaction\n{', b"""final class KTK_Read_Only_Private_Engine
+{
+    public function borrowReadOnlyEngineLock()
+    {
+        if(!is_resource($this->lock)){throw new RuntimeException('Existing held read-only engine lock required');}
+        return $this->lock;
+    }
+"""),
         (lock_before, lock_after), (directory_before, directory_after),
     ]
     methods = [
