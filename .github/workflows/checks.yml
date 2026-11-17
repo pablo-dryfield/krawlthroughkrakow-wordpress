@@ -194,7 +194,7 @@ jobs:
       - name: Full streamed inventory, inspected cuts, archives, private apply and rollback
         run: |
           php --version
-          python tools/verify-full-private-engine-fixture.py --application-commit 93aa88a19a3956788e80fe7e9c7c16bb986b980f --report docs/seo/full-private-engine-2026-11-16/ci-full-shape.json
+          python tools/verify-full-private-engine-fixture.py --application-commit 029eb40e30d25c12630941a64bce799ff5de8e99 --report docs/seo/full-private-engine-2026-11-16/ci-full-shape.json
 
   windows_recovery:
     name: Windows Recovery Contracts
