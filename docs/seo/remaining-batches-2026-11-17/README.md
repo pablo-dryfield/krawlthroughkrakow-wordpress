@@ -1,6 +1,6 @@
 # Visible remaining batch list — 17 November 2026
 
-Current progress checkpoint: seven implementation batches remain: B02 in verification, B03 in progress and five planned. B01 is genuinely complete after accepted final/main CI, source/archive retention and exact completed-reference cleanup. All eight stable IDs remain visible; all39 open workstreams, all40 statuses and68 verified website deliveries remain unchanged. The original UI delivery checkpoints below describe their recorded source versions; current batch states come from the maintained model.
+Current progress checkpoint: six implementation batches remain: B03 in progress and B04-B08 planned. B01 and B02 are complete after accepted final/main CI, source/archive retention and exact completed-reference cleanup. All eight stable IDs remain visible; all39 open workstreams, all40 ticket states and68 verified website deliveries remain unchanged. The original UI checkpoints below describe their recorded source versions; current batch states come from the maintained model.
 
 The owner could see active deliveries in the HTML roadmap but could not see a finite list of the work still planned. The Overview now starts with all eight numbered implementation batches: two in verification and six planned. Each title, status and scope is visible without expanding delivery history. Native details expose the next step, completion criteria, related workstreams and dependencies.
 

@@ -63,6 +63,9 @@ class RoadmapTests(unittest.TestCase):
         row['verifiedOn'] = '2099-01-01'
         with self.assertRaises(ValueError): module.remaining_model(data)
         row['verifiedOn'] = data['updatedOn']
+        row.pop('evidence', None)
+        with self.assertRaises(ValueError): module.remaining_model(data)
+        row['evidence'] = 'https://example.invalid/verified-batch-fixture'
         after = module.remaining_model(data)
         self.assertEqual(after['remaining'], before['remaining'] - 1)
         self.assertEqual(after['counts']['complete'], before['counts']['complete'] + 1)
