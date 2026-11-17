@@ -85,6 +85,8 @@ jobs:
         run: node --test tools/tests/test_memorial_phone_text_styles.mjs
       - name: Historical guide text and original image geometry contracts
         run: node --test tools/tests/test_guide_type_image_styles.mjs
+      - name: Reviewed venue phone text generation contracts
+        run: node --test tools/tests/test_venue_phone_text_styles.mjs
       - name: Contact directions and offer source contracts
         run: node --test tools/tests/test_contact_details.mjs
       - name: Read-only query and landing-page reporting contracts
