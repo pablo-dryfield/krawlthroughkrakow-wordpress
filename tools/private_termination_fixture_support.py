@@ -34,6 +34,12 @@ def helper_observation(value):
     elif scope=='fenced-private-engine-readonly-inspection':
         require(operation!='inspect' and type(state.get('remainingPayloadFiles')) is int and state['remainingPayloadFiles']>=0,'invalid-fenced-helper-observation')
         metrics['remainingPayloadFiles']=state['remainingPayloadFiles']
+    elif scope=='private-engine-fence-write-receipt':
+        before=state.get('preMutationInspection')
+        require(operation=='fence' and state.get('preMutationCensusVerified') is True and state.get('postMutationCensusVerified') is False and state.get('freshInspectionRequiredBeforeCleanup') is True and state.get('signedClosureComplete') is True and state.get('readOnly') is False,'invalid-fence-write-receipt-observation')
+        require(not any(name in state for name in ('remainingPayloadFiles','remainingPayloadBytes','files','directories')),'fence-receipt-cannot-claim-post-census')
+        require(isinstance(before,dict) and before.get('scope')=='fenced-private-engine-readonly-inspection' and type(before.get('remainingPayloadFiles')) is int and before['remainingPayloadFiles']>=0,'invalid-fence-pre-mutation-observation')
+        metrics.update(preMutationPayloadFiles=before['remainingPayloadFiles'],postMutationCensusVerified=False,freshInspectionRequiredBeforeCleanup=True)
     else:raise FixtureRefusal('unknown-helper-observation-scope')
     return metrics
 

@@ -12,7 +12,7 @@ from tools.tests import test_private_engine_fenced_inspection as prior
 BRANCH=r'''
  if($c['operation']==='termination-controller'){
   $captures=0;$clock=$c['terminationNow'];$afterClaimCapture=-1;
-  $captureCurrent=static function()use($capture,&$captures,&$clock,&$afterClaimCapture,$c){$captures++;$v=$capture();if($afterClaimCapture>=0){$afterClaimCapture++;if($c['terminationFault']==='expiry-during-final-capture'&&$afterClaimCapture===5){$clock=$c['terminationConfig']['authority']['expires'];}}return array('ownedContentFiles'=>$v['ownedContentFiles'],'protectedStateSha256'=>$v['protectedStateSha256']);};
+  $captureCurrent=static function()use($capture,&$captures,&$clock,&$afterClaimCapture,$c){$captures++;$v=$capture();if($afterClaimCapture>=0){$afterClaimCapture++;if(($c['terminationFault']==='expiry-during-final-capture'&&$afterClaimCapture===5)||($c['terminationFault']==='expiry-during-postwrite-capture'&&$afterClaimCapture===6)){$clock=$c['terminationConfig']['authority']['expires'];}}return array('ownedContentFiles'=>$v['ownedContentFiles'],'protectedStateSha256'=>$v['protectedStateSha256']);};
   $observer=static function($event,$path,$blob=null)use($c,&$clock,&$afterClaimCapture){
    if($event==='after-private-claim-mkdir'&&$c['terminationFault']==='claim-directory'){exit(83);}
    if($event==='after-temporary-open'&&$c['terminationFault']==='closure-prefix'&&str_contains($path,'closed.json')){file_put_contents($path,substr($blob,0,23));exit(84);}
@@ -20,6 +20,8 @@ BRANCH=r'''
    if($event==='after-record-rename'&&$c['terminationFault']==='closure-reply'&&str_contains($path,'closed.json')){exit(86);}
    if($event==='after-private-claim-synced'){$afterClaimCapture=0;}
    if($event==='after-private-claim-synced'&&$c['terminationFault']==='expire-after-claim'){$clock=$c['terminationConfig']['authority']['expires'];}
+   if($event==='after-private-claim-synced'&&$c['terminationFault']==='private-added-after-claim'){$root=dirname($c['terminationConfig']['initial']['publicRoot']).'/.ktk-content-update-'.$c['terminationConfig']['authority']['transactionId'];file_put_contents($root.'/unknown-after-claim.txt','preserved injected member');}
+   if($event==='after-record-rename'&&$c['terminationFault']==='corrupt-closure-readback'&&str_contains($path,'closed.json')){file_put_contents($path,'preserved corrupted closure');}
   };
   try{$ctl=new KTK_Private_Engine_Termination($c['terminationConfig'],$captureCurrent,$observer,static function()use(&$clock){return $clock;});$result=$ctl->run($c['terminationRaw'],$c['terminationMethod'],$c['terminationHost'],$c['terminationToken'],$c['terminationNow']);echo json_encode(array('ok'=>true,'value'=>$result,'captures'=>$captures),JSON_THROW_ON_ERROR);}
   catch(Throwable $e){echo json_encode(array('ok'=>false,'message'=>$e->getMessage(),'captures'=>$captures),JSON_THROW_ON_ERROR);}
@@ -70,6 +72,7 @@ class PrivateEngineTerminationControllerTests(unittest.TestCase):
         before_public=self.fixture.native.files(self.case.root/'public_html');before_private=self.fixture.native.files(self.case.private);out=self.case.case.call(self.case.root,self.case.driver,self.case.cfg,exit_code=exit_code);self.assertEqual(self.fixture.native.files(self.case.root/'public_html'),before_public)
         if exit_code:return
         self.assertIs(out['ok'],success,out)
+        self.last_captures=out['captures']
         if success:
             result=out['value'];self.assertFalse(result['fullHostTransactionAcceptance'])
             for n in ('payloadDeletes','applicationWrites','databaseWrites','cachePurges','productionOperations'):self.assertEqual(result[n],0)
@@ -82,11 +85,39 @@ class PrivateEngineTerminationControllerTests(unittest.TestCase):
     def observe(self,predecessor):
         value=self.later('inspect-fenced',predecessor);result=self.call(value,predecessor=predecessor);return value,result
 
+    def injected_fence(self,fault):
+        value=self.fence;cfg=self.config(value);self.case.cfg.update(operation='termination-controller',terminationConfig=cfg,terminationRaw=factory.request(value,'fence').decode(),terminationMethod='POST',terminationHost='krawlthroughkrakow.com',terminationToken=value['token'],terminationNow=int(time.time()),terminationFault=fault)
+        before_public=self.fixture.native.files(self.case.root/'public_html');self.injected_private_before=self.fixture.native.files(self.case.private)
+        out=self.case.case.call(self.case.root,self.case.driver,self.case.cfg);self.assertEqual(self.fixture.native.files(self.case.root/'public_html'),before_public);return out
+
+    def test_unknown_private_member_refuses_before_claim_and_preserves_every_file(self):
+        self.configure();path=self.case.private/'unknown-before-claim.txt';path.write_bytes(b'preserved unknown bytes');self.call(self.fence,success=False);self.assertFalse(self.marker(self.fence).exists());self.assertFalse((self.case.private/'control/closed.json').exists());self.assertEqual(path.read_bytes(),b'preserved unknown bytes')
+
+    def test_postclaim_private_change_refuses_closure_but_keeps_consumed_context(self):
+        self.configure();out=self.injected_fence('private-added-after-claim');self.assertFalse(out['ok']);self.assertTrue(self.marker(self.fence).exists());self.assertFalse((self.case.private/'control/closed.json').exists());after=self.fixture.native.files(self.case.private);self.assertEqual(after,{**self.injected_private_before,'unknown-after-claim.txt':backup.sha(b'preserved injected member')})
+
+    def test_postwrite_expiry_returns_no_success_and_requires_new_inspection(self):
+        self.configure();out=self.injected_fence('expiry-during-postwrite-capture');self.assertFalse(out['ok']);self.assertIn('lifetime ended',out['message']);self.assertTrue(self.marker(self.fence).exists());self.assertEqual((self.case.private/'control/closed.json').read_bytes(),self.fixture.closure)
+        after=self.fixture.native.files(self.case.private);self.assertEqual(set(after)-set(self.injected_private_before),{'control/closed.json'})
+        for name,digest in self.injected_private_before.items():self.assertEqual(after[name],digest)
+        view,result=self.observe(self.fence);self.assertTrue(result['state']['signedClosureComplete'])
+
+    def test_changed_closure_readback_is_preserved_without_success_or_payload_deletion(self):
+        self.configure();out=self.injected_fence('corrupt-closure-readback');self.assertFalse(out['ok']);self.assertTrue(self.marker(self.fence).exists());self.assertEqual((self.case.private/'control/closed.json').read_bytes(),b'preserved corrupted closure')
+        after=self.fixture.native.files(self.case.private);self.assertEqual(set(after)-set(self.injected_private_before),{'control/closed.json'})
+        for name,digest in self.injected_private_before.items():self.assertEqual(after[name],digest)
+
+    def test_write_receipt_digest_cannot_replace_fresh_cleanup_census(self):
+        self.configure();receipt=self.call(self.fence)['state'];view,observed=self.observe(self.fence);self.assertNotEqual(receipt['stateSha256'],observed['state']['stateSha256']);cleanup=self.later('cleanup',view);self.call(cleanup,'cleanup-payload',view,receipt['stateSha256'],success=False);self.assertFalse(self.marker(cleanup).exists())
+
     def test_initial_and_fenced_readonly_modes_create_no_claim_or_closure(self):
         self.configure();initial=self.call(self.binding.inspection_packet);self.assertTrue(initial['state']['readOnly']);self.assertFalse(self.marker(self.binding.inspection_packet).exists());view,result=self.observe(self.fence);self.assertEqual(result['state']['closureState'],'absent');self.assertFalse(self.marker(view).exists());self.assertFalse((self.case.private/'control/closed.json').exists())
 
     def test_fence_writes_only_expected_signed_closure_and_one_private_claim(self):
-        self.configure();result=self.call(self.fence);self.assertEqual(result['closureWrites'],1);self.assertTrue(result['initialNativeInspectionVerified']);self.assertTrue(result['state']['signedClosureComplete']);self.assertEqual((self.case.private/'control/closed.json').read_bytes(),self.fixture.closure);raw=(self.marker(self.fence)/'claim.json').read_bytes();self.assertNotIn(self.fence['token'].encode(),raw);self.assertNotIn(self.binding.old['ownershipKey'].encode(),raw)
+        self.configure();result=self.call(self.fence);self.assertEqual(result['closureWrites'],1);self.assertFalse(result['initialNativeInspectionVerified']);self.assertTrue(result['state']['signedClosureComplete']);self.assertEqual((self.case.private/'control/closed.json').read_bytes(),self.fixture.closure);raw=(self.marker(self.fence)/'claim.json').read_bytes();self.assertNotIn(self.fence['token'].encode(),raw);self.assertNotIn(self.binding.old['ownershipKey'].encode(),raw)
+        state=result['state'];self.assertEqual(state['scope'],'private-engine-fence-write-receipt');self.assertTrue(state['preMutationCensusVerified']);self.assertFalse(state['postMutationCensusVerified']);self.assertTrue(state['freshInspectionRequiredBeforeCleanup']);self.assertEqual(self.last_captures,11)
+        self.assertEqual(state['preMutationInspection']['scope'],'fenced-private-engine-readonly-inspection');self.assertFalse(state['preMutationInspection']['signedClosureComplete']);self.assertNotIn('remainingPayloadFiles',state);self.assertNotIn('files',state)
+        view,observed=self.observe(self.fence);self.assertTrue(observed['state']['signedClosureComplete']);self.assertEqual(observed['state']['scope'],'fenced-private-engine-readonly-inspection')
 
     def test_accepted_original_rolledback_closure_is_not_rewritten(self):
         self.configure(closed=True);before=(self.case.private/'control/closed.json').read_bytes();result=self.call(self.fence);self.assertEqual(result['closureWrites'],0);self.assertEqual(result['state']['closureState'],'original-rolled-back');self.assertEqual((self.case.private/'control/closed.json').read_bytes(),before)

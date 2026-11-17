@@ -53,6 +53,18 @@ final class KTK_Private_Engine_Termination
         $observer=$this->observer===null?null:function($event,$path){($this->observer)($event,$path,null);};
         $claim=new KTK_Private_Engine_Termination_Claim($c,$store,function(){$this->fresh();return true;},$observer);return $claim->consume($method,$host,$token,$this->currentTime());
     }
+    private function fenceReceipt(KTK_Content_Update_Private_Store $store,KTK_Private_Engine_Fenced_Inspection $reader,array $before,int $writes): array
+    {
+        $a=$this->config['authority'];$reader->assertHeldEngineLock($store);$this->currentTime();
+        if(($before['scope']??null)!=='fenced-private-engine-readonly-inspection'||($before['initialInspectionStateSha256']??null)!==$a['inspectionStateSha256']||($before['freshWitnessVerified']??null)!==true||($before['originalExecutionHelperAbsent']??null)!==true){throw new RuntimeException('Exact current pre-mutation archived census required');}
+        $parts=explode("\n",base64_decode($this->config['fenced']['closureBlob'],true),3);$closed=$store->read('closed.json');$descriptor=$store->recordDescriptor('closed.json');
+        if($closed!==$parts[2]||$descriptor['sha256']!==$a['closureSha256']){throw new RuntimeException('Exact signed closure readback required; preserve consumed context');}
+        $old=$this->config['initial']['publicRoot'].'/staging/wp-content/mu-plugins/ktk-transaction-rehearsal-'.$a['transactionId'].'.php';
+        if(file_exists($old)||is_link($old)){throw new RuntimeException('Original execution helper must remain absent after fencing');}
+        $reader->assertHeldEngineLock($store);$this->currentTime();
+        $receipt=array('schemaVersion'=>1,'scope'=>'private-engine-fence-write-receipt','transactionId'=>$a['transactionId'],'applicationCommit'=>$a['applicationCommit'],'rootBinding'=>$store->rootBinding(),'fenceOperationId'=>$a['fenceOperationId'],'closureSha256'=>$a['closureSha256'],'closureState'=>$before['closureState']==='original-rolled-back'?'original-rolled-back':'complete','signedClosureComplete'=>true,'preMutationCensusVerified'=>true,'preMutationInspection'=>$before,'postMutationCensusVerified'=>false,'freshInspectionRequiredBeforeCleanup'=>true,'freshProtectedStateSha256'=>$a['freshProtectedStateSha256'],'freshPublicOwnedSha256'=>$a['freshPublicOwnedSha256'],'freshWitnessVerified'=>true,'readOnly'=>false,'closureWrites'=>$writes,'payloadDeletes'=>0,'applicationWrites'=>0,'databaseWrites'=>0,'cachePurges'=>0,'productionOperations'=>0);
+        $receipt['stateSha256']=self::sha($receipt);return $receipt;
+    }
     public function run(string $raw,string $method,string $host,string $token,int $now): array
     {
         $a=$this->config['authority'];
@@ -64,10 +76,9 @@ final class KTK_Private_Engine_Termination
         if($a['operation']==='cleanup'&&!self::digest($r['stateSha256'])){throw new RuntimeException('Exact freshly inspected remaining state required');}
         $this->fresh();$i=$this->config['initial'];$root=dirname($i['publicRoot']).'/.ktk-content-update-'.$a['transactionId'];$store=new KTK_Content_Update_Private_Store($root,$i['publicRoot'],$a['transactionId'],$i['ownershipKey'],$this->observer);$owner=null;$reader=null;$claim=null;$writes=0;$deleted=0;$removed=0;$initialVerified=false;
         try{
-            if(in_array($a['operation'],array('inspect','fence'),true)){
+            if($a['operation']==='inspect'){
                 $owner=new KTK_Private_Engine_Abandonment_Inspection($i,fn()=>$this->fresh());$initial=$owner->inspect($store);
-                if($a['operation']==='inspect'){$state=$initial;$initialVerified=true;}
-                else{if(!hash_equals($initial['stateSha256'],$a['inspectionStateSha256'])){throw new RuntimeException('Initial native census changed before fencing');}$initialVerified=true;}
+                $state=$initial;$initialVerified=true;
             }
             if($a['operation']!=='inspect'){
                 $reader=new KTK_Private_Engine_Fenced_Inspection($this->config['fenced'],fn()=>$this->fresh(),$owner);$state=$reader->inspect($store);
@@ -83,7 +94,13 @@ final class KTK_Private_Engine_Termination
                     if($existing===null){$this->currentTime();$store->writeOnce('closed.json',$parts[2]);$writes=1;}
                     elseif($existing!==$parts[2]){throw new RuntimeException('Accepted original closure must remain exact');}
                     $descriptor=$store->recordDescriptor('closed.json');if($descriptor['sha256']!==$a['closureSha256']){throw new RuntimeException('Signed closure bytes differ after write');}
-                    $state=$reader->inspect($store);if(!$state['signedClosureComplete']){throw new RuntimeException('Closure reply uncertain; use a new witnessed context');}
+                    if($a['operation']==='fence'){
+                        // Both complete archived censuses above precede the only closure write.
+                        // Return its signed readback, never an invented post-write payload census.
+                        $state=$this->fenceReceipt($store,$reader,$latest,$writes);
+                    }else{
+                        $state=$reader->inspect($store);if(!$state['signedClosureComplete']){throw new RuntimeException('Closure reply uncertain; use a new witnessed context');}
+                    }
                     }
                 }
             }
