@@ -65,13 +65,14 @@ jobs:
       - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: '3.12'
-      - name: Verify reviewed inputs and run native phase matrix in synthetic PHP only
+      - name: Verify reviewed inputs, native unit contracts and phase matrix in synthetic PHP only
         env:
           REVIEWED_PHASE_COMMIT: ${{ github.event.pull_request.head.sha || inputs.source_commit }}
         run: |
           php --version
           python - <<'PY'
-          import hashlib,importlib.util,os,subprocess
+          import hashlib,importlib.util,json,os,subprocess,unittest
+          from datetime import datetime,timezone
           from pathlib import Path
           from tools import private_termination_fixture_support as support
           root=Path.cwd()
@@ -84,6 +85,15 @@ jobs:
           if subprocess.check_output(['git','show',commit+':'+workflow])!=raw:raise RuntimeError('Workflow source differs from reviewed commit')
           print('KTK_PHASE_WORKFLOW_SHA256='+hashlib.sha256(raw).hexdigest())
           print('KTK_PHASE_INPUT_COUNT='+str(len(inputs)))
+          names=['tools.tests.test_private_engine_termination_controller','tools.tests.test_private_engine_fenced_inspection','tools.tests.test_private_engine_termination_helper','tools.tests.test_private_termination_fixture_support']
+          suite=unittest.defaultTestLoader.loadTestsFromNames(names);expected=suite.countTestCases()
+          if expected<1:raise RuntimeError('Nonempty complete native contract selection required')
+          started=datetime.now(timezone.utc).isoformat();result=unittest.TextTestRunner(verbosity=2).run(suite)
+          output=root/'docs/seo/private-engine-phases-2026-11-17/ci-native-units.json';output.parent.mkdir(parents=True,exist_ok=True)
+          output.write_text(json.dumps({'scope':'Offline synthetic native contracts; not repository security clearance or hosting acceptance','startedAt':started,'finishedAt':datetime.now(timezone.utc).isoformat(),'reviewedSource':commit,'sourceHashes':inputs,'selectedModules':names,'selectedCases':expected,'testsRun':result.testsRun,'skipped':len(result.skipped),'failures':len(result.failures),'errors':len(result.errors),'successful':result.wasSuccessful()},indent=2)+'\n',encoding='utf-8')
+          if not result.wasSuccessful() or result.skipped or result.testsRun!=expected:raise RuntimeError('Every selected native contract must pass without skips')
+          support.verify_reviewed_sources(root,commit,inputs)
+          if subprocess.check_output(['git','status','--porcelain']):raise RuntimeError('Native contract source changed')
           PY
           python tools/verify-early-termination-phases.py --report docs/seo/private-engine-phases-2026-11-17/ci-native-phases.json
       - name: Retain scoped native phase evidence and pre-start source fingerprints
@@ -92,6 +102,7 @@ jobs:
         with:
           name: early-termination-phases-${{ github.run_id }}-${{ github.run_attempt }}
           path: |
+            docs/seo/private-engine-phases-2026-11-17/ci-native-units.json
             docs/seo/private-engine-phases-2026-11-17/ci-native-phases.json
           if-no-files-found: error
           include-hidden-files: false

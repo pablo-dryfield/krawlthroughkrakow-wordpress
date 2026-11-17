@@ -24,6 +24,12 @@ class PrivateTerminationFixtureSupportTests(unittest.TestCase):
         value=self.observation('cleanup',state);value['body']['controller']['databaseWrites']=1
         with self.assertRaisesRegex(support.FixtureRefusal,'unexpected-helper-observation-write-counter'):support.helper_observation(value)
 
+    def test_fence_write_receipt_keeps_pre_census_separate_and_rejects_post_census_claims(self):
+        state={'scope':'private-engine-fence-write-receipt','preMutationCensusVerified':True,'postMutationCensusVerified':False,'freshInspectionRequiredBeforeCleanup':True,'signedClosureComplete':True,'readOnly':False,'preMutationInspection':{'scope':'fenced-private-engine-readonly-inspection','remainingPayloadFiles':4149}}
+        metrics=support.helper_observation(self.observation('fence',state));self.assertEqual(metrics['preMutationPayloadFiles'],4149);self.assertFalse(metrics['postMutationCensusVerified']);self.assertNotIn('remainingPayloadFiles',metrics)
+        for operation,changes in [('cleanup',{}),('inspect-fenced',{}),('fence',{'postMutationCensusVerified':True}),('fence',{'remainingPayloadFiles':4149}),('fence',{'files':{}}),('fence',{'readOnly':True}),('fence',{'preMutationInspection':{'scope':'fenced-private-engine-readonly-inspection','remainingPayloadFiles':True}})]:
+            with self.subTest(operation=operation,changes=changes),self.assertRaises(support.FixtureRefusal):support.helper_observation(self.observation(operation,{**state,**changes}))
+
     def test_exact_synthetic_reply_is_retained_before_decoding_and_never_overwritten(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory).resolve();raw='not JSON: synthetic failed reply \u00f3'

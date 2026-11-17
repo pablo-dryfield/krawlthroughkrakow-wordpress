@@ -12,9 +12,10 @@ from tools import full_private_engine_client as client_module
 from tools import private_engine_termination_helper as compiler
 from tools import private_termination_fixture_support as support
 from tools.tests import test_private_engine_termination_helper as native
+from tools.tests import test_private_termination_fixture_support as observation_tests
 
-APP='029eb40e30d25c12630941a64bce799ff5de8e99'
-PUBLIC_BYTES=550632821;PRIVATE_BYTES=1101091218
+APP='530cafdf05b50197aa9ad9993ca66021b716c1e6'
+PUBLIC_BYTES=550633349;PRIVATE_BYTES=1101091746
 OBSERVATION_SECONDS=600  # Local subprocess observation, never a hosted timeout change.
 HTTP_BUDGET_SECONDS=60;MEMORY='256M'  # Existing local PHP fixture; not a hosting guarantee.
 BRIDGE=native.protocol.prior.bound.native.bridge
@@ -28,7 +29,7 @@ def source_fingerprints():
     spec=importlib.util.spec_from_file_location('ktk_termination_full_source_inputs',ROOT/'tools/verify-full-private-engine-fixture.py')
     prior=importlib.util.module_from_spec(spec);spec.loader.exec_module(prior)
     result={**prior.source_fingerprints(),**compiler.source_hashes()}
-    for module in (native,native.protocol,native.protocol.prior,native.protocol.prior.bound,native.protocol.prior.bound.native,BRIDGE,native.OLD,support):
+    for module in (native,native.protocol,native.protocol.prior,native.protocol.prior.bound,native.protocol.prior.bound.native,BRIDGE,native.OLD,support,observation_tests):
         path=Path(module.__file__);result[path.relative_to(ROOT).as_posix()]=support.digest(path)
     result[Path(__file__).relative_to(ROOT).as_posix()]=support.digest(__file__)
     return dict(sorted(result.items()))
