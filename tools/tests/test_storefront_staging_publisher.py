@@ -45,13 +45,59 @@ class PublicPublisherTests(unittest.TestCase):
     def test_backup_preserves_previous_bytes_and_tracks_new_files(self):
         existing={'ktk-storefront.php':b'old entrypoint'}
         with tempfile.TemporaryDirectory() as directory,patch.object(module,'ROOT',Path(directory)):
-            (Path(directory)/'deploy-backups').mkdir()
             checkpoint=module.backup(existing,{'owned':{}})
             with zipfile.ZipFile(checkpoint) as archive:
                 self.assertEqual(archive.read('ktk-storefront.php'),b'old entrypoint')
                 manifest=json.loads(archive.read('release-manifest.json'))
                 self.assertEqual(manifest['remoteRoot'],module.REMOTE)
                 self.assertIn('includes/class-ktk-storefront-public-content.php',manifest['newFiles'])
+
+    def test_new_image_namespace_is_prepared_before_any_file_can_be_uploaded(self):
+        class FTP:
+            def __init__(self):
+                self.directories={module.REMOTE:{'assets':{'type':'dir'}},module.REMOTE+'/assets':{}}
+                self.created=[]
+            def mlsd(self,path):return list(self.directories[path].items())
+            def mkd(self,path):
+                parent,name=path.rsplit('/',1)
+                self.directories[parent][name]={'type':'dir'};self.directories[path]={};self.created.append(path)
+        ftp=FTP();expected=['assets/product-images']
+        self.assertEqual(module.prepare_image_directories(ftp),expected)
+        self.assertEqual(ftp.created,[module.REMOTE+'/'+name for name in expected])
+        self.assertEqual(module.prepare_image_directories(ftp),[])
+        self.assertEqual(ftp.directories[module.REMOTE+'/assets/product-images'],{})
+
+    def test_image_directory_file_and_symlink_collisions_refuse_without_writes(self):
+        for directory_type in ['file','OS.unix=slink','cdir']:
+            for parent,name in [(module.REMOTE+'/assets','product-images')]:
+                entries={module.REMOTE:[('assets',{'type':'dir'})],module.REMOTE+'/assets':[('product-images',{'type':'dir'})],parent:[(name,{'type':directory_type})]}
+                class FTP:
+                    def mlsd(self,path):return entries[path]
+                    def mkd(self,path):raise AssertionError('No creation allowed on a colliding namespace')
+                with self.subTest(directory_type=directory_type,parent=parent),self.assertRaises(RuntimeError):
+                    module.prepare_image_directories(FTP())
+
+    def test_missing_or_linked_original_assets_parent_refuses_without_creation(self):
+        for entries in [[],[('assets',{'type':'file'})],[('assets',{'type':'OS.unix=slink'})]]:
+            class FTP:
+                def mlsd(self,path):
+                    return entries
+                def mkd(self,path):raise AssertionError('Existing parent required before any creation')
+            with self.subTest(entries=entries),self.assertRaises(RuntimeError):
+                module.prepare_image_directories(FTP())
+
+    def test_directory_preparation_refusal_never_starts_activation_or_rollback(self):
+        files={'assets/storefront.js':b'new runtime'}
+        before={'owned':{module.PREFIX+'assets/storefront.js':module.sha(b'old runtime')}}
+        with tempfile.TemporaryDirectory() as directory,patch.object(module,'ROOT',Path(directory)),patch.object(module,'payload',return_value=files),patch.object(module,'FILES',tuple(files)),patch.object(module,'validate_qa'),patch.object(module,'baseline_hashes',return_value=before['owned']),patch.object(module,'snapshot',return_value=before),patch.object(module.common,'StagingFTP') as ftp,patch.object(module.common.store2,'read_tree',return_value={'assets/storefront.js':b'old runtime'}),patch.object(module.common,'retrieve_file',return_value=b'old runtime'),patch.object(module,'prepare_image_directories',side_effect=RuntimeError('directory refused')),patch.object(module.base,'atomic_upload') as upload,patch.object(module,'rollback') as rollback,patch('sys.argv',['publisher','--publish','--qa-report','qa.json','--report','result.json']):
+            (Path(directory)/'qa.json').write_text('{}')
+            with self.assertRaisesRegex(RuntimeError,'directory refused'):module.main()
+            upload.assert_not_called();rollback.assert_not_called();ftp.return_value.close.assert_called_once()
+            result=json.loads((Path(directory)/'result.json').read_text())
+            self.assertEqual(result['phase'],'backed-up');self.assertEqual(result['error'],'directory refused')
+            with zipfile.ZipFile(Path(directory)/result['backup']) as archive:
+                self.assertEqual(archive.read('assets/storefront.js'),b'old runtime')
+                self.assertIsNone(archive.testzip())
 
     def test_rollback_restores_dependents_before_removing_new_dependencies(self):
         events=[]

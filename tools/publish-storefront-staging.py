@@ -97,6 +97,7 @@ def protected_unchanged(before,after):
 
 def backup(existing,before):
     target=ROOT/'deploy-backups'/('storefront-public-staging-'+datetime.now(timezone.utc).strftime('%Y%m%d-%H%M%S-%f')+'.zip')
+    target.parent.mkdir(parents=True,exist_ok=True)
     manifest={'remoteRoot':REMOTE,'baseline':BASELINE,'before':before,'newFiles':[name for name in FILES if name not in existing],
               'files':{name:sha(value) for name,value in existing.items()}}
     with zipfile.ZipFile(target,'w',zipfile.ZIP_DEFLATED) as archive:
@@ -106,6 +107,25 @@ def backup(existing,before):
         for name,value in existing.items():
             if sha(archive.read(name))!=sha(value): raise RuntimeError('Backup verification failed')
     return target
+
+
+def prepare_image_directories(ftp):
+    # Only this declared staging dependency directory may be created.
+    # The original assets namespace must already be a directory, not a link.
+    root_entries=dict(ftp.mlsd(REMOTE))
+    if root_entries.get('assets',{}).get('type')!='dir':
+        raise RuntimeError('Existing staging assets directory required')
+    created=[]
+    for relative in ('assets/product-images',):
+        parent,name=relative.rsplit('/',1)
+        entries=dict(ftp.mlsd(REMOTE+'/'+parent))
+        if name not in entries:
+            ftp.mkd(REMOTE+'/'+relative)
+            created.append(relative)
+            entries=dict(ftp.mlsd(REMOTE+'/'+parent))
+        if entries.get(name,{}).get('type')!='dir':
+            raise RuntimeError('Reviewed image directory must not be a file or link: '+relative)
+    return created
 
 
 def ordered_files():
@@ -147,6 +167,9 @@ def main():
             if before['owned'][PREFIX+name]!=(sha(value) if value is not None else None): raise RuntimeError('Independent preflight inventory mismatch')
             if value is not None: existing[name]=value
         checkpoint=backup(existing,before);report.update(phase='backed-up',backup=str(checkpoint.relative_to(ROOT)),backupSha256=sha(checkpoint.read_bytes()))
+        # Finish namespace preparation before the first application-file write.
+        # If it refuses, no runtime dependent has changed or needs rollback.
+        report['imageDirectoriesCreated']=prepare_image_directories(ftp)
         try:
             for name in ordered_files():
                 if files[name]!=existing.get(name): base.atomic_upload(ftp,remote_path(name),files[name])
