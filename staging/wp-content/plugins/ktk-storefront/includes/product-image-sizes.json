@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 1,
+  "productId": 28,
+  "sizes": {
+    "stage": "(max-width: 760px) calc(100vw - 34px), (max-width: 1100px) calc(100vw - 66px), (max-width: 1504px) calc(95vw - 456px), (max-width: 1600px) calc(1048px - 5vw), 968px",
+    "thumbnail": "(max-width: 760px) calc((100vw - 50px) / 3), (max-width: 1100px) calc((100vw - 90px) / 3), (max-width: 1504px) calc((95vw - 480px) / 3), (max-width: 1600px) calc((1024px - 5vw) / 3), 314.667px"
+  },
+  "images": {
+    "https://media.krawlthroughkrakow.com/products/28/01-e2e9c1ac57e0.jpg": {
+      "width": 1440,
+      "height": 960,
+      "variants": [
+        {
+          "path": "product-images/pub-crawl-01-360-43b2aa0b8ac1.jpg",
+          "width": 360
+        },
+        {
+          "path": "product-images/pub-crawl-01-720-a5b60e592a46.jpg",
+          "width": 720
+        },
+        {
+          "path": "product-images/pub-crawl-01-1080-b44ce63703df.jpg",
+          "width": 1080
+        }
+      ]
+    },
+    "https://media.krawlthroughkrakow.com/products/28/02-bfca29e0a910.jpg": {
+      "width": 1500,
+      "height": 842,
+      "variants": [
+        {
+          "path": "product-images/pub-crawl-02-360-4961b5aa8971.jpg",
+          "width": 360
+        },
+        {
+          "path": "product-images/pub-crawl-02-720-faf677816ea3.jpg",
+          "width": 720
+        },
+        {
+          "path": "product-images/pub-crawl-02-1080-80e834ec61db.jpg",
+          "width": 1080
+        }
+      ]
+    },
+    "https://media.krawlthroughkrakow.com/products/28/03-a29f6fa70f31.jpg": {
+      "width": 1500,
+      "height": 842,
+      "variants": [
+        {
+          "path": "product-images/pub-crawl-03-360-1b7ea695f79b.jpg",
+          "width": 360
+        },
+        {
+          "path": "product-images/pub-crawl-03-720-c21e69476192.jpg",
+          "width": 720
+        },
+        {
+          "path": "product-images/pub-crawl-03-1080-4dd8f6804174.jpg",
+          "width": 1080
+        }
+      ]
+    },
+    "https://media.krawlthroughkrakow.com/products/28/04-6464975d9c00.jpg": {
+      "width": 1500,
+      "height": 842,
+      "variants": [
+        {
+          "path": "product-images/pub-crawl-04-360-82b767fb2f84.jpg",
+          "width": 360
+        },
+        {
+          "path": "product-images/pub-crawl-04-720-34de0d964155.jpg",
+          "width": 720
+        },
+        {
+          "path": "product-images/pub-crawl-04-1080-5737921b8fb7.jpg",
+          "width": 1080
+        }
+      ]
+    },
+    "https://media.krawlthroughkrakow.com/products/28/05-412d9fc0a63e.jpg": {
+      "width": 1500,
+      "height": 842,
+      "variants": [
+        {
+          "path": "product-images/pub-crawl-05-360-00efbe06618f.jpg",
+          "width": 360
+        },
+        {
+          "path": "product-images/pub-crawl-05-720-ac563c26efbb.jpg",
+          "width": 720
+        },
+        {
+          "path": "product-images/pub-crawl-05-1080-9b9c3b81136a.jpg",
+          "width": 1080
+        }
+      ]
+    },
+    "https://media.krawlthroughkrakow.com/products/28/07-97eb1d9cb507.jpg": {
+      "width": 1500,
+      "height": 1000,
+      "variants": [
+        {
+          "path": "product-images/pub-crawl-06-360-731e9d8fb4c3.jpg",
+          "width": 360
+        },
+        {
+          "path": "product-images/pub-crawl-06-720-ce7679f0622f.jpg",
+          "width": 720
+        },
+        {
+          "path": "product-images/pub-crawl-06-1080-055ce1db14f7.jpg",
+          "width": 1080
+        }
+      ]
+    },
+    "https://media.krawlthroughkrakow.com/products/28/pub-crawl-7f19fb00-ea82-4dff-b672-0614a6f8821f.webp": {
+      "width": 1800,
+      "height": 1010,
+      "variants": [
+        {
+          "path": "product-images/pub-crawl-07-360-2be54559d8ce.webp",
+          "width": 360
+        },
+        {
+          "path": "product-images/pub-crawl-07-720-4bf72ee2babd.webp",
+          "width": 720
+        },
+        {
+          "path": "product-images/pub-crawl-07-1080-5d94fb5fb14c.webp",
+          "width": 1080
+        }
+      ]
+    },
+    "https://media.krawlthroughkrakow.com/products/28/pub-crawl-c20bbe36-4d6e-4184-9377-4b935d0c1a68.webp": {
+      "width": 1800,
+      "height": 1200,
+      "variants": [
+        {
+          "path": "product-images/pub-crawl-08-360-762f669b296f.webp",
+          "width": 360
+        },
+        {
+          "path": "product-images/pub-crawl-08-720-1c25ffd8f7c9.webp",
+          "width": 720
+        },
+        {
+          "path": "product-images/pub-crawl-08-1080-a046ca4a3cbf.webp",
+          "width": 1080
+        }
+      ]
+    }
+  }
+}

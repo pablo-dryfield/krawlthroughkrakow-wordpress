@@ -11,6 +11,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
+IMAGE_SPEC=importlib.util.spec_from_file_location('storefront_image_payload',ROOT/'tools/storefront_image_payload.py')
+image_payload=importlib.util.module_from_spec(IMAGE_SPEC);IMAGE_SPEC.loader.exec_module(image_payload)
 SPEC=importlib.util.spec_from_file_location('seo_shared',ROOT/'tools/publish-seo-discovery.py')
 shared=importlib.util.module_from_spec(SPEC);SPEC.loader.exec_module(shared)
 base=shared.base;common=shared.common
@@ -18,7 +20,8 @@ LOCAL=ROOT/'staging/wp-content/plugins/ktk-storefront'
 REMOTE='/public_html/staging/wp-content/plugins/ktk-storefront'
 MU='/public_html/staging/wp-content/mu-plugins'
 PREFIX='../plugins/ktk-storefront/'
-FILES=tuple(sorted(common.store2.DEPLOY_FILES))
+BASE_FILES=tuple(sorted(common.store2.DEPLOY_FILES))
+FILES=tuple(sorted((*BASE_FILES,*image_payload.files())))
 BASELINE='dc22fa6c03734644ccde3f2ce725f2900151ff61'
 VERSION='2026.11.13.3'
 
@@ -32,13 +35,14 @@ def remote_path(name):
 
 
 def payload():
-    if len(FILES)!=12: raise RuntimeError('Reviewed 12-file public storefront scope required')
+    if len(BASE_FILES)!=12 or len(FILES)!=37: raise RuntimeError('Reviewed 12-file storefront plus 25-file photo scope required')
     files={name:(LOCAL/name).read_bytes() for name in FILES}
     for name,value in files.items():
         if name.endswith('.php'):
             result=subprocess.run(['php','-l'],input=value,capture_output=True)
             if result.returncode: raise RuntimeError('PHP syntax validation failed: '+name)
     json.loads(files['includes/product-content-fallbacks.json'])
+    image_payload.validate(files)
     return files
 
 
@@ -54,10 +58,10 @@ def baseline_hashes(previous_release=None):
     if previous_release:
         report=json.loads(previous_release.read_text())
         if (report.get('phase')!='complete' or report.get('stagingOnly') is not True or report.get('protectedUnchanged') is not True
-                or report.get('productionFilesUnchanged') is not True or set(report.get('expected',{}))!={PREFIX+name for name in FILES}
+                or report.get('productionFilesUnchanged') is not True or set(report.get('expected',{})) not in ({PREFIX+name for name in FILES},{PREFIX+name for name in BASE_FILES})
                 or report.get('after',{}).get('owned')!=report['expected']):
             raise RuntimeError('Previous baseline must be a verified matching staging-only release')
-        return report['expected']
+        return {PREFIX+name:report['expected'].get(PREFIX+name) for name in FILES}
     result={}
     for name in FILES:
         source=subprocess.run(['git','show',BASELINE+':staging/wp-content/plugins/ktk-storefront/'+name],cwd=ROOT,capture_output=True)
@@ -105,7 +109,7 @@ def backup(existing,before):
 
 
 def ordered_files():
-    dependencies=['includes/product-content-fallbacks.json','includes/class-ktk-storefront-public-content.php']
+    dependencies=['includes/product-content-fallbacks.json',image_payload.MANIFEST,'includes/class-ktk-storefront-public-content.php']
     return [name for name in FILES if name not in dependencies and not name.endswith('.php')]+dependencies+[
         'includes/class-ktk-storefront.php','templates/storefront.php','ktk-storefront.php']
 

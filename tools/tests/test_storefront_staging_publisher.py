@@ -13,9 +13,11 @@ module=importlib.util.module_from_spec(SPEC);SPEC.loader.exec_module(module)
 
 
 class PublicPublisherTests(unittest.TestCase):
-    def test_exact_local_payload_is_only_twelve_owned_plugin_files(self):
+    def test_exact_local_payload_is_twelve_owned_plugin_files_plus_reviewed_photos(self):
         files=module.payload()
-        self.assertEqual(len(files),12)
+        self.assertEqual(len(files),37)
+        self.assertEqual(len(module.BASE_FILES),12)
+        self.assertEqual(set(files)-set(module.BASE_FILES),set(module.image_payload.files()))
         self.assertTrue(all('/frontend/' not in name for name in files))
         for name in files: self.assertTrue(module.remote_path(name).startswith('/public_html/staging/wp-content/plugins/ktk-storefront/'))
         for bad in ['../wp-config.php','frontend/src/main.jsx','/public_html/robots.txt']:
@@ -27,6 +29,10 @@ class PublicPublisherTests(unittest.TestCase):
         self.assertLess(order.index('includes/product-content-fallbacks.json'),order.index('includes/class-ktk-storefront.php'))
         self.assertLess(order.index('includes/class-ktk-storefront-public-content.php'),order.index('includes/class-ktk-storefront.php'))
         self.assertLess(order.index('includes/class-ktk-storefront.php'),order.index('templates/storefront.php'))
+        for name in module.image_payload.files():
+            self.assertLess(order.index(name),order.index('includes/class-ktk-storefront-public-content.php'))
+        for name in module.image_payload.files()[1:]:
+            self.assertLess(order.index(name),order.index('assets/storefront.js'))
 
     def test_browser_proof_is_complete_fresh_and_bound_without_mutations(self):
         expected={'file':'sha'}
@@ -73,6 +79,25 @@ class PublicPublisherTests(unittest.TestCase):
             for field,value in [('phase','rolled-back'),('stagingOnly',False),('protectedUnchanged',False),('productionFilesUnchanged',False),('expected',{}),('after',{'owned':{}})]:
                 broken=copy.deepcopy(good);broken[field]=value;report.write_text(json.dumps(broken))
                 with self.subTest(field=field),self.assertRaises(RuntimeError):module.baseline_hashes(report)
+
+    def test_previous_twelve_file_release_adds_only_absent_reviewed_photo_paths(self):
+        expected={module.PREFIX+name:'reviewed-old-hash' for name in module.BASE_FILES}
+        good={'phase':'complete','stagingOnly':True,'protectedUnchanged':True,'productionFilesUnchanged':True,'expected':expected,'after':{'owned':expected}}
+        with tempfile.TemporaryDirectory() as directory:
+            report=Path(directory)/'previous.json';report.write_text(json.dumps(good))
+            result=module.baseline_hashes(report)
+            self.assertEqual({k:v for k,v in result.items() if v is not None},expected)
+            self.assertEqual({k for k,v in result.items() if v is None},{module.PREFIX+n for n in module.image_payload.files()})
+            bad=copy.deepcopy(good);bad['expected'][module.PREFIX+'unknown.jpg']='hash';bad['after']['owned']=bad['expected'];report.write_text(json.dumps(bad))
+            with self.assertRaises(RuntimeError):module.baseline_hashes(report)
+
+    def test_changed_image_and_incomplete_runtime_cohort_refuse_before_connection(self):
+        files=module.payload()
+        for name in module.image_payload.files()[1:]:
+            changed=dict(files);changed[name]=files[name]+b'changed'
+            with self.subTest(name=name),self.assertRaises(ValueError):module.image_payload.validate(changed)
+        changed=dict(files);manifest=json.loads(changed[module.image_payload.MANIFEST]);manifest['images'].pop(next(iter(manifest['images'])));changed[module.image_payload.MANIFEST]=json.dumps(manifest).encode()
+        with self.assertRaises(ValueError):module.image_payload.validate(changed)
 
     def test_followup_rollback_restores_the_previously_existing_public_class(self):
         events=[];name='includes/class-ktk-storefront-public-content.php'
