@@ -120,6 +120,12 @@ body.ktk-code-page #main-content p[data-ktk-archive-intro="2026-11-17.category-n
   body.ktk-code-page #main-content p[data-ktk-archive-intro="2026-11-17.category-navigation-1"] { padding-right: 24px; }
 }
 /* END Category archive navigation */
+/* BEGIN Homepage alias excerpts */
+body.ktk-code-page #main-content article.post-6403 p[data-ktk-homepage-excerpt="2026-11-17.homepage-alias-excerpts-1"] { font-size: 16px; line-height: 1.65; text-align: left; letter-spacing: 0; margin: 0; padding: 0; }
+@media (max-width: 600px) {
+  body.ktk-code-page #main-content article.post-6403 p[data-ktk-homepage-excerpt="2026-11-17.homepage-alias-excerpts-1"] { padding-right: 24px; }
+}
+/* END Homepage alias excerpts */
 /* BEGIN Hotel guide planning */
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) p { font-size: 16px; line-height: 1.65; }
