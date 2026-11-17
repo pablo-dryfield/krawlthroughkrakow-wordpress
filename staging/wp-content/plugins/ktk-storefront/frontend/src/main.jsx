@@ -83,6 +83,10 @@ function normalizeRoutePath(value) {
   return INVALID_ROUTE_PATHS.has(normalized.toLowerCase()) ? '' : normalized;
 }
 
+const publicResponsesEnabled = Boolean(document.getElementById('ktk-storefront-public-content'));
+const initialMissingProductPath = document.querySelector('#ktk-storefront-public-content [data-public-error="not-found"]')
+  ? normalizeRoutePath(config.path) || null : null;
+
 function getRoutePath() {
   const pathname = window.location.pathname.replace(/\/+$/, '');
   const basePath = new URL(config.baseUrl, window.location.origin).pathname.replace(/\/+$/, '');
@@ -232,6 +236,11 @@ async function requestJson(path, options = {}) {
   if (!response.ok) {
     const error = new Error(payload?.message || payload?.error?.message || 'Unable to complete the request.');
     error.status = response.status;
+    if (publicResponsesEnabled && typeof path === 'string' && path.startsWith('/products/') && (options.method ?? 'GET') === 'GET'
+      && response.status === 404 && payload?.code === 'ktk_storefront_api_error'
+      && payload?.data?.status === 404 && payload?.message === 'Product not found.') {
+      error.isProductNotFound = true;
+    }
     throw error;
   }
   if (payload === null) {
@@ -703,6 +712,18 @@ function Loading() {
   );
 }
 
+function ProductNotFound() {
+  const contactUrl = `${String(config.siteUrl || '/').replace(/\/+$/, '')}/contact/`;
+  return (
+    <main className="ktk-error ktk-public-not-found">
+      <h1>Experience not found</h1>
+      <p>We couldn't find the experience at this address. Browse our current experiences, or contact our local team if you need help with a link.</p>
+      <p><a className="ktk-not-found__link" href={publicStorefrontHref(config.baseUrl)}>Browse current experiences</a></p>
+      <p><a className="ktk-not-found__link" href={contactUrl}>Contact our local team</a></p>
+    </main>
+  );
+}
+
 function ErrorState({ message, retry }) {
   return (
     <section className="ktk-error">
@@ -1055,6 +1076,10 @@ function ProductDetail({ slug, navigate, addToCart, cart, contact, setContact })
     const controller = new AbortController();
     const productSlug = normalizeRoutePath(slug);
     setState({ loading: true, product: null, cancellationPolicy: null, error: '' });
+    if (initialMissingProductPath && productSlug === initialMissingProductPath) {
+      setState({ loading: false, product: null, cancellationPolicy: null, error: '' });
+      return () => controller.abort();
+    }
     if (!productSlug || productSlug.includes('/')) {
       setState({
         loading: false,
@@ -1085,6 +1110,7 @@ function ProductDetail({ slug, navigate, addToCart, cart, contact, setContact })
             product: null,
             cancellationPolicy: null,
             error: error.message,
+            missingPath: error.isProductNotFound === true ? productSlug : null,
           });
         }
       });
@@ -1150,6 +1176,7 @@ function ProductDetail({ slug, navigate, addToCart, cart, contact, setContact })
     return () => window.cancelAnimationFrame(frame);
   }, [state.loading, state.product, slug]);
 
+  if (state.missingPath === normalizeRoutePath(slug) || (initialMissingProductPath && normalizeRoutePath(slug) === initialMissingProductPath)) return <ProductNotFound />;
   if (state.loading) return <Loading />;
   if (state.error) return <ErrorState message={state.error} retry={() => setAttempt((value) => value + 1)} />;
 

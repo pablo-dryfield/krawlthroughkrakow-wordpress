@@ -78,12 +78,24 @@ final class KTK_Storefront_Public_Content {
 	}
 
 	public static function render( $data ) {
-		if ( ! is_array( $data ) || ! in_array( $data['kind'] ?? '', array( 'product','catalog' ), true ) ) { return ''; }
+		if ( ! is_array( $data ) || ! in_array( $data['kind'] ?? '', array( 'product','catalog','not-found' ), true ) ) { return ''; }
 		ob_start();
 		?><div id="ktk-storefront-public-content" class="ktk-app" data-public-content="<?php echo esc_attr( self::VERSION ); ?>"><?php
-		if ( 'product' === $data['kind'] ) { self::product( $data ); } else { self::catalog( $data['products'] ); }
+		if ( 'not-found' === $data['kind'] ) { self::not_found(); }
+		elseif ( 'product' === $data['kind'] ) { self::product( $data ); } else { self::catalog( $data['products'] ); }
 		?></div><?php
 		return ob_get_clean();
+	}
+
+	private static function not_found() {
+		?><main class="ktk-catalog ktk-public-catalog ktk-public-not-found" data-public-error="not-found">
+			<header class="ktk-public-catalog__heading">
+				<h1>Experience not found</h1>
+				<p>We couldn't find the experience at this address. Browse our current experiences, or contact our local team if you need help with a link.</p>
+				<p><a class="ktk-not-found__link" href="<?php echo esc_url( home_url( '/store2/' ) ); ?>">Browse current experiences</a></p>
+				<p><a class="ktk-not-found__link" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact our local team</a></p>
+			</header>
+		</main><?php
 	}
 
 	private static function price( $product ) {

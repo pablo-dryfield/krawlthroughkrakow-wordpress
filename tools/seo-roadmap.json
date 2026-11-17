@@ -3,9 +3,9 @@
   "updatedOn": "2026-11-17",
   "websiteProductionReleases": 1,
   "remainingWork": {
-    "revision": 5,
+    "revision": 6,
     "scope": "Staging work continues. A build dependency currently blocks further publication while a supported security fix and complete checks are awaited. Independent recovery verification continues. Production needs separate approval.",
-    "changeRule": "This is the current finite batch list, not a time estimate. Add or split a batch only with a recorded reason; keep owner/account gates and recurring work separate. Revision 5 starts B06 after reviewing 116 URLs and 39 archives and testing the category proposals locally; the original eight IDs and six remaining count are unchanged.",
+    "changeRule": "This is the current finite batch list, not a time estimate. Add or split a batch only with a recorded reason; keep owner/account gates and recurring work separate. Revision 6 starts B07 after local confirmed-missing-product checks and records the full-size cleanup failure; the original eight IDs and six remaining count are unchanged.",
     "batches": [
       {
         "id": "B01",
@@ -50,8 +50,8 @@
           "D07",
           "T10"
         ],
-        "summary": "Recovery changes pass 58 native CI unit cases and 16 interruption scenarios. Full inventory verification and the staging rehearsal remain; the earlier runtime failure is retained.",
-        "next": "Verify the current code and full website inventory within the existing limits, confirm interruption recovery, then complete the staging rehearsal. The dependency security hold still prevents integration or publication.",
+        "summary": "Recovery changes pass 58 native CI units and 16 interruption scenarios. The actual-size fence completes within the existing limit, but cleanup takes 596.8 seconds and fails; 3,893 payload files and all metadata remain. Full recovery and staging rehearsal are unaccepted.",
+        "next": "Review and optimize cleanup without raising limits or replaying consumed context, then rerun complete current-source and actual-inventory proof. Retain the generic409 failure and missing final public after-check. Security clearance and hosted rehearsal remain required.",
         "doneWhen": "Helper/header/token/expiry and interruption cases pass; all 2,074 public and 4,149 private fixture files are verified; the hosted proof is independently audited, with original data retained.",
         "dependsOn": [
           "B01",
@@ -126,7 +126,7 @@
       {
         "id": "B07",
         "title": "Close monitoring and regression coverage",
-        "status": "planned",
+        "status": "in_progress",
         "workstreams": [
           "M03",
           "M04",
@@ -136,8 +136,8 @@
           "D06",
           "D07"
         ],
-        "summary": "Finish the feasible technical monitoring and end-to-end staging checks.",
-        "next": "Review the confirmed absent-product200/native-error gap without misclassifying API outages. Reconcile other regression gaps and prepare owner-run account, inbox, provider and paid-state checks.",
+        "summary": "The confirmed missing-product404 response passes local native, browser and outage controls. Current complete CI, guarded staging/cache verification and remaining regression checks are still required.",
+        "next": "After the dependency security fix and complete current CI, publish and verify the bounded missing-product response on staging. Preserve generic outage/Ecwid fallback and private routes; prepare owner-run account, inbox, provider and paid-state checks.",
         "doneWhen": "Permitted automated checks and availability safeguards pass; every real-world/provider check has an owner and clear evidence requirement, with no real messages, orders or account edits sent automatically.",
         "dependsOn": [],
         "blockedBy": [
@@ -341,7 +341,7 @@
       }
     ]
   },
-  "current": "GitHub Actions now starts after the owner made the repository public. The pub-crawl image improvement is verified on staging as delivery70: matched tests measure less completed image-response data, without a reliable loading-speed gain. Code integration and further publication await a reviewed solution for the unpatched build dependency; the security audit remains in force. Recovery changes pass local tests, while current-code CI, the full website inventory and staging recovery proof remain pending. The earlier full-size failure is retained. Controlled old/current application views reproduce the Facebook error with the same WordPress wrapper; real provider acceptance and the earlier admin-request bodies remain unverified. Six batches remain: B03/B04 are active and B05-B08 planned, with all eight IDs visible. The Europe-header proposal is prepared but unwired. Production, protected commerce, forms and functional consent remain preserved.",
+  "current": "GitHub Actions starts after the owner made the repository public. A currently unpatched build dependency prevents source integration and further publication; the security audit remains in force. Font and image changes remain bounded staging deliveries69/70, without a reliable LCP/field gain. Recovery passes58 native CI units and16 interruption cases, but the actual-size cleanup fails after596.8 seconds:256 payload files removed,3893 retained, all14 metadata records exact and no final public after-check. The confirmed missing-product404 candidate passes local native/browser/outage controls; installed staging verification is still required. The seven category introductions and Europe-header proposal remain unwired. Six batches remain: B03/B04/B06/B07 are in progress and B05/B08 planned; all eight IDs remain visible. Provider/account/manual checks and production approval remain separate. Protected commerce, forms and functional consent are preserved.",
   "deliveries": [
     {"id":"pub-crawl-responsive-images","title":"Responsive original pub-crawl gallery images verified on staging","workstreams":["D01","D02","T10"],"stage":"staging_verified","environment":"website","summary":"Delivery70 supplies responsive sizes for the main pub-crawl gallery on staging. Corrected source06ee661/tree d2ebb4c8 passes CI44122220280:1093 Linux tests/21 platform skips,45 Windows/no skips,63 frontend cases,894 native assertions, secrets and build. Guarded37-file publication, reopened rollback4a0ced7e, all2074 owned/280 protected hashes, origin/normal/warmed6193 checks each and348 warmed HITs verify. Native692, generic browser240, attribution500, read-only endpoints7 and fresh intercepted forms487 pass; the disk-full13/14 form run is retained. The image contract passes181 origin checks; all24 normal views/24 actual image bodies/eight keyboard gallery selections pass, but its global normal error guard remains failed142/143 on FacebookSignal, with two admin POSTs aborted before sending. Same old initializer bytes do not prove runtime cause or provider acceptance. Matched three-sample mobile runs measure completed gallery response bodies1937048 to396577 bytes; cancelled partial wire bytes are unknown. LCP4096 to4000ms median is variable, including one slower7668ms sample; CLS is unchanged. No reliable/causal speed or field/provider gain is claimed.","remaining":"SVG negotiation, broader template/manual/field performance, the unresolved WordPress/provider initializer and unidentified aborted admin actions remain assigned for review. Consent/GTM changes stay deferred. This verifies the bounded image contract, not all normal runtime guards, provider receipts, whole-page parity, full recovery or production acceptance.","evidence":"product-image-sizing-2026-11-17/README.md","verifiedOn":"2026-11-17"},
     {"id":"safety-article-font-preloads","title":"Original article fonts preloaded with verified staging delivery","workstreams":["D01","D02","T10"],"stage":"staging_verified","environment":"website","summary":"Delivery69 is cache-verified on staging: the safety article loads its two original Montserrat fonts once each from anonymous preloads; other115 routes receive no new preload. Sourcebf9949/treecc62e36a and CI44101334127 attempt2 pass all three jobs after the owner made the repository public. Guarded2074 files, independently reopened rollback,255 protected hashes, origin/normal/warmed6193 checks each,325 font checks per origin/normal matrix,487 intercepted form checks,500 attribution checks, seven read-only form endpoints and348 warmed HIT responses pass. Both raw seven-table snapshot pairs verify individually; a later ecwid_store_shortcode_used value change is privately archived and preserved, with six other tables/all other option rows exact. Three matched normal-network mobile samples per arm show non-input CLS median.151036 to0; the remaining.000600 navigation shift is marked recent input by Chrome. Median LCP3144 to3336ms is slower, so no LCP improvement or field/INP/provider gain is claimed. Actual document networking is included with providers/known Google gateway withheld only in the test browser. One normal PNG differs only inside the unchanged original hero; no whole-page parity or cause is claimed.","remaining":"Broader template/font/CSS and mobile asset work, SVG negotiation, manual/provider/field checks and separate production approval remain. B04 and G02 remain active. Three laboratory samples per arm do not establish field or guaranteed gains.","evidence":"article-font-preload-2026-11-17/README.md","verifiedOn":"2026-11-17"},
