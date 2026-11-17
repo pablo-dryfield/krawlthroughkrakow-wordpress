@@ -22,6 +22,75 @@ class RoadmapTests(unittest.TestCase):
         self.assertIn('**Website production releases in this plan:** '+str(self.data['websiteProductionReleases']),result)
         self.assertIn('D08',result)
 
+    def test_remaining_inventory_covers_every_open_workstream_without_changing_states(self):
+        model = module.remaining_model(self.data)
+        rows = [row for group in ('batches', 'gates', 'recurring', 'deferred') for row in model[group]]
+        covered = {identity for row in rows for identity in row['workstreams']}
+        opened = {identity for identity, row in self.data['tickets'].items() if row['status'] != 'live_verified'}
+        self.assertTrue(opened <= covered)
+        self.assertEqual(model['remaining'], sum(row['status'] != 'complete' for row in model['batches']))
+        self.assertEqual(module.build_model(self.data, self.plan)['remainingWork'], model)
+        self.assertIn('## Remaining Implementation Batches', module.render(self.data, self.plan))
+
+    def test_remaining_inventory_rejects_missing_scope_and_invalid_references(self):
+        for change in ('missing', 'coverage', 'identity', 'ticket', 'duplicate_ticket', 'field', 'status', 'dependency', 'gate', 'cycle', 'deferral', 'evidence'):
+            data = copy.deepcopy(self.data)
+            work = data['remainingWork']
+            row = work['batches'][0]
+            if change == 'missing': del data['remainingWork']
+            elif change == 'coverage':
+                for group in ('batches', 'gates', 'recurring', 'deferred'):
+                    for item in work[group]:
+                        item['workstreams'] = [i for i in item['workstreams'] if i != 'T03']
+            elif change == 'identity': work['batches'][1]['id'] = row['id']
+            elif change == 'ticket': row['workstreams'] = ['T99']
+            elif change == 'duplicate_ticket': row['workstreams'] *= 2
+            elif change == 'field': row['done'] = True
+            elif change == 'status': row['status'] = 'almost-done'
+            elif change == 'dependency': row['dependsOn'] = ['B99']
+            elif change == 'gate': row['blockedBy'] = ['H99']
+            elif change == 'cycle': row['dependsOn'] = ['B02']
+            elif change == 'deferral': work['deferred'][0]['workstreams'] = ['D01']
+            else: row['evidence'] = 'javascript:alert(1)'
+            with self.subTest(change=change), self.assertRaises(ValueError): module.remaining_model(data)
+
+    def test_remaining_count_moves_only_with_dated_batch_evidence(self):
+        data = copy.deepcopy(self.data)
+        before = module.remaining_model(data)
+        row = next(row for row in data['remainingWork']['batches'] if row['status'] != 'complete')
+        row['status'] = 'complete'
+        with self.assertRaises(ValueError): module.remaining_model(data)
+        row['verifiedOn'] = '2099-01-01'
+        with self.assertRaises(ValueError): module.remaining_model(data)
+        row['verifiedOn'] = data['updatedOn']
+        after = module.remaining_model(data)
+        self.assertEqual(after['remaining'], before['remaining'] - 1)
+        self.assertEqual(after['counts']['complete'], before['counts']['complete'] + 1)
+        self.assertEqual(data['tickets'], self.data['tickets'])
+        self.assertEqual(data['deliveries'], self.data['deliveries'])
+
+    def test_starting_a_planned_batch_keeps_it_remaining_without_completing_workstreams(self):
+        data = copy.deepcopy(self.data)
+        before = module.remaining_model(data)
+        row = next(row for row in data['remainingWork']['batches'] if row['status'] == 'planned')
+        row['status'] = 'in_progress'
+        after = module.remaining_model(data)
+        self.assertEqual(after['remaining'], before['remaining'])
+        self.assertEqual(after['counts']['in_progress'], before['counts']['in_progress'] + 1)
+        self.assertEqual(after['counts']['planned'], before['counts']['planned'] - 1)
+        self.assertEqual(after['counts']['complete'], before['counts']['complete'])
+        self.assertEqual(data['tickets'], self.data['tickets'])
+
+    def test_remaining_html_escapes_text_and_has_distinct_fallback_ids(self):
+        data = copy.deepcopy(self.data)
+        attack = '<img src=x onerror=alert(1)>'
+        data['remainingWork']['batches'][0]['title'] = attack
+        result = module.render_html(data, self.plan)
+        self.assertNotIn(attack, result)
+        self.assertIn('&lt;img src=x onerror=alert(1)&gt;', result)
+        self.assertEqual(result.count('id="remaining-batches"'), 1)
+        self.assertEqual(result.count('id="fallback-remaining-batches"'), 1)
+
     def test_missing_unknown_ticket_or_status_fails(self):
         for change in ['missing','extra','status','note']:
             data=copy.deepcopy(self.data)
