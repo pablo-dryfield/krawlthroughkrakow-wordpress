@@ -143,6 +143,8 @@ jobs:
         run: node --test tools/tests/test_category_navigation.mjs
       - name: Homepage alias excerpt contracts
         run: node --test tools/tests/test_homepage_alias_excerpts.mjs
+      - name: Secondary Christmas and NYE planning contracts
+        run: node --test tools/tests/test_secondary_nye_editorial.mjs
       - name: Hen planning and historical bars source contracts
         run: node --test tools/tests/test_hen_bars_editorial.mjs
       - name: Historical hotel shortlist and spa planning source contracts
