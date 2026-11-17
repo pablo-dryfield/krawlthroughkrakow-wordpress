@@ -23,7 +23,16 @@ class PrivateEngineTerminationBindingTests(unittest.TestCase):
         self.original=Path(self.base.original_archive['path']);self.context=binding.original_context(self.old);self.number=0
 
     def witness(self):
-        state=self.base.snapshot();receipt=full.snapshot.write_private_backup(self.original.parent,state,state,state['helperSha256']);return state,receipt
+        self.number+=1;helper=Path(self.case.cfg['helper']);self.assertTrue(helper.resolve().is_relative_to(self.case.root.resolve()));original=helper.read_bytes()
+        try:
+            # Each native snapshot invocation has its own helper bytes, as the
+            # hosted compiler does with a fresh token. Keep the original helper
+            # fixture available unchanged for subsequent engine-phase setup.
+            helper.write_bytes(original+('\n/* synthetic snapshot invocation '+str(self.number)+' */\n').encode())
+            before=self.base.snapshot();after=self.base.snapshot();self.assertTrue(full.snapshot.same_state(before,after))
+            receipt=full.snapshot.write_private_backup(self.original.parent,before,after,before['helperSha256'])
+        finally:helper.write_bytes(original)
+        return before,receipt
 
     def initial(self):
         state,witness=self.witness()
@@ -57,6 +66,15 @@ class PrivateEngineTerminationBindingTests(unittest.TestCase):
         result=binding.validate_archives(value,self.old,self.case.mu,self.original,self.inspection_witness)
         self.assertTrue(result['receipt']['witnessArchive']['allSevenRawTablesAndPublicProtectedMapsVerified'])
         self.assertFalse(result['receipt']['executionAuthorityGranted']);self.assertEqual(self.base.files(self.case.private),before)
+
+    def test_separate_native_helpers_make_same_second_witnesses_distinct_without_relaxing_guard(self):
+        helper=Path(self.case.cfg['helper']);original=helper.read_bytes();capture=self.base.snapshot
+        def same_second():
+            value=capture();value['capturedAt']='2026-11-17T00:00:00+00:00';return value
+        with mock.patch.object(self.base,'snapshot',side_effect=same_second):
+            first,left=self.witness();second,right=self.witness()
+        self.assertEqual(first['capturedAt'],second['capturedAt']);self.assertNotEqual(first['helperSha256'],second['helperSha256']);self.assertNotEqual(left['sha256'],right['sha256']);self.assertNotEqual(Path(left['path']).name,Path(right['path']).name);self.assertEqual(helper.read_bytes(),original)
+        for key in binding.STATE_KEYS:self.assertEqual(first[key],second[key])
 
     def test_prepared_new_cache_witness_metadata_and_signed_fence_are_only_locally_derived(self):
         self.base.prepared();self.base.change_cache_row();self.fence();before=self.base.files(self.case.private)
