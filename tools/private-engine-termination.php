@@ -57,12 +57,12 @@ final class KTK_Private_Engine_Termination
     {
         $a=$this->config['authority'];
         if($method!=='POST'||strtolower($host)!=='krawlthroughkrakow.com'||$now>=$a['expires']||$a['expires']>$now+3600||!hash_equals($a['tokenSha256'],hash('sha256',$token))||strlen($raw)>2048){throw new RuntimeException('Current distinct staging-only termination authority required');}
-        $r=json_decode($raw,true,16,JSON_THROW_ON_ERROR);$actions=array('inspect'=>array('inspect'),'inspect-fenced'=>array('inspect-fenced'),'fence'=>array('fence'),'cleanup'=>array('complete-closure'));
+        $r=json_decode($raw,true,16,JSON_THROW_ON_ERROR);$actions=array('inspect'=>array('inspect'),'inspect-fenced'=>array('inspect-fenced'),'fence'=>array('fence'),'cleanup'=>array('complete-closure','cleanup-payload'));
         $keys=array('schemaVersion','action','operation','operationId','transactionId','applicationCommit','metadataArchiveSha256','inspectionStateSha256','closureSha256');if($a['operation']==='cleanup'){$keys[]='stateSha256';}
         if(!is_array($r)||array_keys($r)!==$keys||($r['schemaVersion']??null)!==1||!in_array($r['action']??null,$actions[$a['operation']],true)||self::json($r)!==$raw){throw new RuntimeException('Exact canonical typed termination request required');}
         foreach(array('operation','operationId','transactionId','applicationCommit','metadataArchiveSha256','inspectionStateSha256','closureSha256') as $n){if($r[$n]!==$a[$n]){throw new RuntimeException('Termination request authority differs');}}
         if($a['operation']==='cleanup'&&!self::digest($r['stateSha256'])){throw new RuntimeException('Exact freshly inspected remaining state required');}
-        $this->fresh();$i=$this->config['initial'];$root=dirname($i['publicRoot']).'/.ktk-content-update-'.$a['transactionId'];$store=new KTK_Content_Update_Private_Store($root,$i['publicRoot'],$a['transactionId'],$i['ownershipKey'],$this->observer);$owner=null;$reader=null;$claim=null;$writes=0;$initialVerified=false;
+        $this->fresh();$i=$this->config['initial'];$root=dirname($i['publicRoot']).'/.ktk-content-update-'.$a['transactionId'];$store=new KTK_Content_Update_Private_Store($root,$i['publicRoot'],$a['transactionId'],$i['ownershipKey'],$this->observer);$owner=null;$reader=null;$claim=null;$writes=0;$deleted=0;$removed=0;$initialVerified=false;
         try{
             if(in_array($a['operation'],array('inspect','fence'),true)){
                 $owner=new KTK_Private_Engine_Abandonment_Inspection($i,fn()=>$this->fresh());$initial=$owner->inspect($store);
@@ -73,17 +73,21 @@ final class KTK_Private_Engine_Termination
                 $reader=new KTK_Private_Engine_Fenced_Inspection($this->config['fenced'],fn()=>$this->fresh(),$owner);$state=$reader->inspect($store);
                 if($a['operation']==='fence'||$a['operation']==='cleanup'){
                     if(!$state['originalExecutionHelperAbsent']){throw new RuntimeException('Original execution helper must remain absent before mutation');}
-                    if($a['operation']==='cleanup'&&(!hash_equals($state['stateSha256'],$r['stateSha256'])||!$state['closureOnlyRecoveryRequired'])){throw new RuntimeException('Exact incomplete closure state required; no payload deletion in this invocation');}
+                    if($a['operation']==='cleanup'){if(!hash_equals($state['stateSha256'],$r['stateSha256'])){throw new RuntimeException('Exact freshly inspected cleanup state required');}if($r['action']==='complete-closure'&&!$state['closureOnlyRecoveryRequired']){throw new RuntimeException('Exact incomplete closure state required; no payload deletion in this invocation');}if($r['action']==='cleanup-payload'){if(!$state['signedClosureComplete']){throw new RuntimeException('Complete the same signed closure in a separate invocation before payload cleanup');}$dirs=array_filter($state['directories'],static fn($n)=>$n==='source'||$n==='target'||str_starts_with($n,'source/')||str_starts_with($n,'target/'));if($state['remainingPayloadFiles']===0&&count($dirs)===0){throw new RuntimeException('No known payload or source-target directories remain; preserve context');}}}
                     $claim=$this->claim($store,$method,$host,$token,$now);$this->fresh();$latest=$reader->inspect($store);
                     if($latest['stateSha256']!==$state['stateSha256']){throw new RuntimeException('Private state changed after claim; preserve consumed context');}
+                    if($a['operation']==='cleanup'&&$r['action']==='cleanup-payload'){
+                        $cleanup=new KTK_Private_Engine_Payload_Cleanup(array('authority'=>$a,'fenced'=>$this->config['fenced'],'claim'=>$claim),fn()=>$this->fresh(),$this->observer,$this->clock);$op=$cleanup->run($store,$reader,$latest);$state=$op['state'];$deleted=$op['payloadDeletes'];$removed=$op['payloadDirectoriesRemoved'];
+                    }else{
                     $parts=explode("\n",base64_decode($this->config['fenced']['closureBlob'],true),3);$existing=$store->read('closed.json');
                     if($existing===null){$this->currentTime();$store->writeOnce('closed.json',$parts[2]);$writes=1;}
                     elseif($existing!==$parts[2]){throw new RuntimeException('Accepted original closure must remain exact');}
                     $descriptor=$store->recordDescriptor('closed.json');if($descriptor['sha256']!==$a['closureSha256']){throw new RuntimeException('Signed closure bytes differ after write');}
                     $state=$reader->inspect($store);if(!$state['signedClosureComplete']){throw new RuntimeException('Closure reply uncertain; use a new witnessed context');}
+                    }
                 }
             }
-            $this->fresh();$result=array('schemaVersion'=>1,'scope'=>'current-witness-private-engine-termination','operationId'=>$a['operationId'],'operation'=>$a['operation'],'action'=>$r['action'],'transactionId'=>$a['transactionId'],'applicationCommit'=>$a['applicationCommit'],'initialNativeInspectionVerified'=>$initialVerified,'state'=>$state,'claim'=>$claim,'closureWrites'=>$writes,'payloadDeletes'=>0,'applicationWrites'=>0,'databaseWrites'=>0,'cachePurges'=>0,'productionOperations'=>0,'fullHostTransactionAcceptance'=>false);
+            $this->fresh();$result=array('schemaVersion'=>1,'scope'=>'current-witness-private-engine-termination','operationId'=>$a['operationId'],'operation'=>$a['operation'],'action'=>$r['action'],'transactionId'=>$a['transactionId'],'applicationCommit'=>$a['applicationCommit'],'initialNativeInspectionVerified'=>$initialVerified,'state'=>$state,'claim'=>$claim,'closureWrites'=>$writes,'payloadDeletes'=>$deleted,'payloadDirectoriesRemoved'=>$removed,'applicationWrites'=>0,'databaseWrites'=>0,'cachePurges'=>0,'productionOperations'=>0,'fullHostTransactionAcceptance'=>false);
             if(strlen(self::json($result))>2095104){throw new RuntimeException('Bounded termination response required; preserve context and state');}return $result;
         }finally{if($reader!==null){$reader->releaseEngineLock();}if($owner!==null){$owner->releaseEngineLock();}}
     }

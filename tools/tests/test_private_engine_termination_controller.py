@@ -73,8 +73,9 @@ class PrivateEngineTerminationControllerTests(unittest.TestCase):
         if success:
             result=out['value'];self.assertFalse(result['fullHostTransactionAcceptance'])
             for n in ('payloadDeletes','applicationWrites','databaseWrites','cachePurges','productionOperations'):self.assertEqual(result[n],0)
+            after_private=self.fixture.native.files(self.case.private)
             for n,h in before_private.items():
-                if '/.ktk-control-closed.json-' not in n:self.assertEqual(self.fixture.native.files(self.case.private)[n],h)
+                if '/.ktk-control-closed.json-' not in n:self.assertEqual(after_private[n],h)
             return result
         self.assertEqual(self.fixture.native.files(self.case.private),before_private);return out
 
