@@ -90,6 +90,8 @@ def main(argv=None):
             with zipfile.ZipFile(root/'failed-local-call.zip','x') as z:z.writestr('stdout',process.stdout);z.writestr('stderr',process.stderr)
             item['phpMemoryFailure']='Allowed memory size' in process.stderr;report['steps'].append(item);checkpoint('php-failed-no-replay');raise support.FixtureRefusal('php-process-failed')
         if exit_code:report['steps'].append(item);return None
+        if kind=='new-helper':
+            owned_fixture(root);item.update(support.retain_helper_reply(root,calls,process.stdout));report['activeCall']=item;checkpoint('new-helper-cli-reply-retained')
         try:value=json.loads(process.stdout)
         except Exception:
             with zipfile.ZipFile(root/'failed-local-call.zip','x') as z:z.writestr('stdout',process.stdout);z.writestr('stderr',process.stderr)
@@ -99,8 +101,7 @@ def main(argv=None):
             require('Private original content must never enter controller responses' not in value.get('wire',''),'private-fixture-row-leaked')
             require(item['onlySelectQueries'],'unexpected-fixture-nonselect-query')
             if isinstance(body,dict) and 'controller' in body:
-                result=body['controller'];state=result['state'];item.update(remainingPayloadFiles=state['remainingPayloadFiles'],payloadDeletes=result['payloadDeletes'],directoriesRemoved=result['payloadDirectoriesRemoved'],closureWrites=result['closureWrites'],runtime=body['runtime'])
-                for key in ('applicationWrites','databaseWrites','cachePurges','productionOperations'):require(result[key]==0,'unexpected-write-counter:'+key)
+                item.update(support.helper_observation(value))
             elif isinstance(body,dict):item['genericError']=body.get('error')
         report['steps'].append(item);report.pop('activeCall',None);checkpoint('returned-'+kind+'-'+str(action))
         print(json.dumps({'actualFixtureProgress':item}),flush=True)
@@ -181,6 +182,18 @@ def main(argv=None):
         try:
             if case is not None:
                 owned_fixture(case.root)
+                replies=case.root/'observed-replies'
+                if replies.exists():
+                    require(not replies.is_symlink() and not replies.is_junction(),'unsafe-reply-directory-preserved')
+                    reply_zip=case.root/'new-helper-replies.zip';members={}
+                    with zipfile.ZipFile(reply_zip,'x',zipfile.ZIP_DEFLATED,compresslevel=3) as archive:
+                        for path in sorted(replies.iterdir()):
+                            require(path.is_file() and not path.is_symlink() and path.resolve().is_relative_to(case.root.resolve()),'unsafe-synthetic-reply-preserved')
+                            name=path.relative_to(case.root).as_posix();data=path.read_bytes();members[name]=backup.sha(data);archive.writestr(name,data)
+                    with zipfile.ZipFile(reply_zip) as archive:
+                        require(archive.testzip() is None and set(archive.namelist())==set(members),'reply-archive-crc-or-members-differ')
+                        for name,sha in members.items():require(backup.sha(archive.read(name))==sha,'retained-helper-reply-differs')
+                    report['newHelperReplyArchive']={'files':len(members),'sha256':support.digest(reply_zip),'allMemberHashesAndCRCVerified':True,'scope':'Exact synthetic CLI replies, not hosted HTTP or a new hosting backup'}
                 archives=[p for p in sorted(case.root.rglob('*.zip')) if not p.resolve().is_relative_to(case.mu.resolve()) and not p.resolve().is_relative_to(case.private.resolve())]
                 report['evidenceArchive']=support.preserve_fixture(case.private,archives,case.root,APP,owned,sizes,evidence,lambda name:((public_source/name).stat().st_size,support.digest(public_source/name)))
                 evidence_verified=True;checkpoint('evidence-independently-reopened')

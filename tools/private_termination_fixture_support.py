@@ -15,6 +15,40 @@ def digest(path):
     with Path(path).open('rb') as stream:return hashlib.file_digest(stream,'sha256').hexdigest()
 
 
+def helper_observation(value):
+    """Diagnostic fields only; an initial census is not a remaining-payload view."""
+    require(isinstance(value,dict) and isinstance(value.get('body'),dict),'typed-helper-observation-required')
+    body=value['body'];result=body.get('controller')
+    require(isinstance(result,dict) and isinstance(result.get('state'),dict) and isinstance(body.get('runtime'),dict),'typed-helper-controller-observation-required')
+    state=result['state'];operation=result.get('operation');scope=state.get('scope')
+    require(operation in ('inspect','fence','inspect-fenced','cleanup'),'unknown-helper-observation-operation')
+    for name in ('applicationWrites','databaseWrites','cachePurges','productionOperations'):
+        require(type(result.get(name)) is int and result[name]==0,'unexpected-helper-observation-write-counter')
+    for name,maximum in (('payloadDeletes',256),('payloadDirectoriesRemoved',256),('closureWrites',1)):
+        require(type(result.get(name)) is int and 0<=result[name]<=maximum,'invalid-helper-observation-counter')
+    metrics={'controllerOperation':operation,'inspectionScope':scope,'payloadDeletes':result['payloadDeletes'],'directoriesRemoved':result['payloadDirectoriesRemoved'],'closureWrites':result['closureWrites'],'runtime':body['runtime']}
+    if scope=='private-engine-abandonment-readonly-inspection':
+        require(operation=='inspect' and isinstance(state.get('phase'),str) and isinstance(state.get('files'),(dict,list)) and isinstance(state.get('validatedArtifacts'),(dict,list)),'invalid-initial-helper-observation')
+        require((not isinstance(state['files'],list) or not state['files']) and (not isinstance(state['validatedArtifacts'],list) or not state['validatedArtifacts']),'invalid-initial-helper-census')
+        metrics.update(inspectionPhase=state['phase'],initialPrivateCensusFiles=len(state['files']),initialValidatedArtifacts=len(state['validatedArtifacts']))
+    elif scope=='fenced-private-engine-readonly-inspection':
+        require(operation!='inspect' and type(state.get('remainingPayloadFiles')) is int and state['remainingPayloadFiles']>=0,'invalid-fenced-helper-observation')
+        metrics['remainingPayloadFiles']=state['remainingPayloadFiles']
+    else:raise FixtureRefusal('unknown-helper-observation-scope')
+    return metrics
+
+
+def retain_helper_reply(root,number,stdout):
+    """Retain synthetic CLI bytes outside public/private state; never overwrite."""
+    root=Path(root)
+    require(root.is_dir() and not root.is_symlink() and not root.is_junction() and root.resolve()==root.absolute(),'canonical-owned-reply-root-required')
+    require(type(number) is int and 1<=number<=99999 and isinstance(stdout,str),'bounded-synthetic-reply-required')
+    folder=root/'observed-replies';require(not folder.is_symlink() and not folder.is_junction(),'unsafe-reply-directory-preserved')
+    folder.mkdir(exist_ok=True);path=folder/('reply-'+str(number).zfill(5)+'.json');raw=stdout.encode('utf-8')
+    with path.open('xb') as stream:stream.write(raw)
+    return {'replyRelativePath':path.relative_to(root).as_posix(),'replyBytes':len(raw),'replySHA256':hashlib.sha256(raw).hexdigest()}
+
+
 def report_paths(root,argument):
     root=Path(root).resolve();folder=root/'docs/seo/private-engine-early-termination-2026-11-17'
     require(not folder.is_symlink() and not folder.is_junction() and folder.resolve()==folder,'report-folder-outside-workspace')

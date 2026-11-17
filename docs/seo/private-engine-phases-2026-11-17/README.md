@@ -1,5 +1,9 @@
 # Early termination across interrupted private phases
 
+## Current verified checkpoint (17 November)
+
+Phase sourcef5bbadf/tree3041502 is now independently accepted by standard CI44082543565 (1,084 Linux/1,431.445s/21 platform skips,45 Windows/.976s/no skips, secrets/build, all actual checkout trees exact) and mandatory phase CI44082543634 (16 native cases/281.087s/no skips). All77 source hashes and all16 scenario fields match the qualified local run except timing; the sole artifact member and CRC reopen independently. The earlier uncommitted/local checkpoint below remains historical. The full-size helper run44077525670 has now failed in its Python logger after initial read-only inspection200 and before fence/cleanup; it is no longer live. Complete failure evidence independently reopens. See the [current correction and unresolved full-size proof](../full-fixture-observations-2026-11-17/README.md). New logger edits are not covered by this preceding source CI.
+
 This is local source-verification work under B03, not another website delivery or a completed hosted recovery rehearsal. All sixteen native scenarios pass in631.004s without skips. Every one of the77 runtime/compiler/fixture inputs has the same SHA256 before setup and at successful terminal close. The observed starting Git head isbc9e5e4f3251b60df5a3daae8253778a7de87591; this new runner is initially uncommitted and that qualification is retained. Commit/source attribution and this runner's separate mandatory CI still remain.
 
 The existing helper sourcebc9e5e4/tree1c6d72d5 is independently accepted by CI44077525658:1,084 Linux cases in1,431.621s with21 platform skips;45 Windows cases in1.333s without skips; secrets/build and every actual checkout tree exact. Its separate actual2074-public/4149-private helper run44077525670 remains live and unaccepted at this checkpoint. Those standard checks do not substitute for that full-size result.
