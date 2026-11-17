@@ -10,6 +10,50 @@ Updated: 2026-11-17 (Europe/Warsaw). Generated from `tools/seo-roadmap.json`; ed
 
 **Verified foundation milestones:** 7. **Website production releases in this plan:** 1. Read each delivery scope: an isolated functional hotfix does not promote the staged SEO batches. The original website migration is a separate completed project. Separately authorized OmniLodge reporting has its own release status.
 
+## Remaining Implementation Batches
+
+**8 batches remain: 2 in verification and 6 planned.**
+
+Remaining implementation on staging. Production needs separate approval.
+
+This is the current finite batch list, not a time estimate. Add or split a batch only with a recorded reason; keep owner/account gates and recurring work separate.
+
+| Batch | Status | Scope | Done When | Dependencies |
+| --- | --- | --- | --- | --- |
+| [B01 — Finish closure and recovery verification](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/pull/101) | In verification | Close the recovery-tooling review already in CI. Next: Verify final CI and checkout hashes, merge the exact reviewed source, and retain the release evidence. | Final and main CI pass; source and archive checks pass; completed references are removed only after the dependent batch is integrated. | None |
+| [B02 — Finish bounded cleanup verification](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/pull/102) | In verification | Finish verification of cleanup under new witnessed contexts. Next: Close its CI review, integrate the final parent source, and verify the merged result. | The cleanup source passes complete CI and independent source/archive checks; the recorded native tests and protection boundaries remain exact. | B01 |
+| B03 — Prove the full staging recovery procedure | Planned | Complete helper authentication, interrupted-phase recovery and the full inventory rehearsal. Next: Verify the distinct early helper and remaining phases, then run the actual-size fixture and permitted staging rehearsal. | Helper/header/token/expiry and interruption cases pass; all 2,074 public and 4,149 private fixture files are verified; the hosted proof is independently audited, with original data retained. | B01, B02, H06 |
+| B04 — Finish mobile performance and asset delivery | Planned | Resolve the remaining SVG delivery and measured template bottlenecks. Next: Fix SVG compression negotiation and compare homepage, product, NYE and article load profiles before targeted asset/font/CSS changes. | Known negotiation failures are fixed; comparable lab evidence and staging/cache checks verify proportionate improvements without changing consent or claiming field gains. | None |
+| B05 — Finish responsive reading and accessibility fixes | Planned | Close the known remaining layout, heading and preserved-module text checks. Next: Complete the font/layout census, resolve the historical Europe header follow-up, and fix any reproducible clipping or keyboard issues within scope. | Known issues are fixed or explicitly justified with responsive, keyboard and no-JavaScript evidence; native zoom, screen-reader and physical-device checks stay assigned to H03. | None |
+| B06 — Complete intent, archive and internal-link decisions | Planned | Finish the remaining URL-role and content decision matrix using retained evidence. Next: Review secondary NYE/nightlife overlap, archive value, contextual links and remaining metadata; implement only supported changes within the approved boundaries. | Each remaining URL/archive decision has evidence and an explicit action; permitted staging fixes are verified, while unapproved retirement, indexing, language or business-fact decisions are recorded for owner review. | H01, H02 |
+| B07 — Close monitoring and regression coverage | Planned | Finish the feasible technical monitoring and end-to-end staging checks. Next: Reconcile remaining regression gaps and prepare exact owner-run checks for account, inbox, provider and paid-state outcomes. | Permitted automated checks and availability safeguards pass; every real-world/provider check has an owner and clear evidence requirement, with no real messages, orders or account edits sent automatically. | H02, H03 |
+| B08 — Final staging audit and owner review package | Planned | Verify the finished staging scope and produce one clear handoff. Next: Audit the completed batches, final source/deployed hashes, cache/device evidence and all remaining constraints against the full plan. | All feasible staging deliveries have authoritative evidence; every unresolved item is mapped to an owner/account/manual gate, recurring responsibility or explicit deferral. Production remains separately approved. | B01, B02, B03, B04, B05, B06, B07 |
+
+### Owner, Account And Manual Gates
+
+| Item | Owner | What Remains |
+| --- | --- | --- |
+| H01 — Remaining business facts and legal review | KTK operations / owner / appropriate specialist | Confirm outstanding availability, venue/meeting details, package and team terms, Halloween/competition facts and substantive legal/privacy clauses. Registered company details are already implemented; medical claims remain held for specialist review. |
+| H02 — Authenticated search, analytics and provider evidence | Owner with the relevant accounts | Supply current Search Console/account evidence, aggregate paid-booking reconciliation and applicable external validation. The native UI stop stays binding; no alternative account-access workaround. |
+| H03 — Human, device, inbox and paid-state checks | Owner / nominated testers | Complete native zoom, screen-reader and physical-device checks, actual inbox assurance and provider/payment outcomes under separately authorized scope. Automated checks send no real message or order. |
+| H04 — Google Business Profile access and physical facts | Verified profile owner / KTK operations | Review the nine prepared account/profile facts: eligibility, real premises, category, hours, photos and booking destination. A registered office is not assumed to be a meeting point. |
+| H05 — Review-process adoption and approved partnerships | KTK owner / nominated operator | Adopt the neutral review process and approve any real requests, replies or partner outreach. Drafts remain unsent; current agreements and inaccessible publisher context need confirmation. |
+| H06 — Hosting quota, coordination and retention policy | Hosting account owner / release owner | Establish actual account quota and agreed coordination/retention for preserved private originals, metadata and operation markers. Filesystem free space alone is not account-quota evidence. |
+| H07 — Production review and release approval | KTK owner / release owner | Review staging, authorize the exact production scope, obtain separate production backups and approve promotion/discovery/account changes. This sits outside the current staging-only instruction. |
+
+### Recurring Responsibilities
+
+| Item | Owner | What Remains |
+| --- | --- | --- |
+| R01 — Monthly and seasonal content reviews | KTK team and code maintainer | Run the agreed monthly plus pre/post seasonal checks; retain dated facts, review records and campaign rollover decisions. |
+| R02 — Measurement, availability and reputation follow-up | Nominated account / operations owners | Review comparable traffic and completed-booking evidence, availability, genuine reviews and referral results. No new automation or account settings are implied. |
+
+### Explicit Deferrals
+
+| Item | Owner | What Remains |
+| --- | --- | --- |
+| X01 — Consent-provider and GTM changes | Owner decision required to reopen | Keep the functional Accept/Reject controls and current bridge intact. The previously declined consent/GTM work stays deferred. |
+
 ## Delivery Progress
 
 These are scoped batches, not completed whole workstreams. A verified staging batch can still need owner review and production approval. OmniLodge live delivery is separate from website production.

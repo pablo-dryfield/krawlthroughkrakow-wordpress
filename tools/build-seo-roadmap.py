@@ -8,6 +8,7 @@ import xml.etree.ElementTree as ET
 from collections import Counter
 from datetime import date
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 LABELS = {'in_progress':'In progress / partial staging', 'not_started':'Not started',
@@ -20,6 +21,110 @@ BUCKETS = {'live_verified': 'complete', 'not_started': 'not_started', 'deferred'
            'in_progress': 'in_progress', 'awaiting_cache': 'in_progress',
            'source_verified': 'in_progress', 'staging_verified': 'in_progress'}
 DELIVERY_LABELS = {'staging_verified': 'Verified on staging', 'in_progress': 'In progress', 'live_verified': 'Verified live'}
+BATCH_LABELS = {'verification': 'In verification', 'planned': 'Planned', 'complete': 'Complete'}
+
+
+def remaining_model(data):
+    work = data.get('remainingWork')
+    if not isinstance(work, dict) or set(work) != {'revision', 'scope', 'changeRule', 'batches', 'gates', 'recurring', 'deferred'}:
+        raise ValueError('Explicit remaining-work inventory required')
+    if type(work['revision']) is not int or work['revision'] < 1:
+        raise ValueError('Remaining-work revision required')
+    for key in ('scope', 'changeRule'):
+        if not isinstance(work[key], str) or not work[key].strip():
+            raise ValueError('Remaining-work scope and change rule required')
+    seen, covered = set(), set()
+    for group, prefix in (('batches', 'B'), ('gates', 'H'), ('recurring', 'R'), ('deferred', 'X')):
+        if not isinstance(work[group], list):
+            raise ValueError('Remaining-work groups must be explicit lists')
+        for row in work[group]:
+            required = {'id', 'title', 'workstreams', 'next'}
+            required |= {'status', 'summary', 'doneWhen', 'dependsOn', 'blockedBy'} if group == 'batches' else {'owner'}
+            if group == 'gates': required.add('status')
+            allowed = required | ({'evidence', 'verifiedOn'} if group == 'batches' else set())
+            if not isinstance(row, dict) or not required <= row.keys() or row.keys() - allowed:
+                raise ValueError('Complete remaining-work fields required; unknown fields rejected')
+            if not isinstance(row['id'], str) or not re.fullmatch(prefix + r'\d{2}', row['id']) or row['id'] in seen:
+                raise ValueError('Unique remaining-work identity required')
+            seen.add(row['id'])
+            for key in required - {'workstreams', 'dependsOn', 'blockedBy'}:
+                if not isinstance(row[key], str) or not row[key].strip():
+                    raise ValueError('Readable remaining-work fields required')
+            ids = row['workstreams']
+            if not isinstance(ids, list) or not ids or any(not isinstance(i, str) or i not in data['tickets'] for i in ids) or len(set(ids)) != len(ids):
+                raise ValueError('Remaining work must reference existing distinct workstreams')
+            if group != 'batches' or row['status'] != 'complete': covered.update(ids)
+            if group == 'gates' and row['status'] != 'waiting':
+                raise ValueError('Unresolved gate must remain waiting')
+            if group == 'deferred' and any(data['tickets'][i]['status'] != 'deferred' for i in ids):
+                raise ValueError('Deferred inventory must match explicit ticket deferrals')
+            if group == 'batches':
+                if row['status'] not in BATCH_LABELS:
+                    raise ValueError('Explicit batch status required')
+                if 'evidence' in row:
+                    url = urlsplit(row['evidence'])
+                    if url.scheme != 'https' or not url.hostname or url.username or url.password or any(c.isspace() for c in row['evidence']):
+                        raise ValueError('Batch evidence must be a safe HTTPS reference')
+                if row['status'] == 'complete':
+                    if not row.get('evidence') or date.fromisoformat(row.get('verifiedOn', '')) > date.fromisoformat(data['updatedOn']):
+                        raise ValueError('Completed batch requires dated evidence')
+                elif 'verifiedOn' in row:
+                    raise ValueError('Unfinished batch cannot have a verification date')
+    batches = {row['id']: row for row in work['batches']}
+    gates = {row['id'] for row in work['gates']}
+    for row in batches.values():
+        for key, valid in (('dependsOn', set(batches) - {row['id']}), ('blockedBy', gates)):
+            refs = row[key]
+            if not isinstance(refs, list) or any(not isinstance(i, str) or i not in valid for i in refs) or len(set(refs)) != len(refs):
+                raise ValueError('Invalid batch dependency')
+    def visit(identity, trail):
+        if identity in trail: raise ValueError('Cyclic batch dependency')
+        for dependency in batches[identity]['dependsOn']: visit(dependency, trail | {identity})
+    for identity in batches: visit(identity, set())
+    open_ids = {i for i, row in data['tickets'].items() if row['status'] != 'live_verified'}
+    if not open_ids <= covered:
+        raise ValueError('Every open workstream needs a remaining batch, gate, recurring responsibility or deferral')
+    counts = {status: sum(row['status'] == status for row in batches.values()) for status in BATCH_LABELS}
+    return {**work, 'counts': counts, 'remaining': counts['verification'] + counts['planned']}
+
+
+def remaining_markdown(work):
+    lines = ['## Remaining Implementation Batches', '',
+             f"**{work['remaining']} batches remain: {work['counts']['verification']} in verification and {work['counts']['planned']} planned.**", '',
+             work['scope'], '', work['changeRule'], '',
+             '| Batch | Status | Scope | Done When | Dependencies |', '| --- | --- | --- | --- | --- |']
+    for row in work['batches']:
+        title = f"{row['id']} — {row['title']}"
+        if row.get('evidence'): title = f"[{title}]({row['evidence']})"
+        lines.append(f"| {title} | {BATCH_LABELS[row['status']]} | {row['summary']} Next: {row['next']} | {row['doneWhen']} | {', '.join(row['dependsOn'] + row['blockedBy']) or 'None'} |")
+    for group, title in (('gates', 'Owner, Account And Manual Gates'), ('recurring', 'Recurring Responsibilities'), ('deferred', 'Explicit Deferrals')):
+        lines += ['', '### ' + title, '', '| Item | Owner | What Remains |', '| --- | --- | --- |']
+        for row in work[group]: lines.append(f"| {row['id']} — {row['title']} | {row['owner']} | {row['next']} |")
+    return lines + ['']
+
+
+def remaining_html(work, prefix=''):
+    esc = html.escape
+    section_id = prefix + 'remaining-batches'
+    result = f'<section class="remaining-progress" id="{section_id}" aria-labelledby="{section_id}-title"><div class="remaining-heading"><div><h2 id="{section_id}-title">Remaining implementation batches</h2><p>{esc(work["scope"])}</p></div><div class="remaining-total"><strong data-remaining-count>{work["remaining"]}</strong><span>batches remaining</span></div></div>'
+    result += f'<p class="batch-counts">{work["counts"]["verification"]} in verification · {work["counts"]["planned"]} planned</p><p class="batch-rule">{esc(work["changeRule"])}</p><ol class="remaining-list">'
+    for row in work['batches']:
+        result += f'<li class="remaining-row" data-planned-batch="{row["id"]}"><div class="batch-line"><span class="batch-number">{row["id"]}</span><h3>{esc(row["title"])}</h3><span class="batch-status {row["status"]}">{BATCH_LABELS[row["status"]]}</span></div><p class="batch-summary">{esc(row["summary"])}</p><details class="batch-details"><summary>Next step and completion criteria<span class="sr-only"> for {esc(row["id"])}</span></summary><p><strong>Next:</strong> {esc(row["next"])}</p><p><strong>Done when:</strong> {esc(row["doneWhen"])}</p>'
+        result += '<p><strong>Related workstreams:</strong> ' + esc(', '.join(row['workstreams'])) + '</p>'
+        result += '<p><strong>Dependencies:</strong> ' + esc(', '.join(row['dependsOn'] + row['blockedBy']) or 'None') + '</p>'
+        if row.get('evidence'): result += '<p><a href="' + esc(row['evidence'], quote=True) + '">Review evidence for ' + row['id'] + '</a></p>'
+        if row.get('verifiedOn'): result += '<p>Verified: ' + esc(row['verifiedOn']) + '</p>'
+        result += '</details></li>'
+    result += '</ol><div class="remaining-boundaries"><p>Dependencies may limit part of a batch. Feasible staging work continues while those answers are pending.</p>'
+    for group, title, explanation in (
+        ('gates', 'Owner, account and manual gates', 'Separate from the implementation count; these need external evidence, decisions or human checks.'),
+        ('recurring', 'Recurring responsibilities', 'Ongoing after the finite implementation batches.'),
+        ('deferred', 'Explicit deferrals', 'Preserved boundaries; excluded from the implementation count.')):
+        result += f'<details class="dependency-group" data-remaining-group="{group}"><summary>{title} <span>({len(work[group])})</span></summary><p>{explanation}</p><ul>'
+        for row in work[group]:
+            result += f'<li data-remaining-item="{row["id"]}"><h3>{row["id"]} — {esc(row["title"])}</h3><p><strong>Owner:</strong> {esc(row["owner"])}</p><p>{esc(row["next"])}</p><p class="muted">Related workstreams: {esc(", ".join(row["workstreams"]))}</p></li>'
+        result += '</ul></details>'
+    return result + '</div></section>'
 
 
 def delivery_model(data):
@@ -82,6 +187,7 @@ def render(data, plan):
     releases = data.get('websiteProductionReleases', 0)
     if type(releases) is not int or releases < 0:
         raise ValueError('Website production release count must be a nonnegative integer')
+    remaining = remaining_model(data)
     counts = Counter(item['status'] for item in data['tickets'].values())
     deliveries = delivery_model(data)
     completed = sum(item['status'] in ('source_verified','staging_verified','live_verified') for item in data['milestones'])
@@ -91,6 +197,7 @@ def render(data, plan):
              '## Where We Are','',
              '**Current work:** '+data['current']+'.','',
              f'**Verified foundation milestones:** {completed}. **Website production releases in this plan:** {releases}. Read each delivery scope: an isolated functional hotfix does not promote the staged SEO batches. The original website migration is a separate completed project. Separately authorized OmniLodge reporting has its own release status.','',
+             *remaining_markdown(remaining),
              '## Delivery Progress', '',
              'These are scoped batches, not completed whole workstreams. A verified staging batch can still need owner review and production approval. OmniLodge live delivery is separate from website production.', '',
              '| Delivery Stage | Batches |', '| --- | ---: |']
@@ -154,7 +261,7 @@ def build_model(data, plan):
             'tickets': tickets, 'milestones': milestones, 'counts': counts, 'total': len(tickets),
             'verifiedMilestones': sum(row['status'] in ('source_verified', 'staging_verified', 'live_verified') for row in milestones),
             'websiteProductionReleases': data.get('websiteProductionReleases', 0), 'focus': view['focus'],
-            'deliveries': delivery_model(data),
+            'deliveries': delivery_model(data), 'remainingWork': remaining_model(data),
             'groups': [{'id': key, 'name': name, 'icon': icon} for key, (name, icon) in GROUPS.items()],
             'sourceSha256': hashlib.sha256((json.dumps(data, sort_keys=True) + plan).encode()).hexdigest()}
 
@@ -177,7 +284,7 @@ def render_html(data, plan):
     template = (ROOT / 'tools/seo-roadmap-view.html').read_text(encoding='utf-8')
     logo = base64.b64encode((ROOT / 'staging/wp-content/mu-plugins/ktk-homepage-assets/logo.webp').read_bytes()).decode()
     license_text = (ROOT / 'tools/seo-roadmap-assets/lucide/LICENSE').read_text(encoding='utf-8')
-    fallback = '<h2>Delivery progress</h2><p>Scoped batches, not completed whole workstreams. Staging and live delivery remain separate.</p><ul class="delivery-fallback">'
+    fallback = remaining_html(model['remainingWork'], 'fallback-') + '<h2>Delivery progress</h2><p>Scoped batches, not completed whole workstreams. Staging and live delivery remain separate.</p><ul class="delivery-fallback">'
     for row in model['deliveries']['items']:
         fallback += '<li><strong>' + html.escape(row['title']) + '</strong>: ' + html.escape(row['stageLabel'] + ' / ' + row['environment']) + '<p>' + html.escape(row['summary']) + '</p><p>Next: ' + html.escape(row['remaining']) + '</p><a href="' + html.escape(row['evidence'], quote=True) + '">Evidence</a></li>'
     fallback += '</ul><table><caption>All 40 workstreams</caption><thead><tr><th>ID</th><th>Work</th><th>Status</th><th>Remaining</th></tr></thead><tbody>'
@@ -186,7 +293,7 @@ def render_html(data, plan):
     fallback += '</tbody></table>'
     replacements = {'__KTK_MODEL__': json.dumps(model, ensure_ascii=True).replace('<', '\\u003c'),
                     '__KTK_ICONS__': icon_sprite(), '__KTK_LOGO__': 'data:image/webp;base64,' + logo,
-                    '__KTK_FALLBACK__': fallback, '__KTK_LICENSE__': license_text.replace('--', '- -'),
+                    '__KTK_FALLBACK__': fallback, '__KTK_REMAINING__': remaining_html(model['remainingWork']), '__KTK_LICENSE__': license_text.replace('--', '- -'),
                     '__KTK_UPDATED__': html.escape(data['updatedOn'])}
     for marker, value in replacements.items():
         if template.count(marker) != 1:
