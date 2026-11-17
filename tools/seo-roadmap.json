@@ -2,6 +2,343 @@
   "schemaVersion": 1,
   "updatedOn": "2026-11-17",
   "websiteProductionReleases": 1,
+  "remainingWork": {
+    "revision": 1,
+    "scope": "Remaining implementation on staging. Production needs separate approval.",
+    "changeRule": "This is the current finite batch list, not a time estimate. Add or split a batch only with a recorded reason; keep owner/account gates and recurring work separate.",
+    "batches": [
+      {
+        "id": "B01",
+        "title": "Finish closure and recovery verification",
+        "status": "verification",
+        "workstreams": [
+          "G02",
+          "T10"
+        ],
+        "summary": "Close the recovery-tooling review already in CI.",
+        "next": "Verify final CI and checkout hashes, merge the exact reviewed source, and retain the release evidence.",
+        "doneWhen": "Final and main CI pass; source and archive checks pass; completed references are removed only after the dependent batch is integrated.",
+        "dependsOn": [],
+        "blockedBy": [],
+        "evidence": "https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/pull/101"
+      },
+      {
+        "id": "B02",
+        "title": "Finish bounded cleanup verification",
+        "status": "verification",
+        "workstreams": [
+          "G02",
+          "T10"
+        ],
+        "summary": "Finish verification of cleanup under new witnessed contexts.",
+        "next": "Close its CI review, integrate the final parent source, and verify the merged result.",
+        "doneWhen": "The cleanup source passes complete CI and independent source/archive checks; the recorded native tests and protection boundaries remain exact.",
+        "dependsOn": [
+          "B01"
+        ],
+        "blockedBy": [],
+        "evidence": "https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/pull/102"
+      },
+      {
+        "id": "B03",
+        "title": "Prove the full staging recovery procedure",
+        "status": "planned",
+        "workstreams": [
+          "G02",
+          "D07",
+          "T10"
+        ],
+        "summary": "Complete helper authentication, interrupted-phase recovery and the full inventory rehearsal.",
+        "next": "Verify the distinct early helper and remaining phases, then run the actual-size fixture and permitted staging rehearsal.",
+        "doneWhen": "Helper/header/token/expiry and interruption cases pass; all 2,074 public and 4,149 private fixture files are verified; the hosted proof is independently audited, with original data retained.",
+        "dependsOn": [
+          "B01",
+          "B02"
+        ],
+        "blockedBy": [
+          "H06"
+        ]
+      },
+      {
+        "id": "B04",
+        "title": "Finish mobile performance and asset delivery",
+        "status": "planned",
+        "workstreams": [
+          "D01",
+          "D02",
+          "T10"
+        ],
+        "summary": "Resolve the remaining SVG delivery and measured template bottlenecks.",
+        "next": "Fix SVG compression negotiation and compare homepage, product, NYE and article load profiles before targeted asset/font/CSS changes.",
+        "doneWhen": "Known negotiation failures are fixed; comparable lab evidence and staging/cache checks verify proportionate improvements without changing consent or claiming field gains.",
+        "dependsOn": [],
+        "blockedBy": []
+      },
+      {
+        "id": "B05",
+        "title": "Finish responsive reading and accessibility fixes",
+        "status": "planned",
+        "workstreams": [
+          "D03",
+          "D05",
+          "T04",
+          "T08",
+          "C05",
+          "C08"
+        ],
+        "summary": "Close the known remaining layout, heading and preserved-module text checks.",
+        "next": "Complete the font/layout census, resolve the historical Europe header follow-up, and fix any reproducible clipping or keyboard issues within scope.",
+        "doneWhen": "Known issues are fixed or explicitly justified with responsive, keyboard and no-JavaScript evidence; native zoom, screen-reader and physical-device checks stay assigned to H03.",
+        "dependsOn": [],
+        "blockedBy": []
+      },
+      {
+        "id": "B06",
+        "title": "Complete intent, archive and internal-link decisions",
+        "status": "planned",
+        "workstreams": [
+          "M02",
+          "T01",
+          "T05",
+          "T06",
+          "T07",
+          "T08",
+          "C01",
+          "C02",
+          "C03",
+          "C06",
+          "C09",
+          "G01",
+          "G03",
+          "L04"
+        ],
+        "summary": "Finish the remaining URL-role and content decision matrix using retained evidence.",
+        "next": "Review secondary NYE/nightlife overlap, archive value, contextual links and remaining metadata; implement only supported changes within the approved boundaries.",
+        "doneWhen": "Each remaining URL/archive decision has evidence and an explicit action; permitted staging fixes are verified, while unapproved retirement, indexing, language or business-fact decisions are recorded for owner review.",
+        "dependsOn": [],
+        "blockedBy": [
+          "H01",
+          "H02"
+        ]
+      },
+      {
+        "id": "B07",
+        "title": "Close monitoring and regression coverage",
+        "status": "planned",
+        "workstreams": [
+          "M03",
+          "M04",
+          "T09",
+          "T10",
+          "D04",
+          "D06",
+          "D07"
+        ],
+        "summary": "Finish the feasible technical monitoring and end-to-end staging checks.",
+        "next": "Reconcile remaining regression gaps and prepare exact owner-run checks for account, inbox, provider and paid-state outcomes.",
+        "doneWhen": "Permitted automated checks and availability safeguards pass; every real-world/provider check has an owner and clear evidence requirement, with no real messages, orders or account edits sent automatically.",
+        "dependsOn": [],
+        "blockedBy": [
+          "H02",
+          "H03"
+        ]
+      },
+      {
+        "id": "B08",
+        "title": "Final staging audit and owner review package",
+        "status": "planned",
+        "workstreams": [
+          "G02",
+          "T10",
+          "D07"
+        ],
+        "summary": "Verify the finished staging scope and produce one clear handoff.",
+        "next": "Audit the completed batches, final source/deployed hashes, cache/device evidence and all remaining constraints against the full plan.",
+        "doneWhen": "All feasible staging deliveries have authoritative evidence; every unresolved item is mapped to an owner/account/manual gate, recurring responsibility or explicit deferral. Production remains separately approved.",
+        "dependsOn": [
+          "B01",
+          "B02",
+          "B03",
+          "B04",
+          "B05",
+          "B06",
+          "B07"
+        ],
+        "blockedBy": []
+      }
+    ],
+    "gates": [
+      {
+        "id": "H01",
+        "title": "Remaining business facts and legal review",
+        "status": "waiting",
+        "workstreams": [
+          "C01",
+          "C02",
+          "C03",
+          "C04",
+          "C05",
+          "C06",
+          "C07",
+          "C08",
+          "C09",
+          "C10",
+          "T05",
+          "T09",
+          "G01",
+          "G03"
+        ],
+        "owner": "KTK operations / owner / appropriate specialist",
+        "next": "Confirm outstanding availability, venue/meeting details, package and team terms, Halloween/competition facts and substantive legal/privacy clauses. Registered company details are already implemented; medical claims remain held for specialist review."
+      },
+      {
+        "id": "H02",
+        "title": "Authenticated search, analytics and provider evidence",
+        "status": "waiting",
+        "workstreams": [
+          "M02",
+          "M03",
+          "M04",
+          "T01",
+          "T03",
+          "T06",
+          "T09",
+          "L04",
+          "G03"
+        ],
+        "owner": "Owner with the relevant accounts",
+        "next": "Supply current Search Console/account evidence, aggregate paid-booking reconciliation and applicable external validation. The native UI stop stays binding; no alternative account-access workaround."
+      },
+      {
+        "id": "H03",
+        "title": "Human, device, inbox and paid-state checks",
+        "status": "waiting",
+        "workstreams": [
+          "D03",
+          "D04",
+          "D05",
+          "D06",
+          "T08",
+          "T09",
+          "C09"
+        ],
+        "owner": "Owner / nominated testers",
+        "next": "Complete native zoom, screen-reader and physical-device checks, actual inbox assurance and provider/payment outcomes under separately authorized scope. Automated checks send no real message or order."
+      },
+      {
+        "id": "H04",
+        "title": "Google Business Profile access and physical facts",
+        "status": "waiting",
+        "workstreams": [
+          "L01"
+        ],
+        "owner": "Verified profile owner / KTK operations",
+        "next": "Review the nine prepared account/profile facts: eligibility, real premises, category, hours, photos and booking destination. A registered office is not assumed to be a meeting point."
+      },
+      {
+        "id": "H05",
+        "title": "Review-process adoption and approved partnerships",
+        "status": "waiting",
+        "workstreams": [
+          "L02",
+          "L03",
+          "L04"
+        ],
+        "owner": "KTK owner / nominated operator",
+        "next": "Adopt the neutral review process and approve any real requests, replies or partner outreach. Drafts remain unsent; current agreements and inaccessible publisher context need confirmation."
+      },
+      {
+        "id": "H06",
+        "title": "Hosting quota, coordination and retention policy",
+        "status": "waiting",
+        "workstreams": [
+          "G02",
+          "D07"
+        ],
+        "owner": "Hosting account owner / release owner",
+        "next": "Establish actual account quota and agreed coordination/retention for preserved private originals, metadata and operation markers. Filesystem free space alone is not account-quota evidence."
+      },
+      {
+        "id": "H07",
+        "title": "Production review and release approval",
+        "status": "waiting",
+        "workstreams": [
+          "G02",
+          "T02",
+          "T03",
+          "T04",
+          "T05",
+          "T06",
+          "T07",
+          "T08",
+          "T09",
+          "T10",
+          "C01",
+          "C02",
+          "C03",
+          "C04",
+          "C05",
+          "C06",
+          "C07",
+          "C08",
+          "C09",
+          "C10",
+          "D01",
+          "D02",
+          "D03",
+          "D04",
+          "D05",
+          "D06",
+          "D07",
+          "G01"
+        ],
+        "owner": "KTK owner / release owner",
+        "next": "Review staging, authorize the exact production scope, obtain separate production backups and approve promotion/discovery/account changes. This sits outside the current staging-only instruction."
+      }
+    ],
+    "recurring": [
+      {
+        "id": "R01",
+        "title": "Monthly and seasonal content reviews",
+        "workstreams": [
+          "C02",
+          "C04",
+          "C05",
+          "C08",
+          "G01",
+          "G04"
+        ],
+        "owner": "KTK team and code maintainer",
+        "next": "Run the agreed monthly plus pre/post seasonal checks; retain dated facts, review records and campaign rollover decisions."
+      },
+      {
+        "id": "R02",
+        "title": "Measurement, availability and reputation follow-up",
+        "workstreams": [
+          "M02",
+          "M03",
+          "M04",
+          "D07",
+          "L02",
+          "L03",
+          "L04"
+        ],
+        "owner": "Nominated account / operations owners",
+        "next": "Review comparable traffic and completed-booking evidence, availability, genuine reviews and referral results. No new automation or account settings are implied."
+      }
+    ],
+    "deferred": [
+      {
+        "id": "X01",
+        "title": "Consent-provider and GTM changes",
+        "workstreams": [
+          "D08"
+        ],
+        "owner": "Owner decision required to reopen",
+        "next": "Keep the functional Accept/Reject controls and current bridge intact. The previously declined consent/GTM work stays deferred."
+      }
+    ]
+  },
   "current": "68 website staging deliveries are cache-verified and unpromoted. Original privacy/terms prose now has16px/1.65 text through980px and24px booking-tab clearance on phones. All86 original paragraphs and legal/operator facts remain unchanged. Local489 and staging517 checks pass across40 views; all8 origin and8 clean captures exactly match inspected local images. The28 additional staging checks cover Cloudflare-encoded email links with JavaScript disabled; all64 JavaScript handoffs are prevented. All348 warmed HTML and12 explicit HTML/current-CSS responses are HIT. Initial strict result 16/18 is retained; the unchanged final check passes18/18 with all12 actual HTML/current-CSS responses HIT. Six reviewed venue guides now have readable phone body/table text, ordered heading sizes, whole-word table labels and visible native topic arrivals. The one-CSS change passes 1,083 checks across 54 views and 261 native topic activations per local/origin/clean matrix; all 18 origin and 18 clean captures match the accepted local set. All 348 warmed HTML responses and 36 explicit HTML/current-CSS responses are HIT; the unchanged strict repeat passes 54/54, with the initial two exact-byte CSS MISSes retained. Compact menus on the homepage and code pages now show a visible inset keyboard outline. The two-CSS change passes411 focus checks/16 views/147 destination-link observations per local, origin and clean matrix; all12 origin and12 clean captures exactly match inspected local images. All348 warmed HTML responses and12 explicit HTML/current-CSS responses are HIT; the first two CSS MISSes are retained, and the unchanged strict repeat passes18/18.  The Memorial guide now has readable phone body text and fully visible native topic-heading glyphs, with all original words/IDs/links/photos preserved. Nine existing core links remain available without JavaScript on the homepage and116 code pages, with16px text/44px targets/native focus and glyph/booking-tab clearance. All original bodies, forms, photos, metadata, functional consent, protected commerce, medical hold and active competition remain preserved. Origin/clean/warmed release checks pass with348 warmed HITs/current119 assets; six explicit HTML/CSS HIT pairs contain the new navigation. Of56 articles,52 have major revisions,2 narrower changes,1 needs substantive review and1 is held;54 identities/197 summaries are not54 full fact audits. The private staging recovery fixture and selected-state snapshots do not establish full production recovery or whole-release atomicity. Performance, production-capable source/coordination, remaining navigation/intent/measurement work, real-world/manual/account dependencies and separate production approval remain. Delivery65 verifies41 original historical-guide paragraph interiors with phone16px/1.65 and one24px booking-tab inset,plus stable space for four original Memorial images. Full6193 origin/normal/warmed and32-view1729 browser matrices pass; actual cache18/18 verifies all12 HTML/CSS HIT responses. Original content/media/protected boundaries remain exact. Controlled local traces are not field-CWV gains. The complete local full-engine fixture and metadata-only helper expiry are verified. The incomplete private copy is now independently disposed: fifteen separately witnessed cleanup batches remove all 3,714 known private files, with five signed/owned metadata records preserved and all 38 recorded helpers absent. Each accepted batch preserves its full fresh raw state; the independent final state and all public/protected files are exact. A failed read-only witness is separately retained, and later Ecwid option values remain archived without restoration or exclusion. This closes private cleanup, not the complete hosted engine, recovery across ordinary state changes or production-release engineering. The three previously prepared website candidates are now staging-verified; the broader feasibility pass and remaining engineering continue. Native UI remains stopped by the user; native zoom, AT and physical-device acceptance are unfinished. The current2074-public/4149-private-file engine fixture now passes both clean source CI and a qualified Windows local run. Both include108 phases, two real interruptions, signed archives,5 private apply/5 exact rollback steps and owned temporary cleanup; the initial local dirty-source qualification is preserved by56 committed/runtime hashes. Retained synthetic archives reopen independently. Hosted termination/ordinary-state recovery, account quota/coordination/retention, orchestration and separate production approval remain open;68 website staging deliveries and C08 are unchanged. Private termination inspection/preparation source a90f1dc/tree64262e0 passes exact-tree CI44041085951:1,033 Linux cases in791.377s with21 platform skips,45 Windows cases in0.759s without skips, secrets and build. The separate read-only compiler cannot create a missing lock or invoke the four engine mutators. Phase-aware initial/remaining-tree inspections, complete fresh seven-table/public/protected witnesses, signed metadata archives, four explicit DPAPI roles and one-use private claims are source-verified. Native current binder/reader35/688.946s and earlier separately source-pinned archive/authority/claim suites pass. Initial CI four identical-witness errors are retained; only synthetic helper fixtures change, using distinct bytes and two complete captures, with an equal-timestamp regression. Strict archive uniqueness and every default/application byte remain unchanged. This accepts local/CI preparation, not a hosted fence, cleanup or helper. Continuous-lock fence, fresh-context closure-only recovery, bounded cleanup, distinct early helper and full current-map proof remain before hosting.68 website deliveries/C08 unchanged/G02 open. Private fence and closure-only recovery source a04c96e/treee81abbdd passes exact-tree CI44050668687:1,055 Linux cases in1,287.422s with21 platform skips,45 Windows cases in1.233s with no skips, secrets and build. Native custody9/172.257s, existing readers33/570.199s and controller13/360.425s are separately source-pinned, all without skips. A trusted existing lock stays held across full guarded inspections and exact signed closure creation. A fresh one-use private claim, distinct current token, old-helper absence and complete current witnesses are mandatory. Partial/lost-reply closure writes recover under a new read-only witness and new closure-only context; original rolled-back closure bytes remain exact. The capture-crossing-expiry defect and failed logs are retained; checks after capture and before write pass the actual regression. The initial controller CI exceeds20 minutes; only its offline CI budget increases to30, preserving all runtime/HTTP/memory/expiry/work bounds. No hosted helper, payload removal or full-host acceptance is established by this source milestone. The separate cleanup candidate passes25 local native cases and has its own pending CI. Additional phase/pending-content, distinct early-helper/header/old-token, actual2074/4149 map/runtime/envelope and hosting proofs remain, alongside ordinary-state recovery, quota, coordination/retention, orchestration and owner/production gates.68 website deliveries/C08 unchanged/G02 open. Bounded private payload cleanup source f9d9f766/treef6bb5a88 passes exact-tree CI44053964209:1,067 Linux cases in1,599.139s with21 platform skips,45 Windows cases in0.792s without skips, secret scan and isolated build. The actual PR checkout tree matches for all three standard jobs; the optional full inventory fixture is intentionally skipped. Local25 native cases in963.949s retain all18 qualified source hashes and the explicit dirty/midrun attribution; initial41.685s and larger18MiB/count492.419s evidence remain separate. Cleanup requires a complete signed closure, a fresh complete raw/public witness and one-use context; at most256 known files and256 known empty directories are removed nonrecursively, with full guards before each removal and retained original metadata/markers. New-context interruption recovery and changed/unknown/hardlink/inode preservation pass. No hosted helper, full actual-map or hosted-runtime acceptance is claimed. Distinct early helper/envelope/remaining phases/full map, account quota, coordination/retention, public release orchestration, owner/manual checks and separate production approval remain. All68 website deliveries/C08 and protected boundaries are unchanged.",
   "deliveries": [
     {"id":"legal-text-clearance","title":"Readable original legal text with phone booking-tab clearance","workstreams":["D03","D05","T10"],"stage":"staging_verified","environment":"website","summary":"One8-line CSS block improves86 original privacy/terms paragraphs to16px/1.65 through980px and adds24px phone right clearance. All2372 other application blobs and original words/headings/operator details/history/links/metadata/scripts/protected boundaries remain exact. Source2398/reference2320/styles12/local489 and staging517 checks across40 views pass. The28 extra staging checks cover original plain emails wrapped by Cloudflare in no-JS contexts;108 live focuses include64 prevented JS handoffs and44 focus-only checks. Six axe views per matrix have0 violations/6 incomplete groups. All8 origin and8 clean PNGs exactly match accepted local images. Full6193 per phase/348 warmed HITs/119 assets/zero retries and strict18/18 with12 actual HTML/CSS HIT responses pass. Initial strict result 16/18 is retained; the unchanged final check passes18/18 with all12 actual HTML/current-CSS responses HIT. Shared324/attribution500/endpoints7 per staging phase/default intercepted487 pass. Final2074 owned/255 protected hashes and six non-option tables/posts/forms/identity remain exact. Raw Ecwid option changes are archived and preserved.","remaining":"Broader layout, native zoom/AT/physical-device/provider acceptance and separate production release remain. The user native-UI stop is binding. This is a bounded typography delivery, not legal accuracy, functional consent-policy approval, whole-site conformance or full hosted-engine recovery. C08 is unchanged; G02 and the full plan remain active.","evidence":"legal-text-clearance-2026-11-16/README.md","verifiedOn":"2026-11-17"},

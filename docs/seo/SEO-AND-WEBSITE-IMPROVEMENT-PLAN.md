@@ -12,6 +12,12 @@ gates. Preserve the original baseline when comparing later measurements.
 
 Goal: More qualified organic visitors, more completed direct bookings, and a clearer, faster, reliable website.
 
+## Remaining Batch List (2026-11-17)
+
+The [roadmap's remaining-batch list](ROADMAP.html#remaining-batches) now groups the known remaining staging implementation into **8 batches: 2 in verification and 6 planned**. All eight are visible before delivery history, with next steps, completion criteria and dependencies. The [Markdown view](ROADMAP.md#remaining-implementation-batches) carries the same list.
+
+This is the current finite implementation grouping, not a time estimate or eight equal pieces of work. All 39 open workstreams remain represented across the batches, seven owner/account/manual gates, two recurring responsibilities and the explicit consent deferral. The detailed acceptance criteria below still apply; production approval remains separate. Changes to the batch grouping must record their reason. No ticket or website delivery is marked complete by this presentation change.
+
 ## 1. Decisions in Plain English
 
 The largest opportunity is not publishing dozens of new articles or changing URLs. It is improving the pages already connected to our business: the main pub crawl, NYE, nightlife, bars/clubs and group trips, supported by reliable reporting and a better booking journey.

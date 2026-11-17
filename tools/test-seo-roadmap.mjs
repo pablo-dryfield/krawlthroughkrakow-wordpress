@@ -37,6 +37,27 @@ try{
   try{
    await page.goto(url,{waitUntil:'load'});
    const model=await page.evaluate(()=>JSON.parse(document.getElementById('roadmap-data').textContent));
+   const remaining=source.remainingWork;
+   const planned=page.locator('#overview [data-planned-batch]');
+   check(width+' every planned batch visible by default',await planned.count()===remaining.batches.length&&(await planned.locator('h3').allTextContents()).every((title,index)=>title===remaining.batches[index].title));
+   check(width+' source-bound remaining total',await page.locator('#overview [data-remaining-count]').textContent()===String(remaining.batches.filter(row=>row.status!=='complete').length));
+   check(width+' source-bound batch statuses',JSON.stringify(await planned.locator('.batch-status').allTextContents())===JSON.stringify(remaining.batches.map(row=>({verification:'In verification',planned:'Planned',complete:'Complete'})[row.status])));
+   check(width+' remaining list precedes delivery history',await page.evaluate(()=>!!(document.getElementById('remaining-batches').compareDocumentPosition(document.querySelector('.delivery-progress'))&Node.DOCUMENT_POSITION_FOLLOWING)));
+   const firstDetails=planned.first().locator('details');
+   await firstDetails.locator('summary').focus();await page.keyboard.press('Enter');
+   check(width+' batch criteria open by keyboard',await firstDetails.getAttribute('open')!==null&&(await firstDetails.textContent()).includes(remaining.batches[0].doneWhen));
+   await page.keyboard.press('Enter');
+   check(width+' batch criteria close by keyboard',await firstDetails.getAttribute('open')===null);
+   for(const group of ['gates','recurring','deferred']){
+    const panel=page.locator('#overview [data-remaining-group="'+group+'"]');
+    check(width+' separate '+group+' inventory',await panel.locator('[data-remaining-item]').count()===remaining[group].length);
+    await panel.locator('summary').click();
+    check(width+' '+group+' details retain actions and owners',(await panel.textContent()).includes(remaining[group][0].next)&&(await panel.textContent()).includes(remaining[group][0].owner));
+    await panel.locator('summary').click();
+   }
+   if([390,1440].includes(width)){
+    await page.locator('#remaining-batches').screenshot({path:path.join(screenshots,'remaining-batches-'+width+'.png')});
+   }
    check(width+' forty source-bound work tiles',await page.locator('.work-cell').count()===40);
    check(width+' all delivery milestones',await page.locator('.milestone').count()===source.milestones.length);
    const verified=source.milestones.filter(row=>['source_verified','staging_verified','live_verified'].includes(row.status)).length;
@@ -130,6 +151,11 @@ try{
   const context=await browser.newContext({javaScriptEnabled:false,viewport:{width,height:900}});
   const page=await context.newPage();await page.goto(url,{waitUntil:'load'});
   check(width+' full no-JavaScript fallback',await page.locator('.noscript tbody tr').count()===40);
+  check(width+' every remaining batch survives without JavaScript',await page.locator('.noscript [data-planned-batch]').count()===source.remainingWork.batches.length);
+  check(width+' no-JavaScript remaining count matches source',await page.locator('.noscript [data-remaining-count]').textContent()===String(source.remainingWork.batches.filter(row=>row.status!=='complete').length));
+  const fallbackDetails=page.locator('.noscript .batch-details').first();
+  await fallbackDetails.locator('summary').focus();await page.keyboard.press('Enter');
+  check(width+' no-JavaScript criteria work by keyboard',await fallbackDetails.getAttribute('open')!==null&&(await fallbackDetails.textContent()).includes(source.remainingWork.batches[0].doneWhen));
   check(width+' delivery progress survives without JavaScript',await page.locator('.delivery-fallback>li').count()===source.deliveries.length);
   check(width+' no-JavaScript page has no horizontal overflow',await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
   await context.close();
