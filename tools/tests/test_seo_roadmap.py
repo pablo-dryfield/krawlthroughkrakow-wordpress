@@ -57,17 +57,32 @@ class RoadmapTests(unittest.TestCase):
     def test_remaining_count_moves_only_with_dated_batch_evidence(self):
         data = copy.deepcopy(self.data)
         before = module.remaining_model(data)
-        row = data['remainingWork']['batches'][0]
+        row = next(row for row in data['remainingWork']['batches'] if row['status'] != 'complete')
         row['status'] = 'complete'
         with self.assertRaises(ValueError): module.remaining_model(data)
         row['verifiedOn'] = '2099-01-01'
         with self.assertRaises(ValueError): module.remaining_model(data)
         row['verifiedOn'] = data['updatedOn']
+        row.pop('evidence', None)
+        with self.assertRaises(ValueError): module.remaining_model(data)
+        row['evidence'] = 'https://example.invalid/verified-batch-fixture'
         after = module.remaining_model(data)
         self.assertEqual(after['remaining'], before['remaining'] - 1)
         self.assertEqual(after['counts']['complete'], before['counts']['complete'] + 1)
         self.assertEqual(data['tickets'], self.data['tickets'])
         self.assertEqual(data['deliveries'], self.data['deliveries'])
+
+    def test_starting_a_planned_batch_keeps_it_remaining_without_completing_workstreams(self):
+        data = copy.deepcopy(self.data)
+        before = module.remaining_model(data)
+        row = next(row for row in data['remainingWork']['batches'] if row['status'] == 'planned')
+        row['status'] = 'in_progress'
+        after = module.remaining_model(data)
+        self.assertEqual(after['remaining'], before['remaining'])
+        self.assertEqual(after['counts']['in_progress'], before['counts']['in_progress'] + 1)
+        self.assertEqual(after['counts']['planned'], before['counts']['planned'] - 1)
+        self.assertEqual(after['counts']['complete'], before['counts']['complete'])
+        self.assertEqual(data['tickets'], self.data['tickets'])
 
     def test_remaining_html_escapes_text_and_has_distinct_fallback_ids(self):
         data = copy.deepcopy(self.data)
