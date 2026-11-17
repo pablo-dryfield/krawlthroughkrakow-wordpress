@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 1,
+  "productId": 28,
+  "sourceReview": "Eight original public product-28 photos; deterministic same-format downscales, no upscaling. Original URLs remain largest/fallback candidates.",
+  "images": {
+    "https://media.krawlthroughkrakow.com/products/28/01-e2e9c1ac57e0.jpg": {
+      "width": 1440,
+      "height": 960,
+      "bytes": 127050,
+      "sha256": "e2e9c1ac57e03f99f999295119b329e7a8afdf2096fb3fb5b24bc951f39730e5",
+      "variants": [
+        {
+          "width": 360,
+          "height": 240,
+          "bytes": 23179,
+          "sha256": "43b2aa0b8ac15f6b8fb892b3854cb100903ad4af090bc497f702720e3e214fe5",
+          "path": "product-images/pub-crawl-01-360-43b2aa0b8ac1.jpg"
+        },
+        {
+          "width": 720,
+          "height": 480,
+          "bytes": 68593,
+          "sha256": "a5b60e592a466bca8b32003bccca779fa15c0817c66051c93dcc27d5d25a4753",
+          "path": "product-images/pub-crawl-01-720-a5b60e592a46.jpg"
+        },
+        {
+          "width": 1080,
+          "height": 720,
+          "bytes": 125227,
+          "sha256": "b44ce63703df1260720f85b2e92fe48a644339a054ebdbd8c96efef380de082a",
+          "path": "product-images/pub-crawl-01-1080-b44ce63703df.jpg"
+        }
+      ]
+    },
+    "https://media.krawlthroughkrakow.com/products/28/02-bfca29e0a910.jpg": {
+      "width": 1500,
+      "height": 842,
+      "bytes": 89628,
+      "sha256": "bfca29e0a910384b0861d9fc1425d02c40eb1d6c2db6dd82453a3830dc53f71b",
+      "variants": [
+        {
+          "width": 360,
+          "height": 202,
+          "bytes": 12034,
+          "sha256": "4961b5aa8971d8122e86821257306663b5958acfb20a828c7c0e6bf0547682c6",
+          "path": "product-images/pub-crawl-02-360-4961b5aa8971.jpg"
+        },
+        {
+          "width": 720,
+          "height": 404,
+          "bytes": 33690,
+          "sha256": "faf677816ea3b59159b623d5a78cad8146a9c595df531cd48b76f4f80bae1ec4",
+          "path": "product-images/pub-crawl-02-720-faf677816ea3.jpg"
+        },
+        {
+          "width": 1080,
+          "height": 606,
+          "bytes": 63987,
+          "sha256": "80e834ec61db647cf4c640b464f861755a54f7d7a40d86c0ad1a17d35606ea70",
+          "path": "product-images/pub-crawl-02-1080-80e834ec61db.jpg"
+        }
+      ]
+    },
+    "https://media.krawlthroughkrakow.com/products/28/03-a29f6fa70f31.jpg": {
+      "width": 1500,
+      "height": 842,
+      "bytes": 176255,
+      "sha256": "a29f6fa70f31b0934079f2a95866d0aa1e884649617d7031d84300a74bdaead8",
+      "variants": [
+        {
+          "width": 360,
+          "height": 202,
+          "bytes": 15765,
+          "sha256": "1b7ea695f79b1604149bdcdb89fb4a66e9168f480bccbbbfc1bc935d9f7e345c",
+          "path": "product-images/pub-crawl-03-360-1b7ea695f79b.jpg"
+        },
+        {
+          "width": 720,
+          "height": 404,
+          "bytes": 52084,
+          "sha256": "c21e69476192ed601ecb7b08c9f27d85a9aadd36033b10e51b095f5f202fd345",
+          "path": "product-images/pub-crawl-03-720-c21e69476192.jpg"
+        },
+        {
+          "width": 1080,
+          "height": 606,
+          "bytes": 111578,
+          "sha256": "4dd8f6804174784b82387d1b70d5daae6718a6d65f2b8043e4ab94fe495ec81a",
+          "path": "product-images/pub-crawl-03-1080-4dd8f6804174.jpg"
+        }
+      ]
+    },
+    "https://media.krawlthroughkrakow.com/products/28/04-6464975d9c00.jpg": {
+      "width": 1500,
+      "height": 842,
+      "bytes": 184403,
+      "sha256": "6464975d9c0008505884c74c4d60abfabf472c55f073b67af08cb88abb9e3f1a",
+      "variants": [
+        {
+          "width": 360,
+          "height": 202,
+          "bytes": 20047,
+          "sha256": "82b767fb2f84d410c2e32b4b04f77245162feba8913a934aac7aa3c8617cd30e",
+          "path": "product-images/pub-crawl-04-360-82b767fb2f84.jpg"
+        },
+        {
+          "width": 720,
+          "height": 404,
+          "bytes": 61533,
+          "sha256": "34de0d964155ffd54a5840456a5b2dac2f987b5529f8be2b07ade09f4da22572",
+          "path": "product-images/pub-crawl-04-720-34de0d964155.jpg"
+        },
+        {
+          "width": 1080,
+          "height": 606,
+          "bytes": 122500,
+          "sha256": "5737921b8fb79f77bbd72fdb15a5139d4f5e5ec4a0b224c51f9958217f089c85",
+          "path": "product-images/pub-crawl-04-1080-5737921b8fb7.jpg"
+        }
+      ]
+    },
+    "https://media.krawlthroughkrakow.com/products/28/05-412d9fc0a63e.jpg": {
+      "width": 1500,
+      "height": 842,
+      "bytes": 104508,
+      "sha256": "412d9fc0a63ec0f632f7c8ddcf42ac3b2692b64b3243485de10542197bcaba4b",
+      "variants": [
+        {
+          "width": 360,
+          "height": 202,
+          "bytes": 12743,
+          "sha256": "00efbe06618f68179c910434065bcf767b7f6fe2b0b1a7333955f84a165e6852",
+          "path": "product-images/pub-crawl-05-360-00efbe06618f.jpg"
+        },
+        {
+          "width": 720,
+          "height": 404,
+          "bytes": 38389,
+          "sha256": "ac563c26efbb63acdedea810a290d6c0227871f93010b828620cc88cb35fd17c",
+          "path": "product-images/pub-crawl-05-720-ac563c26efbb.jpg"
+        },
+        {
+          "width": 1080,
+          "height": 606,
+          "bytes": 73902,
+          "sha256": "9b9c3b81136ab9844efac230ed8349eb2bc8dfc51c70b32ec142261209d31d9b",
+          "path": "product-images/pub-crawl-05-1080-9b9c3b81136a.jpg"
+        }
+      ]
+    },
+    "https://media.krawlthroughkrakow.com/products/28/07-97eb1d9cb507.jpg": {
+      "width": 1500,
+      "height": 1000,
+      "bytes": 248294,
+      "sha256": "97eb1d9cb507391c356a66390b971ffd14797e567b8befaebef5ed35ef885eea",
+      "variants": [
+        {
+          "width": 360,
+          "height": 240,
+          "bytes": 22195,
+          "sha256": "731e9d8fb4c3f031afe5d20e541a8d3f96b1d9643ef30124ca75f9f3fbbeeb2f",
+          "path": "product-images/pub-crawl-06-360-731e9d8fb4c3.jpg"
+        },
+        {
+          "width": 720,
+          "height": 480,
+          "bytes": 74748,
+          "sha256": "ce7679f0622f69f943b019026ba149a3538b05400950757280ee6291891f05be",
+          "path": "product-images/pub-crawl-06-720-ce7679f0622f.jpg"
+        },
+        {
+          "width": 1080,
+          "height": 720,
+          "bytes": 158409,
+          "sha256": "055ce1db14f7b7d7966c6da153f4eb835f55fd1474337532022ae37a87f37970",
+          "path": "product-images/pub-crawl-06-1080-055ce1db14f7.jpg"
+        }
+      ]
+    },
+    "https://media.krawlthroughkrakow.com/products/28/pub-crawl-7f19fb00-ea82-4dff-b672-0614a6f8821f.webp": {
+      "width": 1800,
+      "height": 1010,
+      "bytes": 155722,
+      "sha256": "de2fa390bcfff44b3b2db1af9999854452761eb53033586051d900cd5b652464",
+      "variants": [
+        {
+          "width": 360,
+          "height": 202,
+          "bytes": 13982,
+          "sha256": "2be54559d8ce30bc0eb96071688bf8aa25800e6db11b411b647501b095433f4f",
+          "path": "product-images/pub-crawl-07-360-2be54559d8ce.webp"
+        },
+        {
+          "width": 720,
+          "height": 404,
+          "bytes": 37230,
+          "sha256": "4bf72ee2babd90e7e4d80b65e71bb3b5868d9dd15b0360b4a6915585e7d82396",
+          "path": "product-images/pub-crawl-07-720-4bf72ee2babd.webp"
+        },
+        {
+          "width": 1080,
+          "height": 606,
+          "bytes": 66088,
+          "sha256": "5d94fb5fb14cd86badfba1dacbe647b503d78d65e9ce045257346ae0ed4b79a0",
+          "path": "product-images/pub-crawl-07-1080-5d94fb5fb14c.webp"
+        }
+      ]
+    },
+    "https://media.krawlthroughkrakow.com/products/28/pub-crawl-c20bbe36-4d6e-4184-9377-4b935d0c1a68.webp": {
+      "width": 1800,
+      "height": 1200,
+      "bytes": 597088,
+      "sha256": "471b3b2dd908d635859363573bbb5638896a9bb0fddbd4160837dfffe11ef46d",
+      "variants": [
+        {
+          "width": 360,
+          "height": 240,
+          "bytes": 26178,
+          "sha256": "762f669b296ffbedbfd187bcbfc8bbcac701fb9d6c7c99e37ec8e0e307e4929a",
+          "path": "product-images/pub-crawl-08-360-762f669b296f.webp"
+        },
+        {
+          "width": 720,
+          "height": 480,
+          "bytes": 82468,
+          "sha256": "1c25ffd8f7c9880d5112e14bbbc5f40c9c729dcab6a2309f810eb843fb8cfdf2",
+          "path": "product-images/pub-crawl-08-720-1c25ffd8f7c9.webp"
+        },
+        {
+          "width": 1080,
+          "height": 720,
+          "bytes": 174434,
+          "sha256": "a046ca4a3cbf025d686c35e01e3ad2ce7f0629a2fc9afb42cc8808a04851b150",
+          "path": "product-images/pub-crawl-08-1080-a046ca4a3cbf.webp"
+        }
+      ]
+    }
+  }
+}

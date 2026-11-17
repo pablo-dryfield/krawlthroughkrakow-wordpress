@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client';
 import { getCountries, getCountryCallingCode } from 'libphonenumber-js/min';
 import { getProductContent } from './product-content';
+import { responsiveProductImage } from './responsive-product-images';
 import { completePublicContentHandoff, followPublicLink, publicStorefrontHref } from './public-content';
 import ProductConfigurator, {
   CustomSelect,
@@ -1182,6 +1183,7 @@ function ProductDetail({ slug, navigate, addToCart, cart, contact, setContact })
             <div className="ktk-gallery__stage">
               {hasGallery ? (
                 <img
+                  {...responsiveProductImage(product.id, content.gallery[activeImage], 'stage', config.assetBaseUrl)}
                   src={content.gallery[activeImage]}
                   alt={`${product.name} experience`}
                   decoding="async"
@@ -1204,6 +1206,7 @@ function ProductDetail({ slug, navigate, addToCart, cart, contact, setContact })
                     aria-pressed={index === activeImage}
                   >
                     <img
+                      {...responsiveProductImage(product.id, image, 'thumbnail', config.assetBaseUrl)}
                       src={image}
                       alt=""
                       loading="lazy"

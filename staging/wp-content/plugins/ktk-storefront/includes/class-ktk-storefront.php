@@ -205,6 +205,7 @@ final class KTK_Storefront {
 
 		$config = array(
 			'restUrl' => esc_url_raw( rest_url( self::REST_NAMESPACE ) ),
+			'assetBaseUrl' => esc_url_raw( $asset_url ),
 			'baseUrl' => esc_url_raw( home_url( '/store2' ) ),
 			'path' => sanitize_text_field( (string) get_query_var( self::QUERY_PATH ) ),
 			'siteUrl' => esc_url_raw( home_url( '/' ) ),
