@@ -29,3 +29,10 @@ The metadata/config object contains the original private ownership key in memory
 
 
 The qualified current controller suite now passes13 cases in360.425 seconds, zero skips. It includes the new expiry regression and all12 prior cases; exact tested hashes for16 dependencies remain in native-controller13-qualified-receipt.json. Only two added runtime time checks differ from the preserved12-case candidate; an exact inverse preserves all earlier test methods/assertions. Current controller source CI remains required. This accepts local native fence/closure-only behavior, not a hosted helper, payload cleanup or full transaction.
+
+
+## Initial controller CI time budget
+
+Current source3fa6cf1/tree1a3bbb7 CI44046788811 is canceled when the offline test job exceeds its configured20-minute limit. GitHub explicitly records maximum execution time20m0s; the job lasts20m16s. The incomplete log has no unit-suite summary or reported assertion failure before cancellation. Windows and secret jobs pass, but there is no whole-controller CI acceptance. The earlier ee08 run is separately superseded/canceled by the accepted-main integration; it is not this timeout.
+
+Only the offline CI job budget increases from20 to30 minutes for the expanded native suite. Every test command, other job, default/application source and all HTTP/memory/expiry/work bounds remain unchanged. Before this edit, all3,702 Git/local/composite files and both source ZIP CRCs are independently reverified against exact3fa6 source backup2194f566, using parent50a7 plus182-file1,511,812-byte seo-private-engine-bounded-cleanup-before-20261117.zip. Native controller13/360.425s and lock9/readers33 receipts remain exact to runtime. Current-source CI must still pass before source acceptance. No helper, payload cleanup or hosted transaction is accepted by this budget change.
