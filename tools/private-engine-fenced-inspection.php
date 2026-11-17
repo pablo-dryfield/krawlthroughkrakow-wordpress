@@ -11,6 +11,8 @@ final class KTK_Private_Engine_Fenced_Inspection
     private string $temporary;
     private ?string $engineLockName=null;
     private $engineLock=null;
+    private ?KTK_Private_Engine_Abandonment_Inspection $engineLockOwner=null;
+    private bool $ownsEngineLock=false;
     private $freshCapture;
     private static function canonical($v) { if(is_array($v)){if(!array_is_list($v)){ksort($v);}foreach($v as $k=>$x){$v[$k]=self::canonical($x);}}return $v; }
     private static function json($v): string { return json_encode($v,JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_THROW_ON_ERROR); }
@@ -22,8 +24,9 @@ final class KTK_Private_Engine_Fenced_Inspection
         clearstatcache(true,$p);if(!is_dir($p)||is_link($p)||str_replace('\\','/',(string)realpath($p))!==$p){throw new RuntimeException('Canonical existing fenced inspection directory required');}
         for($a=$p;;$a=dirname($a)){if(is_link($a)){throw new RuntimeException('Fenced inspection link ancestor preserved');}if(dirname($a)===$a){break;}}
     }
-    public function __construct(array $config,callable $freshCapture)
+    public function __construct(array $config,callable $freshCapture,?KTK_Private_Engine_Abandonment_Inspection $engineLockOwner=null)
     {
+        $this->engineLockOwner=$engineLockOwner;
         $keys=array_keys($config);sort($keys);
         if($keys!==array('closureBlob','fence','freshProtectedStateSha256','freshPublicOwnedSha256','initialInspection','ownershipKey','payload','plan','publicRoot','retained','schemaVersion','scope','sizes')||$config['schemaVersion']!==1||$config['scope']!=='immutable-archive-fenced-private-inspection'||!is_string($config['publicRoot'])||basename($config['publicRoot'])!=='public_html'||!self::digest($config['ownershipKey'])||!self::digest($config['freshProtectedStateSha256'])||!self::digest($config['freshPublicOwnedSha256'])){throw new RuntimeException('Exact immutable archive/current witness inspection configuration required');}
         $p=$config['plan'];$pk=is_array($p)?array_keys($p):array();sort($pk);
@@ -77,17 +80,34 @@ final class KTK_Private_Engine_Fenced_Inspection
     }
     public function releaseEngineLock(): void
     {
-        if(is_resource($this->engineLock)){flock($this->engineLock,LOCK_UN);fclose($this->engineLock);}$this->engineLock=null;
+        if($this->ownsEngineLock&&is_resource($this->engineLock)){flock($this->engineLock,LOCK_UN);fclose($this->engineLock);}$this->engineLock=null;$this->ownsEngineLock=false;
     }
     public function __destruct() { $this->releaseEngineLock(); }
+    private function held(string $p,array $before,$handle): void
+    {
+        if(!is_resource($handle)){throw new RuntimeException('Held existing engine lock lost; never reacquire it implicitly');}
+        $held=fstat($handle);clearstatcache(true,$p);$named=@lstat($p);
+        if($held===false||$named===false||is_link($p)||$held['dev']!==$before['dev']||$held['ino']!==$before['ino']||$held['dev']!==$named['dev']||$held['ino']!==$named['ino']||$held['size']!==0||$named['size']!==0||($held['nlink']??0)!==1||($named['nlink']??0)!==1){throw new RuntimeException('Held existing engine lock identity changed');}
+        $probe=@fopen($p,'r+b');if(!$probe){throw new RuntimeException('Existing engine lock ownership cannot be verified');}
+        $unheld=flock($probe,LOCK_EX|LOCK_NB);if($unheld){flock($probe,LOCK_UN);}fclose($probe);
+        if($unheld){throw new RuntimeException('Existing engine descriptor does not hold its exclusive lock');}
+        $final=fstat($handle);clearstatcache(true,$p);$after=@lstat($p);
+        if($final===false||$after===false||is_link($p)||$final['dev']!==$held['dev']||$final['ino']!==$held['ino']||$final['dev']!==$after['dev']||$final['ino']!==$after['ino']||$final['size']!==0||$after['size']!==0||($final['nlink']??0)!==1||($after['nlink']??0)!==1){throw new RuntimeException('Held engine lock changed during ownership verification');}
+    }
     private function lock(string $root): void
     {
-        if($this->engineLockName===null){return;}if(is_resource($this->engineLock)){throw new RuntimeException('Release the previous fenced inspection before repeating it');}
+        if($this->engineLockName===null){if($this->engineLockOwner!==null&&$this->engineLockOwner->borrowEngineLock()!==null){throw new RuntimeException('Borrowed owner cannot hold an unarchived engine lock');}return;}
         $p=$root.'/'.$this->engineLockName;self::directory(dirname($p));clearstatcache(true,$p);$before=@lstat($p);
         if($before===false||is_link($p)||!is_file($p)||($before['nlink']??0)!==1||$before['size']!==0){throw new RuntimeException('Existing exact zero-byte engine lock required; never create it');}
+        if($this->engineLock!==null){$this->held($p,$before,$this->engineLock);return;}
+        if($this->engineLockOwner!==null){
+            $borrowed=$this->engineLockOwner->borrowEngineLock();
+            if($borrowed!==null){$this->held($p,$before,$borrowed);$this->engineLock=$borrowed;$this->ownsEngineLock=false;return;}
+            if(!in_array($this->config['initialInspection']['phase'],array('seeding','engine-lock-only'),true)){throw new RuntimeException('Original engine lock owner released its lock; never reacquire implicitly');}
+        }
         $h=@fopen($p,'r+b');if(!$h||!flock($h,LOCK_EX|LOCK_NB)){if(is_resource($h)){fclose($h);}throw new RuntimeException('Existing engine lock is busy or unavailable');}
         $held=fstat($h);clearstatcache(true,$p);$named=@lstat($p);
-        if($held===false||$named===false||is_link($p)||$held['dev']!==$before['dev']||$held['ino']!==$before['ino']||$held['dev']!==$named['dev']||$held['ino']!==$named['ino']||$held['size']!==0||$named['size']!==0||($held['nlink']??0)!==1||($named['nlink']??0)!==1){fclose($h);throw new RuntimeException('Held existing engine lock identity changed');}$this->engineLock=$h;
+        if($held===false||$named===false||is_link($p)||$held['dev']!==$before['dev']||$held['ino']!==$before['ino']||$held['dev']!==$named['dev']||$held['ino']!==$named['ino']||$held['size']!==0||$named['size']!==0||($held['nlink']??0)!==1||($named['nlink']??0)!==1){fclose($h);throw new RuntimeException('Held existing engine lock identity changed');}$this->engineLock=$h;$this->ownsEngineLock=true;
     }
     private function file(string $root,string $n,KTK_Content_Update_Private_Store $store,?array $expected): array
     {
