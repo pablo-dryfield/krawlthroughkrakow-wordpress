@@ -39,7 +39,10 @@ jobs:
       - name: Check tracked-file policy and build inputs
         run: python tools/check-repository.py
       - name: Isolated SVG HTTP negotiation contracts (loopback only)
-        run: python tools/test-svg-negotiation-local.py --output docs/seo/svg-negotiation-review-2026-11-17/local-http-ci.json
+        run: |
+          python tools/test-svg-negotiation-local.py --output docs/seo/svg-negotiation-review-2026-11-17/local-http-ci.json
+          python -m unittest tools.tests.test_svg_pilot_core tools.tests.test_svg_pilot_http tools.tests.test_svg_pilot_runner
+          node --test tools/tests/test_svg_pilot_edge.mjs
       - name: Install locked storefront dependencies
         run: npm ci --prefix staging/wp-content/plugins/ktk-storefront/frontend
       - name: Check dependency security advisories (no deployment)
