@@ -151,6 +151,14 @@ dialog.ktk-parity-lightbox button:focus-visible { outline: 2px solid #fff !impor
 }
 /* END homepage offer clearance */
 
+/* BEGIN compact menu keyboard focus */
+#et_mobile_nav_menu #mobile_menu a:focus-visible,
+#et_mobile_nav_menu #mobile_menu button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -4px;
+}
+/* END compact menu keyboard focus */
+
 /* BEGIN No-JS quick links */
 body #main-content nav.ktk-nojs-navigation {
   box-sizing: border-box;
