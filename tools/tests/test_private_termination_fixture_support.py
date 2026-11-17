@@ -6,6 +6,34 @@ from tools import private_termination_fixture_support as support
 
 
 class PrivateTerminationFixtureSupportTests(unittest.TestCase):
+    def observation(self,operation,state):
+        return {'body':{'runtime':{'phases':{'muplugins_loaded':1,'plugins_loaded':0,'wp_loaded':0}},'controller':{'operation':operation,'state':state,'payloadDeletes':0,'payloadDirectoriesRemoved':0,'closureWrites':0,'applicationWrites':0,'databaseWrites':0,'cachePurges':0,'productionOperations':0}}}
+
+    def test_initial_inspection_has_its_own_census_without_fenced_remaining_field(self):
+        value=self.observation('inspect',{'scope':'private-engine-abandonment-readonly-inspection','phase':'prepared','files':{'source/a':{'bytes':5}},'validatedArtifacts':[]})
+        with self.assertRaises(KeyError):value['body']['controller']['state']['remainingPayloadFiles']
+        metrics=support.helper_observation(value)
+        self.assertEqual(metrics['inspectionPhase'],'prepared');self.assertEqual(metrics['initialPrivateCensusFiles'],1);self.assertEqual(metrics['initialValidatedArtifacts'],0);self.assertNotIn('remainingPayloadFiles',metrics)
+
+    def test_fenced_roles_keep_actual_remaining_count_and_reject_unknown_or_mixed_shapes(self):
+        state={'scope':'fenced-private-engine-readonly-inspection','remainingPayloadFiles':4149}
+        for operation in ('fence','inspect-fenced','cleanup'):
+            self.assertEqual(support.helper_observation(self.observation(operation,state))['remainingPayloadFiles'],4149)
+        for operation,bad in [('inspect',state),('cleanup',{'scope':'unrecognised','remainingPayloadFiles':0}),('cleanup',{'scope':state['scope'],'remainingPayloadFiles':True}),('cleanup',{'scope':state['scope']})]:
+            with self.assertRaises(support.FixtureRefusal):support.helper_observation(self.observation(operation,bad))
+        value=self.observation('cleanup',state);value['body']['controller']['databaseWrites']=1
+        with self.assertRaisesRegex(support.FixtureRefusal,'unexpected-helper-observation-write-counter'):support.helper_observation(value)
+
+    def test_exact_synthetic_reply_is_retained_before_decoding_and_never_overwritten(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory).resolve();raw='not JSON: synthetic failed reply \u00f3'
+            row=support.retain_helper_reply(root,95,raw);path=root/row['replyRelativePath']
+            self.assertEqual(path.read_bytes(),raw.encode('utf-8'));self.assertEqual(row['replySHA256'],support.digest(path))
+            with self.assertRaises(FileExistsError):support.retain_helper_reply(root,95,'new reply')
+            self.assertEqual(path.read_bytes(),raw.encode('utf-8'))
+            for number in (0,100000,True):
+                with self.assertRaises(support.FixtureRefusal):support.retain_helper_reply(root,number,'synthetic')
+
     def test_report_destination_is_scoped_fresh_and_cannot_overwrite_evidence(self):
         with tempfile.TemporaryDirectory() as directory:
             root=Path(directory).resolve();base='docs/seo/private-engine-early-termination-2026-11-17/'

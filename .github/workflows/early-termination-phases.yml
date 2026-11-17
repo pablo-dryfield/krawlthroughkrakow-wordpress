@@ -1,0 +1,99 @@
+name: Early Termination Phase Recovery Fixtures
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/early-termination-phases.yml'
+      - '.github/workflows/private-termination-fixture.yml'
+      - 'tools/verify-early-termination-phases.py'
+      - 'tools/verify-private-termination-fixture.py'
+      - 'tools/private_termination_fixture_support.py'
+      - 'tools/private-engine-*'
+      - 'tools/private_engine_*'
+      - 'tools/tests/test_private_engine_*'
+      - 'tools/tests/test_private_termination_fixture_support.py'
+      - 'tools/full_private_*'
+      - 'tools/full-private-*'
+      - 'tools/content-update-*'
+      - 'tools/content_update_*'
+      - 'tools/full_inventory_capacity.py'
+      - 'tools/invoke-ktk-native.ps1'
+      - 'tools/publish-clarity.py'
+      - 'tools/publish-homepage-shortcode.py'
+      - 'tools/publish-store2.py'
+      - 'tools/rehearse-staging-content-controller.ps1'
+      - 'tools/rehearse-staging-content-controller.py'
+      - 'tools/rehearse-staging-full-private-engine.ps1'
+      - 'tools/rehearse-staging-full-seeds.ps1'
+      - 'tools/rehearse-staging-full-seeds.py'
+      - 'tools/rehearse-staging-private-transaction.py'
+      - 'tools/staging-protected-state-template.php'
+      - 'tools/tests/test_full_private*'
+      - 'tools/tests/test_content_update_controller.py'
+      - 'tools/tests/test_production_protected_state.py'
+      - 'tools/code-pages-update-engine.php'
+      - 'tools/staging-protected-state-core.php'
+      - 'tools/early_private_entry.py'
+      - 'tools/snapshot-staging-update-state.py'
+      - 'tools/promote-code-pages-production.py'
+      - 'tools/verify-full-private-engine-fixture.py'
+      - 'tools/rehearse-staging-full-private-engine.py'
+  workflow_dispatch:
+    inputs:
+      source_commit:
+        description: Exact reviewed phase-fixture source commit (40 lowercase hex)
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: early-termination-phases-${{ github.ref }}-${{ inputs.source_commit || github.event.pull_request.head.sha }}
+  cancel-in-progress: false
+
+jobs:
+  termination_phases:
+    name: Native Interrupted Phase and Lost Reply Recovery
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Verify reviewed inputs and run native phase matrix in synthetic PHP only
+        env:
+          REVIEWED_PHASE_COMMIT: ${{ github.event.pull_request.head.sha || inputs.source_commit }}
+        run: |
+          php --version
+          python - <<'PY'
+          import hashlib,importlib.util,os,subprocess
+          from pathlib import Path
+          from tools import private_termination_fixture_support as support
+          root=Path.cwd()
+          spec=importlib.util.spec_from_file_location('ktk_reviewed_phase_fixture',root/'tools/verify-early-termination-phases.py')
+          module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+          commit=os.environ['REVIEWED_PHASE_COMMIT'];inputs=module.fingerprints()
+          support.verify_reviewed_sources(root,commit,inputs)
+          if subprocess.check_output(['git','status','--porcelain']):raise RuntimeError('Clean reviewed fixture source required')
+          workflow='.github/workflows/early-termination-phases.yml';raw=(root/workflow).read_bytes()
+          if subprocess.check_output(['git','show',commit+':'+workflow])!=raw:raise RuntimeError('Workflow source differs from reviewed commit')
+          print('KTK_PHASE_WORKFLOW_SHA256='+hashlib.sha256(raw).hexdigest())
+          print('KTK_PHASE_INPUT_COUNT='+str(len(inputs)))
+          PY
+          python tools/verify-early-termination-phases.py --report docs/seo/private-engine-phases-2026-11-17/ci-native-phases.json
+      - name: Retain scoped native phase evidence and pre-start source fingerprints
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: early-termination-phases-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            docs/seo/private-engine-phases-2026-11-17/ci-native-phases.json
+          if-no-files-found: error
+          include-hidden-files: false
+          compression-level: 0
+          retention-days: 7
