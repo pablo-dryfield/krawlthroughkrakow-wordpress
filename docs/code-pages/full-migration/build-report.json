@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-17T20:19:01.901Z",
+  "startedAt": "2026-11-17T20:31:29.097Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -4649,6 +4649,15 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "category-navigation-introduction",
+          "key": "archive-category-drinking-games",
+          "destinations": [
+            "/pub-crawl-drinking-games/",
+            "/best-drinking-games/"
+          ],
+          "version": "2026-11-17.category-navigation-1"
         }
       ],
       "bookings": [
@@ -4713,6 +4722,15 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "category-navigation-introduction",
+          "key": "archive-category-hen-do",
+          "destinations": [
+            "/krakow-hen-do/",
+            "/contact/"
+          ],
+          "version": "2026-11-17.category-navigation-1"
         }
       ],
       "bookings": [
@@ -4787,6 +4805,15 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "category-navigation-introduction",
+          "key": "archive-category-krakow-guides",
+          "destinations": [
+            "/travel-krakow-your-comprehensive-city-guide/",
+            "/weekend-in-krakow/"
+          ],
+          "version": "2026-11-17.category-navigation-1"
         }
       ],
       "bookings": [
@@ -4865,6 +4892,15 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "category-navigation-introduction",
+          "key": "archive-category-krakow-nightlife",
+          "destinations": [
+            "/krakow-nightlife/",
+            "/party-krakow/"
+          ],
+          "version": "2026-11-17.category-navigation-1"
         }
       ],
       "bookings": [
@@ -4950,6 +4986,15 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "category-navigation-introduction",
+          "key": "archive-category-party-tips",
+          "destinations": [
+            "/party-krakow/",
+            "/about-us/how-to-join/"
+          ],
+          "version": "2026-11-17.category-navigation-1"
         }
       ],
       "bookings": [
@@ -5017,6 +5062,15 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "category-navigation-introduction",
+          "key": "archive-category-stag-do",
+          "destinations": [
+            "/krakow-stag-do/",
+            "/bachelor-party-organisers-krakow/"
+          ],
+          "version": "2026-11-17.category-navigation-1"
         }
       ],
       "bookings": [
@@ -5105,6 +5159,15 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "category-navigation-introduction",
+          "key": "archive-category-uncategorized",
+          "destinations": [
+            "/blog/",
+            "/category/krakow-guides/"
+          ],
+          "version": "2026-11-17.category-navigation-1"
         }
       ],
       "bookings": [
@@ -11221,5 +11284,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-17T20:20:13.842Z"
+  "finishedAt": "2026-11-17T20:32:38.448Z"
 }

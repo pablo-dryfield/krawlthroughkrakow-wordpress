@@ -112,6 +112,14 @@ body.ktk-code-page:is([data-ktk-page="post-krakow-techno-clubs"],[data-ktk-page=
   body.ktk-code-page[data-ktk-page="post-best-pub-crawls-in-europe"] #main-content .et_post_meta_wrapper > :is(.entry-title,.post-meta) { padding-right: 24px; }
 }
 /* END Europe article header clearance */
+/* BEGIN Category archive navigation */
+body.ktk-code-page #main-content p[data-ktk-archive-intro="2026-11-17.category-navigation-1"] { font-size: 16px; line-height: 1.65; }
+body.ktk-code-page #main-content p[data-ktk-archive-intro="2026-11-17.category-navigation-1"] a { color: #b00059; text-decoration: underline; text-underline-offset: .15em; }
+body.ktk-code-page #main-content p[data-ktk-archive-intro="2026-11-17.category-navigation-1"] a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+@media (max-width: 600px) {
+  body.ktk-code-page #main-content p[data-ktk-archive-intro="2026-11-17.category-navigation-1"] { padding-right: 24px; }
+}
+/* END Category archive navigation */
 /* BEGIN Hotel guide planning */
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) p { font-size: 16px; line-height: 1.65; }
