@@ -25,13 +25,13 @@ def configuration(value,old,*,source_root,original_path,witness_path,metadata_pa
 
 def request(value,action,state_sha256=None):
     authority.validate_packet(value)
-    actions={'inspect':'inspect','inspect-fenced':'inspect-fenced','fence':'fence','cleanup':'complete-closure'}
-    if action!=actions[value['operation']]:raise ValueError('Exact typed private termination action required')
+    actions={'inspect':('inspect',),'inspect-fenced':('inspect-fenced',),'fence':('fence',),'cleanup':('complete-closure','cleanup-payload')}
+    if action not in actions[value['operation']]:raise ValueError('Exact typed private termination action required')
     raw=dict(schemaVersion=1,action=action,**{k:value[k] for k in ('operation','operationId','transactionId','applicationCommit','metadataArchiveSha256','inspectionStateSha256','closureSha256')})
     if value['operation']=='cleanup':
         if not backup.digest(state_sha256):raise ValueError('Exact independently inspected remaining state required')
         raw['stateSha256']=state_sha256
-    elif state_sha256 is not None:raise ValueError('Only closure-only recovery carries a remaining-state fence')
+    elif state_sha256 is not None:raise ValueError('Only cleanup invocations carry a remaining-state fence')
     encoded=backup.encode(raw)
     if len(encoded)>2048:raise ValueError('Bounded termination request required')
     return encoded
