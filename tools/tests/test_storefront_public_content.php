@@ -123,3 +123,4 @@ check(count($original_schema['@graph'])===2 && isset($original_schema['@graph'][
 $GLOBALS['home']=$GLOBALS['site']='https://krawlthroughkrakow.com/staging/';
 
 echo "Public storefront contracts: $checks/$checks passed\n";
+require __DIR__ . '/storefront-missing-product-cases.php';

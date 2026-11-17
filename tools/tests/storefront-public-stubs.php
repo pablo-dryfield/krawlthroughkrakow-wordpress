@@ -15,7 +15,8 @@ function set_transient( $key, $value, $ttl ) { $GLOBALS['transients'][$key] = $v
 function wp_remote_get( $url, $args ) { $GLOBALS['requests'][] = array( $url, $args ); return $GLOBALS['response'] ?? new WP_Error(); }
 function is_wp_error( $value ) { return $value instanceof WP_Error; }
 function wp_remote_retrieve_response_code( $value ) { return $value['status']; }
-function wp_remote_retrieve_body( $value ) { return json_encode( $value['body'] ); }
+function wp_remote_retrieve_body( $value ) { return array_key_exists( 'raw_body', $value ) ? $value['raw_body'] : json_encode( $value['body'] ); }
+function wp_remote_retrieve_header( $value, $header ) { return $value['headers'][strtolower( $header )] ?? ''; }
 function untrailingslashit( $value ) { return rtrim( $value, '/' ); }
 function apply_filters( $name, $value ) { return $value; }
 function esc_html( $value ) { return htmlspecialchars( (string) $value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8' ); }
