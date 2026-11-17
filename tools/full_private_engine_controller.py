@@ -53,7 +53,9 @@ def controller_source(source=None):
 def stream_source(source=None):
     raw=STREAM.read_bytes() if source is None else source
     if not isinstance(raw,bytes) or backup.sha(raw)!=STREAM_SHA:raise ValueError('Exact reviewed streaming component required')
-    changes=[(b'final class KTK_Content_Update_Streaming_Seeds\n',b'final class KTK_Full_Private_Engine_Streaming_Seeds\n'),(b"$this->stepBytes=$profile==='default'?self::STEP_BYTES:67108864; $this->stepFiles=$profile==='default'?self::STEP_FILES:256;",b"$this->stepBytes=$profile==='default'?self::STEP_BYTES:33554432; $this->stepFiles=$profile==='default'?self::STEP_FILES:128;")]
+    old_flush=b"                    if (!fflush($h) || (function_exists('fsync')&&!fsync($h))) { throw new RuntimeException('Private streaming flush failed'); }"
+    full_flush=b"                    $mustSync=$this->profile!=='full-private-host'||($before['bytes']===0&&$offset<=self::CHUNK)||$offset%1048576===0||$offset===$spec['bytes'];\n                    if (!fflush($h) || ($mustSync&&function_exists('fsync')&&!fsync($h))) { throw new RuntimeException('Private streaming flush failed'); }"
+    changes=[(b'final class KTK_Content_Update_Streaming_Seeds\n',b'final class KTK_Full_Private_Engine_Streaming_Seeds\n'),(b"$this->stepBytes=$profile==='default'?self::STEP_BYTES:67108864; $this->stepFiles=$profile==='default'?self::STEP_FILES:256;",b"$this->stepBytes=$profile==='default'?self::STEP_BYTES:33554432; $this->stepFiles=$profile==='default'?self::STEP_FILES:128;"),(old_flush,full_flush)]
     if any(raw.count(a)!=1 for a,_ in changes):raise ValueError('Exact bounded engine-stream anchors required')
     for a,b in changes:raw=raw.replace(a,b,1)
     return raw

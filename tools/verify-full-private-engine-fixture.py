@@ -23,6 +23,11 @@ from tools import full_private_seed_packet as full
 from tools.tests import test_full_private_engine_preparation as integration
 
 APPLICATION = '93aa88a19a3956788e80fe7e9c7c16bb986b980f'
+APPLICATIONS = {
+    APPLICATION: {'publicBytes': 550629558, 'privateBytes': 1101087955},
+    '029eb40e30d25c12630941a64bce799ff5de8e99': {
+        'publicBytes': 550632821, 'privateBytes': 1101091218},
+}
 OBSERVATION_SECONDS = 600  # Local subprocess observation only; no host timeout changes.
 REPORT_DIRECTORY = ROOT / 'docs/seo/full-private-engine-2026-11-16'
 
@@ -30,6 +35,20 @@ REPORT_DIRECTORY = ROOT / 'docs/seo/full-private-engine-2026-11-16'
 def require(condition, message):
     if not condition:
         raise ValueError(message)
+
+
+def source_fingerprints():
+    spec = importlib.util.spec_from_file_location(
+        'ktk_actual_inventory_fixture_runtime', ROOT/'tools/rehearse-staging-full-private-engine.py')
+    runtime = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(runtime)
+    result = runtime.fingerprints()
+    for name in ('tools/verify-full-private-engine-fixture.py',
+                 'tools/tests/test_full_private_engine_preparation.py',
+                 'tools/tests/test_content_update_controller.py',
+                 'tools/tests/test_production_protected_state.py'):
+        result[name] = backup.sha((ROOT/name).read_bytes())
+    return dict(sorted(result.items()))
 
 
 def instrument_driver(source, largest):
@@ -47,9 +66,10 @@ def instrument_driver(source, largest):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--application-commit', required=True, choices=[APPLICATION])
+    parser.add_argument('--application-commit', required=True, choices=tuple(APPLICATIONS))
     parser.add_argument('--report', required=True)
     args = parser.parse_args(argv)
+    cohort = APPLICATIONS[args.application_commit]
     destination = (ROOT / args.report).absolute()
     require(destination.parent == REPORT_DIRECTORY and destination.suffix == '.json'
             and not destination.exists() and not destination.is_symlink(),
@@ -68,13 +88,16 @@ def main(argv=None):
     public_source = ROOT / 'staging/wp-content/mu-plugins'
     sizes = {name: (public_source / name).stat().st_size for name in owned}
     largest = max(sizes, key=lambda name: (sizes[name], name))
-    require(len(owned) == 2074 and sum(sizes.values()) == 550629558
+    require(len(owned) == 2074 and sum(sizes.values()) == cohort['publicBytes']
             and sizes[largest] == 35437747, 'Exact frozen complete application inventory required')
+    fingerprints = source_fingerprints()
     report = {
         'scope': 'LOCAL full actual-inventory private engine fixture; synthetic selected database; no hosting',
         'startedAt': datetime.now(timezone.utc).isoformat(),
         'toolingCommit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip(),
         'applicationCommit': args.application_commit, 'actualPublicFiles': len(owned),
+        'reviewedApplicationCohort': cohort, 'sourceHashes': fingerprints,
+        'toolingWorktreeDirty': bool(subprocess.check_output(['git', 'status', '--porcelain'], cwd=ROOT)),
         'actualPublicBytes': sum(sizes.values()), 'largestUnchangedSourceBytes': sizes[largest],
         'subprocessObservationSeconds': OBSERVATION_SECONDS, 'phpMemoryLimit': '256M',
         'steps': [], 'fullHostTransactionAcceptance': False, 'applicationWrites': 0,
@@ -201,7 +224,7 @@ def main(argv=None):
                 if seed and seed['sourceComplete'] and seed['targetComplete']:
                     require(controller['preparation']['enginePhase'] is None and not case.engine.exists(),
                             'Complete seed response must precede any engine preparation')
-                    require(len(seed['files']) == 4149 and seed['copiedBytes'] == 1101087955,
+                    require(len(seed['files']) == 4149 and seed['copiedBytes'] == cohort['privateBytes'],
                             'Exact full complete seed boundary required')
                     if action == 'recover-preparation':
                         report['fullSeedCompletionReturnedBeforeEngine'] = True
@@ -274,7 +297,7 @@ def main(argv=None):
                 client, OriginalTransport(), original_path, lambda n: (case.private / n).read_bytes(),
                 full.build_archive, interrupt_original=True, observe=observe)
         expected, _ = full.expected_seed_files(plan, sizes, overrides)
-        require(len(expected) == 4149 and sum(row['bytes'] for row in expected.values()) == 1101087955,
+        require(len(expected) == 4149 and sum(row['bytes'] for row in expected.values()) == cohort['privateBytes'],
                 'Exact complete private payload required')
         for name, row in expected.items():
             path = case.private / name
@@ -299,6 +322,7 @@ def main(argv=None):
                 'protectedStateSha256', 'rowCounts')
         require(all(before_state[k] == after[k] for k in keys), 'Fixture selected/protected state changed')
         require(snapshot.local_owned_checksums() == owned, 'Repository application source changed')
+        require(source_fingerprints() == fingerprints, 'Fixture runtime or driver source changed')
         require(report.get('fullSeedCompletionReturnedBeforeEngine') is True
                 and report.get('enginePreparationSeparateRequestVerified') is True,
                 'Both separated complete preparation boundaries required')

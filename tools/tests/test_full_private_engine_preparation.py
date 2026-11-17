@@ -21,8 +21,11 @@ BRIDGE=r'''
 DEFINE=" define('KTK_CONTENT_UPDATE_STREAMING_SEEDS_ALLOWED',true);define('KTK_CONTENT_UPDATE_FULL_HOST_STREAMING_ALLOWED',true);define('KTK_FULL_PRIVATE_ENGINE_PREPARATION_ALLOWED',true);\n"
 
 class FullPrivateStreamCompilerTests(unittest.TestCase):
- def test_exact_legacy_stream_kept_and_only_full_work_budget_reduced(self):
-  raw=compiler.STREAM.read_bytes();compiled=compiler.stream_source();self.assertEqual(backup.sha(raw),compiler.STREAM_SHA);self.assertEqual(compiled.replace(b'KTK_Full_Private_Engine_Streaming_Seeds',b'KTK_Content_Update_Streaming_Seeds',1).replace(b"$this->stepBytes=$profile==='default'?self::STEP_BYTES:33554432; $this->stepFiles=$profile==='default'?self::STEP_FILES:128;",b"$this->stepBytes=$profile==='default'?self::STEP_BYTES:67108864; $this->stepFiles=$profile==='default'?self::STEP_FILES:256;",1),raw)
+ def test_exact_legacy_stream_kept_with_bounded_full_work_and_sync_profile(self):
+  raw=compiler.STREAM.read_bytes();compiled=compiler.stream_source();self.assertEqual(backup.sha(raw),compiler.STREAM_SHA)
+  full_flush=b"                    $mustSync=$this->profile!=='full-private-host'||($before['bytes']===0&&$offset<=self::CHUNK)||$offset%1048576===0||$offset===$spec['bytes'];\n                    if (!fflush($h) || ($mustSync&&function_exists('fsync')&&!fsync($h))) { throw new RuntimeException('Private streaming flush failed'); }"
+  old_flush=b"                    if (!fflush($h) || (function_exists('fsync')&&!fsync($h))) { throw new RuntimeException('Private streaming flush failed'); }"
+  self.assertEqual(compiled.count(full_flush),1);self.assertEqual(compiled.replace(b'KTK_Full_Private_Engine_Streaming_Seeds',b'KTK_Content_Update_Streaming_Seeds',1).replace(b"$this->stepBytes=$profile==='default'?self::STEP_BYTES:33554432; $this->stepFiles=$profile==='default'?self::STEP_FILES:128;",b"$this->stepBytes=$profile==='default'?self::STEP_BYTES:67108864; $this->stepFiles=$profile==='default'?self::STEP_FILES:256;",1).replace(full_flush,old_flush,1),raw)
   with self.assertRaises(ValueError):compiler.stream_source(raw+b' ')
 
 @unittest.skipUnless(old.PHP,'Real PHP required for full private stream/controller/archive integration')
