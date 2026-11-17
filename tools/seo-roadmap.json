@@ -4,7 +4,7 @@
   "websiteProductionReleases": 1,
   "remainingWork": {
     "revision": 4,
-    "scope": "Remaining implementation on staging. Production needs separate approval.",
+    "scope": "Remaining implementation on staging. Current source CI44137040333 is held by the unpatched picomatch advisory GHSA-fc5q-39xc-vjpf; source integration and further publication await a supported resolution and complete CI. Production needs separate approval.",
     "changeRule": "This is the current finite batch list, not a time estimate. Add or split a batch only with a recorded reason; keep owner/account gates and recurring work separate. Revision4 starts B04 after verified profiling and controlled font evidence; the original eight IDs and six remaining count are unchanged.",
     "batches": [
       {
@@ -71,7 +71,7 @@
           "T10"
         ],
         "summary": "Font delivery69 and bounded responsive-image delivery70 are verified on staging. Matched image body savings are measured; SVG negotiation, broader templates and manual/field checks remain. The normal provider/runtime guard stays explicitly failed.",
-        "next": "Resolve the retained SVG negotiation/delivery findings and proportionate template issues. Keep the Facebook initializer/aborted-action dependency and consent deferral visible; do not treat lab byte savings as reliable LCP or field gains.",
+        "next": "Resolve the current unpatched build-dependency advisory and restore complete source CI before another publication. Continue offline SVG/recovery/layout investigation. Keep the Facebook initializer/aborted-action dependency and consent deferral visible; do not treat lab byte savings as reliable LCP or field gains.",
         "doneWhen": "Known negotiation failures are fixed; comparable lab evidence and staging/cache checks verify proportionate improvements without changing consent or claiming field gains.",
         "dependsOn": [],
         "blockedBy": []

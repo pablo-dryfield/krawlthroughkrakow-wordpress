@@ -36,7 +36,15 @@ The correction creates a local backup directory when needed and prepares only th
 Before correction, all68 differences from the verifiedbf9949 parent are saved and reopened in69-entry source overlay `seo-product-image-publisher-fix-before-20261117.zip`,3633109 bytes/SHA256 `f84fccb368c5c8a79fa34b6d3015c74b77f80a70cd0a33c9dabda90eac089f81`. Reconstruction requires the earlierbf9949 source overlayd9127db0 and common50a70f59; all68 members/Git/local bytes and CRCs verify. Current corrected source CI is required before a new guarded publication; the previous CI coversfe86096 only. No image delivery or actual hosted transfer saving is established.
 
 
-## Verified bounded staging delivery70 ? 2026-11-17
+## Current source security gate - 2026-11-17
+
+Final documentation source73fff67549cb0a12089fe7e0b8e09e1297ec170e/CI44137040333 fails at the existing high-severity npm audit. Linux134229296704 stops before the remaining Linux tests/build; Windows134229297289 and secrets134229297647 pass. Raw log SHA2562403ccb23 and final-ci-security-gate-failure.json preserve the finding. This is separate from the resolved billing start failure and from earlier application CI44122220280.
+
+The [reviewed upstream advisory](https://github.com/advisories/GHSA-fc5q-39xc-vjpf), reviewed/updated17Nov2026, affects picomatch through4.0.7 and lists no patched version. Locked4.0.5 and registry latest4.0.7 are affected. A fresh local full audit independently fails with four high-severity dependency-chain findings through Vite/fdir/tinyglobby. The omit-dev audit reports zero production-dependency advisories; that does not clear the required build audit or establish harmlessness. The cited upstream reference resolves to an open non-security extglob PR, which is not an accepted fix.
+
+Source integration and further publication await a supported reviewed dependency resolution and complete current CI. The existing security gate remains in force. Staging application bytes are unchanged. Offline recovery/layout investigation can continue. Delivery70 below is a bounded staging/image result, with six remaining batches; it is not current dependency clearance or full plan completion.
+
+## Verified bounded staging delivery70 - 2026-11-17
 
 This section supersedes the earlier pending-publication statements while retaining both failed attempts and all diagnostics. Source06ee661/tree d2ebb4c8 combines the unchanged fe86096 application, the f9a51a6 publisher correction and final font69 documentation. Complete CI44122220280 passes all three jobs:1093 Linux tests/1325.771s/21 platform skips,45 Windows/1.194s/no skips,63 frontend cases,894 code-page assertions, secrets and isolated build. All actual db1baf82 checkout trees,3774 Git identities,2375 materialized SHA256 files and1399 intentionally unmaterialized media identities verify. The optional full recovery job is skipped; it is not recovery acceptance.
 

@@ -2,6 +2,8 @@
 
 ## Scope
 
+- Current source security gate (2026-11-17): final image documentation73fff675/CI44137040333 fails at npm audit on GHSA-fc5q-39xc-vjpf. Locked picomatch4.0.5 and latest4.0.7 are affected; no patch is listed. Windows and secrets pass; later Linux tests/build are skipped. See product-image-sizing-2026-11-17/README.md and private final-ci-security-gate-failure.json. Source integration/further publication await supported dependency resolution/current CI; existing audit gate stays in force. Staged image delivery70 remains bounded; offline recovery/layout investigation can proceed. Six remaining/all40 workstream states unchanged; goal active.
+
 - This workspace contains the WordPress storefront plugin used by Krawl Through Krakow.
 - The deployable plugin source is `staging/wp-content/plugins/ktk-storefront`.
 - Frontend source is in `staging/wp-content/plugins/ktk-storefront/frontend`.
