@@ -3,9 +3,9 @@
   "updatedOn": "2026-11-18",
   "websiteProductionReleases": 1,
   "remainingWork": {
-    "revision": 22,
+    "revision": 23,
     "scope": "Staging work continues. A build dependency currently blocks further publication while a supported security fix and complete checks are awaited. Independent recovery verification continues. Production needs separate approval.",
-    "changeRule": "This finite list began with eight packages. Revision 22 records independently verified Windows and Ubuntu preparation-inspection profiling. These are read-only diagnostic specimens; actual preparation, full recovery and hosted recovery remain unproved. All eight statuses and six remaining are unchanged.",
+    "changeRule": "This finite list began with eight packages. Revision 23 records a verified Linux inspection improvement from a bounded complete-file hashing prototype, with mixed Windows timing results retained. Actual preparation, full and hosted recovery remain unproved. All eight statuses and six remaining are unchanged.",
     "batches": [
       {
         "id": "B01",
@@ -50,9 +50,9 @@
           "D07",
           "T10"
         ],
-        "summary": "Native evidence-retention CI and the Linux capture comparison are verified. Read-only preparation specimens now preserve the complete public/private cohort on Windows and Ubuntu; private-file verification accounts for about47% of complete Ubuntu inspection time. Actual preparation, full and hosted recovery remain unverified after the original90-minute full-run limit.",
-        "next": "Measure a bounded same-SHA256 acceleration for complete private-file verification before helper integration or a changed-source full retry. Keep partial-prefix byte comparisons, held-handle/stat/identity checks, every fresh complete witness/claim/hash, original HTTP/memory/wire/expiry/count/job limits, new contexts and no replay. Complete repository CI/security and H06 still precede hosting rehearsal.",
-        "evidence": "https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/44331055392",
+        "summary": "The Linux complete-file hashing prototype preserves the full cohort and lowers read-only inspection medians by about22% for the partial-tree specimen and35% for complete seeds. Windows timings are mixed. Native evidence-retention CI and capture calibration are also verified; actual preparation, full and hosted recovery remain unverified.",
+        "next": "Compose the measured hashing/capture changes in an isolated helper candidate, verify every original native interruption/recovery case, then qualify a fresh full-inventory proof. Keep partial byte comparisons, held-handle/stat/identity checks, every fresh complete witness/claim/hash, original HTTP/memory/wire/expiry/count/job limits, new contexts and no replay. Complete repository CI/security and H06 still precede hosting rehearsal.",
+        "evidence": "https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/44335503681",
         "doneWhen": "Helper/header/token/expiry and interruption cases pass; all 2,074 public and 4,149 private fixture files are verified; the hosted proof is independently audited, with original data retained.",
         "dependsOn": [
           "B01",
