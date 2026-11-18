@@ -36,11 +36,15 @@ OBSERVATION_SECONDS = 600
 HTTP_COMPARISON_SECONDS = 60
 
 
-def source_hashes():
+def helper_source_hashes():
     spec = importlib.util.spec_from_file_location('preparation_inspection_source_inputs', ROOT / 'tools/verify-private-termination-fixture.py')
     previous = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(previous)
-    hashes = previous.source_fingerprints()
+    return previous.source_fingerprints()
+
+
+def source_hashes():
+    hashes = helper_source_hashes()
     paths = set(calibration.SOURCE_PATHS) | {
         '.gitignore',
         '.github/workflows/preparation-inspection-calibration.yml',
@@ -51,6 +55,20 @@ def source_hashes():
     for name in sorted(paths):
         hashes[name] = support.digest(ROOT / name)
     return dict(sorted(hashes.items()))
+
+
+def verify_observer_sources(commit, hashes):
+    """Keep the helper's96-input guard; verify the extra observer domain too."""
+    base = helper_source_hashes()
+    support.require(len(base) == 90 and len(hashes) == 104 and set(hashes) == set(source_hashes())
+                    and all(hashes.get(name) == sha for name, sha in base.items()), 'exact-helper-and-observer-input-domains-required')
+    support.verify_reviewed_sources(ROOT, commit, base)
+    extra = {name: sha for name, sha in hashes.items() if name not in base}
+    support.require(len(extra) == 14, 'exact-additional-observer-inputs-required')
+    for name, expected in extra.items():
+        data = calibration.git('show', commit + ':' + name)
+        support.require(backup.digest(expected) and backup.sha(data) == expected
+                        and support.digest(ROOT / name) == expected, 'additional-observer-source-differs:' + name)
 
 
 def owned_root(root):
@@ -273,22 +291,23 @@ def run(output, commit, *, local=False):
     support.require(not allowed.is_symlink() and not allowed.is_junction() and allowed.resolve() == allowed
                     and output.parent == allowed and output.name in ('ubuntu-calibration', 'local-calibration')
                     and not output.exists() and not output.is_symlink() and not output.is_junction(), 'fresh-scoped-observer-output-required')
-    output.mkdir(parents=True)
     hashes = source_hashes()
     support.require(calibration.git('rev-parse', 'HEAD').decode().strip() == commit, 'exact-calibration-checkout-required')
     if not local:
-        support.verify_reviewed_sources(ROOT, commit, hashes)
+        verify_observer_sources(commit, hashes)
         support.require(not calibration.git('status', '--porcelain'), 'clean-reviewed-inspection-calibration-source-required')
     def source_check():
         for name, sha in hashes.items():
             support.require(support.digest(ROOT / name) == sha, 'frozen-inspection-calibration-source-changed:' + name)
     owned, sizes = calibration.public_inventory(commit)
     support.require(len(owned) == 2074 and sum(sizes.values()) == PUBLIC_BYTES, 'all2074-current-public-source-files-required')
+    output.mkdir(parents=True)
     report = {'scope': 'Complete synthetic read-only preparation inspection calibration; manually assembled payload; NOT preparation/engine/recovery/hosting acceptance',
         'startedAt': datetime.now(timezone.utc).isoformat(), 'sourceCommit': commit, 'applicationCommit': APP,
         'actualCheckoutCommit': calibration.git('rev-parse', 'HEAD').decode().strip(),
         'actualCheckoutTree': calibration.git('rev-parse', 'HEAD^{tree}').decode().strip(),
         'sourceHashes': hashes, 'localDevelopment': local, 'publicFiles': len(owned), 'publicBytes': sum(sizes.values()),
+        'originalHelperSourceInputs': 90, 'additionalObserverSourceInputs': 14,
         'expectedCompletePrivatePayloadFiles': 4149, 'expectedCompletePrivatePayloadBytes': PRIVATE_BYTES,
         'memoryLimit': MEMORY, 'localSubprocessObservationSeconds': OBSERVATION_SECONDS,
         'unchangedHTTPComparisonSeconds': HTTP_COMPARISON_SECONDS, 'fullPreparationAccepted': False,
