@@ -174,6 +174,16 @@ body.ktk-code-page[data-ktk-page="faqs"] #main-content .et_pb_accordion_0 .et_pb
   :is(body.ktk-code-page[data-ktk-page="about-us"] #main-content :is(.et_pb_text_7 .et_pb_text_inner,.et_pb_text_6 h3),body.ktk-code-page[data-ktk-page="krakow-hen-do"] #main-content :is(:is(.et_pb_text_2,.et_pb_text_3,.et_pb_text_4,.et_pb_text_5,.et_pb_text_6) .et_pb_text_inner,:is(.et_pb_heading_1,.et_pb_heading_2,.et_pb_heading_3,.et_pb_heading_7) h2),body.ktk-code-page[data-ktk-page="other-tours"] #main-content :is(:is(.et_pb_text_0,.et_pb_text_1) .et_pb_text_inner),body.ktk-code-page[data-ktk-page="otherbarcrawls"] #main-content :is(.et_pb_text_0 .et_pb_text_inner,:is(.et_pb_blurb_3,.et_pb_blurb_4) h3),body.ktk-code-page[data-ktk-page="student-trips-poland"] #main-content :is(:is(.et_pb_text_4,.et_pb_text_5) h2),body.ktk-code-page[data-ktk-page="tour-service-disclaimer"] #main-content :is(.et_pb_text_1 .et_pb_text_inner)) { padding-right: 24px; }
 }
 /* END Preserved reading text */
+/* BEGIN Short viewport booking control */
+body.ktk-code-page #ktk-cta { right: 26px; }
+@media (max-height: 300px) {
+  body.ktk-code-page #ktk-cta { top: 8px; right: 23px; font-size: clamp(10px, 10vh, 20px); line-height: 20px; padding: 12px; }
+}
+@media (max-height: 300px) and (max-width: 600px) {
+  :is(body.ktk-code-page[data-ktk-page="how-to-join"] #main-content .et_pb_blurb_4 .et_pb_module_header,body.ktk-code-page[data-ktk-page="contact"] #main-content .et_pb_text_3 .et_pb_text_inner > h2,body.ktk-code-page[data-ktk-page="faqs"] #main-content .et_pb_text_3 .et_pb_text_inner > h2,body.ktk-code-page[data-ktk-page="krakow-nightlife"] #main-content .et_pb_text_9 .et_pb_text_inner > h2,body.ktk-code-page[data-ktk-page="blog"] #main-content .et_pb_text_0 .et_pb_text_inner > h2,body.ktk-code-page[data-ktk-page="tour-service-disclaimer"] #main-content .et_pb_text_2 .et_pb_text_inner > h2) { padding-right: 32px; }
+}
+body.ktk-code-page #ktk-cta:focus-visible { outline: 3px solid #fff; outline-offset: -3px; }
+/* END Short viewport booking control */
 /* BEGIN Hotel guide planning */
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) p { font-size: 16px; line-height: 1.65; }

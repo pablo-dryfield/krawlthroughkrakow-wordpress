@@ -17,8 +17,8 @@ from tools import full_private_recovery_hashing as recovery_hashing
 from tools.tests import test_private_engine_termination_helper as native
 from tools.tests import test_private_termination_fixture_support as observation_tests
 
-APP='00dfa3134db9028f76fe01039ff961ef52180693'
-PUBLIC_BYTES=550639063;PRIVATE_BYTES=1101099599
+APP='f2f4f5386863794f3360a209c733e9bfc53fc184'
+PUBLIC_BYTES=550647988;PRIVATE_BYTES=1101108524
 OBSERVATION_SECONDS=600  # Local subprocess observation, never a hosted timeout change.
 HTTP_BUDGET_SECONDS=60;MEMORY='256M'  # Existing local PHP fixture; not a hosting guarantee.
 BRIDGE=native.protocol.prior.bound.native.bridge

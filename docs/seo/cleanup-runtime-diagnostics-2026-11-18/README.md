@@ -1,5 +1,13 @@
 # Recovery cleanup: verified profile, incomplete recovery
 
+## Final application cohort candidate, not accepted CI or staging
+
+The separate codex/staging-final-application-cohort candidate retains accepted353 source plus exactly six revision30 documentation files from35aa5ab. Its reviewed feature paths now match localf2f4f53, and all2424 application files equal that immutable application commit. Both prior accepted branches remain frozen. Pre-edit source3854/60-entry overlaye6c97565b2e8df919c550d8d6d6d1ed6213f0c5be01d677e74f6ee017d961d49 requires only full03ec. Two preflight assumptions refuse before writes: current build reports have timestamp-only differences from canonical2d, and the tracked held39f README already exists. Their exact sources are verified before the bounded feature copy.
+
+inal-application-cohort-source-binding.json reconstructs every4149 synthetic private payload descriptor from2074 actual public sources and the same six original overrides. Public bytes are550647988; private bytes1101108524, with14 private directories and unchanged35437747-byte maximum file. Each inventory increases8925 bytes over accepted APP00dfa. Only runtime.css differs among all2424 application identities. Exactly two verifier constant lines now bind immutable APPf2f4f5386863794f3360a209c733e9bfc53fc184 and those derived bytes. The complete old-source inverse is exact; time/memory/wire/expiry/count/ownership/resource guards and all original override bytes remain unchanged. This changes exact cohort data, not a resource allowance.
+
+This candidate still requires current complete CI and independent full-inventory evidence under the original limits. Old0d/APP00dfa proof is not relabelled. Native Windows automation remains stopped, the manual probe and hosting quota/window/retention remain pending, and no PR, hosting publication, helper, purge, production or protected-function change is claimed here. Both roadmaps30 retain their exact counts and open states.
+
 ## Current local booking correction and fresh complete storefront QA
 
 The local correction f2f4f5386863794f3360a209c733e9bfc53fc184/tree22ed7d863dcf5e507ff5a4848bd9c7ac74070585 adds only a normal-height26px right offset to the held booking-control CSS. Detached generation and exact complete inverses retain compact23px rules and every other old byte. Full116-page build exits0; ten generation contracts and2320 references pass. All3832 Git/local/snapshot identities match overlayb53ee68a0c04a0f9cf5f2dc5ab15c0302c9705c103fb7cf4ea72a34cae5ab2fd plus full03ec only. All116 bodies/other2423 app files/mediaf5ad remain exact. This source backup is not a hosting/database backup.
