@@ -117,4 +117,30 @@ $is_embed = false;
 $home = 'https://krawlthroughkrakow.com/staging';
 $_SERVER['REQUEST_URI'] = '/staging/contact/';
 check(ktk_pages_page_policy(ktk_pages_definition())['robots'][0]['content'] === 'noindex, nofollow', 'Staging stays noindex even with production opt-in');
+$font_registry = ktk_pages_registry(); $font_targets = array(); $font_preserved = 0;
+$asset = ABSPATH . '/staging/wp-content/mu-plugins/ktk-code-pages-assets/';
+$base = 'https://krawlthroughkrakow.com/staging/wp-content/mu-plugins/ktk-code-pages-assets/';
+foreach ($font_registry['routes'] as $route => $entry) {
+    $page = require $asset . $entry['file'];
+    $html = ktk_pages_font_preload_html($page, $base);
+    if ('/krakow-safety-guide/' !== $route) {
+        check('' === $html, 'Every other actual route must emit no preload: ' . $route); $font_preserved++; continue;
+    }
+    $font_targets[] = $route;
+    check('post-krakow-safety-guide' === $page['key'], 'Exact current route identity');
+    $dom = new DOMDocument(); @$dom->loadHTML('<!doctype html><html><head>' . $html . '</head><body></body></html>');
+    $links = $dom->getElementsByTagName('link'); check(2 === $links->length, 'Exactly two native link elements');
+    $fonts = array('2572f2f33cd7', '12f984f2f1ea');
+    foreach ($links as $i => $link) {
+        check('preload' === $link->getAttribute('rel') && 'font' === $link->getAttribute('as') && 'font/woff2' === $link->getAttribute('type') && 'anonymous' === $link->getAttribute('crossorigin'), 'Font destination and matching anonymous CORS');
+        $font = 'media/' . $fonts[$i] . '-normal.woff2';
+        check($base . $font === $link->getAttribute('href') && false === strpos($link->getAttribute('href'), '?'), 'Exact original CSS font URL without duplicate cache variant');
+        $css = file_get_contents($asset . $page['css']); check(false !== strpos($css, '../' . $font), 'Each original font is referenced by the actual target stylesheet');
+        check('wOF2' === substr(file_get_contents($asset . $font), 0, 4), 'Original font format retained');
+    }
+    check(ktk_pages_font_preload_html($page, '/ktk-code-pages-assets/') === str_replace($base, '/ktk-code-pages-assets/', $html), 'Local preview uses identical link attributes and original unversioned URLs');
+}
+foreach (array(array(), array('key' => 'post-krakow-safety-guide-other'), array('key' => 'POST-KRAKOW-SAFETY-GUIDE'), array('key' => 'pub-crawl-28')) as $other) { check('' === ktk_pages_font_preload_html($other, $base), 'Absent, similar or booking page keys emit nothing'); }
+check(count($font_registry['routes']) === 116 && count($font_targets) === 1 && $font_preserved === 115, 'Exact complete route census');
+
 echo "Code page integration: {$checks}/{$checks} passed\n";

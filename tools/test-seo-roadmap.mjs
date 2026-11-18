@@ -41,7 +41,7 @@ try{
    const planned=page.locator('#overview [data-planned-batch]');
    check(width+' every planned batch visible by default',await planned.count()===remaining.batches.length&&(await planned.locator('h3').allTextContents()).every((title,index)=>title===remaining.batches[index].title));
    check(width+' source-bound remaining total',await page.locator('#overview [data-remaining-count]').textContent()===String(remaining.batches.filter(row=>row.status!=='complete').length));
-   check(width+' source-bound batch statuses',JSON.stringify(await planned.locator('.batch-status').allTextContents())===JSON.stringify(remaining.batches.map(row=>({verification:'In verification',planned:'Planned',complete:'Complete'})[row.status])));
+   check(width+' source-bound batch statuses',JSON.stringify(await planned.locator('.batch-status').allTextContents())===JSON.stringify(remaining.batches.map(row=>({in_progress:'In progress',verification:'In verification',planned:'Planned',complete:'Complete'})[row.status])));
    check(width+' remaining list precedes delivery history',await page.evaluate(()=>!!(document.getElementById('remaining-batches').compareDocumentPosition(document.querySelector('.delivery-progress'))&Node.DOCUMENT_POSITION_FOLLOWING)));
    const firstDetails=planned.first().locator('details');
    await firstDetails.locator('summary').focus();await page.keyboard.press('Enter');

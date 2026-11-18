@@ -1,0 +1,66 @@
+# Page reading and FAQ fallback: isolated local candidate
+
+The earlier nine-page component addresses substantial phone text at13?15px. This isolated candidate uses16px reviewed paragraphs/lists, proportional spacing and bounded phone clearance from the fixed booking tab. It also makes all twelve existing FAQ answers readable before the existing runtime enhances them. All wording, historical identities, dates, heading roles, links, media and business facts remain unchanged.
+
+
+The current isolated candidate covers17 distinct page identities: the earlier nine-page component plus23 more text roots on nine identities, with How to Join shared. The new generator sizes both paragraph/list children and their roots, preserving the Blog's two bare-text descriptions. Nineteen measured text/heading regions gain24px phone clearance. One exact Hen Do paragraph receives left alignment through980px because its inline justification creates large phone word gaps; only that declaration needs `!important` to override the preserved inline source. Every other original alignment remains. [The complete30-route census decisions](READING-CENSUS-DECISIONS.md) separate these fixes from held content, captions, provider attribution and protected form guidance.
+
+| Additional typography identity | Exact text roots |
+| --- | ---: |
+| about-us | 1 |
+| blog | 8 reviewed teasers; held IDs7472/6607 excluded |
+| how-to-join | 1 reservation-description region |
+| krakow-hen-do | 7 |
+| other-tours | 2 |
+| otherbarcrawls | 1 |
+| pub-crawl-jobs | 1, covering both original paragraphs |
+| student-trips-poland | 1 |
+| tour-service-disclaimer | 1 |
+
+The final extension passes639 checks across72 current320/390/768/1440px views with and without JavaScript. It checks every nonheading text node, original text/IDs/headings/links/photo attributes, untouched desktop text metrics, clipping, fixed-control overlap at three offsets and all ten native keyboard-selected Blog slides. Negative controls reproduce covered letters and the original paragraph justification, then restore the candidate. The final19 focused accessibility scans report zero violations and11 colour-contrast incomplete groups; manual acceptance remains open.
+
+Three complete116-page builds for the initial extension and its corrections finish without errors or missing pages. Current reference verification passes2320/2320 and refreshes all2074 owned payload hashes: only runtime.css differs from the frozen baseline. Independent Git-blob/source inverses preserve all116 page bodies and the other2423 application files, every original asset-ledger byte and protected runtime. The three new atomic generator contracts join the four earlier contracts; all seven pass without skips. One exact CI step now runs those three unit modules; no security, timing or other CI gate is relaxed.
+
+The17-page component is composed with the earlier632-check/72 normal+4 blocked-runtime FAQ proof. Its13 final comparison PNGs match the individually inspected earlier images exactly. Those checks and the487-check synthetic form rerun precede the final single-paragraph alignment correction; the source inverse proves that correction selects only the one Hen Do paragraph and no earlier page, form or control. The form rerun has144 scenarios,114 payload contracts, zero errors and zero unexpected writes; every response is intercepted, with no real message or token request sent.
+
+The final extension's18 actual390/1440px viewport PNGs and ten focused phone details are accepted by direct inspection or exact hash match to an individually inspected predecessor. Seventeen of the18 main pairs match exactly. The independently inspected About Us desktop pair differs in22093 pixels within its unmasked bounding box[147,590,1233,900]; no pixel mask, tolerance, cause or whole-page identity is claimed. The Hen Do alignment detail changes as intended; the other nine detail images match their retained predecessors. Screenshots wait for visible image load/decode and two paint frames. These are viewport-level observations, not complete-page visual or factual approval.
+
+The initial extension passes500/532 and reveals genuine covered letters plus an overbroad alignment expectation. The next628/628 revision adds exact phone clearance while preserving original inline alignment. Visual review then identifies the single justified paragraph and leads to the final639/639 revision. All failed reports and both intermediate source snapshots remain. The first builder launch stops before execution because the isolated checkout lacks PostCSS; supplying the already installed local dependency path resolves it without changing or installing packages.
+
+The finished-body hash guards run only after the complete page loop succeeds. Repeated generation is byte-stable; missing/changed bodies and missing, moved, duplicate, partial or altered stylesheet boundaries refuse before writing. The final three-rule block has exact980px/600px media limits, one bounded inline alignment override, no asset URLs and no runtime or form changes. Removing all three reading blocks recovers the complete original stylesheet. Removing each integration recovers the prior builder; the CI diff is one explicit preservation-test step.
+
+## Earlier nine-page component
+
+| Page identity | Existing reviewed regions |
+| --- | ---: |
+| post-jazz-bars-in-krakow | 1 music-review region |
+| post-krakow-live-music | 1 music-review region |
+| post-wheres-the-cheap-places-to-drink-in-krakow | 1 budget-review region |
+| post-krakow-new-years-eve | 5 established-NYE regions |
+| how-to-join | 1 offer-copy region |
+| meeting-point | 1 offer-copy region |
+| contact | 1 contact-copy region |
+| faqs | 3 offer-copy regions and12 answer panels |
+| krakow-nightlife | 9 editorial-review regions |
+
+Two generators insert eight closed rules at exact boundaries after the unchanged secondary holiday styles. Exact page identities and existing review markers limit the35 text regions; selected titles, two auxiliary headings and the FAQ container gain phone clearance. Typography uses980px and clearance600px maximum widths. Removing the two blocks recovers the complete old stylesheet byte for byte; removing two imports and two calls recovers the old builder. Missing, duplicated, moved, partial or altered prior output refuses before writing. No `!important`, runtime change, shared homepage input, asset replacement or global paragraph rule is added.
+
+The FAQ's only display rule selects its twelve existing reviewed answer panels and makes their default display block. The unchanged runtime already writes each panel's inline display when it creates the real buttons; that state continues to win. With JavaScript disabled or that runtime blocked, the answers stay readable below their original question headings. Normal Enter/Space expansion, collapse and focus remain intact. No form, consent control or other page's toggle matches this rule.
+
+Three complete116-page rebuilds succeed without missing pages or errors. Independent Git-blob checks against b5970f333e9b4ef4b67d769728cfe8574cb6e8ee find exactly one changed application file, runtime.css. All other2,423 application files, all116 bodies and the immutable asset ledger remain exact. Only timestamps differ in the build report; the old builder differs by those four wiring lines. Original photos/attributes, metadata, discovery, storefront/Ecwid, forms, consent, active competition and the medical hold are preserved.
+
+Four generator preservation/refusal contracts pass without skips. The final generated candidate passes632 checks across72 normal views: nine routes at320/390/768/1440px with and without JavaScript, plus four separately recorded runtime-blocked FAQ views. They compare complete text, heading roles, IDs, hrefs, photo attributes and protected descendants against the frozen root preview; confirm16px reviewed prose through980px, no horizontal overflow and unchanged desktop typography; and sweep glyphs against fixed controls at three offsets. Every FAQ answer is opened with Enter and closed with Space in every normal scripted viewport; focus stays on its button. Disabled-script and missing-runtime cases retain all12 readable answers. Controls reproduce the old text sizes, both covered headings and the eleven-hidden-answer defect, then restore the candidate. All13 final390/1440px screenshots are individually inspected. These are bounded local checks, not full-page pixel, hosting or manual accessibility acceptance.
+
+Twenty-one focused automated accessibility scans cover the nine reviewed regions and each natively opened FAQ answer. They report zero violations and one colour-contrast incomplete group on the original NYE H1, whose background could not be determined by the tool. It remains incomplete. Native zoom, screen-reader, physical-device and provider outcomes remain separate.
+
+The earlier four-guide168-check proof remains retained. The first expanded run passes588/608 and finds two covered headings, eleven hidden answers without JavaScript, an incorrect native-button expectation and an undercounted nightlife inventory. Read-only diagnosis distinguishes the genuine defects from those QA errors. Exact scoped padding and the default FAQ display rule fix the defects; native questions correctly remain plain headings without fake buttons, and the nightlife source has nine review regions. The strict generator is unchanged: its exact known failed block is removed from the backed-up candidate before regeneration, rather than accepting arbitrary drift. All failed reports, source snapshots and screenshots remain. An unexercised report-reader branch used a request method call on a plain record; the deliberately blocked-runtime cases now exercise its corrected string-field read.
+
+The browser permits only owned loopback GETs and blocks foreign/nonread requests before transmission. It observes no script errors or nonread attempts; four local runtime GETs are deliberately aborted for fallback controls. Optional remote maps remain blocked, with readable directions retained. Only the uniquely owned temporary previews on5194/PIDs19780 and5324 are closed after their proofs; all prior previews remain. No real form, message, order, account change or provider event is sent.
+
+Before edits all3,821 worktree files match Git and the independently reopened self-contained source snapshot `deploy-backups/seo-cleanup-runtime-diagnostics-full-b5970f3-20261118.zip`. Its SHA256 is `03ec496e7535ef057d9568247ba91eae33404f144700595752caa0fcc6e75d6a`; it needs no older archive. Later complete reconstruction preserves the first four-guide version with overlay77fc30cc and the unaccepted pre-header-fix version with75e8bd9d; both require that one full baseline. These are source backups, not hosting/database backups. Private receipts in the main worktree's cleanup-runtime-diagnostics evidence directory retain the complete ledgers, CRCs, source inverses,632-check matrix,13-image review and21 accessibility scans.
+
+The earlier nine-page source is saved locally at55f59ddce0ed77fc954d9d73e2f782fb4d758d9b. The current extension remains isolated and unpublished on `codex/local-preserved-reading-modules` in `.worktrees/ktk-reading-candidate`; its source is kept separate from the running recovery fixture. Actual staging still has accepted image delivery70/APP530. At12:20UTC18November the [official advisory](https://github.com/advisories/GHSA-fc5q-39xc-vjpf) lists no patched picomatch version, and the public registry still lists affected4.0.7 as latest. Supported dependency resolution, complete current CI, guarded staging publication, independent backups/protected-state checks and origin/normal/cache verification remain before staging acceptance. No website delivery, batch, whole workstream or owner/manual gate is marked complete here.
+
+The wider read-only census covers116 routes at two native widths. Thirty routes have under16px text signals; these require review by purpose and are not thirty automatic defects. Captions, metadata, card text, forms, untouched modules and held content remain separately classified. The Halloween CSS experiment remains an unrelated unintegrated DOM-only prototype; its testimonial/business-fact review and the health article's specialist hold remain open. The baseline full recovery diagnostic fails its unchanged time gate. Current native preparation/recovery CI passes140 cases and16 scenarios; the distinct full-inventory run44298298098 against exact4e0ba0a is still running. Neither complete nor hosted recovery is accepted, and no recovery limit is raised or consumed context replayed. Production and OmniLodge remain untouched.
+
+The initial23-root extension is independently reconstructible from source overlayc020ab4b7acd244acd15fd4772f9da6d740cab8921e34e097387707787e44130; the accepted pre-alignment revision is retained in328020050f87981cbaf71e0d5843e03c3ad23034dcd358cd786dc21bdb41b636. Each needs only the self-contained03ec baseline above. The final source snapshot and complete member ledger are retained beside the final component acceptance receipt, separately from the source archive to avoid circular hashes. These remain source-only backups.

@@ -1,0 +1,167 @@
+name: Early Termination Phase Recovery Fixtures
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/early-termination-phases.yml'
+      - '.github/workflows/private-termination-fixture.yml'
+      - 'tools/verify-early-termination-phases.py'
+      - 'tools/verify-private-termination-fixture.py'
+      - 'tools/private_termination_fixture_support.py'
+      - 'tools/private_termination_diagnostics.py'
+      - 'tools/private_termination_checkpoint.py'
+      - 'tools/tests/test_private_termination_checkpoint.py'
+      - 'tools/tests/test_private_termination_diagnostics.py'
+      - 'tools/private-engine-*'
+      - 'tools/private_engine_*'
+      - 'tools/tests/test_private_engine_*'
+      - 'tools/tests/test_private_termination_fixture_support.py'
+      - 'tools/full_private_*'
+      - 'tools/full-private-*'
+      - 'tools/content-update-*'
+      - 'tools/content_update_*'
+      - 'tools/full_inventory_capacity.py'
+      - 'tools/invoke-ktk-native.ps1'
+      - 'tools/publish-clarity.py'
+      - 'tools/publish-homepage-shortcode.py'
+      - 'tools/publish-store2.py'
+      - 'tools/rehearse-staging-content-controller.ps1'
+      - 'tools/rehearse-staging-content-controller.py'
+      - 'tools/rehearse-staging-full-private-engine.ps1'
+      - 'tools/rehearse-staging-full-seeds.ps1'
+      - 'tools/rehearse-staging-full-seeds.py'
+      - 'tools/rehearse-staging-private-transaction.py'
+      - 'tools/staging-protected-state-template.php'
+      - 'tools/tests/test_full_private*'
+      - 'tools/tests/test_content_update_controller.py'
+      - 'tools/tests/test_production_protected_state.py'
+      - 'tools/code-pages-update-engine.php'
+      - 'tools/staging-protected-state-core.php'
+      - 'tools/staging-protected-state-fast-core.php'
+      - 'tools/staging_state_fast_capture.py'
+      - 'tools/private_state_fast_census.py'
+      - 'tools/tests/test_staging_state_fast_capture.py'
+      - 'tools/tests/test_private_state_fast_census.py'
+      - 'tools/tests/test_private_preparation_fast_capture.py'
+      - 'tools/early_private_entry.py'
+      - 'tools/snapshot-staging-update-state.py'
+      - 'tools/promote-code-pages-production.py'
+      - 'tools/verify-full-private-engine-fixture.py'
+      - 'tools/rehearse-staging-full-private-engine.py'
+  workflow_dispatch:
+    inputs:
+      source_commit:
+        description: Exact reviewed phase-fixture source commit (40 lowercase hex)
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: early-termination-phases-${{ github.ref }}-${{ inputs.source_commit || github.event.pull_request.head.sha }}
+  cancel-in-progress: false
+
+jobs:
+  termination_phases:
+    name: Native Interrupted Phase and Lost Reply Recovery
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Verify reviewed inputs, native unit contracts and phase matrix in synthetic PHP only
+        env:
+          REVIEWED_PHASE_COMMIT: ${{ github.event.pull_request.head.sha || inputs.source_commit }}
+        run: |
+          php --version
+          python - <<'PY'
+          import hashlib,importlib.util,json,os,subprocess,sys,tempfile,unittest
+          from datetime import datetime,timezone
+          from pathlib import Path
+          from tools import private_termination_fixture_support as support
+          root=Path.cwd()
+          spec=importlib.util.spec_from_file_location('ktk_reviewed_phase_fixture',root/'tools/verify-early-termination-phases.py')
+          module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+          commit=os.environ['REVIEWED_PHASE_COMMIT'];inputs=module.fingerprints()
+          support.verify_reviewed_sources(root,commit,inputs)
+          from tools.tests import test_full_private_recovery_operator as operator_evidence
+          extra=operator_evidence.evidence_source_hashes()
+          operator_evidence.require_loaded_source_closure(inputs,extra)
+          support.verify_reviewed_sources(root,commit,extra)
+          print('KTK_OPERATOR_EVIDENCE_INPUT_COUNT='+str(len(extra)))
+          if subprocess.check_output(['git','status','--porcelain']):raise RuntimeError('Clean reviewed fixture source required')
+          workflow='.github/workflows/early-termination-phases.yml';raw=(root/workflow).read_bytes()
+          if subprocess.check_output(['git','show',commit+':'+workflow])!=raw:raise RuntimeError('Workflow source differs from reviewed commit')
+          print('KTK_PHASE_WORKFLOW_SHA256='+hashlib.sha256(raw).hexdigest())
+          print('KTK_PHASE_INPUT_COUNT='+str(len(inputs)))
+          names=['tools.tests.test_private_engine_termination_controller','tools.tests.test_private_engine_fenced_inspection','tools.tests.test_private_engine_termination_helper','tools.tests.test_private_termination_fixture_support','tools.tests.test_private_termination_diagnostics','tools.tests.test_private_termination_checkpoint','tools.tests.test_private_engine_payload_cleanup','tools.tests.test_private_engine_cleanup_budget','tools.tests.test_staging_state_fast_capture','tools.tests.test_private_state_fast_census','tools.tests.test_private_preparation_fast_capture','tools.tests.test_full_private_recovery_hashing','tools.tests.test_full_private_recovery_operator']
+          suite=unittest.defaultTestLoader.loadTestsFromNames(names);expected=suite.countTestCases()
+          if expected<1:raise RuntimeError('Nonempty complete native contract selection required')
+          def run_native_units():
+              started=datetime.now(timezone.utc).isoformat();result=unittest.TextTestRunner(verbosity=2).run(suite)
+              output=root/'docs/seo/private-engine-phases-2026-11-17/ci-native-units.json';output.parent.mkdir(parents=True,exist_ok=True)
+              output.write_text(json.dumps({'scope':'Offline synthetic native contracts; not repository security clearance or hosting acceptance','startedAt':started,'finishedAt':datetime.now(timezone.utc).isoformat(),'reviewedSource':commit,'sourceHashes':inputs,'additionalOperatorEvidenceSourceHashes':extra,'additionalOperatorEvidenceVerifiedAfterUnits':False,'selectedModules':names,'selectedCases':expected,'testsRun':result.testsRun,'skipped':len(result.skipped),'failures':len(result.failures),'errors':len(result.errors),'successful':result.wasSuccessful()},indent=2)+'\n',encoding='utf-8')
+              if not result.wasSuccessful() or result.skipped or result.testsRun!=expected:raise RuntimeError('Every selected native contract must pass without skips')
+              support.verify_reviewed_sources(root,commit,inputs)
+              if subprocess.check_output(['git','status','--porcelain']):raise RuntimeError('Native contract source changed')
+              support.verify_reviewed_sources(root,commit,extra)
+              operator_evidence.require_loaded_source_closure(inputs,extra)
+              saved=json.loads(output.read_bytes());saved['additionalOperatorEvidenceVerifiedAfterUnits']=True
+              output.write_text(json.dumps(saved,indent=2)+'\n',encoding='utf-8')
+
+          def run_suites_concurrently():
+              print('KTK_NATIVE_SUITES_CONCURRENT=1',flush=True)
+              with tempfile.TemporaryDirectory(prefix='ktk-native-suites-') as folder:
+                  with (Path(folder)/'phases.log').open('w+b') as phase_log:
+                      phase=subprocess.Popen([sys.executable,str(root/'tools/verify-early-termination-phases.py'),'--report','docs/seo/private-engine-phases-2026-11-17/ci-native-phases.json'],cwd=root,stdin=subprocess.DEVNULL,stdout=phase_log,stderr=subprocess.STDOUT)
+                      unit_error=None
+                      try:
+                          try:run_native_units()
+                          except Exception as error:unit_error=error
+                          phase_status=phase.wait()
+                      finally:
+                          if phase.poll() is None:
+                              phase.terminate()
+                              try:phase.wait(timeout=10)
+                              except subprocess.TimeoutExpired:phase.kill();phase.wait()
+                          phase_log.seek(0);print(phase_log.read().decode('utf-8'),end='')
+                          print('KTK_PHASE_PROCESS_RETURN_CODE='+str(phase.returncode),flush=True)
+                      if unit_error is not None:raise unit_error
+                      if phase_status!=0:raise RuntimeError('Every native phase scenario must pass in its separate process')
+          operator_evidence.require_loaded_source_closure(inputs,extra)
+          run_suites_concurrently()
+          PY
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          from tools import private_termination_fixture_support as support
+          from tools.tests import test_full_private_recovery_operator as operator_evidence
+          root=Path.cwd();output=root/'docs/seo/private-engine-phases-2026-11-17/ci-native-units.json';saved=json.loads(output.read_bytes())
+          phases=json.loads((root/'docs/seo/private-engine-phases-2026-11-17/ci-native-phases.json').read_bytes())
+          if phases['sourceHashesBeforeFixture']!=saved['sourceHashes'] or phases.get('allPrestartSourcesStillExact') is not True or phases.get('allScenariosPassed') is not True:raise RuntimeError('Concurrent phase source/result differs from the reviewed unit domain')
+          extra=operator_evidence.evidence_source_hashes()
+          if saved['additionalOperatorEvidenceSourceHashes']!=extra:raise RuntimeError('Operator evidence source changed during scenarios')
+          support.verify_reviewed_sources(root,os.environ['REVIEWED_PHASE_COMMIT'],saved['sourceHashes'])
+          support.verify_reviewed_sources(root,os.environ['REVIEWED_PHASE_COMMIT'],extra)
+          operator_evidence.require_loaded_source_closure(saved['sourceHashes'],extra)
+          saved['additionalOperatorEvidenceVerifiedAfterScenarios']=True
+          output.write_text(json.dumps(saved,indent=2)+'\n',encoding='utf-8')
+          PY
+      - name: Retain scoped native phase evidence and pre-start source fingerprints
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: early-termination-phases-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            docs/seo/private-engine-phases-2026-11-17/ci-native-units.json
+            docs/seo/private-engine-phases-2026-11-17/ci-native-phases.json
+          if-no-files-found: error
+          include-hidden-files: false
+          compression-level: 0
+          retention-days: 7

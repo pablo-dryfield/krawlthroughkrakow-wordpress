@@ -45,6 +45,10 @@ import {loadActivityBookingEditorial,reviseActivityBookingEditorial,reviseActivi
 import {loadCompetitionNewsletterEditorial,reviseCompetitionNewsletterEditorial,buildCompetitionNewsletterStyles} from './competition-newsletter-editorial.mjs';
 import {loadPartyTripEditorial,revisePartyTripEditorial,revisePartyTripFeature,buildPartyTripStyles} from './party-trip-editorial.mjs';
 import {loadNightlifeComparisonEditorial,reviseNightlifeComparisonEditorial,reviseNightlifeComparisonFeature,buildNightlifeComparisonStyles} from './nightlife-comparison-editorial.mjs';
+import {loadEuropeHeaderPresentation,reviseEuropeHeaderPresentation,buildEuropeHeaderStyles} from './europe-header-presentation.mjs';
+import {loadCategoryNavigation,reviseCategoryNavigation,buildCategoryNavigationStyles} from './category-navigation.mjs';
+import {loadHomepageAliasExcerpts,reviseHomepageAliasExcerpts,buildHomepageAliasExcerptStyles} from './homepage-alias-excerpts.mjs';
+import {loadSecondaryNyeEditorial,reviseSecondaryNyeEditorial,buildSecondaryNyeStyles} from './secondary-nye-editorial.mjs';
 import {loadHenBarsEditorial,reviseHenBarsEditorial,buildHenBarsStyles} from './hen-bars-editorial.mjs';
 import {loadHotelGuidesEditorial,reviseHotelGuidesEditorial,buildHotelGuidesStyles} from './hotel-guides-editorial.mjs';
 import {loadBlogGroupEditorial,reviseBlogGroupEditorial,buildBlogGroupStyles} from './blog-group-editorial.mjs';
@@ -56,6 +60,10 @@ import {buildStagReviewedTextStyles} from './stag-reviewed-text-styles.mjs';
 import {buildMemorialPhoneTextStyles} from './memorial-phone-text-styles.mjs';
 import {buildGuideTypeImageStyles} from './guide-type-image-styles.mjs';
 import {buildVenuePhoneTextStyles} from './venue-phone-text-styles.mjs';
+import {buildReviewedGuideTextStyles} from './reviewed-guide-text-styles.mjs';
+import {buildReviewedSiteTextStyles} from './reviewed-site-text-styles.mjs';
+import {buildPreservedReadingTextStyles} from './preserved-reading-text-styles.mjs';
+import {buildShortViewportBookingStyles} from './short-viewport-booking-styles.mjs';
 import {buildLegalMobileTextStyles} from './legal-mobile-text-styles.mjs';
 import {buildNoJsNavigation} from './nojs-navigation.mjs';
 import {buildCompactMenuFocusStyles} from './compact-menu-focus-styles.mjs';
@@ -81,6 +89,12 @@ await buildMemorialPhoneTextStyles(path.join(assets,'runtime.css'));
 await buildGuideTypeImageStyles(path.join(assets,'runtime.css'));
 await buildVenuePhoneTextStyles(path.join(assets,'runtime.css'));
 await buildLegalMobileTextStyles(path.join(assets,'runtime.css'));
+await buildEuropeHeaderStyles(path.join(assets,'runtime.css'));
+await buildCategoryNavigationStyles(path.join(assets,'runtime.css'));
+await buildHomepageAliasExcerptStyles(path.join(assets,'runtime.css'));
+await buildSecondaryNyeStyles(path.join(assets,'runtime.css'));
+await buildReviewedGuideTextStyles(path.join(assets,'runtime.css'));
+await buildReviewedSiteTextStyles(path.join(assets,'runtime.css'));
 await buildContactDetailsStyles(path.join(assets,'runtime.css'));
 await buildEstablishedNyeStyles(path.join(assets,'runtime.css'));
 await buildGroupPlanningStyles(path.join(assets,'runtime.css'));
@@ -145,6 +159,10 @@ const activityBookings=await loadActivityBookingEditorial();
 const competitionNewsletter=await loadCompetitionNewsletterEditorial();
 const partyTrips=await loadPartyTripEditorial();
 const nightlifeComparisons=await loadNightlifeComparisonEditorial();
+const europeHeaderPresentation=await loadEuropeHeaderPresentation();
+const categoryNavigation=await loadCategoryNavigation();
+const homepageAliasExcerpts=await loadHomepageAliasExcerpts();
+const secondaryNye=await loadSecondaryNyeEditorial();
 const henBars=await loadHenBarsEditorial();
 const hotelGuides=await loadHotelGuidesEditorial();
 const blogGroup=await loadBlogGroupEditorial();
@@ -382,7 +400,11 @@ try {
       contentRevisions.push(...await page.evaluate(reviseOperatorTrustEditorial,{key:route.key,revision:operatorTrust.find(row=>row.key===route.key)}));
       contentRevisions.push(...await page.evaluate(reviseEmbedFallbacks,{key:route.key,revision:embedFallbacks.find(row=>row.key===route.key)}));
       contentRevisions.push(...await page.evaluate(reviseJobsPageAccessibility,{key:route.key,revision:jobsAccessibility}));
+      contentRevisions.push(...await page.evaluate(reviseEuropeHeaderPresentation,{key:route.key,revision:europeHeaderPresentation}));
+      contentRevisions.push(...await page.evaluate(reviseCategoryNavigation,{key:route.key,revision:categoryNavigation.find(r=>r.key===route.key)}));
+      contentRevisions.push(...await page.evaluate(reviseHomepageAliasExcerpts,{key:route.key,revision:homepageAliasExcerpts.find(r=>r.key===route.key)}));
       const eventPromotion=await page.evaluate(prepareNyePromotion,{key:route.key,campaignFacts});
+      contentRevisions.push(...await page.evaluate(reviseSecondaryNyeEditorial,{key:route.key,revision:secondaryNye}));
       if(contentRevisions.length||bookingRevisions.length)report.revisions[route.key]={content:contentRevisions,bookings:bookingRevisions};
       const schemaFacts=await page.evaluate(codePageSchemaFacts);
       const title=codePageTitle(route.route,capture.title),description=codePageHeadDescription(route.route,codePageDescription(route.route,capture.metadata.description));
@@ -425,6 +447,8 @@ try {
       await writeFile('docs/code-pages/full-migration/assets.json', JSON.stringify(Object.fromEntries(files), null, 2));
     } catch (error) { report.errors.push({ key: route.key, error: error.message }); console.error(`${route.key}: ${error.message}`); }
   }
+  if(!partial&&!report.errors.length&&!report.missing.length){await buildPreservedReadingTextStyles(path.join(assets,'runtime.css'));}
+  if(!partial&&!report.errors.length&&!report.missing.length){await buildShortViewportBookingStyles(path.join(assets,'runtime.css'));}
   if ((!report.errors.length && !report.missing.length) || partial) {
     const redirects = {};
     for (const alias of manifest.aliases) {

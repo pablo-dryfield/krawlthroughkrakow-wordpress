@@ -1,0 +1,14 @@
+/* BEGIN Secondary holiday guide */
+body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] :is([data-ktk-secondary-nye-copy],[data-ktk-secondary-nye-reading],[data-ktk-secondary-nye-gallery]) { font-size: 16px; line-height: 1.65; text-align: left; }
+body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] :is([data-ktk-secondary-nye-copy],[data-ktk-secondary-nye-reading]) a { color: #b00059; text-decoration: underline; text-underline-offset: .15em; }
+body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] :is([data-ktk-secondary-nye-copy],[data-ktk-secondary-nye-reading]) a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] article#post-7506 > .entry-content h2 { font-size: 26px; line-height: 1.25; }
+body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] article#post-7506 > .entry-content h3 { font-size: 22px; line-height: 1.25; }
+body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] article#post-7506 > .entry-content h4 { font-size: 18px; line-height: 1.35; }
+body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] article#post-7506 > .entry-content :is(h2,h3,h4) :is(a,span) { font-size: inherit; line-height: inherit; }
+@media (max-width: 600px) {
+  body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] :is([data-ktk-secondary-nye-copy],[data-ktk-secondary-nye-reading],[data-ktk-secondary-nye-gallery]) { padding-right: 24px; }
+  body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] article#post-7506 > .entry-content :is(h2,h3,h4) { box-sizing: border-box; padding-right: 24px; }
+  body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] article#post-7506 > .entry-content ul.et_post_gallery { margin-right: 24px; }
+}
+/* END Secondary holiday guide */

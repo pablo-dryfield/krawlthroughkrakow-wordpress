@@ -78,12 +78,24 @@ final class KTK_Storefront_Public_Content {
 	}
 
 	public static function render( $data ) {
-		if ( ! is_array( $data ) || ! in_array( $data['kind'] ?? '', array( 'product','catalog' ), true ) ) { return ''; }
+		if ( ! is_array( $data ) || ! in_array( $data['kind'] ?? '', array( 'product','catalog','not-found' ), true ) ) { return ''; }
 		ob_start();
 		?><div id="ktk-storefront-public-content" class="ktk-app" data-public-content="<?php echo esc_attr( self::VERSION ); ?>"><?php
-		if ( 'product' === $data['kind'] ) { self::product( $data ); } else { self::catalog( $data['products'] ); }
+		if ( 'not-found' === $data['kind'] ) { self::not_found(); }
+		elseif ( 'product' === $data['kind'] ) { self::product( $data ); } else { self::catalog( $data['products'] ); }
 		?></div><?php
 		return ob_get_clean();
+	}
+
+	private static function not_found() {
+		?><main class="ktk-catalog ktk-public-catalog ktk-public-not-found" data-public-error="not-found">
+			<header class="ktk-public-catalog__heading">
+				<h1>Experience not found</h1>
+				<p>We couldn't find the experience at this address. Browse our current experiences, or contact our local team if you need help with a link.</p>
+				<p><a class="ktk-not-found__link" href="<?php echo esc_url( home_url( '/store2/' ) ); ?>">Browse current experiences</a></p>
+				<p><a class="ktk-not-found__link" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Contact our local team</a></p>
+			</header>
+		</main><?php
 	}
 
 	private static function price( $product ) {
@@ -111,6 +123,28 @@ final class KTK_Storefront_Public_Content {
 		</main><?php
 	}
 
+	private static function image_attributes( $product, $url, $asset_base = '' ) {
+		$fallback = ' width="1200" height="750"';
+		if ( ! in_array( $product['id'] ?? null, array( 28, '28' ), true ) || ! is_string( $url ) ) { return $fallback; }
+		if ( '' === $asset_base && defined( 'KTK_STOREFRONT_URL' ) ) { $asset_base = KTK_STOREFRONT_URL . 'assets/'; }
+		if ( ! is_string( $asset_base ) || ! str_ends_with( $asset_base, '/' ) || preg_match( '/[\s,]/', $asset_base ) || ! filter_var( $asset_base, FILTER_VALIDATE_URL ) ) { return $fallback; }
+		$parts = parse_url( $asset_base );
+		if ( ! in_array( $parts['scheme'] ?? '', array( 'http', 'https' ), true ) || isset( $parts['user'] ) || isset( $parts['pass'] ) || isset( $parts['query'] ) || isset( $parts['fragment'] ) ) { return $fallback; }
+		static $manifest;
+		if ( null === $manifest ) {
+			$manifest = json_decode( @file_get_contents( __DIR__ . '/product-image-sizes.json' ) ?: '', true );
+			$manifest = is_array( $manifest ) ? $manifest : array();
+		}
+		$image = $manifest['images'][ $url ] ?? null;
+		if ( ! is_array( $image ) || empty( $image['variants'] ) || empty( $manifest['sizes']['stage'] ) ) { return $fallback; }
+		$candidates = array();
+		foreach ( $image['variants'] as $variant ) {
+			$candidates[] = $asset_base . $variant['path'] . ' ' . $variant['width'] . 'w';
+		}
+		$candidates[] = $url . ' ' . $image['width'] . 'w';
+		return ' srcset="' . esc_attr( implode( ', ', $candidates ) ) . '" sizes="' . esc_attr( $manifest['sizes']['stage'] ) . '" width="' . (int) $image['width'] . '" height="' . (int) $image['height'] . '"';
+	}
+
 	private static function product( $data ) {
 		$product = $data['product']; $content = self::resolve( $product );
 		?><main class="ktk-detail">
@@ -118,7 +152,7 @@ final class KTK_Storefront_Public_Content {
 			<header class="ktk-detail__hero"><div class="ktk-detail__intro"><h1><?php echo esc_html( $product['name'] ); ?></h1><p><?php echo esc_html( $content['summary'] ); ?></p></div>
 			<?php if ( ! $content['pastCampaign'] && self::price( $product ) ) { ?><div class="ktk-detail__starting-price"><span>From</span><strong><?php echo esc_html( self::price( $product ) ); ?></strong><small>per person</small></div><?php } ?></header>
 			<div class="ktk-detail__layout"><div class="ktk-detail__main">
-				<?php if ( ! empty( $content['gallery'] ) ) { ?><section class="ktk-gallery" aria-label="<?php echo esc_attr( $product['name'] . ' gallery' ); ?>"><div class="ktk-gallery__stage"><img src="<?php echo esc_url( $content['gallery'][0] ); ?>" alt="<?php echo esc_attr( $product['name'] . ' experience' ); ?>" decoding="async" fetchpriority="high" data-no-lazy="1" width="1200" height="750"></div></section><?php } ?>
+				<?php if ( ! empty( $content['gallery'] ) ) { ?><section class="ktk-gallery" aria-label="<?php echo esc_attr( $product['name'] . ' gallery' ); ?>"><div class="ktk-gallery__stage"><img src="<?php echo esc_url( $content['gallery'][0] ); ?>" alt="<?php echo esc_attr( $product['name'] . ' experience' ); ?>" decoding="async" fetchpriority="high" data-no-lazy="1"<?php echo self::image_attributes( $product, $content['gallery'][0], $data['assetBaseUrl'] ?? '' ); ?>></div></section><?php } ?>
 				<?php if ( $content['description'] ) { ?><section class="ktk-product-story"><div><p class="ktk-eyebrow">The experience</p><h2>Organised chaos,<br>handled locally.</h2></div><p><?php echo esc_html( $content['description'] ); ?></p></section><?php } ?>
 				<?php if ( ! empty( $content['highlights'] ) ) { ?><section class="ktk-inclusions"><h2 class="ktk-eyebrow ktk-inclusions__heading"><?php echo esc_html( $content['pastCampaign'] ? substr( $content['pastCampaign']['lastDates'][0], 0, 4 ) . ' inclusions' : 'Inclusions' ); ?></h2><div class="ktk-highlights">
 					<?php foreach ( $content['highlights'] as $index => $highlight ) { ?><article><span><?php echo esc_html( str_pad( (string) ( $index + 1 ), 2, '0', STR_PAD_LEFT ) ); ?></span><p class="ktk-highlights__text"><?php echo esc_html( $highlight ); ?></p></article><?php } ?>
