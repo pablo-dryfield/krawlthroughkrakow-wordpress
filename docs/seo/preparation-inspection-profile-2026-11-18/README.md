@@ -1,0 +1,29 @@
+# Preparation inspection profiling: read-only synthetic calibration
+
+The cancelled full-inventory run spends1784.276 seconds across41 preparation-recovery calls and278.495 seconds across42 preparation inspections. Its surviving report does not separate the internal costs. The public capture comparison is now independently verified on Ubuntu, but a capture-only gain does not prove that the complete recovery fits its unchanged90-minute job limit. This experiment measures the existing preparation inspector before changing it.
+
+## Exact scope
+
+The isolated branch starts atf03aedd832da5e40defeacc76853a2d68a70a9a1/tree4d254531d2202289a8f71b37d180923db0fdce3a. All3838 initial files match Git and the independently reconstructed54d798a6efeba3287b6281ed86f463026ab4e4e3c912c3fee9f17bae1ac5ea64 source snapshot using only full03ec496e. The website, original preparation stream/controller, all36 helper/compiler inputs and the accepted91-input native phase cohort stay byte-exact. Five new files implement only a local observer, its contracts, workflow and this documentation. Two exact output-directory exclusions keep raw synthetic data out of Git; every earlier ignore rule remains unchanged.
+
+The existing native fixture creates fresh synthetic signed original records and independently verifies its original archive. The profiler copies all2074 current public sources/550639063 bytes into that owned temporary fixture and uses the same large fake post pattern as the original full-inventory harness. It then **manually assembles inspection specimens**. The first contains all2074 source slots, with the35,437,747-byte video represented by its exact65,536-byte prefix and no target tree. The second completes that source and adds all2075 prior slots:4149 payload files/1101099599 bytes in total. Existing required prior overrides and marker bytes are preserved.
+
+This manual construction is not controller preparation progress, a prepared engine, a recovery procedure or hosting acceptance. No recover, apply, acknowledge, rollback or cleanup action is permitted in the profiler. A single fresh `prepare` initializes only its synthetic records; subsequent controller calls are `inspect-preparation`. No engine is created. The client and inspector still independently validate the full declared inventory and every prefix/hash.
+
+## Measurement and preservation
+
+Each specimen is inspected six times in three balanced pairs. Both arms share the same native observer driver and full public-capture timer. The original arm retains every compiled stream byte; the instrumented arm adds reversible timer wrappers only around source inventory, private prefixes and control/guard calls in the existing inspect method. Reversing those exact wrappers recovers the complete old stream. Reversing the driver observer recovers the complete old native driver. Missing, changed or unexpected source refuses before execution.
+
+The observer reports native controller/wall time, peak memory, selected read-only queries and safe aggregate span counters. Timers add overhead; inclusive guard and public-capture spans overlap and must not be added as independent costs. These are CLI fixture observations, not hosted HTTP or uninstrumented benchmarks.
+
+Before and after every measured call, complete public snapshots retain all selected raw fake tables and every original field, with capture timestamps retained separately. Complete public/private file witnesses compare names, bytes, SHA256, device/inode/link count and modification/change times. All controller values must remain exactly equal between arms within each specimen. No private metadata changes are permitted between the two explicit construction phases.
+
+Raw replies, snapshots, stderr, the partial video bytes, file witnesses and complete generic observer/stream sources are retained and independently reopened. The final private evidence archive stores every metadata/unknown byte and refers only exact complete known public payloads to the immutable application Git cohort. The original signed-record archive is included. Temporary fixtures are removed only after the evidence archive passes complete readback; failures retain their owned fixture and raw observations without replay.
+
+The PHP memory limit stays256M; the subprocess observation remains600 seconds and every call must also meet the existing60-second comparison. The read-only calibration job is bounded at15 minutes. No original timing, wire, copy-count, expiry, ownership, context or per-deletion boundary is increased or removed. The helper/public-capture implementation remains unchanged, including32MiB buffer eligibility. The existing64MiB result remains a separate temporary capture experiment.
+
+## Verification state
+
+Six current native contracts pass, including real small-fixture partial/complete states, identical whole responses and public/private witnesses across arms, and deliberate corruption refusal without repair. Source/driver inverses, changed-input refusal, read-only action enforcement, generated-component fingerprints and metric bounds are covered. These are small-fixture observer checks, not the complete2074/4149-file calibration. The two earlier five-case versions remain retained; the latest uses the exact expected uncertainty exception and consistent monotonic counters.
+
+The full source-bound Ubuntu calibration and independent raw/source/archive audit remain before accepting any timing diagnosis. No optimization is implemented here, no full-inventory recovery run is restarted, and no hosting/account/helper installation, cache purge, real form/message/order, production or OmniLodge operation occurs. Actual staging remains APP530/image delivery70. The dependency security gate, stopped native Computer Use/zoom failures, hosting coordination and all owner/account/manual gates remain. Six batches and the full goal stay open.

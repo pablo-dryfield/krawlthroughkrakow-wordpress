@@ -1,0 +1,48 @@
+name: Read-only Preparation Inspection Calibration
+
+on:
+  push:
+    branches: ['codex/local-preparation-inspection-profile']
+    paths:
+      - '.github/workflows/preparation-inspection-calibration.yml'
+      - 'tools/calibrate_preparation_inspection.py'
+      - 'tools/preparation_inspection_diagnostics.py'
+      - 'tools/tests/test_preparation_inspection_calibration.py'
+      - 'docs/seo/preparation-inspection-profile-2026-11-18/README.md'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: preparation-inspection-${{ github.ref }}-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  read_only_inspection:
+    name: Complete Read-only Inspection and Timing
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Verify native observer and measure current synthetic inspection cohorts
+        env:
+          INSPECTION_SOURCE_COMMIT: ${{ github.sha }}
+        run: |
+          php --version
+          python -m unittest tools.tests.test_preparation_inspection_calibration
+          python -m tools.calibrate_preparation_inspection --source-commit "$INSPECTION_SOURCE_COMMIT" --output docs/seo/preparation-inspection-profile-2026-11-18/ubuntu-calibration
+      - name: Preserve exact synthetic observations including unfinished reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: preparation-inspection-${{ github.run_id }}-${{ github.run_attempt }}
+          path: docs/seo/preparation-inspection-profile-2026-11-18/ubuntu-calibration/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
