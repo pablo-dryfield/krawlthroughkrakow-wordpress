@@ -1,0 +1,48 @@
+name: Read-only Complete Prefix Hash Calibration
+
+on:
+  push:
+    branches: ['codex/local-complete-prefix-hash-profile']
+    paths:
+      - '.github/workflows/complete-prefix-hash-calibration.yml'
+      - 'tools/calibrate_complete_prefix_hash.py'
+      - 'tools/complete_prefix_hash_profile.py'
+      - 'tools/tests/test_complete_prefix_hash_profile.py'
+      - 'docs/seo/complete-prefix-hash-profile-2026-11-18/README.md'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: complete-prefix-hash-${{ github.ref }}-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  read_only_inspection:
+    name: Complete Read-only Prefix Hash Comparison
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Verify original observer and bounded prototype then compare full specimens
+        env:
+          PREFIX_PROFILE_COMMIT: ${{ github.sha }}
+        run: |
+          php --version
+          python -m unittest tools.tests.test_preparation_inspection_calibration tools.tests.test_complete_prefix_hash_profile
+          python -m tools.calibrate_complete_prefix_hash --source-commit "$PREFIX_PROFILE_COMMIT" --output docs/seo/preparation-inspection-profile-2026-11-18/ubuntu-calibration
+      - name: Preserve exact synthetic observations including unfinished reports
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: complete-prefix-hash-${{ github.run_id }}-${{ github.run_attempt }}
+          path: docs/seo/preparation-inspection-profile-2026-11-18/ubuntu-calibration/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6
