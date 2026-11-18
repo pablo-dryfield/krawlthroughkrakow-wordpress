@@ -1,8 +1,30 @@
-# Short-viewport booking control: local draft, incomplete native verification
+# Booking control: programmatic checks pass; native verification remains open
+
+The local correction on `codex/local-booking-edge-containment` moves the normal-height BOOK NOW control six pixels inward, using a scoped 26px right offset. Its compact-height 23px offset and every existing label, link, rotation and interaction remain exact. The candidate is unpublished. Native Chrome verification remains incomplete after a second Windows URL-confidence stop; fresh headless results are not substituted for that requirement.
+
+The parent is the held draft39f2fa892424cd946f598e91cad03f771b172573. The current runtime.css SHA256 is e032e73bc4c369d8334423fe26205b6f56a0ad6e69c341715b37fd97d62691bf. Removing only `body.ktk-code-page #ktk-cta { right: 26px; }` plus its newline recovers the complete held stylesheet4e4c51af1c925f747bae81b8f26698519d52660c370f829cbe4673475455292d. Removing the complete owned booking block recovers canonical seventeen-page reading stylesheet66781a9370bf562b36d14a16ca257882d5d0ce9e523a520c7e553bb7edf85d67. The replacement was generated in a detached copy and checked for both whole-file inverses and idempotence before application. No generator drift guard was relaxed.
+
+There are now four closed rules: normal offset, compact control, six compact heading clearances and inset focus outline. A fresh complete116-page build exits0, all ten contracts in four reading modules pass, and reference verification passes2320/2320 for2074 owned payloads. The independent source audit verifies all116 bodies and other2423 application files exactly, including the immutable f5ad7b270678fedff20eef108fb5dc6372d540fbaef2a3181cb2748435ede691 media ledger. Copy, artwork, history, links, metadata, forms, consent, commerce, competition and medical holds remain unchanged.
+
+Fresh `reading-edge-programmatic-final-v2.json` passes2108/2108:464 views test every116 route with JavaScript on and off at320x197 and641x394;238 additional controls test17 reading identities in both JavaScript states at320x128,320x300,320x301,390x337,768x394,1440x900 and1531x675. Every complete control and label glyph fits the content viewport without an overhang tolerance. Actual DOM Tab navigation reaches the existing control with its white inset focus indicator. Source-CSS controls prove exactly a six-pixel normal horizontal translation and unchanged compact geometry/styles.
+
+Fresh `reading-edge-clearance.json` passes206/206 across102 views:17 reading identities at320x197,641x394 and1531x675 with JavaScript on and off. Visible reading roots and main headings are swept at three scroll placements each; no tested glyph intersects a fixed control or exceeds content width. Eight current headless PNGs were individually inspected: six exact compact heading viewports and two focused How to Join controls. These are scoped programmatic viewport images, not native zoom, whole-page visual, AT/device, hosting or fact-review acceptance.
+
+The first viewport run stopped at284/285 because its test incorrectly required product28 on the existing NYE page, which uses product32. The corrected harness compares each page's emitted destination and retains the failed report; no application link changed. The first full-build attempt stopped before generation because this isolated checkout lacked PostCSS. Locked `npm ci --no-fund` restored dependencies with zero reported vulnerabilities and no lockfile change; the next complete build passed. Preparation quoting/count refusals did not change application guards.
+
+After the owner reopened Chrome, the exact local URL, matching window58526598 and100% baseline were verified. Read-only native measurement found the held control ended at1521.600025px against a1516px content viewport, a5.600025px protrusion. That supports the six-pixel correction. The following F5 native action stopped because Computer Use could not confidently verify the Windows browser URL. No later native input or alternative native-control workaround followed. All17 old200% protrusions, seven rejected black pictures, unfinished native checks and old resources below remain qualified historical evidence; no native correction pass or cleanup is claimed. A manual check is requested separately. Account-specific stops remain binding.
+
+Current353f7a0 standard CI and frozen0d full actual-inventory proof separately pass independent review, for their exact sources and APP00dfa cohort. They do not certify this later stylesheet or hosted recovery. Final feature integration, exact application-cohort/source proof, current CI, native/manual checks, guarded staging publication and origin/cache/protected-state verification remain. Actual staging remains delivery70 and six batches remain. No hosting, helper, purge, real message/order, production or OmniLodge operation occurs here.
+
+The full pre-edit source overlay has SHA256 da3d9b13b934de5206fa60a874fcba43fb3dc6924123ede309edfa1362815e87 and requires only verified full03ec496e7535ef057d9568247ba91eae33404f144700595752caa0fcc6e75d6a. Private evidence remains under `docs/seo/cleanup-runtime-diagnostics-2026-11-18`. Source backups are not hosting/database backups.
+
+The rest of this file is the preserved held-draft record, before the correction and restored CI described above.
+
+## Historical held-draft overview
 
 The native Chrome zoom review found the common rotated BOOK NOW label clipped to three letters at400% zoom, with a How to Join heading covered by the control. A compact fixed-control candidate corrects those recorded400% measurements. It remains isolated, unpublished and incomplete: the200% control box still protrudes beyond the content viewport, all seven saved final native pictures are black, and final native200% keyboard verification did not finish. No staging delivery or accessibility completion is claimed.
 
-## Source and preservation
+## Historical source and preservation
 
 The parent is the separately verified seventeen-page reading component, commit2d391185042ab02a270f479f5c5913047deb78e7/treebc517fc4c393770d391271a6f69106c8ec54c56e. This follow-up is on `codex/local-low-height-booking-control` in `.worktrees/ktk-reading-candidate`; it is not integrated with the main application or the recovery fixture.
 
@@ -12,7 +34,7 @@ The heading identities are How to Join, Contact, FAQ, Krakow Nightlife, Blog and
 
 Independent whole-source inverses recover the parent stylesheet and builder. All116 bodies, other2423 application files, original media/attributes, hrefs, metadata, forms, consent, commerce, active competition, medical hold and recovery inputs remain exact. The immutable media-ledger SHA256 remainsf5ad7b270678fedff20eef108fb5dc6372d540fbaef2a3181cb2748435ede691. Three complete116-page builds succeed. Current reference verification passes2320/2320 and refreshes all2074 owned hashes; only runtime.css differs from the parent. All ten generator contracts pass without skips; the new guard test exercises changed and missing bodies for each of the six headings.
 
-## Retained measurements and failures
+## Historical measurements and failures
 
 The first static page-flow trial passes1360/1372 checks, exposing genuine focus/viewport failures. Its source is retained in overlay37207105aeb9e15ef8503b477f8b6bfebad4771342c5457c8f5f3e12e952e0a6. The compact revision passes1428/1428 checks across232 views (all116 routes, JavaScript on/off,320×197) and70 representative controls at heights128/197/300/301/900. Those checks precede the final five-heading expansion. Replacing the final six-selector heading scope with the exact earlier How to Join selector recovers that complete earlier stylesheet SHA256d79bc18918002c2461518ecf131762e5ce93a7d21be780c152670d6c6d7a8b82. The1428-check proof is retained with that precise source qualification, not relabelled as a fresh final-source run. The earlier compact overlayd6158218ec9f1751fdb42bfd6adad67cba14ccb62c31663ef7d4fd47e5ed7f4a remains too.
 
@@ -26,6 +48,6 @@ Computer Use stopped when it could not establish the current Windows browser URL
 
 Private receipts under `docs/seo/cleanup-runtime-diagnostics-2026-11-18` retain `short-viewport-booking-source-audit.json`, `short-viewport-retained-independent-audit.json`, the34 native observations, failures, build/reference logs, and the exact prior-source1428-check report. Initial audit assumptions that all200% boxes were inside are explicitly rejected by the retained coordinates; the stricter qualification above is authoritative.
 
-## Remaining release gates
+## Historical release gates
 
 Native screenshots/keyboard and the200% control-box defect remain open. The source dependency advisory and complete current CI still gate integration/publication. Guarded staging publication, independent hosting backups/protected-state checks and origin/normal/cache verification have not occurred. Actual staging remains APP530/image delivery70. This source backup is not a hosting/database backup. The recovery run44298298098 separately exceeded its original90-minute job limit; its partial checkpoint is not full or hosted recovery. No hosting, account, helper, cache purge, real form/message/order, production or OmniLodge action occurs here. Six batches remain and the overall goal stays active.

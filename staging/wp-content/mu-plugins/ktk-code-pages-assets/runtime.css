@@ -175,6 +175,7 @@ body.ktk-code-page[data-ktk-page="faqs"] #main-content .et_pb_accordion_0 .et_pb
 }
 /* END Preserved reading text */
 /* BEGIN Short viewport booking control */
+body.ktk-code-page #ktk-cta { right: 26px; }
 @media (max-height: 300px) {
   body.ktk-code-page #ktk-cta { top: 8px; right: 23px; font-size: clamp(10px, 10vh, 20px); line-height: 20px; padding: 12px; }
 }

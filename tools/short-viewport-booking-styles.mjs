@@ -13,7 +13,7 @@ export const shortViewportBookingHeadingTargets=Object.freeze([
   {key:'tour-service-disclaimer',selector:'.et_pb_text_2 .et_pb_text_inner > h2',bodySHA256:'0daf4cab15418f6caadf9c0f9db081f2d0ecdd2b763cef5a5e1b732c0fb400e7'}
 ].map(Object.freeze));
 export const shortViewportBookingHeadingScope=':is('+shortViewportBookingHeadingTargets.map(t=>'body.ktk-code-page[data-ktk-page="'+t.key+'"] #main-content '+t.selector).join(',')+')';
-export const shortViewportBookingStyles='/* BEGIN Short viewport booking control */\n@media (max-height: 300px) {\n  '+shortViewportBookingScope+' { top: 8px; right: 23px; font-size: clamp(10px, 10vh, 20px); line-height: 20px; padding: 12px; }\n}\n@media (max-height: 300px) and (max-width: 600px) {\n  '+shortViewportBookingHeadingScope+' { padding-right: 32px; }\n}\n'+shortViewportBookingScope+':focus-visible { outline: 3px solid #fff; outline-offset: -3px; }\n/* END Short viewport booking control */\n';
+export const shortViewportBookingStyles='/* BEGIN Short viewport booking control */\n'+shortViewportBookingScope+' { right: 26px; }\n@media (max-height: 300px) {\n  '+shortViewportBookingScope+' { top: 8px; right: 23px; font-size: clamp(10px, 10vh, 20px); line-height: 20px; padding: 12px; }\n}\n@media (max-height: 300px) and (max-width: 600px) {\n  '+shortViewportBookingHeadingScope+' { padding-right: 32px; }\n}\n'+shortViewportBookingScope+':focus-visible { outline: 3px solid #fff; outline-offset: -3px; }\n/* END Short viewport booking control */\n';
 const anchor='/* END Preserved reading text */\n';
 
 export async function buildShortViewportBookingStyles(file){
