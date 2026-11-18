@@ -1,6 +1,7 @@
-"""Local candidate: derive a staging-only capture from the immutable raw core.
+"""Derive a staging-only capture from the immutable reviewed raw core.
 
-No caller uses this candidate yet. The production builder/raw core stay exact.
+The distinct private termination compiler may embed this checked derivation.
+The production builder/raw core stay exact.
 Every invocation still reads and hashes the whole current file; no digest cache.
 """
 from pathlib import Path
@@ -73,7 +74,7 @@ def main():
     if inverse(candidate) != source: raise ValueError('Complete original scope inverse required')
     if args.write: TARGET.write_bytes(candidate)
     elif not TARGET.is_file() or TARGET.read_bytes() != candidate: raise ValueError('Derived local candidate differs')
-    print('Staging-only candidate/inverse exact; no caller integration, credentials, network or publication.')
+    print('Staging-only capture/inverse exact; no credentials, network or publication.')
 
 
 if __name__ == '__main__': main()

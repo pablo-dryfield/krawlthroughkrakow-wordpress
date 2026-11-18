@@ -33,6 +33,11 @@ on:
       - 'tools/tests/test_production_protected_state.py'
       - 'tools/code-pages-update-engine.php'
       - 'tools/staging-protected-state-core.php'
+      - 'tools/staging-protected-state-fast-core.php'
+      - 'tools/staging_state_fast_capture.py'
+      - 'tools/private_state_fast_census.py'
+      - 'tools/tests/test_staging_state_fast_capture.py'
+      - 'tools/tests/test_private_state_fast_census.py'
       - 'tools/early_private_entry.py'
       - 'tools/snapshot-staging-update-state.py'
       - 'tools/promote-code-pages-production.py'
@@ -70,7 +75,7 @@ jobs:
           REVIEWED_HELPER_COMMIT: ${{ github.event.pull_request.head.sha || inputs.helper_commit }}
         run: |
           php --version
-          python -m unittest tools.tests.test_private_termination_diagnostics
+          python -m unittest tools.tests.test_private_termination_diagnostics tools.tests.test_private_termination_fixture_support tools.tests.test_staging_state_fast_capture tools.tests.test_private_state_fast_census.PrivateFastCensusTests tools.tests.test_private_engine_cleanup_budget.CleanupBudgetPolicyTests
           python tools/verify-private-termination-fixture.py --helper-commit "$REVIEWED_HELPER_COMMIT" --report docs/seo/private-engine-early-termination-2026-11-17/actual-inventory-ci.json --diagnostics
       - name: Retain scoped report and independently reopened synthetic evidence
         if: always()

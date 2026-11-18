@@ -46,4 +46,4 @@ jobs:
           path: docs/seo/fast-capture-local-2026-11-18/ubuntu-calibration/
           if-no-files-found: error
           retention-days: 7
-          compression-level: 0
+          compression-level: 6

@@ -33,7 +33,9 @@ def source_fingerprints():
     for module in (native,native.protocol,native.protocol.prior,native.protocol.prior.bound,native.protocol.prior.bound.native,BRIDGE,native.OLD,support,observation_tests):
         path=Path(module.__file__);result[path.relative_to(ROOT).as_posix()]=support.digest(path)
     result[Path(__file__).relative_to(ROOT).as_posix()]=support.digest(__file__)
-    for name in ('tools/private_termination_diagnostics.py','tools/tests/test_private_termination_diagnostics.py'):
+    for name in ('tools/private_termination_diagnostics.py','tools/tests/test_private_termination_diagnostics.py',
+                 'tools/tests/test_private_engine_payload_cleanup.py','tools/tests/test_private_engine_cleanup_budget.py',
+                 'tools/tests/test_staging_state_fast_capture.py','tools/tests/test_private_state_fast_census.py'):
         result[name]=support.digest(ROOT/name)
     return dict(sorted(result.items()))
 

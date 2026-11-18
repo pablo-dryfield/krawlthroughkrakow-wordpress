@@ -92,7 +92,13 @@ class PrivateEngineTerminationHelperTests(unittest.TestCase):
 
     def test_compiler_pins_complete_sources_archives_and_exact_frozen_components(self):
         self.configure();value=self.inspection_packet();source=self.production_source
-        self.assertIn((helper.ROOT/'tools/staging-protected-state-core.php').read_bytes()[6:],source)
+        raw=(helper.ROOT/'tools/staging-protected-state-core.php').read_bytes()
+        derived=helper.fast_state.TARGET.read_bytes()
+        self.assertEqual(helper.fast_state.inverse(derived),raw)
+        self.assertIn(derived[6:],source)
+        census=helper.fast_census.TARGET.read_bytes()
+        self.assertEqual(helper.fast_census.inverse(census),(helper.ROOT/'tools/private-engine-fenced-inspection.php').read_bytes())
+        self.assertIn(census[6:],source)
         self.assertIn(readonly.read_only_source()[6:],source)
         self.assertNotIn(b'final class KTK_Active_Content_Transaction',source)
         self.assertNotIn(b'final class KTK_Full_Private_Engine_Controller',source)

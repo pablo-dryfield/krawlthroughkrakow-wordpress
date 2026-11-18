@@ -7,7 +7,17 @@ from tools import private_termination_fixture_support as support
 
 class PrivateTerminationFixtureSupportTests(unittest.TestCase):
     def observation(self,operation,state):
-        return {'body':{'runtime':{'phases':{'muplugins_loaded':1,'plugins_loaded':0,'wp_loaded':0}},'controller':{'operation':operation,'state':state,'payloadDeletes':0,'payloadDirectoriesRemoved':0,'closureWrites':0,'applicationWrites':0,'databaseWrites':0,'cachePurges':0,'productionOperations':0}}}
+        return {'body':{'runtime':{'phases':{'muplugins_loaded':1,'plugins_loaded':0,'wp_loaded':0}},'controller':{'operation':operation,'state':state,'payloadDeletes':0,'payloadDirectoriesRemoved':0,'closureWrites':0,'cleanupStoppedForRuntimeBudget':False,'applicationWrites':0,'databaseWrites':0,'cachePurges':0,'productionOperations':0}}}
+
+    def test_cleanup_budget_flag_is_typed_and_never_turns_pending_state_into_completion(self):
+        state={'scope':'fenced-private-engine-readonly-inspection','remainingPayloadFiles':4149}
+        value=self.observation('cleanup',state);value['body']['controller']['cleanupStoppedForRuntimeBudget']=True
+        observed=support.helper_observation(value);self.assertTrue(observed['cleanupStoppedForRuntimeBudget']);self.assertEqual(observed['remainingPayloadFiles'],4149)
+        for bad in [1,None,'true']:
+            value['body']['controller']['cleanupStoppedForRuntimeBudget']=bad
+            with self.assertRaises(support.FixtureRefusal):support.helper_observation(value)
+        value=self.observation('inspect-fenced',state);value['body']['controller']['cleanupStoppedForRuntimeBudget']=True
+        with self.assertRaises(support.FixtureRefusal):support.helper_observation(value)
 
     def test_initial_inspection_has_its_own_census_without_fenced_remaining_field(self):
         value=self.observation('inspect',{'scope':'private-engine-abandonment-readonly-inspection','phase':'prepared','files':{'source/a':{'bytes':5}},'validatedArtifacts':[]})

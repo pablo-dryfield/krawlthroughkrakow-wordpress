@@ -12,6 +12,8 @@ from tools import early_private_entry as early
 from tools import full_private_engine_controller as compiled
 from tools import private_engine_readonly as readonly
 from tools import private_engine_termination_config as factory
+from tools import staging_state_fast_capture as fast_state
+from tools import private_state_fast_census as fast_census
 
 ROOT=Path(__file__).resolve().parents[1]
 TEMPLATE=ROOT/'tools/private-engine-termination-staging-template.php'
@@ -31,13 +33,14 @@ PYTHON_SOURCES=(
     'private_engine_readonly.py','private_engine_termination_archive.py','private_engine_termination_authority.py',
     'private_engine_termination_binding.py','private_engine_termination_config.py','private_engine_termination_helper.py',
     'snapshot-staging-update-state.py','promote-code-pages-production.py',
+    'staging_state_fast_capture.py','private_state_fast_census.py',
 )
 CORE_SHA256='223b28dab84918a42a23e750a77dcf85a90ac49bcfb0ee2ec9bc7ceea60844fb'
 
 
 def source_hashes():
     """Reviewed compiler/runtime/dependency inputs, including dynamic source reads."""
-    names={*COMPONENTS.values(),*PYTHON_SOURCES,TEMPLATE.name}
+    names={*COMPONENTS.values(),*PYTHON_SOURCES,TEMPLATE.name,fast_state.TARGET.name,fast_census.TARGET.name}
     return {'tools/'+name:backup.sha((ROOT/'tools'/name).read_bytes()) for name in sorted(names)}
 
 
@@ -59,6 +62,11 @@ def helper_source(value,old,**archive_bindings):
         source=source.replace(marker,data,1)
     bodies={part:(ROOT/'tools'/filename).read_bytes() for part,filename in COMPONENTS.items()}
     if backup.sha(bodies['STATE'])!=CORE_SHA256:raise ValueError('Frozen complete raw capture required')
+    for part,derivation in (('STATE',fast_state),('FENCED',fast_census)):
+        raw=bodies[part];derived=derivation.render(raw)
+        if derived!=derivation.TARGET.read_bytes() or derivation.inverse(derived)!=raw:
+            raise ValueError('Exact bounded complete-hash staging derivation required')
+        bodies[part]=derived
     bodies['ENGINE']=readonly.read_only_source(bodies['ENGINE'])
     bodies['STREAM']=compiled.stream_source(bodies['STREAM'])
     for part,body in bodies.items():

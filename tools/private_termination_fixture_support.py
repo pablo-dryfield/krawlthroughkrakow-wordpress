@@ -26,7 +26,8 @@ def helper_observation(value):
         require(type(result.get(name)) is int and result[name]==0,'unexpected-helper-observation-write-counter')
     for name,maximum in (('payloadDeletes',256),('payloadDirectoriesRemoved',256),('closureWrites',1)):
         require(type(result.get(name)) is int and 0<=result[name]<=maximum,'invalid-helper-observation-counter')
-    metrics={'controllerOperation':operation,'inspectionScope':scope,'payloadDeletes':result['payloadDeletes'],'directoriesRemoved':result['payloadDirectoriesRemoved'],'closureWrites':result['closureWrites'],'runtime':body['runtime']}
+    require(type(result.get('cleanupStoppedForRuntimeBudget')) is bool and (operation=='cleanup' or not result['cleanupStoppedForRuntimeBudget']),'invalid-helper-cleanup-budget-flag')
+    metrics={'controllerOperation':operation,'inspectionScope':scope,'payloadDeletes':result['payloadDeletes'],'directoriesRemoved':result['payloadDirectoriesRemoved'],'closureWrites':result['closureWrites'],'cleanupStoppedForRuntimeBudget':result['cleanupStoppedForRuntimeBudget'],'runtime':body['runtime']}
     if scope=='private-engine-abandonment-readonly-inspection':
         require(operation=='inspect' and isinstance(state.get('phase'),str) and isinstance(state.get('files'),(dict,list)) and isinstance(state.get('validatedArtifacts'),(dict,list)),'invalid-initial-helper-observation')
         require((not isinstance(state['files'],list) or not state['files']) and (not isinstance(state['validatedArtifacts'],list) or not state['validatedArtifacts']),'invalid-initial-helper-census')
