@@ -39,6 +39,7 @@ $css = $page['css'] ?? 'how-to-join.css';
 <?php echo str_replace('https://krawlthroughkrakow.com/', home_url('/'), $page['metadata'] ?? ''); ?>
 <?php foreach (($page['schema'] ?? array()) as $schema) { ?><script type="application/ld+json"<?php if ('new-years-eve' === ($page['key'] ?? '')) { ?> data-ktk-event-schema=""<?php } ?>><?php echo str_replace('https://krawlthroughkrakow.com/', home_url('/'), json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP)); ?></script><?php } ?>
 <link rel="stylesheet" href="/ktk-code-pages-assets/<?php echo esc_attr($css); ?>"><link rel="stylesheet" href="/ktk-code-pages-assets/font-resilience.css"><link rel="stylesheet" href="/ktk-code-pages-assets/runtime.css">
+<?php echo ktk_pages_font_preload_html($page, '/ktk-code-pages-assets/'); ?>
 </head><body class="<?php echo esc_attr($page['body_class']); ?> ktk-code-page" data-ktk-page="<?php echo esc_attr($page['key'] ?? 'how-to-join'); ?>" data-ktk-form-token-url="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">
 <a class="ktk-parity-skip-link" href="#main-content">Skip to content</a>
 <?php echo ktk_pages_nojs_navigation_body($html, home_url('/')); ?><script src="/ktk-code-pages-assets/runtime.js" defer></script>
