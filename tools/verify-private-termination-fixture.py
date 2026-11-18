@@ -12,6 +12,7 @@ from tools import full_private_engine_client as client_module
 from tools import private_engine_termination_helper as compiler
 from tools import private_termination_fixture_support as support
 from tools import private_termination_diagnostics as diagnostics
+from tools import private_termination_checkpoint as partial_evidence
 from tools.tests import test_private_engine_termination_helper as native
 from tools.tests import test_private_termination_fixture_support as observation_tests
 
@@ -34,6 +35,7 @@ def source_fingerprints():
         path=Path(module.__file__);result[path.relative_to(ROOT).as_posix()]=support.digest(path)
     result[Path(__file__).relative_to(ROOT).as_posix()]=support.digest(__file__)
     for name in ('tools/private_termination_diagnostics.py','tools/tests/test_private_termination_diagnostics.py',
+                 'tools/private_termination_checkpoint.py','tools/tests/test_private_termination_checkpoint.py',
                  'tools/tests/test_private_engine_payload_cleanup.py','tools/tests/test_private_engine_cleanup_budget.py',
                  'tools/tests/test_staging_state_fast_capture.py','tools/tests/test_private_state_fast_census.py',
                  'tools/tests/test_private_preparation_fast_capture.py'):
@@ -59,11 +61,24 @@ def main(argv=None):
     report.update(diagnosticMode=args.diagnostics,applicationCohortQualification='Current immutable local source candidates, not the currently hosted APP530 release',instrumentationQualification='Opt-in reversible local seams add overhead; inclusive spans overlap. Original production-like wire/errors and all runtime/expiry/work bounds remain unchanged.')
     report['preparationCaptureProfile']=args.preparation_capture
     case=None;helper=None;calls=0;fingerprints={};owned={};sizes={};temporaries=[];status=1
+    partial_receipt=None;partial_failed=False
     public_source=ROOT/'staging/wp-content/mu-plugins';original_temp=tempfile.TemporaryDirectory
 
     def checkpoint(stage):
+        nonlocal partial_receipt,partial_failed
         report['phase']=stage;report['updatedAt']=datetime.now(timezone.utc).isoformat()
         destination.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+        last=report['steps'][-1] if report['steps'] else {}
+        if case is not None and not partial_failed and last.get('kind')=='new-helper' and last.get('number',0)>(partial_receipt or {}).get('lastObservedHelperCall',0):
+            try:
+                partial_receipt=partial_evidence.retain(case.root,destination.with_suffix('.checkpoint.zip'),report,partial_receipt)
+                report['partialEvidenceArchive']=partial_receipt
+            except BaseException as error:
+                partial_failed=True
+                report['partialEvidenceFailure']={'type':type(error).__name__,'messageSHA256':backup.sha(str(error).encode()),'previousCheckpointNotReplacedByThisAttempt':True}
+                destination.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+                raise
+            destination.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 
     def source_check():
         for name,sha in fingerprints.items():require(support.digest(ROOT/name)==sha,'frozen-source-changed:'+name)

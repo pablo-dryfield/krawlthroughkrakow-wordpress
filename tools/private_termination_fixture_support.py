@@ -96,7 +96,7 @@ def report_paths(root,argument):
     require(not folder.is_symlink() and not folder.is_junction() and folder.resolve()==folder,'report-folder-outside-workspace')
     value=root/argument
     require(not value.is_symlink() and value.absolute().parent==folder and re.fullmatch(r'actual-inventory-[A-Za-z0-9-]+\.json',value.name) is not None,'fresh-scoped-report-path-required')
-    archive=value.with_suffix('.evidence.zip');require(not value.exists() and not archive.exists() and not archive.is_symlink(),'preserve-existing-report-or-evidence')
+    archive=value.with_suffix('.evidence.zip');partial=value.with_suffix('.checkpoint.zip');require(not value.exists() and not archive.exists() and not archive.is_symlink() and not partial.exists() and not partial.is_symlink(),'preserve-existing-report-or-evidence')
     folder.mkdir(parents=True,exist_ok=True);return value,archive
 
 
