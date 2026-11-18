@@ -7,6 +7,7 @@ import tempfile
 import unittest
 
 from tools.tests import test_private_engine_payload_cleanup as native
+from tools import private_termination_fixture_support as support
 
 ROOT = Path(__file__).resolve().parents[2]
 RUNNER = r'''<?php
@@ -126,6 +127,8 @@ class CleanupBudgetNativeTests(unittest.TestCase):
         self.assertEqual(result['state']['remainingPayloadFiles'], initial - result['payloadDeletes'])
         self.assertTrue(result['state']['freshWitnessVerified'])
         self.assertLess(result['fixtureBudgetElapsedNs'], 55000000000)
+        proof=support.verify_cleanup_progress(state['state'],result,self.case.cfg['terminationConfig']['fenced']['payload'])
+        self.assertLess(proof['afterKnownObjects'],proof['beforeKnownObjects'])
         self.assertTrue(self.fixture.fixture.marker(packet).exists())
         # The consumed context cannot be reused. A distinct witnessed context finishes.
         _, refused = self.fixture.cleanup(view, state, packet=packet, success=False)
@@ -147,6 +150,8 @@ class CleanupBudgetNativeTests(unittest.TestCase):
         self.assertEqual(result['state']['remainingPayloadFiles'], state['state']['remainingPayloadFiles'])
         self.assertTrue(result['state']['freshWitnessVerified'])
         self.assertTrue(self.fixture.fixture.marker(packet).exists())
+        with self.assertRaisesRegex(support.FixtureRefusal,'strict-progress'):
+            support.verify_cleanup_progress(state['state'],result,self.case.cfg['terminationConfig']['fenced']['payload'])
 
     def test_final_witness_drift_after_partial_work_refuses_success(self):
         view, state = self.fixture.prepare()

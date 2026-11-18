@@ -66,6 +66,14 @@ def inverse(candidate):
     return result
 
 
+def embedded(source):
+    """Return only the exact complete derivative; never write an implicit output."""
+    candidate = render(source)
+    if not TARGET.is_file() or TARGET.read_bytes() != candidate or inverse(candidate) != source:
+        raise ValueError('Exact reviewed complete-hash capture embedding required')
+    return candidate
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--write', action='store_true')

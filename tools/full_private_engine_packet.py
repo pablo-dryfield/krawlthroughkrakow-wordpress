@@ -12,7 +12,8 @@ TEMPLATE=ROOT/'tools/full-private-engine-staging-template.php'
 COMPONENTS={'STATE':'staging-protected-state-core.php','REQUEST':'content-update-request.php','STORE':'content-update-private-store.php','BACKUP':'content-update-backup-manifest.php','ENGINE':'code-pages-update-engine.php','PREPARATION':'full-private-engine-preparation.php'}
 MAX_LIFETIME=7200
 
-def helper_source(name,token,expires,commit,owned,sizes,protected_sha,key,interrupt_original=False,interrupt_engine=False):
+def helper_source(name,token,expires,commit,owned,sizes,protected_sha,key,interrupt_original=False,interrupt_engine=False,capture_profile='raw'):
+    if capture_profile not in ('raw','bounded-sha256'):raise ValueError('Explicit reviewed private capture profile required')
     match=re.fullmatch(r'ktk-transaction-rehearsal-([a-f0-9]{32})\.php',name) if isinstance(name,str) else None
     if match is None or not isinstance(token,str) or re.fullmatch(r'[A-Za-z0-9_-]{43}',token) is None or type(expires) is not int or not int(time.time())<expires<=int(time.time())+MAX_LIFETIME or not backup.digest(key) or type(interrupt_original) is not bool or type(interrupt_engine) is not bool:raise ValueError('Exact explicit expiring full private engine context required')
     plan,sizes,overrides=full.plan(match[1],commit,owned,sizes,protected_sha)
@@ -28,6 +29,7 @@ def helper_source(name,token,expires,commit,owned,sizes,protected_sha,key,interr
     for name,body in bodies.items():
         marker=('/* __KTK_FULL_ENGINE_'+name+'__ */').encode()
         if source.count(marker)!=1 or not body.startswith(b'<?php\n') or name=='STATE' and backup.sha(body)!=full.capacity.CORE_SHA:raise ValueError('Exact frozen full private engine component required')
+        if name=='STATE' and capture_profile=='bounded-sha256':body=full.fast_capture.embedded(body)
         source=source.replace(marker,body[6:])
     if b'__KTK_FULL_ENGINE_' in source:raise ValueError('Unresolved full private engine marker')
     return early.rebind(source)
