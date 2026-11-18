@@ -1,5 +1,13 @@
 # Recovery cleanup: verified profile, incomplete recovery
 
+## Latest: preparation-inspection diagnosis independently verified
+
+[Ubuntu CI44331055392](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/44331055392)/job134895264015 passes on exactfc729e176468a2f586e9cb81148d3f1f0ede21f4/treefe786d1a73b78e8320dde531fb208d6478587eff. Independent104 Git/current inputs, workflow/API/checkout/raw-log bindings, six native contracts, all raw/ZIP/source inverses and signed synthetic original records verify. Complete Windows and Ubuntu read-only specimens retain39 calls/25 full public snapshots/12 inspections each; all2074 public sources, seven raw tables,4149 private payload descriptors and four metadata identities remain exact. This is manually assembled inspection evidence, not preparation progress or full/hosted recovery.
+
+Ubuntu complete-seed original/instrumented medians are11.577782/11.605099 seconds. Instrumented leaf shares are22.38% public capture,21.17% source inventory and47.18% private-prefix verification; inclusive guard spans overlap and cannot be added. There is no optimization in either arm. Peak64696320 bytes stays within256M; every call meets60 seconds. Local temporary absence is independently checked; remote absence is only producer-reported. [Full metrics, source backups and qualifications](../preparation-inspection-profile-2026-11-18/README.md). Private receipt: `accepted-preparation-inspection-ci-independent-audit.json`.
+
+The helper/compiler/application and accepted91-input native phase source remain unchanged. Next measure a reversible same-SHA256 complete-prefix accelerator with partial-prefix comparisons and held-handle checks preserved. No complete recovery retry, consumed-context replay, hosting/account/helper/purge or production action occurs. Both roadmaps revision22 preserve all8 statuses/6 remaining/70 website deliveries/74 records/40 states/C08; source security, stopped native Computer Use/zoom defects and every owner/manual gate remain.
+
 ## Latest: complete-state Linux calibration accepted, recovery unchanged
 
 [Calibration run44320942650](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/44320942650)/job134859383394 succeeds onf03aedd832da5e40defeacc76853a2d68a70a9a1/tree4d254531d2202289a8f71b37d180923db0fdce3a. Independent audit verifies20 Git/local inputs, actual checkout/workflow/API bindings,17 native cases without skips, all outer/inner ZIP CRCs/digests and six complete raw balanced captures. All2074 current public files/550639063 bytes, seven raw synthetic tables, queries and every other field except separately retained timestamps remain exact. The two complete measurement components and their whole cap-only inverse are retained.

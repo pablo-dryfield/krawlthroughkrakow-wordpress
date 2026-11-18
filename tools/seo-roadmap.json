@@ -3,9 +3,9 @@
   "updatedOn": "2026-11-18",
   "websiteProductionReleases": 1,
   "remainingWork": {
-    "revision": 21,
+    "revision": 22,
     "scope": "Staging work continues. A build dependency currently blocks further publication while a supported security fix and complete checks are awaited. Independent recovery verification continues. Production needs separate approval.",
-    "changeRule": "This finite list began with eight packages. Revision 21 records independently verified native evidence-retention CI and the Linux complete-capture calibration. These are bounded diagnostic components; full-size and hosted recovery remain unproved. No staging delivery, batch or gate is claimed; all eight statuses and six remaining are unchanged.",
+    "changeRule": "This finite list began with eight packages. Revision 22 records independently verified Windows and Ubuntu preparation-inspection profiling. These are read-only diagnostic specimens; actual preparation, full recovery and hosted recovery remain unproved. All eight statuses and six remaining are unchanged.",
     "batches": [
       {
         "id": "B01",
@@ -50,9 +50,9 @@
           "D07",
           "T10"
         ],
-        "summary": "The evidence-retention update passes native CI, and a Linux capture comparison preserves complete state with a repeatable timing improvement. The full-inventory run exceeded its original90-minute limit; full and hosted recovery remain unverified.",
-        "next": "Measure preparation and cleanup costs before integrating larger capture buffers or retrying the complete inventory. Native evidence-retention CI and the capture-only gain do not prove full recovery. Keep every fresh complete witness/claim/hash, original HTTP/memory/wire/expiry/count/job limits, new contexts and no replay. Complete repository CI/security and H06 still precede hosting rehearsal.",
-        "evidence": "https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/44319036853",
+        "summary": "Native evidence-retention CI and the Linux capture comparison are verified. Read-only preparation specimens now preserve the complete public/private cohort on Windows and Ubuntu; private-file verification accounts for about47% of complete Ubuntu inspection time. Actual preparation, full and hosted recovery remain unverified after the original90-minute full-run limit.",
+        "next": "Measure a bounded same-SHA256 acceleration for complete private-file verification before helper integration or a changed-source full retry. Keep partial-prefix byte comparisons, held-handle/stat/identity checks, every fresh complete witness/claim/hash, original HTTP/memory/wire/expiry/count/job limits, new contexts and no replay. Complete repository CI/security and H06 still precede hosting rehearsal.",
+        "evidence": "https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/44331055392",
         "doneWhen": "Helper/header/token/expiry and interruption cases pass; all 2,074 public and 4,149 private fixture files are verified; the hosted proof is independently audited, with original data retained.",
         "dependsOn": [
           "B01",
