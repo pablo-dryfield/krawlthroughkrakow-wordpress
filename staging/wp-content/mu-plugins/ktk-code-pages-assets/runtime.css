@@ -107,6 +107,83 @@ body.ktk-code-page:is([data-ktk-page="post-krakow-techno-clubs"],[data-ktk-page=
   body.ktk-code-page:is([data-ktk-page="privacy-policy"],[data-ktk-page="terms-and-conditions"]) #main-content .et_pb_text_1 .et_pb_text_inner { padding-right: 24px; }
 }
 /* END Legal mobile text clearance */
+/* BEGIN Europe article header clearance */
+@media (max-width: 600px) {
+  body.ktk-code-page[data-ktk-page="post-best-pub-crawls-in-europe"] #main-content .et_post_meta_wrapper > :is(.entry-title,.post-meta) { padding-right: 24px; }
+}
+/* END Europe article header clearance */
+/* BEGIN Category archive navigation */
+body.ktk-code-page #main-content p[data-ktk-archive-intro="2026-11-17.category-navigation-1"] { font-size: 16px; line-height: 1.65; }
+body.ktk-code-page #main-content p[data-ktk-archive-intro="2026-11-17.category-navigation-1"] a { color: #b00059; text-decoration: underline; text-underline-offset: .15em; }
+body.ktk-code-page #main-content p[data-ktk-archive-intro="2026-11-17.category-navigation-1"] a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+@media (max-width: 600px) {
+  body.ktk-code-page #main-content p[data-ktk-archive-intro="2026-11-17.category-navigation-1"] { padding-right: 24px; }
+}
+/* END Category archive navigation */
+/* BEGIN Homepage alias excerpts */
+body.ktk-code-page #main-content article.post-6403 p[data-ktk-homepage-excerpt="2026-11-17.homepage-alias-excerpts-1"] { font-size: 16px; line-height: 1.65; text-align: left; letter-spacing: 0; margin: 0; padding: 0; }
+@media (max-width: 600px) {
+  body.ktk-code-page #main-content article.post-6403 p[data-ktk-homepage-excerpt="2026-11-17.homepage-alias-excerpts-1"] { padding-right: 24px; }
+}
+/* END Homepage alias excerpts */
+/* BEGIN Secondary holiday guide */
+body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] :is([data-ktk-secondary-nye-copy],[data-ktk-secondary-nye-reading],[data-ktk-secondary-nye-gallery]) { font-size: 16px; line-height: 1.65; text-align: left; }
+body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] :is([data-ktk-secondary-nye-copy],[data-ktk-secondary-nye-reading]) a { color: #b00059; text-decoration: underline; text-underline-offset: .15em; }
+body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] :is([data-ktk-secondary-nye-copy],[data-ktk-secondary-nye-reading]) a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] article#post-7506 > .entry-content h2 { font-size: 26px; line-height: 1.25; }
+body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] article#post-7506 > .entry-content h3 { font-size: 22px; line-height: 1.25; }
+body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] article#post-7506 > .entry-content h4 { font-size: 18px; line-height: 1.35; }
+body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] article#post-7506 > .entry-content :is(h2,h3,h4) :is(a,span) { font-size: inherit; line-height: inherit; }
+@media (max-width: 600px) {
+  body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] :is([data-ktk-secondary-nye-copy],[data-ktk-secondary-nye-reading],[data-ktk-secondary-nye-gallery]) { padding-right: 24px; }
+  body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] article#post-7506 > .entry-content :is(h2,h3,h4) { box-sizing: border-box; padding-right: 24px; }
+  body.ktk-code-page #main-content[data-ktk-secondary-nye-review="2026-11-17.secondary-nye-1"] article#post-7506 > .entry-content ul.et_post_gallery { margin-right: 24px; }
+}
+/* END Secondary holiday guide */
+/* BEGIN Reviewed guide reading text */
+@media (max-width: 980px) {
+  :is(body.ktk-code-page[data-ktk-page="post-jazz-bars-in-krakow"] #main-content [data-ktk-music-review="2026-11-13.music-1"],body.ktk-code-page[data-ktk-page="post-krakow-live-music"] #main-content [data-ktk-music-review="2026-11-13.music-1"],body.ktk-code-page[data-ktk-page="post-wheres-the-cheap-places-to-drink-in-krakow"] #main-content [data-ktk-editorial-review="2026-11-13"],body.ktk-code-page[data-ktk-page="post-krakow-new-years-eve"] #main-content [data-ktk-established-nye-review="2026-11-14"]) :is(p,li) { font-size: 16px; line-height: 1.65; text-align: left; }
+  :is(body.ktk-code-page[data-ktk-page="post-jazz-bars-in-krakow"] #main-content [data-ktk-music-review="2026-11-13.music-1"],body.ktk-code-page[data-ktk-page="post-krakow-live-music"] #main-content [data-ktk-music-review="2026-11-13.music-1"],body.ktk-code-page[data-ktk-page="post-wheres-the-cheap-places-to-drink-in-krakow"] #main-content [data-ktk-editorial-review="2026-11-13"],body.ktk-code-page[data-ktk-page="post-krakow-new-years-eve"] #main-content [data-ktk-established-nye-review="2026-11-14"]) h2 { font-size: 24px; line-height: 1.3; }
+  :is(body.ktk-code-page[data-ktk-page="post-jazz-bars-in-krakow"] #main-content [data-ktk-music-review="2026-11-13.music-1"],body.ktk-code-page[data-ktk-page="post-krakow-live-music"] #main-content [data-ktk-music-review="2026-11-13.music-1"],body.ktk-code-page[data-ktk-page="post-wheres-the-cheap-places-to-drink-in-krakow"] #main-content [data-ktk-editorial-review="2026-11-13"],body.ktk-code-page[data-ktk-page="post-krakow-new-years-eve"] #main-content [data-ktk-established-nye-review="2026-11-14"]) h3 { font-size: 20px; line-height: 1.4; }
+}
+@media (max-width: 600px) {
+  :is(body.ktk-code-page[data-ktk-page="post-jazz-bars-in-krakow"] #main-content [data-ktk-music-review="2026-11-13.music-1"],body.ktk-code-page[data-ktk-page="post-krakow-live-music"] #main-content [data-ktk-music-review="2026-11-13.music-1"],body.ktk-code-page[data-ktk-page="post-wheres-the-cheap-places-to-drink-in-krakow"] #main-content [data-ktk-editorial-review="2026-11-13"],body.ktk-code-page[data-ktk-page="post-krakow-new-years-eve"] #main-content [data-ktk-established-nye-review="2026-11-14"]) { padding-right: 24px; }
+  body.ktk-code-page:is([data-ktk-page="post-jazz-bars-in-krakow"],[data-ktk-page="post-krakow-live-music"],[data-ktk-page="post-wheres-the-cheap-places-to-drink-in-krakow"],[data-ktk-page="post-krakow-new-years-eve"]) #main-content .et_post_meta_wrapper > :is(.entry-title,.post-meta) { padding-right: 24px; }
+}
+/* END Reviewed guide reading text */
+/* BEGIN Reviewed site reading text */
+body.ktk-code-page[data-ktk-page="faqs"] #main-content .et_pb_accordion_0 .et_pb_toggle_content[data-ktk-offer-copy="2026-11-13"] { display: block; }
+@media (max-width: 980px) {
+  :is(body.ktk-code-page[data-ktk-page="how-to-join"] #main-content .et_pb_text_1 [data-ktk-offer-copy="2026-11-13"],body.ktk-code-page[data-ktk-page="meeting-point"] #main-content .et_pb_text_1 [data-ktk-offer-copy="2026-11-13"],body.ktk-code-page[data-ktk-page="contact"] #main-content .et_pb_text_2 [data-ktk-contact-copy="2026-11-14"],body.ktk-code-page[data-ktk-page="faqs"] #main-content [data-ktk-offer-copy="2026-11-13"],body.ktk-code-page[data-ktk-page="krakow-nightlife"] #main-content [data-ktk-editorial-review="2026-11-13"]) :is(p,li) { font-size: 16px; line-height: 1.65; text-align: left; }
+}
+@media (max-width: 600px) {
+  :is(body.ktk-code-page[data-ktk-page="how-to-join"] #main-content .et_pb_text_1 [data-ktk-offer-copy="2026-11-13"],body.ktk-code-page[data-ktk-page="meeting-point"] #main-content .et_pb_text_1 [data-ktk-offer-copy="2026-11-13"],body.ktk-code-page[data-ktk-page="contact"] #main-content .et_pb_text_2 [data-ktk-contact-copy="2026-11-14"],body.ktk-code-page[data-ktk-page="faqs"] #main-content [data-ktk-offer-copy="2026-11-13"],body.ktk-code-page[data-ktk-page="krakow-nightlife"] #main-content [data-ktk-editorial-review="2026-11-13"]):not(.et_pb_toggle_content),
+  body.ktk-code-page:is([data-ktk-page="how-to-join"],[data-ktk-page="meeting-point"],[data-ktk-page="contact"],[data-ktk-page="faqs"],[data-ktk-page="krakow-nightlife"]) #main-content .et_pb_text_0 .et_pb_text_inner,
+  body.ktk-code-page[data-ktk-page="faqs"] #main-content .et_pb_accordion_0,
+  body.ktk-code-page[data-ktk-page="how-to-join"] #main-content .et_pb_blurb_3 .et_pb_module_header,
+  body.ktk-code-page[data-ktk-page="contact"] #main-content .et_pb_heading_0 .et_pb_heading_container { padding-right: 24px; }
+}
+/* END Reviewed site reading text */
+/* BEGIN Preserved reading text */
+@media (max-width: 980px) {
+  :is(body.ktk-code-page[data-ktk-page="about-us"] #main-content .et_pb_text_7 .et_pb_text_inner,body.ktk-code-page[data-ktk-page="blog"] #main-content [data-ktk-blog-teaser-review],body.ktk-code-page[data-ktk-page="how-to-join"] #main-content .et_pb_cta_0 .et_pb_promo_description,body.ktk-code-page[data-ktk-page="krakow-hen-do"] #main-content :is(.et_pb_text_0,.et_pb_text_1,.et_pb_text_2,.et_pb_text_3,.et_pb_text_4,.et_pb_text_5,.et_pb_text_6) .et_pb_text_inner,body.ktk-code-page[data-ktk-page="other-tours"] #main-content :is(.et_pb_text_0,.et_pb_text_1) .et_pb_text_inner,body.ktk-code-page[data-ktk-page="otherbarcrawls"] #main-content .et_pb_text_0 .et_pb_text_inner,body.ktk-code-page[data-ktk-page="pub-crawl-jobs"] #main-content .et_pb_text_1 .et_pb_text_inner,body.ktk-code-page[data-ktk-page="student-trips-poland"] #main-content .et_pb_text_2 [data-ktk-group-planning-review="2026-11-14"],body.ktk-code-page[data-ktk-page="tour-service-disclaimer"] #main-content .et_pb_text_1 .et_pb_text_inner),
+  :is(body.ktk-code-page[data-ktk-page="about-us"] #main-content .et_pb_text_7 .et_pb_text_inner,body.ktk-code-page[data-ktk-page="blog"] #main-content [data-ktk-blog-teaser-review],body.ktk-code-page[data-ktk-page="how-to-join"] #main-content .et_pb_cta_0 .et_pb_promo_description,body.ktk-code-page[data-ktk-page="krakow-hen-do"] #main-content :is(.et_pb_text_0,.et_pb_text_1,.et_pb_text_2,.et_pb_text_3,.et_pb_text_4,.et_pb_text_5,.et_pb_text_6) .et_pb_text_inner,body.ktk-code-page[data-ktk-page="other-tours"] #main-content :is(.et_pb_text_0,.et_pb_text_1) .et_pb_text_inner,body.ktk-code-page[data-ktk-page="otherbarcrawls"] #main-content .et_pb_text_0 .et_pb_text_inner,body.ktk-code-page[data-ktk-page="pub-crawl-jobs"] #main-content .et_pb_text_1 .et_pb_text_inner,body.ktk-code-page[data-ktk-page="student-trips-poland"] #main-content .et_pb_text_2 [data-ktk-group-planning-review="2026-11-14"],body.ktk-code-page[data-ktk-page="tour-service-disclaimer"] #main-content .et_pb_text_1 .et_pb_text_inner) :is(p,li) { font-size: 16px; line-height: 1.65; }
+  body.ktk-code-page[data-ktk-page="krakow-hen-do"] #main-content .et_pb_text_2 .et_pb_text_inner > p[style="text-align: justify;"] { text-align: left !important; }
+}
+@media (max-width: 600px) {
+  :is(body.ktk-code-page[data-ktk-page="about-us"] #main-content :is(.et_pb_text_7 .et_pb_text_inner,.et_pb_text_6 h3),body.ktk-code-page[data-ktk-page="krakow-hen-do"] #main-content :is(:is(.et_pb_text_2,.et_pb_text_3,.et_pb_text_4,.et_pb_text_5,.et_pb_text_6) .et_pb_text_inner,:is(.et_pb_heading_1,.et_pb_heading_2,.et_pb_heading_3,.et_pb_heading_7) h2),body.ktk-code-page[data-ktk-page="other-tours"] #main-content :is(:is(.et_pb_text_0,.et_pb_text_1) .et_pb_text_inner),body.ktk-code-page[data-ktk-page="otherbarcrawls"] #main-content :is(.et_pb_text_0 .et_pb_text_inner,:is(.et_pb_blurb_3,.et_pb_blurb_4) h3),body.ktk-code-page[data-ktk-page="student-trips-poland"] #main-content :is(:is(.et_pb_text_4,.et_pb_text_5) h2),body.ktk-code-page[data-ktk-page="tour-service-disclaimer"] #main-content :is(.et_pb_text_1 .et_pb_text_inner)) { padding-right: 24px; }
+}
+/* END Preserved reading text */
+/* BEGIN Short viewport booking control */
+body.ktk-code-page #ktk-cta { right: 26px; }
+@media (max-height: 300px) {
+  body.ktk-code-page #ktk-cta { top: 8px; right: 23px; font-size: clamp(10px, 10vh, 20px); line-height: 20px; padding: 12px; }
+}
+@media (max-height: 300px) and (max-width: 600px) {
+  :is(body.ktk-code-page[data-ktk-page="how-to-join"] #main-content .et_pb_blurb_4 .et_pb_module_header,body.ktk-code-page[data-ktk-page="contact"] #main-content .et_pb_text_3 .et_pb_text_inner > h2,body.ktk-code-page[data-ktk-page="faqs"] #main-content .et_pb_text_3 .et_pb_text_inner > h2,body.ktk-code-page[data-ktk-page="krakow-nightlife"] #main-content .et_pb_text_9 .et_pb_text_inner > h2,body.ktk-code-page[data-ktk-page="blog"] #main-content .et_pb_text_0 .et_pb_text_inner > h2,body.ktk-code-page[data-ktk-page="tour-service-disclaimer"] #main-content .et_pb_text_2 .et_pb_text_inner > h2) { padding-right: 32px; }
+}
+body.ktk-code-page #ktk-cta:focus-visible { outline: 3px solid #fff; outline-offset: -3px; }
+/* END Short viewport booking control */
 /* BEGIN Hotel guide planning */
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) { font-size: 16px; line-height: 1.65; letter-spacing: 0; text-align: left; }
 :is(body.ktk-code-page[data-ktk-page="post-best-hotels-in-krakow-2019-2020"] #main-content .entry-content[data-ktk-hotel-guides-review] .et_pb_text_inner,body.ktk-code-page[data-ktk-page="post-spa-hotels-krakow"] #main-content .entry-content[data-ktk-hotel-guides-review]) p { font-size: 16px; line-height: 1.65; }

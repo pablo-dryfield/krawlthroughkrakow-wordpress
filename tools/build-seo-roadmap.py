@@ -21,7 +21,7 @@ BUCKETS = {'live_verified': 'complete', 'not_started': 'not_started', 'deferred'
            'in_progress': 'in_progress', 'awaiting_cache': 'in_progress',
            'source_verified': 'in_progress', 'staging_verified': 'in_progress'}
 DELIVERY_LABELS = {'staging_verified': 'Verified on staging', 'in_progress': 'In progress', 'live_verified': 'Verified live'}
-BATCH_LABELS = {'verification': 'In verification', 'planned': 'Planned', 'complete': 'Complete'}
+BATCH_LABELS = {'in_progress': 'In progress', 'verification': 'In verification', 'planned': 'Planned', 'complete': 'Complete'}
 
 
 def remaining_model(data):
@@ -85,12 +85,12 @@ def remaining_model(data):
     if not open_ids <= covered:
         raise ValueError('Every open workstream needs a remaining batch, gate, recurring responsibility or deferral')
     counts = {status: sum(row['status'] == status for row in batches.values()) for status in BATCH_LABELS}
-    return {**work, 'counts': counts, 'remaining': counts['verification'] + counts['planned']}
+    return {**work, 'counts': counts, 'remaining': counts['in_progress'] + counts['verification'] + counts['planned']}
 
 
 def remaining_markdown(work):
     lines = ['## Remaining Implementation Batches', '',
-             f"**{work['remaining']} batches remain: {work['counts']['verification']} in verification and {work['counts']['planned']} planned.**", '',
+             f"**{work['remaining']} batches remain: {work['counts']['in_progress']} in progress, {work['counts']['verification']} in verification and {work['counts']['planned']} planned.**", '',
              work['scope'], '', work['changeRule'], '',
              '| Batch | Status | Scope | Done When | Dependencies |', '| --- | --- | --- | --- | --- |']
     for row in work['batches']:
@@ -107,7 +107,7 @@ def remaining_html(work, prefix=''):
     esc = html.escape
     section_id = prefix + 'remaining-batches'
     result = f'<section class="remaining-progress" id="{section_id}" aria-labelledby="{section_id}-title"><div class="remaining-heading"><div><h2 id="{section_id}-title">Remaining implementation batches</h2><p>{esc(work["scope"])}</p></div><div class="remaining-total"><strong data-remaining-count>{work["remaining"]}</strong><span>batches remaining</span></div></div>'
-    result += f'<p class="batch-counts">{work["counts"]["verification"]} in verification · {work["counts"]["planned"]} planned</p><p class="batch-rule">{esc(work["changeRule"])}</p><ol class="remaining-list">'
+    result += f'<p class="batch-counts">{work["counts"]["in_progress"]} in progress · {work["counts"]["verification"]} in verification · {work["counts"]["planned"]} planned</p><p class="batch-rule">{esc(work["changeRule"])}</p><ol class="remaining-list">'
     for row in work['batches']:
         result += f'<li class="remaining-row" data-planned-batch="{row["id"]}"><div class="batch-line"><span class="batch-number">{row["id"]}</span><h3>{esc(row["title"])}</h3><span class="batch-status {row["status"]}">{BATCH_LABELS[row["status"]]}</span></div><p class="batch-summary">{esc(row["summary"])}</p><details class="batch-details"><summary>Next step and completion criteria<span class="sr-only"> for {esc(row["id"])}</span></summary><p><strong>Next:</strong> {esc(row["next"])}</p><p><strong>Done when:</strong> {esc(row["doneWhen"])}</p>'
         result += '<p><strong>Related workstreams:</strong> ' + esc(', '.join(row['workstreams'])) + '</p>'

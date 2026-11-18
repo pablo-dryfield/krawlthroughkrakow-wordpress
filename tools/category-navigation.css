@@ -1,0 +1,8 @@
+/* BEGIN Category archive navigation */
+body.ktk-code-page #main-content p[data-ktk-archive-intro="2026-11-17.category-navigation-1"] { font-size: 16px; line-height: 1.65; }
+body.ktk-code-page #main-content p[data-ktk-archive-intro="2026-11-17.category-navigation-1"] a { color: #b00059; text-decoration: underline; text-underline-offset: .15em; }
+body.ktk-code-page #main-content p[data-ktk-archive-intro="2026-11-17.category-navigation-1"] a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+@media (max-width: 600px) {
+  body.ktk-code-page #main-content p[data-ktk-archive-intro="2026-11-17.category-navigation-1"] { padding-right: 24px; }
+}
+/* END Category archive navigation */

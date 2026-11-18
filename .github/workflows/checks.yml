@@ -137,6 +137,16 @@ jobs:
         run: node --test tools/tests/test_party_trip_editorial.mjs
       - name: European pub crawl and Budapest comparison source contracts
         run: node --test tools/tests/test_nightlife_comparison_editorial.mjs
+      - name: Europe article header presentation contracts
+        run: node --test tools/tests/test_europe_header_presentation.mjs
+      - name: Category archive navigation contracts
+        run: node --test tools/tests/test_category_navigation.mjs
+      - name: Homepage alias excerpt contracts
+        run: node --test tools/tests/test_homepage_alias_excerpts.mjs
+      - name: Secondary Christmas and NYE planning contracts
+        run: node --test tools/tests/test_secondary_nye_editorial.mjs
+      - name: Verify reading-style preservation
+        run: node --test tools/tests/test_reviewed_guide_text_styles.mjs tools/tests/test_reviewed_site_text_styles.mjs tools/tests/test_preserved_reading_text_styles.mjs tools/tests/test_short_viewport_booking_styles.mjs
       - name: Hen planning and historical bars source contracts
         run: node --test tools/tests/test_hen_bars_editorial.mjs
       - name: Historical hotel shortlist and spa planning source contracts

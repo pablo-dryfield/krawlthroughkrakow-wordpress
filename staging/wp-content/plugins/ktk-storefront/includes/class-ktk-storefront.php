@@ -11,6 +11,7 @@ final class KTK_Storefront {
 	const QUERY_PATH = 'ktk_storefront_path';
 	const REST_NAMESPACE = 'ktk-storefront/v1';
 	const CACHE_TTL = 300;
+	private static $missing_products = array();
 
 	public static function boot() {
 		add_action( 'init', array( __CLASS__, 'register_rewrite_rules' ) );
@@ -104,13 +105,21 @@ final class KTK_Storefront {
 			return $template;
 		}
 
-		status_header( 200 );
+		status_header( self::public_not_found() ? 404 : 200 );
 		return KTK_STOREFRONT_DIR . 'templates/storefront.php';
 	}
 
 	public static function public_html_enabled() {
 		return self::is_storefront_request() && home_url( '/' ) === 'https://krawlthroughkrakow.com/staging/'
 			&& site_url( '/' ) === 'https://krawlthroughkrakow.com/staging/';
+	}
+
+	public static function public_not_found() {
+		if ( ! self::public_html_enabled() || ! in_array( $_SERVER['REQUEST_METHOD'] ?? 'GET', array( 'GET', 'HEAD' ), true ) ) { return false; }
+		$slug = self::product_slug();
+		if ( '' === $slug || in_array( $slug, array( 'orders', 'saved-carts', 'ongoing-carts', 'order-confirmation' ), true ) ) { return false; }
+		self::product_payload( $slug );
+		return ! empty( self::$missing_products[ $slug ] );
 	}
 
 	public static function allow_staging_storefront_zoom() {
@@ -147,6 +156,7 @@ final class KTK_Storefront {
 		$slug = self::product_slug();
 		if ( '' === $slug ) { return null; }
 		$product = self::product_payload( $slug );
+		if ( self::public_not_found() ) { return array( 'kind' => 'not-found' ); }
 		if ( empty( $product['name'] ) || ( $product['slug'] ?? '' ) !== $slug ) { return null; }
 		$payload = get_transient( 'ktk_sf_' . md5( 'product_' . $slug ) );
 		return array( 'kind' => 'product', 'product' => $product,
@@ -205,6 +215,7 @@ final class KTK_Storefront {
 
 		$config = array(
 			'restUrl' => esc_url_raw( rest_url( self::REST_NAMESPACE ) ),
+			'assetBaseUrl' => esc_url_raw( $asset_url ),
 			'baseUrl' => esc_url_raw( home_url( '/store2' ) ),
 			'path' => sanitize_text_field( (string) get_query_var( self::QUERY_PATH ) ),
 			'siteUrl' => esc_url_raw( home_url( '/' ) ),
@@ -432,6 +443,15 @@ final class KTK_Storefront {
 				'headers' => array( 'Accept' => 'application/json' ),
 			)
 		);
+		if ( self::public_html_enabled() && ! is_wp_error( $response ) && 404 === (int) wp_remote_retrieve_response_code( $response ) ) {
+			$content_type = wp_remote_retrieve_header( $response, 'content-type' );
+			$error = json_decode( wp_remote_retrieve_body( $response ), true );
+			if ( is_string( $content_type ) && preg_match( '~^application/json(?:\s*;|$)~iD', $content_type )
+				&& is_array( $error ) && 1 === count( $error ) && ( $error['message'] ?? null ) === 'Product not found.' ) {
+				// Request-local evidence only: never cache absence or infer it from an outage.
+				self::$missing_products[ $slug ] = true;
+			}
+		}
 		if ( is_wp_error( $response ) || 200 !== (int) wp_remote_retrieve_response_code( $response ) ) {
 			$products[ $slug ] = array();
 			return $products[ $slug ];
@@ -572,6 +592,10 @@ final class KTK_Storefront {
 		if ( empty( $product ) ) {
 			$metadata['canonical'] = home_url( '/store2/' . $slug . '/' );
 			$metadata['indexable'] = false;
+			if ( self::public_not_found() ) {
+				$metadata['title'] = 'Experience not found | Krawl Through Krakow';
+				$metadata['description'] = 'The requested experience could not be found. Browse current Krakow experiences or contact our local team.';
+			}
 			return $metadata;
 		}
 

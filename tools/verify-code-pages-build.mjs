@@ -40,6 +40,10 @@ import {loadActivityBookingEditorial,reviseActivityBookingEditorial,reviseActivi
 import {loadCompetitionNewsletterEditorial,reviseCompetitionNewsletterEditorial} from './competition-newsletter-editorial.mjs';
 import {loadPartyTripEditorial,revisePartyTripEditorial,revisePartyTripFeature} from './party-trip-editorial.mjs';
 import {loadNightlifeComparisonEditorial,reviseNightlifeComparisonEditorial,reviseNightlifeComparisonFeature} from './nightlife-comparison-editorial.mjs';
+import {loadEuropeHeaderPresentation,reviseEuropeHeaderSourceReference} from './europe-header-presentation.mjs';
+import {loadCategoryNavigation,reviseCategoryNavigationSourceReference} from './category-navigation.mjs';
+import {loadHomepageAliasExcerpts,reviseHomepageAliasExcerpts} from './homepage-alias-excerpts.mjs';
+import {loadSecondaryNyeEditorial,reviseSecondaryNyeEditorial} from './secondary-nye-editorial.mjs';
 import {loadHenBarsEditorial,reviseHenBarsEditorial} from './hen-bars-editorial.mjs';
 import {loadHotelGuidesEditorial,reviseHotelGuidesEditorial} from './hotel-guides-editorial.mjs';
 import {loadBlogGroupEditorial,reviseBlogGroupEditorial} from './blog-group-editorial.mjs';
@@ -82,6 +86,10 @@ const activityBookings=await loadActivityBookingEditorial();
 const competitionNewsletter=await loadCompetitionNewsletterEditorial();
 const partyTrips=await loadPartyTripEditorial();
 const nightlifeComparisons=await loadNightlifeComparisonEditorial();
+const europeHeaderPresentation=await loadEuropeHeaderPresentation();
+const categoryNavigation=await loadCategoryNavigation();
+const homepageAliasExcerpts=await loadHomepageAliasExcerpts();
+const secondaryNye=await loadSecondaryNyeEditorial();
 const henBars=await loadHenBarsEditorial();
 const hotelGuides=await loadHotelGuidesEditorial();
 const blogGroup=await loadBlogGroupEditorial();
@@ -152,6 +160,10 @@ async function facts(html,revision){
   await page.evaluate(()=>document.querySelectorAll('#main-content script,#main-content style,#main-content noscript').forEach(n=>n.remove()));
   await page.evaluate(reviseEmbedFallbacks,{key:revision.key,revision:embedFallbacks.find(row=>row.key===revision.key)});
   await page.evaluate(reviseJobsPageAccessibility,{key:revision.key,revision:jobsAccessibility});
+  await page.evaluate(reviseEuropeHeaderSourceReference,{key:revision.key,revision:europeHeaderPresentation});
+  await page.evaluate(reviseCategoryNavigationSourceReference,{key:revision.key,revision:categoryNavigation.find(r=>r.key===revision.key)});
+  await page.evaluate(reviseHomepageAliasExcerpts,{key:revision.key,revision:homepageAliasExcerpts.find(r=>r.key===revision.key),sourceReference:true});
+  await page.evaluate(reviseSecondaryNyeEditorial,{key:revision.key,revision:secondaryNye,sourceReference:true});
  }
  return page.evaluate(()=>{const root=document.querySelector('#main-content');root.querySelectorAll('script,style,noscript,.mejs-controls,.mejs-layers,video a,[data-single-product-id],[data-ktk-booking-product]').forEach(e=>e.remove());return {text:root.textContent.replace(/\s+/g,' ').trim(),missingAlt:root.querySelectorAll('img:not([alt])').length,sections:root.querySelectorAll('.et_pb_section').length,headings:[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(e=>({tag:e.tagName,text:e.textContent.trim()})),primary:root.querySelectorAll('h1').length,forms:root.querySelectorAll('form.et_pb_contact_form,form.wpcf7-form').length,scripts:root.querySelectorAll('script').length,handlers:[...root.querySelectorAll('*')].flatMap(e=>[...e.attributes].filter(a=>/^on/i.test(a.name)).map(a=>a.name))};});
 }

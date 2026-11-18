@@ -58,6 +58,15 @@ function ktk_pages_asset($file) {
     return content_url('/mu-plugins/ktk-code-pages-assets/' . $file)
         . '?v=' . (is_file($path) ? substr(hash_file('sha256', $path), 0, 12) : '1');
 }
+function ktk_pages_font_preload_html($page, $asset_base) {
+    if ('post-krakow-safety-guide' !== ($page['key'] ?? '')) { return ''; }
+    $html = '';
+    foreach (array('media/2572f2f33cd7-normal.woff2', 'media/12f984f2f1ea-normal.woff2') as $font) {
+        $html .= '<link rel="preload" as="font" type="font/woff2" crossorigin="anonymous" href="' . esc_url($asset_base . $font) . '">' . "\n";
+    }
+    return $html;
+}
+
 function ktk_pages_definition($route = null) {
     $route = null === $route ? ktk_pages_request_route() : $route;
     $entry = ktk_pages_registry()['routes'][$route] ?? null;
@@ -155,6 +164,7 @@ add_action('template_redirect', function () {
     <link rel="stylesheet" href="<?php echo esc_url(ktk_pages_asset('font-resilience.css')); ?>">
     <link rel="stylesheet" href="<?php echo esc_url(ktk_pages_asset('runtime.css')); ?>">
     <?php echo ktk_pages_required_head_html(ktk_pages_captured_head()); ?>
+    <?php echo ktk_pages_font_preload_html($page, content_url('/mu-plugins/ktk-code-pages-assets/')); ?>
 </head>
 <body class="<?php echo esc_attr($page['body_class']); ?> ktk-code-page" data-ktk-page="<?php echo esc_attr($page['key'] ?? 'how-to-join'); ?>" data-ktk-form-token-url="<?php echo esc_url(admin_url('admin-ajax.php')); ?>">
     <a class="ktk-parity-skip-link" href="#main-content">Skip to content</a>

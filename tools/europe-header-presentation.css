@@ -1,0 +1,5 @@
+/* BEGIN Europe article header clearance */
+@media (max-width: 600px) {
+  body.ktk-code-page[data-ktk-page="post-best-pub-crawls-in-europe"] #main-content .et_post_meta_wrapper > :is(.entry-title,.post-meta) { padding-right: 24px; }
+}
+/* END Europe article header clearance */
