@@ -8,6 +8,8 @@ on:
       - 'tools/verify-early-termination-phases.py'
       - 'tools/verify-private-termination-fixture.py'
       - 'tools/private_termination_fixture_support.py'
+      - 'tools/private_termination_diagnostics.py'
+      - 'tools/tests/test_private_termination_diagnostics.py'
       - 'tools/private-engine-*'
       - 'tools/private_engine_*'
       - 'tools/tests/test_private_engine_*'
@@ -85,7 +87,7 @@ jobs:
           if subprocess.check_output(['git','show',commit+':'+workflow])!=raw:raise RuntimeError('Workflow source differs from reviewed commit')
           print('KTK_PHASE_WORKFLOW_SHA256='+hashlib.sha256(raw).hexdigest())
           print('KTK_PHASE_INPUT_COUNT='+str(len(inputs)))
-          names=['tools.tests.test_private_engine_termination_controller','tools.tests.test_private_engine_fenced_inspection','tools.tests.test_private_engine_termination_helper','tools.tests.test_private_termination_fixture_support']
+          names=['tools.tests.test_private_engine_termination_controller','tools.tests.test_private_engine_fenced_inspection','tools.tests.test_private_engine_termination_helper','tools.tests.test_private_termination_fixture_support','tools.tests.test_private_termination_diagnostics']
           suite=unittest.defaultTestLoader.loadTestsFromNames(names);expected=suite.countTestCases()
           if expected<1:raise RuntimeError('Nonempty complete native contract selection required')
           started=datetime.now(timezone.utc).isoformat();result=unittest.TextTestRunner(verbosity=2).run(suite)

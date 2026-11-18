@@ -3,7 +3,7 @@
 from pathlib import Path
 from datetime import datetime,timezone
 from unittest import mock
-import argparse,hashlib,importlib.util,json,math,shutil,socket,subprocess,sys,tempfile,time,zipfile
+import argparse,hashlib,importlib.util,json,math,os,shutil,socket,subprocess,sys,tempfile,time,zipfile
 
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from tools import content_update_backup as backup
@@ -11,11 +11,12 @@ from tools import full_private_seed_packet as full
 from tools import full_private_engine_client as client_module
 from tools import private_engine_termination_helper as compiler
 from tools import private_termination_fixture_support as support
+from tools import private_termination_diagnostics as diagnostics
 from tools.tests import test_private_engine_termination_helper as native
 from tools.tests import test_private_termination_fixture_support as observation_tests
 
-APP='530cafdf05b50197aa9ad9993ca66021b716c1e6'
-PUBLIC_BYTES=550633349;PRIVATE_BYTES=1101091746
+APP='00dfa3134db9028f76fe01039ff961ef52180693'
+PUBLIC_BYTES=550639063;PRIVATE_BYTES=1101099599
 OBSERVATION_SECONDS=600  # Local subprocess observation, never a hosted timeout change.
 HTTP_BUDGET_SECONDS=60;MEMORY='256M'  # Existing local PHP fixture; not a hosting guarantee.
 BRIDGE=native.protocol.prior.bound.native.bridge
@@ -32,6 +33,8 @@ def source_fingerprints():
     for module in (native,native.protocol,native.protocol.prior,native.protocol.prior.bound,native.protocol.prior.bound.native,BRIDGE,native.OLD,support,observation_tests):
         path=Path(module.__file__);result[path.relative_to(ROOT).as_posix()]=support.digest(path)
     result[Path(__file__).relative_to(ROOT).as_posix()]=support.digest(__file__)
+    for name in ('tools/private_termination_diagnostics.py','tools/tests/test_private_termination_diagnostics.py'):
+        result[name]=support.digest(ROOT/name)
     return dict(sorted(result.items()))
 
 
@@ -39,6 +42,7 @@ def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--helper-commit',required=True)
     parser.add_argument('--report',required=True)
+    parser.add_argument('--diagnostics',action='store_true',help='Opt-in exactly reversible local profiling; adds overhead and is not an uninstrumented/hosted benchmark')
     args=parser.parse_args(argv);destination,evidence=support.report_paths(ROOT,args.report)
     report={'scope':'OFFLINE actual2074-public/4149-private native helper calibration; synthetic selected database; no hosting',
         'startedAt':datetime.now(timezone.utc).isoformat(),'helperSourceCommit':args.helper_commit,'applicationCommit':APP,
@@ -48,6 +52,7 @@ def main(argv=None):
         'nativeCLIInputSeamAndValidUTF8WordPressFastPathQualification':True,'originalPreparationUsesExistingSyntheticClock':True,
         'newHelperUsesRealClock':True,'steps':[],'applicationWrites':0,'databaseWrites':0,'cachePurges':0,'productionOperations':0,
         'fullHostTransactionAcceptance':False,'fullActualHelperRecoveryComplete':False}
+    report.update(diagnosticMode=args.diagnostics,applicationCohortQualification='Current immutable local source candidates, not the currently hosted APP530 release',instrumentationQualification='Opt-in reversible local seams add overhead; inclusive spans overlap. Original production-like wire/errors and all runtime/expiry/work bounds remain unchanged.')
     case=None;helper=None;calls=0;fingerprints={};owned={};sizes={};temporaries=[];status=1
     public_source=ROOT/'staging/wp-content/mu-plugins';original_temp=tempfile.TemporaryDirectory
 
@@ -79,20 +84,37 @@ def main(argv=None):
         kind='new-helper' if driver.name=='distinct-helper-driver.php' else cfg['operation']
         action=json.loads(cfg['terminationBody'])['action'] if kind=='new-helper' else json.loads(cfg.get('request','{}')).get('action') if kind=='controller' else kind
         item={'number':calls,'kind':kind,'action':action,'startedAt':datetime.now(timezone.utc).isoformat()}
+        if kind=='new-helper' and args.diagnostics:
+            path=Path(cfg['helper']);owned_fixture(root)
+            require(not path.is_symlink() and path.resolve().is_relative_to(root.resolve()),'exact-owned-profiled-helper-required')
+            expected=report['instrumentedHelperSources'][-1]
+            require(expected['operationId']==cfg['terminationQuery'] and support.digest(path)==expected['instrumentedFixtureSHA256'],'profiled-helper-source-differs-before-call')
+            item['instrumentedFixtureSHA256']=expected['instrumentedFixtureSHA256']
         report['activeCall']=item;checkpoint('php-'+kind+'-'+str(action));started=time.perf_counter()
-        try:process=subprocess.run([native.OLD.PHP,str(driver),str(config)],capture_output=True,text=True,timeout=OBSERVATION_SECONDS)
+        environment={**os.environ,'KTK_LOCAL_DIAGNOSTIC_STREAM':'1' if kind=='new-helper' and args.diagnostics else '0'}
+        try:process=subprocess.run([native.OLD.PHP,str(driver),str(config)],capture_output=True,text=True,timeout=OBSERVATION_SECONDS,env=environment)
         except subprocess.TimeoutExpired as error:
             item.update(seconds=time.perf_counter()-started,observationTimedOut=True,replyUncertain=True);report['steps'].append(item)
             with zipfile.ZipFile(root/'failed-local-call.zip','x') as z:
                 for name,raw in [('stdout',error.stdout or b''),('stderr',error.stderr or b'')]:z.writestr(name,raw)
+            if kind=='new-helper' and args.diagnostics:
+                item['diagnosticStream']=diagnostics.retain_stream(root,calls,error.stderr or b'',incomplete=True)
             checkpoint('local-observation-timeout-no-replay');raise
         item.update(seconds=time.perf_counter()-started,returnCode=process.returncode,stderrBytes=len(process.stderr.encode()),stderrSHA256=backup.sha(process.stderr.encode()))
-        if process.returncode!=exit_code or process.stderr:
+        if kind=='new-helper' and args.diagnostics:require(support.digest(Path(cfg['helper']))==item['instrumentedFixtureSHA256'],'profiled-helper-source-differs-after-call')
+        if kind=='new-helper' and args.diagnostics:
+            owned_fixture(root);item.update(support.retain_helper_reply(root,calls,process.stdout));report['activeCall']=item;checkpoint('diagnostic-helper-raw-reply-retained-before-stream-validation')
+        error_stderr=process.stderr
+        if kind=='new-helper' and args.diagnostics:
+            item['diagnosticStream']=diagnostics.retain_stream(root,calls,process.stderr)
+            error_stderr=''  # Only after every byte passes the closed stream parser.
+        if process.returncode!=exit_code or error_stderr:
             with zipfile.ZipFile(root/'failed-local-call.zip','x') as z:z.writestr('stdout',process.stdout);z.writestr('stderr',process.stderr)
             item['phpMemoryFailure']='Allowed memory size' in process.stderr;report['steps'].append(item);checkpoint('php-failed-no-replay');raise support.FixtureRefusal('php-process-failed')
         if exit_code:report['steps'].append(item);return None
         if kind=='new-helper':
-            owned_fixture(root);item.update(support.retain_helper_reply(root,calls,process.stdout));report['activeCall']=item;checkpoint('new-helper-cli-reply-retained')
+            if not args.diagnostics:owned_fixture(root);item.update(support.retain_helper_reply(root,calls,process.stdout))
+            report['activeCall']=item;checkpoint('new-helper-cli-reply-retained')
         try:value=json.loads(process.stdout)
         except Exception:
             with zipfile.ZipFile(root/'failed-local-call.zip','x') as z:z.writestr('stdout',process.stdout);z.writestr('stderr',process.stderr)
@@ -104,6 +126,7 @@ def main(argv=None):
             if isinstance(body,dict) and 'controller' in body:
                 item.update(support.helper_observation(value))
             elif isinstance(body,dict):item['genericError']=body.get('error')
+            if args.diagnostics:item['fixtureDiagnostics']=diagnostics.validate(value.get('localFixtureDiagnostics'))
         report['steps'].append(item);report.pop('activeCall',None);checkpoint('returned-'+kind+'-'+str(action))
         print(json.dumps({'actualFixtureProgress':item}),flush=True)
         if kind=='new-helper' and item['seconds']>HTTP_BUDGET_SECONDS:
@@ -112,6 +135,19 @@ def main(argv=None):
         return value
 
     original_setup=BRIDGE.FullPrivatePreparationIntegrationTests.setUp
+    original_compile=native.PrivateEngineTerminationHelperTests.compile
+
+    def diagnostic_compile(self,value,predecessor=None):
+        packet=original_compile(self,value,predecessor)
+        if args.diagnostics:
+            path=Path(self.case.cfg['helper']);owned_fixture(self.case.root)
+            require(not path.is_symlink() and path.resolve().is_relative_to(self.case.root.resolve()),'exact-owned-diagnostic-helper-required')
+            source=path.read_bytes();instrumented,receipt=diagnostics.instrument(source)
+            old=b"file_get_contents('php://input',false,null,0,2049)";new=b"($GLOBALS['c']['terminationBody']??'')"
+            require(source.count(new)==1 and diagnostics.restore(instrumented).replace(new,old,1)==self.production_source,'complete-diagnostic-and-cli-source-inverse-required')
+            path.write_bytes(instrumented);self.fixture_sha=backup.sha(instrumented)
+            report.setdefault('instrumentedHelperSources',[]).append({'operation':packet['operation'],'operationId':packet['operationId'],'productionHelperSHA256':backup.sha(self.production_source),**receipt})
+        return packet
 
     def full_setup(self):
         nonlocal case
@@ -159,7 +195,8 @@ def main(argv=None):
         require(len(owned)==2074 and sum(sizes.values())==PUBLIC_BYTES and max(sizes.values())==35437747,'exact-actual-application-cohort-required')
         driver=native.DRIVER;anchor="'oldControllerClass'=>class_exists('KTK_Full_Private_Engine_Controller',false)";require(driver.count(anchor)==1,'exact-native-driver-metric-anchor-required')
         driver=driver.replace(anchor,anchor+",'phpPeakAllocatedBytes'=>memory_get_peak_usage(true)",1)
-        with mock.patch.object(tempfile,'TemporaryDirectory',preserve_temporary),mock.patch.object(BRIDGE.FullPrivatePreparationIntegrationTests,'setUp',full_setup),mock.patch.object(native.protocol.prior.bound.native.PrivateEngineAbandonmentInspectionTests,'prepared',full_prepared),mock.patch.object(native.OLD.ContentUpdateControllerTests,'call',call),mock.patch.object(native,'DRIVER',driver),mock.patch.object(socket.socket,'connect',side_effect=RuntimeError('offline-fixture-network-forbidden')):
+        if args.diagnostics:driver=driver.replace(anchor,anchor+",'localFixtureDiagnostics'=>(function_exists('ktk_fixture_diag_report')?ktk_fixture_diag_report():null)",1)
+        with mock.patch.object(tempfile,'TemporaryDirectory',preserve_temporary),mock.patch.object(BRIDGE.FullPrivatePreparationIntegrationTests,'setUp',full_setup),mock.patch.object(native.protocol.prior.bound.native.PrivateEngineAbandonmentInspectionTests,'prepared',full_prepared),mock.patch.object(native.OLD.ContentUpdateControllerTests,'call',call),mock.patch.object(native,'DRIVER',driver),mock.patch.object(native.PrivateEngineTerminationHelperTests,'compile',diagnostic_compile),mock.patch.object(socket.socket,'connect',side_effect=RuntimeError('offline-fixture-network-forbidden')):
             helper=native.PrivateEngineTerminationHelperTests('runTest');helper.setUp();helper.configure(prepared=True);p=helper.protocol
             report['fencedPayloadCensusFiles']=len(p.fixture.config['payload']);require(report['fencedPayloadCensusFiles']==4149,'full4149-payload-census-required')
             inspect=helper.inspection_packet();out=helper.invoke(inspect);require(out['status']==200,'full-helper-initial-inspection-refused');require(helper.last_private_before==helper.last_private_after,'initial-readonly-mutated-private-state')
