@@ -1,4 +1,39 @@
-# Recovery cleanup: local diagnostic preparation
+# Recovery cleanup: verified profile, incomplete recovery
+
+The source-bound diagnostic has finished. Native phase CI passes69 tests and16 interruption scenarios without skips. The actual-inventory synthetic fixture still fails the unchanged60-second gate: cleanup returns409 after596.576 seconds, with209 known payload files removed and3,940 retained. Its diagnostic stream proves termination expiry during a fresh public capture. This is an accepted diagnosis of an unsuccessful recovery, not a complete or hosted recovery.
+
+## Verified CI and retained evidence
+
+[Phase run44206235139](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/44206235139) passes69 native cases and16 scenarios. Independent artifact/source checks verify both report members, all80 inputs, zero skips and raw checkout4d718af411b6ae94d55498f183d78fa2292f5ac6/tree39c8d11d61674a54232fe296400a7dea30e9e4cc. Its ZIP SHA256 is61ddd3a28c38f9c1624413b427195682cbdde8ca828775ecc7487e28dc5fc4bf.
+
+[Full diagnostic run44206235050](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/44206235050) ends in failure at01:26:19UTC18November; its evidence upload succeeds. Independent checks verify all79 reviewed inputs against Git/current bytes, the same actual checkout tree, all2,074 public application files/550,639,063 bytes, every retained private descriptor, all11 nested ZIP CRCs/digests, all four raw helper replies and their diagnostic streams, three synthetic signed-record HMACs, and all14 retained metadata records. No unknown private addition or metadata removal is found. The outer artifact is5,244,121 bytes/SHA256bfe3c0e3bb73b11cd398f03137af88e9758d8e5ad6f31e24534e05e5fa7edaba; inner evidence SHA256a574db40a9fa45f3d3a3ecc3d7f2892ba75a21a75a29de13d34015da0b5aa05e.
+
+The immutable application binding is00dfa3134db9028f76fe01039ff961ef52180693, the accumulated local candidate. Actual hosting remains APP530. The selected database rows and all operation authority are synthetic; these deletions do not describe a new hosting operation. The original expected private cohort is4,149 files/1,101,099,599 bytes. Private receipts retain the exact archives, raw log, source maps, witness pairs and independent audit.
+
+| Native operation | Seconds | Status | Result |
+| --- | ---: | ---: | --- |
+| inspect | 25.342 | 200 | Complete initial census |
+| fence | 47.581 | 200 | Signed closure receipt; fresh inspection still required |
+| inspect-fenced | 22.391 | 200 | Current fenced census |
+| cleanup-payload | 596.576 | 409 | Expired during fresh capture;209 known deletions |
+
+Cleanup performs227 complete public captures totaling554.887 seconds, about93.03% of observed elapsed time. Four fenced inspections total69.310 inclusive seconds; claim readbacks total0.047 seconds and209 payload hashes0.192 seconds. These spans nest, so their totals must not be added as independent costs. The profiler adds overhead; this is neither an uninstrumented nor a hosted benchmark.
+
+The first before-delete event occurs at64.248 seconds and the first completed deletion at84.046 seconds. A smaller deletion count alone cannot satisfy the existing60-second gate. The final checkpoint and raw reply agree on `termination-lifetime` at the fresh-witness boundary. This establishes the current run's cause; it does not retrospectively prove the older generic409's cause. The last retained raw public pair precedes cleanup. A complete final public after-witness is still absent, and full recovery remains unaccepted.
+
+Required [standard CI44206235059](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/44206235059) still fails at the unchanged dependency audit. Windows and secrets pass; earlier local/HTTP/component checks do not clear the security gate or skipped later Linux checks. At09:57UTC18November, the official registry still lists picomatch4.0.7 as latest and the [official advisory](https://github.com/advisories/GHSA-fc5q-39xc-vjpf) still lists it as affected with no patched version. No package workaround or audit relaxation is applied.
+
+## Next implementation and preserved boundaries
+
+Accelerate complete current hashing/computation and measure fixed census costs before accepting a cleanup schedule. Keep every deletion's fresh complete public witness, claim, file hash, ownership/race checks and the complete final public/private verification. Any bounded work scheduling must reserve final verification and pass fresh-context actual-inventory evidence. Do not cache current digests, replay the failed authority, or raise the HTTP, memory, wire, expiry, observation or work bounds.
+
+A separate unintegrated Windows hash prototype passes eight component contracts and three balanced complete-capture pairs per arm. Its median changes from3.164 to1.991 seconds with complete maps/raw tables unchanged and256M retained. This is a local read-only capture lead, not complete cleanup, Linux or hosting acceptance. A separate nine-page reading/FAQ candidate is [documented independently](../reviewed-guide-text-2026-11-18/README.md); its application changes remain isolated from this diagnostic source.
+
+The owner restored local storage by removing installed games. The full local preflight now passes; local free space is not hosting quota evidence. No duplicate full fixture was started locally. A self-contained pre-edit snapshot of all3,821 b5970f3 source files contains3,822 entries/504,472,696 bytes, SHA25603ec496e7535ef057d9568247ba91eae33404f144700595752caa0fcc6e75d6a. Git/local bytes, all members and CRCs are independently verified, and its bytes are rehashed before this documentation update. It requires no older archive and is not a hosting/database backup. Earlier composite snapshots and failed evidence remain retained.
+
+Both roadmaps keep all eight batch identities/statuses and six remaining,70 bounded staging website deliveries/74 records/40 workstream states and C08 unchanged. B03 remains in progress. Source/security, permitted hosting rehearsal, quota/coordination/retention, manual/provider/owner and separate production gates remain open. No hosting helper/upload, purge, real form/message/order, consent, production or OmniLodge action occurs. Only independently owned reading-test previews are closed; original previews and the native account-UI stop remain respected.
+
+## Initial local diagnostic implementation
 
 The retained actual-size cleanup failure takes596.776147s, removes256 known payload files and returns generic409 with3893 remaining. Its exact cause is still unproved. This batch adds opt-in diagnostic seams to the synthetic fixture so the next run can identify the failing boundary and measure complete public captures, private inspections, claim checks and individual payload hashing. It changes no deployable recovery component, cleanup cadence, expiry, work,60-second comparison,256M memory or2MiB public response bound. No consumed context is replayed.
 
@@ -20,7 +55,7 @@ Run the frozen fixture in a clean reviewed checkout with:
 python tools/verify-private-termination-fixture.py --helper-commit <exact-reviewed-40-hex-source> --report docs/seo/private-engine-early-termination-2026-11-17/actual-inventory-ci.json --diagnostics
 ```
 
-Local preflight still requires4390987299 bytes and refuses here before creating a full fixture. Reversible NTFS compression of240 older ignored evidence files frees space only for the small native comparison; every logical byte, path, size, SHA256 and mtime verifies. It is not hosting/account-quota evidence. The actual-size diagnostic needs an owned CI runner. Current source/phase/full CI and its actual runtime/failure report remain pending; no successful full recovery is claimed.
+At the initial preparation checkpoint, local preflight required4390987299 bytes and refused before creating a full fixture. Reversible NTFS compression of240 older ignored evidence files freed space only for the small native comparison; every logical byte, path, size, SHA256 and mtime verified. The owner's later storage cleanup and completed CI evidence above supersede that capacity/pending checkpoint. Neither establishes hosting quota or successful full recovery.
 
 ## Preservation and next work
 
@@ -28,6 +63,6 @@ Before edits, all3818 Git/local/composite source files and17 ZIP CRCs/chosen rec
 
 The first seven-test diagnostic run retains5/7: the Python reader's exception-class regex escapes its closing bracket incorrectly. Raw regex strings correct that reader bug while keeping closed-field/raw-value refusal intact. The final20 contracts include the fixed failure path and anonymous-exception case. Failed receipts remain. The [prior runtime investigation](../recovery-runtime-optimization-2026-11-17/README.md) retains the596.8-second failure, missing final public after-check, actual archives and all earlier source/native qualifications.
 
-Next, collect the source-bound actual-size profile with a fresh context, inspect its real failure boundary and costs, and choose a justified cleanup change. Keep each deletion's fresh full witness/claim/hash checks, held ownership and final complete public/private verification. Any proposed time-bounded batching needs reserved final verification and fresh-context full-inventory proof; a smaller constant alone does not resolve the contract. Current complete repository security/CI clearance and owner quota/coordination/retention remain before a permitted hosted rehearsal.
+The source-bound profile collection is now complete as diagnosis, with its failure and costs above. Keep each deletion's fresh full witness/claim/hash checks, held ownership and final complete public/private verification in the next implementation. Any proposed time-bounded batching needs reserved final verification and fresh-context full-inventory proof; a smaller constant alone does not resolve the contract. Current complete repository security/CI clearance and owner quota/coordination/retention remain before a permitted hosted rehearsal.
 
 All2424 application files, prior local candidates, artwork, commerce/Ecwid, real forms/messages/orders, functional consent, medical hold, active competition, production and OmniLodge remain untouched. No application build, hosting helper/upload, account mutation or purge occurs. Both roadmaps retain all eight batch statuses/six remaining,70 website staging deliveries/74 records/40 workstream states and C08 unchanged. B03 stays in progress. Original previews and the native account-UI stop remain respected; the full goal stays active.
