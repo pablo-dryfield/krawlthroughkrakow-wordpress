@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MU = ROOT / 'staging/wp-content/mu-plugins'
 MANIFEST = ROOT / 'docs/code-pages/full-migration/build-verification.json'
 MEMORY_BYTES = 256 * 1024 * 1024
+CAPTURE_PROFILES = ('raw-vs-bounded32', 'bounded32-vs-bounded64')
 SOURCE_PATHS = (
     '.github/workflows/hash-capture-calibration.yml',
     'tools/calibrate_staging_capture.py',
@@ -178,7 +179,22 @@ def artifact_write(path, payloads):
             'completeMemberReadbackAndCRCVerified': True}
 
 
-def run_calibration(output, commit, *, pairs=3, local=False):
+def profile_components(profile):
+    """Temporary measurement arms only; the reviewed32MiB component stays exact."""
+    require(type(profile) is str and profile in CAPTURE_PROFILES, 'Explicit known capture profile required')
+    raw = fast.SOURCE.read_bytes()
+    current = fast.embedded(raw)
+    if profile == 'raw-vs-bounded32':
+        return {'original': raw, 'candidate': current}
+    require(current.count(b'$size > 33554432') == 1, 'Exact32MiB eligibility anchor required')
+    candidate = current.replace(b'$size > 33554432', b'$size > 67108864', 1)
+    require(candidate.replace(b'$size > 67108864', b'$size > 33554432', 1) == current,
+            'Complete64-to32 byte inverse required')
+    return {'original': current, 'candidate': candidate}
+
+
+def run_calibration(output, commit, *, pairs=3, local=False, profile='raw-vs-bounded32'):
+    components = profile_components(profile)
     require(native.PHP is not None, 'Real native PHP required; no skipped calibration')
     require(not output.exists(), 'New exclusive calibration directory required')
     output.mkdir(parents=True)
@@ -196,8 +212,24 @@ def run_calibration(output, commit, *, pairs=3, local=False):
         report['publicInventory'] = {'files': len(owned), 'bytes': sum(sizes.values()),
                                      'mapSHA256': sha(full.snapshot.encode(owned))}
         payloads = {}
+        if profile != 'raw-vs-bounded32':
+            report['captureProfile'] = profile
+            report['componentSHA256s'] = {arm: sha(data) for arm, data in components.items()}
+            report['newlyEligibleFiles'] = {name: size for name, size in sizes.items() if 33554432 < size <= 67108864}
+            report['unchangedMemoryAndAllOtherComponentBytes'] = True
+            (output / 'components').mkdir()
+            for arm, data in components.items():
+                name = 'components/' + arm + '.php'
+                (output / name).write_bytes(data)
+                payloads[name] = data
         case = native.ContentUpdateControllerTests('runTest')
         with case.fixture() as (root, mu, driver, config):
+            component_paths = {'original': fast.SOURCE, 'candidate': fast.TARGET}
+            if profile != 'raw-vs-bounded32':
+                for arm, data in components.items():
+                    target = root / ('measurement-' + arm + '-capture.php')
+                    target.write_bytes(data)
+                    component_paths[arm] = target
             for name in owned:
                 target = mu / name
                 target.parent.mkdir(parents=True, exist_ok=True)
@@ -231,7 +263,7 @@ def run_calibration(output, commit, *, pairs=3, local=False):
             golden = None
             queries = None
             for index, arm in enumerate(arms):
-                config['captureComponent'] = (fast.SOURCE if arm == 'original' else fast.TARGET).as_posix()
+                config['captureComponent'] = component_paths[arm].as_posix()
                 config_path.write_bytes(json.dumps(config).encode())
                 start = time.perf_counter()
                 process = subprocess.run([native.PHP, '-d', 'memory_limit=256M', '-d', 'allow_url_fopen=0', str(driver), str(config_path)],
@@ -289,8 +321,9 @@ def main():
     parser.add_argument('--source-commit', required=True)
     parser.add_argument('--pairs', type=int, default=3)
     parser.add_argument('--local-development', action='store_true')
+    parser.add_argument('--profile', choices=CAPTURE_PROFILES, default='raw-vs-bounded32')
     args = parser.parse_args()
-    report = run_calibration(args.output, args.source_commit, pairs=args.pairs, local=args.local_development)
+    report = run_calibration(args.output, args.source_commit, pairs=args.pairs, local=args.local_development, profile=args.profile)
     print(json.dumps({key: report[key] for key in ('status', 'sourceCommit', 'medianCaptureSeconds', 'fullRecoveryAccepted', 'hostingAccepted')}))
 
 

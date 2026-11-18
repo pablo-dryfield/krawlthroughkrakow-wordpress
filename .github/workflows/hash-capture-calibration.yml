@@ -2,7 +2,7 @@ name: Read-only Capture Calibration
 
 on:
   push:
-    branches: ['codex/local-protected-hash-candidate']
+    branches: ['codex/local-protected-hash-candidate', 'codex/local-linux-capture-buffer-profile']
     paths:
       - '.github/workflows/hash-capture-calibration.yml'
       - 'tools/calibrate_staging_capture.py'
@@ -34,10 +34,11 @@ jobs:
       - name: Verify candidate contracts and measure complete synthetic captures
         env:
           CAPTURE_SOURCE_COMMIT: ${{ github.sha }}
+          CAPTURE_PROFILE: ${{ github.ref_name == 'codex/local-linux-capture-buffer-profile' && 'bounded32-vs-bounded64' || 'raw-vs-bounded32' }}
         run: |
           php --version
           python -m unittest tools.tests.test_staging_state_fast_capture tools.tests.test_calibrate_staging_capture
-          python -m tools.calibrate_staging_capture --source-commit "$CAPTURE_SOURCE_COMMIT" --output docs/seo/fast-capture-local-2026-11-18/ubuntu-calibration
+          python -m tools.calibrate_staging_capture --source-commit "$CAPTURE_SOURCE_COMMIT" --profile "$CAPTURE_PROFILE" --output docs/seo/fast-capture-local-2026-11-18/ubuntu-calibration
       - name: Preserve complete synthetic observations
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
