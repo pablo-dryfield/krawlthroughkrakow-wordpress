@@ -30,6 +30,16 @@ def arguments():
 def frozen_factory(name):
     path = 'tools/' + name
     raw = (ROOT / path).read_bytes()
+    if name == 'full_private_engine_packet.py':
+        added = [
+            (b'from tools import full_private_recovery_hashing as recovery_hashing\n', b''),
+            (b"('raw','bounded-sha256','bounded-complete-sha256')", b"('raw','bounded-sha256')"),
+            (b"        if capture_profile=='bounded-complete-sha256':\n            if name=='STATE':body=recovery_hashing.capture_source(body)\n            elif name=='STREAM':body=recovery_hashing.render_stream(body)\n", b''),
+        ]
+        for current, previous in added:
+            if raw.count(current) != 1:
+                raise ValueError('Exact opt-in engine profile source inverse required')
+            raw = raw.replace(current, previous, 1)
     changes = [
         (b",capture_profile='raw'):", b'):'),
         (b"    if capture_profile not in ('raw','bounded-sha256'):raise ValueError('Explicit reviewed private capture profile required')\n", b''),
