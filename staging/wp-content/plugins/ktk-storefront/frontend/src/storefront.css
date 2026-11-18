@@ -5368,6 +5368,10 @@ a.ktk-hero-ticket:focus-visible {
 fieldset.ktk-cart-editor { min-width:0; border:0; margin:0; }
 fieldset.ktk-cart-contact-fields { min-width:0; border:0; margin:0; }
 
+#ktk-storefront-root .ktk-public-not-found h1 {
+  color: inherit;
+}
+
 .ktk-public-not-found .ktk-not-found__link {
   display: inline-flex;
   align-items: center;
