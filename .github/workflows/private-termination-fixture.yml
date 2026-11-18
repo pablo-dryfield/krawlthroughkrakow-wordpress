@@ -78,8 +78,8 @@ jobs:
           REVIEWED_HELPER_COMMIT: ${{ github.event.pull_request.head.sha || inputs.helper_commit }}
         run: |
           php --version
-          python -m unittest tools.tests.test_private_termination_diagnostics tools.tests.test_private_termination_fixture_support tools.tests.test_private_termination_checkpoint tools.tests.test_staging_state_fast_capture tools.tests.test_private_state_fast_census.PrivateFastCensusTests tools.tests.test_private_engine_cleanup_budget.CleanupBudgetPolicyTests tools.tests.test_private_preparation_fast_capture.PrivatePreparationCaptureCompilerTests
-          python tools/verify-private-termination-fixture.py --helper-commit "$REVIEWED_HELPER_COMMIT" --report docs/seo/private-engine-early-termination-2026-11-17/actual-inventory-ci.json --diagnostics --preparation-capture bounded-sha256
+          python -m unittest tools.tests.test_private_termination_diagnostics tools.tests.test_private_termination_fixture_support tools.tests.test_private_termination_checkpoint tools.tests.test_staging_state_fast_capture tools.tests.test_private_state_fast_census.PrivateFastCensusTests tools.tests.test_private_engine_cleanup_budget.CleanupBudgetPolicyTests tools.tests.test_private_preparation_fast_capture.PrivatePreparationCaptureCompilerTests tools.tests.test_full_private_recovery_hashing.CompleteHashNativeContracts tools.tests.test_full_private_recovery_hashing.RecoveryHashCompilerContracts
+          python tools/verify-private-termination-fixture.py --helper-commit "$REVIEWED_HELPER_COMMIT" --report docs/seo/private-engine-early-termination-2026-11-17/actual-inventory-ci.json --diagnostics --preparation-capture bounded-sha256 --preparation-hashing bounded-complete-sha256
       - name: Retain scoped report and independently reopened synthetic evidence
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

@@ -13,6 +13,7 @@ from tools import private_engine_termination_helper as compiler
 from tools import private_termination_fixture_support as support
 from tools import private_termination_diagnostics as diagnostics
 from tools import private_termination_checkpoint as partial_evidence
+from tools import full_private_recovery_hashing as recovery_hashing
 from tools.tests import test_private_engine_termination_helper as native
 from tools.tests import test_private_termination_fixture_support as observation_tests
 
@@ -38,7 +39,8 @@ def source_fingerprints():
                  'tools/private_termination_checkpoint.py','tools/tests/test_private_termination_checkpoint.py',
                  'tools/tests/test_private_engine_payload_cleanup.py','tools/tests/test_private_engine_cleanup_budget.py',
                  'tools/tests/test_staging_state_fast_capture.py','tools/tests/test_private_state_fast_census.py',
-                 'tools/tests/test_private_preparation_fast_capture.py'):
+                 'tools/tests/test_private_preparation_fast_capture.py',
+                 'tools/tests/test_full_private_recovery_hashing.py'):
         result[name]=support.digest(ROOT/name)
     return dict(sorted(result.items()))
 
@@ -49,7 +51,10 @@ def main(argv=None):
     parser.add_argument('--report',required=True)
     parser.add_argument('--diagnostics',action='store_true',help='Opt-in exactly reversible local profiling; adds overhead and is not an uninstrumented/hosted benchmark')
     parser.add_argument('--preparation-capture',choices=('raw','bounded-sha256'),default='raw',help='Explicit complete capture profile for synthetic preparation; raw default stays unchanged')
-    args=parser.parse_args(argv);destination,evidence=support.report_paths(ROOT,args.report)
+    parser.add_argument('--preparation-hashing',choices=('legacy','bounded-complete-sha256'),default='legacy',help='Explicit synthetic preparation-only measured64 capture and held complete-prefix hashing; legacy default stays unchanged')
+    args=parser.parse_args(argv)
+    require(args.preparation_hashing=='legacy' or args.preparation_capture=='bounded-sha256','bounded-preparation-capture-required-for-complete-hashing')
+    destination,evidence=support.report_paths(ROOT,args.report)
     report={'scope':'OFFLINE actual2074-public/4149-private native helper calibration; synthetic selected database; no hosting',
         'startedAt':datetime.now(timezone.utc).isoformat(),'helperSourceCommit':args.helper_commit,'applicationCommit':APP,
         'actualPublicFiles':2074,'actualPublicBytes':PUBLIC_BYTES,'expectedPrivateSeedFiles':4149,'expectedPrivateSeedBytes':PRIVATE_BYTES,
@@ -60,8 +65,9 @@ def main(argv=None):
         'fullHostTransactionAcceptance':False,'fullActualHelperRecoveryComplete':False}
     report.update(diagnosticMode=args.diagnostics,applicationCohortQualification='Current immutable local source candidates, not the currently hosted APP530 release',instrumentationQualification='Opt-in reversible local seams add overhead; inclusive spans overlap. Original production-like wire/errors and all runtime/expiry/work bounds remain unchanged.')
     report['preparationCaptureProfile']=args.preparation_capture
+    report['preparationHashingProfile']=args.preparation_hashing
     case=None;helper=None;calls=0;fingerprints={};owned={};sizes={};temporaries=[];status=1
-    partial_receipt=None;partial_failed=False
+    partial_receipt=None;partial_failed=False;generated_preparation={}
     public_source=ROOT/'staging/wp-content/mu-plugins';original_temp=tempfile.TemporaryDirectory
 
     def checkpoint(stage):
@@ -82,6 +88,7 @@ def main(argv=None):
 
     def source_check():
         for name,sha in fingerprints.items():require(support.digest(ROOT/name)==sha,'frozen-source-changed:'+name)
+        for path,sha in generated_preparation.items():require(support.digest(path)==sha,'generated-preparation-component-changed')
 
     def preserve_temporary(*a,**kw):
         protected=kw.get('prefix')=='ktk-production-state-fixture-'
@@ -131,7 +138,7 @@ def main(argv=None):
         if process.returncode!=exit_code or error_stderr:
             with zipfile.ZipFile(root/'failed-local-call.zip','x') as z:z.writestr('stdout',process.stdout);z.writestr('stderr',process.stderr)
             item['phpMemoryFailure']='Allowed memory size' in process.stderr;report['steps'].append(item);checkpoint('php-failed-no-replay');raise support.FixtureRefusal('php-process-failed')
-        if exit_code:report['steps'].append(item);return None
+        if exit_code:report['steps'].append(item);source_check();return None
         if kind=='new-helper':
             if not args.diagnostics:owned_fixture(root);item.update(support.retain_helper_reply(root,calls,process.stdout))
             report['activeCall']=item;checkpoint('new-helper-cli-reply-retained')
@@ -148,6 +155,7 @@ def main(argv=None):
             elif isinstance(body,dict):item['genericError']=body.get('error')
             if args.diagnostics:item['fixtureDiagnostics']=diagnostics.validate(value.get('localFixtureDiagnostics'))
         report['steps'].append(item);report.pop('activeCall',None);checkpoint('returned-'+kind+'-'+str(action))
+        source_check()  # Preserve raw replies/closed checkpoints before any post-call source refusal.
         print(json.dumps({'actualFixtureProgress':item}),flush=True)
         if kind=='new-helper' and item['seconds']>HTTP_BUDGET_SECONDS:
             report['localCallExceedsUnchangedHTTPBudget']=True
@@ -176,6 +184,17 @@ def main(argv=None):
             component=full.fast_capture.TARGET
             require(full.fast_capture.embedded(full.fast_capture.SOURCE.read_bytes())==component.read_bytes(),'complete-preparation-capture-derivative-required')
             self.cfg['captureComponent']=component.as_posix()
+        if args.preparation_hashing=='bounded-complete-sha256':
+            stream=self.root/'engine-stream.php';compiled=recovery_hashing.stream_source()
+            require(stream.is_file() and not stream.is_symlink() and not stream.is_junction() and stream.resolve().is_relative_to(self.root.resolve()) and stream.stat().st_nlink==1,'owned-single-link-preparation-stream-required')
+            require(stream.read_bytes()==recovery_hashing.restore_stream(compiled),'exact-original-owned-preparation-stream-required')
+            stream.write_bytes(compiled)
+            capture=self.root/'complete-hash-capture.php';require(not capture.exists() and not capture.is_symlink() and not capture.is_junction() and capture.parent.resolve()==self.root.resolve(),'fresh-owned-preparation-capture-required')
+            capture.write_bytes(recovery_hashing.capture_source());self.cfg['captureComponent']=capture.as_posix()
+            generated_preparation.update({stream:support.digest(stream),capture:support.digest(capture)})
+            report['generatedPreparationComponents']={str(path):sha for path,sha in generated_preparation.items()}
+            require(recovery_hashing.restore_capture(capture.read_bytes())==full.fast_capture.TARGET.read_bytes(),'complete-preparation-capture-inverse-required')
+            source_check()
         expected_dirs={p.as_posix() for name in owned for p in Path(name).parents if p.as_posix()!='.'}
         for p in sorted((self.mu/'ktk-code-pages-assets').rglob('*'),key=lambda p:len(p.parts),reverse=True):
             require(p.resolve().is_relative_to(self.root.resolve()),'owned-temp-removal-target-required');name=p.relative_to(self.mu).as_posix()

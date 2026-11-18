@@ -14,6 +14,7 @@ from tools import private_engine_readonly as readonly
 from tools import private_engine_termination_config as factory
 from tools import staging_state_fast_capture as fast_state
 from tools import private_state_fast_census as fast_census
+from tools import full_private_recovery_hashing as recovery_hashing
 
 ROOT=Path(__file__).resolve().parents[1]
 TEMPLATE=ROOT/'tools/private-engine-termination-staging-template.php'
@@ -33,7 +34,7 @@ PYTHON_SOURCES=(
     'private_engine_readonly.py','private_engine_termination_archive.py','private_engine_termination_authority.py',
     'private_engine_termination_binding.py','private_engine_termination_config.py','private_engine_termination_helper.py',
     'snapshot-staging-update-state.py','promote-code-pages-production.py',
-    'staging_state_fast_capture.py','private_state_fast_census.py',
+    'staging_state_fast_capture.py','private_state_fast_census.py','full_private_recovery_hashing.py',
 )
 CORE_SHA256='223b28dab84918a42a23e750a77dcf85a90ac49bcfb0ee2ec9bc7ceea60844fb'
 
@@ -67,8 +68,9 @@ def helper_source(value,old,**archive_bindings):
         if derived!=derivation.TARGET.read_bytes() or derivation.inverse(derived)!=raw:
             raise ValueError('Exact bounded complete-hash staging derivation required')
         bodies[part]=derived
+    bodies['STATE']=recovery_hashing.enlarge_capture(bodies['STATE'])
     bodies['ENGINE']=readonly.read_only_source(bodies['ENGINE'])
-    bodies['STREAM']=compiled.stream_source(bodies['STREAM'])
+    bodies['STREAM']=recovery_hashing.stream_source(bodies['STREAM'])
     for part,body in bodies.items():
         marker=('/* __KTK_PRIVATE_TERMINATION_'+part+'__ */').encode()
         if source.count(marker)!=1 or not body.startswith(b'<?php\n'):
