@@ -62,6 +62,7 @@ import {buildGuideTypeImageStyles} from './guide-type-image-styles.mjs';
 import {buildVenuePhoneTextStyles} from './venue-phone-text-styles.mjs';
 import {buildReviewedGuideTextStyles} from './reviewed-guide-text-styles.mjs';
 import {buildReviewedSiteTextStyles} from './reviewed-site-text-styles.mjs';
+import {buildPreservedReadingTextStyles} from './preserved-reading-text-styles.mjs';
 import {buildLegalMobileTextStyles} from './legal-mobile-text-styles.mjs';
 import {buildNoJsNavigation} from './nojs-navigation.mjs';
 import {buildCompactMenuFocusStyles} from './compact-menu-focus-styles.mjs';
@@ -445,6 +446,7 @@ try {
       await writeFile('docs/code-pages/full-migration/assets.json', JSON.stringify(Object.fromEntries(files), null, 2));
     } catch (error) { report.errors.push({ key: route.key, error: error.message }); console.error(`${route.key}: ${error.message}`); }
   }
+  if(!partial&&!report.errors.length&&!report.missing.length){await buildPreservedReadingTextStyles(path.join(assets,'runtime.css'));}
   if ((!report.errors.length && !report.missing.length) || partial) {
     const redirects = {};
     for (const alias of manifest.aliases) {
