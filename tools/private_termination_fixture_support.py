@@ -15,6 +15,41 @@ def digest(path):
     with Path(path).open('rb') as stream:return hashlib.file_digest(stream,'sha256').hexdigest()
 
 
+def _payload_directory(name):
+    return isinstance(name,str) and (name in ('source','target') or name.startswith(('source/','target/')))
+
+
+def cleanup_request_limit(payload,directories):
+    """Finite strict-descent bound, without assuming a time-limited request fills256 slots."""
+    require(isinstance(payload,dict) and len(payload)<=20000 and isinstance(directories,list) and len(directories)<=20000,'bounded-complete-cleanup-inventory-required')
+    require(all(isinstance(n,str) for n in payload) and all(isinstance(n,str) for n in directories) and len(set(directories))==len(directories),'exact-cleanup-names-required')
+    return len(payload)+sum(_payload_directory(n) for n in directories)+1
+
+
+def verify_cleanup_progress(before,result,payload):
+    """Check actual full states, immutable metadata and strict progress after every call."""
+    require(isinstance(before,dict) and isinstance(result,dict) and isinstance(payload,dict),'complete-cleanup-progress-required')
+    after=result.get('state');require(isinstance(after,dict),'complete-cleanup-after-state-required')
+    for state in (before,after):
+        require(state.get('scope')=='fenced-private-engine-readonly-inspection' and state.get('freshWitnessVerified') is True and state.get('signedClosureComplete') is True,'fresh-complete-cleanup-progress-state-required')
+        require(isinstance(state.get('files'),dict) and isinstance(state.get('directories'),list) and all(isinstance(n,str) for n in state['directories']) and len(set(state['directories']))==len(state['directories']),'complete-cleanup-progress-maps-required')
+        require(type(state.get('remainingPayloadFiles')) is int and state['remainingPayloadFiles']==len(set(state['files'])&set(payload)),'actual-cleanup-remaining-map-required')
+    for name in ('applicationWrites','databaseWrites','cachePurges','productionOperations','closureWrites'):
+        require(type(result.get(name)) is int and result[name]==0,'unexpected-cleanup-progress-write')
+    for name in ('payloadDeletes','payloadDirectoriesRemoved'):
+        require(type(result.get(name)) is int and 0<=result[name]<=256,'original-cleanup-count-bound-required')
+    require(type(result.get('cleanupStoppedForRuntimeBudget')) is bool,'typed-cleanup-progress-budget-required')
+    old_files,new_files=before['files'],after['files'];deleted=set(old_files)-set(new_files)
+    require(not (set(new_files)-set(old_files)) and deleted<=set(payload) and len(deleted)==result['payloadDeletes'],'only-counted-known-payload-may-disappear')
+    require(all(old_files[n]==new_files[n] for n in new_files),'every-retained-cleanup-byte-descriptor-must-remain')
+    old_dirs,new_dirs=set(before['directories']),set(after['directories']);removed=old_dirs-new_dirs
+    require(not (new_dirs-old_dirs) and all(_payload_directory(n) for n in removed) and len(removed)==result['payloadDirectoriesRemoved'],'only-counted-payload-directories-may-disappear')
+    old_work=before['remainingPayloadFiles']+sum(_payload_directory(n) for n in old_dirs)
+    new_work=after['remainingPayloadFiles']+sum(_payload_directory(n) for n in new_dirs)
+    require(old_work>new_work and old_work-new_work==result['payloadDeletes']+result['payloadDirectoriesRemoved'],'cleanup-must-make-verified-strict-progress-no-retry')
+    return {'beforeKnownObjects':old_work,'afterKnownObjects':new_work,'payloadDeletes':result['payloadDeletes'],'directoriesRemoved':result['payloadDirectoriesRemoved'],'cleanupStoppedForRuntimeBudget':result['cleanupStoppedForRuntimeBudget']}
+
+
 def helper_observation(value):
     """Diagnostic fields only; an initial census is not a remaining-payload view."""
     require(isinstance(value,dict) and isinstance(value.get('body'),dict),'typed-helper-observation-required')
@@ -26,7 +61,8 @@ def helper_observation(value):
         require(type(result.get(name)) is int and result[name]==0,'unexpected-helper-observation-write-counter')
     for name,maximum in (('payloadDeletes',256),('payloadDirectoriesRemoved',256),('closureWrites',1)):
         require(type(result.get(name)) is int and 0<=result[name]<=maximum,'invalid-helper-observation-counter')
-    metrics={'controllerOperation':operation,'inspectionScope':scope,'payloadDeletes':result['payloadDeletes'],'directoriesRemoved':result['payloadDirectoriesRemoved'],'closureWrites':result['closureWrites'],'runtime':body['runtime']}
+    require(type(result.get('cleanupStoppedForRuntimeBudget')) is bool and (operation=='cleanup' or not result['cleanupStoppedForRuntimeBudget']),'invalid-helper-cleanup-budget-flag')
+    metrics={'controllerOperation':operation,'inspectionScope':scope,'payloadDeletes':result['payloadDeletes'],'directoriesRemoved':result['payloadDirectoriesRemoved'],'closureWrites':result['closureWrites'],'cleanupStoppedForRuntimeBudget':result['cleanupStoppedForRuntimeBudget'],'runtime':body['runtime']}
     if scope=='private-engine-abandonment-readonly-inspection':
         require(operation=='inspect' and isinstance(state.get('phase'),str) and isinstance(state.get('files'),(dict,list)) and isinstance(state.get('validatedArtifacts'),(dict,list)),'invalid-initial-helper-observation')
         require((not isinstance(state['files'],list) or not state['files']) and (not isinstance(state['validatedArtifacts'],list) or not state['validatedArtifacts']),'invalid-initial-helper-census')
@@ -60,7 +96,7 @@ def report_paths(root,argument):
     require(not folder.is_symlink() and not folder.is_junction() and folder.resolve()==folder,'report-folder-outside-workspace')
     value=root/argument
     require(not value.is_symlink() and value.absolute().parent==folder and re.fullmatch(r'actual-inventory-[A-Za-z0-9-]+\.json',value.name) is not None,'fresh-scoped-report-path-required')
-    archive=value.with_suffix('.evidence.zip');require(not value.exists() and not archive.exists() and not archive.is_symlink(),'preserve-existing-report-or-evidence')
+    archive=value.with_suffix('.evidence.zip');partial=value.with_suffix('.checkpoint.zip');require(not value.exists() and not archive.exists() and not archive.is_symlink() and not partial.exists() and not partial.is_symlink(),'preserve-existing-report-or-evidence')
     folder.mkdir(parents=True,exist_ok=True);return value,archive
 
 

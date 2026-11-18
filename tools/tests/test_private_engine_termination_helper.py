@@ -92,14 +92,22 @@ class PrivateEngineTerminationHelperTests(unittest.TestCase):
 
     def test_compiler_pins_complete_sources_archives_and_exact_frozen_components(self):
         self.configure();value=self.inspection_packet();source=self.production_source
-        self.assertIn((helper.ROOT/'tools/staging-protected-state-core.php').read_bytes()[6:],source)
-        self.assertIn(readonly.read_only_source()[6:],source)
-        self.assertNotIn(b'final class KTK_Active_Content_Transaction',source)
-        self.assertNotIn(b'final class KTK_Full_Private_Engine_Controller',source)
-        self.assertNotIn(value['token'].encode(),source)
-        self.assertNotIn(b'__KTK_PRIVATE_TERMINATION_',source)
-        self.assertIn(b"add_action('muplugins_loaded',",source)
-        self.assertNotIn(b"add_action('wp_loaded',",source)
+        raw=(helper.ROOT/'tools/staging-protected-state-core.php').read_bytes()
+        bounded32=helper.fast_state.TARGET.read_bytes()
+        derived=helper.recovery_hashing.enlarge_capture(bounded32)
+        self.assertEqual(helper.recovery_hashing.restore_capture(derived),bounded32)
+        self.assertEqual(helper.fast_state.inverse(bounded32),raw)
+        self.assertTrue(derived[6:] in source,'Complete measured capture must be embedded')
+        census=helper.fast_census.TARGET.read_bytes()
+        self.assertEqual(helper.fast_census.inverse(census),(helper.ROOT/'tools/private-engine-fenced-inspection.php').read_bytes())
+        self.assertTrue(census[6:] in source,'Complete original census must remain embedded')
+        self.assertTrue(readonly.read_only_source()[6:] in source,'Read-only engine must remain embedded')
+        self.assertFalse(b'final class KTK_Active_Content_Transaction' in source,'Old engine class must remain absent')
+        self.assertFalse(b'final class KTK_Full_Private_Engine_Controller' in source,'Old controller class must remain absent')
+        self.assertFalse(value['token'].encode() in source,'Plain operation token must remain absent')
+        self.assertFalse(b'__KTK_PRIVATE_TERMINATION_' in source,'Every template marker must be resolved')
+        self.assertTrue(b"add_action('muplugins_loaded'," in source,'Early hook must remain')
+        self.assertFalse(b"add_action('wp_loaded'," in source,'Late hook must remain absent')
         for changes in ({'sourceHashes':{}},{'sourceHashes':{**value['sourceHashes'],'tools/private-engine-termination.php':'f'*64}},{'operation':'apply'}):
             bad={**value,**changes}
             with self.assertRaises(ValueError):helper.helper_source(bad,self.protocol.binding.old,**self.bindings(value))

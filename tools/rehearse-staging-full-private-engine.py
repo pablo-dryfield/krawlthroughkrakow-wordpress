@@ -26,7 +26,7 @@ from tools.content_update_staging_connection import BoundedStagingFTPS
 spec=importlib.util.spec_from_file_location('ktk_full_engine_seed_shared',ROOT/'tools/rehearse-staging-full-seeds.py');seed=importlib.util.module_from_spec(spec);spec.loader.exec_module(seed);shared=seed.shared
 FILES=('rehearse-staging-full-private-engine.py','rehearse-staging-full-private-engine.ps1','full_private_engine_client.py','full_private_engine_controller.py','full_private_engine_packet.py','full_private_engine_recovery.py','full_private_engine_transport.py','full_private_engine_disposal.py','full_private_engine_disposal_recovery.py','full_private_engine_disposal_transport.py','full_private_engine_exercise.py','full_private_engine_retained.py','full-private-engine-preparation.php','full-private-engine-staging-template.php','full-private-engine-disposal.php','full-private-engine-disposal-template.php')
 
-FILES=FILES+('full_private_engine_resume.py',)
+FILES=FILES+('full_private_engine_resume.py','full_private_recovery_hashing.py')
 
 class ControlledCallerStop(RuntimeError):
     """Explicit test stop at complete seeds or an inspected owned cut; helper cleanup still runs."""
@@ -49,7 +49,7 @@ def unchanged(owned,hashes):
 def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
     mode=parser.add_mutually_exclusive_group();mode.add_argument('--rehearse-staging',action='store_true');mode.add_argument('--inspect-recovery');mode.add_argument('--resume-engine-recovery');mode.add_argument('--resume-preparation-recovery')
-    parser.add_argument('--application-commit',required=True);parser.add_argument('--tooling-commit',required=True);parser.add_argument('--interrupt-original',action='store_true');parser.add_argument('--interrupt-engine',action='store_true');parser.add_argument('--stop-after-engine-cut',action='store_true');parser.add_argument('--stop-after-preparation',action='store_true');parser.add_argument('--report',required=True);args=parser.parse_args(argv)
+    parser.add_argument('--application-commit',required=True);parser.add_argument('--tooling-commit',required=True);parser.add_argument('--interrupt-original',action='store_true');parser.add_argument('--interrupt-engine',action='store_true');parser.add_argument('--stop-after-engine-cut',action='store_true');parser.add_argument('--stop-after-preparation',action='store_true');parser.add_argument('--capture-profile',choices=('bounded-sha256','bounded-complete-sha256'),default='bounded-sha256');parser.add_argument('--report',required=True);args=parser.parse_args(argv)
     recovery_id=args.inspect_recovery or args.resume_engine_recovery or args.resume_preparation_recovery
     if recovery_id and (not backup.identifier(recovery_id,32) or args.interrupt_original or args.interrupt_engine):raise ValueError('Exact explicit recovery identifier without new interruption flags required')
     if args.stop_after_engine_cut and not ((args.rehearse_staging and args.interrupt_engine) or args.resume_preparation_recovery):raise ValueError('Controlled engine stop requires a fresh interruption rehearsal or explicit preparation recovery')
@@ -57,12 +57,13 @@ def main(argv=None):
     candidate=Path(args.report);destination=candidate.resolve()
     if candidate.is_symlink() or not destination.is_relative_to(ROOT/'docs/seo') or destination.suffix!='.json' or destination.exists() or destination.is_symlink():raise ValueError('Fresh local SEO report required')
     owned,sizes,hashes=reviewed_source(args.application_commit,args.tooling_commit);report={'startedAt':datetime.now(timezone.utc).isoformat(),'scope':'explicit private-only full engine rehearsal; no public/production transaction','phase':'offline-validated','applicationCommit':args.application_commit,'toolingCommit':args.tooling_commit,'sourceHashes':hashes,'publicOwnedFiles':len(owned),'publicOwnedBytes':sum(sizes.values()),'publicApplicationWrites':0,'databaseWrites':0,'cachePurges':0,'productionOperations':0,'fullHostTransactionAcceptance':False,'quotaVerified':False,'steps':[],'uncertainRequests':[]}
+    report['captureProfile']=args.capture_profile
     def checkpoint(phase=None):
         if phase is not None:report['phase']=phase
         report['updatedAt']=datetime.now(timezone.utc).isoformat();destination.parent.mkdir(parents=True,exist_ok=True);destination.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     checkpoint()
     if not args.rehearse_staging and not recovery_id:print(json.dumps({'phase':report['phase'],'publicOwnedFiles':len(owned),'publicOwnedBytes':sum(sizes.values())}));return
-    common=shared.snapshot.load_common();connection=None;lease=None;cleanup_lease=None;wire=None;cleanup_wire=None;value=None;client=None;before=None
+    common=None;connection=None;lease=None;cleanup_lease=None;wire=None;cleanup_wire=None;value=None;client=None;before=None
     try:
         recovered_archives=None
         if recovery_id:
@@ -80,16 +81,21 @@ def main(argv=None):
                 report['savedRecoveryArchivesVerifiedBeforeConnection']=True;checkpoint('saved-recovery-archives-verified')
                 if args.resume_preparation_recovery:report['savedOriginalArchiveVerifiedBeforeConnection']=True
                 if args.stop_after_engine_cut and value['interruptEngine'] is not True:raise ValueError('Saved explicit engine interruption is required for a preparation-resume stop')
+            saved_name='ktk-transaction-rehearsal-'+value['transactionId']+'.php'
+            saved_source=compiler.helper_source(saved_name,value['token'],value['expires'],args.application_commit,owned,sizes,value['plan']['protectedStateSha256'],value['ownershipKey'],value['interruptOriginal'],value['interruptEngine'],capture_profile=args.capture_profile)
+            if backup.sha(saved_source)!=value['helperSha256']:raise ValueError('Exact encrypted engine helper compilation required')
+            report['captureProfileVerifiedBeforeConnection']=True
+        common=shared.snapshot.load_common()
         connection=BoundedStagingFTPS(common.common.store2.connect)
         if value is None:
             report['before']={};before=shared.capture(common,connection,owned,shared.source_hashes(),report['before'],lambda:checkpoint('snapshot-before'),source_compiler=early.snapshot_source);unchanged(owned,hashes)
-            tx,token,key=secrets.token_hex(16),secrets.token_urlsafe(32),secrets.token_hex(32);expires=int(time.time())+compiler.MAX_LIFETIME;plan,_,_=full.plan(tx,args.application_commit,owned,sizes,before['protectedStateSha256']);name='ktk-transaction-rehearsal-'+tx+'.php';source=compiler.helper_source(name,token,expires,args.application_commit,owned,sizes,plan['protectedStateSha256'],key,args.interrupt_original,args.interrupt_engine)
+            tx,token,key=secrets.token_hex(16),secrets.token_urlsafe(32),secrets.token_hex(32);expires=int(time.time())+compiler.MAX_LIFETIME;plan,_,_=full.plan(tx,args.application_commit,owned,sizes,before['protectedStateSha256']);name='ktk-transaction-rehearsal-'+tx+'.php';source=compiler.helper_source(name,token,expires,args.application_commit,owned,sizes,plan['protectedStateSha256'],key,args.interrupt_original,args.interrupt_engine,capture_profile=args.capture_profile)
             value={'schemaVersion':1,'scope':recovery.SCOPE,'entryProfile':'early','transactionId':tx,'applicationCommit':args.application_commit,'toolingCommit':args.tooling_commit,'helperSha256':backup.sha(source),'sourceHashes':hashes,'expires':expires,'token':token,'ownershipKey':key,'plan':plan,'publicOwned':owned,'publicSizes':sizes,'interruptOriginal':args.interrupt_original,'interruptEngine':args.interrupt_engine};report['encryptedRecoveryPacket']=recovery.FullPrivateEngineVault().save(value);checkpoint('encrypted-engine-packet-persisted')
         if args.resume_engine_recovery or args.resume_preparation_recovery:
             report['before']={};before=shared.capture(common,connection,owned,shared.source_hashes(),report['before'],lambda:checkpoint('recovery-snapshot-before'),source_compiler=early.snapshot_source)
             if any(before[k]!=recovered_archives[2][k] for k in shared.STATE_KEYS):raise ValueError('Fresh selected/public/protected state differs from archived recovery original; preserve without restoration')
             report['freshRecoveryBeforeMatchesArchivedOriginal']=True
-        tx=value['transactionId'];plan=value['plan'];_,_,overrides=full.plan(tx,args.application_commit,owned,sizes,plan['protectedStateSha256']);name='ktk-transaction-rehearsal-'+tx+'.php';source=compiler.helper_source(name,value['token'],value['expires'],args.application_commit,owned,sizes,plan['protectedStateSha256'],value['ownershipKey'],value['interruptOriginal'],value['interruptEngine'])
+        tx=value['transactionId'];plan=value['plan'];_,_,overrides=full.plan(tx,args.application_commit,owned,sizes,plan['protectedStateSha256']);name='ktk-transaction-rehearsal-'+tx+'.php';source=compiler.helper_source(name,value['token'],value['expires'],args.application_commit,owned,sizes,plan['protectedStateSha256'],value['ownershipKey'],value['interruptOriginal'],value['interruptEngine'],capture_profile=args.capture_profile)
         if backup.sha(source)!=value['helperSha256']:raise ValueError('Exact encrypted engine helper compilation required')
         report.update(transactionId=tx,helper=name,helperSha256=value['helperSha256'],expires=value['expires']);scope=shared.legacy.TemporaryHelperFTP(connection,name);lease=shared.HelperLease(common,connection,scope,source);unchanged(owned,hashes)
         if recovery_id:
