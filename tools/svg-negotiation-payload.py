@@ -57,6 +57,8 @@ def cache_policy(token: str) -> dict:
         'action_parameters': {
             'cache': True,
             'respect_strong_etags': True,
+            'browser_ttl': {'mode': 'respect_origin'},
+            'edge_ttl': {'mode': 'respect_origin'},
             'vary': {'default': {'action': 'bypass'}, 'headers': {'accept-encoding': {'action': 'passthrough'}}},
         },
     }

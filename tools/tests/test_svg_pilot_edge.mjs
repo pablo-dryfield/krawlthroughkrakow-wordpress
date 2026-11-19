@@ -65,6 +65,17 @@ test('dry-run validates actual cross-language policy without persisting any rule
   }
 });
 
+test('scoped browser and edge TTLs respect origin without any lifetime override', async () => {
+  assert.deepEqual(plan.edgeRule.action_parameters.browser_ttl, {mode: 'respect_origin'});
+  assert.deepEqual(plan.edgeRule.action_parameters.edge_ttl, {mode: 'respect_origin'});
+  for (const setting of ['browser_ttl', 'edge_ttl']) {
+    const bad = clone(plan); bad.edgeRule.action_parameters[setting] = {mode: 'override_origin', default: 14400};
+    const api = new API();
+    await assert.rejects(svgPilotEdge('validate', {plan: bad}, r => api.request(r), () => NOW));
+    assert.equal(api.calls.length, 0);
+  }
+});
+
 test('creation and cleanup remove only the owned rule, explicitly retaining empty shared metadata', async () => {
   const api = new API(), reply = await acquire(api);
   assert.equal(reply.safeToPublish, true); assert.equal(reply.lease.createdEntrypoint, true); assert.equal(reply.lease.retainedEmptyEntrypointApproved, true);

@@ -27,7 +27,7 @@ export async function svgPilotEdge(action, input, request, clock = () => Math.fl
     enabled: true,
     expression: '(http.host eq "krawlthroughkrakow.com" and http.request.method in {"GET" "HEAD"} and http.request.uri.path in {"' + prefix + 'regular.svg" "' + prefix + 'seasonal.svg"})',
     action: 'set_cache_settings',
-    action_parameters: { cache: true, respect_strong_etags: true, vary: { default: { action: 'bypass' }, headers: { 'accept-encoding': { action: 'passthrough' } } } },
+    action_parameters: { cache: true, respect_strong_etags: true, browser_ttl: {mode: 'respect_origin'}, edge_ttl: {mode: 'respect_origin'}, vary: { default: { action: 'bypass' }, headers: { 'accept-encoding': { action: 'passthrough' } } } },
     ref: 'ktk_svg_pilot_' + plan.token,
   };
   if (!same(plan.edgeRule, policy)) fail('Policy may match only the two exact nonce aliases');
