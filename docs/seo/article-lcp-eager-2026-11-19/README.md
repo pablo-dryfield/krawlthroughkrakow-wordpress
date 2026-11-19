@@ -1,5 +1,7 @@
 # Safety Guide first-image loading candidate
 
+Current19Nov: **Held after rejected staging canary; no accepted delivery.** PR124/source08 is frozen/draft. CI44466174012 is independently accepted, but every normal phone/desktop JS/noJS view adds two cancelled image attempts. Guarded rollback restores original9515/all2076owned/sevenDBtables/280protected exactly, scoped warm HTTP and allfourbaseline-identical screenshots pass. This Hen successor removes the failed Safety override and restores the original lazy body; it must not republish the rejected image change. All negative FCP evidence and the native guard incident remain in current-template-performance-2026-11-19/README.md. Historical preparation follows.
+
 The first visible photo on the Safety Guide is its observed largest contentful image. This candidate changes that image from native `loading="lazy"` to `loading="eager"`. Priority stays automatic. The generator requires the exact reviewed image, ALT and dimensions before applying the override. This follows the [web.dev guidance for LCP images](https://web.dev/articles/optimize-lcp).
 
 The original 1,080 × 675 JPEG, all responsive sources, sizes, ALT, dimensions, text and controls are preserved. The sole deployable delta is `ktk-code-pages-assets/content/post-krakow-safety-guide.html`. The definition, discovery data, runtime CSS/JavaScript and other 2,425 application files are byte-identical to main `56dc98f` / staged `9515c45`. No discovery publication is needed.

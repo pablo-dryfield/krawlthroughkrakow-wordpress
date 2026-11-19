@@ -1,6 +1,6 @@
 # Visible remaining batch list — 17 November 2026
 
-Current progress checkpoint (19 November 2026, revision 40): four batches remain: B03/B04/B07 in progress and B08 planned; B01/B02/B05/B06 meet original rules. All8IDs visible. B03 originaloffline2074/4149gate andcurrent6acodeCI gate2 accepted; H06auditedhostedgate3 mandatory/unaccepted. Expanded4153fullunproved/noautomaticnewjob. Current12trace postNYE review verified with allvariance/CLSdifferences and no causalfieldclaim; definite Safetyfirstimage eagerloadingfix next. Counts71website75records/all40originalcriteria-states/C08 unchanged; owner packet draft.
+Current progress checkpoint (19 November 2026, revision 41): four batches remain: B03/B04/B07 in progress and B08 planned; B01/B02/B05/B06 meet original rules. All8 IDs remain visible. B03 originaloffline/currentcodeCI gates accepted, H06 auditedhostedgate mandatory/unaccepted. Image canary rejected and exact9515rollback verified; no delivery. Owner-approved fiveHeninteriors+GroupTransport pass local source/build/browser checks, currentCI/staging pending. Counts71website75records/all40originalcriteria-states/C08 unchanged.
 
 The owner could see active deliveries in the HTML roadmap but could not see a finite list of the work still planned. The Overview now starts with all eight numbered implementation batches: two in verification and six planned. Each title, status and scope is visible without expanding delivery history. Native details expose the next step, completion criteria, related workstreams and dependencies.
 

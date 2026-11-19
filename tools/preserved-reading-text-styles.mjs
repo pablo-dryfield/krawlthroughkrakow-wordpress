@@ -30,7 +30,7 @@ export const preservedReadingTargets=Object.freeze([
     "selector": ":is(.et_pb_text_0,.et_pb_text_1,.et_pb_text_2,.et_pb_text_3,.et_pb_text_4,.et_pb_text_5,.et_pb_text_6) .et_pb_text_inner",
     "roots": 7,
     "align": "preserve",
-    "bodySHA256": "622a09f9ab93ead1c151dde8dd21981955dcffd6080a7190764770f9ddac32e5"
+    "bodySHA256": "913877c386c36dfc0ca6898b737a0ae3258bcf1beffa28213c2136b04d0552f4"
   },
   {
     "key": "other-tours",

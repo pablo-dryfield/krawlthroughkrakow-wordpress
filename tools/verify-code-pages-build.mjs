@@ -20,6 +20,7 @@ import {loadContactDetails,reviseContactDetails} from './contact-details-editori
 import {loadEstablishedNyeEditorial,reviseEstablishedNyeEditorial} from './established-nye-editorial.mjs';
 import {loadGroupPlanningEditorial,reviseGroupPlanningEditorial} from './group-planning-editorial.mjs';
 import {loadGroupActivitiesEditorial,reviseGroupActivitiesEditorial} from './group-activities-editorial.mjs';
+import {loadHenActivityEnquiries,reviseHenActivityEnquiries} from './hen-activity-enquiries.mjs';
 import {loadStagActivityClarity,reviseStagActivityClarity} from './stag-activity-clarity.mjs';
 import {loadStagCostumeEditorial,reviseStagCostumeEditorial} from './stag-costume-editorial.mjs';
 import {loadPracticalGuidesEditorial,revisePracticalGuidesEditorial} from './practical-guides-editorial.mjs';
@@ -66,6 +67,7 @@ const contactDetails=await loadContactDetails();
 const establishedNye=await loadEstablishedNyeEditorial();
 const groupPlanning=await loadGroupPlanningEditorial();
 const groupActivities=await loadGroupActivitiesEditorial();
+const henActivityEnquiries=await loadHenActivityEnquiries();
 const stagActivityClarity=await loadStagActivityClarity();
 const stagCostume=await loadStagCostumeEditorial();
 const practicalGuides=await loadPracticalGuidesEditorial();
@@ -164,6 +166,7 @@ async function facts(html,revision){
   await page.evaluate(reviseCategoryNavigationSourceReference,{key:revision.key,revision:categoryNavigation.find(r=>r.key===revision.key)});
   await page.evaluate(reviseHomepageAliasExcerpts,{key:revision.key,revision:homepageAliasExcerpts.find(r=>r.key===revision.key),sourceReference:true});
   await page.evaluate(reviseSecondaryNyeEditorial,{key:revision.key,revision:secondaryNye,sourceReference:true});
+  await page.evaluate(reviseHenActivityEnquiries,{key:revision.key,revision:henActivityEnquiries});
  }
  return page.evaluate(()=>{const root=document.querySelector('#main-content');root.querySelectorAll('script,style,noscript,.mejs-controls,.mejs-layers,video a,[data-single-product-id],[data-ktk-booking-product]').forEach(e=>e.remove());return {text:root.textContent.replace(/\s+/g,' ').trim(),missingAlt:root.querySelectorAll('img:not([alt])').length,sections:root.querySelectorAll('.et_pb_section').length,headings:[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(e=>({tag:e.tagName,text:e.textContent.trim()})),primary:root.querySelectorAll('h1').length,forms:root.querySelectorAll('form.et_pb_contact_form,form.wpcf7-form').length,scripts:root.querySelectorAll('script').length,handlers:[...root.querySelectorAll('*')].flatMap(e=>[...e.attributes].filter(a=>/^on/i.test(a.name)).map(a=>a.name))};});
 }
