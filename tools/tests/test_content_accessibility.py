@@ -15,11 +15,16 @@ def luminance(color):
 class ContentAccessibilityTests(unittest.TestCase):
     def test_shared_style_blocks_are_exact_and_unique(self):
         source = (ROOT / 'tools/content-accessibility.css').read_text().strip()
-        for name in ('ktk-homepage-assets/parity-runtime.css', 'ktk-code-pages-assets/runtime.css'):
+        guide = (ROOT / 'tools/halloween-neutral-guide.css').read_text().strip()
+        expected_styles = {
+            'ktk-homepage-assets/parity-runtime.css': source,
+            'ktk-code-pages-assets/runtime.css': source + '\n' + guide,
+        }
+        for name, expected in expected_styles.items():
             css = (ROOT / 'staging/wp-content/mu-plugins' / name).read_text()
             self.assertEqual(css.count('/* BEGIN shared content accessibility */'), 1)
             block = css.split('/* BEGIN shared content accessibility */')[1]
-            self.assertEqual(block.split('/* END shared content accessibility */')[0].strip(), source)
+            self.assertEqual(block.split('/* END shared content accessibility */')[0].strip(), expected, name)
             self.assertFalse(block.split('/* END shared content accessibility */')[1].strip())
 
     def test_reviewed_small_text_colors_exceed_required_contrast(self):

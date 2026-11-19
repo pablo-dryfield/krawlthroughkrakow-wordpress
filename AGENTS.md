@@ -1,5 +1,9 @@
 # Krawl Through Krakow Storefront Context
 
+## This worktree: exact shared-style test correction
+
+Successor to immutable D138 neutral-guide source after CI44546785630 failed exactly one Python shared-block expectation. All3925 source bytes are reconstructed before edits. Change only this role note and tools/tests/test_content_accessibility.py to expect the exact canonical neutral-guide CSS on code pages, while homepage/default styles, uniqueness and final-block guards remain exact. All2466 application files, owner-approved copy, reviewed local evidence,104 recovery inputs, workflow caps and hosting state remain byte-identical to D138. Keep the original D138 checkout and raw failure immutable. Use the existing PR131 with a reviewed fast-forward successor; no unchanged rerun, new native/full/calibration job or hosting action. Source CI and exact-current merge verification remain required before ordinary guarded staging publication.
+
 ## This worktree: approved neutral full Halloween guide
 
 Start from exact current main841015982680d87f70fca9feafc0b6e30b9f8283/tree7765024, identical to accepted delivery75 sourceDe305. All3918 Git/local/reconstructed preedit source bytes are verified from archive3727e098 plus full03ec(two archives), not a hosting backup. This role is the first tracked edit. Delivery75/sourceCI44528706266/base-main44527183725 are independently accepted; its application-main44533926002 is still pending at preparation. Preserve the frozen De305 checkout. Ordinary staging publication requires exact-current source CI and accepted base-main evidence; no duplicate CI dispatch on observation timeouts.
