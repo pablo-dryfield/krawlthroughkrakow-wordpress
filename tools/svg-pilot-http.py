@@ -147,7 +147,7 @@ def observe(plan: dict, stem: str, field: str | None, coding: str | None, method
     return row
 
 
-CASES = [(None, 'identity'), ('', 'identity'), ('br', 'br'), ('gzip', 'gzip'), ('identity', 'identity'), ('br;q=0,gzip;q=0,identity;q=0', None), ('br;q=0.1,gzip;q=1,identity;q=0', 'gzip'), ('br;q=1,gzip;q=0.1,identity;q=0', 'br'), ('*;q=0,identity;q=1', 'identity'), ('br;q=0,*;q=0.3', 'gzip')]
+CASES = [(None, 'identity'), ('', 'identity'), ('br', 'br'), ('gzip', 'gzip'), ('identity', 'identity'), ('br;q=0,gzip;q=0,identity;q=0', None), ('br;q=0.1,gzip;q=1,identity;q=0', 'gzip'), ('br;q=1,gzip;q=0.1,identity;q=0', 'br'), ('*;q=0,identity;q=1', 'identity'), ('br;q=0,*;q=0.3', 'identity')]
 
 
 def matrix(plan: dict, send=request, record=lambda row: None, wait=time.sleep) -> dict:

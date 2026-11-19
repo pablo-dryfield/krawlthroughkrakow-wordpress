@@ -34,7 +34,11 @@ function ktk_svg_probe_quality(?string $field): ?string {
     if (!$weights) { return 'identity'; }
     $best = null; $highest = 0;
     foreach (['br', 'gzip'] as $coding) {
-        $q = $weights[$coding] ?? $weights['*'] ?? 0;
+        // This delivery path offers precompressed variants only for explicitly
+        // advertised codings. Its intermediary decodes wildcard-only gzip and
+        // weakens the validator. Prefer identity for such requests; if identity
+        // is excluded and no explicit coding is supported, return uncached406.
+        $q = $weights[$coding] ?? 0;
         if ($q > $highest) { $best = $coding; $highest = $q; }
     }
     // An explicit identity preference participates in ordering. Otherwise it is
