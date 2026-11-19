@@ -65,6 +65,8 @@
 **/*.zip
 **/*.tar
 **/*.gz
+!/staging/wp-content/mu-plugins/ktk-homepage-assets/hero-statue-regular.svg.gz
+!/staging/wp-content/mu-plugins/ktk-homepage-assets/hero-statue-seasonal.svg.gz
 **/*.sql
 **/*.sqlite*
 

@@ -8,7 +8,9 @@ $manifest = [];
 /* END compiled SVG probe manifest */
 
 function ktk_svg_probe_quality(?string $field): ?string {
-    if ($field === null) { return 'br'; }
+    // Identity is a valid deterministic choice when the visitor sends no field.
+    // Avoid choosing a coding an intermediary may decode for that visitor.
+    if ($field === null) { return 'identity'; }
     if (strlen($field) > 1024 || preg_match('/[^\x09\x20-\x7e]/', $field)) {
         throw new InvalidArgumentException('Invalid encoding field');
     }
@@ -32,7 +34,11 @@ function ktk_svg_probe_quality(?string $field): ?string {
     if (!$weights) { return 'identity'; }
     $best = null; $highest = 0;
     foreach (['br', 'gzip'] as $coding) {
-        $q = $weights[$coding] ?? $weights['*'] ?? 0;
+        // This delivery path offers precompressed variants only for explicitly
+        // advertised codings. Its intermediary decodes wildcard-only gzip and
+        // weakens the validator. Prefer identity for such requests; if identity
+        // is excluded and no explicit coding is supported, return uncached406.
+        $q = $weights[$coding] ?? 0;
         if ($q > $highest) { $best = $coding; $highest = $q; }
     }
     // An explicit identity preference participates in ordering. Otherwise it is
@@ -69,6 +75,8 @@ function ktk_svg_probe_http_date(string $field): ?int {
 function ktk_svg_probe_error(int $status, string $message, bool $head): never {
     http_response_code($status);
     header_remove('Content-Encoding'); header_remove('ETag'); header_remove('Last-Modified');
+    header_remove('X-KTK-Representation-ETag');
+    header_remove('X-KTK-Representation-Encoding');
     header('Cache-Control: no-store, max-age=0, no-transform');
     header('Content-Type: text/plain; charset=utf-8');
     header('Content-Length: ' . strlen($message));
@@ -121,6 +129,9 @@ try {
     header('Cache-Control: ' . ($manifest['cacheMode'] === 'public' ? 'public, max-age=' . min(60, $manifest['expiresAt'] - time()) . ', no-transform' : 'no-store, max-age=0, no-transform'));
     header('Content-Type: image/svg+xml');
     header('ETag: "' . $digest . '"');
+    // A nonce-local response rule can restore this exact validator after an
+    // inherited Header unset ETag, without changing the parent configuration.
+    header('X-KTK-Representation-ETag: "' . $digest . '"');
     header('Last-Modified: ' . gmdate('D, d M Y H:i:s', $modified) . ' GMT');
     header('Accept-Ranges: none');
     if (isset($_SERVER['HTTP_IF_NONE_MATCH'])) {
@@ -130,7 +141,12 @@ try {
         $notModified = $date !== null && $modified <= $date;
     }
     if ($notModified) { http_response_code(304); header_remove('Content-Length'); exit; }
-    if ($coding !== 'identity') { header('Content-Encoding: ' . $coding); }
+    if ($coding !== 'identity') {
+        header('Content-Encoding: ' . $coding);
+        // LiteSpeed can omit Content-Encoding on HEAD or wildcard requests.
+        // The nonce-local late response rule restores the selected coding.
+        header('X-KTK-Representation-Encoding: ' . $coding);
+    }
     header('Content-Length: ' . strlen($body));
     if (!$head) { echo $body; }
 } catch (Throwable $e) {

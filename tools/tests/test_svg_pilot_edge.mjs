@@ -24,7 +24,9 @@ class API {
     if (method === 'GET' && path === ROOT) return {success: true, result: {id: ROOT.slice(7), name: 'krawlthroughkrakow.com', status: 'active', account: {id: 'ddfd57890e03c243c120f480d65f15de'}}};
     if (method === 'GET' && path === EP) {
       if (!this.ep) throw Error('HTTP 404 entrypoint absent');
-      return {success: true, result: clone(this.ep)};
+      const result = clone(this.ep);
+      if (this.omitEmptyRules && Array.isArray(result.rules) && result.rules.length === 0) delete result.rules;
+      return {success: true, result};
     }
     if (method === 'POST' && (path === ROOT + '/rulesets' || path === ROOT + '/rulesets/' + 'a'.repeat(32) + '/rules')) {
       if (query?.dry_run === true) { this.afterValidation?.(); return {success: true, result: null}; }
@@ -63,6 +65,17 @@ test('dry-run validates actual cross-language policy without persisting any rule
   }
 });
 
+test('scoped browser and edge TTLs respect origin without any lifetime override', async () => {
+  assert.deepEqual(plan.edgeRule.action_parameters.browser_ttl, {mode: 'respect_origin'});
+  assert.deepEqual(plan.edgeRule.action_parameters.edge_ttl, {mode: 'respect_origin'});
+  for (const setting of ['browser_ttl', 'edge_ttl']) {
+    const bad = clone(plan); bad.edgeRule.action_parameters[setting] = {mode: 'override_origin', default: 14400};
+    const api = new API();
+    await assert.rejects(svgPilotEdge('validate', {plan: bad}, r => api.request(r), () => NOW));
+    assert.equal(api.calls.length, 0);
+  }
+});
+
 test('creation and cleanup remove only the owned rule, explicitly retaining empty shared metadata', async () => {
   const api = new API(), reply = await acquire(api);
   assert.equal(reply.safeToPublish, true); assert.equal(reply.lease.createdEntrypoint, true); assert.equal(reply.lease.retainedEmptyEntrypointApproved, true);
@@ -76,6 +89,29 @@ test('existing rules and metadata remain exact across append and owned-rule remo
   assert.equal(reply.safeToPublish, true); assert.deepEqual(api.ep.rules[0], before.rules[0]); assert.equal(reply.lease.createdEntrypoint, false);
   const done = await svgPilotEdge('release', {plan, lease: reply.lease}, r => api.request(r), () => NOW);
   assert.equal(done.foreignRulesUnchanged, true); assert.deepEqual(api.ep.rules, before.rules); assert.equal(api.ep.name, before.name);
+});
+
+test('actual empty-entrypoint omission supports cleanup, purge and a later owned append', async () => {
+  const api = new API(); api.omitEmptyRules = true;
+  const reply = await acquire(api);
+  const done = await svgPilotEdge('release', {plan, lease: reply.lease}, r => api.request(r), () => NOW);
+  assert.equal(done.ownRuleAbsent, true); assert.equal(done.createdEmptyEntrypointRetained, true);
+  assert.equal(done.foreignRulesUnchanged, true);
+  const inspected = await svgPilotEdge('inspect', {plan}, r => api.request(r), () => NOW);
+  assert.deepEqual(inspected.before.rules, []);
+  const proof = {...reply.lease, verifiedAt: NOW, state: 'namespace-absence-verified'};
+  assert.equal((await svgPilotEdge('purge', {plan, lease: reply.lease, namespaceProof: proof, originalApproval: approval()}, r => api.request(r), () => NOW)).state, 'owned-prefix-purge-accepted-not-cache-proof');
+  const next = await acquire(api, {expectedBefore: inspected.before});
+  assert.equal(next.safeToPublish, true); assert.equal(next.lease.createdEntrypoint, false);
+  assert.equal(api.calls.filter(r => r.method === 'DELETE').length, 1);
+});
+
+test('present malformed rules fields still fail closed before any mutation', async () => {
+  for (const rules of [null, false, {}, 'omitted']) {
+    const api = new API({...initial(), rules});
+    await assert.rejects(acquire(api), /Bounded zone cache entrypoint required/);
+    assert.equal(api.mutations().length, 0);
+  }
 });
 
 test('missing approval, failed CI, stale proofs and unapproved creation cannot persist anything', async () => {

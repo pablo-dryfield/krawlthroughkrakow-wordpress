@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "scope": "ktk-durable-staging-svg-assets",
+  "zoneId": "4303f6a45f815c5570bb4bba5f86a423",
+  "rule": {
+    "action": "set_cache_settings",
+    "action_parameters": {
+      "cache": true,
+      "respect_strong_etags": true,
+      "browser_ttl": { "mode": "respect_origin" },
+      "edge_ttl": { "mode": "respect_origin" },
+      "vary": {
+        "default": { "action": "bypass" },
+        "headers": { "accept-encoding": { "action": "passthrough" } }
+      }
+    },
+    "description": "KTK staging original SVG representation delivery",
+    "enabled": true,
+    "expression": "(http.host eq \"krawlthroughkrakow.com\" and http.request.method in {\"GET\" \"HEAD\"} and http.request.uri.path in {\"/staging/wp-content/mu-plugins/ktk-homepage-assets/hero-statue-regular.svg\" \"/staging/wp-content/mu-plugins/ktk-homepage-assets/hero-statue-seasonal.svg\"})",
+    "ref": "ktk_staging_svg_delivery_v1"
+  }
+}

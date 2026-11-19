@@ -65,6 +65,25 @@ class Transport:
 
 
 class ObserverTests(unittest.TestCase):
+    def test_empty_field_omission_is_reported_and_only_identity_remains_acceptable(self):
+        def omitted(response):
+            fields = response['headers']
+            fields.replace_header('X-KTK-Accept-Encoding-Present', '0')
+            fields.replace_header('X-KTK-Accept-Encoding-SHA256', core.sha(b'absent\0'))
+        send = Transport(); send.change = omitted
+        row = http.observe(PLAN, 'regular', '', 'identity', send=send)
+        self.assertFalse(row['originFieldExact'])
+        self.assertTrue(row['emptyEncodingFieldOmittedByTransport'])
+        self.assertTrue(row['originalExact'])
+        # An omitted nonempty field, compressed empty response, wrong digest,
+        # wrong identity body or wrong validator never receives this exception.
+        with self.assertRaises(ValueError): http.observe(PLAN, 'regular', 'br', 'br', send=send)
+        for fault in [lambda v: v['headers'].__setitem__('Content-Encoding', 'br'), lambda v: v['headers'].replace_header('X-KTK-Accept-Encoding-SHA256', '0' * 64), lambda v: v.update(body=b'changed'), lambda v: v['headers'].replace_header('ETag', '"wrong"')]:
+            send = Transport()
+            def changed(response, fault=fault): omitted(response); fault(response)
+            send.change = changed
+            with self.assertRaises(ValueError): http.observe(PLAN, 'regular', '', 'identity', send=send)
+
     def test_complete_no_store_matrix_preserves_absent_empty_and_quality(self):
         send = Transport(); report = http.matrix(PLAN, send, wait=lambda _: self.fail('no waiting needed'))
         self.assertEqual(report['requests'], 38)

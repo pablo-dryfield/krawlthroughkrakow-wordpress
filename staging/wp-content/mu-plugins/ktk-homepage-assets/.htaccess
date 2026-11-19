@@ -1,0 +1,21 @@
+# Only these two staging SVGs use the standalone asset dispatcher.
+<FilesMatch "^(hero-statue-(regular|seasonal)[.]svg|svg-delivery[.]php)$">
+<IfModule mod_env.c>
+SetEnv no-gzip 1
+SetEnv no-brotli 1
+</IfModule>
+<IfModule mod_expires.c>
+ExpiresActive Off
+</IfModule>
+<IfModule mod_headers.c>
+Header always set ETag "expr=%{resp:X-KTK-Representation-ETag}" "expr=-n resp('X-KTK-Representation-ETag')"
+Header always unset X-KTK-Representation-ETag
+Header always set Content-Encoding "expr=%{resp:X-KTK-Representation-Encoding}" "expr=-n resp('X-KTK-Representation-Encoding')"
+Header always unset X-KTK-Representation-Encoding
+</IfModule>
+</FilesMatch>
+<FilesMatch "^hero-statue-(regular|seasonal)[.]svg[.](br|gz)$">
+Require all denied
+</FilesMatch>
+RewriteEngine On
+RewriteRule ^hero-statue-(regular|seasonal)[.]svg$ svg-delivery.php?asset=$1 [L,QSD]

@@ -1,5 +1,13 @@
 # Recovery cleanup: verified profile, incomplete recovery
 
+## Verified B04 SVG delivery - revision49
+
+Delivery77/source8edcd6e meets B04's unchanged finite implementation rule. The two original staging SVG URLs pass58 actual HTTP checks, six coldMISS/six first warmHIT, eight normal phone/desktop JS-noJS contexts and unchanged decoded-vector goldens. All2466 prior app files stay exact; six new public delivery files are the only app additions. Combined Brotli body bytes398320to357818 (10.17%less). Matched mobile homepage medianLCP4872to4672ms; unchanged NYEcontrol6124to6164ms is slower. All samples, local activity/noise and older failed trials are retained; no causal, field or INP claim. [Full delivery, source/backup, retained failures and limits](../staging-svg-assets-2026-11-19/README.md).
+
+The final finite raw window through21:24:54.825770UTC retains allseven complete captured tables,2116owned payloads and280original protected files; precisely six declared new public assets bring the protected map to286. Allthree raw archives/temporary-helper removals are verified. The owner's B04 rule/window/empty-entrypoint decision is resolved; alltemporary pilots are cleaned and the exact-two-original-staging-path durable rule is retained. Separate B03 actual host quota/PHP actor/private rehearsal coordination/retention remains unresolved. No production/commerce-Ecwid/forms/functional-consent/Omni/native Windows action occurs.
+
+Both roadmaps49 show77 website deliveries/81records and three remaining batches: B03/B07 inprogress and B08planned under its unchanged dependencies. All8IDs/original rules,40whole-workstream states/criteria and C08 counts remain. D01/D02 field/wider manual requirements remain under H02/H03/H07. The single consolidated PR must pass its actual current-source CI before merge; consult its external checks and checkpoint. Accepted base59CI and local staging tests remain separately qualified. Earlier sections below are dated history, including superseded SVG permission and pending labels.
+
 ## Verified neutral Halloween guide - revision48
 
 Delivery76 replaces old prices and unconfirmed event promises with the owner-approved neutral guide. The original10October2023 publication date, eight image files, historical fragment destinations and native video controls are retained. Three archive cards and the matching Blog teaser now follow the guide. Source ad23571/tree54944 passes standard CI44553853680; the exact tree is merged as3f725f9. [Post-merge CI](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/44560683709) is recorded separately from the staging delivery.

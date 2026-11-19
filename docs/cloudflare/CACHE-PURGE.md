@@ -1,5 +1,11 @@
 # Cloudflare Cache Purge Access
 
+## Current B04 scoped rule -19November2026
+
+The owner explicitly delegated the best B04 staging implementation, including the two-path temporary rule, exclusive test window and creation/retention of the shared cache entrypoint. Delivery77 is verified; alltemporary namespaces/rules are cleaned. Shared entrypoint `e423969bf0404c11a4b3627ba6aab67a` is deliberately retained. Current own durable rule `fef9645bb76c4a0089c10efe71a9a7d0` /ref `ktk_staging_svg_delivery_v1` covers only GET/HEAD on `/staging/wp-content/mu-plugins/ktk-homepage-assets/hero-statue-regular.svg` and `hero-statue-seasonal.svg`. It preserves strong validators/encoding variants and respects origin browser/edge TTL. Its declarative policy is `tools/config/staging-svg-cache-rule.json`; [verified scope and rollback](../seo/staging-svg-assets-2026-11-19/README.md) bind the six new staging files and actual account receipts.
+
+This is a resolved B04 exception to the earlier purge-only boundary below, not authorization for global/production/security/DNS/account/provider changes. Retain this verified own rule on success. Never delete the shared entrypoint or alter unknown/foreign rules. If rollback is needed, remove only the exact owned rule, retain the entrypoint and purge only the two known prefixes after disabling the exact known-created child configuration. Separate B03 private recovery hosting quota/actor/window/retention remains unresolved. No expired pilot authority may be extended or replayed.
+
 ## Established Connection
 
 On 13 November 2026 the owner reauthorized the existing **`cloudflare` MCP agent**
