@@ -1,6 +1,15 @@
-# Europe article presentation — locally verified candidate
+# Europe article presentation - staged source verified
 
-Current18 November verification: the website component described below is now present in staged38991/2941020, with accepted exact-source standard CI and scoped origin/normal/warmed checks recorded in the [current evidence note](../cleanup-runtime-diagnostics-2026-11-18/README.md). Older local/unpublished/running statements below describe their original phase. The [independent website integration](../verified-website-integration-2026-11-18/README.md) carries identical application bytes and still needs its own source CI/merge; it does not certify full recovery, the failed provider/raw-state guards, native/AT/device checks or production.
+## Current reconciliation -19November2026
+
+The Europe presentation fix is present in the accepted staging capture for delivery76, ending2026-11-19T16:12:56.567446+00:00. Its deployed body hash is04337ffddb4333e0e6f8bf6b69f2c91cdb9892667e7f560f1ecc0225294b30c8, exactly matching sourcead23571. The body carries2026-11-17.europe-header-1, one original H1, six H2 topics, no H3 topics and two retained photo elements. The old pending clause in C08 is corrected in both roadmaps. This reconciles an existing fix; it creates no website delivery, factual review or batch completion and changes no application file.
+
+The earlier candidate tests and images below keep their dated local scope. This source/deployed-map comparison is not a new Europe visual, native-device, human-accessibility, field-performance or whole-site acceptance. C08 stays in progress with53 substantial revisions,2 targeted changes,0 awaiting substantive review and1 specialist/medical hold. The website total stays76 with80 records and four batches remaining. Application main44560683709 is independently accepted; documentation source/main checks remain required before final GitHub closure.
+
+## Dated preparation history -17November2026
+
+The following pending/local statements describe the original candidate and are superseded by the current source/deployed-map reconciliation above.
+
 
 The article's captured inner title, byline and photograph repeat its existing outer header. This B05/D03/T04 change removes only that1159-character duplicate module, promotes the six existing topic headings from H3 to H2 and adds a small phone inset where the fixed booking tab covered header letters. It is prepared locally, not delivered on staging. All70 bounded website deliveries,74 delivery records,40 workstream states and C08 counts remain unchanged. B05 starts; six of the original eight batches remain.
 
