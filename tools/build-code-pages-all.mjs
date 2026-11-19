@@ -408,6 +408,14 @@ try {
       const eventPromotion=await page.evaluate(prepareNyePromotion,{key:route.key,campaignFacts});
       contentRevisions.push(...await page.evaluate(reviseSecondaryNyeEditorial,{key:route.key,revision:secondaryNye}));
       if(contentRevisions.length||bookingRevisions.length)report.revisions[route.key]={content:contentRevisions,bookings:bookingRevisions};
+      if(route.key==='post-krakow-safety-guide'){
+        contentRevisions.push(await page.evaluate(() => {
+          const images=[...document.querySelectorAll('#main-content img')].filter(image=>image.getAttribute('src')==='__KTK_PAGE_ASSETS__media/6bedcadfd8a4-07rys9-iekc1684325057-1080x675.jpg');
+          if(images.length!==1||images[0].getAttribute('loading')!=='lazy'||images[0].getAttribute('width')!=='1080'||images[0].getAttribute('height')!=='675'||images[0].getAttribute('alt')!=='Kraków Safety Guide'||images[0].hasAttribute('fetchpriority')||images[0].closest('form,iframe,[data-single-product-id]'))throw new Error('Exact reviewed first Safety Guide LCP image required');
+          images[0].loading='eager';
+          return {type:'eager-featured-image',key:'post-krakow-safety-guide',file:'media/6bedcadfd8a4-07rys9-iekc1684325057-1080x675.jpg'};
+        }));
+      }
       const schemaFacts=await page.evaluate(codePageSchemaFacts);
       const title=codePageTitle(route.route,capture.title),description=codePageHeadDescription(route.route,codePageDescription(route.route,capture.metadata.description));
       const schema=buildCodePageSchema({route:route.route,kind:route.kind,

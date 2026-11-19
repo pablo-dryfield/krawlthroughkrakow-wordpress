@@ -12,7 +12,7 @@ module=importlib.util.module_from_spec(SPEC); SPEC.loader.exec_module(module)
 
 class RoadmapTests(unittest.TestCase):
     def setUp(self):
-        self.data=json.loads((ROOT / 'tools/seo-roadmap.json').read_text())
+        self.data=json.loads((ROOT / 'tools/seo-roadmap.json').read_text(encoding='utf-8'))
         self.plan=(ROOT / 'docs/seo/SEO-AND-WEBSITE-IMPROVEMENT-PLAN.md').read_text(encoding='utf-8')
 
     def test_all_plan_tickets_have_explicit_status_without_false_percent(self):
