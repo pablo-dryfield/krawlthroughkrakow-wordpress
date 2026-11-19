@@ -1,6 +1,6 @@
 # Visible remaining batch list — 17 November 2026
 
-Current progress checkpoint (19 November2026, revision47):75 website deliveries and79records are verified. Four batches remain: B03 hosted recovery, B04 SVG/performance, B07 provider/account/manual evidence and B08 final acceptance under its original dependencies. All8 remain visible; all40 original criteria/states/C08 are unchanged. The approved neutral Halloween guide is next. [Current finite audit](../final-staging-audit-2026-11-19/README.md) records dated evidence and every exception.
+Current progress checkpoint (19November2026, revision48):76 website deliveries and80 records are verified. Four batches remain: B03 hosted recovery, B04 SVG/performance, B07 provider/account/manual evidence and B08 final acceptance under its original dependencies. All8 remain visible; all40 original workstream states/criteria are unchanged. The approved neutral Halloween guide is delivered; C08 retains its specialist/medical and owner-held scope.
 
 The owner could see active deliveries in the HTML roadmap but could not see a finite list of the work still planned. The Overview now starts with all eight numbered implementation batches: two in verification and six planned. Each title, status and scope is visible without expanding delivery history. Native details expose the next step, completion criteria, related workstreams and dependencies.
 

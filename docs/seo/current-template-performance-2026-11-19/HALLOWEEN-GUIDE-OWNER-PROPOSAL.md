@@ -1,5 +1,8 @@
 # Proposed neutral Halloween guide
 
+Status update,19November2026: the owner-approved prose is now implemented and independently verified as staging delivery76. Preserve the proposal and genuine publication history below; future event details remain unconfirmed.
+
+
 Prepared 19 November 2026 for the existing H01 business/content review. This proposal is separate from the frozen review-link/calendar candidate. The owner explicitly approved this exact proposed article in the conversation on19November2026. It is queued for a separate fresh-source implementation; approval alone is not a verified delivery. The current article still includes 85/90 PLN prices, Tuesday 31 October, five-venue/VIP/queue, annually changing themes, ghost-story and prize promises. The proposal removes those unconfirmed operating claims and repetitive promotional passages. Product prices, availability, booking controls, original publication history and the eight existing article images remain protected.
 
 The existing native graph confirms the protected Halloween product destination as `/staging/store2/halloween-pub-crawl-51/`. No future date, price or availability is inferred from that link. The calendar facts below are supported by [Tourism Ireland](https://api.ireland.ie/en/halloween/) and [Krakow’s official Old Town district remembrance record](https://www.dzielnica1.krakow.pl/aktualnosci/2026/stare-miasto-pamieta-wspominamy-tych-ktorzy-odeszli). These sources do not confirm a KTK event programme.
