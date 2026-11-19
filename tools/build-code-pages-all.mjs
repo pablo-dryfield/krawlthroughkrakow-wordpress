@@ -73,10 +73,12 @@ import {loadOfferFacts,campaignTemplateValues} from './site-offer-facts.mjs';
 import {buildEventPromotionRuntime} from './event-promotion-runtime.mjs';
 import {prepareNyePromotion} from './nye-promotion.mjs';
 import {buildNyePromotionStyles} from './nye-promotion-styles.mjs';
+import {verifyNyeBackgroundImage,optimizeNyeBackgroundCss} from './nye-background-image.mjs';
 const require = createRequire(import.meta.url);
 const { chromium } = require(path.join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const root = path.resolve('.');
 const assets = path.join(root, 'staging/wp-content/mu-plugins/ktk-code-pages-assets');
+await verifyNyeBackgroundImage();
 await buildMemorialStyles(path.join(assets,'runtime.css'));
 await buildSliderMotionStyles(path.join(assets,'runtime.css'));
 await buildBlogGroupStyles(path.join(assets,'runtime.css'));
@@ -419,6 +421,7 @@ try {
       if (!main || !shell.includes('__KTK_PAGE_MAIN_CONTENT__')) throw new Error('Template split failed');
       const shellFile = `shells/${digest(shell).slice(0,20)}.html`;
       const mainFile = `content/${route.key}.html`;
+      css = optimizeNyeBackgroundCss(route.key, css);
       const cssFile = `styles/${digest(css).slice(0,20)}.css`;
       await writeFile(path.join(assets, shellFile), shell); await writeFile(path.join(assets, mainFile), main); await writeFile(path.join(assets, cssFile), css);
       const definition = { key: route.key, route: route.route, kind: route.kind, post_id: route.postId, title,
