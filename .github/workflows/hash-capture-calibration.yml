@@ -2,7 +2,7 @@ name: Read-only Capture Calibration
 
 on:
   push:
-    branches: ['codex/local-protected-hash-candidate']
+    branches: ['codex/offline-arm-capture-calibration']
     paths:
       - '.github/workflows/hash-capture-calibration.yml'
       - 'tools/calibrate_staging_capture.py'
@@ -21,7 +21,7 @@ concurrency:
 jobs:
   read_only_capture:
     name: Complete Capture Equivalence and Timing
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -36,6 +36,7 @@ jobs:
           CAPTURE_SOURCE_COMMIT: ${{ github.sha }}
         run: |
           php --version
+          php -r 'echo json_encode(array("architecture"=>php_uname("m"),"phpVersion"=>PHP_VERSION,"opensslVersion"=>defined("OPENSSL_VERSION_TEXT")?OPENSSL_VERSION_TEXT:null,"xdebugLoaded"=>extension_loaded("xdebug"),"xdebugModes"=>function_exists("xdebug_info")?xdebug_info("mode"):null),JSON_UNESCAPED_SLASHES),"\n";'
           python -m unittest tools.tests.test_staging_state_fast_capture tools.tests.test_calibrate_staging_capture
           python -m tools.calibrate_staging_capture --source-commit "$CAPTURE_SOURCE_COMMIT" --output docs/seo/fast-capture-local-2026-11-18/ubuntu-calibration
       - name: Preserve complete synthetic observations
