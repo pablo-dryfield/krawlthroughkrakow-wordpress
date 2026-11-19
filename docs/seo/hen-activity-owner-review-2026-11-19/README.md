@@ -1,4 +1,18 @@
-# Hen activity wording for owner review
+# Approved Hen activity enquiries - staging delivery72
+
+Verified19 November2026. The owner-approved five neutral enquiry sections and **Group Transport** heading are installed on staging. The original form, six choices,20 controls,27main photos/ALTs, links, IDs and every other application file are preserved. Service availability and package inclusions remain unconfirmed; broader H01/C06 stays open.
+
+Source `6782b7891f41baca590772fcca14f538d4f6c929`, tree `8fd7fa9f50be6475ca234aaedd16d79979f73c57`, passes independently audited [PR125 CI](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/44474695022). [PR125](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/pull/125) is squash-merged as main `190858f005e2efd87673a142cf24afd18f570e02`; [exact-main CI44480195521](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/44480195521) is independently accepted with56quality/1078Linux21platformskips/45Windows10reading/audit0/build/secrets and exact source/checkouts. Local116page build/2320references and the whole-body inverse prove the exact approved edit. All2425 other application files and2076 deployed payload hashes verify.
+
+The guarded release's first whole captured raw comparison failed solely at `ecwid_store_shortcode_used`. The active installed Ecwid7.0.10 source at line1353 writes Unix time in its native shortcode handler; the specific request triggering this change is unproven. Every other captured database field and all280protected files match. The original failed comparison remains failed and retained, with no database restore or comparator exclusion. A subsequent complete strict raw snapshot verifies that the post-upload state stayed exact through the cache/browser checks. This scoped content delivery does not assert an unchanged initial whole database or resolve earlier font/Ecwid exceptions.
+
+The Hen-page staging prefix alone was purged. All36 origin/normal/warmed checks pass, with nine public warmed HIT responses and internal raw-template403 denials retained. Four normal390/1440JS-noJS views pass; ten text/two unique form PNGs were inspected and two noJS form captures match their JS pairs byte for byte. Native physical-device/zoom/screen-reader and real inbox/provider/payment checks remain separate. No real form/order, consent preference, account setting or production change occurs.
+
+Private local evidence: `../current-template-performance-2026-11-19/hen-activity-staging-delivery-independent-audit.json`, `hen-usage-marker-source-classification.json`, `hen-activity-ci-independent-audit.json`, and `hen-staging-visual-review.json`. The original failed sequence, raw snapshots and content backup are retained. The source archive89817a16 requires full03ec(twoarchives); it is not a standalone host backup.
+
+## Approved proposal retained for provenance
+
+### Original Hen activity wording for owner review
 
 19 November 2026. **Draft only. No website edit or new delivery.** H01 keeps the remaining activity claims pending operational review. This draft offers enquiry-led wording without adding availability, prices, package inclusions or service guarantees. Approval of wording would not establish the actual offers or close H01/C06.
 

@@ -13,7 +13,7 @@ export function codePageSchemaFacts() {
   const titles = [...root.querySelectorAll('h1')];
   if (titles.length !== 1 || !titles[0].textContent.trim()) throw new Error('One visible page headline required');
   const author = root.querySelector('.post-meta .author a');
-  const image = root.querySelector('.et_post_meta_wrapper > img');
+  const image = root.querySelector('.et_post_meta_wrapper > img, .et_post_meta_wrapper > picture > img');
   return {
     headline: titles[0].textContent,
     published: root.querySelector('.post-meta .published')?.textContent ?? '',
