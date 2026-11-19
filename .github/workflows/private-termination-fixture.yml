@@ -1,0 +1,127 @@
+name: Private Termination Full Inventory Fixture
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/private-termination-fixture.yml'
+      - 'tools/verify-private-termination-fixture.py'
+      - 'tools/private_termination_fixture_support.py'
+      - 'tools/private_termination_diagnostics.py'
+      - 'tools/private_termination_checkpoint.py'
+      - 'tools/tests/test_private_termination_checkpoint.py'
+      - 'tools/tests/test_private_termination_diagnostics.py'
+      - 'tools/private-engine-*'
+      - 'tools/private_engine_*'
+      - 'tools/tests/test_private_engine_*'
+      - 'tools/tests/test_private_termination_fixture_support.py'
+      - 'tools/full_private_*'
+      - 'tools/full-private-*'
+      - 'tools/content-update-*'
+      - 'tools/content_update_*'
+      - 'tools/full_inventory_capacity.py'
+      - 'tools/invoke-ktk-native.ps1'
+      - 'tools/publish-clarity.py'
+      - 'tools/publish-homepage-shortcode.py'
+      - 'tools/publish-store2.py'
+      - 'tools/rehearse-staging-content-controller.ps1'
+      - 'tools/rehearse-staging-content-controller.py'
+      - 'tools/rehearse-staging-full-private-engine.ps1'
+      - 'tools/rehearse-staging-full-seeds.ps1'
+      - 'tools/rehearse-staging-full-seeds.py'
+      - 'tools/rehearse-staging-private-transaction.py'
+      - 'tools/staging-protected-state-template.php'
+      - 'tools/tests/test_full_private*'
+      - 'tools/tests/test_content_update_controller.py'
+      - 'tools/tests/test_production_protected_state.py'
+      - 'tools/code-pages-update-engine.php'
+      - 'tools/staging-protected-state-core.php'
+      - 'tools/staging-protected-state-fast-core.php'
+      - 'tools/staging_state_fast_capture.py'
+      - 'tools/private_state_fast_census.py'
+      - 'tools/tests/test_staging_state_fast_capture.py'
+      - 'tools/tests/test_private_state_fast_census.py'
+      - 'tools/tests/test_private_preparation_fast_capture.py'
+      - 'tools/early_private_entry.py'
+      - 'tools/snapshot-staging-update-state.py'
+      - 'tools/promote-code-pages-production.py'
+      - 'tools/verify-full-private-engine-fixture.py'
+      - 'tools/rehearse-staging-full-private-engine.py'
+  workflow_dispatch:
+    inputs:
+      helper_commit:
+        description: Exact reviewed helper and fixture source commit (40 lowercase hex)
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: termination-full-fixture-${{ github.ref }}-${{ inputs.helper_commit || github.event.pull_request.head.sha }}
+  cancel-in-progress: false
+
+jobs:
+  termination_full_inventory:
+    name: Actual Inventory Termination Helper
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Verify frozen full-inventory helper in local synthetic PHP only
+        env:
+          REVIEWED_HELPER_COMMIT: ${{ github.event.pull_request.head.sha || inputs.helper_commit }}
+        run: |
+          php --version
+          python - <<'PY'
+          import hashlib,importlib.util,json,os,subprocess
+          from pathlib import Path
+          from tools import private_termination_fixture_support as support
+          from tools.tests import test_full_private_recovery_operator as operator_evidence
+          root=Path.cwd();commit=os.environ['REVIEWED_HELPER_COMMIT']
+          spec=importlib.util.spec_from_file_location('reviewed_actual_fixture',root/'tools/verify-private-termination-fixture.py');module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+          core=module.source_fingerprints();extra=operator_evidence.evidence_source_hashes()
+          support.verify_reviewed_sources(root,commit,core);support.verify_reviewed_sources(root,commit,extra)
+          operator_evidence.require_loaded_source_closure(core,extra)
+          workflow='.github/workflows/private-termination-fixture.yml'
+          if subprocess.check_output(['git','show',commit+':'+workflow])!=(root/workflow).read_bytes():raise RuntimeError('Full workflow differs from reviewed source')
+          output=root/'docs/seo/private-engine-early-termination-2026-11-17/ci-operator-source-inputs.json'
+          if output.exists():raise RuntimeError('Preserve previous operator evidence')
+          output.parent.mkdir(parents=True,exist_ok=True)
+          output.write_text(json.dumps({'sourceCommit':commit,'coreSourceHashes':core,'additionalOperatorEvidenceSourceHashes':extra,'beforeVerified':True,'afterVerified':False},indent=2)+'\n',encoding='utf-8')
+          PY
+          python -m unittest tools.tests.test_private_termination_diagnostics tools.tests.test_private_termination_fixture_support tools.tests.test_private_termination_checkpoint tools.tests.test_staging_state_fast_capture tools.tests.test_private_state_fast_census.PrivateFastCensusTests tools.tests.test_private_engine_cleanup_budget.CleanupBudgetPolicyTests tools.tests.test_private_preparation_fast_capture.PrivatePreparationCaptureCompilerTests tools.tests.test_full_private_recovery_hashing.CompleteHashNativeContracts tools.tests.test_full_private_recovery_hashing.RecoveryHashCompilerContracts tools.tests.test_full_private_recovery_operator.OperatorProfileCompilerContracts tools.tests.test_full_private_recovery_operator.OperatorProfileRecoveryContracts
+          python tools/verify-private-termination-fixture.py --helper-commit "$REVIEWED_HELPER_COMMIT" --report docs/seo/private-engine-early-termination-2026-11-17/actual-inventory-ci.json --diagnostics --preparation-capture bounded-sha256 --preparation-hashing bounded-complete-sha256
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          from tools import private_termination_fixture_support as support
+          from tools.tests import test_full_private_recovery_operator as operator_evidence
+          root=Path.cwd();output=root/'docs/seo/private-engine-early-termination-2026-11-17/ci-operator-source-inputs.json';saved=json.loads(output.read_bytes())
+          extra=operator_evidence.evidence_source_hashes()
+          if saved['additionalOperatorEvidenceSourceHashes']!=extra:raise RuntimeError('Operator evidence source changed during full fixture')
+          support.verify_reviewed_sources(root,os.environ['REVIEWED_HELPER_COMMIT'],saved['coreSourceHashes'])
+          support.verify_reviewed_sources(root,os.environ['REVIEWED_HELPER_COMMIT'],extra)
+          operator_evidence.require_loaded_source_closure(saved['coreSourceHashes'],extra)
+          saved['afterVerified']=True
+          output.write_text(json.dumps(saved,indent=2)+'\n',encoding='utf-8')
+          PY
+      - name: Retain scoped report and independently reopened synthetic evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: private-termination-full-inventory-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            docs/seo/private-engine-early-termination-2026-11-17/actual-inventory-ci.json
+            docs/seo/private-engine-early-termination-2026-11-17/ci-operator-source-inputs.json
+            docs/seo/private-engine-early-termination-2026-11-17/actual-inventory-ci.evidence.zip
+            docs/seo/private-engine-early-termination-2026-11-17/actual-inventory-ci.checkpoint.zip
+          if-no-files-found: error
+          include-hidden-files: false
+          compression-level: 0
+          retention-days: 7

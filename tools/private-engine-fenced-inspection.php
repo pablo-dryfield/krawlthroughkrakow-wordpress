@@ -13,6 +13,7 @@ final class KTK_Private_Engine_Fenced_Inspection
     private $engineLock=null;
     private ?KTK_Private_Engine_Abandonment_Inspection $engineLockOwner=null;
     private bool $ownsEngineLock=false;
+    private bool $inspectionComplete=false;
     private $freshCapture;
     private static function canonical($v) { if(is_array($v)){if(!array_is_list($v)){ksort($v);}foreach($v as $k=>$x){$v[$k]=self::canonical($x);}}return $v; }
     private static function json($v): string { return json_encode($v,JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_THROW_ON_ERROR); }
@@ -80,7 +81,7 @@ final class KTK_Private_Engine_Fenced_Inspection
     }
     public function releaseEngineLock(): void
     {
-        if($this->ownsEngineLock&&is_resource($this->engineLock)){flock($this->engineLock,LOCK_UN);fclose($this->engineLock);}$this->engineLock=null;$this->ownsEngineLock=false;
+        if($this->ownsEngineLock&&is_resource($this->engineLock)){flock($this->engineLock,LOCK_UN);fclose($this->engineLock);}$this->engineLock=null;$this->ownsEngineLock=false;$this->inspectionComplete=false;
     }
     public function __destruct() { $this->releaseEngineLock(); }
     private function held(string $p,array $before,$handle): void
@@ -146,14 +147,24 @@ final class KTK_Private_Engine_Fenced_Inspection
         if(!is_array($plan)||self::canonical($plan['enginePlan']??null)!==self::canonical($c['plan'])){throw new RuntimeException('Retained original private plan differs');}
         return array('files'=>$files,'directories'=>$dirs,'control'=>$control,'closureState'=>$closedComplete?($i['originalRolledBackClosurePresent']?'original-rolled-back':'complete'):($prefix?'known-prefix':'absent'),'payload'=>$payload);
     }
+    public function assertHeldEngineLock(KTK_Content_Update_Private_Store $store): void
+    {
+        if(!$this->inspectionComplete){throw new RuntimeException('Complete current inspection required before held-lock readback');}
+        $c=$this->config;$root=dirname($c['publicRoot']).'/.ktk-content-update-'.$c['plan']['transactionId'];
+        if($store->privateRoot()!==$root||$store->transactionId()!==$c['plan']['transactionId']||!hash_equals($c['initialInspection']['rootBinding'],$store->rootBinding())){throw new RuntimeException('Exact previously inspected private ownership required');}
+        if($this->engineLockName!==null&&!is_resource($this->engineLock)){throw new RuntimeException('Previously inspected engine lock must remain held; never reacquire it');}
+        // Verify the existing descriptor and named inode. This is not a new census.
+        $this->lock($root);
+    }
     public function inspect(KTK_Content_Update_Private_Store $store): array
     {
+        $this->inspectionComplete=false;
         $c=$this->config;$i=$c['initialInspection'];$root=dirname($c['publicRoot']).'/.ktk-content-update-'.$c['plan']['transactionId'];self::directory($c['publicRoot']);self::directory($root);$this->fresh();
         if($store->privateRoot()!==$root||$store->transactionId()!==$c['plan']['transactionId']||!hash_equals($i['rootBinding'],$store->rootBinding())){throw new RuntimeException('Exact held original private namespace required');}
         foreach(array('owner.marker','controller.lock') as $n){if(self::canonical($c['retained'][$n])!==self::canonical(array('sha256'=>hash('sha256',$store->rootBinding()),'bytes'=>64))){throw new RuntimeException('Archived ownership binding differs');}}
         $this->lock($root);$before=$this->census($root,$store);$this->fresh();$store->rootBinding();if($this->census($root,$store)!==$before){throw new RuntimeException('Private census changed; preserve it and inspect under a new context');}$this->fresh();$store->rootBinding();
         $closed=in_array($before['closureState'],array('complete','original-rolled-back'),true);$mu=$c['publicRoot'].'/staging/wp-content/mu-plugins';$old=$mu.'/ktk-transaction-rehearsal-'.$c['plan']['transactionId'].'.php';
         $result=array('schemaVersion'=>1,'scope'=>'fenced-private-engine-readonly-inspection','transactionId'=>$c['plan']['transactionId'],'applicationCommit'=>$c['plan']['applicationCommit'],'rootBinding'=>$store->rootBinding(),'initialInspectionStateSha256'=>$i['stateSha256'],'fenceOperationId'=>$c['fence']['operationId'],'metadataArchiveSha256'=>$c['fence']['metadataArchiveSha256'],'closureSha256'=>hash('sha256',$this->blob),'closureState'=>$before['closureState'],'signedClosureComplete'=>$closed,'closureOnlyRecoveryRequired'=>!$closed,'files'=>$before['files'],'directories'=>$before['directories'],'remainingPayloadFiles'=>count($before['payload']),'remainingPayloadBytes'=>array_sum(array_column($before['payload'],'bytes')),'retainedInitialMetadataFiles'=>count($c['retained']),'freshProtectedStateSha256'=>$c['freshProtectedStateSha256'],'freshPublicOwnedSha256'=>$c['freshPublicOwnedSha256'],'originalProtectedStateStillExact'=>$c['freshProtectedStateSha256']===$c['plan']['protectedStateSha256'],'freshWitnessVerified'=>true,'originalExecutionHelperAbsent'=>!file_exists($old)&&!is_link($old),'operationClaimsNotTraversed'=>true,'originalPrivateTreeFullyRemoved'=>false,'readOnly'=>true,'closureWrites'=>0,'payloadDeletes'=>0,'applicationWrites'=>0,'databaseWrites'=>0,'cachePurges'=>0,'productionOperations'=>0);
-        $result['stateSha256']=self::sha($result);return $result;
+        $result['stateSha256']=self::sha($result);$this->inspectionComplete=true;return $result;
     }
 }
