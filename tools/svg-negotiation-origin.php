@@ -71,6 +71,7 @@ function ktk_svg_probe_http_date(string $field): ?int {
 function ktk_svg_probe_error(int $status, string $message, bool $head): never {
     http_response_code($status);
     header_remove('Content-Encoding'); header_remove('ETag'); header_remove('Last-Modified');
+    header_remove('X-KTK-Representation-ETag');
     header('Cache-Control: no-store, max-age=0, no-transform');
     header('Content-Type: text/plain; charset=utf-8');
     header('Content-Length: ' . strlen($message));
@@ -123,6 +124,9 @@ try {
     header('Cache-Control: ' . ($manifest['cacheMode'] === 'public' ? 'public, max-age=' . min(60, $manifest['expiresAt'] - time()) . ', no-transform' : 'no-store, max-age=0, no-transform'));
     header('Content-Type: image/svg+xml');
     header('ETag: "' . $digest . '"');
+    // A nonce-local response rule can restore this exact validator after an
+    // inherited Header unset ETag, without changing the parent configuration.
+    header('X-KTK-Representation-ETag: "' . $digest . '"');
     header('Last-Modified: ' . gmdate('D, d M Y H:i:s', $modified) . ' GMT');
     header('Accept-Ranges: none');
     if (isset($_SERVER['HTTP_IF_NONE_MATCH'])) {

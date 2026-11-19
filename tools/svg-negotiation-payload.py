@@ -97,6 +97,8 @@ ExpiresActive Off
 </IfModule>
 <IfModule mod_headers.c>
 Header always set X-Robots-Tag "noindex, nofollow"
+Header always set ETag "expr=%{resp:X-KTK-Representation-ETag}" "expr=-n resp('X-KTK-Representation-ETag')"
+Header always unset X-KTK-Representation-ETag
 </IfModule>
 </FilesMatch>
 RewriteEngine On
