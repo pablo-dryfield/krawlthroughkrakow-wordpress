@@ -26,6 +26,7 @@ import {loadEstablishedNyeEditorial,reviseEstablishedNyeEditorial,buildEstablish
 import {loadGroupPlanningEditorial,reviseGroupPlanningEditorial,buildGroupPlanningStyles} from './group-planning-editorial.mjs';
 import {loadHenActivityEnquiries,reviseHenActivityEnquiries} from './hen-activity-enquiries.mjs';
 import {loadSafetyResponsiveImage,reviseSafetyResponsiveImage} from './safety-responsive-image.mjs';
+import {loadSafetyInlineImages,reviseSafetyInlineImages} from './safety-inline-images.mjs';
 import {loadGroupActivitiesEditorial,reviseGroupActivitiesEditorial,buildGroupActivityStyles} from './group-activities-editorial.mjs';
 import {loadStagActivityClarity,reviseStagActivityClarity} from './stag-activity-clarity.mjs';
 import {loadStagCostumeEditorial,reviseStagCostumeEditorial,buildStagCostumeStyles} from './stag-costume-editorial.mjs';
@@ -144,6 +145,7 @@ const establishedNye=await loadEstablishedNyeEditorial();
 const groupPlanning=await loadGroupPlanningEditorial();
 const henActivityEnquiries=await loadHenActivityEnquiries();
 const safetyResponsiveImage=await loadSafetyResponsiveImage();
+const safetyInlineImages=await loadSafetyInlineImages();
 const groupActivities=await loadGroupActivitiesEditorial();
 const stagActivityClarity=await loadStagActivityClarity();
 const stagCostume=await loadStagCostumeEditorial();
@@ -413,6 +415,7 @@ try {
       contentRevisions.push(...await page.evaluate(reviseSecondaryNyeEditorial,{key:route.key,revision:secondaryNye}));
       contentRevisions.push(...await page.evaluate(reviseHenActivityEnquiries,{key:route.key,revision:henActivityEnquiries}));
       contentRevisions.push(...await page.evaluate(reviseSafetyResponsiveImage,{key:route.key,revision:safetyResponsiveImage}));
+      contentRevisions.push(...await page.evaluate(reviseSafetyInlineImages,{key:route.key,revision:safetyInlineImages}));
       if(contentRevisions.length||bookingRevisions.length)report.revisions[route.key]={content:contentRevisions,bookings:bookingRevisions};
       const schemaFacts=await page.evaluate(codePageSchemaFacts);
       const title=codePageTitle(route.route,capture.title),description=codePageHeadDescription(route.route,codePageDescription(route.route,capture.metadata.description));
