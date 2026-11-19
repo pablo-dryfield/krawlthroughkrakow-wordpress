@@ -2,7 +2,7 @@ name: Early Termination Phase Recovery Fixtures
 
 on:
   push:
-    branches: ['codex/offline-current-arm-native']
+    branches: ['codex/current-recovery-ci-scheduling']
     paths:
       - '.github/workflows/early-termination-phases.yml'
       - '.github/workflows/private-termination-fixture.yml'
@@ -108,10 +108,174 @@ jobs:
           names=['tools.tests.test_private_engine_termination_controller','tools.tests.test_private_engine_fenced_inspection','tools.tests.test_private_engine_termination_helper','tools.tests.test_private_termination_fixture_support','tools.tests.test_private_termination_diagnostics','tools.tests.test_private_termination_checkpoint','tools.tests.test_private_engine_payload_cleanup','tools.tests.test_private_engine_cleanup_budget','tools.tests.test_staging_state_fast_capture','tools.tests.test_private_state_fast_census','tools.tests.test_private_preparation_fast_capture','tools.tests.test_full_private_recovery_hashing','tools.tests.test_full_private_recovery_operator']
           suite=unittest.defaultTestLoader.loadTestsFromNames(names);expected=suite.countTestCases()
           if expected<1:raise RuntimeError('Nonempty complete native contract selection required')
+          """Literal CI-only library to embed in the reviewed native workflow."""
+          import contextlib,copy,types,re
+
+          def native_case_ids(suite):
+              result=[]
+              for case in suite:
+                  result.extend(native_case_ids(case) if isinstance(case,unittest.TestSuite) else [case.id()])
+              return result
+
+          def partition_native_modules(modules,workers=3):
+              if type(workers) is not int or not 1<=workers<=3 or len(modules)<workers or len(set(modules))!=len(modules) or any(not isinstance(n,str) or re.fullmatch(r'tools\.tests\.test_[a-z0-9_]+',n) is None for n in modules):
+                  raise ValueError('Bounded distinct native module partition required')
+              return [modules[i::workers] for i in range(workers)]
+
+          def validate_native_worker_reports(reports,tasks,expected,commit,worker_sha):
+              if len(reports)!=len(tasks) or not 1<=len(tasks)<=3 or not expected or len(set(expected))!=len(expected) or [t['workerId'] for t in tasks]!=list(range(1,len(tasks)+1)):
+                  raise ValueError('Exact native workers and original case inventory required')
+              completed=[]
+              for report,task in zip(reports,tasks):
+                  if type(report.get('workerId')) is not int or report.get('workerId')!=task['workerId'] or report.get('reviewedSource')!=commit or report.get('workerSourceSHA256')!=worker_sha or report.get('actualCheckoutTree')!=task['tree'] or report.get('selectedModules')!=task['modules'] or report.get('selectedCaseIds')!=task['expectedCaseIds']:
+                      raise ValueError('Worker source, module or case selection differs')
+                  if report.get('status')!='complete' or report.get('successful') is not True or report.get('sourcesVerifiedBefore') is not True or report.get('sourcesVerifiedAfter') is not True:
+                      raise ValueError('Every worker must complete and verify source before and after')
+                  if any(type(report.get(k)) is not int for k in ['testsRun','skipped','failures','errors']) or any(report[k]!=0 for k in ['skipped','failures','errors']):
+                      raise ValueError('No missing, skipped or failed native case is accepted')
+                  ids=report.get('completedCaseIds')
+                  if not isinstance(ids,list) or ids!=task['expectedCaseIds'] or report['testsRun']!=len(ids) or not ids or len(set(ids))!=len(ids):
+                      raise ValueError('Actual completed native identities differ')
+                  completed.extend(ids)
+              if len(completed)!=len(expected) or len(set(completed))!=len(completed) or set(completed)!=set(expected):
+                  raise ValueError('Worker union must equal every original case exactly once')
+              return len(completed)
+
+          def stop_native_workers(processes):
+              errors=[]
+              for process in processes:
+                  try:
+                      if process.poll() is None:
+                          process.terminate()
+                          try:process.wait(timeout=10)
+                          except subprocess.TimeoutExpired:process.kill();process.wait(timeout=10)
+                  except Exception as error:errors.append(type(error).__name__)
+              if errors:raise RuntimeError('Owned worker cleanup failed: '+','.join(errors))
+
+          NATIVE_WORKER_SOURCE=r'''import json,hashlib,subprocess,sys,unittest,traceback,re
+          from pathlib import Path
+          from datetime import datetime,timezone
+
+          task_path=Path(sys.argv[1])
+          if task_path.is_symlink() or task_path.stat().st_size>1048576:raise RuntimeError('Bounded owned worker task required')
+          raw=task_path.read_bytes()
+          task=json.loads(raw);root=Path(task['root']).resolve();report_path=Path(task['report'])
+          if Path.cwd().resolve()!=root or report_path.name!=f'ci-native-worker-{task["workerId"]}.json' or report_path.parent.resolve()!=root/'docs/seo/private-engine-phases-2026-11-17' or report_path.is_symlink() or report_path.exists() or report_path.with_suffix('.json.tmp').exists():raise RuntimeError('Fresh owned worker output required')
+          if type(task['workerId']) is not int or task['workerId'] not in [1,2,3] or re.fullmatch('[a-f0-9]{40}',task['source']) is None:raise RuntimeError('Exact worker source binding required')
+          own_sha=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+          if own_sha!=task['workerSourceSHA256']:raise RuntimeError('Worker source bytes differ')
+          sys.path.insert(0,str(root))
+          from tools import private_termination_fixture_support as support
+          from tools.tests import test_full_private_recovery_operator as operator_evidence
+
+          record={'scope':'CI-only isolated native unit worker; no hosting acceptance','workerId':task['workerId'],'reviewedSource':task['source'],'workerSourceSHA256':own_sha,'selectedModules':task['modules'],'selectedCaseIds':task['expectedCaseIds'],'completedCaseIds':[],'startedAt':datetime.now(timezone.utc).isoformat(),'finishedAt':None,'status':'running','successful':False,'testsRun':0,'skipped':0,'failures':0,'errors':0,'sourcesVerifiedBefore':False,'sourcesVerifiedAfter':False}
+          def save(result=None):
+              if result is not None:record.update(testsRun=result.testsRun,skipped=len(result.skipped),failures=len(result.failures),errors=len(result.errors))
+              data=(json.dumps(record,indent=2)+'\n').encode('utf-8')
+              if len(data)>1048576:raise RuntimeError('Bounded complete worker receipt required')
+              temporary=report_path.with_suffix('.json.tmp');temporary.write_bytes(data);temporary.replace(report_path)
+          def identities(suite):
+              result=[]
+              for case in suite:result.extend(identities(case) if isinstance(case,unittest.TestSuite) else [case.id()])
+              return result
+          class RecordingResult(unittest.TextTestResult):
+              def stopTest(self,test):
+                  super().stopTest(test);record['completedCaseIds'].append(test.id());save(self)
+          status=1
+          try:
+              checkout=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip();tree=subprocess.check_output(['git','rev-parse','HEAD^{tree}'],text=True).strip()
+              if tree!=task['tree'] or subprocess.check_output(['git','status','--porcelain']).strip():raise RuntimeError('Clean exact reviewed tree required')
+              record.update(actualCheckout=checkout,actualCheckoutTree=tree)
+              loader=unittest.TestLoader();loader.loadTestsFromNames(task['allModules']);suite=loader.loadTestsFromNames(task['modules'])
+              if loader.errors or identities(suite)!=task['expectedCaseIds']:raise RuntimeError('Every original selected case must load exactly')
+              support.verify_reviewed_sources(root,task['source'],task['core']);support.verify_reviewed_sources(root,task['source'],task['extra']);operator_evidence.require_loaded_source_closure(task['core'],task['extra']);record['sourcesVerifiedBefore']=True;save()
+              result=unittest.TextTestRunner(verbosity=2,resultclass=RecordingResult).run(suite);save(result)
+              support.verify_reviewed_sources(root,task['source'],task['core']);support.verify_reviewed_sources(root,task['source'],task['extra']);operator_evidence.require_loaded_source_closure(task['core'],task['extra'])
+              if subprocess.check_output(['git','status','--porcelain']).strip() or hashlib.sha256(Path(__file__).read_bytes()).hexdigest()!=own_sha:raise RuntimeError('Worker source changed during observation')
+              record['sourcesVerifiedAfter']=True;record['status']='complete';record['successful']=result.wasSuccessful() and not result.skipped and result.testsRun==len(task['expectedCaseIds']) and record['completedCaseIds']==task['expectedCaseIds'];status=0 if record['successful'] else 1
+          except BaseException as error:
+              record['status']='failed';record['failureType']=type(error).__name__;traceback.print_exc()
+          finally:
+              record['finishedAt']=datetime.now(timezone.utc).isoformat();save()
+          raise SystemExit(status)
+          '''
+
+          class NativeSchedulerContracts(unittest.TestCase):
+              def fixtures(self):
+                  modules=['tools.tests.test_fixture_'+str(i) for i in range(6)];groups=partition_native_modules(modules);tasks=[];reports=[];expected=[]
+                  for index,group in enumerate(groups,1):
+                      ids=[m+'.Fixture.test_actual' for m in group];expected.extend(ids);task={'workerId':index,'modules':group,'expectedCaseIds':ids,'tree':'a'*40};tasks.append(task);reports.append({'workerId':index,'reviewedSource':'c'*40,'workerSourceSHA256':'b'*64,'actualCheckoutTree':'a'*40,'selectedModules':group,'selectedCaseIds':ids,'completedCaseIds':list(ids),'status':'complete','successful':True,'sourcesVerifiedBefore':True,'sourcesVerifiedAfter':True,'testsRun':len(ids),'skipped':0,'failures':0,'errors':0})
+                  return tasks,reports,expected
+              def test_partition_keeps_every_original_module_once_and_bounds_workers(self):
+                  tasks,reports,expected=self.fixtures();self.assertEqual(len({n for t in tasks for n in t['modules']}),6)
+                  for count in [0,4,True,None]:
+                      with self.assertRaises(ValueError):partition_native_modules(['tools.tests.test_a']*6,count)
+                  with self.assertRaises(ValueError):partition_native_modules(['tools.tests.test_a']*6)
+              def test_complete_actual_case_union_is_required(self):
+                  tasks,reports,expected=self.fixtures();self.assertEqual(validate_native_worker_reports(reports,tasks,expected,'c'*40,'b'*64),6)
+                  with self.assertRaises(ValueError):validate_native_worker_reports(reports[:-1],tasks,expected,'c'*40,'b'*64)
+                  with self.assertRaises(ValueError):validate_native_worker_reports([],[],[],'c'*40,'b'*64)
+                  with self.assertRaises(ValueError):validate_native_worker_reports(reports+reports,tasks,expected,'c'*40,'b'*64)
+              def test_missing_duplicate_failed_skipped_or_changed_worker_is_refused(self):
+                  tasks,reports,expected=self.fixtures()
+                  for key,value in [('workerId',True),('actualCheckoutTree','d'*40),('selectedModules',[]),('selectedCaseIds',[]),('status','running'),('successful',False),('sourcesVerifiedBefore',False),('sourcesVerifiedAfter',False),('reviewedSource','d'*40),('workerSourceSHA256','d'*64),('completedCaseIds',[]),('testsRun',True),('skipped',1),('failures',1),('errors',1)]:
+                      changed=copy.deepcopy(reports);changed[0][key]=value
+                      with self.subTest(key=key),self.assertRaises(ValueError):validate_native_worker_reports(changed,tasks,expected,'c'*40,'b'*64)
+                  changed=copy.deepcopy(reports);changed[0]['completedCaseIds']=[expected[0]]*2
+                  with self.assertRaises(ValueError):validate_native_worker_reports(changed,tasks,expected,'c'*40,'b'*64)
+              def test_owned_children_are_reaped_on_timeout_and_completed_ones_untouched(self):
+                  class Process:
+                      def __init__(self,done=False):self.done=done;self.calls=[]
+                      def poll(self):return 0 if self.done else None
+                      def terminate(self):self.calls.append('terminate')
+                      def wait(self,timeout=None):
+                          self.calls.append('wait')
+                          if not self.done:raise subprocess.TimeoutExpired('owned-fake',timeout)
+                          return 0
+                      def kill(self):self.calls.append('kill');self.done=True
+                  done=Process(True);first=Process();second=Process();stop_native_workers([done,first,second]);self.assertEqual(done.calls,[])
+                  for p in [first,second]:self.assertEqual(p.calls,['terminate','wait','kill','wait'])
+
+          def native_scheduler_preflight():
+              suite=unittest.defaultTestLoader.loadTestsFromTestCase(NativeSchedulerContracts);result=unittest.TextTestRunner(verbosity=2).run(suite)
+              if result.testsRun!=4 or not result.wasSuccessful() or result.skipped:raise RuntimeError('All scheduler contracts must pass')
+              return {'selectedCases':4,'testsRun':4,'skipped':0,'failures':0,'errors':0,'successful':True}
+
+          def run_native_unit_workers(suite,names,commit,inputs,extra):
+              preflight=native_scheduler_preflight();expected_ids=native_case_ids(suite)
+              if len(expected_ids)!=180 or len(set(expected_ids))!=180 or len(names)!=13:raise RuntimeError('All original180 cases and13 modules required')
+              groups=partition_native_modules(names,3);output=root/'docs/seo/private-engine-phases-2026-11-17';output.mkdir(parents=True,exist_ok=True)
+              worker_path=output/'ci-native-worker-source.py'
+              if worker_path.exists():raise RuntimeError('Preserve earlier worker source')
+              worker_bytes=NATIVE_WORKER_SOURCE.encode('utf-8');worker_path.write_bytes(worker_bytes);worker_sha=hashlib.sha256(worker_bytes).hexdigest();tree=subprocess.check_output(['git','rev-parse',commit+'^{tree}'],text=True).strip();reports=[];tasks=[];processes=[];rows=[]
+              with tempfile.TemporaryDirectory(prefix='ktk-native-unit-workers-') as folder,contextlib.ExitStack() as stack:
+                  try:
+                      for index,modules in enumerate(groups,1):
+                          loader=unittest.TestLoader();selected=loader.loadTestsFromNames(modules)
+                          if loader.errors:raise RuntimeError('Native worker group failed to load')
+                          report_path=output/f'ci-native-worker-{index}.json';log_path=output/f'ci-native-worker-{index}.log'
+                          if report_path.exists() or log_path.exists():raise RuntimeError('Preserve earlier worker evidence')
+                          task={'workerId':index,'root':str(root.resolve()),'source':commit,'tree':tree,'workerSourceSHA256':worker_sha,'allModules':names,'modules':modules,'expectedCaseIds':native_case_ids(selected),'core':inputs,'extra':extra,'report':str(report_path.resolve())};tasks.append(task);task_path=Path(folder)/f'worker-{index}.json';task_path.write_text(json.dumps(task),encoding='utf-8')
+                          stream=stack.enter_context(log_path.open('x+b'));process=subprocess.Popen([sys.executable,str(worker_path),str(task_path)],cwd=root,stdin=subprocess.DEVNULL,stdout=stream,stderr=subprocess.STDOUT);processes.append(process);rows.append((process,stream,report_path,log_path))
+                      for process in processes:process.wait()
+                  finally:stop_native_workers(processes)
+                  for process,stream,report_path,log_path in rows:
+                      stream.flush();stream.seek(0);log=stream.read(1048577)
+                      if len(log)>1048576:raise RuntimeError('Bounded complete worker log required')
+                      print(log.decode('utf-8'),end='',flush=True)
+                      if not report_path.exists():raise RuntimeError('Missing actual worker result')
+                      raw=report_path.read_bytes()
+                      if len(raw)>1048576:raise RuntimeError('Bounded complete worker result required')
+                      report=json.loads(raw);report['rawLogSHA256']=hashlib.sha256(log).hexdigest();report['rawLogBytes']=len(log);report['processReturnCode']=process.returncode;reports.append(report)
+                  if any(p.returncode!=0 for p in processes):raise RuntimeError('Every isolated unit worker must succeed')
+              count=validate_native_worker_reports(reports,tasks,expected_ids,commit,worker_sha)
+              if worker_path.read_bytes()!=worker_bytes:raise RuntimeError('Worker source changed')
+              print('KTK_NATIVE_UNIT_WORKERS=3',flush=True);print('KTK_NATIVE_UNIT_CASES_TOTAL='+str(count),flush=True)
+              return types.SimpleNamespace(testsRun=count,skipped=[],failures=[],errors=[],wasSuccessful=lambda:True,workerReports=reports,workerSourceSHA256=worker_sha,schedulerPreflight=preflight)
           def run_native_units():
-              started=datetime.now(timezone.utc).isoformat();result=unittest.TextTestRunner(verbosity=2).run(suite)
+              started=datetime.now(timezone.utc).isoformat();result=run_native_unit_workers(suite,names,commit,inputs,extra)
               output=root/'docs/seo/private-engine-phases-2026-11-17/ci-native-units.json';output.parent.mkdir(parents=True,exist_ok=True)
-              output.write_text(json.dumps({'scope':'Offline synthetic native contracts; not repository security clearance or hosting acceptance','startedAt':started,'finishedAt':datetime.now(timezone.utc).isoformat(),'reviewedSource':commit,'sourceHashes':inputs,'additionalOperatorEvidenceSourceHashes':extra,'additionalOperatorEvidenceVerifiedAfterUnits':False,'selectedModules':names,'selectedCases':expected,'testsRun':result.testsRun,'skipped':len(result.skipped),'failures':len(result.failures),'errors':len(result.errors),'successful':result.wasSuccessful()},indent=2)+'\n',encoding='utf-8')
+              output.write_text(json.dumps({'scope':'Offline synthetic native contracts; not repository security clearance or hosting acceptance','startedAt':started,'finishedAt':datetime.now(timezone.utc).isoformat(),'reviewedSource':commit,'sourceHashes':inputs,'additionalOperatorEvidenceSourceHashes':extra,'additionalOperatorEvidenceVerifiedAfterUnits':False,'executionMode':'three isolated native unit workers plus original phase process','workerReports':result.workerReports,'workerSourceSHA256':result.workerSourceSHA256,'schedulerPreflight':result.schedulerPreflight,'selectedModules':names,'selectedCases':expected,'testsRun':result.testsRun,'skipped':len(result.skipped),'failures':len(result.failures),'errors':len(result.errors),'successful':result.wasSuccessful()},indent=2)+'\n',encoding='utf-8')
               if not result.wasSuccessful() or result.skipped or result.testsRun!=expected:raise RuntimeError('Every selected native contract must pass without skips')
               support.verify_reviewed_sources(root,commit,inputs)
               if subprocess.check_output(['git','status','--porcelain']):raise RuntimeError('Native contract source changed')
@@ -166,6 +330,13 @@ jobs:
           path: |
             docs/seo/private-engine-phases-2026-11-17/ci-native-units.json
             docs/seo/private-engine-phases-2026-11-17/ci-native-phases.json
+            docs/seo/private-engine-phases-2026-11-17/ci-native-worker-source.py
+            docs/seo/private-engine-phases-2026-11-17/ci-native-worker-1.json
+            docs/seo/private-engine-phases-2026-11-17/ci-native-worker-1.log
+            docs/seo/private-engine-phases-2026-11-17/ci-native-worker-2.json
+            docs/seo/private-engine-phases-2026-11-17/ci-native-worker-2.log
+            docs/seo/private-engine-phases-2026-11-17/ci-native-worker-3.json
+            docs/seo/private-engine-phases-2026-11-17/ci-native-worker-3.log
           if-no-files-found: error
           include-hidden-files: false
           compression-level: 0

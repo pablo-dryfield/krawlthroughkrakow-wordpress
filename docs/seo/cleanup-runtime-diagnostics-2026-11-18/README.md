@@ -1,5 +1,25 @@
 # Recovery cleanup: verified profile, incomplete recovery
 
+## Current recovery prerequisite failures and corrections - revision38
+
+Frozen `bd8bdc3` native run44448421605 was cancelled at its original30-minute cap. Its16scenarios finished at03:09:26UTC and all93current source inputs/raw public/retained metadata assertions are independently verified. Only155of180unit case identities completed; native CI is not accepted. Complete source run44448423684 failed one of1,257tests (21platform skips, zero errors): the roadmap HTML encoded the canonical multiplication sign incorrectly because generator and test both relied on the Windows default codepage. Windows and secrets passed. Original raw logs, the one-member phase artifact and the exact-source failure audit are retained; neither failure is relabelled a pass.
+
+The explicit UTF-8 model readers now pass all18original roadmap contracts under both Python text modes and generate identical canonical bytes. A separate CI-only correction schedules the same180native cases across three isolated workers alongside the original16-scenario process. Exact source/tree binding, every original case exactly once, completed-worker receipts, zero failures/skips and owned-child cleanup are enforced; four scheduler contracts and YAML/Bash/Python syntax/source review pass locally. The original30-minute native cap, existing40-minute recovery standard cap, approved120-minute offline full cap and every helper/runtime guard remain unchanged. Fresh CI is still required. No new full run, hosted helper or staging publication occurs in this correction.
+
+Both roadmaps38 retain all8IDs, four remaining batches,71website deliveries/75records and all40original workstream states/criteria/C08. Staging remains accepted9515. The old full120 cancellation/unknown final state, fbq/font/Ecwid raw failures, H01-H07, recurring/deferred work, native automation stop and production/protected boundaries remain open or preserved as recorded. The owner packet stays a draft.
+
+
+## Main CI accepted; current recovery validation - revision37
+
+NYE delivery 71 now has independently accepted PR and exact-main CI: all 56 quality steps, 1,078 Linux tests / 21 platform skips, 45 Windows contracts, 10 reading contracts, dependency audit, build and secrets. Main `56dc98f` retains the reviewed source tree and the original 30-minute website CI bound. A log-reader adjacency refusal is retained: two expected publisher stdout records appeared between the test count and its result. Reading both unique lines within the exact source-defined step verifies the same unmodified raw log; no CI rerun occurs.
+
+Current recovery candidate `bd8bdc3` preserves all 2,426 staged application files and explicitly inventories 2,076 public files / 551,248,298 bytes and 4,153 private payloads / 1,102,309,144 bytes. The existing complete64 capture profile passes a two-runner review: 22 source inputs, 28 native contracts, 12 whole captures, every public byte, all seven raw synthetic tables, exact SQL and complete ZIP/log readback. Medians are 0.491148s on ARM and 0.758846s on x64. Raw capture is slower on ARM; this comparison does not isolate architecture or predict complete recovery/hosting performance.
+
+Native CI44448421605 and complete source CI44448423684 are being verified on frozen `bd8bdc3`. Native retains all 180 cases and 16 scenarios under 30 minutes; the recovery standard job retains its existing 40-minute cap. The prepared offline full workflow changes only its runner label to ARM and retains the approved 120-minute cap. No new full job has started. Every helper 60-second, 256M, wire, work, expiry, ownership and fresh-witness guard stays intact. The earlier full cancellation and unknown final state remain authoritative for that source; no context replay, unchanged retry or cap increase occurs.
+
+The [draft staging review and dependency packet](../STAGING-REVIEW-AND-DEPENDENCIES.md) lists accepted work and the seven owner gates. Both roadmaps37 retain all eight IDs, four remaining batches, 71 website deliveries / 75 records, all 40 original states and acceptance criteria, and C08. B08 remains planned. Hosting/SVG approval, factual/native/provider/real-world checks and production approval remain open; production, Ecwid, forms, functional consent and OmniLodge are preserved.
+
+
 ## Verified NYE delivery and recovery component findings - revision36
 
 [PR123](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/pull/123), source9515c45/tree0367178, is merged to exact-tree main56dc98f. The corrected PR CI44441320006 is independently accepted:56 quality steps,1078 Linux tests/21 platform skips,45 Windows contracts,10 reading contracts, dependency audit0, build and secrets. Exact-mainCI44444432496 is running separately. Initial7164 correctly failed the stale discovery-fingerprint guard; its failure/raw logs and exact one-binding correction remain retained.
