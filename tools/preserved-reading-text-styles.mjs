@@ -16,7 +16,7 @@ export const preservedReadingTargets=Object.freeze([
     "selector": "[data-ktk-blog-teaser-review]",
     "roots": 8,
     "align": "preserve",
-    "bodySHA256": "1be790904c6a4638edfdd50745ec0bc70b24a7cf40bf820ecca9fc9abd4982cb"
+    "bodySHA256": "1c644feae154efbfaf22a7a63cffde381300401683039fa7e280c91af58fb2b8"
   },
   {
     "key": "how-to-join",

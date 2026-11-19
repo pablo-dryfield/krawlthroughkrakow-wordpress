@@ -1,5 +1,16 @@
 # Recovery cleanup: verified profile, incomplete recovery
 
+## Verified Halloween correction - revision47
+
+Delivery75 is independently accepted on staging from source de305f7/tree776502, squash main8410159. Source CI44528706266 and base-main CI44527183725 are accepted; application-main CI44533926002 is still pending; no success claimed. The article replaces five unsourced named testimonials with platform links, fixes the calendar chronology and gives only the two edited paragraphs24px clearance. This is a narrow correction; all2465 other application files and104 recovery code inputs are exact. [Delivery scope and evidence](../halloween-review-links-2026-11-19/README.md).
+
+All45 targeted HTTP checks pass across origin/normal/warmed phases;12 warmed public responses are HITs. Six actual normal320/390/1440 JS/no-JS views have zero console errors. Ten staging PNGs exactly match directly reviewed local captures; two changed320px review captures were separately viewed. Minimum edited-text/control gap is10.453px. No whole-guide/native/device/field/accessibility or screenshot-cause claim follows. The earlier full6193-check/142-page native graph remains dated to delivery74; static review preserves all36 native hrefs,35IDs and eight image attributes.
+
+Three private capture archives and the four-member content backup were independently reopened. All seven captured tables/fields/rows,280 protected files and2116 owned payloads remain exact through the final13:37:43UTC window.2395 source-managed deployed files match current Git, one native vendor file is separately unchanged;71 frontend/legacy source files do not prove active provider installation. Only one body changes bytes; the standard publisher also backs up/reuploads two identical entrypoints. One exact staging-article cache prefix was purged. This finite dated window is not continuous/whole-host proof; all historical failed and rejected results remain retained without restoration, exclusions or an assigned cause.
+
+Both roadmaps now record75 verified website deliveries/79records/four remaining batches. All eight statuses/rules/dependencies,40 original workstream criteria/states and C08 remain unchanged. The owner has approved the prepared neutral full Halloween guide; it is queued as a separate substantive review and delivery, preserving eight photos, publication date and functional controls. Approval does not confirm a future programme. H06 hosted recovery/SVG and provider/account/manual/production requirements remain open. Root is documentation only with an older application; never build/deploy/push it wholesale.
+
+
 ## Current source integration and finite staging audit - revision46
 
 PR128 sourcef258000/tree42ae is squash-merged as exact-tree main74f0d60e. Its native CI44509415274 and standard CI44509415193 are independently accepted; final/main CI44514480611 is separately accepted. Current evidence retains all180 original native identities,16 interruption scenarios,4 scheduler contracts,104 recovery input hashes,57 quality steps,1258 Linux cases/21 platform skips,45 Windows cases,10 reading contracts,audit0/build/secrets and3916 Git/local/source-archive identities. All2466 application files remain exactly the verified staging74 application; no local application rebuild, staging upload, purge or new website delivery occurs.

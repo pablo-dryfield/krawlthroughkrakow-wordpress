@@ -9,7 +9,7 @@ export const shortViewportBookingHeadingTargets=Object.freeze([
   {key:'contact',selector:'.et_pb_text_3 .et_pb_text_inner > h2',bodySHA256:'3ec2d8ee60f81486aa1c8616f75a15a89236bdd62f58d605e9f030347bbddb8e'},
   {key:'faqs',selector:'.et_pb_text_3 .et_pb_text_inner > h2',bodySHA256:'620e4e6ccf56150d465276da79a5a5ac285399506e36cf06c6e4cea507e2b98b'},
   {key:'krakow-nightlife',selector:'.et_pb_text_9 .et_pb_text_inner > h2',bodySHA256:'773eccde5d0eb77c7a49f340056c0ab768fb91405a6a44e73c677ecb57918e39'},
-  {key:'blog',selector:'.et_pb_text_0 .et_pb_text_inner > h2',bodySHA256:'1be790904c6a4638edfdd50745ec0bc70b24a7cf40bf820ecca9fc9abd4982cb'},
+  {key:'blog',selector:'.et_pb_text_0 .et_pb_text_inner > h2',bodySHA256:'1c644feae154efbfaf22a7a63cffde381300401683039fa7e280c91af58fb2b8'},
   {key:'tour-service-disclaimer',selector:'.et_pb_text_2 .et_pb_text_inner > h2',bodySHA256:'0daf4cab15418f6caadf9c0f9db081f2d0ecdd2b763cef5a5e1b732c0fb400e7'}
 ].map(Object.freeze));
 export const shortViewportBookingHeadingScope=':is('+shortViewportBookingHeadingTargets.map(t=>'body.ktk-code-page[data-ktk-page="'+t.key+'"] #main-content '+t.selector).join(',')+')';
