@@ -1,8 +1,8 @@
 # Krawl Through Krakow Storefront Context
 
-## This worktree: documentation-only batch closure
+## This worktree: NYE background performance candidate
 
-This branch starts from accepted exact website main dab335524d983d0af6aedf810680ce54a7415c9d and carries only the ten reviewed documentation/roadmap files from root04e08af2f55b507f043994ca4f57fe3fe241773d, plus this role note. All2424 application files, every operational tool and the existing main checks workflow remain byte-exact. Main includes only the original checks workflow; this documentation PR cannot dispatch another full recovery fixture. The independently accepted root model18/browser395/default390+1440 reviews apply to its exact copied model, plan and views. Current complete PR/main CI still applies before source integration. The local recovery/main composition and frozen PR121/full44419499903 remain separate; keep APPf2 and native UI/protected boundaries. No application build/reupload/purge or production action accompanies this branch.
+This branch starts from exact website/documentation main5dd58b263fda9d2a6dd111a55a4ae9311651e53b. It adds one full-dimensional WebP encoding of the existing NYE fireworks photograph and a generator-owned NYE-only CSS image-set with the immutable JPEG fallback. Preserve all artwork composition, original media, page bodies, metadata, forms, commerce and functional consent. Pre-edit3820source/three-archive proof is in docs/seo/current-template-performance-2026-11-19/nye-source-pre-edit.json in the root workspace. No preload is included after the controlled FCP trade-off. Frozen PR121/full44419499903 and APPf2 stay separate and unchanged; that synthetic fixture is not proof of this later application candidate. Native automation remains stopped. Current build, local rendered checks, CI and guarded staging/cache verification are required before any delivery claim. No production or provider/account changes.
 
 ## Scope
 
