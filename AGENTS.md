@@ -1,5 +1,7 @@
 # Krawl Through Krakow Storefront Context
 
+Current ARM native candidate: current2076 public/4153 private fixture cohort and all2426 staged application bytes remain exact b040/9515. Only two offline workflow runner labels change to standard ARM, plus native-only exact-branch push/source binding and this role note. Original180 native cases/16 scenarios/30min native, existing40min recovery standard and approved120min offline full stay intact. Push starts native only. Require current native and complete standard CI before any fresh full; no old context replay, helper/runtime/compiler/guard change, hosted recovery or production action. Keep b040/9515/7b2/APPf2 immutable.
+
 Local current-cohort candidate only: the application is exact reviewed/staged9515 (2076 public files), with operational recovery inputs copied from frozen7b2. Fixture inventory is updated explicitly below; helpers, compilers and every safety limit stay frozen. No new full run, hosting helper, production or account action is authorized by this local preparation. Main56dc CI is still being collected separately. Retain APPf2 and all frozen sources.
 
 ## Scope

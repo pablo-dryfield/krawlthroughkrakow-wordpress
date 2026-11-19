@@ -1,6 +1,11 @@
 name: Early Termination Phase Recovery Fixtures
 
 on:
+  push:
+    branches: ['codex/offline-current-arm-native']
+    paths:
+      - '.github/workflows/early-termination-phases.yml'
+      - '.github/workflows/private-termination-fixture.yml'
   pull_request:
     paths:
       - '.github/workflows/early-termination-phases.yml'
@@ -59,13 +64,13 @@ permissions:
   contents: read
 
 concurrency:
-  group: early-termination-phases-${{ github.ref }}-${{ inputs.source_commit || github.event.pull_request.head.sha }}
+  group: early-termination-phases-${{ github.ref }}-${{ inputs.source_commit || github.event.pull_request.head.sha || github.sha }}
   cancel-in-progress: false
 
 jobs:
   termination_phases:
     name: Native Interrupted Phase and Lost Reply Recovery
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-24.04-arm
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -77,7 +82,7 @@ jobs:
           python-version: '3.12'
       - name: Verify reviewed inputs, native unit contracts and phase matrix in synthetic PHP only
         env:
-          REVIEWED_PHASE_COMMIT: ${{ github.event.pull_request.head.sha || inputs.source_commit }}
+          REVIEWED_PHASE_COMMIT: ${{ github.event.pull_request.head.sha || inputs.source_commit || github.sha }}
         run: |
           php --version
           python - <<'PY'
