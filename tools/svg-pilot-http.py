@@ -93,14 +93,19 @@ def observe(plan: dict, stem: str, field: str | None, coding: str | None, method
             raise ValueError('Ambiguous response field: ' + name)
     actual = fields.get('Content-Encoding', 'identity').lower()
     expected_field = sha(b'absent\0' if field is None else b'present\0' + field.strip(' \t').encode('ascii'))
-    if fields.get('X-KTK-Encoding-Probe') != plan['token'] or fields.get('X-KTK-Accept-Encoding-SHA256') != expected_field or fields.get('X-KTK-Accept-Encoding-Present') != ('0' if field is None else '1'):
+    field_exact = fields.get('X-KTK-Accept-Encoding-SHA256') == expected_field and fields.get('X-KTK-Accept-Encoding-Present') == ('0' if field is None else '1')
+    # The real edge can omit an empty field. Absence and empty remain distinct
+    # in evidence. This narrow case is acceptable only with identity selected;
+    # the complete identity wire, validator and decoded-body checks still run.
+    empty_omitted = field == '' and coding == 'identity' and actual == 'identity' and fields.get('X-KTK-Accept-Encoding-Present') == '0' and fields.get('X-KTK-Accept-Encoding-SHA256') == sha(b'absent\0')
+    if fields.get('X-KTK-Encoding-Probe') != plan['token'] or not (field_exact or empty_omitted):
         raise ValueError('Origin nonce or original encoding field does not match')
     if set(header_tokens(fields, 'Vary')) != {'accept-encoding'} or not {'noindex', 'nofollow'}.issubset(header_tokens(fields, 'X-Robots-Tag')):
         raise ValueError('Vary/noindex metadata is incomplete')
     cache = header_tokens(fields, 'Cache-Control')
     if 'no-transform' not in cache:
         raise ValueError('Origin no-transform boundary missing')
-    row = {'url': url, 'method': method, 'field': field, 'condition': condition, 'status': status, 'encodedBytes': len(body), 'encodedSHA256': sha(body), 'coding': actual, 'cacheStatus': fields.get('CF-Cache-Status'), 'age': fields.get('Age'), 'vary': fields.get_all('Vary', []), 'cacheControl': fields.get_all('Cache-Control', []), 'etag': fields.get('ETag'), 'lastModified': fields.get('Last-Modified'), 'originFieldExact': True, 'nonceExact': True}
+    row = {'url': url, 'method': method, 'field': field, 'condition': condition, 'status': status, 'encodedBytes': len(body), 'encodedSHA256': sha(body), 'coding': actual, 'cacheStatus': fields.get('CF-Cache-Status'), 'age': fields.get('Age'), 'vary': fields.get_all('Vary', []), 'cacheControl': fields.get_all('Cache-Control', []), 'etag': fields.get('ETag'), 'lastModified': fields.get('Last-Modified'), 'originFieldExact': field_exact, 'emptyEncodingFieldOmittedByTransport': empty_omitted, 'nonceExact': True}
     if coding is None:
         expected = b'No acceptable representation\n'
         if status != 406 or actual != 'identity' or 'no-store' not in cache or 'max-age=0' not in cache or row['cacheStatus'] not in ('BYPASS', 'DYNAMIC', 'MISS') or row['etag'] is not None or row['lastModified'] is not None or body != (b'' if method == 'HEAD' else expected):

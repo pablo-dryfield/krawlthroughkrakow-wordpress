@@ -72,6 +72,7 @@ function ktk_svg_probe_error(int $status, string $message, bool $head): never {
     http_response_code($status);
     header_remove('Content-Encoding'); header_remove('ETag'); header_remove('Last-Modified');
     header_remove('X-KTK-Representation-ETag');
+    header_remove('X-KTK-Representation-Encoding');
     header('Cache-Control: no-store, max-age=0, no-transform');
     header('Content-Type: text/plain; charset=utf-8');
     header('Content-Length: ' . strlen($message));
@@ -136,7 +137,12 @@ try {
         $notModified = $date !== null && $modified <= $date;
     }
     if ($notModified) { http_response_code(304); header_remove('Content-Length'); exit; }
-    if ($coding !== 'identity') { header('Content-Encoding: ' . $coding); }
+    if ($coding !== 'identity') {
+        header('Content-Encoding: ' . $coding);
+        // LiteSpeed can omit Content-Encoding on HEAD or wildcard requests.
+        // The nonce-local late response rule restores the selected coding.
+        header('X-KTK-Representation-Encoding: ' . $coding);
+    }
     header('Content-Length: ' . strlen($body));
     if (!$head) { echo $body; }
 } catch (Throwable $e) {

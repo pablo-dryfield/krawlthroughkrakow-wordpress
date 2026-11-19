@@ -99,6 +99,8 @@ ExpiresActive Off
 Header always set X-Robots-Tag "noindex, nofollow"
 Header always set ETag "expr=%{resp:X-KTK-Representation-ETag}" "expr=-n resp('X-KTK-Representation-ETag')"
 Header always unset X-KTK-Representation-ETag
+Header always set Content-Encoding "expr=%{resp:X-KTK-Representation-Encoding}" "expr=-n resp('X-KTK-Representation-Encoding')"
+Header always unset X-KTK-Representation-Encoding
 </IfModule>
 </FilesMatch>
 RewriteEngine On
