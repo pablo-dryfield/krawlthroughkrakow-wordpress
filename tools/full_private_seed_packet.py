@@ -5,6 +5,7 @@ from pathlib import Path,PurePosixPath
 from tools import content_update_backup as backup
 from tools import content_update_staging_packet as legacy
 from tools import full_inventory_capacity as capacity
+from tools import staging_state_fast_capture as fast_capture
 
 ROOT=Path(__file__).resolve().parents[1]
 TEMPLATE=ROOT/'tools/full-private-seed-staging-template.php'
@@ -24,7 +25,8 @@ def plan(transaction,commit,owned,sizes,protected_sha):
     value={'transactionId':transaction,'applicationCommit':commit,'protectedStateSha256':protected_sha,'expected':owned,'prior':prior}
     return value,sizes,{n:base64.b64encode(b).decode() for n,b in overrides.items()}
 
-def helper_source(name,token,expires,commit,owned,sizes,protected_sha,key,interrupt_original=False,entry_profile='late'):
+def helper_source(name,token,expires,commit,owned,sizes,protected_sha,key,interrupt_original=False,entry_profile='late',capture_profile='raw'):
+    if capture_profile not in ('raw','bounded-sha256'):raise ValueError('Explicit reviewed private capture profile required')
     if entry_profile not in ('late','early'):raise ValueError('Explicit private entry profile required')
     match=re.fullmatch(r'ktk-transaction-rehearsal-([a-f0-9]{32})\.php',name) if isinstance(name,str) else None
     if match is None or not isinstance(token,str) or not re.fullmatch(r'[A-Za-z0-9_-]{43}',token) or type(expires) is not int or not int(time.time())<expires<=int(time.time())+3600 or not backup.digest(key) or type(interrupt_original) is not bool:
@@ -42,6 +44,7 @@ def helper_source(name,token,expires,commit,owned,sizes,protected_sha,key,interr
         body=(ROOT/'tools'/name).read_bytes();marker=('/* __KTK_FULL_SEED_'+part+'__ */').encode()
         if source.count(marker)!=1 or not body.startswith(b'<?php\n') or part=='STATE' and backup.sha(body)!=capacity.CORE_SHA:
             raise ValueError('Exact reviewed full seed component required')
+        if part=='STATE' and capture_profile=='bounded-sha256':body=fast_capture.embedded(body)
         source=source.replace(marker,body[len(b'<?php\n'):])
     if b'__KTK_FULL_SEED_' in source:raise ValueError('Unresolved full seed compiler marker')
     if entry_profile=='early':

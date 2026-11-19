@@ -1,5 +1,10 @@
 # Safety Guide responsive featured image
 
+## Current acceptance update - revision45
+
+Maina01 CI44493089338 is independently accepted. The three lower Safety photos are now separately verified [delivery74](../safety-inline-responsive-2026-11-19/README.md), preserving this featured picture exactly. Its sourceD079/main6adbe CI and screenshot qualification are recorded there. Revision44 running/prototype notes below retain their earlier context.
+
+
 ## Verified Safety featured-image delivery73 - revision44
 
 Source60fc029/treee8637d77/PR126 CI44487643596 independently passes56quality steps,1079Linux tests/21platform skips,45Windows contracts,10reading contracts,audit0/build/secrets/all3835source identities under the original30-minute cap. Three AVIF crops preserve all original JPEG fallbacks and ALTs; only one existing Safety body and three new image files change, with2425otheroriginalapp/runtimeCSS/definitions/schema/sharing/discovery exact. Actual dependency hashes verify before the stable body. All2079owned files and280protected files match. Allseven captured database tables/identity/rowcounts remain exactly equal across publication and the complete cache/browser verification window; three raw archives/CRCs and the content backup reopen independently. No restore/exclusion is used. Older Hen usage-time and82font/3numericEcwid failures keep their original scopes; this newer strict interval does not explain them.

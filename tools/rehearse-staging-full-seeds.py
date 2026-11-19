@@ -14,7 +14,7 @@ from tools.full_private_seed_transport import FullSeedTransport,OriginalCapsuleR
 from tools.content_update_staging_connection import BoundedStagingFTPS
 
 spec=importlib.util.spec_from_file_location('ktk_full_seed_shared_runner',ROOT/'tools/rehearse-staging-content-controller.py');shared=importlib.util.module_from_spec(spec);spec.loader.exec_module(shared)
-FILES=('rehearse-staging-full-seeds.py','rehearse-staging-full-seeds.ps1','full_private_seed_packet.py','full_private_seed_recovery.py','full_private_seed_transport.py','full-private-seed-staging-template.php','full-private-seed-rehearsal.php','content-update-streaming-seeds.php','full_inventory_capacity.py','early_private_entry.py')
+FILES=('rehearse-staging-full-seeds.py','rehearse-staging-full-seeds.ps1','full_private_seed_packet.py','full_private_seed_recovery.py','full_private_seed_transport.py','full-private-seed-staging-template.php','full-private-seed-rehearsal.php','content-update-streaming-seeds.php','full_inventory_capacity.py','early_private_entry.py','staging_state_fast_capture.py','staging-protected-state-fast-core.php')
 
 def fingerprints():
     result=shared.source_hashes()
@@ -46,11 +46,12 @@ def main(argv=None):
     report={'startedAt':datetime.now(timezone.utc).isoformat(),'scope':'full-private-seed-copy-prefix-recovery-and-cleanup; no engine/public transaction','phase':'offline-validated','applicationCommit':args.application_commit,'toolingCommit':args.tooling_commit,'sourceHashes':hashes,'publicOwnedFiles':len(owned),'publicOwnedBytes':sum(sizes.values()),'publicOwnedMapSha256':backup.sha(backup.encode(owned,sort=True)),'publicApplicationWrites':0,'databaseWrites':0,'cachePurges':0,'productionOperations':0,'fullHostTransactionAcceptance':False,'quotaVerified':False,'steps':[],'uncertainRequests':[]}
     def checkpoint(phase):
         report['phase']=phase;report['updatedAt']=datetime.now(timezone.utc).isoformat();destination.parent.mkdir(parents=True,exist_ok=True);destination.write_bytes((json.dumps(report,indent=2)+'\n').encode())
-    report['entryProfile']=args.entry_profile;checkpoint('offline-validated')
+    report['entryProfile']=args.entry_profile;report['captureProfile']='bounded-sha256';checkpoint('offline-validated')
     if not args.rehearse_staging and not args.resume:
         print(json.dumps({'phase':report['phase'],'publicOwnedFiles':len(owned),'publicOwnedBytes':sum(sizes.values())}));return
     common=shared.snapshot.load_common();connection=None;lease=None;value=None;before=None;client=None
-    compile_extra={'entry_profile':'early'} if args.entry_profile=='early' else {}
+    compile_extra={'capture_profile':'bounded-sha256'}
+    if args.entry_profile=='early':compile_extra['entry_profile']='early'
     capture_extra={'source_compiler':early_entry.snapshot_source} if args.entry_profile=='early' else {}
     try:
         connection=BoundedStagingFTPS(common.common.store2.connect)
