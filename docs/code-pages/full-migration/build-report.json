@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-19T12:42:16.386Z",
+  "startedAt": "2026-11-19T14:34:27.146Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -3816,6 +3816,16 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "owner-approved-neutral-halloween-guide",
+          "key": "post-spooktacular-krakow-unveil-the-mysteries-of-halloween",
+          "reviewedOn": "2026-11-19",
+          "retainedPhotos": 8,
+          "neutralPhotoDescriptions": 3,
+          "retainedNativeVideos": 1,
+          "preservedPublication": "2023-10-10",
+          "futureProgrammeUnconfirmed": true
         }
       ],
       "bookings": [
@@ -4887,6 +4897,12 @@
           "key": "archive-category-krakow-guides",
           "selector": "article.post-6403",
           "version": "2026-11-17.homepage-alias-excerpts-1"
+        },
+        {
+          "type": "matching-neutral-halloween-summary",
+          "key": "archive-category-krakow-guides",
+          "selector": "article.post-7472",
+          "reviewedOn": "2026-11-19"
         }
       ],
       "bookings": [
@@ -6106,6 +6122,12 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "matching-neutral-halloween-summary",
+          "key": "archive-author-pubthroughkrakow",
+          "selector": "article.post-7472",
+          "reviewedOn": "2026-11-19"
         }
       ],
       "bookings": [
@@ -7620,6 +7642,18 @@
           "key": "blog",
           "selector": ".et_pb_post_slide-6403 .et_pb_slide_content > div > p",
           "version": "2026-11-17.homepage-alias-excerpts-1"
+        },
+        {
+          "type": "matching-neutral-halloween-summary",
+          "key": "blog",
+          "selector": "article.post-7472 .post-content-inner > p",
+          "reviewedOn": "2026-11-19"
+        },
+        {
+          "type": "matching-neutral-halloween-summary",
+          "key": "blog",
+          "selector": ".et_pb_post_slide-7472 .et_pb_slide_content > div",
+          "reviewedOn": "2026-11-19"
         }
       ],
       "bookings": [
@@ -11395,5 +11429,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-19T12:43:27.894Z"
+  "finishedAt": "2026-11-19T14:35:38.222Z"
 }

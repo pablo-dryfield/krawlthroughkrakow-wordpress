@@ -827,4 +827,22 @@ body.ktk-code-page[data-ktk-page="student-trips-poland"] #page-container #main-c
 #main-content .et-pb-controllers a:focus-visible { outline: 2px solid #fff; outline-offset: -2px; }
 #main-footer .widget_nav_menu a { display: inline-block; min-height: 24px; padding-top: 3px; padding-bottom: 3px; }
 .et_pb_text.et_clickable:has(> .ktk-parity-module-link) { min-height: 32px; }
+/* BEGIN Neutral Halloween guide */
+body.ktk-code-page[data-ktk-page="post-spooktacular-krakow-unveil-the-mysteries-of-halloween"] #main-content [data-ktk-halloween-guide] {
+  font-size: 16px;
+  line-height: 1.65;
+  text-align: left;
+  letter-spacing: 0;
+  padding-right: 24px;
+}
+body.ktk-code-page[data-ktk-page="post-spooktacular-krakow-unveil-the-mysteries-of-halloween"] #main-content [data-ktk-halloween-guide] :is(p,li) { font: inherit; }
+body.ktk-code-page[data-ktk-page="post-spooktacular-krakow-unveil-the-mysteries-of-halloween"] #main-content [data-ktk-halloween-guide] h2 { font-family: inherit; font-size: 24px; font-weight: 700; line-height: 1.3; letter-spacing: 0; margin: 28px 0 12px; scroll-margin-top: 96px; }
+body.ktk-code-page[data-ktk-page="post-spooktacular-krakow-unveil-the-mysteries-of-halloween"] #main-content [data-ktk-halloween-guide] nav { margin: 20px 0; }
+body.ktk-code-page[data-ktk-page="post-spooktacular-krakow-unveil-the-mysteries-of-halloween"] #main-content [data-ktk-halloween-guide] summary { cursor: pointer; min-height: 44px; padding: 8px 0; font-weight: 700; }
+body.ktk-code-page[data-ktk-page="post-spooktacular-krakow-unveil-the-mysteries-of-halloween"] #main-content [data-ktk-halloween-guide] a { color: #c8006c; text-decoration: underline; text-underline-offset: .15em; }
+body.ktk-code-page[data-ktk-page="post-spooktacular-krakow-unveil-the-mysteries-of-halloween"] #main-content [data-ktk-halloween-guide] :is(a,summary):focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+body.ktk-code-page[data-ktk-page="post-spooktacular-krakow-unveil-the-mysteries-of-halloween"] #main-content [data-ktk-halloween-guide] span[aria-hidden="true"][id] { display: block; scroll-margin-top: 96px; }
+body.ktk-code-page[data-ktk-page="post-spooktacular-krakow-unveil-the-mysteries-of-halloween"] #main-content [data-ktk-halloween-guide] .wp-video { max-width: 100%; }
+body.ktk-code-page #main-content p[data-ktk-halloween-summary="2026-11-19.halloween-neutral-1"] { font-size: 16px; line-height: 1.65; text-align: left; letter-spacing: 0; margin: 0; padding-right: 24px; }
+/* END Neutral Halloween guide */
 /* END shared content accessibility */

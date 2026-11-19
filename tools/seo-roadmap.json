@@ -3,9 +3,9 @@
   "updatedOn": "2026-11-19",
   "websiteProductionReleases": 1,
   "remainingWork": {
-    "revision": 46,
-    "scope": "Current permitted website deliveries and source integration are verified. Four batches remain: B03, B04, B07 and B08. Their unresolved hosting, SVG, provider/account, manual and production requirements remain explicit.",
-    "changeRule": "Revision 46 records accepted source-only recovery/SVG integration, exact-tree main CI and the finite current-staging audit. No new website delivery or record is added. All eight statuses, original completion rules/dependencies, all 40 workstream states/criteria and C08 remain unchanged: 74 website deliveries, 78 records, four batches open.",
+    "revision": 47,
+    "scope": "75 website deliveries are verified on staging. Four batches remain: B03, B04, B07 and B08. The approved neutral Halloween guide can proceed; unresolved hosting, SVG, provider/account, manual and production requirements remain explicit.",
+    "changeRule": "Revision47 adds only verified Halloween review-link/calendar delivery75 (79 records). All eight statuses, original completion rules/dependencies, all40 workstream states/criteria and C08 are unchanged. The full neutral guide is approved and queued separately; no whole-guide or new batch completion is claimed.",
     "batches": [
       {
         "id": "B01",
@@ -118,7 +118,7 @@
           "L04"
         ],
         "summary": "Closed against the original URL/archive decision rule. Every 142 known public route and all 14 review groups have an explicit action; permitted staging fixes and 39 archives are verified. Unapproved factual, retirement, indexing and language decisions remain assigned to owners.",
-        "next": "Completed: reconcile116 registry identities as76 maintained roles, one specialist hold and39 archives, plus homepage/catalogue/24 protected product routes. Fresh351/351 archive checks are all HIT with152 original ordered entries, native pagination and seven maintained category introductions. Secondary historical NYE and five homepage-alias excerpt containers are installed and source/cache-verified. Retain six deliberately unreachable tags, distinct page purposes, H01 business/legal/medical/Halloween holds, H02 account evidence, H05 outreach and H07 production review. No redirect, retirement, indexing, language, commerce or factual policy is newly approved.",
+        "next": "The original finite batch remains complete. Targeted Halloween review-link/calendar delivery75 is verified; the owner has now approved the prepared neutral guide for a separate substantive article review and staging delivery. C08 currently remains52major/2targeted/1remaining/1medicalhold. Preserve publication history, eight images, functional controls and protected commerce/forms/consent; no future event programme is confirmed by the approval.",
         "doneWhen": "Each remaining URL/archive decision has evidence and an explicit action; permitted staging fixes are verified, while unapproved retirement, indexing, language or business-fact decisions are recorded for owner review.",
         "dependsOn": [],
         "blockedBy": [
@@ -142,7 +142,7 @@
           "D07"
         ],
         "summary": "Current source and bounded staging regressions pass. The retained global provider-initialization guard and real-world/account evidence remain unresolved.",
-        "next": "Current full normal-cache release checks pass6193/6193 across116routes/119assets/348device documents, with218HIT and130MISS; the142-page native graph has125HIT/17MISS,7458edges, no unknown destinations/errors/retries and all24products/56articles within two native links. These read-only initial-HTML checks do not repair the failed fbq66/67 or FacebookSignal142/143 browser guards. H02/X01 retain provider/CMP/Rocket sequencing and consent decisions; no stubs, exclusions or functional-consent changes are introduced. H03 retains actual inbox, device, discount eligibility and payment evidence; R02 retains alert ownership/adoption. The strict captured database window ends10:25UTC for delivery74; it is not a continuous guarantee. Older82font/3numericEcwid/Hen usage-time failures and unknown old aborted admin bodies remain retained and unexplained.",
+        "next": "Delivery75 passes45 targeted origin/normal/warmed HTTP checks,12 warmed public HITs and six normal320/390/1440 JS/no-JS views with zero console errors. All seven captured database tables/fields/rows,280 protected files and2116 owned payloads are exact through13:37:43UTC. Only one Halloween body changes; two unchanged entrypoints are reuploaded by the standard publisher. The previous full6193-check/142-page graph remains dated to delivery74; source review preserves all36 native hrefs,35 IDs and eight image attributes. This does not repair fbq66/67, FacebookSignal142/143,82font/3numericEcwid/Hen usage-time or unknown old aborted-admin results. H02/X01 provider/CMP/Rocket/consent, H03 actual inbox/device/discount/payment and R02 alert ownership remain; no continuous/raw-whole-host guarantee.",
         "doneWhen": "Permitted automated checks and availability safeguards pass; every real-world/provider check has an owner and clear evidence requirement, with no real messages, orders or account edits sent automatically.",
         "dependsOn": [],
         "blockedBy": [
@@ -160,7 +160,7 @@
           "D07"
         ],
         "summary": "Current-source, deployed-capture and all40-requirement preparatory audits are reconciled in one review packet. Final acceptance still follows the original batch dependencies and owner review.",
-        "next": "Read STAGING-REVIEW-AND-DEPENDENCIES.md and final-staging-audit-2026-11-19/README.md. They distinguish current authoritative source/CI/staging evidence, dated captures, failed and rejected results, all39 open requirements and H01-H07/R01-R02/X01 responsibilities. B03 hosted recovery, B04 SVG and B07 provider/account/manual requirements remain unaccepted. This preparation does not close B08, satisfy its original dependencies or authorize production.",
+        "next": "Read STAGING-REVIEW-AND-DEPENDENCIES.md and final-staging-audit-2026-11-19/README.md for accepted dated evidence, failed/rejected results and all39 open requirement assignments. Delivery75 is a narrow Halloween correction; the approved full neutral guide is next. B03 hosted recovery, B04 SVG and B07 provider/account/manual requirements remain unaccepted. Original dependencies and owner review still govern B08; production is not approved.",
         "doneWhen": "All feasible staging deliveries have authoritative evidence; every unresolved item is mapped to an owner/account/manual gate, recurring responsibility or explicit deferral. Production remains separately approved.",
         "dependsOn": [
           "B01",
@@ -347,7 +347,7 @@
       }
     ]
   },
-  "current": "Recovery and SVG tooling is integrated as exact-tree main 74f0d60e, with current PR and main CI independently verified. Website staging remains at 74 verified deliveries. Four batches remain: B03, B04, B07 and B08; hosting, SVG, provider/account and manual evidence is still required. Production remains separately gated.",
+  "current": "Staging has 75 verified website deliveries. Halloween review links and calendar corrections are verified; exact-tree main8410159 CI44533926002 is still pending; no success claimed. Four batches remain: B03, B04, B07 and B08. The owner-approved neutral Halloween guide is next; hosting, SVG, provider/account, manual and production requirements remain explicit.",
   "deliveries": [
     {
       "id": "safety-inline-responsive-images",
@@ -484,7 +484,22 @@
     {"id":"page-descriptions","title":"Reviewed descriptions for 76 content pages","workstreams":["T05"],"stage":"staging_verified","environment":"website","verifiedOn":"2026-11-13","summary":"Reviewed descriptions are code-managed and cache-verified; the health-claims page remains held.","remaining":"Title/social-preview review, health-content decision and production approval.","evidence":"staging-descriptions-2026-11-12/README.md"},
     {"id":"discovery-preview","title":"Sitemap preview and staging indexing guard","workstreams":["T03"],"stage":"staging_verified","environment":"website","verifiedOn":"2026-11-13","summary":"Canonical discovery preview covers 123 intended URLs; staging remains noindex and protected routes stay excluded.","remaining":"Production feed approval, guarded cutover and Search Console submission.","evidence":"staging-discovery-2026-11-12/README.md"},
     {"id":"homepage-photo-loading","title":"Homepage photo-loading improvements","workstreams":["D01","D02"],"stage":"staging_verified","environment":"website","verifiedOn":"2026-11-13","summary":"Native lazy photo loading and in-view gallery behavior verified without replacing original imagery.","remaining":"Further responsive-image/mobile-performance work and production approval.","evidence":"staging-performance-2026-11-12/README.md"},
-    {"id":"search-console-reporting","title":"OmniLodge Search Console reporting","workstreams":["M01"],"stage":"live_verified","environment":"omnilodge","verifiedOn":"2026-11-12","summary":"Complete totals, paginated rows and matching filters deployed and checked against native Google reporting.","remaining":"Ongoing reporting checks; no website SEO production release implied.","evidence":"omnilodge-reporting-2026-11-12/README.md"}
+    {"id":"search-console-reporting","title":"OmniLodge Search Console reporting","workstreams":["M01"],"stage":"live_verified","environment":"omnilodge","verifiedOn":"2026-11-12","summary":"Complete totals, paginated rows and matching filters deployed and checked against native Google reporting.","remaining":"Ongoing reporting checks; no website SEO production release implied.","evidence":"omnilodge-reporting-2026-11-12/README.md"},
+    {
+      "id": "halloween-review-links-calendar",
+      "title": "Halloween review links and calendar corrections",
+      "workstreams": [
+        "C08",
+        "C10",
+        "G02"
+      ],
+      "stage": "staging_verified",
+      "environment": "website",
+      "verifiedOn": "2026-11-19",
+      "summary": "Replaced five unsourced named testimonials with verified review-platform links and corrected the Halloween/All Saints chronology on staging. Source de305/main8410159, source CI44528706266 and base-main CI44527183725 are independently accepted.45 scoped HTTP checks,12 warmed public HITs,six normal JS/no-JS views and final protected-state comparison pass. All2116 owned payloads/280 protected files/seven captured tables are exact through the final13:37:43UTC window; only one body changes.",
+      "remaining": "Application main CI44533926002 is still pending; no success claimed. This narrow delivery does not close the whole article/C08 or establish native/device/field/accessibility/hosted recovery completion. The owner-approved neutral full guide is queued separately. Historical raw/provider/image failures and H06/account/manual/production dependencies remain.",
+      "evidence": "halloween-review-links-2026-11-19/README.md"
+    }
   ],
   "milestones": [
     {"name":"Private GitHub source control and checks; manual deployments retained","status":"source_verified"},
