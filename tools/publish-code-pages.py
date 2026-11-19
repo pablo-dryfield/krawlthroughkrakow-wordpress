@@ -146,6 +146,19 @@ def sha(content):
     return hashlib.sha256(content).hexdigest()
 
 
+def publication_order(name):
+    # Verify immutable assets before replacing stable content that can reference them.
+    if name == RENDERER:
+        return (4, name)
+    if name == ASSETS + '/registry.php':
+        return (3, name)
+    if name.endswith('.php'):
+        return (2, name)
+    if name.startswith(ASSETS + '/content/'):
+        return (1, name)
+    return (0, name)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--dry-run', action='store_true', help='Inspect local payload only; no network or deployment.')
@@ -223,7 +236,7 @@ def main():
         for directory in sorted({remote_path(name).rsplit('/', 1)[0] for name in files}, key=lambda value: (value.count('/'), value)):
             publisher.store2.ensure_dir(ftp, directory)
         # The registry activates new routes only after every referenced dependency is verified.
-        for name in sorted(files, key=lambda name: (2 if name == RENDERER else 1 if name == ASSETS + '/registry.php' else 0, name)):
+        for name in sorted(files, key=publication_order):
             content = files[name]
             remote = remote_path(name)
             if args.incremental and before['owned_checksums'].get(name) == sha(content):

@@ -1,6 +1,6 @@
 # Visible remaining batch list — 17 November 2026
 
-Current progress checkpoint (19 November 2026, revision 41): four batches remain: B03/B04/B07 in progress and B08 planned; B01/B02/B05/B06 meet original rules. All8 IDs remain visible. B03 originaloffline/currentcodeCI gates accepted, H06 auditedhostedgate mandatory/unaccepted. Image canary rejected and exact9515rollback verified; no delivery. Owner-approved fiveHeninteriors+GroupTransport pass local source/build/browser checks, currentCI/staging pending. Counts71website75records/all40originalcriteria-states/C08 unchanged.
+Current progress checkpoint (19 November2026, revision43): four batches remain B03/B04/B07 in progress and B08 planned; all8 IDs visible. Hen72 source/PR/mainCI and staging/cache/browser verification accepted, with initial native usage-time qualification and exact final raw window retained. Local crop-preserving AVIF prototype only; original eager-LCP and native/schema/dependency-order/CI/staging work remain. Counts72website76records/all40originalcriteria-states/C08 unchanged; H06 hosted/SVG and owner/account/manual/production gates remain.
 
 The owner could see active deliveries in the HTML roadmap but could not see a finite list of the work still planned. The Overview now starts with all eight numbered implementation batches: two in verification and six planned. Each title, status and scope is visible without expanding delivery history. Native details expose the next step, completion criteria, related workstreams and dependencies.
 

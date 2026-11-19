@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-19T06:35:47.612Z",
+  "startedAt": "2026-11-19T08:13:43.080Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -2534,6 +2534,14 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "safety-responsive-image",
+          "key": "post-krakow-safety-guide",
+          "version": "2026-11-19.safety-responsive-1",
+          "originalJPEGFallbackAndAttributesPreserved": true,
+          "loading": "eager",
+          "fetchPriority": "auto"
         }
       ],
       "bookings": [
@@ -11345,5 +11353,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-19T06:37:11.454Z"
+  "finishedAt": "2026-11-19T08:14:49.229Z"
 }

@@ -1,5 +1,7 @@
 # Safety Guide first-image loading candidate
 
+Current successor qualification: held08/PR124 remains frozen and rejected. This separate main190-based checkout contains the new [responsive picture candidate](../safety-responsive-image-2026-11-19/README.md), with all original failures retained. The Hen-removal wording below describes the earlier678 source, not this new candidate. No current CI/staging delivery is claimed.
+
 Current19Nov: **Held after rejected staging canary; no accepted delivery.** PR124/source08 is frozen/draft. CI44466174012 is independently accepted, but every normal phone/desktop JS/noJS view adds two cancelled image attempts. Guarded rollback restores original9515/all2076owned/sevenDBtables/280protected exactly, scoped warm HTTP and allfourbaseline-identical screenshots pass. This Hen successor removes the failed Safety override and restores the original lazy body; it must not republish the rejected image change. All negative FCP evidence and the native guard incident remain in current-template-performance-2026-11-19/README.md. Historical preparation follows.
 
 The first visible photo on the Safety Guide is its observed largest contentful image. This candidate changes that image from native `loading="lazy"` to `loading="eager"`. Priority stays automatic. The generator requires the exact reviewed image, ALT and dimensions before applying the override. This follows the [web.dev guidance for LCP images](https://web.dev/articles/optimize-lcp).

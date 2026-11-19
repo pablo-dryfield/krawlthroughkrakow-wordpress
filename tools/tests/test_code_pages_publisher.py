@@ -2,6 +2,9 @@ import importlib.util
 import unittest
 import copy
 import json
+import tempfile
+import types
+import sys
 from pathlib import Path
 from unittest.mock import patch
 
@@ -12,6 +15,59 @@ SPEC.loader.exec_module(publisher)
 
 
 class PublisherTests(unittest.TestCase):
+    def test_new_image_is_verified_before_live_content_can_reference_it(self):
+        assets = publisher.ASSETS
+        image = assets + '/media/z-photo.avif'
+        body = assets + '/content/a-article.html'
+        registry = assets + '/registry.php'
+        shell = assets + '/shells/z-shell.html'
+        css = assets + '/styles/z-style.css'
+        page = assets + '/pages/a-article.php'
+        payload = {publisher.RENDERER: b'new renderer', body: b'new body', image: b'new image', registry: b'new registry', shell: b'shell', css: b'css', page: b'new page definition'}
+        ordered = sorted(payload, key=publisher.publication_order)
+        remote = {publisher.remote_path(body): b'old body', publisher.remote_path(registry): b'old registry', publisher.remote_path(publisher.RENDERER): b'old renderer'}
+        writes = []
+        class FTP:
+            closed = False
+            def storbinary(self, command, stream):
+                name = command.removeprefix('STOR ')
+                writes.append(name)
+                remote[name] = b'corrupted image' if name == publisher.remote_path(image) else stream.read()
+            def delete(self, name):
+                del remote[name]
+            def close(self):
+                self.closed = True
+        ftp = FTP()
+        def atomic(_ftp, name, content):
+            writes.append(name)
+            remote[name] = content
+        fake = types.SimpleNamespace(StagingFTP=lambda: ftp, replace_renderer_atomically=atomic,
+            retrieve_file=lambda _ftp, name: remote.get(name), http_json=lambda endpoint: {'permalink': publisher.URL},
+            store2=types.SimpleNamespace(ensure_dir=lambda *_: None, read_tree=lambda *_: {
+                'content/a-article.html': b'old body', 'registry.php': b'old registry'}))
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'deploy-backups').mkdir()
+            with patch.object(publisher, 'ROOT', root), patch.object(publisher, 'local_payload', return_value=payload), patch.object(publisher, 'load_publisher', return_value=fake), patch.object(sys, 'argv', ['publish-code-pages.py', '--report', 'report.json']):
+                with self.assertRaisesRegex(RuntimeError, 'Staging checksum mismatch: ' + image):
+                    publisher.main()
+            report = json.loads((root / 'report.json').read_bytes())
+            self.assertTrue(report['helper_removed'])
+            self.assertTrue(ftp.closed)
+            self.assertEqual(report['phase'], 'backed-up')
+        self.assertNotIn(publisher.remote_path(body), writes)
+        self.assertNotIn(publisher.remote_path(registry), writes)
+        self.assertNotIn(publisher.remote_path(page), writes)
+        self.assertNotIn(publisher.remote_path(publisher.RENDERER), writes)
+        self.assertEqual(remote[publisher.remote_path(body)], b'old body')
+        self.assertEqual(remote[publisher.remote_path(registry)], b'old registry')
+        self.assertEqual(remote[publisher.remote_path(publisher.RENDERER)], b'old renderer')
+        self.assertTrue(all(ordered.index(name) < ordered.index(body) for name in [image, shell, css]))
+        self.assertLess(ordered.index(body), ordered.index(registry))
+        self.assertLess(ordered.index(body), ordered.index(page))
+        self.assertLess(ordered.index(page), ordered.index(registry))
+        self.assertEqual(ordered[-1], publisher.RENDERER)
+
     def test_paths_are_staging_only(self):
         for path in ['ktk-code-pages.php', 'ktk-code-pages-assets/runtime.js', 'ktk-code-pages-assets/media/a.woff2']:
             self.assertTrue(publisher.remote_path(path).startswith('/public_html/staging/wp-content/mu-plugins/'))

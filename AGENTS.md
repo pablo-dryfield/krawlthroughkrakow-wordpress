@@ -1,5 +1,15 @@
 # Krawl Through Krakow Storefront Context
 
+## This worktree: Safety responsive image candidate (local only)
+
+Base main190858f/tree8fd is independently accepted and matches staged Hen72/source678. Before any edit, all3830Git/local source identities reconstruct from89817overlay plus full03ec(twoarchives), not a standalone host backup. Frozen678/08/9515/6a/bd8/APPf2 remain immutable. Root is older-app documentation only; never copy its application here.
+
+Implement the original D01 eager-LCP requirement for only the first Safety photo, with AVIF variants derived independently from each original1080x675/980x653/480x320 JPEG crop. Keep every original JPEG/fallback attribute/ALT and other image/copy/route intact. The first candidate uses eager loading with automatic fetch priority; all earlier failed cancellation/FCP evidence stays retained. Preserve featured-image schema through picture wrapping and verify dependencies before stable content can reference them. No application/hosting acceptance follows from smaller encoded files alone. Native responsive/fallback/quality/layout/LCP-FCP/source/build/current CI/guarded staging and cache evidence remain required before any delivery.
+
+Hen72 and all forms, functional consent, protected commerce/Ecwid, production and OmniLodge stay untouched. Original native Windows STOP and old Chrome/PHP5194 remain; use only owned headless/loopback review. H06 hosting quota/PHP actor/window/retention and separate SVG pilot decision stay open. Initial Hen native usage-time failure/final strict window/unknown trigger keep their recorded scopes. Current counts72website76records/all8/fourremaining/40originalcriteria-states/C08 stay unchanged.
+
+## Inherited historical Hen/source context
+
 ## This worktree: approved Hen activity enquiries
 
 Current local proof: all116 build and2320 source-reference assertions pass; source-bound whole-body inverse/atomic protected-target refusal/idempotence and all2425 otherapp identities exactmain56. Existing typography CSS remains byte-exact, only the approved Hen body hash advances. Four390/1440JS-noJS loopback views pass; original20formcontrols plus existingJS honeypot verified separately,27main photos unchanged. Ten text/two unique form PNGs inspected; noJS form files byte-identicalJS. Earlier build pin/reference2318 and browser readers are retained/corrected, no source assertions waived. Bothroadmaps41/71website75records/fourremaining/40originalcriteria-statesC08 exact. CurrentCI and guarded staging/cache acceptance still REQUIRED; new wording is not staged. Parent08/PR124 stays frozen/rejected; this branch restores Safety to currentmain.
