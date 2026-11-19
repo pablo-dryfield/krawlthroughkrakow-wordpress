@@ -24,6 +24,7 @@ import {loadMemorialEditorial,reviseMemorialEditorial,buildMemorialStyles} from 
 import {loadContactDetails,reviseContactDetails,buildContactDetailsStyles} from './contact-details-editorial.mjs';
 import {loadEstablishedNyeEditorial,reviseEstablishedNyeEditorial,buildEstablishedNyeStyles} from './established-nye-editorial.mjs';
 import {loadGroupPlanningEditorial,reviseGroupPlanningEditorial,buildGroupPlanningStyles} from './group-planning-editorial.mjs';
+import {loadHenActivityEnquiries,reviseHenActivityEnquiries} from './hen-activity-enquiries.mjs';
 import {loadGroupActivitiesEditorial,reviseGroupActivitiesEditorial,buildGroupActivityStyles} from './group-activities-editorial.mjs';
 import {loadStagActivityClarity,reviseStagActivityClarity} from './stag-activity-clarity.mjs';
 import {loadStagCostumeEditorial,reviseStagCostumeEditorial,buildStagCostumeStyles} from './stag-costume-editorial.mjs';
@@ -140,6 +141,7 @@ const offerPageRevisions=await loadOfferPageRevisions();
 const contactDetails=await loadContactDetails();
 const establishedNye=await loadEstablishedNyeEditorial();
 const groupPlanning=await loadGroupPlanningEditorial();
+const henActivityEnquiries=await loadHenActivityEnquiries();
 const groupActivities=await loadGroupActivitiesEditorial();
 const stagActivityClarity=await loadStagActivityClarity();
 const stagCostume=await loadStagCostumeEditorial();
@@ -407,6 +409,7 @@ try {
       contentRevisions.push(...await page.evaluate(reviseHomepageAliasExcerpts,{key:route.key,revision:homepageAliasExcerpts.find(r=>r.key===route.key)}));
       const eventPromotion=await page.evaluate(prepareNyePromotion,{key:route.key,campaignFacts});
       contentRevisions.push(...await page.evaluate(reviseSecondaryNyeEditorial,{key:route.key,revision:secondaryNye}));
+      contentRevisions.push(...await page.evaluate(reviseHenActivityEnquiries,{key:route.key,revision:henActivityEnquiries}));
       if(contentRevisions.length||bookingRevisions.length)report.revisions[route.key]={content:contentRevisions,bookings:bookingRevisions};
       const schemaFacts=await page.evaluate(codePageSchemaFacts);
       const title=codePageTitle(route.route,capture.title),description=codePageHeadDescription(route.route,codePageDescription(route.route,capture.metadata.description));
