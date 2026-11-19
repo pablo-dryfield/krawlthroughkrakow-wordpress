@@ -303,7 +303,7 @@ def render_html(data, plan):
 
 
 if __name__ == '__main__':
-    data = json.loads((ROOT / 'tools/seo-roadmap.json').read_text())
+    data = json.loads((ROOT / 'tools/seo-roadmap.json').read_text(encoding='utf-8'))
     plan = (ROOT / 'docs/seo/SEO-AND-WEBSITE-IMPROVEMENT-PLAN.md').read_text(encoding='utf-8')
     result = render(data, plan)
     document = render_html(data, plan)
