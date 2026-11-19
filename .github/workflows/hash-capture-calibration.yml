@@ -1,0 +1,57 @@
+name: Current Complete Capture Calibration
+
+on:
+  push:
+    branches: ['codex/local-current-recovery-cohort']
+    paths:
+      - '.github/workflows/hash-capture-calibration.yml'
+      - 'tools/calibrate_staging_capture.py'
+      - 'tools/tests/test_calibrate_staging_capture.py'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: current-capture-calibration-${{ github.ref }}-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  read_only_capture:
+    name: Complete64 capture (${{ matrix.runner.label }})
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        runner:
+          - {label: x64, os: ubuntu-24.04}
+          - {label: arm64, os: ubuntu-24.04-arm}
+    runs-on: ${{ matrix.runner.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Verify original and explicit profile contracts, then complete current captures
+        env:
+          CAPTURE_SOURCE_COMMIT: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          php --version
+          python -m unittest tools.tests.test_staging_state_fast_capture tools.tests.test_calibrate_staging_capture
+          output_root=docs/seo/fast-capture-local-2026-11-18/current-complete64-calibration
+          python -m tools.calibrate_staging_capture --source-commit "$CAPTURE_SOURCE_COMMIT" --profile bounded-complete-sha256 --pairs 3 --output "$output_root"
+          php -r 'echo json_encode(array("architecture"=>php_uname("m"),"phpVersion"=>PHP_VERSION,"opensslVersion"=>defined("OPENSSL_VERSION_TEXT")?OPENSSL_VERSION_TEXT:null,"xdebugLoaded"=>extension_loaded("xdebug"),"xdebugModes"=>function_exists("xdebug_info")?xdebug_info("mode"):null),JSON_UNESCAPED_SLASHES),"\n";' > "$output_root/runner-environment.json"
+          lscpu
+      - name: Preserve complete synthetic observations
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: capture-current-complete64-${{ matrix.runner.label }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: docs/seo/fast-capture-local-2026-11-18/current-complete64-calibration/
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 6

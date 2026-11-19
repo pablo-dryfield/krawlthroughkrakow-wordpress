@@ -26,10 +26,12 @@ BRANCH=r'''
   if($c['operation']==='fixture-closure-write'){$parts=explode("\n",base64_decode($c['fencedConfig']['closureBlob'],true),3);$store->writeOnce('closed.json',$parts[2]);echo json_encode(array('ok'=>true));exit;}
   $reader=new KTK_Private_Engine_Fenced_Inspection($c['fencedConfig'],$fresh);
   try{
+   if(!empty($c['fencedVerifyHeldLock'])){$refused=false;try{$reader->assertHeldEngineLock($store);}catch(RuntimeException $e){$refused=true;}if(!$refused){throw new RuntimeException('Uninspected reader cannot certify a held inspection lock');}}
    $result=$reader->inspect($store);$lifetime=false;
    if(!empty($c['fencedVerifyHeldLock'])){
+    $reader->assertHeldEngineLock($store);
     $path=$root.'/engine/target-'.hash('sha256',$root.'/target').'.lock';$other=fopen($path,'r+b');if(!$other||flock($other,LOCK_EX|LOCK_NB)){throw new RuntimeException('Fenced reader did not retain existing engine lock');}fclose($other);
-    $reader->releaseEngineLock();$other=fopen($path,'r+b');if(!$other||!flock($other,LOCK_EX|LOCK_NB)){throw new RuntimeException('Explicit fenced reader release did not unlock engine');}flock($other,LOCK_UN);fclose($other);$lifetime=true;
+    $reader->releaseEngineLock();$refused=false;try{$reader->assertHeldEngineLock($store);}catch(RuntimeException $e){$refused=true;}if(!$refused){throw new RuntimeException('Released inspection lock must not be silently reacquired');}$other=fopen($path,'r+b');if(!$other||!flock($other,LOCK_EX|LOCK_NB)){throw new RuntimeException('Explicit fenced reader release did not unlock engine');}flock($other,LOCK_UN);fclose($other);$lifetime=true;
    }
    echo json_encode(array('ok'=>true,'inspection'=>$result,'captures'=>$captures,'engineLockLifetimeVerified'=>$lifetime),JSON_THROW_ON_ERROR);exit;
   }finally{$reader->releaseEngineLock();}

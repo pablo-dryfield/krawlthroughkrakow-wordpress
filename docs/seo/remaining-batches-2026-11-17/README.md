@@ -1,6 +1,6 @@
 # Visible remaining batch list — 17 November 2026
 
-Current progress checkpoint (19 November2026, revision44): delivery73 Safety featured image is verified on staging after exact sourceCI/strict captured state/63HTTP18warmedHIT/fournormal unique-image views. Same-tree maina01 CI is running separately. Three lower Safety photos and wider SVG/performance work remain feasible; H06hosted and owner/account/manual requirements remain. All8IDs/fourremaining/73website77records/40originalcriteria-states/C08 are retained. Root olderapp remains documentation only.
+Current progress checkpoint (19 November2026, revision45): delivery74 lower Safety photos is verified on staging,7.2MBto382KB in normal views/165HTTP52warmedHIT/strictcapturedstate. Three screenshot pairs are exact; one differs only inside the unchanged featured photo, with cause unproved. Exact-tree main6adbe CI is running separately. Source-only50-path recovery/SVG integration and final audit remain feasible; H06 hosted/SVG and owner/account/manual gates stay explicit. All8IDs/fourremaining/74website78records/40originalcriteria-states/C08 retained. Root olderapp remains documentation only.
 
 The owner could see active deliveries in the HTML roadmap but could not see a finite list of the work still planned. The Overview now starts with all eight numbered implementation batches: two in verification and six planned. Each title, status and scope is visible without expanding delivery history. Native details expose the next step, completion criteria, related workstreams and dependencies.
 
