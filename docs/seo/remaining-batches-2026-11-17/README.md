@@ -1,6 +1,6 @@
 # Visible remaining batch list — 17 November 2026
 
-Current progress checkpoint (19 November2026, revision43): four batches remain B03/B04/B07 in progress and B08 planned; all8 IDs visible. Hen72 source/PR/mainCI and staging/cache/browser verification accepted, with initial native usage-time qualification and exact final raw window retained. Local crop-preserving AVIF prototype only; original eager-LCP and native/schema/dependency-order/CI/staging work remain. Counts72website76records/all40originalcriteria-states/C08 unchanged; H06 hosted/SVG and owner/account/manual/production gates remain.
+Current progress checkpoint (19 November2026, revision44): delivery73 Safety featured image is verified on staging after exact sourceCI/strict captured state/63HTTP18warmedHIT/fournormal unique-image views. Same-tree maina01 CI is running separately. Three lower Safety photos and wider SVG/performance work remain feasible; H06hosted and owner/account/manual requirements remain. All8IDs/fourremaining/73website77records/40originalcriteria-states/C08 are retained. Root olderapp remains documentation only.
 
 The owner could see active deliveries in the HTML roadmap but could not see a finite list of the work still planned. The Overview now starts with all eight numbered implementation batches: two in verification and six planned. Each title, status and scope is visible without expanding delivery history. Native details expose the next step, completion criteria, related workstreams and dependencies.
 

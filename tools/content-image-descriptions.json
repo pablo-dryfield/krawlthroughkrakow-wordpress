@@ -136,7 +136,7 @@
     "482ce20fa501": "Hands holding a small device bearing the Prozak 2.0 name.",
     "13d6773a4ae9": "Two people dancing together under colourful party lights.",
     "4d3fca0b92a2": "A person raising one arm behind a bar beside an empty shot glass.",
-    "17a08a394086": "A camera, passport cover and small travel bag arranged on a map.",
+    "17a08a394086": "A camera, notebook, pencil and leather bag arranged on a map.",
     "95ecfc905c14": "An ornate corner building beside a city street.",
     "0da31764ab8d": "People walking through Krakow's Main Market Square in the evening sun.",
     "a29fb7fa1906": "An indoor shooting lane with protective partitions and a firearm display.",
@@ -227,5 +227,11 @@
     "bc7011afb397": "A group of guests sitting together on sofas inside a bar.",
     "80fef5772843": "Four guests posing together in a large white lounge chair.",
     "a38a4ba997ec": "Two pub-crawl guests posing with drinks."
+  },
+  "entryCorrections": {
+    "17a08a394086": {
+      "reviewedOn": "2026-11-19",
+      "reason": "Original photograph and decoded1080px previews show a Field Notes notebook, pencil and leather bag. The earlier passport-cover description was inaccurate."
+    }
   }
 }

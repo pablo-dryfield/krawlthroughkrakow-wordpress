@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 1,
+  "key": "post-krakow-safety-guide",
+  "version": "2026-11-19.safety-inline-1",
+  "reviewedOn": "2026-11-19",
+  "baseBodySHA256": "3b9591cdefe93944e2aecffb340d70f60413f07516aee3c1ba928d87f447e711",
+  "sizes": "(max-width: 980px) 80vw, 1024px",
+  "photos": [
+    {
+      "sourceFile": "17a08a394086-1684312361_1684312358573.jpeg",
+      "sourceSHA256": "457ff0556bcd529e7d501ffee07b5cbe817b4aec28fac6e1664e60d5a4d4fc3c",
+      "sourceBytes": 1916073,
+      "width": 3423,
+      "height": 2704,
+      "expectedAttrsAfterReviewedALT": {
+        "decoding": "async",
+        "class": "fr-fic fr-dib",
+        "style": "display: flex !important; margin-inline: auto !important; width: 1024px;",
+        "src": "__KTK_PAGE_ASSETS__media/17a08a394086-1684312361_1684312358573.jpeg",
+        "loading": "lazy",
+        "alt": "A camera, notebook, pencil and leather bag arranged on a map."
+      },
+      "variants": [
+        {
+          "format": "AVIF",
+          "width": 360,
+          "height": 284,
+          "file": "b70e08a348ef-safety-inline-360.avif",
+          "bytes": 18706,
+          "sha256": "b70e08a348ef826d96bb6f98537749ed104fee3e5108900bbfb01223e62a9abb",
+          "encodedBytesPercentOfOriginal": 0.9762676056705564
+        },
+        {
+          "format": "JPEG",
+          "width": 360,
+          "height": 284,
+          "file": "19454bff0b17-safety-inline-360.jpg",
+          "bytes": 33281,
+          "sha256": "19454bff0b174c67665f975514ba3e4b31a771b69e248702151045c4b779731e",
+          "encodedBytesPercentOfOriginal": 1.7369379976650159
+        },
+        {
+          "format": "AVIF",
+          "width": 720,
+          "height": 569,
+          "file": "822dc5f79d00-safety-inline-720.avif",
+          "bytes": 66452,
+          "sha256": "822dc5f79d0035045175565ac38490370ecd1213c4ff7c9471a888d9f058adff",
+          "encodedBytesPercentOfOriginal": 3.4681350867112055
+        },
+        {
+          "format": "JPEG",
+          "width": 720,
+          "height": 569,
+          "file": "e83df692adb9-safety-inline-720.jpg",
+          "bytes": 120696,
+          "sha256": "e83df692adb93d58f66fb3f58ac9b54a6ec793508c2b529b0d65ccdd18f086a9",
+          "encodedBytesPercentOfOriginal": 6.299133696889419
+        },
+        {
+          "format": "AVIF",
+          "width": 1080,
+          "height": 853,
+          "file": "1b3fdd16e2d2-safety-inline-1080.avif",
+          "bytes": 133059,
+          "sha256": "1b3fdd16e2d29cd8a548bff7184c88875a2cfc802fd4adbc24f9ab51915aa292",
+          "encodedBytesPercentOfOriginal": 6.944359635567121
+        },
+        {
+          "format": "JPEG",
+          "width": 1080,
+          "height": 853,
+          "file": "774bf3c36e31-safety-inline-1080.jpg",
+          "bytes": 249330,
+          "sha256": "774bf3c36e31e12207d91b0a08bea9cb0d8072c9ea27f435129bb6fc89981c11",
+          "encodedBytesPercentOfOriginal": 13.012552235744671
+        },
+        {
+          "format": "AVIF",
+          "width": 1920,
+          "height": 1517,
+          "file": "93bc4dbd24c2-safety-inline-1920.avif",
+          "bytes": 335673,
+          "sha256": "93bc4dbd24c232c0e944d76bc987c8714e4b3830b2be5487166ae50dda873f6e",
+          "encodedBytesPercentOfOriginal": 17.518800170974696
+        },
+        {
+          "format": "JPEG",
+          "width": 1920,
+          "height": 1517,
+          "file": "478cae852586-safety-inline-1920.jpg",
+          "bytes": 660238,
+          "sha256": "478cae852586d5192c55597b3e29db2ffd492ba61d2c52816ecedca2a0ad7913",
+          "encodedBytesPercentOfOriginal": 34.457872951604664
+        },
+        {
+          "format": "AVIF",
+          "width": 2560,
+          "height": 2022,
+          "file": "6bd2d4c62533-safety-inline-2560.avif",
+          "bytes": 510617,
+          "sha256": "6bd2d4c6253378b807431a69e70a63af653a14442727135290a01d5594e30bad",
+          "encodedBytesPercentOfOriginal": 26.649141238355742
+        },
+        {
+          "format": "JPEG",
+          "width": 2560,
+          "height": 2022,
+          "file": "f2d02a11d430-safety-inline-2560.jpg",
+          "bytes": 1043197,
+          "sha256": "f2d02a11d430b5d69dde630a2ca3a60649f5be98eb6a3cd12a20a00ec900c4d8",
+          "encodedBytesPercentOfOriginal": 54.444533167577646
+        },
+        {
+          "format": "AVIF",
+          "width": 3200,
+          "height": 2528,
+          "file": "98b89225471f-safety-inline-3200.avif",
+          "bytes": 687966,
+          "sha256": "98b89225471f03b19dadbd978a1918735f4d6c7a5b85c177337af95a981d79fd",
+          "encodedBytesPercentOfOriginal": 35.904999444175665
+        },
+        {
+          "format": "JPEG",
+          "width": 3200,
+          "height": 2528,
+          "file": "04f75d5e5b75-safety-inline-3200.jpg",
+          "bytes": 1458365,
+          "sha256": "04f75d5e5b756b41d3b4e55a56431817a9c132b3b1ec2c36799c84a436cd7e90",
+          "encodedBytesPercentOfOriginal": 76.11218361722126
+        },
+        {
+          "format": "AVIF",
+          "width": 3423,
+          "height": 2704,
+          "file": "993c4407f11e-safety-inline-3423.avif",
+          "bytes": 766680,
+          "sha256": "993c4407f11e9f5a6210cbd35bb7056f7f44e814cd3d723738dcf5dc88a6d57e",
+          "encodedBytesPercentOfOriginal": 40.01308927165093
+        }
+      ]
+    },
+    {
+      "sourceFile": "95ecfc905c14-1684312574_1684312573221.jpeg",
+      "sourceSHA256": "49970bc75d9187b163ba45fb3478446436bfde95773dd942c3b9a452fd83ae10",
+      "sourceBytes": 1698637,
+      "width": 2812,
+      "height": 1875,
+      "expectedAttrsAfterReviewedALT": {
+        "decoding": "async",
+        "class": "fr-fic fr-dib",
+        "style": "display: flex !important; margin-inline: auto !important; width: 1024px;",
+        "src": "__KTK_PAGE_ASSETS__media/95ecfc905c14-1684312574_1684312573221.jpeg",
+        "loading": "lazy",
+        "alt": "An ornate corner building beside a city street."
+      },
+      "variants": [
+        {
+          "format": "AVIF",
+          "width": 360,
+          "height": 240,
+          "file": "584c6eba52ac-safety-inline-360.avif",
+          "bytes": 23806,
+          "sha256": "584c6eba52ac1a94e4a0e55a8b4f641c38143756876685f4266e6d0b281a50e4",
+          "encodedBytesPercentOfOriginal": 1.4014765956469806
+        },
+        {
+          "format": "JPEG",
+          "width": 360,
+          "height": 240,
+          "file": "827386561924-safety-inline-360.jpg",
+          "bytes": 40267,
+          "sha256": "827386561924ad03fc12c889b78c3cff171e22f40c6d93731a6f25dbbcef3e23",
+          "encodedBytesPercentOfOriginal": 2.3705476802871948
+        },
+        {
+          "format": "AVIF",
+          "width": 720,
+          "height": 480,
+          "file": "56bf246e4cee-safety-inline-720.avif",
+          "bytes": 85840,
+          "sha256": "56bf246e4ceecdc081266a16c702e0db6f5bc744dd3bba2a4bdaee4851755b0f",
+          "encodedBytesPercentOfOriginal": 5.053463453345241
+        },
+        {
+          "format": "JPEG",
+          "width": 720,
+          "height": 480,
+          "file": "e81626d6e8bf-safety-inline-720.jpg",
+          "bytes": 146681,
+          "sha256": "e81626d6e8bf1c12633bb8f6ce1782694354dc5f3d3dd7d2cbf647a464bd12d4",
+          "encodedBytesPercentOfOriginal": 8.635217530290463
+        },
+        {
+          "format": "AVIF",
+          "width": 1080,
+          "height": 720,
+          "file": "d51ab361f510-safety-inline-1080.avif",
+          "bytes": 166195,
+          "sha256": "d51ab361f510d25a748bdf864d77596393cdb0e96cf74093262d359977ef8a29",
+          "encodedBytesPercentOfOriginal": 9.784020953270181
+        },
+        {
+          "format": "JPEG",
+          "width": 1080,
+          "height": 720,
+          "file": "5be7a1b87a95-safety-inline-1080.jpg",
+          "bytes": 301531,
+          "sha256": "5be7a1b87a95df329ceb27b9134b121e04d4ad35cdb39f884c2d3cff5a108112",
+          "encodedBytesPercentOfOriginal": 17.75135005301309
+        },
+        {
+          "format": "AVIF",
+          "width": 1920,
+          "height": 1280,
+          "file": "f4f7e402c344-safety-inline-1920.avif",
+          "bytes": 386319,
+          "sha256": "f4f7e402c3449b06666388f4069c90bad03e29a8451aa0f3e09300a892bcc9a4",
+          "encodedBytesPercentOfOriginal": 22.742881498519107
+        },
+        {
+          "format": "JPEG",
+          "width": 1920,
+          "height": 1280,
+          "file": "8af74962af71-safety-inline-1920.jpg",
+          "bytes": 771383,
+          "sha256": "8af74962af7199fc95ff0c4dfee09a49a10737589f04c6760863cd0f0ff38dd7",
+          "encodedBytesPercentOfOriginal": 45.41188023103229
+        },
+        {
+          "format": "AVIF",
+          "width": 2560,
+          "height": 1707,
+          "file": "b26cfb3056bc-safety-inline-2560.avif",
+          "bytes": 565262,
+          "sha256": "b26cfb3056bcb5c92265614c47254421e59b47c30c826486b1da8e5ad57a7b6c",
+          "encodedBytesPercentOfOriginal": 33.277386516365766
+        },
+        {
+          "format": "JPEG",
+          "width": 2560,
+          "height": 1707,
+          "file": "5de85759059c-safety-inline-2560.jpg",
+          "bytes": 1188939,
+          "sha256": "5de85759059c9864a0a5b871175269e40b9b7ab56fae1012df11b8d7be57035e",
+          "encodedBytesPercentOfOriginal": 69.99370671897528
+        },
+        {
+          "format": "AVIF",
+          "width": 2812,
+          "height": 1875,
+          "file": "1f96492a69cd-safety-inline-2812.avif",
+          "bytes": 655793,
+          "sha256": "1f96492a69cd663f29e54ce2cdea8f82cd058f3616927497075ad7dee45c82e4",
+          "encodedBytesPercentOfOriginal": 38.60701256360247
+        }
+      ]
+    },
+    {
+      "sourceFile": "0da31764ab8d-1684312542_1684312537372.jpeg",
+      "sourceSHA256": "80f75fe5558f1bb5ab001639d02284d73aa198cfc8a12d20d7f81e1665e7b0da",
+      "sourceBytes": 3587201,
+      "width": 5899,
+      "height": 3318,
+      "expectedAttrsAfterReviewedALT": {
+        "decoding": "async",
+        "class": "fr-fic fr-dib",
+        "style": "display: flex !important; margin-inline: auto !important; width: 1024px;",
+        "src": "__KTK_PAGE_ASSETS__media/0da31764ab8d-1684312542_1684312537372.jpeg",
+        "loading": "lazy",
+        "alt": "People walking through Krakow's Main Market Square in the evening sun."
+      },
+      "variants": [
+        {
+          "format": "AVIF",
+          "width": 360,
+          "height": 202,
+          "file": "0de3144a922c-safety-inline-360.avif",
+          "bytes": 12578,
+          "sha256": "0de3144a922c367b8a80e6eb1d60a05bd5edfcbd2430db91aaccd821db50d0c3",
+          "encodedBytesPercentOfOriginal": 0.3506354954740479
+        },
+        {
+          "format": "JPEG",
+          "width": 360,
+          "height": 202,
+          "file": "d139f672fd21-safety-inline-360.jpg",
+          "bytes": 22773,
+          "sha256": "d139f672fd2123faa879f2b72bec968a07921d5ee0d2d7c96d74265de88fd283",
+          "encodedBytesPercentOfOriginal": 0.6348403671832161
+        },
+        {
+          "format": "AVIF",
+          "width": 720,
+          "height": 405,
+          "file": "58db83b21633-safety-inline-720.avif",
+          "bytes": 41204,
+          "sha256": "58db83b21633df992b16c045ebfd38e00f8fa4adf9956eeb31f4b51e040135d5",
+          "encodedBytesPercentOfOriginal": 1.1486392872883342
+        },
+        {
+          "format": "JPEG",
+          "width": 720,
+          "height": 405,
+          "file": "2632f4041f70-safety-inline-720.jpg",
+          "bytes": 78064,
+          "sha256": "2632f4041f70363967e188886d87bd0233548972d3f04630e274c8142671a414",
+          "encodedBytesPercentOfOriginal": 2.176181373722855
+        },
+        {
+          "format": "AVIF",
+          "width": 1080,
+          "height": 607,
+          "file": "c0920f22ce9b-safety-inline-1080.avif",
+          "bytes": 82354,
+          "sha256": "c0920f22ce9bc952191158f6ace519a9575289b32b26e01e31040fd74de9bc34",
+          "encodedBytesPercentOfOriginal": 2.295773222632353
+        },
+        {
+          "format": "JPEG",
+          "width": 1080,
+          "height": 607,
+          "file": "16971bf337b7-safety-inline-1080.jpg",
+          "bytes": 160508,
+          "sha256": "16971bf337b7953d349de7df215d21bfb5723f70c732723090732efc48b8fb1d",
+          "encodedBytesPercentOfOriginal": 4.474463516262401
+        },
+        {
+          "format": "AVIF",
+          "width": 1920,
+          "height": 1080,
+          "file": "290cdd1b0fbc-safety-inline-1920.avif",
+          "bytes": 235339,
+          "sha256": "290cdd1b0fbceaf68a10626cfe5f1749c90ebf031416c25afe371312b8a3151b",
+          "encodedBytesPercentOfOriginal": 6.5605189115413385
+        },
+        {
+          "format": "JPEG",
+          "width": 1920,
+          "height": 1080,
+          "file": "9094b4e3e0ac-safety-inline-1920.jpg",
+          "bytes": 469633,
+          "sha256": "9094b4e3e0ac8afb658ba1ebd3f529afa90e898462ad5bf5afd2a08493e46d3f",
+          "encodedBytesPercentOfOriginal": 13.091906475271388
+        },
+        {
+          "format": "AVIF",
+          "width": 2560,
+          "height": 1440,
+          "file": "44760cf8a477-safety-inline-2560.avif",
+          "bytes": 425416,
+          "sha256": "44760cf8a477ae0e1c20c35387e0b1eec0afe2794e5a78cdc2a4ba584ed414a0",
+          "encodedBytesPercentOfOriginal": 11.859274124867829
+        },
+        {
+          "format": "JPEG",
+          "width": 2560,
+          "height": 1440,
+          "file": "ea1d9e72eb84-safety-inline-2560.jpg",
+          "bytes": 832613,
+          "sha256": "ea1d9e72eb84cf3164627daca4ebd066747b81fb98eb67142e592e1e16c316b2",
+          "encodedBytesPercentOfOriginal": 23.21065922985637
+        },
+        {
+          "format": "AVIF",
+          "width": 3200,
+          "height": 1800,
+          "file": "b984f67e112d-safety-inline-3200.avif",
+          "bytes": 693349,
+          "sha256": "b984f67e112d76dd66a835242e7a506f76e530cf69596353a3661e8de2aa51ea",
+          "encodedBytesPercentOfOriginal": 19.328412319242773
+        },
+        {
+          "format": "JPEG",
+          "width": 3200,
+          "height": 1800,
+          "file": "3e70e4575753-safety-inline-3200.jpg",
+          "bytes": 1313667,
+          "sha256": "3e70e457575314ff74b718ea05febdef0189da0ff874ffee5fc64ca369edc617",
+          "encodedBytesPercentOfOriginal": 36.620947641350455
+        },
+        {
+          "format": "AVIF",
+          "width": 5899,
+          "height": 3318,
+          "file": "b9ed15ed0c5a-safety-inline-5899.avif",
+          "bytes": 2122080,
+          "sha256": "b9ed15ed0c5a2b9f51a814891381e92016ae99e3caead0ace1ed3fe4e9cdc576",
+          "encodedBytesPercentOfOriginal": 59.156986185050684
+        }
+      ]
+    }
+  ],
+  "nativeProspectiveBodySHA256": "1a71a07d3bec95519b92cecabb4a188615ef71f2d348b942a0a755d74b38ac90",
+  "scope": "Three lazy inline photos, preserved full originals/crops; one visually corrected reviewed ALT. No first-photo, copy, route, form, runtime, CSS or metadata change."
+}
