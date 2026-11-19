@@ -59,7 +59,10 @@ export async function svgPilotEdge(action, input, request, clock = () => Math.fl
     let response;
     try { response = await call('GET', EP); }
     catch (error) { if (/\b404\b/.test(error.message)) return null; throw error; }
-    const e = response.result;
+    // Actual Cloudflare empty entrypoint responses can omit the rules field.
+    // Only omission means an empty list; null or any other malformed value fails.
+    const raw = response.result;
+    const e = raw && !Object.hasOwn(raw, 'rules') ? {...raw, rules: []} : raw;
     if (response.success !== true || !e || !hex(e.id, 32) || e.kind !== 'zone' || e.phase !== PHASE || !Array.isArray(e.rules) || typeof e.version !== 'string' || !/^[0-9]+$/.test(e.version)) fail('Bounded zone cache entrypoint required');
     if (e.rules.length > 100) fail('Unreviewed entrypoint size');
     return e;

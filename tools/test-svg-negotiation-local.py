@@ -25,7 +25,7 @@ spec = importlib.util.spec_from_file_location('ktk_svg_payload', ROOT / 'tools/s
 svg = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(svg)
 CASES = [
-    (None, 'br'), ('', 'identity'), (' , , ', 'identity'), ('\tbr\t', 'br'), (' \tBr ; Q=0.5\t, gzip; q=0.4 , identity; q=0 ', 'br'),
+    (None, 'identity'), ('', 'identity'), (' , , ', 'identity'), ('\tbr\t', 'br'), (' \tBr ; Q=0.5\t, gzip; q=0.4 , identity; q=0 ', 'br'),
     ('br', 'br'), ('gzip', 'gzip'), ('identity', 'identity'), ('zstd', 'identity'),
     ('br, gzip', 'br'), ('gzip, br', 'br'),
     ('br;q=0.1,gzip;q=1,identity;q=0', 'gzip'),
@@ -54,14 +54,20 @@ def main() -> int:
     args = parser.parse_args()
     out = Path(args.output).resolve()
     allowed = (ROOT / 'docs/seo/svg-negotiation-review-2026-11-17').resolve()
-    if out.parent != allowed or not re.fullmatch(r'local-http-[a-z0-9-]+[.]json', out.name) or out.exists() or args.port != 5194:
-        raise ValueError('Fresh explicit owned output and reserved local port5194 required')
+    if out.parent != allowed or not re.fullmatch(r'local-http-[a-z0-9-]+[.]json', out.name) or out.exists() or not 1024 <= args.port <= 65535:
+        raise ValueError('Fresh explicit owned output and unprivileged loopback port required')
+    # An explicitly selected port lets local checks preserve existing previews.
+    # Refuse an occupied port before creating any fixtures or starting PHP.
+    with socket.socket() as reservation:
+        if hasattr(socket, 'SO_EXCLUSIVEADDRUSE'):
+            reservation.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        reservation.bind(('127.0.0.1', args.port))
     fixture = out.parent / (out.stem + '-fixture')
     if fixture.exists():
         raise ValueError('Preserve existing fixture/evidence')
     source_paths = ['tools/svg-negotiation-origin.php', 'tools/svg-negotiation-payload.py', 'tools/test-svg-negotiation-local.py'] + ['staging/wp-content/mu-plugins/ktk-homepage-assets/' + row[0] for row in svg.ORIGINALS.values()]
     hashes = {p: svg.sha((ROOT / p).read_bytes()) for p in source_paths}
-    report = {'startedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'scope': __doc__, 'sourceHashes': hashes, 'checks': [], 'requests': [], 'negativeControls': [], 'errors': []}
+    report = {'startedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'scope': __doc__, 'sourceHashes': hashes, 'loopbackPort': args.port, 'checks': [], 'requests': [], 'negativeControls': [], 'errors': []}
     def check(name, passed, detail=None):
         report['checks'].append({'name': name, 'pass': bool(passed), 'detail': detail})
         if not passed:

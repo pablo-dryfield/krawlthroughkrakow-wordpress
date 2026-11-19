@@ -1,5 +1,11 @@
 # Krawl Through Krakow Storefront Context
 
+## Current worktree: owner-authorized B04 staging completion
+
+Start from exact current main59ea45dc60ed0b56766880820416ee05340e3725/tree87585b8190281caba58ef4b4d17768d7d8050373. All3925 source bytes and the two-archive reconstruction were verified before this role edit. User focuses B04, delegates the best staging solution including the exact two-path SVG pilot, exclusive window and shared empty-entrypoint retention, and requests one consolidated push/PR only after staging verification and roadmap reconciliation. No intermediate push/PR. Current baseline CI44577510347 attempt2 is independently accepted; new candidate changes need their own honest local/source qualification and final CI, never fabricated exact-current CI. First real pilot is FAILED at its initial absent-encoding response and fully cleaned; preserve its journal, independent cleanup receipts and Cloudflare empty-array-omission finding. No public pilot or original-URL delivery is accepted yet.
+
+Complete B04 within staging only; retain every original requirement and protected production/commerce-Ecwid/forms/real messages-orders-payments/functional consent/Omni/native Windows STOP boundary. B03 quota/PHP actor/private-recovery-window/retention is separate and unapproved. Older worktree role notes below are historical. Never print or copy the DPAPI FTPS password.
+
 ## This worktree: final verified staging documentation
 
 Successor to frozen1d15ce6/PR132 solely to make current H01 next wording explicitly retain the already approved/delivered Hen, GroupTransport, neutral Halloween guide and registry identity. Only remaining service/policy/specialist/future-programme facts stay open; never re-ask those completed approvals. All3925 Git/local/two-archive bytes were verified before this first tracked role edit. Carry only root43d93f1 model and generated roadmaps. Application main3f725f9/CI44560683709 and staging76 stay independently accepted; all2466 app/104 recovery inputs/workflow bounds remain exact. Preserve old435/1d sources and both cancelled standard runs with terminal raw logs; no cancelled result is accepted or replayed. Revision48/76website80records/four remaining/40states-criteria/eight rules/C08 counts unchanged.

@@ -8,7 +8,9 @@ $manifest = [];
 /* END compiled SVG probe manifest */
 
 function ktk_svg_probe_quality(?string $field): ?string {
-    if ($field === null) { return 'br'; }
+    // Identity is a valid deterministic choice when the visitor sends no field.
+    // Avoid choosing a coding an intermediary may decode for that visitor.
+    if ($field === null) { return 'identity'; }
     if (strlen($field) > 1024 || preg_match('/[^\x09\x20-\x7e]/', $field)) {
         throw new InvalidArgumentException('Invalid encoding field');
     }
