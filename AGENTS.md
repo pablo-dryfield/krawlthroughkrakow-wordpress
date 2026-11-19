@@ -1,8 +1,8 @@
 # Krawl Through Krakow Storefront Context
 
-## This worktree: read-only ARM capture experiment
+## This worktree: controlled capture debugger-mode experiment
 
-This branch starts from frozen7b2c60c and changes only the calibration workflow branch filter and standard runner label to ubuntu-24.04-arm, adds read-only PHP architecture/OpenSSL/Xdebug metadata, plus this role note. The existing15-minute component limit, complete native contracts, all6 captures, full2074 public bytes/seven synthetic tables and source/ZIP preservation remain. All helper/compiler/runtime/application/full and native workflows are unchanged. This is an architecture hypothesis under official GitHub public-runner documentation, not a full recovery retry or speed/hosting acceptance. Preserve frozen PR121, APPf2, native automation STOP, production/Ecwid/forms/functional consent/Omni boundaries. No hosting credentials or operations.
+Parent8da8123 has independently accepted ARM capture12contracts/6wholecaptures/all2074public bytes/seven raw synthetic tables. This successor changes only the existing calibration workflow and this role note. One ARM VM runs all12 native contracts under develop and off, then three balanced mode pairs, each with two whole original/fast captures: six per mode/twelve total. Effective Xdebug modes are explicitly checked and retained; application/helper/compiler/native/full workflows remain exact. Component15min/helper60s/256M/wire/work/expiry/ownership/fresh-witness guards are preserved. This is an overhead hypothesis, not a full recovery retry or hosting equivalence; repository diagnostic instrumentation stays unchanged. Preserve old failed full120, immutableAPPf2, native UI STOP, production/Ecwid/forms/functional consent/Omni boundaries. No hosting credentials or operations.
 
 ## Scope
 
