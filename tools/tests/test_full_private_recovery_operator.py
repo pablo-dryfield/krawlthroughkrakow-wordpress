@@ -76,9 +76,9 @@ class OptimizedEnginePacketNativeContracts(native.FullPrivateEnginePacketTests):
 
 
 class OperatorProfileRecoveryContracts(unittest.TestCase):
-    def exercise(self,saved_profile,requested_profile,*,correct=False,tampered=False,expired=False):
+    def exercise(self,saved_profile,requested_profile,*,correct=False,tampered=False,expired=False,saved_bounds=False,requested_bounds=False):
         args=previous.arguments();name,token,expires,commit,owned,sizes,protected,key=args
-        tooling='d'*40;source=packet.helper_source(*args,capture_profile=saved_profile)
+        tooling='d'*40;source=packet.helper_source(*args,capture_profile=saved_profile,hosted_runtime_bounds=saved_bounds)
         plan,_,_=packet.full.plan('a'*32,commit,owned,sizes,protected)
         hashes={'tools/fixture-only.py':'e'*64}
         value={'schemaVersion':1,'scope':runner.recovery.SCOPE,'entryProfile':'early','transactionId':'a'*32,
@@ -95,7 +95,7 @@ class OperatorProfileRecoveryContracts(unittest.TestCase):
                  mock.patch.object(runner.shared.snapshot,'load_common',side_effect=StopBeforeCredentials) as common,\
                  mock.patch.object(runner,'BoundedStagingFTPS') as connection,contextlib.redirect_stdout(io.StringIO()):
                 with self.assertRaises(RuntimeError):runner.main(['--inspect-recovery','a'*32,'--application-commit',commit,
-                    '--tooling-commit',tooling,'--report',str(output),'--capture-profile',requested_profile])
+                    '--tooling-commit',tooling,'--report',str(output),'--capture-profile',requested_profile]+(['--hosted-runtime-bounds'] if requested_bounds else []))
                 connection.assert_not_called()
                 if correct:common.assert_called_once_with()
                 else:common.assert_not_called()
@@ -119,6 +119,13 @@ class OperatorProfileRecoveryContracts(unittest.TestCase):
 
     def test_expired_context_never_recompiles_or_refreshes_credentials(self):
         self.exercise(PROFILE,PROFILE,expired=True)
+
+    def test_hosted_bounds_cannot_be_inferred_or_removed_from_saved_context(self):
+        self.exercise(PROFILE,PROFILE,saved_bounds=True,requested_bounds=False)
+        self.exercise(PROFILE,PROFILE,saved_bounds=False,requested_bounds=True)
+
+    def test_exact_hosted_bounds_profile_is_recreated_before_credentials(self):
+        self.exercise(PROFILE,PROFILE,saved_bounds=True,requested_bounds=True,correct=True)
 
 
 if __name__=='__main__':unittest.main()

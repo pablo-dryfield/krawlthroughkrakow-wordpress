@@ -7,13 +7,15 @@ from tools import full_private_seed_packet as full
 from tools import full_private_engine_controller as compiled
 from tools import early_private_entry as early
 from tools import full_private_recovery_hashing as recovery_hashing
+from tools import hosted_runtime_bounds as bounds
 
 ROOT=Path(__file__).resolve().parents[1]
 TEMPLATE=ROOT/'tools/full-private-engine-staging-template.php'
 COMPONENTS={'STATE':'staging-protected-state-core.php','REQUEST':'content-update-request.php','STORE':'content-update-private-store.php','BACKUP':'content-update-backup-manifest.php','ENGINE':'code-pages-update-engine.php','PREPARATION':'full-private-engine-preparation.php'}
 MAX_LIFETIME=7200
 
-def helper_source(name,token,expires,commit,owned,sizes,protected_sha,key,interrupt_original=False,interrupt_engine=False,capture_profile='raw'):
+def helper_source(name,token,expires,commit,owned,sizes,protected_sha,key,interrupt_original=False,interrupt_engine=False,capture_profile='raw',hosted_runtime_bounds=False):
+    if type(hosted_runtime_bounds) is not bool:raise ValueError('Explicit hosted runtime bound selection required')
     if capture_profile not in ('raw','bounded-sha256','bounded-complete-sha256'):raise ValueError('Explicit reviewed private capture profile required')
     match=re.fullmatch(r'ktk-transaction-rehearsal-([a-f0-9]{32})\.php',name) if isinstance(name,str) else None
     if match is None or not isinstance(token,str) or re.fullmatch(r'[A-Za-z0-9_-]{43}',token) is None or type(expires) is not int or not int(time.time())<expires<=int(time.time())+MAX_LIFETIME or not backup.digest(key) or type(interrupt_original) is not bool or type(interrupt_engine) is not bool:raise ValueError('Exact explicit expiring full private engine context required')
@@ -36,4 +38,5 @@ def helper_source(name,token,expires,commit,owned,sizes,protected_sha,key,interr
             elif name=='STREAM':body=recovery_hashing.render_stream(body)
         source=source.replace(marker,body[6:])
     if b'__KTK_FULL_ENGINE_' in source:raise ValueError('Unresolved full private engine marker')
-    return early.rebind(source)
+    source=early.rebind(source)
+    return bounds.bind(bounds.engine_work(source),'engine') if hosted_runtime_bounds else source

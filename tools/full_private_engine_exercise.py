@@ -4,12 +4,13 @@ import math
 from tools import content_update_backup as backup
 from tools.content_update_client import UncertainRequest
 
-def prepare(client,transport,original_path,original_reader,archive_builder,interrupt_original=False,observe=lambda *args:None):
+def prepare(client,transport,original_path,original_reader,archive_builder,interrupt_original=False,observe=lambda *args:None,step_bytes=33554432,step_files=128):
     if type(interrupt_original) is not bool:raise ValueError('Explicit private original interruption flag required')
+    if type(step_bytes) is not int or type(step_files) is not int or (step_bytes,step_files) not in ((33554432,128),(16777216,64)):raise ValueError('Exact reviewed preparation work profile required')
     state=client.prepare();observe('prepare',state)
     if 'preparation' not in state or state['preparation']['seedFiles'] not in ({},[]) or state['preparation']['enginePhase'] is not None:raise ValueError('Empty preparation before original archival required')
     manifest=transport.original_manifest();receipt=archive_builder(manifest,original_reader,client.plan,client.key,client.helper_sha256,original_path);transport.acknowledge_original(original_path,client.key,manifest);observe('original-archived',receipt)
-    expected_bytes=sum(client.sizes.values())+sum(client.sizes.get(n,0) for n in client.plan['prior']);limit=2*(math.ceil(expected_bytes/33554432)+math.ceil((len(client.plan['expected'])+len(client.plan['prior']))/128))+16;cut=False
+    expected_bytes=sum(client.sizes.values())+sum(client.sizes.get(n,0) for n in client.plan['prior']);limit=2*(math.ceil(expected_bytes/step_bytes)+math.ceil((len(client.plan['expected'])+len(client.plan['prior']))/step_files))+16;cut=False
     for _ in range(limit):
         if 'preparation' not in state:break
         previous=state['preparation']['fullSeed'];before=(previous['copiedBytes'],len(previous['files']))
@@ -17,7 +18,7 @@ def prepare(client,transport,original_path,original_reader,archive_builder,inter
         except UncertainRequest:
             if not interrupt_original or cut:raise
             state=client.inspect_preparation();observe('inspect-original-cut',state);p=state['preparation'];seed=p['fullSeed'];largest=max(client.sizes,key=lambda n:(client.sizes[n],n));row=(seed['files'] or {}).get('source/'+largest)
-            if p['enginePhase'] is not None or seed['targetComplete'] or row is None or row['bytes']!=65536 or not 0<seed['copiedBytes']-before[0]<=33554432:raise ValueError('Uncertain copy differs from exact planned original prefix; preserve without retry')
+            if p['enginePhase'] is not None or seed['targetComplete'] or row is None or row['bytes']!=65536 or not 0<seed['copiedBytes']-before[0]<=step_bytes:raise ValueError('Uncertain copy differs from exact planned original prefix; preserve without retry')
             cut=True
         observe('preparation-progress',state)
         if 'preparation' in state:
