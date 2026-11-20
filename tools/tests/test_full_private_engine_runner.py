@@ -62,4 +62,36 @@ class FullPrivateEngineRunnerTests(unittest.TestCase):
     with self.assertRaises(ValueError):runner.main(argv+extra)
     common.assert_not_called();self.assertFalse(path.exists())
 
+ def test_new_modes_choose_exact_archive_gate_before_connection(self):
+  for mode,expected in (('--resume-prepared-engine-recovery','attach_verified_original'),('--resume-first-rollback-recovery','attach_verified_archives')):
+   with self.subTest(mode=mode),self.case() as (v,path,argv),mock.patch.object(runner.recovery.FullPrivateEngineVault,'load',return_value=v),mock.patch.object(runner.recovery_resume,expected,side_effect=ValueError('Synthetic invalid saved archive')) as archive,mock.patch.object(runner.shared.snapshot,'load_common') as common,mock.patch.object(runner,'BoundedStagingFTPS') as connection,mock.patch.object(runner.shared,'HelperLease') as lease:
+    with self.assertRaises(RuntimeError):runner.main(argv+[mode,v['transactionId']])
+    archive.assert_called_once();common.assert_not_called();connection.assert_not_called();lease.assert_not_called()
+
+ def test_new_modes_reject_expiry_and_source_drift_before_archive_or_connector(self):
+  for mode in ('--resume-prepared-engine-recovery','--resume-first-rollback-recovery'):
+   for change in ({'toolingCommit':'f'*40},{'expires':1}):
+    with self.subTest(mode=mode,change=change),self.case() as (v,path,argv),mock.patch.object(runner.recovery.FullPrivateEngineVault,'load',return_value={**v,**change}),mock.patch.object(runner.recovery_resume,'attach_verified_original') as original,mock.patch.object(runner.recovery_resume,'attach_verified_archives') as both,mock.patch.object(runner.shared.snapshot,'load_common') as common:
+     with self.assertRaises(RuntimeError):runner.main(argv+[mode,v['transactionId']])
+     original.assert_not_called();both.assert_not_called();common.assert_not_called()
+
+ def test_new_modes_verify_exact_compiled_helper_before_loading_connector(self):
+  for mode,expected in (('--resume-prepared-engine-recovery','attach_verified_original'),('--resume-first-rollback-recovery','attach_verified_archives')):
+   with self.subTest(mode=mode),self.case() as (v,path,argv),mock.patch.object(runner.recovery.FullPrivateEngineVault,'load',return_value=v),mock.patch.object(runner.recovery_resume,expected,return_value=({}, {}, {})),mock.patch.object(runner.compiler,'helper_source',return_value=b'changed synthetic helper') as compile_helper,mock.patch.object(runner.shared.snapshot,'load_common') as common:
+    with self.assertRaises(RuntimeError):runner.main(argv+[mode,v['transactionId'],'--hosted-runtime-bounds'])
+    self.assertIs(compile_helper.call_args.kwargs['hosted_runtime_bounds'],True);common.assert_not_called()
+
+ def test_new_modes_cannot_add_interruption_or_preparation_stop(self):
+  for mode in ('--resume-prepared-engine-recovery','--resume-first-rollback-recovery'):
+   for flag in ('--interrupt-engine','--interrupt-original','--stop-after-preparation'):
+    with self.subTest(mode=mode,flag=flag),self.case() as (v,path,argv),mock.patch.object(runner.shared.snapshot,'load_common') as common:
+     with self.assertRaises(ValueError):runner.main(argv+[mode,v['transactionId'],flag])
+     common.assert_not_called();self.assertFalse(path.exists())
+
+ def test_new_gate_module_is_fingerprinted_and_wrapper_routes_both_explicit_modes(self):
+  hashes=runner.fingerprints();self.assertEqual(hashes['tools/full_private_engine_continuations.py'],backup.sha((ROOT/'tools/full_private_engine_continuations.py').read_bytes()))
+  text=(ROOT/'tools/rehearse-staging-full-private-engine.ps1').read_text()
+  for name in ('--resume-prepared-engine-recovery','--resume-first-rollback-recovery'):
+   self.assertLess(text.index("-notcontains '"+name+"'"),text.index('Import-Clixml'))
+
 if __name__=='__main__':unittest.main()

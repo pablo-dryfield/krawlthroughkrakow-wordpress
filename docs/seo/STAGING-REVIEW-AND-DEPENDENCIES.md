@@ -1,5 +1,37 @@
 # KTK staging review and remaining dependencies
 
+## Verified B03 hosted recovery - revision54
+
+20 November2026. 20November hosted gate accepted at12:59UTC as a completed recovered operation:2116public files/4233full seeds,4241derived payloads disposed in17bounded requests,12raw captures/6ZIPs exact across all7selected-state fields,7exact retained metadata files/5dirs and7fresh helper absences. Four earlier callers remain failed; the60.059s unverified initialization timeout has unknown server duration/cause. Complete root/closure/disposal persistence was recorded before unchanged12:52:04 engine expiry; originals and metadata remain until owner review and cleanup approval. Hosting capacity/PHP actor/window/retention prerequisites were met for this dated run. Current consolidated recovery-code CI and one PR/main closure remain required; older CI does not certify the new caller source. No production, public application, database, cache, commerce/form/consent/provider action. Both roadmaps54 retain78website deliveries/82records, all40original workstream states/criteria and all8batch rules/dependencies. B03 is in verification; B08 is planned. See [accepted scope, retained failures, source closure and remaining CI](b03-hosted-runtime-bounds-2026-11-20/ACCEPTANCE.md). This is tooling/recovery evidence, not a new website delivery.
+
+
+## Verified staging PHP metadata - revision53
+
+20 November 2026,04:39UTC. A short-lived standalone staging diagnostic identifies the effective PHP actor as the hosting account and reports readable, writable and searchable access to the canonical private parent and staging directories. The actual PHP request uses LiteSpeed/PHP8.3.37; configured memory/execution ceilings were observed, while the diagnostic itself used stricter32M/5second limits. Existing recovery limits are unchanged.
+
+The authenticated response is uncached and bound to the exact uploaded source. Anonymous requests are rejected. Two owned temporary diagnostic files were created and removed; a separate SFTP session independently verifies both are absent. The first attempt failed client validation and remains recorded as failed. No WordPress bootstrap, database operation, private payload allocation, existing application-file edit, permission/account setting, quota refresh/repair or production action occurs in this diagnostic. Exact account figures, numeric identities, source and receipts remain private.
+
+PHP access checks identify the worker and its reported permissions; they do not prove successful recovery allocation, fresh quota or whole-host equality. PHP reads the same dated account quota cache:3735seconds old against its installed900second TTL. Fresh applicable headroom, an agreed exclusive private recovery window, retention of originals/signed metadata/operation markers, and the mandatory guarded hosted rehearsal still remain. The owner has been asked to refresh the quota view and confirm the proposed window/retention; no answer or authority is inferred.
+
+Both roadmaps53 keep78website deliveries/82records, all40original criteria/states and8batch rules/dependencies. B03 remains in progress; B08 remains planned. This is prerequisite evidence, not a new website delivery or a completed batch. No source push/PR or remote CI is part of it. Earlier sections retain their dated scope, including the initial read-only SSH/SFTP subset.
+
+
+## Read-only SSH/SFTP evidence - 20 November
+
+The owner requested an SSH/SFTP check. The existing DPAPI-backed SSH key authenticates, but shell commands return an account-level shell-disabled message. The SFTP subsystem works. Read-only filesystem capacity/ownership and a quota-specific cPanel cache were retrieved; the installed vendor module independently establishes that cache's field meanings. Exact private account figures, source hashes and transcripts remain outside Git.
+
+The account cache is older than the installed15-minute TTL, so it is a dated quota observation and not a fresh rehearsal headroom witness. Directory UID/GID is not the effective web-PHP actor or its permissions/quota. Those runtime facts, fresh applicable capacity, the private exclusive rehearsal window, retention and the successful hosted rehearsal remain required. No upload/helper, chmod, key/agent/account setting, quota repair/refresh, WordPress bootstrap, real form/order or production deployment was performed. Working SFTP does not require adding SSH-shell enablement as a new B03 gate. Earlier capability notes below retain their original dated scope.
+
+
+## Local B08 audit preparation - revision52
+
+20 November 2026. Unpublished preparation; 78 website deliveries/82 records remain. PR134 is merged at exact main31ce/tree929c, with independently accepted [PR CI](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/44656839422) and [main CI](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/44661705548). Existing source/recovery bounds and the manual-only full-job guard are unchanged.
+
+The additional rendered audit verifies all142 routes at390/1440:284 actual JS-enabled contexts,2308checks,6376rendered link occurrences perwidth,24products at native depth<=2, six held tags and0unknown. Independent reconstruction checks allsix graphs and source/request bindings. All2472 application-source files remain exact;1040script/stylesheet bodies match source;4846approved read responses return200/206. There are0uncaught/cleanup errors. The1560console messages and withheld requests remain recorded. Default CSS-visible snapshots leaveGallery both/AboutUs390 unreached; no menu/carousel/filter activation or new human/native/AT acceptance is claimed. [Scope, retained first failure, source backup and exact evidence](rendered-internal-links-2026-11-20/README.md).
+
+All40 original Work/DoneWhen cells and states,39open owner assignments, all82delivery objects and all8 batch rules/dependencies are preserved. B03 remains in progress under H06 actual hosting quota/PHP writer/private exclusive window/retention and mandatory hosted recovery; B08 remains planned. The earlier noJS201/202 and original Ecwid timestamp raw-comparison failures remain failed; no restore, exclusion, actor, provider-receipt, whole-host or production claim is added. No push/PR, remote CI, application change, helper or cache action is part of this preparation. Earlier current/pending sections below retain their dated scopes.
+
+
 ## Current B07 verified staging scope - revision51
 
 Delivery78/source98deb54 verifies the approved storefront JS ordering and public failure-cache safeguards. B07 meets its original finite implementation/ownership rule; all40 whole-workstream states/criteria remain. Both roadmaps51 record78 website deliveries/82 records and two original batches still open: B03 hosted recovery and B08 final acceptance under its unchanged dependencies.

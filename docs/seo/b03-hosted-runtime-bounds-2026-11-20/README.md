@@ -1,5 +1,10 @@
 # B03 hosted request limits
 
+## Current verified hosted outcome, 20 November
+
+The full guarded staging-host rehearsal and independent compound recovery audit now pass. Read [the complete acceptance and retained failures](ACCEPTANCE.md). B03 is in verification pending current consolidated-source CI; older stopped-attempt and expired-window notes below are historical. All originals and metadata remain retained until owner review and cleanup approval. No application or production deployment is part of this package.
+
+
 The hosted recovery rehearsal must enforce its PHP limits before reading protected state or changing private fixture files. The previous runner reported the hosting defaults without lowering them to the approved ceilings. The 20 November attempt was stopped when this gap was identified; it is not accepted hosted recovery evidence.
 
 New live `rehearse-staging-full-private-engine.py` runs now enable request limits automatically. The snapshot, engine and disposal compilers apply the same authenticated guard. It lowers PHP memory to at most 256 MiB and execution time to at most 60 seconds, preserves stricter existing settings, checks the resulting values, and refuses with a bounded 503 before work if the controls are unavailable. These are request-local changes; no hosting configuration file or account setting is changed.
