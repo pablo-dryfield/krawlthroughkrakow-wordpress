@@ -1,4 +1,28 @@
+# Current B07 delivery78 and original remaining gates
+
+20Nov: scoped staging98deb54/class1ec is verified; both roadmaps51 record78website82records and two original remainingB03/B08. B07 original finite rule is met by current permitted automation and explicit H02/H03/R02 ownership. Preserve fullCMP201/202 failed original-noJS-intent assertion and initial raw DB failure at one Ecwid cache-check timestamp; broader X01/D08 and G02/H02 causes remain, with no exclusion/restore/actor or full privacy/whole-initial-state claim. Final fresh rawpair7tables/2116owned/286protected exact, other original285protected and other captured DB fields exact. Current-source PR CI required before merge; consult actual checks, no extra recovery/full/native dispatch. No new hosting action is needed for this source integration. B03 quota/PHP writer/private rehearsal/retention and B08 dependencies/ownerreview remain mandatory. Production-commerce/forms-real messages-orders-payments/provider accounts/GTM/bridge-purpose/Omni/nativeSTOP/oldChromePHP5194 preserved. Root app remains historical DOCSONLY; do not build/deploy/push it whole. Read B07 README/ACCEPTANCE; older current notes are historical.
+
+# Current verified B07 staging package
+
+20Nov: application98deb54/tree3712/class1ec is staging-verified for the explicitly approved narrow JS ordering and public availability scope.812payload,105Meta,70public361missing8proxy14publisher,59native-browser,264device/cache,197real-JS-CMP and6availability checks pass. Preserve the failed fullCMP201/202 original-noJS-intent assertion and failed original raw DB comparison at one Ecwid cache-check timestamp; neither is waived or called unchanged. Final raw pair all7tables/2116owned/286protected exact; other original285protected and all other captured DB fields exact. No DB restore/exclusion, source-limit change or production/provider/account/form/order/Omni/nativeWindows action. Source PR/current-head CI is a separate required merge gate; consult actual checks. One B07 push/PR follows both roadmap updates. B03 mandatory hosted proof and B08 original dependencies/owner review remain. Read docs/seo/b07-monitoring-review-2026-11-20/README.md and ACCEPTANCE.md. Older current labels below are dated history.
+
+# Current B07 public availability safeguard
+
+Verified repeat200 generic fallback cache and later actual bounded host JSON404 are retained separately; their original upstream-failure cause remains unproved. Current local successor adds only staging public-product failure cache prevention with72 extra positive/negative assertions across36 fresh native requests. It preserves original statuses, request budgets, private/production/POST behavior and consent purpose/body/bridge boundaries.6e app is still staged until a fresh QA-bound publication; no B07 push/PR yet. No whole goal completion.
+
+# Current B07 measured parser-input correction
+
+Mixed-quote Rocket input is directly proved in the fresh cache-enabled observer; prior cache-enabled acceptance failed despite zero uncaught errors. Add only that exact reviewed nonbootstrap shape; preserve all hard body/type/nonce/helper/route/purpose guards. First/a9 source checkpoints and failed reports remain immutable. No B07 push/PR until current staging/raw/CMP/normal checks pass. No new owner question needed. All protected boundaries and B03/B08 dependencies remain.
+
 # Krawl Through Krakow Storefront Context
+
+## Approved B07 optimized-tag successor
+
+Owner explicitly approved20Nov the narrow staging Meta/Iubenda ordering fix and isolated consent-state verification; do not re-ask. This successor from immutable5b27 corrects the actual first-stage normal-optimizer tag-shape refusal: helper is normal, pinned initializer/PageView are Rocket-deferred. Accept only their exact reviewed delay tag while preserving all three bodies, purpose5, helper readiness, private/production route guards, bridge/GTM/accounts/forms/commerce and limits. First5b staging/current errors0 but ordering incomplete, so no new delivery counted. Old5b branch/source and all failed/partial evidence/backups stay retained. Full real CMP/cache/raw after acceptance and both roadmap updates precede the single B07 push/PR. Root remains DOCSONLY; native Windows STOP remains.
+
+## Local B07 proposal checkout
+
+This new branch starts at main4216ffc/treefd8. All3935 source blobs/2472 app files and four required source archives were independently verified BEFORE edits; receipt is in root docs/seo/b07-monitoring-review-2026-11-20/preedit-source-and-backup-verification.json. User focuses B07. Prepare a reversible local Meta/CMP ordering candidate and meaningful isolated tests; X01 remains deferred for STAGING APPLICATION until the owner explicitly reopens this narrow compatibility scope. No source push/PR or hosting/provider/account/consent-setting/production/commerce/form/payment change is authorized by this preparation. Preserve source call bodies, purpose5, consent UI/bridge and all protected paths. Do not classify or stub away the failed current global runtime guard. B04 frozen checkout and all original recovery bounds remain. Root historical app is documentation only. Older current/frozen instructions below describe their historical checkouts, not permission to deploy this candidate.
 
 ## Current verified B04 delivery
 

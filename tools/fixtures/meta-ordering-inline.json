@@ -1,0 +1,17 @@
+[
+  {
+    "sha256": "31bd4b0882dd13a90dab3b1fb9795f645979fa959e17f5873865fe1a5f9f912c",
+    "text": "\n!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?\nn.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;\nn.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;\nt.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,\ndocument,'script','https://connect.facebook.net/en_US/fbevents.js');\n",
+    "provenance": "Retained public normal staging HTML,18November2026. Public anonymous Meta5.2.2/WP7.1.5 source shape; not installed PHP identity or provider receipt."
+  },
+  {
+    "sha256": "de332de462c2f02f6db63e5951badcd3d07cc0f348f75ffa648d48cc670dd34f",
+    "text": "FacebookSignal.init({\"held\":false,\"ajaxUrl\":\"https:\\/\\/krawlthroughkrakow.com\\/staging\\/wp-admin\\/admin-ajax.php\",\"releaseAction\":\"fbpix_release_signals\",\"pixelId\":\"1018986598176189\",\"attribution\":{},\"capig\":\"1\"});FacebookSignal.initPixel(\"1018986598176189\",{},{\"agent\":\"wordpress_0-7.1.5-5.2.2\",\"includeCapiIntegration\":true});",
+    "provenance": "Retained public normal staging HTML,18November2026. Public anonymous Meta5.2.2/WP7.1.5 source shape; not installed PHP identity or provider receipt."
+  },
+  {
+    "sha256": "b74c94c8bb401c0ae9c115b6e730ab422d27476cb0f4a5ebe7ce51b39f75f41d",
+    "text": "\n    fbq('track', 'PageView', []);\n  ",
+    "provenance": "Retained public normal staging HTML,18November2026. Public anonymous Meta5.2.2/WP7.1.5 source shape; not installed PHP identity or provider receipt."
+  }
+]

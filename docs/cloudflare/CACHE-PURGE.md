@@ -1,6 +1,13 @@
 # Cloudflare Cache Purge Access
 
-## Current B04 scoped rule -19November2026
+## Current B07 staging storefront scope -20November2026
+
+The owner approved the narrow staging runtime fix. Delivery78 uses only the affected `krawlthroughkrakow.com/staging/store2/` edge prefix and existing guarded staging origin-cache scope. Exact zone/account/API receipts and normal/repeat verification are retained with the B07 evidence. No DNS/security/rules/account/provider or production setting changes were made; the resolved B04 SVG rule remains intact. See [B07 scope and retained limits](../seo/b07-monitoring-review-2026-11-20/README.md). This does not reopen the separate B03 private hosting gate.
+
+
+
+
+## Historical source context: Current B04 scoped rule -19November2026
 
 The owner explicitly delegated the best B04 staging implementation, including the two-path temporary rule, exclusive test window and creation/retention of the shared cache entrypoint. Delivery77 is verified; alltemporary namespaces/rules are cleaned. Shared entrypoint `e423969bf0404c11a4b3627ba6aab67a` is deliberately retained. Current own durable rule `fef9645bb76c4a0089c10efe71a9a7d0` /ref `ktk_staging_svg_delivery_v1` covers only GET/HEAD on `/staging/wp-content/mu-plugins/ktk-homepage-assets/hero-statue-regular.svg` and `hero-statue-seasonal.svg`. It preserves strong validators/encoding variants and respects origin browser/edge TTL. Its declarative policy is `tools/config/staging-svg-cache-rule.json`; [verified scope and rollback](../seo/staging-svg-assets-2026-11-19/README.md) bind the six new staging files and actual account receipts.
 

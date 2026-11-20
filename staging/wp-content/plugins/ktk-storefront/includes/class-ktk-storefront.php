@@ -14,6 +14,7 @@ final class KTK_Storefront {
 	private static $missing_products = array();
 
 	public static function boot() {
+		self::register_meta_ordering();
 		add_action( 'init', array( __CLASS__, 'register_rewrite_rules' ) );
 		add_filter( 'query_vars', array( __CLASS__, 'register_query_vars' ) );
 		add_action( 'template_redirect', array( __CLASS__, 'remove_legacy_ecwid_output' ), 0 );
@@ -105,7 +106,17 @@ final class KTK_Storefront {
 			return $template;
 		}
 
-		status_header( self::public_not_found() ? 404 : 200 );
+		$missing = self::public_not_found();
+		$path = self::storefront_path();
+		if ( self::public_html_enabled() && in_array( $_SERVER['REQUEST_METHOD'] ?? 'GET', array( 'GET', 'HEAD' ), true )
+			&& preg_match( '/^[a-z0-9]+(?:-[a-z0-9]+)*-[0-9]+$/D', $path )
+			&& ! preg_match( '/^(?:cart|checkout|orders|saved-carts|ongoing-carts|order-confirmation)(?:-|\/|$)/', $path )
+			&& ( $missing || null === self::public_html_data() ) ) {
+			// Do not persist an unavailable lookup as a successful full-page cache hit.
+			if ( ! defined( 'DONOTCACHEPAGE' ) ) { define( 'DONOTCACHEPAGE', true ); }
+			nocache_headers();
+		}
+		status_header( $missing ? 404 : 200 );
 		return KTK_STOREFRONT_DIR . 'templates/storefront.php';
 	}
 
@@ -1057,5 +1068,83 @@ final class KTK_Storefront {
 			$classes[] = 'ktk-storefront-page';
 		}
 		return $classes;
+	}
+
+	private const META_ORDERING_BODIES = array(
+		'31bd4b0882dd13a90dab3b1fb9795f645979fa959e17f5873865fe1a5f9f912c',
+		'de332de462c2f02f6db63e5951badcd3d07cc0f348f75ffa648d48cc670dd34f',
+		'b74c94c8bb401c0ae9c115b6e730ab422d27476cb0f4a5ebe7ce51b39f75f41d',
+	);
+
+	private const META_ORDERING_HELPER_PATHS = array(
+		'/staging/wp-content/plugins/official-facebook-pixel/js/facebook_signal.js',
+		'/staging/wp-content/plugins/official-facebook-pixel/core/../js/facebook_signal.js',
+	);
+
+	public static function register_meta_ordering() {
+		add_filter( 'iubenda_initial_output', array( __CLASS__, 'group_meta_ordering' ) );
+		foreach ( array( 'rocket_exclude_js', 'rocket_exclude_defer_js', 'rocket_delay_js_exclusions' ) as $hook ) {
+			add_filter( $hook, array( __CLASS__, 'exclude_meta_ordering_helper' ), 20 );
+		}
+	}
+
+	private static function meta_ordering_enabled() {
+		if ( ! KTK_Storefront::public_html_enabled() || ! in_array( $_SERVER['REQUEST_METHOD'] ?? 'GET', array( 'GET', 'HEAD' ), true ) ) {
+			return false;
+		}
+		$path = trim( (string) get_query_var( KTK_Storefront::QUERY_PATH ), '/' );
+		if ( preg_match( '/^(?:cart|checkout|orders|saved-carts|ongoing-carts|order-confirmation)(?:-|\/|$)/', $path ) ) { return false; }
+		// Catalog or a single public product-shaped slug only: no private/utility descendants.
+		return '' === $path || 1 === preg_match( '/^[a-z0-9]+(?:-[a-z0-9]+)*-[0-9]+$/D', $path );
+	}
+
+	public static function exclude_meta_ordering_helper( $excluded ) {
+		if ( ! self::meta_ordering_enabled() || ! is_array( $excluded ) ) { return $excluded; }
+		return array_values( array_unique( array_merge( $excluded, self::META_ORDERING_HELPER_PATHS ) ) );
+	}
+
+	public static function group_meta_ordering( $output ) {
+		if ( ! self::meta_ordering_enabled() || ! is_string( $output ) || strlen( $output ) > 2097152 || false !== strpos( $output, 'data-ktk-meta-ordering=' ) ) {
+			return $output;
+		}
+		if ( ! preg_match_all( '~<script\b[^>]*>(.*?)</script\s*>~is', $output, $matches, PREG_OFFSET_CAPTURE ) ) { return $output; }
+		$found = array();
+		$helper = null;
+		foreach ( $matches[0] as $index => $match ) {
+			$body = $matches[1][ $index ][0];
+			$open = substr( $match[0], 0, strpos( $match[0], '>' ) + 1 );
+			if ( preg_match( '/\bid=["\']facebook-signal-js["\']/', $open ) ) {
+				if ( null !== $helper || '' !== $body || preg_match( '/\b(?:async|defer|data-rocket-src)\b|rocketlazyloadscript/i', $open ) ) { return $output; }
+				$ready = false;
+				foreach ( self::META_ORDERING_HELPER_PATHS as $path ) {
+					if ( false !== strpos( $open, 'src="https://krawlthroughkrakow.com' . $path . '?ver=5.2.2"' ) ) { $ready = true; }
+				}
+				if ( ! $ready ) { return $output; }
+				$helper = $match[1];
+			}
+			$part = array_search( hash( 'sha256', $body ), self::META_ORDERING_BODIES, true );
+			if ( false === $part ) {
+				// Never move a changed initializer, purchase, extra tracker or ambiguous fragment.
+				if ( preg_match( '/\b(?:fbq|FacebookSignal)\b/', $body ) ) { return $output; }
+				continue;
+			}
+			$allowed = array( '<script>', '<script type="text/javascript">', "<script type='text/javascript'>" );
+			if ( 0 === $part ) { $allowed[] = '<script type="text/plain" class=" _iub_cs_activate-inline" data-iub-purposes="5">'; }
+			// Iubenda may receive the already Rocket-optimized normal document.
+			if ( 0 !== $part ) { $allowed[] = '<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript">'; }
+			if ( 0 !== $part ) { $allowed[] = "<script type=\"text/rocketlazyloadscript\" data-rocket-type='text/javascript'>"; }
+			if ( isset( $found[ $part ] ) || ! in_array( $open, $allowed, true ) ) { return $output; }
+			$found[ $part ] = array( 'body' => $body, 'offset' => $match[1], 'length' => strlen( $match[0] ) );
+		}
+		if ( 3 !== count( $found ) || null === $helper || ! ( $helper < $found[0]['offset'] && $found[0]['offset'] < $found[1]['offset'] && $found[1]['offset'] < $found[2]['offset'] ) ) {
+			return $output;
+		}
+		$group = '<script type="text/plain" class="_iub_cs_activate-inline" data-iub-purposes="5" data-ktk-meta-ordering="v1">'
+			. $found[0]['body'] . $found[1]['body'] . $found[2]['body'] . '</script>';
+		// Change only the three complete tags, working backwards to retain every other byte.
+		for ( $part = 2; $part >= 0; $part-- ) {
+			$output = substr_replace( $output, 0 === $part ? $group : '', $found[ $part ]['offset'], $found[ $part ]['length'] );
+		}
+		return $output;
 	}
 }

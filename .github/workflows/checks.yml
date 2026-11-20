@@ -190,6 +190,7 @@ jobs:
           php tools/tests/test_clarity_policy.php
           php tools/tests/test_seo_discovery.php
           php tools/tests/test_storefront_public_content.php
+          php tools/tests/test_storefront_meta_ordering.php
       - name: Build storefront (never uploads or deploys)
         run: npm run build --prefix staging/wp-content/plugins/ktk-storefront/frontend
 
