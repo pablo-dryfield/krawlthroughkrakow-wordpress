@@ -60,3 +60,11 @@ The remaining B03 gate is current CI for the consolidated source and its single 
 The release source passes 109 local recovery tests in 362.500 seconds, including real PHP private preparation/apply/rollback/closure, runtime/memory controls, frozen default/helper inverses, exact saved-profile refusal, the new continuation paths and caller preflight guards. The recorded source bodies are unchanged across the run. All 18 roadmap checks pass; repository policy covers 3,947 tracked files and 358 required build inputs with zero errors. Whitespace checks pass.
 
 Fresh native-CI import preflight finds 95 core inputs and 11 additional evidence inputs, with the new module already included through runner fingerprints and no undeclared loaded source. No source-domain guard or workflow limit is relaxed. The normal PR-triggered native phase and repository checks remain required; these local checks are not remote CI acceptance. The full-inventory job remains manual-only and is not dispatched.
+
+## Native CI inventory correction
+
+PR135's first native run retains a terminal failure: all sixteen phase scenarios passed, but its unit-worker scheduler refused to start because it required exactly 180 cases. The hosted-profile implementation adds two legitimate native contracts. Independent inventory comparison proves every original 180 test identity remains, with exactly those two additions and no removals.
+
+The corrected CI gate requires all 182 identities, pins the original 180 with SHA-256 `50339e4f52ed7fda05e26e66d05ffda29b59949fbdea2805e3366086e7bd2f32`, names both reviewed additions, preserves all thirteen modules and records that inventory in the worker summary. It also retains the original four scheduler checks, three-worker ceiling, thirty-minute job limit and every runtime/ownership/expiry guard. No test is removed and no helper/application source changes.
+
+This necessary CI-only correction uses one corrective push to the same PR, an explicit exception to the planned one-push batch. The failed native run and its phase-only artifact remain retained and are not complete native acceptance. Fresh current-source PR/main checks are still required; no unchanged native/full run is manually dispatched.
