@@ -13,7 +13,9 @@ from tools import full_private_engine_recovery as recovery
 from tools import full_private_engine_disposal as disposal
 from tools import full_private_engine_disposal_recovery as disposal_recovery
 from tools import full_private_engine_resume as recovery_resume
+from tools import full_private_engine_continuations as explicit_resume
 from tools import early_private_entry as early
+from tools import hosted_runtime_bounds as bounds
 from tools.full_private_engine_client import FullPrivateEngineClient
 from tools.full_private_engine_transport import FullPrivateEngineTransport
 from tools.full_private_engine_disposal_transport import FullEngineDisposalTransport
@@ -26,7 +28,7 @@ from tools.content_update_staging_connection import BoundedStagingFTPS
 spec=importlib.util.spec_from_file_location('ktk_full_engine_seed_shared',ROOT/'tools/rehearse-staging-full-seeds.py');seed=importlib.util.module_from_spec(spec);spec.loader.exec_module(seed);shared=seed.shared
 FILES=('rehearse-staging-full-private-engine.py','rehearse-staging-full-private-engine.ps1','full_private_engine_client.py','full_private_engine_controller.py','full_private_engine_packet.py','full_private_engine_recovery.py','full_private_engine_transport.py','full_private_engine_disposal.py','full_private_engine_disposal_recovery.py','full_private_engine_disposal_transport.py','full_private_engine_exercise.py','full_private_engine_retained.py','full-private-engine-preparation.php','full-private-engine-staging-template.php','full-private-engine-disposal.php','full-private-engine-disposal-template.php')
 
-FILES=FILES+('full_private_engine_resume.py','full_private_recovery_hashing.py')
+FILES=FILES+('full_private_engine_resume.py','full_private_recovery_hashing.py','hosted_runtime_bounds.py','full_private_engine_continuations.py')
 
 class ControlledCallerStop(RuntimeError):
     """Explicit test stop at complete seeds or an inspected owned cut; helper cleanup still runs."""
@@ -48,16 +50,25 @@ def unchanged(owned,hashes):
 
 def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
-    mode=parser.add_mutually_exclusive_group();mode.add_argument('--rehearse-staging',action='store_true');mode.add_argument('--inspect-recovery');mode.add_argument('--resume-engine-recovery');mode.add_argument('--resume-preparation-recovery')
-    parser.add_argument('--application-commit',required=True);parser.add_argument('--tooling-commit',required=True);parser.add_argument('--interrupt-original',action='store_true');parser.add_argument('--interrupt-engine',action='store_true');parser.add_argument('--stop-after-engine-cut',action='store_true');parser.add_argument('--stop-after-preparation',action='store_true');parser.add_argument('--capture-profile',choices=('bounded-sha256','bounded-complete-sha256'),default='bounded-sha256');parser.add_argument('--report',required=True);args=parser.parse_args(argv)
-    recovery_id=args.inspect_recovery or args.resume_engine_recovery or args.resume_preparation_recovery
+    mode=parser.add_mutually_exclusive_group();mode.add_argument('--rehearse-staging',action='store_true');mode.add_argument('--inspect-recovery');mode.add_argument('--resume-engine-recovery');mode.add_argument('--resume-preparation-recovery');mode.add_argument('--resume-prepared-engine-recovery');mode.add_argument('--resume-first-rollback-recovery')
+    parser.add_argument('--application-commit',required=True);parser.add_argument('--tooling-commit',required=True);parser.add_argument('--interrupt-original',action='store_true');parser.add_argument('--interrupt-engine',action='store_true');parser.add_argument('--stop-after-engine-cut',action='store_true');parser.add_argument('--stop-after-preparation',action='store_true');parser.add_argument('--capture-profile',choices=('bounded-sha256','bounded-complete-sha256'),default='bounded-sha256');parser.add_argument('--report',required=True);parser.add_argument('--hosted-runtime-bounds',action='store_true');args=parser.parse_args(argv)
+    preparation_resume=bool(args.resume_preparation_recovery or args.resume_prepared_engine_recovery)
+    engine_resume=bool(args.resume_engine_recovery or args.resume_first_rollback_recovery)
+    if args.rehearse_staging:args.hosted_runtime_bounds=True
+    runtime_kwargs={'hosted_runtime_bounds':True} if args.hosted_runtime_bounds else {}
+    step_kwargs={'step_bytes':bounds.STEP_BYTES,'step_files':bounds.STEP_FILES} if args.hosted_runtime_bounds else {}
+    snapshot_compiler=(lambda *values:bounds.bind(early.snapshot_source(*values),'snapshot')) if args.hosted_runtime_bounds else early.snapshot_source
+    recovery_id=args.inspect_recovery or args.resume_engine_recovery or args.resume_preparation_recovery or args.resume_prepared_engine_recovery or args.resume_first_rollback_recovery
     if recovery_id and (not backup.identifier(recovery_id,32) or args.interrupt_original or args.interrupt_engine):raise ValueError('Exact explicit recovery identifier without new interruption flags required')
-    if args.stop_after_engine_cut and not ((args.rehearse_staging and args.interrupt_engine) or args.resume_preparation_recovery):raise ValueError('Controlled engine stop requires a fresh interruption rehearsal or explicit preparation recovery')
+    if args.stop_after_engine_cut and not ((args.rehearse_staging and args.interrupt_engine) or preparation_resume):raise ValueError('Controlled engine stop requires a fresh interruption rehearsal or explicit preparation recovery')
     if args.stop_after_preparation and (not args.rehearse_staging or args.stop_after_engine_cut):raise ValueError('Controlled preparation stop requires a fresh rehearsal without another stop mode')
     candidate=Path(args.report);destination=candidate.resolve()
     if candidate.is_symlink() or not destination.is_relative_to(ROOT/'docs/seo') or destination.suffix!='.json' or destination.exists() or destination.is_symlink():raise ValueError('Fresh local SEO report required')
     owned,sizes,hashes=reviewed_source(args.application_commit,args.tooling_commit);report={'startedAt':datetime.now(timezone.utc).isoformat(),'scope':'explicit private-only full engine rehearsal; no public/production transaction','phase':'offline-validated','applicationCommit':args.application_commit,'toolingCommit':args.tooling_commit,'sourceHashes':hashes,'publicOwnedFiles':len(owned),'publicOwnedBytes':sum(sizes.values()),'publicApplicationWrites':0,'databaseWrites':0,'cachePurges':0,'productionOperations':0,'fullHostTransactionAcceptance':False,'quotaVerified':False,'steps':[],'uncertainRequests':[]}
     report['captureProfile']=args.capture_profile
+    report['recoveryEntryMode']='prepared-engine' if args.resume_prepared_engine_recovery else ('first-rollback-cut' if args.resume_first_rollback_recovery else None)
+    if args.hosted_runtime_bounds:report['hostedRuntimeBounds']={'profile':bounds.PROFILE,'memoryCeilingBytes':268435456,'executionCeilingSeconds':60,'stepBytes':bounds.STEP_BYTES,'stepFiles':bounds.STEP_FILES}
+    snapshot_kwargs={'snapshot_fetcher':lambda token,sha:bounds.fetch_snapshot(shared.snapshot,token,sha,observe=lambda row:report.setdefault('snapshotRequests',[]).append(row))} if args.hosted_runtime_bounds else {}
     def checkpoint(phase=None):
         if phase is not None:report['phase']=phase
         report['updatedAt']=datetime.now(timezone.utc).isoformat();destination.parent.mkdir(parents=True,exist_ok=True);destination.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
@@ -70,32 +81,32 @@ def main(argv=None):
             value=recovery.FullPrivateEngineVault().load(recovery_id)
             if value['toolingCommit']!=args.tooling_commit or value['applicationCommit']!=args.application_commit or value['sourceHashes']!=hashes or value['publicOwned']!=owned or value['publicSizes']!=sizes:raise ValueError('Recovered engine context differs from exact reviewed source')
             if time.time()>=value['expires']:raise ValueError('Expired private context is inspection evidence only; no helper reinstall or credential refresh')
-            if args.resume_engine_recovery or args.resume_preparation_recovery:
+            if engine_resume or preparation_resume:
                 # Archive verification and binding are local and precede any connection/helper.
                 _,_,saved_overrides=full.plan(value['transactionId'],value['applicationCommit'],owned,sizes,value['plan']['protectedStateSha256'])
                 def no_server(*args):raise AssertionError('No server operation during saved archive preflight')
                 archive_client=FullPrivateEngineClient(value['plan'],sizes,saved_overrides,ROOT/'staging/wp-content/mu-plugins',value['helperSha256'],value['ownershipKey'],no_server,no_server)
                 original_path=ROOT/'deploy-backups'/('staging-full-engine-original-'+recovery_id+'.zip');rollback_path=ROOT/'deploy-backups'/('staging-full-engine-rollback-'+recovery_id+'.zip')
-                recovered_archives=(recovery_resume.attach_verified_original if args.resume_preparation_recovery else recovery_resume.attach_verified_archives)(archive_client,original_path,rollback_path)
+                recovered_archives=(recovery_resume.attach_verified_original if preparation_resume else recovery_resume.attach_verified_archives)(archive_client,original_path,rollback_path)
                 report['originalArchive']=recovered_archives[1]
                 report['savedRecoveryArchivesVerifiedBeforeConnection']=True;checkpoint('saved-recovery-archives-verified')
-                if args.resume_preparation_recovery:report['savedOriginalArchiveVerifiedBeforeConnection']=True
+                if preparation_resume:report['savedOriginalArchiveVerifiedBeforeConnection']=True
                 if args.stop_after_engine_cut and value['interruptEngine'] is not True:raise ValueError('Saved explicit engine interruption is required for a preparation-resume stop')
             saved_name='ktk-transaction-rehearsal-'+value['transactionId']+'.php'
-            saved_source=compiler.helper_source(saved_name,value['token'],value['expires'],args.application_commit,owned,sizes,value['plan']['protectedStateSha256'],value['ownershipKey'],value['interruptOriginal'],value['interruptEngine'],capture_profile=args.capture_profile)
+            saved_source=compiler.helper_source(saved_name,value['token'],value['expires'],args.application_commit,owned,sizes,value['plan']['protectedStateSha256'],value['ownershipKey'],value['interruptOriginal'],value['interruptEngine'],capture_profile=args.capture_profile,**runtime_kwargs)
             if backup.sha(saved_source)!=value['helperSha256']:raise ValueError('Exact encrypted engine helper compilation required')
             report['captureProfileVerifiedBeforeConnection']=True
         common=shared.snapshot.load_common()
         connection=BoundedStagingFTPS(common.common.store2.connect)
         if value is None:
-            report['before']={};before=shared.capture(common,connection,owned,shared.source_hashes(),report['before'],lambda:checkpoint('snapshot-before'),source_compiler=early.snapshot_source);unchanged(owned,hashes)
-            tx,token,key=secrets.token_hex(16),secrets.token_urlsafe(32),secrets.token_hex(32);expires=int(time.time())+compiler.MAX_LIFETIME;plan,_,_=full.plan(tx,args.application_commit,owned,sizes,before['protectedStateSha256']);name='ktk-transaction-rehearsal-'+tx+'.php';source=compiler.helper_source(name,token,expires,args.application_commit,owned,sizes,plan['protectedStateSha256'],key,args.interrupt_original,args.interrupt_engine,capture_profile=args.capture_profile)
+            report['before']={};before=shared.capture(common,connection,owned,shared.source_hashes(),report['before'],lambda:checkpoint('snapshot-before'),source_compiler=snapshot_compiler,**snapshot_kwargs);unchanged(owned,hashes)
+            tx,token,key=secrets.token_hex(16),secrets.token_urlsafe(32),secrets.token_hex(32);expires=int(time.time())+compiler.MAX_LIFETIME;plan,_,_=full.plan(tx,args.application_commit,owned,sizes,before['protectedStateSha256']);name='ktk-transaction-rehearsal-'+tx+'.php';source=compiler.helper_source(name,token,expires,args.application_commit,owned,sizes,plan['protectedStateSha256'],key,args.interrupt_original,args.interrupt_engine,capture_profile=args.capture_profile,**runtime_kwargs)
             value={'schemaVersion':1,'scope':recovery.SCOPE,'entryProfile':'early','transactionId':tx,'applicationCommit':args.application_commit,'toolingCommit':args.tooling_commit,'helperSha256':backup.sha(source),'sourceHashes':hashes,'expires':expires,'token':token,'ownershipKey':key,'plan':plan,'publicOwned':owned,'publicSizes':sizes,'interruptOriginal':args.interrupt_original,'interruptEngine':args.interrupt_engine};report['encryptedRecoveryPacket']=recovery.FullPrivateEngineVault().save(value);checkpoint('encrypted-engine-packet-persisted')
-        if args.resume_engine_recovery or args.resume_preparation_recovery:
-            report['before']={};before=shared.capture(common,connection,owned,shared.source_hashes(),report['before'],lambda:checkpoint('recovery-snapshot-before'),source_compiler=early.snapshot_source)
+        if engine_resume or preparation_resume:
+            report['before']={};before=shared.capture(common,connection,owned,shared.source_hashes(),report['before'],lambda:checkpoint('recovery-snapshot-before'),source_compiler=snapshot_compiler,**snapshot_kwargs)
             if any(before[k]!=recovered_archives[2][k] for k in shared.STATE_KEYS):raise ValueError('Fresh selected/public/protected state differs from archived recovery original; preserve without restoration')
             report['freshRecoveryBeforeMatchesArchivedOriginal']=True
-        tx=value['transactionId'];plan=value['plan'];_,_,overrides=full.plan(tx,args.application_commit,owned,sizes,plan['protectedStateSha256']);name='ktk-transaction-rehearsal-'+tx+'.php';source=compiler.helper_source(name,value['token'],value['expires'],args.application_commit,owned,sizes,plan['protectedStateSha256'],value['ownershipKey'],value['interruptOriginal'],value['interruptEngine'],capture_profile=args.capture_profile)
+        tx=value['transactionId'];plan=value['plan'];_,_,overrides=full.plan(tx,args.application_commit,owned,sizes,plan['protectedStateSha256']);name='ktk-transaction-rehearsal-'+tx+'.php';source=compiler.helper_source(name,value['token'],value['expires'],args.application_commit,owned,sizes,plan['protectedStateSha256'],value['ownershipKey'],value['interruptOriginal'],value['interruptEngine'],capture_profile=args.capture_profile,**runtime_kwargs)
         if backup.sha(source)!=value['helperSha256']:raise ValueError('Exact encrypted engine helper compilation required')
         report.update(transactionId=tx,helper=name,helperSha256=value['helperSha256'],expires=value['expires']);scope=shared.legacy.TemporaryHelperFTP(connection,name);lease=shared.HelperLease(common,connection,scope,source);unchanged(owned,hashes)
         if recovery_id:
@@ -105,7 +116,7 @@ def main(argv=None):
                 lease.attempted=True
             else:lease.install()
         else:lease.install()
-        checkpoint('engine-helper-installed');wire=FullPrivateEngineTransport(plan,value['helperSha256'],value['token'],value['expires']);reader=None
+        checkpoint('engine-helper-installed');wire=FullPrivateEngineTransport(plan,value['helperSha256'],value['token'],value['expires'],**runtime_kwargs);reader=None
         def request(raw):
             nonlocal reader
             unchanged(owned,hashes);action=backup.decode(raw)['action']
@@ -140,9 +151,11 @@ def main(argv=None):
             if original_reader is None:raise ValueError('Authenticated original manifest must precede signed record reads')
             return original_reader(path)
         def observe(event,payload):
+            report.setdefault('operatorEventTimes',{})[event]=datetime.now(timezone.utc).isoformat()
             if event=='original-archived':report['originalArchive']=payload
             elif event=='rollback-archived':report['rollbackArchive']=payload
             elif event in ('inspect-engine-cut','resume-first-engine-cut-inspected'):report['controlledEngineCutFreshlyInspected']={'phase':payload['engine']['phase'],'intentFiles':len(payload['engine']['intentFiles']),'pendingApplyFiles':len(payload['engine']['pendingApplyFiles']),'archiveAcknowledged':payload['archiveAcknowledged']}
+            elif event=='first-rollback-cut-inspected':report['controlledRollbackCutFreshlyInspected']={'phase':payload['engine']['phase'],'pendingRollbackFiles':payload['engine']['pendingRollbackFiles'],'archiveAcknowledged':payload['archiveAcknowledged']}
             elif event=='inspect-original-cut':report['controlledOriginalCutFreshlyInspected']={'seedStateSha256':payload['preparation']['fullSeed']['stateSha256'],'privateBytes':payload['preparation']['fullSeed']['copiedBytes']}
             checkpoint(event)
             if event=='inspect-engine-cut' and args.stop_after_engine_cut:raise ControlledCallerStop('Planned separate-caller stop after exact first owned replacement inspection')
@@ -151,29 +164,29 @@ def main(argv=None):
                 if p['recordsComplete'] and p['enginePhase'] is None and seed['sourceComplete'] and seed['targetComplete']:
                     report['completeSeedCallerStop']=recovery_resume.inspect_complete_seed_boundary(client,payload);checkpoint('complete-seed-caller-stop')
                     raise ControlledCallerStop('Planned separate-caller stop after complete seeds and before engine preparation')
-        if args.resume_engine_recovery:
+        if engine_resume:
             manifest,original_receipt,_=recovered_archives;report['originalArchive']=original_receipt
-            report['privateTransaction']=recovery_resume.continue_first_engine_cut(client,original_path,rollback_path,observe)
+            report['privateTransaction']=(explicit_resume.continue_first_rollback_cut if args.resume_first_rollback_recovery else recovery_resume.continue_first_engine_cut)(client,original_path,rollback_path,observe)
             report['separateCallerContinuationVerified']=True
-        elif args.resume_preparation_recovery:
-            manifest,original_receipt,prepared=recovery_resume.continue_preparation(client,wire,original_path,rollback_path,observe);report['originalArchive']=original_receipt;report['preparation']=prepared;report['separateCallerPreparationContinuationVerified']=True
+        elif preparation_resume:
+            manifest,original_receipt,prepared=(explicit_resume.continue_prepared_engine if args.resume_prepared_engine_recovery else recovery_resume.continue_preparation)(client,wire,original_path,rollback_path,observe,**step_kwargs);report['originalArchive']=original_receipt;report['preparation']=prepared;report['separateCallerPreparationContinuationVerified']=True
             report['privateTransaction']=transact(client,rollback_path,value['interruptEngine'],observe)
         else:
-            manifest,original_receipt,prepared=prepare(client,OriginalGate(),original_path,original_read,full.build_archive,value['interruptOriginal'],observe);report['originalArchive']=original_receipt;report['preparation']=prepared;report['privateTransaction']=transact(client,rollback_path,value['interruptEngine'],observe)
+            manifest,original_receipt,prepared=prepare(client,OriginalGate(),original_path,original_read,full.build_archive,value['interruptOriginal'],observe,**step_kwargs);report['originalArchive']=original_receipt;report['preparation']=prepared;report['privateTransaction']=transact(client,rollback_path,value['interruptEngine'],observe)
         report['rollbackArchive']=client.verified_archive();checkpoint('private-engine-rolled-back-and-closed')
         with zipfile.ZipFile(original_path) as z:original=full.validate_records({n:z.read(n) for n in manifest['members']},manifest,plan,value['ownershipKey'],value['helperSha256'])
         if any(original[k]!=before[k] for k in shared.STATE_KEYS):raise ValueError('Archived original differs from independent before snapshot')
-        roots=wire.private_roots(value['ownershipKey'],manifest['rootBinding']);report['canonicalPrivateContextVerified']=True;report['steps'].append({'action':'private-roots','seconds':wire.last_request_seconds,'runtime':wire.last_runtime,'phase':'archived-terminal-context'});authority=disposal.authority(value,original_path,manifest,rollback_path,client.manifest,FullEngineRetainedReader(connection,tx,roots['publicRoot']),roots['publicRoot']);cleanup_id=secrets.token_hex(16);cleanup_token=secrets.token_urlsafe(32);cleanup_expires=int(time.time())+3600;cleanup_source=disposal.helper_source(authority,roots['publicRoot'],value['ownershipKey'],cleanup_token,cleanup_expires)
+        roots=wire.private_roots(value['ownershipKey'],manifest['rootBinding']);report['canonicalPrivateContextVerified']=True;report['steps'].append({'action':'private-roots','seconds':wire.last_request_seconds,'runtime':wire.last_runtime,'phase':'archived-terminal-context'});authority=disposal.authority(value,original_path,manifest,rollback_path,client.manifest,FullEngineRetainedReader(connection,tx,roots['publicRoot']),roots['publicRoot']);cleanup_id=secrets.token_hex(16);cleanup_token=secrets.token_urlsafe(32);cleanup_expires=int(time.time())+3600;cleanup_source=disposal.helper_source(authority,roots['publicRoot'],value['ownershipKey'],cleanup_token,cleanup_expires,**runtime_kwargs)
         cleanup={'schemaVersion':1,'scope':disposal_recovery.SCOPE,'disposalId':cleanup_id,'transactionId':tx,'toolingCommit':args.tooling_commit,'sourceHashes':hashes,'expires':cleanup_expires,'token':cleanup_token,'ownershipKey':value['ownershipKey'],'helperSha256':backup.sha(cleanup_source),'publicRoot':roots['publicRoot'],'authority':authority,'originalArchiveName':original_path.name,'rollbackArchiveName':rollback_path.name,'originalHelperSha256':value['helperSha256']};report['encryptedDisposalPacket']=disposal_recovery.FullEngineDisposalVault().save(cleanup);checkpoint('encrypted-disposal-packet-persisted');lease.remove();report['engineHelperRemoved']=lease.removed;cleanup_lease=shared.HelperLease(common,connection,shared.legacy.TemporaryHelperFTP(connection,name),cleanup_source);unchanged(owned,hashes);cleanup_lease.install()
         def verify_archives():
             unchanged(owned,hashes);return full.verify_archive(original_path,plan,value['ownershipKey'],value['helperSha256'],manifest)==original_receipt and backup.verify_archive(rollback_path,value['ownershipKey'],client.manifest)==client.archive_receipt
-        cleanup_wire=FullEngineDisposalTransport(cleanup,verify_archives);state=cleanup_wire.request('inspect');report['cleanupSteps']=[]
+        cleanup_wire=FullEngineDisposalTransport(cleanup,verify_archives,**runtime_kwargs);state=cleanup_wire.request('inspect');report['cleanupSteps']=[]
         for _ in range(math.ceil(len(authority['payload'])/256)+50):
             if state['phase']=='disposed':break
             previous=state;state=cleanup_wire.request('cleanup',stateSha256=state['stateSha256']);report['cleanupSteps'].append({'seconds':cleanup_wire.last_request_seconds,'runtime':cleanup_wire.last_runtime,'payloadFiles':state['payloadFiles'],'payloadBytes':state['payloadBytes'],'operation':state['operation']});checkpoint('private-payload-disposal')
             if state['phase']!='disposed' and (state['payloadFiles'],len(state['directories']))>=(previous['payloadFiles'],len(previous['directories'])):raise ValueError('Exact private cleanup made no verified progress')
         else:raise ValueError('Private cleanup exceeded deterministic bounded request limit')
-        cleanup_lease.remove();report['disposalHelperRemoved']=cleanup_lease.removed;report['after']={};after=shared.capture(common,connection,owned,shared.source_hashes(),report['after'],lambda:checkpoint('snapshot-after'),source_compiler=early.snapshot_source)
+        cleanup_lease.remove();report['disposalHelperRemoved']=cleanup_lease.removed;report['after']={};after=shared.capture(common,connection,owned,shared.source_hashes(),report['after'],lambda:checkpoint('snapshot-after'),source_compiler=snapshot_compiler,**snapshot_kwargs)
         if any(original[k]!=after[k] for k in shared.STATE_KEYS):raise ValueError('Original selected/public/protected state differs; no restoration permitted')
         fresh=BoundedStagingFTPS(common.common.store2.connect)
         try:

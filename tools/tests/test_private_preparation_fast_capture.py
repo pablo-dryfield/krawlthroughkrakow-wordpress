@@ -31,6 +31,16 @@ def frozen_factory(name):
     path = 'tools/' + name
     raw = (ROOT / path).read_bytes()
     if name == 'full_private_engine_packet.py':
+        hosted = [
+            (b'from tools import hosted_runtime_bounds as bounds\n', b''),
+            (b',hosted_runtime_bounds=False):', b'):'),
+            (b"    if type(hosted_runtime_bounds) is not bool:raise ValueError('Explicit hosted runtime bound selection required')\n", b''),
+            (b"    source=early.rebind(source)\n    return bounds.bind(bounds.engine_work(source),'engine') if hosted_runtime_bounds else source\n", b'    return early.rebind(source)\n'),
+        ]
+        for current, previous in hosted:
+            if raw.count(current) != 1:
+                raise ValueError('Exact hosted runtime profile source inverse required')
+            raw = raw.replace(current, previous, 1)
         added = [
             (b'from tools import full_private_recovery_hashing as recovery_hashing\n', b''),
             (b"('raw','bounded-sha256','bounded-complete-sha256')", b"('raw','bounded-sha256')"),

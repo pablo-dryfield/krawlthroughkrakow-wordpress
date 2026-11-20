@@ -9,12 +9,15 @@ from tools.content_update_staging_transport import NoRedirect,has_no_store
 from tools.content_update_client import ACTIONS,UncertainRequest
 from tools.full_private_engine_client import PROFILE
 from tools.full_private_engine_packet import MAX_LIFETIME
+from tools import hosted_runtime_bounds as bounds
 
 URL='https://krawlthroughkrakow.com/staging/'
 MAX_RESPONSE=2097152
 
 class FullPrivateEngineTransport:
-    def __init__(self,plan,helper_sha,token,expires,opener=None,clock=time.time):
+    def __init__(self,plan,helper_sha,token,expires,opener=None,clock=time.time,hosted_runtime_bounds=False):
+        if type(hosted_runtime_bounds) is not bool:raise ValueError('Explicit hosted runtime bound selection required')
+        self.hosted_runtime_bounds=hosted_runtime_bounds
         if not isinstance(plan,dict) or not backup.identifier(plan.get('transactionId'),32) or not backup.identifier(plan.get('applicationCommit'),40) or not backup.digest(helper_sha) or not isinstance(token,str) or re.fullmatch(r'[A-Za-z0-9_-]{43}',token) is None or type(expires) is not int or not clock()<expires<=clock()+MAX_LIFETIME:raise ValueError('Exact explicit current full private engine transport required')
         self.plan=plan;self.binding=full.binding(plan);self.helper_sha=helper_sha;self.token=token;self.expires=expires;self.clock=clock;self.opener=opener or urllib.request.build_opener(urllib.request.ProxyHandler({}),NoRedirect());self.original_ack=None;self.original_archive=None;self.last_failure=None;self.last_request_seconds=None;self.last_runtime=None;self.last_observation=None
     def acknowledge_original(self,path,key,manifest):
@@ -53,8 +56,11 @@ class FullPrivateEngineTransport:
         if len(raw)>4096:raise ValueError('Bounded canonical private engine envelope required')
         req=urllib.request.Request(target,data=raw,method='POST',headers={'X-KTK-Full-Engine-Token':self.token,'Content-Type':'application/json','Cache-Control':'no-cache','User-Agent':'KTK full private engine/1.0'});started=time.perf_counter();observed={'action':action,'status':None,'headers':{},'responseBytes':None}
         try:
-            with self.opener.open(req,timeout=180) as response:
+            with self.opener.open(req,timeout=60 if self.hosted_runtime_bounds else 180) as response:
                 observed.update(status=response.status,headers=failure_headers(response.headers,self.token));self.last_observation=observed;controls=response.headers.get_all('Cache-Control') if hasattr(response.headers,'get_all') else [response.headers.get('Cache-Control','')]
+                if self.hosted_runtime_bounds:
+                    observed['runtimeBounds']=bounds.diagnostic_headers(response.headers,self.token)
+                    bounds.verify_response(response.headers)
                 if response.status!=200 or response.geturl()!=target or response.headers.get('CF-Cache-Status','').upper() not in ('DYNAMIC','BYPASS') or not has_no_store(controls) or response.headers.get('Content-Type','').split(';',1)[0].strip().lower()!='application/json':raise ValueError('Exact uncached private engine JSON required')
                 data=response.read(MAX_RESPONSE+1);observed['responseBytes']=len(data)
                 if len(data)>MAX_RESPONSE:raise ValueError('Full private engine response exceeds budget')
@@ -69,8 +75,11 @@ class FullPrivateEngineTransport:
                     value=response.headers.get(header,'')
                     if not 1<=len(value)<=64 or any(not 32<=ord(c)<127 for c in value) or self.token in value:raise ValueError('Bounded printable private runtime header required')
                     runtime[name]=value
+                if self.hosted_runtime_bounds:bounds.verify_response(response.headers,runtime['peakAllocatedBytes'])
+                if self.hosted_runtime_bounds and time.perf_counter()-started>60:raise ValueError('Hosted response exceeded60seconds')
                 self.last_runtime=runtime;return result
         except Exception as error:
             if isinstance(error,urllib.error.HTTPError):observed.update(status=error.code,headers=failure_headers(error.headers,self.token))
+            if self.hosted_runtime_bounds and isinstance(error,urllib.error.HTTPError):observed['runtimeBounds']=bounds.diagnostic_headers(error.headers,self.token)
             self.last_observation=observed;self.last_failure={'type':type(error).__name__,**observed};raise UncertainRequest('Full private engine reply was not verified; preserve evidence and inspect before another action') from None
         finally:self.last_request_seconds=time.perf_counter()-started

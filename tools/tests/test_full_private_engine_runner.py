@@ -23,6 +23,11 @@ class FullPrivateEngineRunnerTests(unittest.TestCase):
   with self.case() as (v,path,argv),mock.patch.object(runner.shared.snapshot,'load_common',return_value=mock.Mock()),mock.patch.object(runner,'BoundedStagingFTPS',return_value=mock.Mock(statistics=mock.Mock(return_value={}))),mock.patch.object(runner.shared,'capture',return_value={'protectedStateSha256':v['plan']['protectedStateSha256']}),mock.patch.object(runner.compiler,'helper_source',return_value=b'owned synthetic test helper'),mock.patch.object(runner.recovery.FullPrivateEngineVault,'save',side_effect=RuntimeError('Synthetic unavailable encryption')) as save,mock.patch.object(runner.shared,'HelperLease') as lease:
    with self.assertRaises(RuntimeError):runner.main(argv+['--rehearse-staging'])
    save.assert_called_once();lease.assert_not_called();report=json.loads(path.read_text());self.assertEqual(report['phase'],'failed-preserve-encrypted-packets-and-archives');self.assertNotIn(v['token'],path.read_text());self.assertNotIn(v['ownershipKey'],path.read_text());self.assertNotIn('Synthetic unavailable encryption',path.read_text())
+   self.assertIs(runner.compiler.helper_source.call_args.kwargs['hosted_runtime_bounds'],True)
+   self.assertEqual(report['hostedRuntimeBounds'],{'profile':runner.bounds.PROFILE,'memoryCeilingBytes':268435456,'executionCeilingSeconds':60,'stepBytes':16777216,'stepFiles':64})
+   with mock.patch.object(runner.bounds,'fetch_snapshot',return_value={'fixture':True}) as bounded:
+    self.assertEqual(runner.shared.capture.call_args.kwargs['snapshot_fetcher']('t'*43,'a'*64),{'fixture':True})
+    bounded.assert_called_once_with(runner.shared.snapshot,'t'*43,'a'*64,observe=mock.ANY)
  def test_expired_recovery_refuses_before_connection_or_helper_reinstallation(self):
   with self.case() as (v,path,argv),mock.patch.object(runner.shared.snapshot,'load_common',return_value=mock.Mock()),mock.patch.object(runner.recovery.FullPrivateEngineVault,'load',return_value={**v,'expires':1}),mock.patch.object(runner,'BoundedStagingFTPS') as connection,mock.patch.object(runner.shared,'HelperLease') as lease:
    with self.assertRaises(RuntimeError):runner.main(argv+['--inspect-recovery',v['transactionId']])
@@ -56,5 +61,37 @@ class FullPrivateEngineRunnerTests(unittest.TestCase):
    with self.subTest(extra=extra),self.case() as (_,path,argv),mock.patch.object(runner.shared.snapshot,'load_common') as common:
     with self.assertRaises(ValueError):runner.main(argv+extra)
     common.assert_not_called();self.assertFalse(path.exists())
+
+ def test_new_modes_choose_exact_archive_gate_before_connection(self):
+  for mode,expected in (('--resume-prepared-engine-recovery','attach_verified_original'),('--resume-first-rollback-recovery','attach_verified_archives')):
+   with self.subTest(mode=mode),self.case() as (v,path,argv),mock.patch.object(runner.recovery.FullPrivateEngineVault,'load',return_value=v),mock.patch.object(runner.recovery_resume,expected,side_effect=ValueError('Synthetic invalid saved archive')) as archive,mock.patch.object(runner.shared.snapshot,'load_common') as common,mock.patch.object(runner,'BoundedStagingFTPS') as connection,mock.patch.object(runner.shared,'HelperLease') as lease:
+    with self.assertRaises(RuntimeError):runner.main(argv+[mode,v['transactionId']])
+    archive.assert_called_once();common.assert_not_called();connection.assert_not_called();lease.assert_not_called()
+
+ def test_new_modes_reject_expiry_and_source_drift_before_archive_or_connector(self):
+  for mode in ('--resume-prepared-engine-recovery','--resume-first-rollback-recovery'):
+   for change in ({'toolingCommit':'f'*40},{'expires':1}):
+    with self.subTest(mode=mode,change=change),self.case() as (v,path,argv),mock.patch.object(runner.recovery.FullPrivateEngineVault,'load',return_value={**v,**change}),mock.patch.object(runner.recovery_resume,'attach_verified_original') as original,mock.patch.object(runner.recovery_resume,'attach_verified_archives') as both,mock.patch.object(runner.shared.snapshot,'load_common') as common:
+     with self.assertRaises(RuntimeError):runner.main(argv+[mode,v['transactionId']])
+     original.assert_not_called();both.assert_not_called();common.assert_not_called()
+
+ def test_new_modes_verify_exact_compiled_helper_before_loading_connector(self):
+  for mode,expected in (('--resume-prepared-engine-recovery','attach_verified_original'),('--resume-first-rollback-recovery','attach_verified_archives')):
+   with self.subTest(mode=mode),self.case() as (v,path,argv),mock.patch.object(runner.recovery.FullPrivateEngineVault,'load',return_value=v),mock.patch.object(runner.recovery_resume,expected,return_value=({}, {}, {})),mock.patch.object(runner.compiler,'helper_source',return_value=b'changed synthetic helper') as compile_helper,mock.patch.object(runner.shared.snapshot,'load_common') as common:
+    with self.assertRaises(RuntimeError):runner.main(argv+[mode,v['transactionId'],'--hosted-runtime-bounds'])
+    self.assertIs(compile_helper.call_args.kwargs['hosted_runtime_bounds'],True);common.assert_not_called()
+
+ def test_new_modes_cannot_add_interruption_or_preparation_stop(self):
+  for mode in ('--resume-prepared-engine-recovery','--resume-first-rollback-recovery'):
+   for flag in ('--interrupt-engine','--interrupt-original','--stop-after-preparation'):
+    with self.subTest(mode=mode,flag=flag),self.case() as (v,path,argv),mock.patch.object(runner.shared.snapshot,'load_common') as common:
+     with self.assertRaises(ValueError):runner.main(argv+[mode,v['transactionId'],flag])
+     common.assert_not_called();self.assertFalse(path.exists())
+
+ def test_new_gate_module_is_fingerprinted_and_wrapper_routes_both_explicit_modes(self):
+  hashes=runner.fingerprints();self.assertEqual(hashes['tools/full_private_engine_continuations.py'],backup.sha((ROOT/'tools/full_private_engine_continuations.py').read_bytes()))
+  text=(ROOT/'tools/rehearse-staging-full-private-engine.ps1').read_text()
+  for name in ('--resume-prepared-engine-recovery','--resume-first-rollback-recovery'):
+   self.assertLess(text.index("-notcontains '"+name+"'"),text.index('Import-Clixml'))
 
 if __name__=='__main__':unittest.main()

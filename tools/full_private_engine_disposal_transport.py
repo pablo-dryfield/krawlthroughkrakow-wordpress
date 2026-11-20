@@ -7,10 +7,13 @@ from tools import full_private_engine_disposal_recovery as recovery
 from tools.full_private_seed_transport import failure_headers
 from tools.content_update_staging_transport import NoRedirect,has_no_store
 from tools.content_update_client import UncertainRequest
+from tools import hosted_runtime_bounds as bounds
 
 URL='https://krawlthroughkrakow.com/staging/'
 class FullEngineDisposalTransport:
-    def __init__(self,packet,archive_verifier,opener=None,clock=time.time):
+    def __init__(self,packet,archive_verifier,opener=None,clock=time.time,hosted_runtime_bounds=False):
+        if type(hosted_runtime_bounds) is not bool:raise ValueError('Explicit hosted runtime bound selection required')
+        self.hosted_runtime_bounds=hosted_runtime_bounds
         recovery.validate_packet(packet,clock())
         if not callable(archive_verifier):raise ValueError('Independent archive re-verifier required')
         self.packet=packet;self.clock=clock;self.verify=archive_verifier;self.opener=opener or urllib.request.build_opener(urllib.request.ProxyHandler({}),NoRedirect());self.last_failure=None;self.last_request_seconds=None;self.last_runtime=None;self.last_observation=None
@@ -21,8 +24,11 @@ class FullEngineDisposalTransport:
         a=self.packet['authority'];binding={k:a[k] for k in ('transactionId','applicationCommit','authoritySha256')};raw=backup.encode({'schemaVersion':1,'action':action,**binding,**fields});url=URL+'?ktk_full_private_disposal='+a['transactionId']+'&request='+secrets.token_hex(16)
         request=urllib.request.Request(url,data=raw,method='POST',headers={'X-KTK-Full-Disposal-Token':self.packet['token'],'Content-Type':'application/json','Cache-Control':'no-cache','User-Agent':'KTK archived full private disposal/1.0'});started=time.perf_counter();observed={'action':action,'status':None,'headers':{},'responseBytes':None}
         try:
-            with self.opener.open(request,timeout=180) as response:
+            with self.opener.open(request,timeout=60 if self.hosted_runtime_bounds else 180) as response:
                 observed.update(status=response.status,headers=failure_headers(response.headers,self.packet['token']));self.last_observation=observed;controls=response.headers.get_all('Cache-Control') if hasattr(response.headers,'get_all') else [response.headers.get('Cache-Control','')]
+                if self.hosted_runtime_bounds:
+                    observed['runtimeBounds']=bounds.diagnostic_headers(response.headers,self.packet['token'])
+                    bounds.verify_response(response.headers)
                 if response.status!=200 or response.geturl()!=url or response.headers.get('CF-Cache-Status','').upper() not in ('DYNAMIC','BYPASS') or not has_no_store(controls) or response.headers.get('Content-Type','').split(';',1)[0].strip().lower()!='application/json':raise ValueError('Exact uncached staging disposal JSON required')
                 data=response.read(2097153);observed['responseBytes']=len(data)
                 if len(data)>2097152:raise ValueError('Bounded disposal response required')
@@ -30,8 +36,13 @@ class FullEngineDisposalTransport:
                 if not isinstance(result,dict) or set(result)!={'privateProfile','helperSha256','controller','runtime'} or result['privateProfile']!=disposal.PROFILE or result['helperSha256']!=self.packet['helperSha256']:raise ValueError('Exact disposal profile and helper required')
                 disposal.validate_state(result['controller'],a);r=result['runtime']
                 if not isinstance(r,dict) or set(r)!={'phpVersionId','peakAllocatedBytes','memoryLimit','maxExecutionTime'} or type(r['phpVersionId']) is not int or not 80100<=r['phpVersionId']<100000 or type(r['peakAllocatedBytes']) is not int or not 0<r['peakAllocatedBytes']<=1073741824 or not isinstance(r['memoryLimit'],str) or re.fullmatch(r'(?:-1|[0-9]+[KMG]?)',r['memoryLimit']) is None or not isinstance(r['maxExecutionTime'],str) or re.fullmatch('[0-9]{1,5}',r['maxExecutionTime']) is None:raise ValueError('Bounded actual disposal runtime required')
+                if self.hosted_runtime_bounds:
+                    bounds.verify_response(response.headers,r['peakAllocatedBytes'])
+                    if r['memoryLimit']!=response.headers.get('X-KTK-Memory-Limit') or r['maxExecutionTime']!=response.headers.get('X-KTK-Execution-Limit'):raise ValueError('Disposal runtime body and enforced headers differ')
+                    if time.perf_counter()-started>60:raise ValueError('Hosted response exceeded60seconds')
                 self.last_runtime=r;return result['controller']
         except Exception as error:
             if isinstance(error,urllib.error.HTTPError):observed.update(status=error.code,headers=failure_headers(error.headers,self.packet['token']))
+            if self.hosted_runtime_bounds and isinstance(error,urllib.error.HTTPError):observed['runtimeBounds']=bounds.diagnostic_headers(error.headers,self.packet['token'])
             self.last_observation=observed;self.last_failure={'type':type(error).__name__,**observed};raise UncertainRequest('Archived private disposal response unverified; preserve evidence and inspect without automatic retry') from None
         finally:self.last_request_seconds=time.perf_counter()-started

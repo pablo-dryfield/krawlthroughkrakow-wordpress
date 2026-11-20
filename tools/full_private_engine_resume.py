@@ -49,7 +49,9 @@ def attach_verified_original(client, original_path, rollback_path):
     return manifest, receipt, original
 
 
-def continue_preparation(client, transport, original_path, rollback_path, observe=lambda *args: None):
+def continue_preparation(client, transport, original_path, rollback_path, observe=lambda *args: None,step_bytes=33554432,step_files=128):
+    if type(step_bytes) is not int or type(step_files) is not int or (step_bytes,step_files) not in ((33554432,128),(16777216,64)):
+        raise ValueError('Exact reviewed preparation work profile required')
     """Explicit resume of complete records and no completed engine; never retries."""
     manifest, receipt, _ = attach_verified_original(client, original_path, rollback_path)
     state = client.inspect_preparation()
@@ -61,7 +63,7 @@ def continue_preparation(client, transport, original_path, rollback_path, observ
     observe('resume-preparation-inspected', state)
     transport.acknowledge_original(original_path, client.key, manifest)
     expected, _ = full.expected_seed_files(client.plan, client.sizes, client.overrides)
-    limit = math.ceil(sum(r['bytes'] for r in expected.values()) / 33554432) + math.ceil(len(expected) / 128) + 16
+    limit = math.ceil(sum(r['bytes'] for r in expected.values()) / step_bytes) + math.ceil(len(expected) / step_files) + 16
     calls, complete_boundary = 0, False
     for _ in range(limit):
         seed = state['preparation']['fullSeed']

@@ -6,6 +6,7 @@ from tools import content_update_backup as backup
 from tools import full_private_seed_packet as full
 from tools import full_private_engine_recovery as recovery
 from tools import early_private_entry as early
+from tools import hosted_runtime_bounds as bounds
 
 SCOPE='archived-rolled-back-full-private-disposal'
 PROFILE='full-private-engine-disposal-v1'
@@ -70,7 +71,8 @@ def authority(packet,original_path,original_manifest,rollback_path,rollback_mani
     result={'schemaVersion':1,'scope':SCOPE,'transactionId':tx,'applicationCommit':packet['applicationCommit'],'plan':plan,'originalManifestSha256':original_manifest['manifestSha256'],'originalArchiveSha256':original['sha256'],'rollbackManifestSha256':rollback_manifest['manifestSha256'],'rollbackArchiveSha256':rollback['archiveSha256'],'payload':dict(sorted(payload.items())),'retained':dict(sorted(rows.items()))}
     result['authoritySha256']=backup.sha(backup.encode(result,sort=True));return validate_authority(result,public_root)
 
-def helper_source(authority_value,public_root,key,token,expires):
+def helper_source(authority_value,public_root,key,token,expires,hosted_runtime_bounds=False):
+    if type(hosted_runtime_bounds) is not bool:raise ValueError('Explicit hosted runtime bound selection required')
     a=validate_authority(authority_value,public_root)
     if not backup.digest(key) or not isinstance(token,str) or re.fullmatch('[A-Za-z0-9_-]{43}',token) is None or type(expires) is not int or not int(time.time())<expires<=int(time.time())+3600:raise ValueError('Exact current separate archived private disposal required')
     metadata_names(a['transactionId'],public_root);config={'authority':a,'expires':expires,'ownershipKey':key,'publicRoot':public_root,'tokenSha256':backup.sha(token.encode())};name='ktk-transaction-rehearsal-'+a['transactionId']+'.php';source=(full.ROOT/'tools/full-private-engine-disposal-template.php').read_bytes()
@@ -84,7 +86,8 @@ def helper_source(authority_value,public_root,key,token,expires):
         if not body.startswith(b'<?php\n') or source.count(marker)!=1 or k=='STATE' and backup.sha(body)!=full.capacity.CORE_SHA:raise ValueError('Exact archived disposal component required')
         source=source.replace(marker,body[6:])
     if b'__KTK_FULL_DISPOSAL_' in source:raise ValueError('Unresolved archived disposal compiler marker')
-    return early.rebind(source)
+    source=early.rebind(source)
+    return bounds.bind(source,'disposal') if hosted_runtime_bounds else source
 
 def validate_state(v,a):
     binding={k:a[k] for k in ('transactionId','applicationCommit','authoritySha256')};fields={'schemaVersion','scope',*binding,'stateSha256','phase','payloadFiles','payloadBytes','present','directories','operation','applicationWrites','databaseWrites','cachePurges','productionOperations'}

@@ -110,7 +110,7 @@ class HelperLease:
             raise ValueError('Exact helper absence not verified')
 
 
-def capture(common, connection, owned, hashes, receipt, checkpoint, source_compiler=None):
+def capture(common, connection, owned, hashes, receipt, checkpoint, source_compiler=None, snapshot_fetcher=None):
     unchanged(owned, hashes)
     name = 'ktk-state-snapshot-' + secrets.token_hex(16) + '.php'
     token = secrets.token_urlsafe(32)
@@ -120,8 +120,9 @@ def capture(common, connection, owned, hashes, receipt, checkpoint, source_compi
     checkpoint()
     try:
         lease.install()
-        first = snapshot.fetch_snapshot(token, backup.sha(source))
-        second = snapshot.fetch_snapshot(token, backup.sha(source))
+        fetcher = snapshot.fetch_snapshot if snapshot_fetcher is None else snapshot_fetcher
+        first = fetcher(token, backup.sha(source))
+        second = fetcher(token, backup.sha(source))
         unchanged(owned, hashes)
         if not snapshot.same_state(first, second) or first['ownedContentFiles'] != owned:
             raise ValueError('Complete stable protected/public staging state required')
