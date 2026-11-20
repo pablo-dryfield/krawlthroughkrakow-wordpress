@@ -50,8 +50,13 @@ jobs:
       - name: Storefront unit tests
         run: npm test --prefix staging/wp-content/plugins/ktk-storefront/frontend
       - name: Guarded publisher unit tests (no deployment)
+        env:
+          # Xdebug overrides set_time_limit() and can report false after applying it.
+          # Exercise real PHP runtime controls; all limit/fail-closed assertions stay enabled.
+          XDEBUG_MODE: 'off'
         run: |
           php --version
+          php -r 'if (set_time_limit(60)!==true || ini_get("max_execution_time")!=="60") { fwrite(STDERR,"Native PHP runtime control required\n"); exit(1); } echo "Native PHP set_time_limit verified\n";'
           php -l tools/code-pages-update-engine.php
           php -l tools/staging-protected-state-template.php
           php -l tools/staging-full-inventory-capacity-template.php

@@ -35,6 +35,7 @@ PYTHON_SOURCES=(
     'private_engine_termination_binding.py','private_engine_termination_config.py','private_engine_termination_helper.py',
     'snapshot-staging-update-state.py','promote-code-pages-production.py',
     'staging_state_fast_capture.py','private_state_fast_census.py','full_private_recovery_hashing.py',
+    'hosted_runtime_bounds.py',
 )
 CORE_SHA256='223b28dab84918a42a23e750a77dcf85a90ac49bcfb0ee2ec9bc7ceea60844fb'
 
