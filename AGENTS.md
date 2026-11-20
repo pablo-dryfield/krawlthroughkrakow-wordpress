@@ -1,3 +1,7 @@
+# Current B07 measured parser-input correction
+
+Mixed-quote Rocket input is directly proved in the fresh cache-enabled observer; prior cache-enabled acceptance failed despite zero uncaught errors. Add only that exact reviewed nonbootstrap shape; preserve all hard body/type/nonce/helper/route/purpose guards. First/a9 source checkpoints and failed reports remain immutable. No B07 push/PR until current staging/raw/CMP/normal checks pass. No new owner question needed. All protected boundaries and B03/B08 dependencies remain.
+
 # Krawl Through Krakow Storefront Context
 
 ## Approved B07 optimized-tag successor

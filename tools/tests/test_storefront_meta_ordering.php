@@ -47,6 +47,21 @@ foreach ( array(
 	$changed = str_replace( $tags[1], $unreviewed_initializer_open . $bodies[1] . '</script>', $input );
 	check_meta( $changed !== $input && KTK_Storefront::group_meta_ordering( $changed ) === $changed, 'Pinned initializer body still rejects an unreviewed optimized module/nonce opening tag' );
 }
+$observed_mixed_open = "<script type=\"text/rocketlazyloadscript\" data-rocket-type='text/javascript'>";
+foreach ( array( array( 1, 2 ), array( 1 ), array( 2 ) ) as $optimized_parts ) {
+ $optimized = $input;
+ foreach ( $optimized_parts as $part ) { $optimized = str_replace( $tags[$part], $observed_mixed_open . $bodies[$part] . '</script>', $optimized ); }
+ check_meta( KTK_Storefront::group_meta_ordering( $optimized ) === $expected, 'Exact cache-enabled Rocket to Iubenda mixed-quote initializer/PageView tags preserve the same unit and every other byte' );
+}
+foreach ( array(
+ $observed_mixed_open . $bodies[0] . '</script>',
+ "<script type=\"text/rocketlazyloadscript\" data-rocket-type='module'>" . $bodies[1] . '</script>',
+ "<script nonce='unreviewed' type=\"text/rocketlazyloadscript\" data-rocket-type='text/javascript'>" . $bodies[1] . '</script>',
+) as $unreviewed ) {
+ $part = strpos( $unreviewed, $bodies[0] ) !== false ? 0 : 1;
+ $changed = str_replace( $tags[$part], $unreviewed, $input );
+ check_meta( $changed !== $input && KTK_Storefront::group_meta_ordering( $changed ) === $changed, 'Mixed-quote support still rejects bootstrap/module/nonce drift' );
+}
 $original = array( 'existing-owned-rule' );
 $paths = KTK_Storefront::exclude_meta_ordering_helper( $original );
 check_meta( $paths === array( 'existing-owned-rule', '/staging/wp-content/plugins/official-facebook-pixel/js/facebook_signal.js', '/staging/wp-content/plugins/official-facebook-pixel/core/../js/facebook_signal.js' ), 'Only exact two current local helper spellings are added to optimizer exclusions' );

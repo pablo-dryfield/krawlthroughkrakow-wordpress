@@ -1,3 +1,5 @@
+Cache-enabled intermediate input was measured directly: Rocket uses data-rocket-type with single quotes before Iubenda normalizes it. The first successor missed this exact mixed-quote shape. The narrowly added form passes a retained red/green regression; no purpose/body/helper/route or unknown-shape guard changes. Current complete staging and real-CMP checks remain required.
+
 # B07 staging Meta ordering candidate
 
 20November update: the owner explicitly approved this narrow staging compatibility change and consent-state checks. The first5b27 stage fixed the missing-page error; the normal page kept its pinned initializer/PageView in Rocket delay tags, so whole ordering acceptance was refused. This successor accepts only those exact observed tags for the same two pinned bodies. Helper readiness, bootstrap/purpose5 and all other guards remain. Prior pending/local-only labels below describe the initial proposal. No B07 delivery, source push or PR is claimed before final staged verification.
