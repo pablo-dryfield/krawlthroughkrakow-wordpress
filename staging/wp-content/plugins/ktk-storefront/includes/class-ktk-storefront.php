@@ -106,7 +106,17 @@ final class KTK_Storefront {
 			return $template;
 		}
 
-		status_header( self::public_not_found() ? 404 : 200 );
+		$missing = self::public_not_found();
+		$path = self::storefront_path();
+		if ( self::public_html_enabled() && in_array( $_SERVER['REQUEST_METHOD'] ?? 'GET', array( 'GET', 'HEAD' ), true )
+			&& preg_match( '/^[a-z0-9]+(?:-[a-z0-9]+)*-[0-9]+$/D', $path )
+			&& ! preg_match( '/^(?:cart|checkout|orders|saved-carts|ongoing-carts|order-confirmation)(?:-|\/|$)/', $path )
+			&& ( $missing || null === self::public_html_data() ) ) {
+			// Do not persist an unavailable lookup as a successful full-page cache hit.
+			if ( ! defined( 'DONOTCACHEPAGE' ) ) { define( 'DONOTCACHEPAGE', true ); }
+			nocache_headers();
+		}
+		status_header( $missing ? 404 : 200 );
 		return KTK_STOREFRONT_DIR . 'templates/storefront.php';
 	}
 

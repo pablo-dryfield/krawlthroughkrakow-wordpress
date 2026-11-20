@@ -1,3 +1,5 @@
+B07 repeat verification also found a normal full-page cache entry holding generic fallback HTML while a fresh bounded host lookup confirms the original JSON404. The current safeguard prohibits page-cache persistence for unavailable staging public product reads, preserving strict404 evidence and existing200 outage fallback behavior. Known/private/POST/production responses retain their behavior. Real current repeat/CMP/raw checks remain required.
+
 Cache-enabled intermediate input was measured directly: Rocket uses data-rocket-type with single quotes before Iubenda normalizes it. The first successor missed this exact mixed-quote shape. The narrowly added form passes a retained red/green regression; no purpose/body/helper/route or unknown-shape guard changes. Current complete staging and real-CMP checks remain required.
 
 # B07 staging Meta ordering candidate

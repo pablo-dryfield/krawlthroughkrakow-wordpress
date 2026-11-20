@@ -84,6 +84,9 @@ if ( ( $argv[1] ?? '' ) === '--case' ) {
     if ( $excluded || $case === 'catalog' || $case === 'known-cached' ) {
         $assert( count( $GLOBALS['requests'] ) === 0, 'Status gate adds no excluded/catalog/cached API request' );
     }
+    $expect_no_page_cache = ! $excluded && ! in_array( $case, array( 'known-cached', 'known-fresh', 'catalog' ), true );
+    $assert( ( defined( 'DONOTCACHEPAGE' ) && DONOTCACHEPAGE ) === $expect_no_page_cache, 'Only unavailable staging public product reads prevent full-page cache persistence' );
+    $assert( ( $GLOBALS['nocache_calls'] ?? 0 ) === ( $expect_no_page_cache ? 1 : 0 ), 'No-cache headers apply once to public failures and never to known/private/foreign/POST contexts' );
     $data = KTK_Storefront::public_html_data();
     $html = KTK_Storefront_Public_Content::render( $data );
     $assert( KTK_Storefront::public_not_found() === $expect_missing, 'Missing evidence is scoped to this request/environment' );

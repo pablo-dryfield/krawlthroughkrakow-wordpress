@@ -5,6 +5,7 @@ $GLOBALS['site'] = $GLOBALS['home'];
 $GLOBALS['query'] = array( 'ktk_storefront' => '1', 'ktk_storefront_path' => '' );
 $GLOBALS['transients'] = array(); $GLOBALS['requests'] = array();
 class WP_Error {}
+function nocache_headers() { $GLOBALS['nocache_calls'] = ( $GLOBALS['nocache_calls'] ?? 0 ) + 1; }
 function get_query_var( $key ) { return $GLOBALS['query'][$key] ?? ''; }
 function home_url( $path = '/' ) { return rtrim( $GLOBALS['home'], '/' ) . '/' . ltrim( $path, '/' ); }
 function site_url( $path = '/' ) { return rtrim( $GLOBALS['site'], '/' ) . '/' . ltrim( $path, '/' ); }

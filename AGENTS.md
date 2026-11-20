@@ -1,3 +1,7 @@
+# Current B07 public availability safeguard
+
+Verified repeat200 generic fallback cache and later actual bounded host JSON404 are retained separately; their original upstream-failure cause remains unproved. Current local successor adds only staging public-product failure cache prevention with72 extra positive/negative assertions across36 fresh native requests. It preserves original statuses, request budgets, private/production/POST behavior and consent purpose/body/bridge boundaries.6e app is still staged until a fresh QA-bound publication; no B07 push/PR yet. No whole goal completion.
+
 # Current B07 measured parser-input correction
 
 Mixed-quote Rocket input is directly proved in the fresh cache-enabled observer; prior cache-enabled acceptance failed despite zero uncaught errors. Add only that exact reviewed nonbootstrap shape; preserve all hard body/type/nonce/helper/route/purpose guards. First/a9 source checkpoints and failed reports remain immutable. No B07 push/PR until current staging/raw/CMP/normal checks pass. No new owner question needed. All protected boundaries and B03/B08 dependencies remain.
