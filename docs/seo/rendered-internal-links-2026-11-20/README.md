@@ -1,5 +1,12 @@
 # Guarded rendered internal-link audit
 
+## Current evidence binding and B03 closure
+
+B03 source and installed-staging recovery are now accepted, including main `e1793bd0e9de9b1277c3cf156e31c950d54456e0`/CI44758954589. The rendered report below keeps its original source/date and SHA-256 `2124b1e8f71cdb6d13e072c852c1e7b1da37bcc1eef28b17eba4d3619586bfc1`. All five executed tool/test bodies and all 2,472 application-source Git identities remain exact. This is a dated142-route/284-view,2,308-check structural snapshot with its recorded default-visible, blocked-provider and device/interaction limits; it is not a newly relabelled crawl or Google/provider acceptance.
+
+Earlier sections retain their dated evidence and status history. Failed attempts remain failed.
+
+
 ## Current B08 source binding, 20 November
 
 The original corrected crawl and its independent audit retain their dated source and scope. The final-package candidate imports all five executed tool/test files byte for byte, and all 2,472 application Git identities still match the captured source. Its eight local pure/loopback/browser contracts pass without another staging crawl or interaction with a user browser. No original report is relabelled as a new capture.

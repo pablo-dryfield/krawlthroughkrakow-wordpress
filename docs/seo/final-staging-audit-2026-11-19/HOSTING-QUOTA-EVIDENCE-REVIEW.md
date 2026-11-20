@@ -1,5 +1,12 @@
 # B03 hosting quota evidence review
 
+## Fulfilled dated B03 prerequisites and retained-data review
+
+The 20 November fresh applicable headroom, PHP filesystem actor/access, owner-approved quiet window and retention decision were fulfilled for the independently accepted hosted compound recovery. B03 current PR/main source CI also passes. Earlier metadata-only/stopped-attempt limitations below keep their dated scope. H06 now concerns review and explicit cleanup approval for retained originals/metadata/older partial contexts, plus decisions for any future or production operation; no new window or current rehearsal is pending.
+
+Earlier sections retain their dated evidence and status history. Failed attempts remain failed.
+
+
 ## Current B03 hosted outcome, 20 November
 
 Fresh applicable quota/headroom, PHP filesystem identity/access, the exclusive owner window and retention were established for the completed rehearsal. The entire private hosted recovery, exact prior rollback, 4,241-file derived disposal and selected-state/retained-namespace/helper checks are independently accepted. Read [the accepted scope and original failures](../b03-hosted-runtime-bounds-2026-11-20/ACCEPTANCE.md). B03's current PR135 source CI remains a separate required gate.

@@ -1,5 +1,12 @@
 # B03 hosted request limits
 
+## Current finite B03 delivery - 2026-11-20
+
+B03 is complete under its original recorded scope after independently accepted PR/current-main CI and the installed-staging compound recovery. Read [acceptance, retained failures and exact source closure](ACCEPTANCE.md). All original 60-second/256MiB/work/wire/witness/ownership/expiry bounds remain; no engine expiry or hosting setting was refreshed. Originals and metadata remain until owner review and explicit cleanup approval. No new quiet window or hosted action is pending.
+
+Earlier sections retain their dated evidence and status history. Failed attempts remain failed.
+
+
 ## Current verified hosted outcome, 20 November
 
 The full guarded staging-host rehearsal and independent compound recovery audit now pass. Read [the complete acceptance and retained failures](ACCEPTANCE.md). B03 is in verification pending current consolidated-source CI; older stopped-attempt and expired-window notes below are historical. All originals and metadata remain retained until owner review and cleanup approval. No application or production deployment is part of this package.

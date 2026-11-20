@@ -15,6 +15,19 @@ class RoadmapTests(unittest.TestCase):
         self.data=json.loads((ROOT / 'tools/seo-roadmap.json').read_text(encoding='utf-8'))
         self.plan=(ROOT / 'docs/seo/SEO-AND-WEBSITE-IMPROVEMENT-PLAN.md').read_text(encoding='utf-8')
 
+    def remaining_transition_fixture(self):
+        """A planned terminal batch with explicitly dated completed parents."""
+        data = copy.deepcopy(self.data)
+        for row in data['remainingWork']['batches']:
+            row['status'] = 'complete'
+            row['verifiedOn'] = data['updatedOn']
+            row.setdefault('evidence', 'https://example.invalid/synthetic-batch-fixture')
+        row = data['remainingWork']['batches'][-1]
+        row['status'] = 'planned'
+        row.pop('verifiedOn', None)
+        row.pop('evidence', None)
+        return data, row
+
     def test_all_plan_tickets_have_explicit_status_without_false_percent(self):
         result=module.render(self.data,self.plan)
         self.assertIn('| Total | 40 |',result)
@@ -55,9 +68,8 @@ class RoadmapTests(unittest.TestCase):
             with self.subTest(change=change), self.assertRaises(ValueError): module.remaining_model(data)
 
     def test_remaining_count_moves_only_with_dated_batch_evidence(self):
-        data = copy.deepcopy(self.data)
+        data, row = self.remaining_transition_fixture()
         before = module.remaining_model(data)
-        row = next(row for row in data['remainingWork']['batches'] if row['status'] != 'complete')
         row['status'] = 'complete'
         with self.assertRaises(ValueError): module.remaining_model(data)
         row['verifiedOn'] = '2099-01-01'
@@ -73,9 +85,8 @@ class RoadmapTests(unittest.TestCase):
         self.assertEqual(data['deliveries'], self.data['deliveries'])
 
     def test_starting_a_planned_batch_keeps_it_remaining_without_completing_workstreams(self):
-        data = copy.deepcopy(self.data)
+        data, row = self.remaining_transition_fixture()
         before = module.remaining_model(data)
-        row = next(row for row in data['remainingWork']['batches'] if row['status'] == 'planned')
         row['status'] = 'in_progress'
         after = module.remaining_model(data)
         self.assertEqual(after['remaining'], before['remaining'])

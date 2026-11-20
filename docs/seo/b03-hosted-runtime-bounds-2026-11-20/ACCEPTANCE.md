@@ -1,5 +1,14 @@
 # B03 hosted recovery acceptance, 20 November 2026
 
+## Current verified B03 closure - 2026-11-20
+
+B03 now meets its unchanged three-gate rule. Original offline proof covers2,074 public/4,149 private fixture files; separately audited installed-staging recovery covers2,116 public/4,233 private seed files. Current source `6f925170653e15179c5d9a889c60cf106a8d546c` passes182 native identities,16 recovery scenarios,4 scheduler checks/106 source inputs,1,305 Python tests with21 platform skips,45 Windows contracts, the complete build and security checks. [PR135](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/pull/135) is merged as byte-identical main `e1793bd0e9de9b1277c3cf156e31c950d54456e0`; [actual main CI44758954589](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/44758954589) is independently accepted. No additional full/native workflow or hosted rehearsal is required.
+
+The completed hosted operation is a compound recovery; all four earlier callers, the unknown-duration initialization timeout and both failed earlier source runs remain failed. Derived payloads were disposed; originals/rollback/raw archives, encrypted packets, signed metadata/markers and older partial contexts remain until owner review and explicit cleanup approval. Current full hosted-runtime inputs remain unchanged; the legacy termination compiler adds its missing dependency and updated configuration/self-hash. No production, application publication, real transaction, provider/account, form or functional-consent change is part of this source closure.
+
+Earlier sections retain their dated evidence and status history. Failed attempts remain failed.
+
+
 The mandatory staging-host recovery rehearsal is independently verified as a **completed recovered operation**. B03 remains **in verification** until the consolidated recovery source passes current CI. Its original full-size offline gate remains accepted at its original 2,074-public / 4,149-private scope; this delivery does not invent another full-fixture gate or manually dispatch another full/native workflow. The existing PR-triggered native phase check remains required.
 
 The test used the installed staging WordPress runtime and the application cohort `98deb54c494812dbf36f0ae380962a761133fb3c`. Frozen tooling was `3325e606b49a2277052229b642f9d62810c8e2a0`; the separately reviewed continuation operators have additional explicit source identities. Their executed function bodies are preserved in the consolidated module. Consolidating these continuation operators changes no application or compiled helper/core byte relative to the executed frozen tooling. The batch also includes the earlier hosted runtime-limit implementation described in the README, which was exercised during this rehearsal. New caller source/fingerprint identities require new CI and cannot replay the old encrypted context.
