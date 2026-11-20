@@ -4,7 +4,7 @@ No default compiler changes, credentials, connection, configuration-file writes
 or production mode. Existing stricter request limits are preserved.
 """
 from __future__ import annotations
-import re
+import re,time,urllib.request
 
 PROFILE='php-60s-256m-v1'
 STEP_BYTES=16777216
@@ -76,3 +76,40 @@ def verify_response(headers,peak=None):
     if headers.get('X-KTK-Enforced-Runtime')!=PROFILE or not 0<memory<=268435456 or not isinstance(execution,str) or re.fullmatch(r'[0-9]{1,9}',execution) is None or not 0<int(execution)<=60 or peak is not None and (type(peak) is not int or not 0<peak<=268435456):
         raise ValueError('Required hosted60s/256MiB ceiling is unverified')
     return True
+
+def fetch_snapshot(snapshot,token,source_sha,opener=None,observe=None):
+    """Keep the complete legacy snapshot validator under bounded HTTP observation."""
+    from tools.content_update_staging_transport import has_no_store
+    maximum=16777216 # Same raw selected-state payload ceiling as the original capsule.
+    started=time.perf_counter()
+    row={'role':'snapshot','verified':False,'responseBytes':None,'runtimeBounds':{},'peakAllocationReported':False}
+    delegate=opener if opener is not None else urllib.request.build_opener(urllib.request.ProxyHandler({}),snapshot.NoRedirect())
+    class Response:
+        def __init__(self,response):self.response=response
+        def __enter__(self):self.response.__enter__();return self
+        def __exit__(self,*args):return self.response.__exit__(*args)
+        def __getattr__(self,name):return getattr(self.response,name)
+        def read(self,size=-1):
+            if size!=-1:raise ValueError('Exact whole selected-state read required')
+            data=self.response.read(maximum+1);row['responseBytes']=len(data)
+            if len(data)>maximum or time.perf_counter()-started>60:raise ValueError('Hosted snapshot exceeded its byte or60second ceiling')
+            return data
+    class Opener:
+        def open(self,request,timeout):
+            response=delegate.open(request,timeout=60)
+            try:
+                row['runtimeBounds']=diagnostic_headers(response.headers,token)
+                verify_response(response.headers)
+                controls=response.headers.get_all('Cache-Control') if hasattr(response.headers,'get_all') else [response.headers.get('Cache-Control','')]
+                if not has_no_store(controls):raise ValueError('Exact snapshot no-store directive required')
+                return Response(response)
+            except BaseException:
+                response.close();raise
+    try:
+        state=snapshot.fetch_snapshot(token,source_sha,opener=Opener())
+        if time.perf_counter()-started>60:raise ValueError('Hosted snapshot exceeded60seconds')
+        row['verified']=True
+        return state
+    finally:
+        row['seconds']=time.perf_counter()-started
+        if observe is not None:observe(row)

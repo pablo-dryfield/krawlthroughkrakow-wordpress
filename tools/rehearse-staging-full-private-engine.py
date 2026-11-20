@@ -64,6 +64,7 @@ def main(argv=None):
     owned,sizes,hashes=reviewed_source(args.application_commit,args.tooling_commit);report={'startedAt':datetime.now(timezone.utc).isoformat(),'scope':'explicit private-only full engine rehearsal; no public/production transaction','phase':'offline-validated','applicationCommit':args.application_commit,'toolingCommit':args.tooling_commit,'sourceHashes':hashes,'publicOwnedFiles':len(owned),'publicOwnedBytes':sum(sizes.values()),'publicApplicationWrites':0,'databaseWrites':0,'cachePurges':0,'productionOperations':0,'fullHostTransactionAcceptance':False,'quotaVerified':False,'steps':[],'uncertainRequests':[]}
     report['captureProfile']=args.capture_profile
     if args.hosted_runtime_bounds:report['hostedRuntimeBounds']={'profile':bounds.PROFILE,'memoryCeilingBytes':268435456,'executionCeilingSeconds':60,'stepBytes':bounds.STEP_BYTES,'stepFiles':bounds.STEP_FILES}
+    snapshot_kwargs={'snapshot_fetcher':lambda token,sha:bounds.fetch_snapshot(shared.snapshot,token,sha,observe=lambda row:report.setdefault('snapshotRequests',[]).append(row))} if args.hosted_runtime_bounds else {}
     def checkpoint(phase=None):
         if phase is not None:report['phase']=phase
         report['updatedAt']=datetime.now(timezone.utc).isoformat();destination.parent.mkdir(parents=True,exist_ok=True);destination.write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
@@ -94,11 +95,11 @@ def main(argv=None):
         common=shared.snapshot.load_common()
         connection=BoundedStagingFTPS(common.common.store2.connect)
         if value is None:
-            report['before']={};before=shared.capture(common,connection,owned,shared.source_hashes(),report['before'],lambda:checkpoint('snapshot-before'),source_compiler=snapshot_compiler);unchanged(owned,hashes)
+            report['before']={};before=shared.capture(common,connection,owned,shared.source_hashes(),report['before'],lambda:checkpoint('snapshot-before'),source_compiler=snapshot_compiler,**snapshot_kwargs);unchanged(owned,hashes)
             tx,token,key=secrets.token_hex(16),secrets.token_urlsafe(32),secrets.token_hex(32);expires=int(time.time())+compiler.MAX_LIFETIME;plan,_,_=full.plan(tx,args.application_commit,owned,sizes,before['protectedStateSha256']);name='ktk-transaction-rehearsal-'+tx+'.php';source=compiler.helper_source(name,token,expires,args.application_commit,owned,sizes,plan['protectedStateSha256'],key,args.interrupt_original,args.interrupt_engine,capture_profile=args.capture_profile,**runtime_kwargs)
             value={'schemaVersion':1,'scope':recovery.SCOPE,'entryProfile':'early','transactionId':tx,'applicationCommit':args.application_commit,'toolingCommit':args.tooling_commit,'helperSha256':backup.sha(source),'sourceHashes':hashes,'expires':expires,'token':token,'ownershipKey':key,'plan':plan,'publicOwned':owned,'publicSizes':sizes,'interruptOriginal':args.interrupt_original,'interruptEngine':args.interrupt_engine};report['encryptedRecoveryPacket']=recovery.FullPrivateEngineVault().save(value);checkpoint('encrypted-engine-packet-persisted')
         if args.resume_engine_recovery or args.resume_preparation_recovery:
-            report['before']={};before=shared.capture(common,connection,owned,shared.source_hashes(),report['before'],lambda:checkpoint('recovery-snapshot-before'),source_compiler=snapshot_compiler)
+            report['before']={};before=shared.capture(common,connection,owned,shared.source_hashes(),report['before'],lambda:checkpoint('recovery-snapshot-before'),source_compiler=snapshot_compiler,**snapshot_kwargs)
             if any(before[k]!=recovered_archives[2][k] for k in shared.STATE_KEYS):raise ValueError('Fresh selected/public/protected state differs from archived recovery original; preserve without restoration')
             report['freshRecoveryBeforeMatchesArchivedOriginal']=True
         tx=value['transactionId'];plan=value['plan'];_,_,overrides=full.plan(tx,args.application_commit,owned,sizes,plan['protectedStateSha256']);name='ktk-transaction-rehearsal-'+tx+'.php';source=compiler.helper_source(name,value['token'],value['expires'],args.application_commit,owned,sizes,plan['protectedStateSha256'],value['ownershipKey'],value['interruptOriginal'],value['interruptEngine'],capture_profile=args.capture_profile,**runtime_kwargs)
@@ -179,7 +180,7 @@ def main(argv=None):
             previous=state;state=cleanup_wire.request('cleanup',stateSha256=state['stateSha256']);report['cleanupSteps'].append({'seconds':cleanup_wire.last_request_seconds,'runtime':cleanup_wire.last_runtime,'payloadFiles':state['payloadFiles'],'payloadBytes':state['payloadBytes'],'operation':state['operation']});checkpoint('private-payload-disposal')
             if state['phase']!='disposed' and (state['payloadFiles'],len(state['directories']))>=(previous['payloadFiles'],len(previous['directories'])):raise ValueError('Exact private cleanup made no verified progress')
         else:raise ValueError('Private cleanup exceeded deterministic bounded request limit')
-        cleanup_lease.remove();report['disposalHelperRemoved']=cleanup_lease.removed;report['after']={};after=shared.capture(common,connection,owned,shared.source_hashes(),report['after'],lambda:checkpoint('snapshot-after'),source_compiler=snapshot_compiler)
+        cleanup_lease.remove();report['disposalHelperRemoved']=cleanup_lease.removed;report['after']={};after=shared.capture(common,connection,owned,shared.source_hashes(),report['after'],lambda:checkpoint('snapshot-after'),source_compiler=snapshot_compiler,**snapshot_kwargs)
         if any(original[k]!=after[k] for k in shared.STATE_KEYS):raise ValueError('Original selected/public/protected state differs; no restoration permitted')
         fresh=BoundedStagingFTPS(common.common.store2.connect)
         try:

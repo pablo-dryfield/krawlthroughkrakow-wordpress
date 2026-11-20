@@ -127,6 +127,67 @@ class HostedRuntimeBoundsTests(unittest.TestCase):
     def test_real_php_preserves_stricter_limits(self):self.http_case('64M','10')
     def test_real_php_unavailable_controls_refuse_before_operation(self):self.http_case('768M','300',True)
 
+class HostedSnapshotTransportTests(unittest.TestCase):
+    def fixture(self,**changes):
+        from tools.tests import test_staging_protected_state as snapshot_tests
+        from tools.tests import test_full_private_engine_transport as transport_tests
+        snapshot=snapshot_tests.module;value=snapshot_tests.SnapshotClientTests().value()
+        headers={'X-KTK-Enforced-Runtime':bounds.PROFILE,'X-KTK-Memory-Limit':'256M','X-KTK-Execution-Limit':'60'}
+        headers.update(changes.pop('headers',{}))
+        return snapshot,value,transport_tests.Opener(value,headers=headers,**changes)
+
+    def test_full_snapshot_uses60seconds_and_preserves_existing_complete_validator(self):
+        snapshot,value,opener=self.fixture();observed=[]
+        self.assertEqual(bounds.fetch_snapshot(snapshot,'t'*43,'a'*64,opener,observed.append),value)
+        self.assertEqual(len(opener.calls),1);request,timeout=opener.calls[0]
+        self.assertEqual(timeout,60);self.assertEqual(request.method,'POST');self.assertEqual(request.data,b'{}')
+        self.assertTrue(observed[0]['verified']);self.assertEqual(observed[0]['responseBytes'],len(snapshot.encode(value)))
+        self.assertFalse(observed[0]['peakAllocationReported']);self.assertLessEqual(observed[0]['seconds'],60)
+
+    def test_missing_runtime_invalid_cache_or_http_identity_stop_once(self):
+        for changes in [{'headers':{'X-KTK-Enforced-Runtime':''}},{'headers':{'X-KTK-Memory-Limit':'768M'}},{'headers':{'Cache-Control':'private, no-store-ish'}},{'headers':{'CF-Cache-Status':'HIT'}},{'url':'https://krawlthroughkrakow.com/'},{'network':True}]:
+            with self.subTest(changes=changes):
+                snapshot,_,opener=self.fixture(**changes);observed=[]
+                with self.assertRaises(RuntimeError):bounds.fetch_snapshot(snapshot,'t'*43,'a'*64,opener,observed.append)
+                self.assertEqual(len(opener.calls),1);self.assertFalse(observed[0]['verified'])
+                self.assertNotIn('t'*43,repr(observed))
+
+    def test_late_snapshot_is_rejected_once_and_records_elapsed_time(self):
+        snapshot,_,opener=self.fixture();observed=[]
+        with mock.patch.object(bounds.time,'perf_counter',side_effect=[10.0,70.01,70.02]):
+            with self.assertRaises(RuntimeError):bounds.fetch_snapshot(snapshot,'t'*43,'a'*64,opener,observed.append)
+        self.assertEqual(len(opener.calls),1);self.assertFalse(observed[0]['verified']);self.assertGreater(observed[0]['seconds'],60)
+
+    def test_complete_raw_snapshot_budget_is_not_an_unbounded_read(self):
+        snapshot,_,opener=self.fixture(raw=b'x'*(16777216+1));observed=[]
+        with self.assertRaises(RuntimeError):bounds.fetch_snapshot(snapshot,'t'*43,'a'*64,opener,observed.append)
+        self.assertEqual(len(opener.calls),1);self.assertFalse(observed[0]['verified']);self.assertEqual(observed[0]['responseBytes'],16777217)
+
+    def test_original_database_identity_file_and_row_checks_remain_required(self):
+        for field in ('database','databaseSha256','protectedStateSha256','rowCounts','helperSha256'):
+            with self.subTest(field=field):
+                snapshot,value,opener=self.fixture();value[field]={} if isinstance(value[field],dict) else 'f'*64
+                with self.assertRaises(ValueError):bounds.fetch_snapshot(snapshot,'t'*43,'a'*64,opener)
+                self.assertEqual(len(opener.calls),1)
+
+    def capture_case(self,fail):
+        from tools.tests import test_full_private_engine_runner as runner_tests
+        shared=runner_tests.runner.shared;snapshot,value,_=self.fixture();receipt={}
+        fetcher=mock.Mock(side_effect=RuntimeError('Synthetic uncertain read') if fail else [value,value])
+        helper=mock.Mock(removed=True);compiler=mock.Mock(return_value=b'fresh owned synthetic snapshot')
+        with mock.patch.object(shared,'unchanged'),mock.patch.object(shared,'HelperLease',return_value=helper),mock.patch.object(shared.snapshot,'fetch_snapshot',side_effect=AssertionError('Legacy fetch must not run')),mock.patch.object(shared.snapshot,'write_private_backup',return_value={'fixture':True}) as archive:
+            if fail:
+                with self.assertRaises(RuntimeError):shared.capture(mock.Mock(),mock.Mock(),value['ownedContentFiles'],{},receipt,lambda:None,source_compiler=compiler,snapshot_fetcher=fetcher)
+                archive.assert_not_called();self.assertEqual(fetcher.call_count,1)
+            else:
+                self.assertEqual(shared.capture(mock.Mock(),mock.Mock(),value['ownedContentFiles'],{},receipt,lambda:None,source_compiler=compiler,snapshot_fetcher=fetcher),value)
+                self.assertEqual(fetcher.call_count,2);archive.assert_called_once()
+                self.assertEqual(archive.call_args.args[1:3],(value,value))
+        helper.remove.assert_called_once();self.assertTrue(receipt['helperRemoved'])
+
+    def test_shared_capture_uses_both_complete_bounded_reads(self):self.capture_case(False)
+    def test_failed_bounded_capture_removes_only_its_helper_without_retry(self):self.capture_case(True)
+
 class HostedBoundedPacketNativeTests(native_packet.FullPrivateEnginePacketTests):
     def setUp(self):
         super().setUp()

@@ -25,6 +25,9 @@ class FullPrivateEngineRunnerTests(unittest.TestCase):
    save.assert_called_once();lease.assert_not_called();report=json.loads(path.read_text());self.assertEqual(report['phase'],'failed-preserve-encrypted-packets-and-archives');self.assertNotIn(v['token'],path.read_text());self.assertNotIn(v['ownershipKey'],path.read_text());self.assertNotIn('Synthetic unavailable encryption',path.read_text())
    self.assertIs(runner.compiler.helper_source.call_args.kwargs['hosted_runtime_bounds'],True)
    self.assertEqual(report['hostedRuntimeBounds'],{'profile':runner.bounds.PROFILE,'memoryCeilingBytes':268435456,'executionCeilingSeconds':60,'stepBytes':16777216,'stepFiles':64})
+   with mock.patch.object(runner.bounds,'fetch_snapshot',return_value={'fixture':True}) as bounded:
+    self.assertEqual(runner.shared.capture.call_args.kwargs['snapshot_fetcher']('t'*43,'a'*64),{'fixture':True})
+    bounded.assert_called_once_with(runner.shared.snapshot,'t'*43,'a'*64,observe=mock.ANY)
  def test_expired_recovery_refuses_before_connection_or_helper_reinstallation(self):
   with self.case() as (v,path,argv),mock.patch.object(runner.shared.snapshot,'load_common',return_value=mock.Mock()),mock.patch.object(runner.recovery.FullPrivateEngineVault,'load',return_value={**v,'expires':1}),mock.patch.object(runner,'BoundedStagingFTPS') as connection,mock.patch.object(runner.shared,'HelperLease') as lease:
    with self.assertRaises(RuntimeError):runner.main(argv+['--inspect-recovery',v['transactionId']])
