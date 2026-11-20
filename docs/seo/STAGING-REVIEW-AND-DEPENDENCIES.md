@@ -1,5 +1,20 @@
 # KTK staging review and remaining dependencies
 
+## Current B07 verified staging scope - revision51
+
+Delivery78/source98deb54 verifies the approved storefront JS ordering and public failure-cache safeguards. B07 meets its original finite implementation/ownership rule; all40 whole-workstream states/criteria remain. Both roadmaps51 record78 website deliveries/82 records and two original batches still open: B03 hosted recovery and B08 final acceptance under its unchanged dependencies.
+
+Current105Meta/70public361missing8proxy14publisher,812payload,59missing-browser,264device/cache and197real-JS-CMP checks pass;6bounded availability requests pass. [Delivery evidence and remaining owners](b07-monitoring-review-2026-11-20/README.md), [explicit acceptance limits](b07-monitoring-review-2026-11-20/ACCEPTANCE.md).
+
+The exploratory fullCMP201/202 noJS assertion remains failed because the original Meta fallback image attempts PageView; it matches preB07 main exactly and was blocked. Broad X01/D08 stays deferred beyond the owner's narrow exception. The initial-to-final raw DB comparison remains failed at one numeric Ecwid cache-check timestamp; all other captured fields/2116owned/285other-protected hashes match. The final complete7-table/286protected pair is exact only within01:18:05-01:18:28UTC20November. No raw restoration/exclusion, actor/trigger, full noJS/cookieless/provider/server-receipt, whole-host/continuous or production acceptance is claimed.
+
+Actual account/provider/inbox/paid-state/manual evidence remains H02/H03/R02/X01; B03 hosting quota/PHP writer/private window/retention and mandatory rehearsal remain H06. B04 permission/source closure is resolved. Current-source CI is a separate required consolidated-PR merge gate; consult its actual checks. Earlier current/pending labels below are dated history.
+
+
+
+
+
+
 ## Verified B04 SVG delivery - revision49
 
 Delivery77/source8edcd6e meets B04's unchanged finite implementation rule. The two original staging SVG URLs pass58 actual HTTP checks, six coldMISS/six first warmHIT, eight normal phone/desktop JS-noJS contexts and unchanged decoded-vector goldens. All2466 prior app files stay exact; six new public delivery files are the only app additions. Combined Brotli body bytes398320to357818 (10.17%less). Matched mobile homepage medianLCP4872to4672ms; unchanged NYEcontrol6124to6164ms is slower. All samples, local activity/noise and older failed trials are retained; no causal, field or INP claim. [Full delivery, source/backup, retained failures and limits](staging-svg-assets-2026-11-19/README.md).
@@ -38,7 +53,7 @@ Both roadmaps now record75 verified website deliveries/79records/four remaining 
 
 There are **74 verified website staging deliveries and four remaining batches**. B01, B02, B05 and B06 meet their original finite rules. B03, B04 and B07 are in progress; B08 is planned. All eight batches remain visible in the [HTML roadmap](ROADMAP.html#remaining-batches) and [Markdown roadmap](ROADMAP.md). The [full plan](SEO-AND-WEBSITE-IMPROVEMENT-PLAN.md) retains all 40 original workstream criteria.
 
-## Current accepted staging scope
+## Historical source context: Current accepted staging scope
 
 Safety delivery74 verifies the three lower photos with381608encodedbytes instead of7201911 in four normal JS/noJS full-scroll views. All2116owned files,280protected files and allseven capturedtables stay exact through publication/cache/browser/paint verification;165HTTP checks include52warmedpublicHIT responses. Three screenshot pairs are exact; one differs only inside the unchanged featured AVIF despite equal source bytes and geometry, with unproved cause. Local paint is24ms slower; normal chronological timing medians are LCP1764to1732/FCP1696to1680 without a causal/field claim. Exact-tree website main6adbe CI44505879292 is independently accepted. Source-only PR128/main74f0d60e CI44514480611 is also accepted without application changes. [Details and retained qualifications](safety-inline-responsive-2026-11-19/README.md).
 
@@ -54,7 +69,7 @@ Private WordPress snapshots and rollback archives are retained locally outside G
 | --- | --- |
 | B03 — recovery | Current source-only integration and native/standard/main CI are independently accepted. The original old2074/4149 offline gate retains its scope; the mandatory separately audited hosted rehearsal still requires H06 actual quota, PHP actor, exclusive window and retention. No new full run or fourth gate is added. |
 | B04 — performance/assets | Image deliveries71/73/74 and current source integration are accepted. Dated priority-template findings and all paint/screenshot limitations remain explicit; H06 SVG negotiation and field/account/manual evidence are still open. |
-| B07 — monitoring/regressions | Resolve the retained provider initialization failure and obtain the required authenticated/provider and real-world evidence. Preserve the original font/Ecwid raw-state failures and unknown older aborted admin-request bodies. |
+| B07 — monitoring/regressions | Finite staging/ownership rule complete in delivery78. Account/provider/inbox/paid-state evidence stays assigned; raw/noJS limits remain explicit. Current-source CI is a separate required PR merge gate. |
 | B08 — final audit/review | The finite40-requirement/current-source/deployed-capture/normal-route audit is prepared and reconciled here. Final batch acceptance still follows its original B03/B04/B07 dependencies and owner review; production is not approved. |
 
 Frozen recovery6a retains its older staged9515 cohort; later Hen/Safety changes are outside that exact fixture. Current staging has2116owned files. A mandatory hosted rehearsal still needs a fresh source-bound inventory after H06; no newer full recovery is accepted. Its fixture explicitly covers **2,076 public files / 551,248,298 bytes and 4,153 private payloads / 1,102,309,144 bytes**. A short comparison passes 28 native contracts and 12 complete captures; the existing optimized capture profile is faster on the measured ARM runner, while raw capture is slower. That result supports bounded platform validation, not a full-runtime guarantee. The earlier native30-minute cancellation and roadmap encoding failure remain preserved failures. Corrected source `6a5f3d1` now has independently accepted [native CI](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/44455854964) and [complete CI](https://github.com/pablo-dryfield/krawlthroughkrakow-wordpress/actions/runs/44455863033), with every original test and safety bound retained. No new full run or hosted recovery has started. The expanded 2,076-public / 4,153-private full proof remains unaccepted; the original offline gate stays scoped to its older exact cohort.
@@ -73,7 +88,7 @@ Current source closure: PR128/f258000/tree42ae is integrated as exact-tree main7
 | H04 | Verified Google Business Profile owner and operations | Confirm eligibility, actual premises, category, hours, photos and booking destination. A registered office does not establish a customer meeting point. |
 | H05 | Owner or nominated review/partnership operator | Adopt the prepared neutral review process, confirm current agreements and approve any real review requests, replies or outreach. Drafts remain unsent. |
 | H06 — hosting | Hosting and release owners | Supply actual hosting-account quota, confirm the PHP filesystem actor can use the intended private location, agree an exclusive rehearsal window and confirm retention of originals, metadata and operation markers. Local disk space and FTPS feature reads do not establish these facts. |
-| H06 — SVG pilot | Cloudflare account and release owners | Decide on the reviewed two-path staging pilot, its exclusive account window, and creation/retention of the currently absent shared cache entrypoint. The coordinator removes only its owned rule and leaves that entrypoint empty. Existing purge-only authorization does not cover this account change. |
+| H06 — SVG scope | Cloudflare account and release owners | Resolved in delivery77: temporary pilots cleaned, shared entrypoint and exact-two-path durable staging rule retained. This does not provide the separate B03 private hosting facts. |
 | H07 | Production owner | Review the final exact source, staged evidence, unresolved exceptions and rollback scope before any separately authorized production release. |
 
 Monthly and seasonal reviews remain recurring responsibilities. Consent/GTM work remains explicitly deferred. Owner decisions are not inferred from elapsed time or successful automated tests.

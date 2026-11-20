@@ -1,5 +1,18 @@
 # Finite current-staging audit and remaining requirements
 
+## Current B07 verified staging scope - revision51
+
+Delivery78/source98deb54 verifies the approved storefront JS ordering and public failure-cache safeguards. B07 meets its original finite implementation/ownership rule; all40 whole-workstream states/criteria remain. Both roadmaps51 record78 website deliveries/82 records and two original batches still open: B03 hosted recovery and B08 final acceptance under its unchanged dependencies.
+
+Current105Meta/70public361missing8proxy14publisher,812payload,59missing-browser,264device/cache and197real-JS-CMP checks pass;6bounded availability requests pass. [Delivery evidence and remaining owners](../b07-monitoring-review-2026-11-20/README.md), [explicit acceptance limits](../b07-monitoring-review-2026-11-20/ACCEPTANCE.md).
+
+The exploratory fullCMP201/202 noJS assertion remains failed because the original Meta fallback image attempts PageView; it matches preB07 main exactly and was blocked. Broad X01/D08 stays deferred beyond the owner's narrow exception. The initial-to-final raw DB comparison remains failed at one numeric Ecwid cache-check timestamp; all other captured fields/2116owned/285other-protected hashes match. The final complete7-table/286protected pair is exact only within01:18:05-01:18:28UTC20November. No raw restoration/exclusion, actor/trigger, full noJS/cookieless/provider/server-receipt, whole-host/continuous or production acceptance is claimed.
+
+Actual account/provider/inbox/paid-state/manual evidence remains H02/H03/R02/X01; B03 hosting quota/PHP writer/private window/retention and mandatory rehearsal remain H06. B04 permission/source closure is resolved. Current-source CI is a separate required consolidated-PR merge gate; consult its actual checks. Earlier current/pending labels below are dated history.
+
+
+
+
 ## Verified B04 SVG delivery - revision49
 
 Delivery77/source8edcd6e meets B04's unchanged finite implementation rule. The two original staging SVG URLs pass58 actual HTTP checks, six coldMISS/six first warmHIT, eight normal phone/desktop JS-noJS contexts and unchanged decoded-vector goldens. All2466 prior app files stay exact; six new public delivery files are the only app additions. Combined Brotli body bytes398320to357818 (10.17%less). Matched mobile homepage medianLCP4872to4672ms; unchanged NYEcontrol6124to6164ms is slower. All samples, local activity/noise and older failed trials are retained; no causal, field or INP claim. [Full delivery, source/backup, retained failures and limits](../staging-svg-assets-2026-11-19/README.md).
