@@ -1120,6 +1120,8 @@ final class KTK_Storefront {
 			}
 			$allowed = array( '<script>', '<script type="text/javascript">', "<script type='text/javascript'>" );
 			if ( 0 === $part ) { $allowed[] = '<script type="text/plain" class=" _iub_cs_activate-inline" data-iub-purposes="5">'; }
+			// Iubenda may receive the already Rocket-optimized normal document.
+			if ( 0 !== $part ) { $allowed[] = '<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript">'; }
 			if ( isset( $found[ $part ] ) || ! in_array( $open, $allowed, true ) ) { return $output; }
 			$found[ $part ] = array( 'body' => $body, 'offset' => $match[1], 'length' => strlen( $match[0] ) );
 		}

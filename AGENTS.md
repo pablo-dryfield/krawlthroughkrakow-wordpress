@@ -1,5 +1,9 @@
 # Krawl Through Krakow Storefront Context
 
+## Approved B07 optimized-tag successor
+
+Owner explicitly approved20Nov the narrow staging Meta/Iubenda ordering fix and isolated consent-state verification; do not re-ask. This successor from immutable5b27 corrects the actual first-stage normal-optimizer tag-shape refusal: helper is normal, pinned initializer/PageView are Rocket-deferred. Accept only their exact reviewed delay tag while preserving all three bodies, purpose5, helper readiness, private/production route guards, bridge/GTM/accounts/forms/commerce and limits. First5b staging/current errors0 but ordering incomplete, so no new delivery counted. Old5b branch/source and all failed/partial evidence/backups stay retained. Full real CMP/cache/raw after acceptance and both roadmap updates precede the single B07 push/PR. Root remains DOCSONLY; native Windows STOP remains.
+
 ## Local B07 proposal checkout
 
 This new branch starts at main4216ffc/treefd8. All3935 source blobs/2472 app files and four required source archives were independently verified BEFORE edits; receipt is in root docs/seo/b07-monitoring-review-2026-11-20/preedit-source-and-backup-verification.json. User focuses B07. Prepare a reversible local Meta/CMP ordering candidate and meaningful isolated tests; X01 remains deferred for STAGING APPLICATION until the owner explicitly reopens this narrow compatibility scope. No source push/PR or hosting/provider/account/consent-setting/production/commerce/form/payment change is authorized by this preparation. Preserve source call bodies, purpose5, consent UI/bridge and all protected paths. Do not classify or stub away the failed current global runtime guard. B04 frozen checkout and all original recovery bounds remain. Root historical app is documentation only. Older current/frozen instructions below describe their historical checkouts, not permission to deploy this candidate.

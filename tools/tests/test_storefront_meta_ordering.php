@@ -26,6 +26,27 @@ $group = $xpath->query( '//script[@data-ktk-meta-ordering="v1"]' );
 check_meta( 1 === $group->length && $group[0]->textContent === implode( '', $bodies ), 'One activation unit preserves exact three source bodies and order' );
 check_meta( 'text/plain' === $group[0]->getAttribute( 'type' ) && '5' === $group[0]->getAttribute( 'data-iub-purposes' ), 'Existing purpose5 boundary stays inert before CMP activation' );
 check_meta( KTK_Storefront::group_meta_ordering( $output ) === $output, 'Repeated parser application does not duplicate a call or activation block' );
+$rocket_open = '<script type="text/rocketlazyloadscript" data-rocket-type="text/javascript">';
+foreach ( array( array( 1, 2 ), array( 1 ), array( 2 ) ) as $optimized_parts ) {
+	$optimized = $input;
+	foreach ( $optimized_parts as $part ) { $optimized = str_replace( $tags[$part], $rocket_open . $bodies[$part] . '</script>', $optimized ); }
+	check_meta( KTK_Storefront::group_meta_ordering( $optimized ) === $expected, 'Exact observed optimized initializer/PageView tags produce the same purpose5 unit with all other bytes exact' );
+}
+foreach ( array(
+	$rocket_open . $bodies[0] . '</script>',
+	'<script type="text/rocketlazyloadscript" data-rocket-type="module">' . $bodies[0] . '</script>',
+	'<script nonce="unreviewed" type="text/rocketlazyloadscript" data-rocket-type="text/javascript">' . $bodies[0] . '</script>',
+) as $unreviewed_bootstrap ) {
+	$changed = str_replace( $tags[0], $unreviewed_bootstrap, $input );
+	check_meta( $changed !== $input && KTK_Storefront::group_meta_ordering( $changed ) === $changed, 'Optimizer acceptance never expands to an unreviewed bootstrap/type/nonce shape' );
+}
+foreach ( array(
+	'<script type="text/rocketlazyloadscript" data-rocket-type="module">',
+	'<script nonce="unreviewed" type="text/rocketlazyloadscript" data-rocket-type="text/javascript">',
+) as $unreviewed_initializer_open ) {
+	$changed = str_replace( $tags[1], $unreviewed_initializer_open . $bodies[1] . '</script>', $input );
+	check_meta( $changed !== $input && KTK_Storefront::group_meta_ordering( $changed ) === $changed, 'Pinned initializer body still rejects an unreviewed optimized module/nonce opening tag' );
+}
 $original = array( 'existing-owned-rule' );
 $paths = KTK_Storefront::exclude_meta_ordering_helper( $original );
 check_meta( $paths === array( 'existing-owned-rule', '/staging/wp-content/plugins/official-facebook-pixel/js/facebook_signal.js', '/staging/wp-content/plugins/official-facebook-pixel/core/../js/facebook_signal.js' ), 'Only exact two current local helper spellings are added to optimizer exclusions' );
