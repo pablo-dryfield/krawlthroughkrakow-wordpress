@@ -1,3 +1,7 @@
+## Current21November review snapshot scope
+
+Delivery79 uses one shared staging PHP rating change. The four existing staging homepage URL forms and default/desktop/mobile/tablet variants are purged by exact URL objects after origin/protected checks. API success and3MISS/3repeatHIT are retained; no production/global purge, cache rule or account configuration change. See [scoped verification](../seo/nonproduction-completion-2026-11-21/REVIEW-SNAPSHOT.md). Earlier dated scopes follow.
+
 # Cloudflare Cache Purge Access
 
 ## Current B07 staging storefront scope -20November2026

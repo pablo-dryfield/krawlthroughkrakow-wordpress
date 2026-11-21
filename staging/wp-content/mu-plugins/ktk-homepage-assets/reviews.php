@@ -9,7 +9,8 @@ function ktk_homepage_review_sources() {
             'url' => 'https://www.google.com/maps/place/Krawl+Through+Krakow+-+Pub+crawl/@50.0614569,19.9380167,17z/data=!3m1!4b1!4m6!3m5!1s0x47165bf213d4292f:0xb4d3277c5ab6ea20!8m2!3d50.0614569!4d19.9380167!16s%2Fg%2F11t9kqj0yw' ),
         array( 'name' => 'Tripadvisor', 'rating' => '4.9', 'count' => '3,000+', 'logo' => 'review-tripadvisor.png',
             'url' => 'https://www.tripadvisor.com/Attraction_Review-g274772-d2725527-Reviews-Krawl_Through_Krakow_Pub_Crawl-Krakow_Lesser_Poland_Province_Southern_Poland.html' ),
-        array( 'name' => 'GetYourGuide', 'rating' => '4.6', 'count' => '100+', 'logo' => 'review-getyourguide.svg',
+        // Rating reviewed 2026-11-21 on activity 443425; count remains a rounded snapshot.
+        array( 'name' => 'GetYourGuide', 'rating' => '4.7', 'count' => '100+', 'logo' => 'review-getyourguide.svg',
             'url' => 'https://www.getyourguide.com/krakow-l40/krakow-pub-crawl-1h-open-bar-vip-entry-welcome-shots-t443425/' ),
     );
 }

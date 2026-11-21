@@ -1,0 +1,65 @@
+name: Staging Availability
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/staging-availability.yml'
+      - 'tools/check-seo-availability.mjs'
+      - 'tools/read-only-http.mjs'
+      - 'tools/tests/test_seo_availability.mjs'
+  pull_request:
+    paths:
+      - '.github/workflows/staging-availability.yml'
+      - 'tools/check-seo-availability.mjs'
+      - 'tools/read-only-http.mjs'
+      - 'tools/tests/test_seo_availability.mjs'
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: staging-availability-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  contracts:
+    name: Availability Scope Contracts
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+      - name: Exercise actual CLI with network disabled
+        run: node --test tools/tests/test_seo_availability.mjs
+
+  staging:
+    name: Staging HTTP and Indexing Guards
+    if: github.event_name != 'pull_request'
+    needs: contracts
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+      - name: Check only fixed staging URLs without cookies or JavaScript
+        run: node tools/check-seo-availability.mjs "${{ runner.temp }}/staging-availability.json" --staging-only
+      - name: Retain the bounded public-response report
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: staging-availability-${{ github.run_id }}
+          path: ${{ runner.temp }}/staging-availability.json
+          if-no-files-found: warn
+          retention-days: 14
