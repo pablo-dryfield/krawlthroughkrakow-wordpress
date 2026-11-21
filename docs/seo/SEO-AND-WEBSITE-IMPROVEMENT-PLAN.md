@@ -1,3 +1,9 @@
+## Current non-production completion - revision63
+
+The dated native Search Console/GA4 baseline now meets M02. Delivery79 refreshes only the shared GetYourGuide rating to4.7 on staging, with original backup, exact protected checks and origin/normal/repeat verification. The staging-only weekly availability workflow is prepared and locally verified; its associated PR/main jobs establish installation. All eight original batches remain complete; broader UI, human, operations, provider and recurring criteria remain distinct. Production and D08 are excluded; L01/location/hours and recovery/medical retention decisions are not reopened.
+
+See [verified evidence and remaining scope](nonproduction-completion-2026-11-21/README.md). There are3live-verified workstreams,36in progress and1deferred;79website deliveries/83records. Original40criteria and all eight completed batch objects remain unchanged. Earlier dated sections retain their historical scope.
+
 ## L01 closed with owner-retained settings - revision 62
 
 L01 is complete for the revised owner-approved scope. Native Google audit, contact/category review, the main description and 11-item service cleanup, exact Google/Booking/Search attribution and a working current booking destination are verified. The owner confirms Free Walking Tours is offered and the meeting point has remained fixed for 18 years. The owner explicitly retains the existing location/hours as configured and excludes them from active work. Those settings and the existing Google parent-place association remain unchanged; their policy caveats are retained without claiming Google certification. No Google contact was made. H04 is closed; D08 stays deferred. Eight finite batches, 78 website deliveries and 82 records remain unchanged.
