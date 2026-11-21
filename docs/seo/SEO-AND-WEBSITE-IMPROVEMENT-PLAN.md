@@ -1,3 +1,9 @@
+## Current owner/account evidence - revision66
+
+Current Search Console UI verifies no Manual Actions or Security Issues, 132 indexed/40 excluded pages (16 November) and no host problems in 90 days (19 November). A genuine 18 November Student Trips enquiry and team reply verify one inbox route. All three approved Google replies were submitted once and now read back exactly from the native API. Eight original batches and 81 website deliveries retain their recorded scopes. Production and D08 are excluded.
+
+See [verified account evidence and exact remaining actions](owner-account-followup-2026-11-21/README.md). No new website delivery or whole-workstream completion is claimed. Earlier dated sections retain their historical scope.
+
 ## Current add-on delivery and native cache verification - revision65
 
 Delivery 81 makes add-ons follow their configured experience weekdays, clears unavailable selections and preserves the existing prices and checkout. Staging source, protected-state, cache and browser checks pass. The initial failed cache operation and verified rollback remain visible. All eight original batches are complete; owner, account, human and recurring evidence remains explicit. Production and D08 are excluded.
