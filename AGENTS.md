@@ -1,3 +1,11 @@
+# Current homepage follow-up - revision64
+
+Delivery80 fixes the staging homepage booking tab and mobile review-link names with one CSS file. Guarded publication, exact selected-state checks, origin/normal/repeat cache checks and352 scoped browser assertions pass. The weekly staging monitor is installed and its first actual main run passes all six routes. All eight original batches remain complete; native human, owner/account, real-world and recurring criteria remain explicit. Production and D08 are excluded; L01/location/hours, medical and recovery-retention decisions stay unchanged.
+
+This source is based on actual main20b5e2dec9783230046acd8c34071b8f612c1597/treecef2f59ca059b66f8c2e9fa0c06217a2e6ba7b61 after exact-tree PR138. Candidate PR138 passed1305Python/21platformskips/45Windows/all65Linuxsteps/secret scan within the original40min. Its required main44881907273 is tracked separately, not assumed passed. First actual staging-monitor main44881907174 is independently accepted:8contracts/6HIT routes/artifact/log/source. Earlier L01 main44876066099 cancelled at40min; no unchanged replay or cap raise.
+
+Current application delta is ONLY hero.css/5e68e2e6; all2471other app files and all JavaScript exact. One atomic staging operation/rollback1096cb47/protected scopes/origin/normal-repeat/live browser proof accepted. Human/native/whole-page/provider/consent exceptions remain. One consolidated source push/PR follows staging verification. Keep frozen predecessor N untouched. No memory writes or subagents. Read the current delivery README before further edits; original owner Chrome/PHP preview and native/account UI STOP remain.
+
 # Current non-production continuation - revision63
 
 The dated native Search Console/GA4 baseline now meets M02. Delivery79 refreshes only the shared GetYourGuide rating to4.7 on staging, with original backup, exact protected checks and origin/normal/repeat verification. The staging-only weekly availability workflow is prepared and locally verified; its associated PR/main jobs establish installation. All eight original batches remain complete; broader UI, human, operations, provider and recurring criteria remain distinct. Production and D08 are excluded; L01/location/hours and recovery/medical retention decisions are not reopened.
