@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { evaluateProductAvailability, normalizeAvailabilityConfig } from './availability';
 import { resolveBookingSectionOrder } from './booking-sections';
+import { evaluateAddonAvailability } from './addon-availability';
 import { sameCartExperience } from './cart-experiences';
 const monthFormatter = new Intl.DateTimeFormat('en-GB', { month: 'long', year: 'numeric' });
 const selectedDateFormatter = new Intl.DateTimeFormat('en-GB', {
@@ -579,6 +580,7 @@ export default function ProductConfigurator({
     () => initialAddonVariantQuantities(product, initialItem),
   );
   const [addonVariantError, setAddonVariantError] = useState(null);
+  const [addonDateNotice, setAddonDateNotice] = useState('');
   const [availabilityMessage, setAvailabilityMessage] = useState('');
   const [participantError, setParticipantError] = useState('');
   const [activeAddonInfo, setActiveAddonInfo] = useState(null);
@@ -698,6 +700,25 @@ export default function ProductConfigurator({
   }, [product.addons, totalParticipants]);
 
   useEffect(() => {
+    const unavailableSelections = (product.addons || []).filter((addon) => (
+      !evaluateAddonAvailability(storefrontConfig(addon), resolvedExperienceDate).available
+      && Boolean(addons[addon.id]) && String(addons[addon.id]) !== '0'
+    ));
+    if (!unavailableSelections.length) return;
+    setAddons((current) => {
+      const next = { ...current };
+      unavailableSelections.forEach((addon) => { next[addon.id] = 0; });
+      return next;
+    });
+    setAddonVariantQuantities((current) => {
+      const next = { ...current };
+      unavailableSelections.forEach((addon) => { delete next[addon.id]; });
+      return next;
+    });
+    setAddonDateNotice(`Unavailable add-ons were removed for this date: ${unavailableSelections.map(addon => addon.name).join(', ')}.`);
+  }, [product.addons, resolvedExperienceDate, addons]);
+
+  useEffect(() => {
     if (!activeAddonInfo) return undefined;
 
     const previousOverflow = document.body.style.overflow;
@@ -729,14 +750,15 @@ export default function ProductConfigurator({
 
   const baseTotal = numeric(product.price?.amount) * totalParticipants;
   const extrasTotal = (product.addons || []).reduce(
-    (total, addon) => total + addonPrice(
+    (total, addon) => total + (evaluateAddonAvailability(storefrontConfig(addon), resolvedExperienceDate).available ? addonPrice(
       addon,
       addons[addon.id],
       addons[addon.id],
-    ),
+    ) : 0),
     0,
   );
   const updateAddon = (addonId, value) => {
+    setAddonDateNotice('');
     const previousValue = addons[addonId];
     setAddons((current) => ({ ...current, [addonId]: value }));
 
@@ -862,6 +884,7 @@ export default function ProductConfigurator({
     }
 
     const selectedAddons = (product.addons || []).flatMap((addon) => {
+      if (!evaluateAddonAvailability(storefrontConfig(addon), resolvedExperienceDate).available) return [];
       const mode = selectionMode(storefrontConfig(addon));
       const selected = addons[addon.id];
       if (mode === 'options') {
@@ -1047,8 +1070,10 @@ export default function ProductConfigurator({
     addons: () => ((product.addons || []).length > 0 ? (
       <fieldset className="ktk-configurator__addons">
         <legend>Add-Ons</legend>
+        {addonDateNotice && <p className="ktk-configurator__addon-availability" role="status">{addonDateNotice}</p>}
         {(product.addons || []).map((addon) => {
           const addonConfig = storefrontConfig(addon);
+          const addonAvailability = evaluateAddonAvailability(addonConfig, resolvedExperienceDate);
           const mode = selectionMode(addonConfig);
           const value = addons[addon.id];
           const emoji = addonEmoji(addon.name);
@@ -1089,7 +1114,14 @@ export default function ProductConfigurator({
                   )}
                 </div>
               </div>
-              {mode === 'boolean' ? (
+              {!addonAvailability.available ? (
+                <p className="ktk-configurator__addon-availability">
+                  {addonAvailability.reason === 'date_required'
+                    ? 'Choose a date to check availability.'
+                    : addonAvailability.reason === 'invalid_rule'
+                      ? 'Availability needs confirmation.' : 'Unavailable for this date.'}
+                </p>
+              ) : mode === 'boolean' ? (
                 <button
                   className={numeric(value) ? 'is-active' : ''}
                   type="button"
@@ -1150,7 +1182,7 @@ export default function ProductConfigurator({
                   label={addon.name}
                 />
               )}
-              {requiresVariant && quantity > 0 && (
+              {addonAvailability.available && requiresVariant && quantity > 0 && (
                 <div className="ktk-configurator__addon-variants">
                   <div className="ktk-configurator__addon-variants-heading">
                     <span>Sizes</span>

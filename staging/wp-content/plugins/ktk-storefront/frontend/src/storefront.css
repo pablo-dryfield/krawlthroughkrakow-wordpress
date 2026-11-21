@@ -5388,3 +5388,10 @@ fieldset.ktk-cart-contact-fields { min-width:0; border:0; margin:0; }
   outline: 2px solid currentColor;
   outline-offset: 4px;
 }
+
+.ktk-configurator__addon-availability {
+  margin: 0;
+  color: var(--ktk-yellow);
+  font-size: 14px;
+  line-height: 1.4;
+}

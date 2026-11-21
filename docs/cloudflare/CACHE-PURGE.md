@@ -1,3 +1,7 @@
+## Current21November add-on/native cache scope
+
+Delivery81 uses the existing staging transaction guards with a bounded authenticated native WP Rocket purge of ONLY `https://krawlthroughkrakow.com/staging/store2/`. The first FTPdirectory failure and verified37-file rollback stay retained. Native pilot/final publication and helper removal pass. After origin/protected checks, only the two compiled staging asset prefixes and staging/store2 prefix are edge-purged;3MISS/3repeatHIT and exact asset bodies pass. No production/global purge, rules, DNS/security/account changes or expired recovery replay. See [scope and retained failures](../seo/addon-date-and-native-cache-2026-11-21/README.md).
+
 ## Current21November homepage accessibility scope
 
 Delivery80 changes only shared staging hero.css. After atomic readback and selected-state/origin checks, the exact hero.css staging prefix plus the four existing staging homepage URL forms/default-device variants were purged. API success,3MISS/3repeatHIT HTML/CSS and16scoped browser asset-HIT views are retained. No rules/DNS/security/account/provider/production changes; existing B04 SVG rule stays intact. See [verification](../seo/homepage-booking-accessibility-2026-11-21/README.md).
