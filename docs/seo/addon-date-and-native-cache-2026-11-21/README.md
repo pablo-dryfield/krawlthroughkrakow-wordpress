@@ -73,7 +73,7 @@ this API as applying to the URL and its descendants. Legacy production
 publication and FTP cache functions remain unchanged; no global purge, settings
 change, broad filesystem deletion or production request is added.
 
-The temporary staging helper uses a header token, maximum600-second lifetime,
+The temporary staging helper authenticates with a request header and expires after 600 seconds,
 exact home/site/filesystem/request-path and GET guards, a bounded45-second
 response, refusal of redirects and verified removal of its exact own file.
 There is no native/global/FTP fallback when it refuses. A cache-only pilot on the
