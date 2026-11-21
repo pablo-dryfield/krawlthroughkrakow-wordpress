@@ -1,3 +1,7 @@
+## Current follow-up
+
+The first actual main staging-monitor run is now accepted; see [installation](MONITOR-INSTALLATION.md). The measured homepage follow-up is delivered separately as [delivery80](../homepage-booking-accessibility-2026-11-21/README.md). Original revision63 preparation and its dated observations follow.
+
 # Non-production completion - 21 November 2026
 
 The owner requests all feasible remaining work except production and D08.

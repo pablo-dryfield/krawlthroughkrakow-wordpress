@@ -291,7 +291,7 @@
   #ktk-seasonal-hero .ktk-hero-reviews { padding: 10px 12px 8px; }
   #ktk-seasonal-hero .ktk-hero-reviews a { flex-direction: column; gap: 6px; padding: 0 4px; }
   #ktk-seasonal-hero .ktk-hero-review-copy { text-align: center; }
-  #ktk-seasonal-hero .ktk-hero-review-logo + .ktk-hero-review-copy .ktk-hero-review-name,
+  #ktk-seasonal-hero .ktk-hero-review-logo + .ktk-hero-review-copy .ktk-hero-review-name { position: absolute; display: block; width: 1px; height: 1px; overflow: hidden; clip-path: inset(100%); clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
   #ktk-seasonal-hero .ktk-hero-review-icon { display: none; }
   #ktk-seasonal-hero .ktk-hero-review-details { display: grid; justify-items: center; gap: 0; }
   #ktk-seasonal-hero .ktk-hero-review-rating { font-size: 12px; }
@@ -307,3 +307,31 @@
   #ktk-seasonal-hero .ktk-hero-review-copy { text-align: left; }
   #ktk-seasonal-hero .ktk-hero-review-details { justify-items: start; }
 }
+
+/* Keep the homepage booking tab within the viewport, including short screens. */
+body.ktk-homepage-standalone #ktk-cta {
+  box-sizing: border-box;
+  right: 0;
+  top: clamp(8px, 25vh, calc(100vh - 232px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: auto;
+  min-height: 44px;
+  max-height: calc(100vh - 16px);
+  margin: 0;
+  padding: 12px 6px;
+  border: 0;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  transform-origin: center;
+  font-size: clamp(12px, calc((100vh - 48px) / 8), 30px);
+  line-height: 1;
+  white-space: nowrap;
+}
+body.ktk-homepage-standalone #ktk-cta:focus-visible { outline: 3px solid #fff; outline-offset: -4px; }
+/* Reserve the booking lane so page text and controls remain clear. */
+body.ktk-homepage-standalone { box-sizing: border-box; width: 100%; min-width: 0; padding-right: 44px; }
+body.ktk-homepage-standalone #main-header { width: calc(100% - 44px); }

@@ -1,3 +1,7 @@
+## Current21November homepage accessibility scope
+
+Delivery80 changes only shared staging hero.css. After atomic readback and selected-state/origin checks, the exact hero.css staging prefix plus the four existing staging homepage URL forms/default-device variants were purged. API success,3MISS/3repeatHIT HTML/CSS and16scoped browser asset-HIT views are retained. No rules/DNS/security/account/provider/production changes; existing B04 SVG rule stays intact. See [verification](../seo/homepage-booking-accessibility-2026-11-21/README.md).
+
 ## Current21November review snapshot scope
 
 Delivery79 uses one shared staging PHP rating change. The four existing staging homepage URL forms and default/desktop/mobile/tablet variants are purged by exact URL objects after origin/protected checks. API success and3MISS/3repeatHIT are retained; no production/global purge, cache rule or account configuration change. See [scoped verification](../seo/nonproduction-completion-2026-11-21/REVIEW-SNAPSHOT.md). Earlier dated scopes follow.

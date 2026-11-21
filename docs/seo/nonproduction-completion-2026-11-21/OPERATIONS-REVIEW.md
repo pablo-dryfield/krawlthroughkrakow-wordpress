@@ -1,3 +1,7 @@
+## Current verified follow-up
+
+The weekly staging monitor is installed and its first actual main run passes; see [job/artifact scope](MONITOR-INSTALLATION.md). The measured floating-tab/mobile-name defects are fixed on staging as [delivery80](../homepage-booking-accessibility-2026-11-21/README.md). Broader native zoom, screen-reader, actual inbox and provider/paid-state checks remain. Earlier dated cycle observations below retain their original scope.
+
 # First technical/account review cycle - 21 November 2026
 
 The owner-approved monthly KTK-team and pre/post seasonal cadence remains.

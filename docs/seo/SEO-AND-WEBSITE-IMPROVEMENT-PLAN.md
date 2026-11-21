@@ -1,3 +1,9 @@
+## Current homepage delivery and installed monitoring - revision64
+
+Delivery80 fixes the staging homepage booking tab and mobile review-link names with one CSS file. Guarded publication, exact selected-state checks, origin/normal/repeat cache checks and352 scoped browser assertions pass. The weekly staging monitor is installed and its first actual main run passes all six routes. All eight original batches remain complete; native human, owner/account, real-world and recurring criteria remain explicit. Production and D08 are excluded; L01/location/hours, medical and recovery-retention decisions stay unchanged.
+
+See [scoped delivery and retained limits](homepage-booking-accessibility-2026-11-21/README.md) and [actual monitor installation](nonproduction-completion-2026-11-21/MONITOR-INSTALLATION.md). There are3live-verified workstreams,36in progress and1deferred;80website deliveries/84records. Original40criteria and eight completed batch objects remain unchanged. Earlier dated records below keep their historical scope.
+
 ## Current non-production completion - revision63
 
 The dated native Search Console/GA4 baseline now meets M02. Delivery79 refreshes only the shared GetYourGuide rating to4.7 on staging, with original backup, exact protected checks and origin/normal/repeat verification. The staging-only weekly availability workflow is prepared and locally verified; its associated PR/main jobs establish installation. All eight original batches remain complete; broader UI, human, operations, provider and recurring criteria remain distinct. Production and D08 are excluded; L01/location/hours and recovery/medical retention decisions are not reopened.
