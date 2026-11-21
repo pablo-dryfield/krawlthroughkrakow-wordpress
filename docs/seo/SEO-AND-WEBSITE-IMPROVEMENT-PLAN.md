@@ -1,4 +1,42 @@
+## L01 closed with owner-retained settings - revision 62
+
+L01 is complete for the revised owner-approved scope. Native Google audit, contact/category review, the main description and 11-item service cleanup, exact Google/Booking/Search attribution and a working current booking destination are verified. The owner confirms Free Walking Tours is offered and the meeting point has remained fixed for 18 years. The owner explicitly retains the existing location/hours as configured and excludes them from active work. Those settings and the existing Google parent-place association remain unchanged; their policy caveats are retained without claiming Google certification. No Google contact was made. H04 is closed; D08 stays deferred. Eight finite batches, 78 website deliveries and 82 records remain unchanged.
+
+See [L01 closure and exact scope](google-business-profile-review-2026-11-21/L01-CLOSURE.md). Earlier dated records below retain their historical scope; previous location/hours blockers no longer apply to the active task.
+
+## Current service delivery and owner decision - revision 61
+
+The owner approved the keep-Free-Walking-Tours service-only cleanup and explicitly declined contacting Google. One serviceItems update returned HTTP 200: the three obsolete 110 PLN price fields are removed, the three descriptions use the approved factual wording, all 11 service entries remain, and Free Walking Tours is retained exactly. Merchant and Google consumer-facing services now match the approved array, with no service review pending. Other profile fields, the accepted main description and booking attribution remain unchanged; photos were not written. No support case or message was sent. L01 remains in progress because accurate Google location/service-area and primary-hours representation for the confirmed no-customer-premises operation is unresolved. D08 stays deferred; all eight finite batches, 78 website deliveries, 82 records and 40 original criteria/statuses remain.
+
+See [the current L01 checklist](google-business-profile-review-2026-11-21/FINISH-L01.md). Earlier dated records follow.
+
+## Current service delivery and owner decision - revision 60
+
+The owner approved the keep-Free-Walking-Tours service-only cleanup and explicitly declined contacting Google. One serviceItems update returned HTTP 200: the three obsolete 110 PLN price fields are removed, the three descriptions use the approved factual wording, all 11 service entries remain, and Free Walking Tours is retained exactly. The merchant record matches; Google consumer-facing acceptance is not yet confirmed. Current pending mask: metadata,serviceItems. No publication retry is authorized or needed. Other profile fields, the accepted main description and booking attribution remain unchanged; photos were not written. No support case or message was sent. L01 remains in progress because accurate Google location/service-area and primary-hours representation for the confirmed no-customer-premises operation is unresolved. D08 stays deferred; all eight finite batches, 78 website deliveries, 82 records and 40 original criteria/statuses remain.
+
+See [the current L01 checklist](google-business-profile-review-2026-11-21/FINISH-L01.md). Earlier dated records follow.
+
+## Current L01 completion review - revision 59
+
+21 November follow-up: the owner confirms KTK has no customer-facing premises anywhere. Fresh Google reads reconfirm the accepted description and unchanged booking/contact fields. The previously unqueried selected serviceItems contain three fixed 110 PLN prices versus the current booking page's published 120 PLN, plus Free Walking Tours. Two precise service cleanup variants validate with HTTP 200 and unchanged before/after profile data; neither is applied or approved. The location/hours model needs Google clarification for this adults-only no-premises tour. The exact support request is ready but unsent. L01 stays in progress against its original accurate-profile criterion; D08 stays deferred. All eight finite batches, 78 website deliveries, 82 records and 40 original criteria/statuses remain. See [L01 completion checklist](google-business-profile-review-2026-11-21/FINISH-L01.md).
+
+Earlier dated records follow.
+
 # Krawl Through Krakow: SEO and Website Improvement Plan
+
+## Approved Google description confirmed - revision 58
+
+The owner approved the exact 442-character Google Business Profile description on 21 November. One description-only update returned HTTP 200 and the merchant record matched. Google initially marked it pending; the final read at 2026-11-21T04:54:29.539Z confirms the same text in consumer-facing API data with no description pending. Other selected business/location fields and the Google/Booking/Search link remain unchanged; photos were not written. The transient Google-managed pending-edit flag was the only observed non-description change. No scope/API setting, application deployment, form/order/payment, consent/GTM or other profile change occurred. L01 stays in progress for the remaining address/service-model and primary-hours review; D08 stays deferred. All eight finite batch objects, 78 website deliveries, 82 records and 40 original criteria remain. See [native L01 audit](google-business-profile-review-2026-11-21/README.md).
+
+Earlier sections retain their dated scope.
+
+
+## Native L01 progress - revision57
+
+21November2026: L01 is now in progress after successful native read-only Google account/location/booking/merchant-state/media requests using the existing live grant. No new OAuth scope, API enablement, profile edit or app deployment was needed. The exact native Google/Booking/Search link returnsHTTP200 with attribution intact;449photo metadata records and4sample images are reviewed at their recorded scope. Owner confirms meeting-point-only use,24-hour enquiries and21:00tour departures. Review of the Google address/service-model and hours representation, categories/description and precise correction approval remain H04. D08 stays deferred under the owner decision. All8finite batches/78website deliveries/82records and all40original Work/Effort/DoneWhen criteria remain; only L01 changes from not_started to in_progress. See [native L01 audit and pending decisions](google-business-profile-review-2026-11-21/README.md).
+
+Earlier sections retain their dated scope.
+
 
 ## Finite staging acceptance - revision 56
 
