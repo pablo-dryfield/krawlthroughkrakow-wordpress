@@ -3,9 +3,9 @@
   "updatedOn": "2026-11-21",
   "websiteProductionReleases": 1,
   "remainingWork": {
-    "revision": 65,
-    "scope": "All eight original staging batches are complete, with 81 verified website deliveries and 85 delivery records. M01, M02 and owner-scoped L01 remain the three completed workstreams; 36 remain in progress and D08 remains deferred. The add-on date fix and staging cache update are delivered. Remaining owner, account, human, real-world and recurring requirements stay explicit. Production and D08 are excluded.",
-    "changeRule": "Revision 65 adds delivery 81 after its source, staging, protected-state and cache checks. All 40 original criteria and statuses, the eight batch objects, milestones and earlier 84 delivery objects stay unchanged. The failed operation, complete rollback and release with the corrected cache operator retain separate results. No production, consent, account or recovery authority is added.",
+    "revision": 66,
+    "scope": "All eight original staging batches remain complete, with 81 website deliveries and 85 records. Current native GSC and one real inbox route are verified; all three exact approved Google replies are now readback-verified in the native API. All 40 original criteria/statuses remain. Production and D08 are excluded.",
+    "changeRule": "Revision 66 records current native GSC UI, genuine recipient evidence and three approved one-time Google replies with final exact API readback. It adds no website delivery, changes no original criterion/status/batch/milestone or protected application file, and does not claim an independent public UI inspection.",
     "batches": [
       {
         "id": "B01",
@@ -345,7 +345,7 @@
       }
     ]
   },
-  "current": "Delivery 81 makes add-ons follow their configured experience weekdays, clears unavailable selections and preserves the existing prices and checkout. Staging source, protected-state, cache and browser checks pass. The initial failed cache operation and verified rollback remain visible. All eight original batches are complete; owner, account, human and recurring evidence remains explicit. Production and D08 are excluded.",
+  "current": "Current Search Console UI verifies no Manual Actions or Security Issues, 132 indexed/40 excluded pages (16 November) and no host problems in 90 days (19 November). A genuine 18 November Student Trips enquiry and team reply verify one inbox route. All three approved Google replies were submitted once and now read back exactly from the native API. Eight original batches and 81 website deliveries retain their recorded scopes. Production and D08 are excluded.",
   "deliveries": [
     {
       "id": "addon-date-and-native-staging-cache-20261121",
@@ -1707,7 +1707,7 @@
     }
   ],
   "view": {
-    "summary": "Delivery 81 makes add-ons follow their configured experience weekdays, clears unavailable selections and preserves the existing prices and checkout. Staging source, protected-state, cache and browser checks pass. The initial failed cache operation and verified rollback remain visible. All eight original batches are complete; owner, account, human and recurring evidence remains explicit. Production and D08 are excluded.",
+    "summary": "Current Search Console UI verifies no Manual Actions or Security Issues, 132 indexed/40 excluded pages (16 November) and no host problems in 90 days (19 November). A genuine 18 November Student Trips enquiry and team reply verify one inbox route. All three approved Google replies were submitted once and now read back exactly from the native API. Eight original batches and 81 website deliveries retain their recorded scopes. Production and D08 are excluded.",
     "focus": [
       "M04",
       "M03",
@@ -1740,7 +1740,7 @@
       },
       "M04": {
         "title": "Google indexing & technical monitoring",
-        "remaining": "Weekly staging monitor installed; first actual main run passes six fixed routes. Fresh Manual Actions, Security, Page Indexing and Crawl Stats UI observations and ongoing failure review remain."
+        "remaining": "Current native UI and weekly staging monitor are verified. Map the 40 exclusions to their exact URL-level actions/owners, then keep recurring review; report dates are16/19November, not a fresh site-wide crawl."
       },
       "T01": {
         "title": "Give every page a clear search purpose",
@@ -1844,7 +1844,7 @@
       },
       "D06": {
         "title": "Reliable contact & enquiry forms",
-        "remaining": "Endpoint-only repair is verified live. Confirm actual mail delivery, spam/manual checks and broader UI approval; the remaining form improvements stay staged, with no fixed reply-time promise."
+        "remaining": "One genuine post-repair Student Trips delivery and team reply are verified. Other jobs/contact variants, spam/manual/UI review and literal Divi separator formatting remain; no fixed reply-time promise."
       },
       "D07": {
         "title": "Availability, security & recovery",
@@ -1860,7 +1860,7 @@
       },
       "L02": {
         "title": "Authentic reviews & current snapshots",
-        "remaining": "GYG4.7 staging snapshot verified; retain rounded counts. Approve exact prepared Google replies; actual cross-platform process adoption remains."
+        "remaining": "Three approved replies are readback-verified in the native API after one submission each. Broader authentic Google/Tripadvisor/GetYourGuide process adoption and dated snapshots remain; public UI was not separately inspected."
       },
       "L03": {
         "title": "Local partnerships & useful referrals",
@@ -1868,7 +1868,7 @@
       },
       "L04": {
         "title": "Backlink context & preservation",
-        "remaining": "Current native ManualActions/campaign history and inaccessible source context remain. No disavow or production recovery is authorised."
+        "remaining": "Current native reports are clean. Campaign history/inaccessible source context and separately approved production recovery remain; no disavow or outreach is authorised."
       },
       "G01": {
         "title": "One maintainable source of website facts",
@@ -1891,7 +1891,7 @@
       "M01": "omnilodge-reporting-2026-11-12/README.md",
       "M02": "nonproduction-completion-2026-11-21/NATIVE-BASELINE.md",
       "M03": "nonproduction-completion-2026-11-21/FIELD-AND-FUNNEL.md",
-      "M04": "nonproduction-completion-2026-11-21/README.md",
+      "M04": "owner-account-followup-2026-11-21/README.md",
       "T02": "staging-public-html-2026-11-12/README.md",
       "T03": "staging-discovery-2026-11-12/README.md",
       "T04": "staging-headings-links-2026-11-12/README.md",
@@ -1911,12 +1911,12 @@
       "D02": "nonproduction-completion-2026-11-21/FIELD-AND-FUNNEL.md",
       "D03": "reviewed-images-2026-11-13/README.md",
       "D04": "booking-friction-2026-11-14/README.md",
-      "D06": "production-form-hotfix-2026-11-14/README.md",
+      "D06": "owner-account-followup-2026-11-21/README.md",
       "D05": "nye-content-review-2026-11-13/README.md",
       "C10": "operator-trust-2026-11-15/README.md",
-      "L02": "nonproduction-completion-2026-11-21/REVIEW-SNAPSHOT.md",
+      "L02": "owner-account-followup-2026-11-21/README.md",
       "L03": "nonproduction-completion-2026-11-21/OPERATIONS-REVIEW.md",
-      "L04": "nonproduction-completion-2026-11-21/OPERATIONS-REVIEW.md",
+      "L04": "owner-account-followup-2026-11-21/README.md",
       "G01": "main-offer-2026-11-13/REVIEW.md",
       "G02": "b03-hosted-runtime-bounds-2026-11-20/ACCEPTANCE.md",
       "G04": "nonproduction-completion-2026-11-21/OPERATIONS-REVIEW.md",
@@ -1940,7 +1940,7 @@
     },
     "M04": {
       "status": "in_progress",
-      "note": "The staging-only weekly monitor is installed after PR138 merge as20b5e2d/treecef2f59c. Actual main44881907174 passes8CLI contracts and six fixed normal clean routes, allHIT/200/HTMLnoindex/self-canonical. Reopened973B artifact/digest/log/checkout match. The regular product header is absent but HTMLnoindex present. Current GSC ManualActions/Security/PageIndexing/CrawlStats UI results remain pending; no production/indexing/account mutation. Earlier dated evidence follows: 21November seven native indexed-version inspections and sitemap metadata now retrieved with existing grant; these are not live URL tests. Current Manual Actions/Security, Page Indexing and Crawl Stats UI owner observations remain pending. Six staging-only normal-cache routes and8CLI scope contracts pass; weekly/manual/main workflow source is prepared, with actual GitHub job acceptance required to establish installation. No production/indexing/account mutation. Earlier dated evidence follows: 20November delivery78: approved staging JS ordering/availability scope verified on98deb54;105Meta/70public361missing8proxy14publisher/812payload/59native-browser/264device-cache/197actual-JS-CMP and6availability checks pass. Original fullCMP201of202 noJS-intent assertion and original DB comparison at one Ecwid cache-check timestamp remain failed; final fresh7-table/286protected/2116owned pair is exact and all other captured original fields/files match. No exclusion/restore/actor or full privacy/provider/whole-host claim. B07 finite implementation/ownership rule is met; current-source PR CI is a separate required merge gate. Wider H02/H03/X01/G02/H06/production scopes remain. Earlier dated evidence follows: Native13Nov Manual Actions/Security Issues report no issues; Page Indexing was last updated9Nov (133/39) and Crawl Stats11Nov (8.12k/90 days,507ms/no host problems). Seven stored inspections retain crawl-date caveats. The15Nov browser connector remains unavailable; native Windows inventory works but its Chrome-window inspection is stopped by URL-confidence policy before current account content is read. No workaround, indexing request, sitemap submission or account change. Current native evidence still needs working authenticated browser access or owner review. Old sitemap/production404 follow-up and useful monitoring remain."
+      "note": "21 November native UI verifies Manual Actions/Security Issues: no issues detected. Page Indexing:132 indexed/40 excluded across8reasons, last updated16November. Crawl Stats:8.06k requests/961m bytes/491ms, updated19November; host had no problems in90days and all3availability details show acceptable fail rates. No new scopes/indexing/account writes. Current exclusions have named technical/content/hosting owners; exact URL-level disposition and recurring review remain. Weekly staging monitor installation/first actual job remain accepted. Earlier dated evidence follows: The staging-only weekly monitor is installed after PR138 merge as20b5e2d/treecef2f59c. Actual main44881907174 passes8CLI contracts and six fixed normal clean routes, allHIT/200/HTMLnoindex/self-canonical. Reopened973B artifact/digest/log/checkout match. The regular product header is absent but HTMLnoindex present. Current GSC ManualActions/Security/PageIndexing/CrawlStats UI results remain pending; no production/indexing/account mutation. Earlier dated evidence follows: 21November seven native indexed-version inspections and sitemap metadata now retrieved with existing grant; these are not live URL tests. Current Manual Actions/Security, Page Indexing and Crawl Stats UI owner observations remain pending. Six staging-only normal-cache routes and8CLI scope contracts pass; weekly/manual/main workflow source is prepared, with actual GitHub job acceptance required to establish installation. No production/indexing/account mutation. Earlier dated evidence follows: 20November delivery78: approved staging JS ordering/availability scope verified on98deb54;105Meta/70public361missing8proxy14publisher/812payload/59native-browser/264device-cache/197actual-JS-CMP and6availability checks pass. Original fullCMP201of202 noJS-intent assertion and original DB comparison at one Ecwid cache-check timestamp remain failed; final fresh7-table/286protected/2116owned pair is exact and all other captured original fields/files match. No exclusion/restore/actor or full privacy/provider/whole-host claim. B07 finite implementation/ownership rule is met; current-source PR CI is a separate required merge gate. Wider H02/H03/X01/G02/H06/production scopes remain. Earlier dated evidence follows: Native13Nov Manual Actions/Security Issues report no issues; Page Indexing was last updated9Nov (133/39) and Crawl Stats11Nov (8.12k/90 days,507ms/no host problems). Seven stored inspections retain crawl-date caveats. The15Nov browser connector remains unavailable; native Windows inventory works but its Chrome-window inspection is stopped by URL-confidence policy before current account content is read. No workaround, indexing request, sitemap submission or account change. Current native evidence still needs working authenticated browser access or owner review. Old sitemap/production404 follow-up and useful monitoring remain."
     },
     "T01": {
       "status": "in_progress",
@@ -2044,7 +2044,7 @@
     },
     "D06": {
       "status": "in_progress",
-      "note": "Full validation/recovery, linked errors, keyboard checkboxes and contrast are staging cache-verified, with501 form checks and21 exact initial form PNG pairs. The separately approved endpoint-only production repair is now verified:2154+4478 protected file hashes and4034 metadata rows unchanged,385 origin/normal browser checks,118 payload contracts, backend7 and1397 origin/normal/repeat checks,348 MISS then348 HIT. Protected-email comparison limitations and failed preflights remain documented. Actual inbox assurance, spam/manual checks and broader UI approval remain. Team reviews enquiries by email without a fixed SLA; no real messages or database rewrite in automated testing."
+      "note": "Owner confirms pubthroughkrakow@gmail.com. Both connected Gmail and existing live Omni Google identities match. A genuine18November11:24:54UTC Student Trips enquiry arrived in that inbox via the website info alias with SPF/DKIM passes and the real form-page marker; team reply12:30:20UTC has matching thread/In-Reply-To/References. This proves one post-repair route, not all jobs/contact variants, future delivery/spam handling or SLA. Literal Divi line-break-holder tokens in the received body remain a formatting defect; no form/backend/production change or new test mail in this batch. Earlier dated evidence follows: Full validation/recovery, linked errors, keyboard checkboxes and contrast are staging cache-verified, with501 form checks and21 exact initial form PNG pairs. The separately approved endpoint-only production repair is now verified:2154+4478 protected file hashes and4034 metadata rows unchanged,385 origin/normal browser checks,118 payload contracts, backend7 and1397 origin/normal/repeat checks,348 MISS then348 HIT. Protected-email comparison limitations and failed preflights remain documented. Actual inbox assurance, spam/manual checks and broader UI approval remain. Team reviews enquiries by email without a fixed SLA; no real messages or database rewrite in automated testing."
     },
     "D07": {
       "status": "in_progress",
@@ -2060,7 +2060,7 @@
     },
     "L02": {
       "status": "in_progress",
-      "note": "21November delivery79: public GYG activity443425 shows4.7/125; shared staging rating now4.7 with100+ retained. GoogleAPI5/2487supports unchanged5/2400+; old Tripadvisor reader cannot refresh its owner snapshot. One atomic file/backup inverse,17protected files,78saved posts/options/Ecwid digest,2116other owned files,3origin6normal-repeatHTTP and2actual390/1440noJSview checks pass at their scopes. Three exact Google replies prepared; approval pending, none sent. Wider channel adoption remains. Earlier dated evidence follows: The neutral request/process draft and shared snapshot ownership now reference normally retrieved Tripadvisor public guidelines alongside Google/GetYourGuide; reader-copy limits are stated. Native Testimonials links are staging cache-verified; dated counts and Shapo consent stay exact. Actual operator nomination, channel/account adoption and real requests/responses remain; nothing sent or automated."
+      "note": "Owner approved the exact3prepared Google replies. All3fresh targets remained unanswered/context-exact; exactly3PUTs returned200/exact approved response text, with no retry/overwrite/other message or profile setting write. Immediate/early review reads did not yet expose replies; final GETs at15:43:34UTC read back all3exact approved replies after10to12minutes with all nonreply fields exact. Public UI appearance was not independently inspected. First publisher readback failure/premature internal verified label retained, not accepted as a pass; separate continuation attempted only the2never-attempted targets. Selected profile/nonreply review fields remain exact. Broader authentic channel adoption remains. Earlier dated evidence follows: 21November delivery79: public GYG activity443425 shows4.7/125; shared staging rating now4.7 with100+ retained. GoogleAPI5/2487supports unchanged5/2400+; old Tripadvisor reader cannot refresh its owner snapshot. One atomic file/backup inverse,17protected files,78saved posts/options/Ecwid digest,2116other owned files,3origin6normal-repeatHTTP and2actual390/1440noJSview checks pass at their scopes. Three exact Google replies prepared; approval pending, none sent. Wider channel adoption remains. Earlier dated evidence follows: The neutral request/process draft and shared snapshot ownership now reference normally retrieved Tripadvisor public guidelines alongside Google/GetYourGuide; reader-copy limits are stated. Native Testimonials links are staging cache-verified; dated counts and Shapo consent stay exact. Actual operator nomination, channel/account adoption and real requests/responses remain; nothing sent or automated."
     },
     "L03": {
       "status": "in_progress",
@@ -2068,7 +2068,7 @@
     },
     "L04": {
       "status": "in_progress",
-      "note": "21November native indexed snapshots and historical sitemap state available; current native ManualActions/UI and campaign history still pending. Preserve dated43-page sample and inaccessible-source qualifications; no disavow, attribution accusation or production redirect. Earlier dated evidence follows: Fresh Ahrefs40+5 bounded requests yield43 distinct source pages;25/40 vendor spam labels are not whole-profile rates or proof of responsibility. Four suspicious source pages are inaccessible. Two historical targets already301 to equivalent200 pages staging; production old paths remain404 pending approval. Native13Nov Manual Actions evidence is dated;15Nov refresh unavailable. Owner campaign history and remaining source context are unresolved; no disavow/removal/outreach action."
+      "note": "Current21November native Manual Actions and Security Issues both show no issues detected, independently agreeing with owner report. This resolves the fresh-report dependency only; campaign history and inaccessible-source context remain. Keep dated43-page sample and qualifications, no disavow, attribution accusation, outreach or production redirect. Earlier dated evidence follows: 21November native indexed snapshots and historical sitemap state available; current native ManualActions/UI and campaign history still pending. Preserve dated43-page sample and inaccessible-source qualifications; no disavow, attribution accusation or production redirect. Earlier dated evidence follows: Fresh Ahrefs40+5 bounded requests yield43 distinct source pages;25/40 vendor spam labels are not whole-profile rates or proof of responsibility. Four suspicious source pages are inaccessible. Two historical targets already301 to equivalent200 pages staging; production old paths remain404 pending approval. Native13Nov Manual Actions evidence is dated;15Nov refresh unavailable. Owner campaign history and remaining source context are unresolved; no disavow/removal/outreach action."
     },
     "G01": {
       "status": "in_progress",
