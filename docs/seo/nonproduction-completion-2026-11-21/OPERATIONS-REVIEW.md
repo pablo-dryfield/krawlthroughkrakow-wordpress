@@ -1,3 +1,7 @@
+## Current add-on and publication follow-up
+
+[Delivery81](../addon-date-and-native-cache-2026-11-21/README.md) is verified on staging, with the failed FTPcache transaction and complete rollback retained before the changed native cache release. Exact public product configuration remains unchanged. Current public KrakowBuzz contacts and an exact unsent correction draft are prepared; sender and publication approval remain required. Native/account/human and real-world dependencies below stay explicit.
+
 ## Current verified follow-up
 
 The weekly staging monitor is installed and its first actual main run passes; see [job/artifact scope](MONITOR-INSTALLATION.md). The measured floating-tab/mobile-name defects are fixed on staging as [delivery80](../homepage-booking-accessibility-2026-11-21/README.md). Broader native zoom, screen-reader, actual inbox and provider/paid-state checks remain. Earlier dated cycle observations below retain their original scope.

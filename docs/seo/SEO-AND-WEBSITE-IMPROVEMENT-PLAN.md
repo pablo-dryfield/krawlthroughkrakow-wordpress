@@ -1,3 +1,9 @@
+## Current add-on delivery and native cache verification - revision65
+
+Delivery 81 makes add-ons follow their configured experience weekdays, clears unavailable selections and preserves the existing prices and checkout. Staging source, protected-state, cache and browser checks pass. The initial failed cache operation and verified rollback remain visible. All eight original batches are complete; owner, account, human and recurring evidence remains explicit. Production and D08 are excluded.
+
+See [delivery81, failed attempt and verified boundaries](addon-date-and-native-cache-2026-11-21/README.md). There are3live-verified workstreams,36in progress and1deferred;81website deliveries/85records. Original40criteria/statuses and eight completed batch objects remain unchanged. Earlier dated records below retain their individual scopes.
+
 ## Current homepage delivery and installed monitoring - revision64
 
 Delivery80 fixes the staging homepage booking tab and mobile review-link names with one CSS file. Guarded publication, exact selected-state checks, origin/normal/repeat cache checks and352 scoped browser assertions pass. The weekly staging monitor is installed and its first actual main run passes all six routes. All eight original batches remain complete; native human, owner/account, real-world and recurring criteria remain explicit. Production and D08 are excluded; L01/location/hours, medical and recovery-retention decisions stay unchanged.

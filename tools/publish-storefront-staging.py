@@ -16,6 +16,8 @@ image_payload=importlib.util.module_from_spec(IMAGE_SPEC);IMAGE_SPEC.loader.exec
 SPEC=importlib.util.spec_from_file_location('seo_shared',ROOT/'tools/publish-seo-discovery.py')
 shared=importlib.util.module_from_spec(SPEC);SPEC.loader.exec_module(shared)
 base=shared.base;common=shared.common
+CACHE_SPEC=importlib.util.spec_from_file_location('staging_storefront_cache',ROOT/'tools/staging-storefront-cache.py')
+origin_cache=importlib.util.module_from_spec(CACHE_SPEC);CACHE_SPEC.loader.exec_module(origin_cache)
 LOCAL=ROOT/'staging/wp-content/plugins/ktk-storefront'
 REMOTE='/public_html/staging/wp-content/plugins/ktk-storefront'
 MU='/public_html/staging/wp-content/mu-plugins'
@@ -177,7 +179,8 @@ def main():
             if after['owned']!=expected or not protected_unchanged(before,after) or after['public_content_version']!=VERSION or not after['public_method_available']:
                 raise RuntimeError('Owned/protected/runtime verification failed')
             if common.store2.hash_map(common.store2.read_tree(ftp,REMOTE))!={name:sha(value) for name,value in files.items()}: raise RuntimeError('Independent deployed plugin inventory mismatch')
-            report['cachePathsCleared']=common.store2.clear_store2_cache(ftp,staging=True)
+            report['originCachePurge']=origin_cache.purge(ftp,base.atomic_upload)
+            report['cachePathsCleared']=report['originCachePurge']['cache_targets']
             report.update(phase='complete',protectedUnchanged=True,productionFilesUnchanged=True,helpersRemoved=True)
         except Exception:
             rollback(ftp,existing);restored=snapshot(ftp);report['rollbackOwnedVerified']=restored['owned']==before['owned']
