@@ -96,3 +96,14 @@ body:is(.ktk-homepage-standalone, .ktk-code-page) #main-content .et_pb_gallery_i
     padding-right: 44px;
   }
 }
+
+/* Keep the existing Jobs phone instruction readable when its placeholder clips. */
+body.ktk-code-page[data-ktk-page="pub-crawl-jobs"] #main-content .et_pb_contact_field[data-id="phone_number"] .et_pb_contact_form_label {
+  display: block;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #3e3e3e;
+  margin-bottom: 8px;
+  padding-right: 24px;
+  overflow-wrap: anywhere;
+}
