@@ -35,7 +35,30 @@ class ContentAccessibilityTests(unittest.TestCase):
 
     def test_no_artwork_or_consent_rewrites_in_shared_styles(self):
         css = (ROOT / 'tools/content-accessibility.css').read_text()
-        self.assertNotRegex(css, r'url\(|iubenda|clarity|display:\s*none|visibility:\s*hidden')
+        # The verified short-screen duplicate strip is the only hidden element.
+        reviewed_strip = '''@media (max-height: 450px) {
+  body.ktk-homepage-standalone #main-content .et_pb_text_1.et_pb_sticky_module {
+    display: none;
+  }
+}'''
+
+        def assert_preserved(styles):
+            self.assertEqual(styles.count(reviewed_strip), 1)
+            self.assertNotRegex(styles.replace(reviewed_strip, '', 1),
+                                r'url\(|iubenda|clarity|display:\s*none|visibility:\s*hidden')
+
+        assert_preserved(css)
+        for changed in (
+                css.replace('(max-height: 450px)', '(max-height: 451px)'),
+                css.replace('.et_pb_text_1.et_pb_sticky_module {', '#ktk-cta {'),
+                css + '\n' + reviewed_strip,
+                css + '\n#ktk-cta { display: none; }',
+                css + '\n.unreviewed { visibility: hidden; }',
+                css + '\n.iubenda-cs-overlay { opacity: 0; }',
+                css + '\n.artwork { background: url(changed.svg); }'):
+            with self.subTest(styles=changed[-90:]):
+                with self.assertRaises(AssertionError):
+                    assert_preserved(changed)
         self.assertIn('text-decoration: underline', css)
         self.assertIn('flex: 0 0 24px', css)
         self.assertIn('min-height: 32px', css)
