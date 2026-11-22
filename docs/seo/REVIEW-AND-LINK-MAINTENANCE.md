@@ -1,3 +1,9 @@
+## Current owner/account evidence - revision66
+
+Current Search Console UI verifies no Manual Actions or Security Issues, 132 indexed/40 excluded pages (16 November) and no host problems in 90 days (19 November). A genuine 18 November Student Trips enquiry and team reply verify one inbox route. All three approved Google replies were submitted once and now read back exactly from the native API. Eight original batches and 81 website deliveries retain their recorded scopes. Production and D08 are excluded.
+
+See [verified account evidence and exact remaining actions](owner-account-followup-2026-11-21/README.md). No new website delivery or whole-workstream completion is claimed. Earlier dated sections retain their historical scope.
+
 ## Current non-production completion - revision63
 
 The dated native Search Console/GA4 baseline now meets M02. Delivery79 refreshes only the shared GetYourGuide rating to4.7 on staging, with original backup, exact protected checks and origin/normal/repeat verification. The staging-only weekly availability workflow is prepared and locally verified; its associated PR/main jobs establish installation. All eight original batches remain complete; broader UI, human, operations, provider and recurring criteria remain distinct. Production and D08 are excluded; L01/location/hours and recovery/medical retention decisions are not reopened.

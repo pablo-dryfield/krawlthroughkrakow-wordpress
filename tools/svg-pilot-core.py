@@ -129,12 +129,12 @@ def verify_ci(run_id: int, plan: dict, now: int, read=gh_read, read_log=gh_read_
     jobs = result.get('jobs', [])
     if result.get('total_count') != len(jobs) or not 3 <= len(jobs) <= 100:
         raise ValueError('Complete bounded job list required')
-    names = ['Offline Tests and Build', 'Windows Recovery Contracts', 'Secret Scan']
+    names = ['Offline Tests and Build', 'Windows Recovery Contracts', 'Secret Scan', 'Offline Contract Part Two']
     selected = []
     for name in names:
         matching = [j for j in jobs if j.get('name') == name]
         if len(matching) != 1 or matching[0].get('run_id') != run_id or matching[0].get('status') != 'completed' or matching[0].get('conclusion') != 'success':
-            raise ValueError('All three required source jobs must pass')
+            raise ValueError('Both offline parts, Windows and secret scanning must pass')
         selected.append(matching[0])
     if any(j.get('status') != 'completed' or j.get('conclusion') not in ('success', 'skipped') for j in jobs):
         raise ValueError('Unfinished or failed additional job')
@@ -158,7 +158,7 @@ def verify_ci(run_id: int, plan: dict, now: int, read=gh_read, read_log=gh_read_
         checkouts.add(next(iter(commits)).decode())
         log_hashes[str(job['id'])] = sha(log)
     if len(checkouts) != 1:
-        raise ValueError('The three actual checkout commits differ')
+        raise ValueError('The required actual checkout commits differ')
     checkout = next(iter(checkouts))
     commit = read(f'repos/{REPO}/git/commits/{checkout}')
     if commit.get('sha') != checkout or commit.get('tree', {}).get('sha') != plan['sourceTree']:
