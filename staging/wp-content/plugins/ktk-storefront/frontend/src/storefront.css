@@ -2913,6 +2913,11 @@ a.ktk-hero-ticket:focus-visible {
   text-transform: uppercase;
 }
 
+.ktk-practical-info__section > a:focus-visible {
+  outline: 2px solid var(--ktk-yellow);
+  outline-offset: 4px;
+}
+
 .ktk-practical-info__section--meeting {
   justify-items: center;
   text-align: center;
