@@ -57,4 +57,14 @@ check($mail[0][3] === array('Reply-To: guest@example.test'), 'Validated reply-to
 $attributes = array('email' => ''); submit(); check($mail[1][0] === array('admin@example.test'), 'Empty original recipient uses WordPress default');
 for ($i = 0; $i < 6; ++$i) submit();
 check(submit()['status'] === 429 && count($mail) === 8, 'Rate limit bounds successful deliveries');
+$rates = array();
+$attributes = array('email' => 'owner@example.test', 'custom_message' => 'Name: %%name%%||et_pb_line_break_holder||Email: %%email%%<br />End');
+$offset = count($mail);
+check(submit(array('name' => 'Literal ||et_pb_line_break_holder|| kept'))['success'], 'Template formatting accepts the existing valid form');
+check($mail[$offset][2] === "Name: Literal ||et_pb_line_break_holder|| kept\nEmail: guest@example.test\nEnd\n\nPage: https://krawlthroughkrakow.com/staging/contact/", 'Only saved-template separators become newlines; customer text stays literal');
+check($mail[$offset][0] === array('owner@example.test') && $mail[$offset][1] === '[Krawl Through Krakow] Contact' && $mail[$offset][3] === array('Reply-To: guest@example.test'), 'Formatting preserves recipient subject and validated reply-to');
+$attributes = array('email' => 'owner@example.test', 'message_pattern' => '%%NAME%%||et_pb_line_break_holder||||et_pb_line_break_holder||%%email%%');
+check(submit()['success'], 'Legacy message_pattern remains supported');
+check($mail[$offset + 1][2] === "Unit test\n\nguest@example.test\n\nPage: https://krawlthroughkrakow.com/staging/contact/", 'Legacy template retains blank lines and case-insensitive fields');
+
 echo "Code page forms: {$checks}/{$checks} passed (mail stubbed; no real email sent)\n";

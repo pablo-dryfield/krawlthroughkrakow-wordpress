@@ -1,3 +1,9 @@
+## Current indexing and form assurance - revision67
+
+All 40 Search Console exclusion rows (39 distinct URLs) now have dispositions and owners; M04 meets its original monitoring criterion. Delivery82 fixes staging email-template separators with protected-state and seven endpoint checks. Eight original batches remain complete; human, business, paid-state and recurring evidence stays explicit. Production and D08 are excluded.
+
+See [verified delivery, CI completeness and remaining evidence](indexing-and-form-assurance-2026-11-22/README.md) and the [complete exclusion matrix](indexing-and-form-assurance-2026-11-22/INDEXING.md). There are4live-verified workstreams,35in progress and1deferred;82website deliveries/86records. All40original criteria and eight complete batch objects remain. Required current PR141/main CI is independently accepted before merge/publication claims; the earlier cancelled run stays failed. Earlier dated records below preserve history.
+
 ## Current owner/account evidence - revision66
 
 Current Search Console UI verifies no Manual Actions or Security Issues, 132 indexed/40 excluded pages (16 November) and no host problems in 90 days (19 November). A genuine 18 November Student Trips enquiry and team reply verify one inbox route. All three approved Google replies were submitted once and now read back exactly from the native API. Eight original batches and 81 website deliveries retain their recorded scopes. Production and D08 are excluded.

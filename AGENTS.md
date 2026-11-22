@@ -1,3 +1,11 @@
+# Current verified follow-up - revision67
+
+Delivery82 installs ONLY forms.php/08d7261c on staging.2396protected entries and selected WordPress state exact;36stubbed-mail and7live token/OPTIONS checks pass. No real email/purge/production write; actual SMTP and other jobs/contact receipt remain unverified. M04 now meets original monitoring/assignment rule:40records/39URLs,39stored inspections, one duplicate/two crawl dates and NYEunknown discrepancy explicit; all original40criteria/eight complete batch objects preserved.82website/86records; other39statuses exact.
+
+This isolated source is .worktrees/ktk-staging-indexing-forms-20261122 from frozen259. Existing PR141 gets one consolidated corrective source update after staging verification; earlier docs push/Linux40min cancellation retained. All1318oldPython cases remain plus9new; exhaustive664/663module groups, actual identity/source/tree receipts, both offline jobs required by SVGgate. No cap/audit/skip/secret weakening, no new full/native recovery dispatch. Required current PR141 and actual-main CI must be independently accepted before source closure; no old CI substitution. FrozenW/J and historical root app remain untouched/never deployed or built.
+
+Preserve production/D08 exclusion, Google location/hours/no-contact, medical hold, recovery retention/expired-engine no-replay, commerce/recipients/functional consent. No real messages/orders/payments/provider events, Omni deployment, subagents or memory writes. Read docs/seo/indexing-and-form-assurance-2026-11-22 for scope/human/owner dependencies. Earlier entries below retain dated history.
+
 # Current approved account follow-up - revision66
 
 Native GSC reads on21November verify ManualActions/SecurityIssues no issues, PageIndexing132/40 updated16November and CrawlStats8.06k/961m/491ms updated19November with no host problems90days/three acceptable fail rates. Limited native GSC read-only access was expressly resumed by the user; old account-UI STOP history is retained, not a current blocker for those completed reads. No account settings/indexing/submission/support action occurred.

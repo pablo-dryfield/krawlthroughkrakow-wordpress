@@ -75,7 +75,7 @@ def ci_fixture():
     finished = datetime.datetime.fromtimestamp(NOW, datetime.timezone.utc).isoformat()
     run = {'id': 7, 'head_sha': PLAN['sourceCommit'], 'name': 'Repository Checks', 'path': '.github/workflows/checks.yml', 'status': 'completed', 'conclusion': 'success', 'repository': {'full_name': core.REPO}, 'run_attempt': 1}
     steps = [{'name': n, 'status': 'completed', 'conclusion': 'success'} for n in ['Isolated SVG HTTP negotiation contracts (loopback only)', 'Check dependency security advisories (no deployment)', 'Build storefront (never uploads or deploys)']]
-    jobs = [{'id': i + 10, 'run_id': 7, 'name': n, 'status': 'completed', 'conclusion': 'success', 'completed_at': finished, 'steps': steps if i == 0 else []} for i, n in enumerate(['Offline Tests and Build', 'Windows Recovery Contracts', 'Secret Scan'])]
+    jobs = [{'id': i + 10, 'run_id': 7, 'name': n, 'status': 'completed', 'conclusion': 'success', 'completed_at': finished, 'steps': steps if i == 0 else []} for i, n in enumerate(['Offline Tests and Build', 'Windows Recovery Contracts', 'Secret Scan', 'Offline Contract Part Two'])]
     calls = []
     def read(path):
         calls.append(path)
@@ -123,11 +123,21 @@ class PlanTests(unittest.TestCase):
 
 
 class CITests(unittest.TestCase):
+    def test_missing_skipped_or_failed_complementary_part_is_never_accepted(self):
+        for state in ['missing', 'skipped', 'failure']:
+            run, jobs, read, log, calls = ci_fixture()
+            if state == 'missing':
+                jobs.pop(3)
+            else:
+                jobs[3]['conclusion'] = state
+            with self.subTest(state=state), self.assertRaises(ValueError):
+                core.verify_ci(7, PLAN, NOW, read, lambda _: self.fail('Incomplete coverage must stop before job logs'))
+
     def test_all_jobs_logs_actual_checkout_tree_and_freshness_are_independently_bound(self):
         run, jobs, read, log, calls = ci_fixture()
         proof = core.verify_ci(7, PLAN, NOW, read, log)
         self.assertTrue(proof['actualCheckoutTreeExact']); self.assertEqual(proof['actualCheckout'], '3' * 40)
-        self.assertEqual(len(proof['rawJobLogHashes']), 3)
+        self.assertEqual(len(proof['rawJobLogHashes']), 4)
         self.assertIn('/git/commits/', calls[-1])
 
     def test_failed_incomplete_wrong_source_or_old_ci_never_reaches_job_logs(self):

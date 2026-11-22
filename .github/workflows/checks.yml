@@ -82,7 +82,15 @@ jobs:
           php -l tools/content-update-staging-template.php
           php -l tools/staging-private-fixture.php
           php -l tools/staging-private-rehearsal-template.php
-          python -m unittest discover -s tools/tests -p 'test_*.py'
+          python tools/run-offline-contracts.py --part 0 --report deploy-backups/ci-offline-part-0.json
+      - name: Retain complete offline coverage for part zero
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: offline-contracts-part-0
+          path: deploy-backups/ci-offline-part-0.json
+          if-no-files-found: error
+          retention-days: 7
       - name: Shared JavaScript contracts
         run: node --test tools/tests/test_booking_destinations.mjs tools/tests/test_homepage_consent.mjs tools/tests/test_code_pages_seo.mjs tools/tests/test_semantic_headings.mjs tools/tests/test_canonical_links.mjs tools/tests/test_code_page_template.mjs tools/tests/test_homepage_media_policy.mjs tools/tests/test_search_console_delivery.mjs tools/tests/test_code_pages_schema.mjs tools/tests/test_read_only_http.mjs tools/tests/test_content_accessibility_styles.mjs tools/tests/test_content_image_descriptions.mjs tools/tests/test_internal_link_graph.mjs tools/tests/test_rendered_link_graph.mjs tools/tests/test_content_booking_events.mjs tools/tests/test_nightlife_editorial.mjs tools/tests/test_budget_editorial.mjs tools/tests/test_jazz_editorial.mjs tools/tests/test_music_editorial.mjs tools/tests/test_venue_editorial.mjs tools/tests/test_code_page_sharing.mjs tools/tests/test_site_offer_facts.mjs tools/tests/test_offer_pages_editorial.mjs tools/tests/test_event_promotions.mjs tools/tests/test_safety_inline_images.mjs
       - name: Compact menu focus generation contracts (no deployment)
@@ -198,6 +206,36 @@ jobs:
           php tools/tests/test_storefront_meta_ordering.php
       - name: Build storefront (never uploads or deploys)
         run: npm run build --prefix staging/wp-content/plugins/ktk-storefront/frontend
+
+  offline_contracts:
+    name: Offline Contract Part Two
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: '3.12'
+      - name: Complete complementary offline module group
+        env:
+          XDEBUG_MODE: 'off'
+        run: |
+          php --version
+          php -r 'if (set_time_limit(60)!==true || ini_get("max_execution_time")!=="60") { fwrite(STDERR,"Native PHP runtime control required\n"); exit(1); } echo "Native PHP set_time_limit verified\n";'
+          python tools/run-offline-contracts.py --part 1 --report deploy-backups/ci-offline-part-1.json
+      - name: Retain complete offline coverage for part one
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: offline-contracts-part-1
+          path: deploy-backups/ci-offline-part-1.json
+          if-no-files-found: error
+          retention-days: 7
 
   full_private_engine_fixture:
     name: Full Private Engine Fixture

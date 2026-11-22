@@ -1,3 +1,7 @@
+## Current22November follow-up
+
+The [indexing/form review](../indexing-and-form-assurance-2026-11-22/README.md) supersedes the older pending native GSC/inbox/formatting labels below. M04 monitoring/assignment is complete; delivery82 fixes staging template separators. One genuine StudentTrips receipt/reply is confirmed; other inbox, actual new-format SMTP, paid-population/provider and human evidence remains scoped. The [concrete owner checklist](../indexing-and-form-assurance-2026-11-22/OWNER-AND-HUMAN-CHECKS.md) assigns the remaining work. Earlier observations below retain their dates; no production/D08 action.
+
 ## Current account follow-up
 
 Current native GSC reports and one genuine Student Trips inbox route are verified. Three exact owner-approved Google reply submissions returned HTTP200; final native API reads now match all three exact replies; public UI is not independently inspected. See [receipts, report dates and remaining scope](../owner-account-followup-2026-11-21/README.md). These results supersede the earlier pending questions below at only their stated scopes. Production/D08 remain excluded.

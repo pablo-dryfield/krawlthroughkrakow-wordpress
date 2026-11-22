@@ -92,7 +92,7 @@ function ktk_pages_contact_submit() {
     if (!$recipients) { wp_send_json_error(array('message' => 'This form is temporarily unavailable.'), 503); }
     $pattern = $attributes['custom_message'] ?? $attributes['message_pattern'] ?? '';
     if ($pattern) {
-        $body = $pattern;
+        $body = str_replace('||et_pb_line_break_holder||', "\n", $pattern);
         foreach ($values as $id => $field) { $body = str_ireplace('%%' . $id . '%%', $field['value'], $body); }
         $body = wp_strip_all_tags(str_replace(array('<br>', '<br/>', '<br />'), "\n", $body));
     } else {
