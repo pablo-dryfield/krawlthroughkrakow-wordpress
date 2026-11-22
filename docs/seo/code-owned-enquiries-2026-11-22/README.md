@@ -1,3 +1,5 @@
+Current status: the local-only candidate was subsequently deployed and verified on staging through the explicitly authorised OmniLodge production receiver. Seven approved messages are independently observed in Gmail INBOX. See [current delivery evidence](../omni-enquiry-staging-delivery-2026-11-22/README.md). The local-only statements below retain their earlier scope.
+
 The seven-form replacement is implemented and verified **locally only**. The owner selected isolated local testing because the available OmniLodge deployment environment is production. This is a follow-up candidate, not an additional staging delivery or completion of D06/H03. Production and D08 remain excluded.
 
 The existing purchase-email integration uses OmniLodge's Gmail sender. This candidate reuses that sender through a separate, disabled-by-default staging enquiry endpoint. KTK's generated forms use a code-owned, versioned manifest instead of Divi/Contact Form 7 mail metadata or their delivery endpoints. No installed plugin has been disabled, deleted or uninstalled; the existing Divi artwork/classes remain necessary for visual parity.
