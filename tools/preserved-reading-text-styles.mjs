@@ -30,7 +30,7 @@ export const preservedReadingTargets=Object.freeze([
     "selector": ":is(.et_pb_text_0,.et_pb_text_1,.et_pb_text_2,.et_pb_text_3,.et_pb_text_4,.et_pb_text_5,.et_pb_text_6) .et_pb_text_inner",
     "roots": 7,
     "align": "preserve",
-    "bodySHA256": "913877c386c36dfc0ca6898b737a0ae3258bcf1beffa28213c2136b04d0552f4"
+    "bodySHA256": "3bb4cd504717036fb65f4addaa731a344448ec56f481e4e68832c50bd8a599e0"
   },
   {
     "key": "other-tours",
@@ -51,14 +51,14 @@ export const preservedReadingTargets=Object.freeze([
     "selector": ".et_pb_text_1 .et_pb_text_inner",
     "roots": 1,
     "align": "preserve",
-    "bodySHA256": "7e3808036e112f2d6d935c073f7bfca289fb560d026c01eef79470ff6ac08694"
+    "bodySHA256": "274c9197273c6ad49cb08bc26ca3f72c01e3ff07179a3226c63be6fc20d14e7e"
   },
   {
     "key": "student-trips-poland",
     "selector": ".et_pb_text_2 [data-ktk-group-planning-review=\"2026-11-14\"]",
     "roots": 1,
     "align": "preserve",
-    "bodySHA256": "acbed35e2e1fe77b01cf2dc4acce20c15754d01ea39db81c1ae9e9f141409391"
+    "bodySHA256": "83ee2e42f4397128ed23f8ea85e92429660dd466db23c060928bff9966789287"
   },
   {
     "key": "tour-service-disclaimer",

@@ -28,7 +28,8 @@ function add_action(...$args) {}
 function wp_send_json_error($data, $status) { throw new FormResult(false, $data, $status); }
 function wp_send_json_success($data) { throw new FormResult(true, $data, 200); }
 function wp_mail(...$args) { global $mail; $mail[] = $args; return true; }
-require ABSPATH . '/staging/wp-content/mu-plugins/ktk-code-pages-assets/forms.php';
+// The byte-preserved handler remains independently exercised for production rollback.
+require ABSPATH . '/staging/wp-content/mu-plugins/ktk-code-pages-assets/forms-legacy.php';
 $checks = 0;
 function check($condition, $message) { global $checks; ++$checks; if (!$condition) throw new RuntimeException($message); }
 $challenge = ktk_pages_challenge('contact', 0, 4, 7);

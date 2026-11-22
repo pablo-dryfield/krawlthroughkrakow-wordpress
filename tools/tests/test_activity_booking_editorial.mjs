@@ -55,10 +55,13 @@ test('missing or stale activity identity rejects before DOM access', async () =>
   }
 });
 
-test('runtime change is exactly one product lookup, preserving consent and attribution code', async () => {
+test('activity lookup and all runtime outside the separately reviewed enquiry block remain exact', async () => {
   const current = await readFile('staging/wp-content/mu-plugins/ktk-code-pages-assets/runtime.js', 'utf8');
   assert.equal(current.split("'shooting-range-34': 34").length, 2);
-  assert.equal(createHash('sha256').update(current.replace(", 'shooting-range-34': 34", '')).digest('hex'), '6f7ab8695c8b8c45835f7d80f51c8309192785fd4d37a1c0dd4177da2c033278');
+  const start="  document.querySelectorAll('form[data-ktk-form]')", end='/* BEGIN shared event promotion runtime */';
+  assert.equal(current.split(start).length,2); assert.equal(current.split(end).length,2);
+  assert.equal(createHash('sha256').update(current.split(start)[0].replace(", 'shooting-range-34': 34", '')).digest('hex'), 'd2472796a919457d010cd6782a371ab4abe083f2482eec07be065696852d776a');
+  assert.equal(createHash('sha256').update(end+current.split(end)[1]).digest('hex'), '74ecc4b642a84d4f601c3f8c56555d368f93aebacf7ea4f39c411eb11fdc90fd');
 });
 
 test('activity CSS is bounded, additive, idempotent and rejects drift', async () => {

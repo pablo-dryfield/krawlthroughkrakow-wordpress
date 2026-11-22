@@ -199,6 +199,7 @@ jobs:
           php tools/tests/test_homepage_integration.php
           php tools/tests/test_code_pages_integration.php
           php tools/tests/test_code_pages_forms.php
+          php tools/tests/test_code_owned_enquiry_forms.php
           php tools/tests/test_nye_promotions.php
           php tools/tests/test_clarity_policy.php
           php tools/tests/test_seo_discovery.php
