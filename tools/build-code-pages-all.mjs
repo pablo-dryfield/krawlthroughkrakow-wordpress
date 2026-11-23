@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import path from 'node:path';
 import {buildPageIntegrations} from './code-pages-integrations.mjs';
+import {loadCodeOwnedEnquiryForms,reviseCodeOwnedEnquiryForms} from './code-owned-enquiry-forms.mjs';
 import {rewriteBookingLinks} from './booking-destinations.mjs';
 import {reviseCodePageContent} from './code-pages-content-revisions.mjs';
 import {codePageDescription, seoMetadata, validateSeoRoutes} from './code-pages-seo.mjs';
@@ -82,6 +83,7 @@ const require = createRequire(import.meta.url);
 const { chromium } = require(path.join(process.env.USERPROFILE, '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 const root = path.resolve('.');
 const assets = path.join(root, 'staging/wp-content/mu-plugins/ktk-code-pages-assets');
+const codeOwnedEnquiryForms = await loadCodeOwnedEnquiryForms(root);
 await verifyNyeBackgroundImage();
 await buildMemorialStyles(path.join(assets,'runtime.css'));
 await buildSliderMotionStyles(path.join(assets,'runtime.css'));
@@ -428,6 +430,7 @@ try {
       const hasFeaturedSchemaImage=schema.some(item=>(item['@graph']||[item]).some(entity=>entity['@type']==='BlogPosting'&&entity.image));
       const metadata=buildCodePageSharing({route:route.route,kind:route.kind,title,description,inherited:capture.metadata.extra,
         image:hasFeaturedSchemaImage?await sharingImage(schemaFacts.image):null});
+      data.forms = await page.evaluate(reviseCodeOwnedEnquiryForms,{key:route.key,definition:codeOwnedEnquiryForms.forms.find(form=>form.id===route.key)});
       const portable=await page.evaluate(()=>document.body.innerHTML);
       const [shell, main] = portable.split('\n__KTK_SPLIT_MAIN__\n');
       if (!main || !shell.includes('__KTK_PAGE_MAIN_CONTENT__')) throw new Error('Template split failed');

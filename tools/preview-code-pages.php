@@ -11,6 +11,7 @@ function home_url($path) { return 'https://krawlthroughkrakow.com/staging' . $pa
 function admin_url($path) { return home_url('/wp-admin/' . $path); }
 function rest_url($path) { return home_url('/wp-json/' . $path); }
 function wp_create_nonce($action) { return 'local-preview'; }
+function wp_generate_uuid4() { $value=bin2hex(random_bytes(16));return substr($value,0,8).'-'.substr($value,8,4).'-4'.substr($value,13,3).'-a'.substr($value,17,3).'-'.substr($value,20,12); }
 function wp_salt($purpose) { return 'local-only-preview-not-a-server-secret'; }
 function add_action(...$args) {}
 $assets = ABSPATH . '/staging/wp-content/mu-plugins/ktk-code-pages-assets/';

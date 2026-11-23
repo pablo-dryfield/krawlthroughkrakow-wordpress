@@ -61,14 +61,15 @@ class ContactFormContracts(unittest.TestCase):
                 self.assertEqual(fields['action']['value'], 'ktk_pages_contact')
                 self.assertEqual(fields['action']['type'], 'hidden')
                 self.assertEqual(fields['route_key']['value'], key)
-                for name in ('form_index', '_ktk_nonce', '_ktk_challenge'):
+                for name in ('form_index', '_ktk_nonce', '_ktk_challenge', '_ktk_request_id'):
                     self.assertEqual(fields[name]['type'], 'hidden')
-        self.assertEqual(count, 5)
+                self.assertEqual(a['data-ktk-owned-enquiry'], 'true')
+        self.assertEqual(count, 7)
 
     def test_native_public_fields_match_existing_server_definitions(self):
         script = "define('ABSPATH', __DIR__); $out=[]; foreach(glob($argv[1].'/pages/*.php') as $f){$d=require $f; if(!empty($d['forms']))$out[$d['key']]=$d['forms'];} echo json_encode($out);"
         definitions = json.loads(subprocess.check_output(['php', '-r', script, str(ASSETS)], cwd=ROOT))
-        routing = {'action', 'route_key', 'form_index', '_ktk_nonce', '_ktk_challenge'}
+        routing = {'action', 'route_key', 'form_index', '_ktk_nonce', '_ktk_challenge', '_ktk_request_id'}
         for key, specs in definitions.items():
             for spec in specs:
                 form = self.forms[key][spec['index']]
@@ -78,20 +79,22 @@ class ContactFormContracts(unittest.TestCase):
                     expected.add('captcha')
                 self.assertEqual(actual, expected, key)
 
-    def test_cf7_backend_ids_and_endpoints_unchanged(self):
-        found = {}
+    def test_all_forms_use_code_owned_contract_without_cf7_backend(self):
+        manifest = json.loads((ASSETS / 'enquiry-forms.json').read_text(encoding='utf-8'))
+        self.assertEqual(set(self.forms), {f['id'] for f in manifest['forms']})
+        self.assertEqual((ASSETS / 'enquiry-forms.json').read_bytes(),
+                         (ROOT / 'tools/content/enquiry-forms.json').read_bytes())
         for key, forms in self.forms.items():
             for form in forms:
-                if form['attributes'].get('data-ktk-form') != 'cf7':
-                    continue
                 fields = {c.get('name'): c for c in form['controls'] if c.get('name')}
-                identity = fields['_wpcf7']['value']
-                self.assertEqual(form['attributes']['data-feedback-endpoint'], '__KTK_CF7_API__' + identity + '/feedback')
-                found[key] = identity
-        self.assertEqual(found, {'stagshens': '2219', 'post-welcome-to-alcohol': '1675'})
+                self.assertEqual(form['attributes']['data-ktk-form'], 'contact', key)
+                self.assertNotIn('data-feedback-endpoint', form['attributes'])
+                self.assertFalse(any(name.startswith('_wpcf7') for name in fields), key)
+                spec = next(f for f in manifest['forms'] if f['id'] == key)
+                self.assertTrue({f['name'] for f in spec['fields']} <= set(fields), key)
 
     def test_runtime_reads_attribute_not_shadowed_property(self):
-        self.assertIn("fetch(cf7?form.dataset.feedbackEndpoint:form.getAttribute('action')", self.runtime)
+        self.assertIn("fetch(form.getAttribute('action')", self.runtime)
         self.assertNotRegex(self.runtime, r'\bform\.action\b')
         subprocess.run(['node', '--check', str(ASSETS / 'runtime.js')], check=True, capture_output=True)
 
@@ -102,6 +105,12 @@ class ContactFormContracts(unittest.TestCase):
         self.assertIn("id&&id!==hint.id", self.runtime)
         self.assertIn("ids.add(hint.id)", self.runtime)
         self.assertIn("invalid?.focus()", self.runtime)
+
+    def test_unknown_delivery_blocks_repeat_without_rotating_identity(self):
+        self.assertIn("if(form.dataset.deliveryUnconfirmed==='true'){display(unconfirmed(),false);return;}", self.runtime)
+        self.assertIn("form.elements._ktk_request_id.value=result.data.requestId", self.runtime)
+        self.assertIn("form.dataset.deliveryUnconfirmed='true'", self.runtime)
+        self.assertNotIn('form.dataset.feedbackEndpoint', self.runtime)
 
     def test_native_checkbox_stays_focusable_without_changing_label_artwork(self):
         css = (ASSETS / 'runtime.css').read_text(encoding='utf-8')

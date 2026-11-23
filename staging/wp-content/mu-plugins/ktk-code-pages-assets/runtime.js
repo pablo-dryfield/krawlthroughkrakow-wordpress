@@ -296,73 +296,64 @@
   });
 
   document.querySelectorAll('form[data-ktk-form]').forEach((form,formIndex)=>{
-    const cf7=form.dataset.ktkForm==='cf7',endpoint=document.body.dataset.ktkFormTokenUrl;
+    const endpoint=document.body.dataset.ktkFormTokenUrl;
     let tokenReady=false,tokenTime=0,pendingToken=null;
     const refreshToken=()=>{
-      if(cf7)return Promise.resolve();
       if(pendingToken)return pendingToken;
       const url=new URL(endpoint,location.href);url.searchParams.set('action','ktk_pages_form_token');url.searchParams.set('route_key',form.dataset.routeKey);url.searchParams.set('form_index',form.dataset.formIndex);
       pendingToken=fetch(url,{credentials:'same-origin',cache:'no-store'}).then(r=>r.json()).then(result=>{
-        if(!result.success)throw new Error(result.data?.message||'Unable to prepare this form.');
-        form.elements._ktk_nonce.value=result.data.nonce;form.elements._ktk_challenge.value=result.data.challenge.token;
+        if(!result.success||!result.data.requestId)throw new Error(result.data?.message||'Unable to prepare this form.');
+        form.elements._ktk_nonce.value=result.data.nonce;form.elements._ktk_challenge.value=result.data.challenge.token;form.elements._ktk_request_id.value=result.data.requestId;
         const question=form.querySelector('.et_pb_contact_captcha_question');if(question)question.textContent=`${result.data.challenge.first} + ${result.data.challenge.second}`;
         tokenReady=true;tokenTime=Date.now();
       }).finally(()=>{pendingToken=null;});return pendingToken;
     };
-    if(!cf7){const honey=create('input','ktk-contact-honeypot',form);honey.type='text';honey.name='_ktk_website';honey.tabIndex=-1;honey.autocomplete='off';honey.setAttribute('aria-hidden','true');}
-    form.addEventListener('focusin',()=>{if(!cf7&&!tokenReady)refreshToken().catch(()=>{});});
-    form.querySelectorAll('.wpcf7-validates-as-required').forEach(e=>{if(e.matches('input,textarea,select'))e.required=true;});
-    const message=()=>{if(cf7)return form.querySelector('.wpcf7-response-output');return form.closest('.et_pb_contact')?.querySelector('.et-pb-contact-message')||form.parentElement.querySelector('.et-pb-contact-message')||create('div','et-pb-contact-message',form.parentElement);};
-    const display=(text,success,status)=>{
-      const state=cf7?({mail_sent:'sent',validation_failed:'invalid',acceptance_missing:'unaccepted',spam:'spam',aborted:'aborted',mail_failed:'failed'}[status]||(success?'sent':'invalid')):(success?'sent':'invalid');
-      if(cf7){form.classList.remove('init','resetting','submitting','sent','invalid','unaccepted','spam','aborted','failed');form.classList.add(state);}
+    const honey=create('input','ktk-contact-honeypot',form);honey.type='text';honey.name='_ktk_website';honey.tabIndex=-1;honey.autocomplete='off';honey.setAttribute('aria-hidden','true');
+    form.addEventListener('focusin',()=>{if(!tokenReady&&form.dataset.deliveryUnconfirmed!=='true')refreshToken().catch(()=>{});});
+    const message=()=>form.closest('.et_pb_contact')?.querySelector('.et-pb-contact-message')||form.parentElement.querySelector('.wpcf7-response-output,.et-pb-contact-message')||create('div','et-pb-contact-message',form.parentElement);
+    const display=(text,success)=>{
+      const state=success?'sent':'invalid';
+      // Preserve captured feedback styling while the backend is entirely code-owned.
+      if(form.classList.contains('wpcf7-form')){form.classList.remove('init','resetting','submitting','sent','invalid','unaccepted','spam','aborted','failed');form.classList.add(state);}
       const output=message();if(output){output.textContent=text;output.setAttribute('aria-live','polite');output.setAttribute('aria-hidden','false');}form.dataset.status=state;
     };
+    const unconfirmed=()=>`Delivery could not be confirmed. Please do not submit again; contact the team with this reference: ${form.elements._ktk_request_id.value}`;
     const fieldErrors=errors=>{
       form.querySelectorAll('.ktk-form-field-error').forEach(hint=>{
         form.querySelectorAll('[aria-describedby]').forEach(control=>{
           const ids=control.getAttribute('aria-describedby').split(/\s+/).filter(id=>id&&id!==hint.id);
           if(ids.length)control.setAttribute('aria-describedby',ids.join(' '));else control.removeAttribute('aria-describedby');
-        });
-        hint.remove();
+        });hint.remove();
       });
-      form.querySelectorAll('.wpcf7-not-valid-tip').forEach(hint=>hint.remove());
       form.querySelectorAll('[data-ktk-field-invalid]').forEach(control=>{control.setAttribute('aria-invalid','false');control.removeAttribute('data-ktk-field-invalid');});
       let firstInvalid=null;
-      for(const [index,error]of errors.entries()){
+      for(const[index,error]of errors.entries()){
         const field=[...form.elements].find(control=>control.name===error.field);
-        const wrap=cf7?form.querySelector(`[data-name="${CSS.escape(error.field)}"]`):field?.closest('.et_pb_contact_field')||field?.parentElement;
-        if(!wrap)continue;
-        const controls=cf7||field?.type==='hidden'?[...wrap.querySelectorAll('input:not([type="hidden"]),textarea,select')]:field?[field]:[];
+        const wrap=field?.closest('.et_pb_contact_field,.wpcf7-form-control-wrap')||field?.parentElement;if(!wrap)continue;
+        const controls=field?.type==='hidden'?[...wrap.querySelectorAll('input:not([type="hidden"]),textarea,select')]:field?[field]:[];
         if(!controls.length)continue;
-        const hint=create('span','ktk-form-field-error'+(cf7?' wpcf7-not-valid-tip':''),wrap);
-        hint.id=`ktk-field-error-${formIndex}-${index}`;hint.textContent=error.message;
-        for(const control of controls){
-          const ids=new Set((control.getAttribute('aria-describedby')||'').split(/\s+/).filter(Boolean));ids.add(hint.id);
-          control.setAttribute('aria-describedby',[...ids].join(' '));control.setAttribute('aria-invalid','true');control.setAttribute('data-ktk-field-invalid','');
-          if(!firstInvalid&&control.getClientRects().length)firstInvalid=control;
-        }
-      }
-      return firstInvalid;
+        const hint=create('span','ktk-form-field-error',wrap);hint.id=`ktk-field-error-${formIndex}-${index}`;hint.textContent=error.message;
+        for(const control of controls){const ids=new Set((control.getAttribute('aria-describedby')||'').split(/\s+/).filter(Boolean));ids.add(hint.id);control.setAttribute('aria-describedby',[...ids].join(' '));control.setAttribute('aria-invalid','true');control.setAttribute('data-ktk-field-invalid','');if(!firstInvalid&&control.getClientRects().length)firstInvalid=control;}
+      }return firstInvalid;
     };
     form.addEventListener('submit',async event=>{
       event.preventDefault();if(form.dataset.submitting==='true')return;
-      form.querySelectorAll('.et_pb_checkbox_handle').forEach(hidden=>{hidden.value=[...hidden.closest('.et_pb_contact_field').querySelectorAll('input[type="checkbox"]:checked')].map(e=>e.value).join(', ');});
+      if(form.dataset.deliveryUnconfirmed==='true'){display(unconfirmed(),false);return;}
+      form.querySelectorAll('.et_pb_checkbox_handle').forEach(hidden=>{hidden.value=JSON.stringify([...hidden.closest('.et_pb_contact_field').querySelectorAll('input[type="checkbox"]:checked')].map(e=>e.value));});
       if(!form.checkValidity()){form.reportValidity();return;}
-      const requiredProxy=[...form.querySelectorAll('.et_pb_checkbox_handle[data-required_mark="required"]')].find(e=>!e.value);
+      const requiredProxy=[...form.querySelectorAll('.et_pb_checkbox_handle[data-required_mark="required"]')].find(e=>!JSON.parse(e.value||'[]').length);
       if(requiredProxy){const invalid=fieldErrors([{field:requiredProxy.name,message:'Please select at least one option.'}]);display('Please complete all required fields.',false);invalid?.focus();return;}
-      if(!cf7&&(!tokenReady||Date.now()-tokenTime>20*60*1000)){try{await refreshToken();display('Please check the arithmetic answer and submit again.',false);}catch(error){display(error.message,false);}return;}
+      if(!tokenReady||Date.now()-tokenTime>20*60*1000){try{await refreshToken();display('Please check the form and arithmetic answer before sending.',false);}catch(error){display(error.message,false);}return;}
       const button=form.querySelector('[type="submit"]');form.dataset.submitting='true';form.setAttribute('aria-busy','true');if(button)button.disabled=true;
-      if(cf7)form.classList.add('submitting');
       try{
-        const response=await fetch(cf7?form.dataset.feedbackEndpoint:form.getAttribute('action'),{method:'POST',credentials:'same-origin',body:new FormData(form)});
-        if(!/application\/json/i.test(response.headers.get('content-type')||''))throw new Error('Unable to send right now. Please try again.');
-        const result=await response.json();const success=cf7?result.status==='mail_sent':result.success===true;
-        const invalid=fieldErrors(cf7?(result.invalid_fields||[]):(!success&&result.data?.field?[{field:result.data.field,message:result.data.message}]:[]));
-        display(cf7?result.message:result.data?.message||'Unable to send your message.',success,result.status);
-        invalid?.focus();
+        const response=await fetch(form.getAttribute('action'),{method:'POST',credentials:'same-origin',body:new FormData(form)});
+        if(!/application\/json/i.test(response.headers.get('content-type')||''))throw Error('Unknown response');
+        const result=await response.json(),success=result.success===true;
+        const invalid=fieldErrors(!success&&result.data?.field?[{field:result.data.field,message:result.data.message}]:[]);
+        if(!success&&result.data?.delivery_state==='unconfirmed')form.dataset.deliveryUnconfirmed='true';
+        display(result.data?.message||'Unable to send your message.',success);invalid?.focus();
         if(success){form.reset();tokenReady=false;}else if(response.status===403){tokenReady=false;}
-      }catch{display('Unable to confirm delivery. Please check your connection and try again.',false);}finally{form.dataset.submitting='false';form.classList.remove('submitting');form.removeAttribute('aria-busy');if(button)button.disabled=false;}
+      }catch{form.dataset.deliveryUnconfirmed='true';display(unconfirmed(),false);}finally{form.dataset.submitting='false';form.removeAttribute('aria-busy');if(button)button.disabled=false;}
     });
   });
 })();
