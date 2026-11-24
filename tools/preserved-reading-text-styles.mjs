@@ -2,7 +2,8 @@ import {readFile,writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import path from 'node:path';
 
-// Typography only. All original copy/markup and unresolved owner reviews remain.
+// Typography only. Exact hashes pin the independently reviewed current bodies;
+// this stylesheet builder does not edit their copy or markup.
 export const preservedReadingTargets=Object.freeze([
   {
     "key": "about-us",
@@ -16,7 +17,7 @@ export const preservedReadingTargets=Object.freeze([
     "selector": "[data-ktk-blog-teaser-review]",
     "roots": 8,
     "align": "preserve",
-    "bodySHA256": "1c644feae154efbfaf22a7a63cffde381300401683039fa7e280c91af58fb2b8"
+    "bodySHA256": "a0885c3afd2b9a8408ccc0cfbf664bbb24cbf9ce16e3ca3904265674b50d36ce"
   },
   {
     "key": "how-to-join",
@@ -65,7 +66,7 @@ export const preservedReadingTargets=Object.freeze([
     "selector": ".et_pb_text_1 .et_pb_text_inner",
     "roots": 1,
     "align": "preserve",
-    "bodySHA256": "0daf4cab15418f6caadf9c0f9db081f2d0ecdd2b763cef5a5e1b732c0fb400e7"
+    "bodySHA256": "acc92eb41bfb7012c40a9c89c0eb8ac758ade9807e0a14501156ca100397a036"
   }
 ].map(Object.freeze));
 export const preservedReadingScope=':is('+preservedReadingTargets.map(t=>'body.ktk-code-page[data-ktk-page="'+t.key+'"] #main-content '+t.selector).join(',')+')';

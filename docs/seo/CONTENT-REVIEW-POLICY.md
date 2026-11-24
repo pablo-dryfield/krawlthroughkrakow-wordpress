@@ -1,3 +1,9 @@
+# Verified H01 staging copy and form fit — revision101
+
+The H01 follow-up is independently verified on staging as delivery85: competition monthly rounds and mandatory following-month prize use, corrected Terms/Disclaimer and a narrow privacy correction, matching cards/metadata and a scoped 320px form-fit rule. All ten installed hashes, 2,392 protected files and selected WordPress state are exact. Full build2,320/2,320, copy fixtures83/83, live browser64/64 and normal HTTP42/42 with21 warmed HITs pass. Ordinary Gmail is owner-confirmed; actual provider arrangements, purpose-specific bases, retention/disposal operations and remaining prize/service-contract facts stay unresolved. This is not a complete privacy notice or legal certification. One consolidated source push/PR and candidate/main CI remain pending at this snapshot. Website production, D08, commerce/form behavior, functional consent and retained recovery data remain protected; no email or deletion occurred.
+
+Evidence: docs/seo/h01-staging-delivery-2026-11-24/README.md. Earlier dated entries retain their scope; frozen prior worktrees are unchanged.
+
 ## Current non-production completion - revision63
 
 The dated native Search Console/GA4 baseline now meets M02. Delivery79 refreshes only the shared GetYourGuide rating to4.7 on staging, with original backup, exact protected checks and origin/normal/repeat verification. The staging-only weekly availability workflow is prepared and locally verified; its associated PR/main jobs establish installation. All eight original batches remain complete; broader UI, human, operations, provider and recurring criteria remain distinct. Production and D08 are excluded; L01/location/hours and recovery/medical retention decisions are not reopened.
@@ -44,9 +50,13 @@ Production approval and substantive legal/privacy review remain separate gates.
 ## Confirmed Enquiry Rules
 
 The owner confirmed on 14 November that the team responds after seeing an
-enquiry by email. Do not publish a fixed response-time guarantee or imply
-round-the-clock monitoring. This confirms the working process, not tested SMTP
-delivery or permission to send real test enquiries.
+enquiry by email. On 23 November the owner confirmed KTK-team monitoring of
+pubthroughkrakow@gmail.com and the existing Student Trips promise to reply in
+less than24hours. This is an owner-confirmed commitment, not measured future
+performance or a new universal response deadline for every form. It does not
+establish round-the-clock monitoring. The seven original OmniLodge mail tests
+and one later Contact/inbox/follow-up test retain their dated scopes; their
+approvals are consumed and authorise no resend. See the current delivery notes.
 
 Group minimums, private arrangements, booking lead times and deposit/cancellation
 terms are confirmed individually in each quote. Do not invent standard numbers
@@ -132,3 +142,11 @@ G04 remains partial: a policy is not proof of a completed recurring review,
 production launch, account monitoring or specialist sign-off. Relevant evidence:
 [roadmap](ROADMAP.md), [medical hold](article-triage-2026-11-13/MEDICAL-HOLD.md),
 [NYE expiry](nye-content-review-2026-11-13/PROMOTION-EXPIRY.md).
+
+## Owner business choices -24November2026
+
+The owner adopts18+ competition entry, KTK-team judging for originality/entertainment, email winner contact and separate permission before story publication, preserving the already confirmed prizes and no closing deadline. Selection trigger, prize-claim/travel conditions and final rules review remain unresolved. Enquiry/application details are for handling the request, without automatic marketing enrolment; the KTK team at pubthroughkrakow@gmail.com handles privacy requests. A retention schedule is to be prepared/reviewed, with no numeric expiry/deletion routine approved. Current activity copy is to use the active catalogue as its authority;24 public records match active production product IDs/names. Unmatched legacy enquiries are not thereby discontinued or guaranteed. Exact drafts and evidence: [H01 owner decisions](h01-owner-decisions-2026-11-24/OWNER-DECISIONS.md). No website or protected setting changes are claimed from these decisions.
+
+## Monthly competition and completed content audit — 24 November 2026
+
+End-of-month judging and a prize for the following month supersede the earlier absent selection date. Define monthly entry rounds and actual claim logistics before final rules are published; no automatic forfeiture is inferred. The requested [legal-content audit](h01-owner-decisions-2026-11-24/LEGAL-CONTENT-REVIEW.md) is complete with findings and [replacement drafts](h01-owner-decisions-2026-11-24/REPLACEMENT-CLAUSES.md). The owner prefers indefinite retention; the audit rejects a blanket keep-forever policy and proposes purpose-based criteria. No deletion/review routine, processor arrangement or compliance certification is invented. The prior paragraph is dated history, not a request to reconfirm these facts or repeat the audit. No website or protected setting was changed.

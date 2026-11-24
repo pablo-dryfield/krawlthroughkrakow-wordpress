@@ -38,6 +38,8 @@ jobs:
           python-version: '3.12'
       - name: Check tracked-file policy and build inputs
         run: python tools/check-repository.py
+      - name: Confirmed H01 editorial and protected-route contracts
+        run: node --test tools/tests/test_h01_business_legal_editorial.mjs
       - name: Isolated SVG HTTP negotiation contracts (loopback only)
         run: |
           python tools/test-svg-negotiation-local.py --output docs/seo/svg-negotiation-review-2026-11-17/local-http-ci.json

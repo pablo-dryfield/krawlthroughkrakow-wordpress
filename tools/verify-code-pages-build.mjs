@@ -4,6 +4,7 @@ import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
 import path from 'node:path';
 import {reviseCodePageContent} from './code-pages-content-revisions.mjs';
+import {loadH01BusinessLegalEditorial,reviseH01BusinessLegalEditorial,h01CompetitionSummary,reviseH01CompetitionSummary} from './h01-business-legal-editorial.mjs';
 import {codePageDescription, validateSeoRoutes} from './code-pages-seo.mjs';
 import {reviseSemanticHeadings} from './semantic-headings.mjs';
 import {buildCodePageSchema,codePageSchemaFacts} from './code-pages-schema.mjs';
@@ -87,6 +88,7 @@ const nightlifeChoices=await loadNightlifeChoiceEditorial();
 const groupChoices=await loadGroupChoiceEditorial();
 const activityBookings=await loadActivityBookingEditorial();
 const competitionNewsletter=await loadCompetitionNewsletterEditorial();
+const h01BusinessLegal=await loadH01BusinessLegalEditorial();
 const partyTrips=await loadPartyTripEditorial();
 const nightlifeComparisons=await loadNightlifeComparisonEditorial();
 const europeHeaderPresentation=await loadEuropeHeaderPresentation();
@@ -170,6 +172,8 @@ async function facts(html,revision){
   await page.evaluate(reviseSecondaryNyeEditorial,{key:revision.key,revision:secondaryNye,sourceReference:true});
   await page.evaluate(reviseHenActivityEnquiries,{key:revision.key,revision:henActivityEnquiries});
   await page.evaluate(reviseHalloweenNeutralGuide,{key:revision.key,revision:halloweenNeutral,sourceReference:true});
+  await page.evaluate(reviseH01BusinessLegalEditorial,{key:revision.key,revision:h01BusinessLegal.find(row=>row.key===revision.key),sourceReference:true});
+  await page.evaluate(reviseH01CompetitionSummary,{key:revision.key,revision:h01CompetitionSummary,sourceReference:true});
  }
  return page.evaluate(()=>{const root=document.querySelector('#main-content');root.querySelectorAll('script,style,noscript,.mejs-controls,.mejs-layers,video a,[data-single-product-id],[data-ktk-booking-product]').forEach(e=>e.remove());return {text:root.textContent.replace(/\s+/g,' ').trim(),missingAlt:root.querySelectorAll('img:not([alt])').length,sections:root.querySelectorAll('.et_pb_section').length,headings:[...root.querySelectorAll('h1,h2,h3,h4,h5,h6')].map(e=>({tag:e.tagName,text:e.textContent.trim()})),primary:root.querySelectorAll('h1').length,forms:root.querySelectorAll('form.et_pb_contact_form,form.wpcf7-form').length,scripts:root.querySelectorAll('script').length,handlers:[...root.querySelectorAll('*')].flatMap(e=>[...e.attributes].filter(a=>/^on/i.test(a.name)).map(a=>a.name))};});
 }

@@ -1,5 +1,6 @@
 """Offline shared-style generation, color and preserved-source contracts."""
 import re
+import subprocess
 import unittest
 from pathlib import Path
 
@@ -16,6 +17,11 @@ class ContentAccessibilityTests(unittest.TestCase):
     def test_shared_style_blocks_are_exact_and_unique(self):
         source = (ROOT / 'tools/content-accessibility.css').read_text().strip()
         guide = (ROOT / 'tools/halloween-neutral-guide.css').read_text().strip()
+        following = subprocess.check_output(
+            ['node', '--input-type=module', '-e',
+             "import {h01CompetitionFormStyles} from './tools/h01-business-legal-editorial.mjs'; process.stdout.write(h01CompetitionFormStyles);"],
+            cwd=ROOT,
+        ).decode('utf-8')
         expected_styles = {
             'ktk-homepage-assets/parity-runtime.css': source,
             'ktk-code-pages-assets/runtime.css': source + '\n' + guide,
@@ -25,7 +31,20 @@ class ContentAccessibilityTests(unittest.TestCase):
             self.assertEqual(css.count('/* BEGIN shared content accessibility */'), 1)
             block = css.split('/* BEGIN shared content accessibility */')[1]
             self.assertEqual(block.split('/* END shared content accessibility */')[0].strip(), expected, name)
-            self.assertFalse(block.split('/* END shared content accessibility */')[1].strip())
+            tail = block.split('/* END shared content accessibility */')[1]
+            expected_tail = '\n' + following if name == 'ktk-code-pages-assets/runtime.css' else '\n'
+            self.assertEqual(tail, expected_tail, name)
+            if name == 'ktk-code-pages-assets/runtime.css':
+                # Only the reviewed competition postlude is allowed. Broader,
+                # duplicated, changed or additional trailing rules still fail.
+                for changed in (
+                        tail + '\na {color:red}', tail + following,
+                        tail.replace('width: 100%', 'width: 120%'),
+                        tail.replace('[data-ktk-page="post-welcome-to-alcohol"]', ''),
+                        tail.replace('/* END H01 competition field fit */', 'missing')):
+                    with self.subTest(tail=changed[-90:]):
+                        with self.assertRaises(AssertionError):
+                            self.assertEqual(changed, expected_tail)
 
     def test_reviewed_small_text_colors_exceed_required_contrast(self):
         for foreground, background in (('#c8006c', '#ffffff'), ('#ffffff', '#c8306b'),

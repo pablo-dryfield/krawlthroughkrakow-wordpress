@@ -1,5 +1,5 @@
 {
-  "startedAt": "2026-11-22T21:20:58.020Z",
+  "startedAt": "2026-11-24T18:18:23.181Z",
   "built": [
     "post-2020-krakow-nightlife-guide",
     "post-all-you-need-to-know-about-visiting-auschwitz",
@@ -4602,6 +4602,12 @@
           "type": "withheld-embed-native-alternative",
           "index": 0,
           "version": "2026-11-15.embed-fallbacks-1"
+        },
+        {
+          "type": "h01-confirmed-business-legal-copy",
+          "version": "2026-11-24.h01-business-legal-1",
+          "textModules": 3,
+          "complianceCertification": false
         }
       ],
       "bookings": [
@@ -6255,6 +6261,11 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "h01-monthly-competition-summary",
+          "version": "2026-11-24.h01-business-legal-1",
+          "summaries": 1
         }
       ],
       "bookings": [
@@ -6924,6 +6935,11 @@
         {
           "type": "social-link-name",
           "label": "X"
+        },
+        {
+          "type": "h01-monthly-competition-summary",
+          "version": "2026-11-24.h01-business-legal-1",
+          "summaries": 1
         }
       ],
       "bookings": [
@@ -7654,6 +7670,11 @@
           "key": "blog",
           "selector": ".et_pb_post_slide-7472 .et_pb_slide_content > div",
           "reviewedOn": "2026-11-19"
+        },
+        {
+          "type": "h01-monthly-competition-summary",
+          "version": "2026-11-24.h01-business-legal-1",
+          "summaries": 1
         }
       ],
       "bookings": [
@@ -9621,6 +9642,12 @@
           "type": "correct-owned-service-domain",
           "selector": ".et_pb_text_1 .et_pb_text_inner SERVICE definition",
           "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "h01-confirmed-business-legal-copy",
+          "version": "2026-11-24.h01-business-legal-1",
+          "textModules": 1,
+          "complianceCertification": false
         }
       ],
       "bookings": [
@@ -10476,6 +10503,12 @@
           "type": "public-operator-identity",
           "selector": ".et_pb_text_1",
           "reviewedOn": "2026-11-15"
+        },
+        {
+          "type": "h01-confirmed-business-legal-copy",
+          "version": "2026-11-24.h01-business-legal-1",
+          "textModules": 1,
+          "complianceCertification": false
         }
       ],
       "bookings": [
@@ -10634,6 +10667,12 @@
           "type": "withheld-embed-native-alternative",
           "index": 0,
           "version": "2026-11-15.embed-fallbacks-1"
+        },
+        {
+          "type": "h01-confirmed-business-legal-copy",
+          "version": "2026-11-24.h01-business-legal-1",
+          "textModules": 1,
+          "complianceCertification": false
         }
       ],
       "bookings": [
@@ -11413,7 +11452,7 @@
       "/testimonials/",
       "/tour-service-disclaimer/"
     ],
-    "sourceSha256": "5b78b49c3eda96aee841d543016a1e001622d9b3e91fae8b20fe314ca00c8a82"
+    "sourceSha256": "3a89bcc18581df3971d26cf0c6a9d8b0517e0c1d36711501176b801df8b24ea5"
   },
   "reviewedRedirects": [
     {
@@ -11429,5 +11468,5 @@
       "targetStatus": 200
     }
   ],
-  "finishedAt": "2026-11-22T21:22:29.541Z"
+  "finishedAt": "2026-11-24T18:19:51.463Z"
 }
