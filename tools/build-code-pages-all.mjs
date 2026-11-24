@@ -5,6 +5,7 @@ import {execFileSync} from 'node:child_process';
 import path from 'node:path';
 import {buildPageIntegrations} from './code-pages-integrations.mjs';
 import {loadCodeOwnedEnquiryForms,reviseCodeOwnedEnquiryForms} from './code-owned-enquiry-forms.mjs';
+import {loadH01BusinessLegalEditorial,reviseH01BusinessLegalEditorial,h01CompetitionSummary,reviseH01CompetitionSummary,buildH01CompetitionFormStyles} from './h01-business-legal-editorial.mjs';
 import {rewriteBookingLinks} from './booking-destinations.mjs';
 import {reviseCodePageContent} from './code-pages-content-revisions.mjs';
 import {codePageDescription, seoMetadata, validateSeoRoutes} from './code-pages-seo.mjs';
@@ -84,6 +85,8 @@ const { chromium } = require(path.join(process.env.USERPROFILE, '.cache/codex-ru
 const root = path.resolve('.');
 const assets = path.join(root, 'staging/wp-content/mu-plugins/ktk-code-pages-assets');
 const codeOwnedEnquiryForms = await loadCodeOwnedEnquiryForms(root);
+const h01BusinessLegal = await loadH01BusinessLegalEditorial();
+await buildH01CompetitionFormStyles(path.join(assets,'runtime.css'));
 await verifyNyeBackgroundImage();
 await buildMemorialStyles(path.join(assets,'runtime.css'));
 await buildSliderMotionStyles(path.join(assets,'runtime.css'));
@@ -431,6 +434,9 @@ try {
       const metadata=buildCodePageSharing({route:route.route,kind:route.kind,title,description,inherited:capture.metadata.extra,
         image:hasFeaturedSchemaImage?await sharingImage(schemaFacts.image):null});
       data.forms = await page.evaluate(reviseCodeOwnedEnquiryForms,{key:route.key,definition:codeOwnedEnquiryForms.forms.find(form=>form.id===route.key)});
+      const h01Revisions = await page.evaluate(reviseH01BusinessLegalEditorial,{key:route.key,revision:h01BusinessLegal.find(row=>row.key===route.key)});
+      h01Revisions.push(...await page.evaluate(reviseH01CompetitionSummary,{key:route.key,revision:h01CompetitionSummary}));
+      if(h01Revisions.length){contentRevisions.push(...h01Revisions);report.revisions[route.key]={content:contentRevisions,bookings:bookingRevisions};}
       const portable=await page.evaluate(()=>document.body.innerHTML);
       const [shell, main] = portable.split('\n__KTK_SPLIT_MAIN__\n');
       if (!main || !shell.includes('__KTK_PAGE_MAIN_CONTENT__')) throw new Error('Template split failed');

@@ -898,3 +898,8 @@ body.ktk-code-page[data-ktk-page="post-spooktacular-krakow-unveil-the-mysteries-
 body.ktk-code-page #main-content p[data-ktk-halloween-summary="2026-11-19.halloween-neutral-1"] { font-size: 16px; line-height: 1.65; text-align: left; letter-spacing: 0; margin: 0; padding-right: 24px; }
 /* END Neutral Halloween guide */
 /* END shared content accessibility */
+
+/* BEGIN H01 competition field fit */
+body.ktk-code-page[data-ktk-page="post-welcome-to-alcohol"] #main-content form.wpcf7-form[data-route-key="post-welcome-to-alcohol"][data-ktk-owned-enquiry="true"] :is(label,.wpcf7-form-control-wrap) { display: block; max-width: 100%; min-width: 0; }
+body.ktk-code-page[data-ktk-page="post-welcome-to-alcohol"] #main-content form.wpcf7-form[data-route-key="post-welcome-to-alcohol"][data-ktk-owned-enquiry="true"] .wpcf7-form-control:is(.wpcf7-text,.wpcf7-email,.wpcf7-textarea) { box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; }
+/* END H01 competition field fit */

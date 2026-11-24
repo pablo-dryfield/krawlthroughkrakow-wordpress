@@ -1,0 +1,21 @@
+> **24 November delivery update:** The owner explicitly confirms that the prize must be **used in the following month** and that `pubthroughkrakow@gmail.com` is an **ordinary Gmail account**. The following-month-use and agreed monthly competition copy, narrow legal/privacy corrections, matching summaries/metadata and competition form fit are now independently verified on staging. [Delivery85](../h01-staging-delivery-2026-11-24/README.md) supersedes earlier pending-implementation wording below. The legal-content audit is complete with findings, not legal certification. Actual provider/transfer arrangements, lawful bases, operational retention/disposal and remaining prize/service-contract facts stay open. No blanket indefinite retention, automatic deletion or Workspace DPA is claimed. Earlier drafts below remain dated history; do not re-ask these answered facts.
+
+# H01 owner-review packet - 24 November 2026
+
+The owner decisions are recorded, and the requested [legal-content review](LEGAL-CONTENT-REVIEW.md) is complete with findings and [exact replacement clauses](REPLACEMENT-CLAUSES.md). Monthly judging and following-month prizes are confirmed. Blanket indefinite retention does not pass the review. The [owner decisions](OWNER-DECISIONS.md) distinguish agreed facts from the remaining processor, retention-process and competition/contract details. No wording has been published.
+
+The [inventory](SERVICE-INVENTORY.md) and [catalogue reconciliation](CATALOGUE-RECONCILIATION.md) account for current products and protected form choices. The original [owner checklist](OWNER-CHECKLIST.md) and [review brief](LEGAL-PRIVACY-REVIEW-BRIEF.md) remain as context, with their current-result notices superseding already answered questions.
+
+## Evidence
+
+- Frozen application source6792a145 was read without modification. Eleven staging routes returned200 and the public catalogue returned24 products. No page scripts were executed, form submitted, remote helper installed, cache purged or account changed.
+- There are246 selected heading/paragraph/list witnesses:242 match literal parsed staging text. Four legal-page paragraphs instead expose Cloudflare-protected email text. Their exact remaining words and their encoded public email addresses are independently checked; the original four literal failures remain false and retained. This is scoped textual readback, not full HTML/visual/functional/consent or database equality proof.
+- The catalogue contains16 entries without configured summary/description/highlights. Availability and frontend fallback coverage are not inferred from those gaps.
+- No Anny5 body-text claim was found in the non-medical code-page inventory or the two freshly checked hotel pages. About Us now describes guide functions without the earlier credential claim. Those historical notes are not used to request another owner approval.
+- Known operator/core-offer facts, neutral group/Halloween revisions, individual-quote policy, inbox/team/Student Trips commitment, review cadence and owner-reported human checks are carried forward. Medical content stays on its existing specialist hold and is not re-opened.
+
+Current source bindings, complete selected text, raw staging responses, public catalogue, the four email-obfuscation qualifications and source/status receipts are retained privately under the task evidence directory. No customer messages or credentials are copied into this packet.
+
+## What happens after answers
+
+Record the owner's actual business facts, resolve any necessary substantive legal review, then prepare only the affected canonical copy. If implementation is needed, verify locally and on staging before one consolidated source push/PR. Protected form values, commerce/availability, consent/provider settings, website production, retained recovery data and historical-import deferral keep their existing boundaries. No website delivery, completed workstream or legal sign-off is claimed from this packet.
