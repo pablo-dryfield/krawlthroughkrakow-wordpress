@@ -12,6 +12,18 @@ export async function buildH01CompetitionFormStyles(file){
   await writeFile(file,source+h01CompetitionFormStyles);
 }
 
+// Original stylesheet builders require their shared block to be last. Prepare
+// only our exact postlude before that pipeline, then append it after the final
+// original builder. Any prior-CSS or postlude drift refuses before a write.
+export async function prepareH01CompetitionFormBuild(file){
+  const source=await readFile(file,'utf8'),originalSHA256='46fa696e314f789a757d4a6c748ae22089e7d3f88ecf18be06a32b09126199ab',sha=s=>createHash('sha256').update(s).digest('hex');
+  if(sha(source)===originalSHA256)return;
+  if(source.split('/* BEGIN H01 competition field fit */').length!==2||source.split('/* END H01 competition field fit */').length!==2||!source.endsWith(h01CompetitionFormStyles))throw Error('Exact H01 field-fit postlude required before rebuild');
+  const base=source.slice(0,-h01CompetitionFormStyles.length);
+  if(sha(base)!==originalSHA256)throw Error('Exact unchanged shared stylesheet required before H01 rebuild');
+  await writeFile(file,base);
+}
+
 export async function loadH01BusinessLegalEditorial() {
   const originalBytes = await readFile(new URL('./content/h01-legal-originals.json', import.meta.url));
   if (createHash('sha256').update(originalBytes).digest('hex') !== '30a60720af443da815f2035b1e6f845568afc8331832bad17e2e94c512839f99') throw Error('Frozen H01 original text boundaries required');

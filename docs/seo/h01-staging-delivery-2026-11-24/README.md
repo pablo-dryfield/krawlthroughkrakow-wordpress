@@ -1,3 +1,13 @@
+## Source rebuild follow-up after the initial publication
+
+Corrected-source CI45454186536 completed all1,328 cases with one failure in the older assertion that nothing could follow the shared accessibility stylesheet. Windows, secrets, the other664-case group and all later quality checks passed; both complete coverage reports and original logs remain retained, and the run is not accepted or replayed unchanged.
+
+The first candidate's installed CSS was verified, but its appended H01 block prevented another complete build through the older shared-style/No-JavaScript generators. The earlier2,320-check verification did not establish repeatability of that final stylesheet pipeline. The repair prepares only the exact H01 postlude before the original generators, requires the unchanged preceding CSS hash, then reapplies the postlude after the last original style generator. The original shared-style and navigation builders remain byte-exact with their strict guards. The Python composition contract now permits exactly the reviewed tail and still rejects changed, broadened, duplicated or additional rules. H01's existing Node contract also tests preparation, idempotence, composition and refusal before writes.
+
+A full116-page rebuild now completes with every application file unchanged, including the exact already-installed CSS and ten H01 target hashes. Current complete verification and source CI are required after this correction. There is no staging reupload or new website delivery. This requires a third push to the same PR144: the initial functional push, the ordinary-wording scan correction, and this necessary generator/contract correction.
+
+Local failure evidence remains: a fresh checkout initially lacked locked dependencies; its setup failure is retained, then npm ci completed with0 vulnerabilities. A draft general postlude option encountered the separate native-navigation guard and was abandoned; the generic builder/default tests were restored byte-exact. One new negative fixture initially changed an earlier selector instead of the H01 tail and was corrected to target its stated boundary. None of those drafts or failures is silently presented as an accepted build.
+
 # H01 business and legal-content staging delivery — 24 November 2026
 
 Delivery **85** is independently verified on staging. This implements the owner-confirmed competition facts and narrow corrections from the completed legal-content audit. It is not complete H01, a complete privacy policy, qualified legal sign-off or compliance certification. Website production and D08 remain excluded. The single source push/PR and complete candidate/main CI are pending at this publication snapshot.
