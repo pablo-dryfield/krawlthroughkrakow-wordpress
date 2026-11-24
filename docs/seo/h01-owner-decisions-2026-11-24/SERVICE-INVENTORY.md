@@ -101,7 +101,7 @@ Stag/Hen activities:
 
 ## Business fields retained in new enquiry snapshots
 
-This inventory lists the current canonical schema labels, not actual submitted customer data. Nonces, signature keys, arithmetic/honeypot controls and web/security logs are not represented as enquiry-content fields here.
+This inventory lists the current canonical schema labels, not actual submitted customer data. Authentication details, spam controls and web/security logs are excluded from these enquiry-content fields.
 
 | Form | Fields |
 | --- | --- |
