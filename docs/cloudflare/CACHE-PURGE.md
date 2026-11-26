@@ -1,3 +1,7 @@
+## Current26November booking-terms staging scope
+
+Delivery87 changes only the staging Terms and FAQ bodies. Native WP Rocket clearing is limited to `/staging/terms-and-conditions/` and `/staging/faqs/`; exact helper removal and selected WordPress/protected-file equality pass. The authenticated Cloudflare purge uses only those two full staging page prefixes. All73 normal HTTP checks and six warmed HITs pass, with83 hosted browser checks. The shared cancellation-policy override and nine OmniLodge email templates remain exact after the owner declined the shared policy change. No production/global purge, account/rule/security/DNS change or retained-recovery operation occurred. See [delivery evidence](../seo/booking-terms-review-2026-11-26/README.md).
+
 ## Current21November add-on/native cache scope
 
 Delivery81 uses the existing staging transaction guards with a bounded authenticated native WP Rocket purge of ONLY `https://krawlthroughkrakow.com/staging/store2/`. The first FTPdirectory failure and verified37-file rollback stay retained. Native pilot/final publication and helper removal pass. After origin/protected checks, only the two compiled staging asset prefixes and staging/store2 prefix are edge-purged;3MISS/3repeatHIT and exact asset bodies pass. No production/global purge, rules, DNS/security/account changes or expired recovery replay. See [scope and retained failures](../seo/addon-date-and-native-cache-2026-11-21/README.md).
