@@ -903,3 +903,8 @@ body.ktk-code-page #main-content p[data-ktk-halloween-summary="2026-11-19.hallow
 body.ktk-code-page[data-ktk-page="post-welcome-to-alcohol"] #main-content form.wpcf7-form[data-route-key="post-welcome-to-alcohol"][data-ktk-owned-enquiry="true"] :is(label,.wpcf7-form-control-wrap) { display: block; max-width: 100%; min-width: 0; }
 body.ktk-code-page[data-ktk-page="post-welcome-to-alcohol"] #main-content form.wpcf7-form[data-route-key="post-welcome-to-alcohol"][data-ktk-owned-enquiry="true"] .wpcf7-form-control:is(.wpcf7-text,.wpcf7-email,.wpcf7-textarea) { box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; }
 /* END H01 competition field fit */
+
+/* BEGIN Stagshens enquiry field containment */
+body.ktk-code-page[data-ktk-page="stagshens"] #main-content form.wpcf7-form[data-route-key="stagshens"][data-ktk-owned-enquiry="true"] .wpcf7-form-control-wrap { display: block; max-width: 100%; min-width: 0; }
+body.ktk-code-page[data-ktk-page="stagshens"] #main-content form.wpcf7-form[data-route-key="stagshens"][data-ktk-owned-enquiry="true"] .wpcf7-form-control:is(.wpcf7-text,.wpcf7-email,.wpcf7-textarea,.wpcf7-number,.wpcf7-date) { box-sizing: border-box; max-width: 100%; min-width: 0; }
+/* END Stagshens enquiry field containment */

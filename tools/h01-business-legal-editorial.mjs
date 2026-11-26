@@ -2,7 +2,10 @@ import {readFile,writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 
 export const h01CompetitionFormScope='body.ktk-code-page[data-ktk-page="post-welcome-to-alcohol"] #main-content form.wpcf7-form[data-route-key="post-welcome-to-alcohol"][data-ktk-owned-enquiry="true"]';
-export const h01CompetitionFormStyles='\n/* BEGIN H01 competition field fit */\n'+h01CompetitionFormScope+' :is(label,.wpcf7-form-control-wrap) { display: block; max-width: 100%; min-width: 0; }\n'+h01CompetitionFormScope+' .wpcf7-form-control:is(.wpcf7-text,.wpcf7-email,.wpcf7-textarea) { box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; }\n/* END H01 competition field fit */\n';
+const legacyCompetitionFormStyles='\n/* BEGIN H01 competition field fit */\n'+h01CompetitionFormScope+' :is(label,.wpcf7-form-control-wrap) { display: block; max-width: 100%; min-width: 0; }\n'+h01CompetitionFormScope+' .wpcf7-form-control:is(.wpcf7-text,.wpcf7-email,.wpcf7-textarea) { box-sizing: border-box; width: 100%; max-width: 100%; min-width: 0; }\n/* END H01 competition field fit */\n';
+const groupFormScope='body.ktk-code-page[data-ktk-page="stagshens"] #main-content form.wpcf7-form[data-route-key="stagshens"][data-ktk-owned-enquiry="true"]';
+export const enquiryGroupFormFitStyles='\n/* BEGIN Stagshens enquiry field containment */\n'+groupFormScope+' .wpcf7-form-control-wrap { display: block; max-width: 100%; min-width: 0; }\n'+groupFormScope+' .wpcf7-form-control:is(.wpcf7-text,.wpcf7-email,.wpcf7-textarea,.wpcf7-number,.wpcf7-date) { box-sizing: border-box; max-width: 100%; min-width: 0; }\n/* END Stagshens enquiry field containment */\n';
+export const h01CompetitionFormStyles=legacyCompetitionFormStyles+enquiryGroupFormFitStyles;
 
 export async function buildH01CompetitionFormStyles(file){
   const source=await readFile(file,'utf8'),originalSHA256='46fa696e314f789a757d4a6c748ae22089e7d3f88ecf18be06a32b09126199ab',sha=s=>createHash('sha256').update(s).digest('hex');
@@ -18,8 +21,9 @@ export async function buildH01CompetitionFormStyles(file){
 export async function prepareH01CompetitionFormBuild(file){
   const source=await readFile(file,'utf8'),originalSHA256='46fa696e314f789a757d4a6c748ae22089e7d3f88ecf18be06a32b09126199ab',sha=s=>createHash('sha256').update(s).digest('hex');
   if(sha(source)===originalSHA256)return;
-  if(source.split('/* BEGIN H01 competition field fit */').length!==2||source.split('/* END H01 competition field fit */').length!==2||!source.endsWith(h01CompetitionFormStyles))throw Error('Exact H01 field-fit postlude required before rebuild');
-  const base=source.slice(0,-h01CompetitionFormStyles.length);
+  const postlude=source.endsWith(h01CompetitionFormStyles)?h01CompetitionFormStyles:source.endsWith(legacyCompetitionFormStyles)?legacyCompetitionFormStyles:null;
+  if(source.split('/* BEGIN H01 competition field fit */').length!==2||source.split('/* END H01 competition field fit */').length!==2||!postlude)throw Error('Exact H01 field-fit postlude required before rebuild');
+  const base=source.slice(0,-postlude.length);
   if(sha(base)!==originalSHA256)throw Error('Exact unchanged shared stylesheet required before H01 rebuild');
   await writeFile(file,base);
 }

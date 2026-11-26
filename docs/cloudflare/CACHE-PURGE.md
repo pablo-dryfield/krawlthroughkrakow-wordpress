@@ -1,3 +1,7 @@
+## Verified26November enquiry feedback scope
+
+Delivery88 uses the existing guarded staging transaction for runtime.js/runtime.css, followed by a one-JS value-free correction. Each native purge is limited to the seven exact enquiry page URLs; both helpers are removed. Nine initial staging edge prefixes and eight corrective prefixes are accepted. Final normal HTTP372/372 checks,21 warmed HTML/six asset HITs and2004 hosted intercepted feedback checks pass. No production/global purge, account/rule/security/DNS/provider change or retained-recovery operation occurred. See [verification](../seo/form-feedback-accessibility-2026-11-26/STAGING-VERIFICATION.md).
+
 ## Current26November booking-terms staging scope
 
 Delivery87 changes only the staging Terms and FAQ bodies. Native WP Rocket clearing is limited to `/staging/terms-and-conditions/` and `/staging/faqs/`; exact helper removal and selected WordPress/protected-file equality pass. The authenticated Cloudflare purge uses only those two full staging page prefixes. All73 normal HTTP checks and six warmed HITs pass, with83 hosted browser checks. The shared cancellation-policy override and nine OmniLodge email templates remain exact after the owner declined the shared policy change. No production/global purge, account/rule/security/DNS change or retained-recovery operation occurred. See [delivery evidence](../seo/booking-terms-review-2026-11-26/README.md).
