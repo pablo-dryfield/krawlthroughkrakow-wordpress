@@ -311,13 +311,40 @@
     const honey=create('input','ktk-contact-honeypot',form);honey.type='text';honey.name='_ktk_website';honey.tabIndex=-1;honey.autocomplete='off';honey.setAttribute('aria-hidden','true');
     form.addEventListener('focusin',()=>{if(!tokenReady&&form.dataset.deliveryUnconfirmed!=='true')refreshToken().catch(()=>{});});
     const message=()=>form.closest('.et_pb_contact')?.querySelector('.et-pb-contact-message')||form.parentElement.querySelector('.wpcf7-response-output,.et-pb-contact-message')||create('div','et-pb-contact-message',form.parentElement);
+    const output=message();
+    // Keep one status region in the accessibility tree before any message arrives.
+    // CF7's captured region is already outside the busy form; Divi needs one.
+    const announcement=form.closest('.wpcf7')?.querySelector('.screen-reader-response [role="status"]')||create('div','ktk-form-status',form.parentElement);
+    announcement.style.cssText='position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;';
+    announcement.setAttribute('role','status');announcement.setAttribute('aria-live','polite');announcement.setAttribute('aria-atomic','true');announcement.setAttribute('data-ktk-form-status','');
+    // The visible response remains readable; only the persistent region announces it.
+    output.setAttribute('aria-live','off');
+    let announcementVersion=0;
+    const announce=text=>{
+      const version=++announcementVersion;announcement.textContent='';
+      setTimeout(()=>{if(version===announcementVersion&&announcement.isConnected)announcement.textContent=text;},100);
+    };
     const display=(text,success)=>{
       const state=success?'sent':'invalid';
       // Preserve captured feedback styling while the backend is entirely code-owned.
       if(form.classList.contains('wpcf7-form')){form.classList.remove('init','resetting','submitting','sent','invalid','unaccepted','spam','aborted','failed');form.classList.add(state);}
-      const output=message();if(output){output.textContent=text;output.setAttribute('aria-live','polite');output.setAttribute('aria-hidden','false');}form.dataset.status=state;
+      output.textContent=text;output.setAttribute('aria-hidden','false');form.dataset.status=state;announce(text);
     };
     const unconfirmed=()=>`Delivery could not be confirmed. Please do not submit again; contact the team with this reference: ${form.elements._ktk_request_id.value}`;
+    const nativeErrorMessage=control=>{
+      const validity=control.validity;
+      // Browser messages can quote entered values. Keep page text value-free.
+      if(validity.badInput)return control.type==='number'?'Please enter a number.':'Please enter a valid value.';
+      if(validity.valueMissing)return 'Please complete this field.';
+      if(validity.typeMismatch)return control.type==='email'?'Please enter a valid email address.':control.type==='url'?'Please enter a valid web address.':'Please enter a valid value.';
+      if(validity.patternMismatch)return 'Please use the requested format.';
+      if(validity.tooShort)return `Please use at least ${control.minLength} characters.`;
+      if(validity.tooLong)return `Please use no more than ${control.maxLength} characters.`;
+      if(validity.rangeUnderflow)return `Please enter a value of ${control.min} or more.`;
+      if(validity.rangeOverflow)return `Please enter a value of ${control.max} or less.`;
+      if(validity.stepMismatch)return 'Please use the requested increments.';
+      return 'Please check this field.';
+    };
     const fieldErrors=errors=>{
       form.querySelectorAll('.ktk-form-field-error').forEach(hint=>{
         form.querySelectorAll('[aria-describedby]').forEach(control=>{
@@ -328,14 +355,44 @@
       form.querySelectorAll('[data-ktk-field-invalid]').forEach(control=>{control.setAttribute('aria-invalid','false');control.removeAttribute('data-ktk-field-invalid');});
       let firstInvalid=null;
       for(const[index,error]of errors.entries()){
-        const field=[...form.elements].find(control=>control.name===error.field);
+        const fields=[...form.elements].filter(control=>control.name===error.field),field=fields[0];
         const wrap=field?.closest('.et_pb_contact_field,.wpcf7-form-control-wrap')||field?.parentElement;if(!wrap)continue;
-        const controls=field?.type==='hidden'?[...wrap.querySelectorAll('input:not([type="hidden"]),textarea,select')]:field?[field]:[];
+        const controls=field?.type==='hidden'?[...wrap.querySelectorAll('input:not([type="hidden"]),textarea,select')]:fields;
         if(!controls.length)continue;
         const hint=create('span','ktk-form-field-error',wrap);hint.id=`ktk-field-error-${formIndex}-${index}`;hint.textContent=error.message;
+        if(error.native)hint.setAttribute('data-ktk-native-error','');
         for(const control of controls){const ids=new Set((control.getAttribute('aria-describedby')||'').split(/\s+/).filter(Boolean));ids.add(hint.id);control.setAttribute('aria-describedby',[...ids].join(' '));control.setAttribute('aria-invalid','true');control.setAttribute('data-ktk-field-invalid','');if(!firstInvalid&&control.getClientRects().length)firstInvalid=control;}
       }return firstInvalid;
     };
+    let invalidCycle=false;
+    form.addEventListener('invalid',()=>{
+      if(invalidCycle||form.dataset.submitting==='true'||form.dataset.deliveryUnconfirmed==='true')return;
+      invalidCycle=true;queueMicrotask(()=>{invalidCycle=false;});
+      const errors=[...form.elements].filter(control=>control.name&&control.willValidate&&!control.validity.valid).map(control=>({field:control.name,message:nativeErrorMessage(control),native:true}));
+      fieldErrors(errors);display('Please check the highlighted fields.',false);
+    },true);
+    const clearCorrectedError=event=>{
+      const control=event.target;if(!control.hasAttribute?.('data-ktk-field-invalid'))return;
+      if(!control.validity?.valid){
+        const ids=(control.getAttribute('aria-describedby')||'').split(/\s+/);
+        for(const hint of form.querySelectorAll('.ktk-form-field-error[data-ktk-native-error]'))if(ids.includes(hint.id))hint.textContent=nativeErrorMessage(control);
+        return;
+      }
+      const wrap=control.closest('.et_pb_contact_field,.wpcf7-form-control-wrap'),proxy=wrap?.querySelector('.et_pb_checkbox_handle[data-required_mark="required"]');
+      if(proxy&&![...wrap.querySelectorAll('input[type="checkbox"]')].some(option=>option.checked))return;
+      const ids=(control.getAttribute('aria-describedby')||'').split(/\s+/);
+      for(const hint of form.querySelectorAll('.ktk-form-field-error'))if(ids.includes(hint.id)){
+        const remainingHints=new Set([...form.querySelectorAll('.ktk-form-field-error')].filter(other=>other!==hint).map(other=>other.id));
+        for(const field of form.querySelectorAll('[data-ktk-field-invalid]')){
+          const previous=(field.getAttribute('aria-describedby')||'').split(/\s+/);if(!previous.includes(hint.id))continue;
+          const descriptions=previous.filter(id=>id&&id!==hint.id);
+          if(descriptions.length)field.setAttribute('aria-describedby',descriptions.join(' '));else field.removeAttribute('aria-describedby');
+          if(!descriptions.some(id=>remainingHints.has(id))){field.setAttribute('aria-invalid','false');field.removeAttribute('data-ktk-field-invalid');}
+        }
+        hint.remove();
+      }
+    };
+    form.addEventListener('input',clearCorrectedError);form.addEventListener('change',clearCorrectedError);
     form.addEventListener('submit',async event=>{
       event.preventDefault();if(form.dataset.submitting==='true')return;
       if(form.dataset.deliveryUnconfirmed==='true'){display(unconfirmed(),false);return;}
@@ -345,6 +402,7 @@
       if(requiredProxy){const invalid=fieldErrors([{field:requiredProxy.name,message:'Please select at least one option.'}]);display('Please complete all required fields.',false);invalid?.focus();return;}
       if(!tokenReady||Date.now()-tokenTime>20*60*1000){try{await refreshToken();display('Please check the form and arithmetic answer before sending.',false);}catch(error){display(error.message,false);}return;}
       const button=form.querySelector('[type="submit"]');form.dataset.submitting='true';form.setAttribute('aria-busy','true');if(button)button.disabled=true;
+      announce('Sending your message. Please wait.');
       try{
         const response=await fetch(form.getAttribute('action'),{method:'POST',credentials:'same-origin',body:new FormData(form)});
         if(!/application\/json/i.test(response.headers.get('content-type')||''))throw Error('Unknown response');
