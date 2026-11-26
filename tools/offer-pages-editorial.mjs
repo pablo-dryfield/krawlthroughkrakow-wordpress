@@ -50,7 +50,7 @@ export function reviseOfferPages({key,revision}){
    if(!['P','STRONG','A','SPAN'].includes(n.tagName)||[...n.attributes].some(a=>n.tagName!=='A'||a.name!=='href'))throw Error('Unexpected offer-page markup');
    if(n.tagName==='A'){
     const href=n.getAttribute('href'),relative=href.startsWith('__KTK_HOME_URL__')?href.slice('__KTK_HOME_URL__'.length):null;
-    const paths=new Set(['about-us/how-to-join/','meeting-point/','faqs/','contact/','gallery/','krakow-nightlife/','new-years-eve/','store2/pub-crawl-28/#book']);
+    const paths=new Set(['about-us/how-to-join/','meeting-point/','faqs/','contact/','gallery/','krakow-nightlife/','new-years-eve/','terms-and-conditions/','store2/pub-crawl-28/#book']);
     if(!(relative!==null?paths.has(relative):external.has(href))||!normalize(n.textContent))throw Error('Unreviewed offer-page link');
    }
   }
