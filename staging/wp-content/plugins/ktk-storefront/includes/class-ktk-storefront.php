@@ -11,6 +11,8 @@ final class KTK_Storefront {
 	const QUERY_PATH = 'ktk_storefront_path';
 	const REST_NAMESPACE = 'ktk-storefront/v1';
 	const CACHE_TTL = 300;
+	// Dedicated verified staging stream; the identity guard below excludes production.
+	const STAGING_GA4_MEASUREMENT_ID = 'G-83YXQK49KB';
 	private static $missing_products = array();
 
 	public static function boot() {
@@ -232,6 +234,7 @@ final class KTK_Storefront {
 			'siteUrl' => esc_url_raw( home_url( '/' ) ),
 			'legacyStoreUrl' => esc_url_raw( $legacy_store_url ),
 			'legacyProductUrls' => array_map( 'esc_url_raw', $legacy_product_urls ),
+			'ga4Purchase' => self::staging_ga4_purchase_config(),
 		);
 
 		wp_add_inline_script(
@@ -239,6 +242,21 @@ final class KTK_Storefront {
 			'window.KTK_STOREFRONT = ' . wp_json_encode( $config ) . ';',
 			'before'
 		);
+	}
+
+	public static function staging_ga4_purchase_config() {
+		$measurement_id = self::STAGING_GA4_MEASUREMENT_ID;
+		$home = parse_url( home_url( '/' ) );
+		$path = (string) parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH );
+		if ( ( $home['scheme'] ?? '' ) !== 'https' || ( $home['host'] ?? '' ) !== 'krawlthroughkrakow.com'
+			|| ! empty( $home['port'] ) || rtrim( $home['path'] ?? '', '/' ) !== '/staging'
+			|| strtolower( $_SERVER['HTTP_HOST'] ?? '' ) !== 'krawlthroughkrakow.com'
+			|| ! preg_match( '#^/staging/store2(?:/|$)#D', $path )
+			|| ! preg_match( '/^G-[A-Z0-9]{6,15}$/D', $measurement_id )
+			|| in_array( $measurement_id, array( 'G-58KDXF12R8', 'G-8F5KMPDYEB' ), true ) ) {
+			return null;
+		}
+		return array( 'enabled' => true, 'environment' => 'staging', 'measurementId' => $measurement_id );
 	}
 
 	public static function output_clarity_consent_bridge() {

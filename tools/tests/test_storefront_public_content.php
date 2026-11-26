@@ -122,5 +122,23 @@ $original_schema=$schema_method->invoke(null,$metadata,'Halloween Pub Crawl');
 check(count($original_schema['@graph'])===2 && isset($original_schema['@graph'][1]['offers']),'Existing non-staging schema behavior remains untouched');
 $GLOBALS['home']=$GLOBALS['site']='https://krawlthroughkrakow.com/staging/';
 
+$_SERVER['HTTP_HOST']='krawlthroughkrakow.com';
+$_SERVER['REQUEST_URI']='/staging/store2/checkout/success/';
+$ga4=KTK_Storefront::staging_ga4_purchase_config();
+check($ga4===array('enabled'=>true,'environment'=>'staging','measurementId'=>'G-83YXQK49KB'),'Only the separately approved and verified staging destination enables the GA4 pilot');
+foreach (array(
+    array('https://krawlthroughkrakow.com/','krawlthroughkrakow.com','/store2/checkout/success/'),
+    array('https://krawlthroughkrakow.com/staging/','krawlthroughkrakow.com','/store2/checkout/success/'),
+    array('https://krawlthroughkrakow.com/staging/','example.com','/staging/store2/checkout/success/'),
+    array('https://krawlthroughkrakow.com:8443/staging/','krawlthroughkrakow.com','/staging/store2/'),
+    array('https://krawlthroughkrakow.com/staging/','krawlthroughkrakow.com','/staging/store20/'),
+    array('https://example.com/staging/','example.com','/staging/store2/'),
+) as $context) {
+    list($GLOBALS['home'],$_SERVER['HTTP_HOST'],$_SERVER['REQUEST_URI'])=$context;
+    check(KTK_Storefront::staging_ga4_purchase_config()===null,'Production and non-staging identities cannot enable the GA4 pilot');
+}
+$GLOBALS['home']=$GLOBALS['site']='https://krawlthroughkrakow.com/staging/';
+unset($_SERVER['HTTP_HOST'],$_SERVER['REQUEST_URI']);
+
 echo "Public storefront contracts: $checks/$checks passed\n";
 require __DIR__ . '/storefront-missing-product-cases.php';

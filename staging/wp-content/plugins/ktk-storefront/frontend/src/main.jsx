@@ -23,6 +23,7 @@ import {
 import { cartItemJourneySnapshot, nextCartItemNumber } from './cart-journey';
 import { singleDiscountCode } from './discount-codes';
 import { reportGoogleAdsOrderComplete } from './google-ads-conversion';
+import { observeGa4Purchase } from './ga4-purchase';
 import {
   DEFAULT_LEGACY_PRODUCT_URLS,
   DEFAULT_LEGACY_STORE_URL,
@@ -2476,6 +2477,11 @@ function CheckoutSuccess({ clearPurchaseStorage, navigate }) {
       window.clearTimeout(pollTimer);
     };
   }, [clearPurchaseStorage, confirmation, preview, query]);
+
+  useEffect(() => {
+    if (preview || !order) return undefined;
+    return observeGa4Purchase(order, config.ga4Purchase);
+  }, [order, preview]);
 
   if (error) return <ErrorState message={error} retry={() => navigate('cart')} />;
   if (!order) return <Loading />;

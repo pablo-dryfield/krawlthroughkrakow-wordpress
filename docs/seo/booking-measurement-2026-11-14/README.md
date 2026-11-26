@@ -1,3 +1,5 @@
+> **25 November2026 M03 update:** The [new read-only reconciliation](../booking-analytics-reconciliation-2026-11-25/README.md) resolves the earlier limited-sample zero-match investigation: all13 GA purchases exactly match13 paid Ecwid orders, with matching days/amounts and independent OmniLodge bookings. The custom-checkout cohort is separately enumerated and has no exact GA IDs in this window. The new report qualifies its complete observed ID-bound coverage, non-atomic reads, production-source binding and remaining measurement proposal. No tracking, consent, account or production change occurred. Discarded hosting/provider checks remain closed. Earlier observations below are historical.
+
 # Booking Measurement: Source And Published-Container Audit
 
 Status: read-only M03 investigation, started14 November2026. This is not a
